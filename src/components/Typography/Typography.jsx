@@ -49,7 +49,7 @@ const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = fa
                     children
                 )}
             </Text>
-            {!isDone && (
+            {!isDone && typeWriter && (
                 <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: spacingXxs }}>
                     <Animator>
                         <StarIcon />

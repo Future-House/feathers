@@ -18,7 +18,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy-storybook": "gh-pages -d storybook-static",
+    "deploy-storybook": "npm run build-storybook && touch ./storybook-static/.nojekyll && gh-pages -d ./storybook-static -t true",
     "generate-icons": "node src/icons/generateIcons.js"
   },
   "dependencies": {
@@ -60,6 +60,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^6.1.1",
     "jest": "^29.7.0",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
