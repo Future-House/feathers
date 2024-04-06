@@ -17,5 +17,9 @@ jobs:
           npm ci
           npm run build
       - name: Deploy 🚀
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-            npm run deploy-storybook
+            npm run build-storybook
+            touch ./storybook-static/.nojekyll
+            npx gh-pages -d storybook-static -t true -r https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
