@@ -9,6 +9,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure Git 📝
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
@@ -16,6 +21,7 @@ jobs:
         run: |
           npm ci
           npm run build
+
       - name: Deploy 🚀
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
