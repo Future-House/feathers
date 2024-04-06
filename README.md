@@ -5,6 +5,10 @@
 - React ^18.0.0
 - React-dom ^18.0.0
 
+## Demo environment
+
+https://future-house.github.io/feathers/
+
 ## Getting Started
 Install this package as a dependency in the consuming application
 ```
