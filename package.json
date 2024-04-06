@@ -8,6 +8,7 @@
   "author": "",
   "type": "commonjs",
   "files": [
+    "src",
     "dist"
   ],
   "scripts": {
