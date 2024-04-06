@@ -1,4 +1,3 @@
-
 .cache/
 coverage/
 !dist/index.html
@@ -14,3 +13,4 @@ Thumbs.db
 *.tgz
 stats.html
 bundle-analysis.html
+storybook-static
