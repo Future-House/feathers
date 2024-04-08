@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { FutureHouseApp, Button, Dropdown } from '../index';
+import { FutureHouseApp, Button, Dropdown, DropdownItem } from '../index';
 
 export default {
     title: 'Future House/Dropdown',
-    component: Dropdown,
-    argTypes: {
-        defaultLabel: 'Some defaultLabel'
-    },
+    component: Dropdown
 };
 
 const Template = (args) => {
-    const [selected, setSelected] = useState();
+    const [selected, setSelected] = useState(args.label);
 
     const handleChange = (option) => {
         setSelected(option)
@@ -18,11 +15,13 @@ const Template = (args) => {
 
     return (
         <FutureHouseApp>
-            <Dropdown
-                {...args}
-                callback={handleChange}
-                defaultLabel={selected?.label ?? args.defaultLabel}
-            />
+            <Dropdown label={selected}>
+                {args.options.map((item, index) => (
+                    <DropdownItem key={`${item}-${index}`} onClick={() => handleChange(item)}>
+                        {item}
+                    </DropdownItem>
+                ))}
+            </Dropdown>
             <Button mg={4} onClick={() => setSelected()}>
                 reset
             </Button>
@@ -33,9 +32,9 @@ const Template = (args) => {
 export const BasicDropdown = Template.bind({});
 BasicDropdown.args = {
     options: [
-        { label: 'Option 1', value: '1' },
-        { label: 'Option 2', value: '2' },
-        { label: 'Option 3', value: '3' },
+        'Option 1',
+        'Option 2',
+        'Option 3'
     ],
-    defaultLabel: 'No Selected Value'
+    label: 'No Selected Value'
 };

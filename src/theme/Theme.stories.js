@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { FutureHouseApp, Dropdown, Typography, Button } from '../components';
+import { FutureHouseApp, Dropdown, Typography, Button, DropdownItem } from '../components';
 import { useTypeWriter, useDynamicRefs } from '../hooks';
 import { ThemeToggleButton } from '../theme';
 import { spacingXxs, spacingXs } from './tokens/designTokens';
@@ -84,6 +84,34 @@ function TypeWriterDemo() {
     );
 }
 
+function DropdownDemo() {
+    const options = [
+        'Option 1',
+        'Option 2',
+        'Option 3'
+    ];
+    const [selected, setSelected] = useState('Not selected');
+
+    const handleChange = (option) => {
+        setSelected(option)
+    }
+
+    return (
+        <FutureHouseApp>
+            <Dropdown label={selected}>
+                {options.map((item, index) => (
+                    <DropdownItem key={`${item}-${index}`} onClick={() => handleChange(item)}>
+                        {item}
+                    </DropdownItem>
+                ))}
+            </Dropdown>
+            <Button mg={4} onClick={() => setSelected()}>
+                reset
+            </Button>
+        </FutureHouseApp>
+    );
+}
+
 export default {
     title: 'Future House/FutureHouseApp',
     component: ThemeToggleButton,
@@ -94,13 +122,7 @@ export default {
                     <Box sx={{ display: 'flex' }}>
                         <Story /> <Typography sx={{ margin: `${spacingXxs} 0 0 ${spacingXs}` }}>{'<=== this is respected by all component stories'}</Typography>
                     </Box>
-                    <Dropdown
-                        options={[
-                            { label: 'Option 1', value: '1' },
-                            { label: 'Option 2', value: '2' },
-                            { label: 'Option 3', value: '3' },
-                        ]}
-                    />
+                    <DropdownDemo />
                     <Typography variant='h1'>
                         Testing h1
                     </Typography>
