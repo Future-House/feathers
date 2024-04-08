@@ -32,7 +32,6 @@ const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = fa
     return (
         <>
             <Text
-                {...rest} // override any fontSize, weight, height, or spacing passed based on variant
                 fontSize={size}
                 fontWeight={weight}
                 lineHeight={lineHeight}
@@ -40,6 +39,7 @@ const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = fa
                 fontFamily={family}
                 as={internalVariant}
                 ref={ref}
+                {...rest} // allow the default typography styles to be overwritten if needed
             >
                 {typeWriter ? (
                     <>
