@@ -38,11 +38,12 @@ export function useTypeWriter(ref, desiredText, currentId, isDone) {
 export function TypeWriterComponent({ desiredText, setIsDone }) {
     const [displayText, setDisplayText] = useState('');
     const displayTextRef = useRef('');
+    const timeoutRef = useRef(null);
 
     useEffect(() => {
         displayTextRef.current = '';
         let index = 0;
-        let nextFireIsFast = true;
+        let isUsingFirstDelayRange = true;
 
         const typeNextChar = () => {
             if (index < desiredText.length) {
@@ -51,31 +52,29 @@ export function TypeWriterComponent({ desiredText, setIsDone }) {
                 setDisplayText(displayTextRef.current);
                 index++;
 
-                // simulates jaggered typing.
-                // on first first, it'll be up to a 5s millisecond delay for the first 35 characters
-                // then will fall into the else block
                 let delay;
-                if (nextFireIsFast) {
+                if (isUsingFirstDelayRange) {
                     delay = Math.random() * (5 - 1) + 1;
                 } else {
                     delay = Math.random() * (25 - 1) + 1;
                 }
 
-                // every 35 characters, which back to the "fast" typing
                 if (index % 35 === 0) {
-                    nextFireIsFast = !nextFireIsFast;
+                    isUsingFirstDelayRange = !isUsingFirstDelayRange;
                 }
 
-                setTimeout(typeNextChar, delay);
+                timeoutRef.current = setTimeout(typeNextChar, delay);
             } else {
                 setIsDone(true);
             }
         };
 
-        // Start typing the first character
         typeNextChar();
 
         return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
             displayTextRef.current = '';
         };
     }, [desiredText, setIsDone]);
