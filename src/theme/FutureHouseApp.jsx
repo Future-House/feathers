@@ -45,6 +45,7 @@ const theme = extendTheme({
     components: {
         Link: {
             baseStyle: ({ theme }) => ({
+                // this color is what the figma wanted, however, I opted to not do this.
                 // color: props.colorMode === 'dark' ? props.theme.colors.white : props.theme.colors.black,
                 borderBottom: `solid 1px ${theme.colors.red.base}`,
                 _hover: {
@@ -68,7 +69,43 @@ const theme = extendTheme({
                     border: `solid 1px ${theme.colors.red.active}`
                 }
             })
-        }
+        },
+        Menu: {
+            // this is difference than the base theme extensions:
+            // https://github.com/chakra-ui/chakra-ui/discussions/5326
+            baseStyle: ({ theme }) => ({
+                list: {
+                    _dark: {
+                        '--menu-bg': theme.colors.gray[800],
+                    },
+                    _light: {
+                        '--menu-bg': theme.colors.white
+                    }
+                },
+                item: {
+                    _light: {
+                        '--menu-bg': theme.colors.white,
+                        color: 'black',
+                        _hover: {
+                            '--menu-bg': theme.colors.gray[200]
+                        },
+                        _focus: {
+                            '--menu-bg': theme.colors.gray[200]
+                        }
+                    },
+                    _dark: {
+                        '--menu-bg': theme.colors.gray[800],
+                        color: 'white',
+                        _hover: {
+                            '--menu-bg': theme.colors.gray[700]
+                        },
+                        _focus: {
+                            '--menu-bg': theme.colors.gray[700]
+                        }
+                    }
+                },
+            }),
+        },
     }
 });
 

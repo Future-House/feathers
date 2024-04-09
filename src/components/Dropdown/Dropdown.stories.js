@@ -22,7 +22,7 @@ const Template = (args) => {
                     </DropdownItem>
                 ))}
             </Dropdown>
-            <Button mg={4} onClick={() => setSelected()}>
+            <Button mg={4} onClick={() => setSelected(args.options[0])}>
                 reset
             </Button>
         </FutureHouseApp>

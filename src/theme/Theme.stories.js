@@ -97,7 +97,7 @@ function DropdownDemo() {
     }
 
     return (
-        <FutureHouseApp>
+        <>
             <Dropdown label={selected}>
                 {options.map((item, index) => (
                     <DropdownItem key={`${item}-${index}`} onClick={() => handleChange(item)}>
@@ -105,10 +105,10 @@ function DropdownDemo() {
                     </DropdownItem>
                 ))}
             </Dropdown>
-            <Button mg={4} onClick={() => setSelected()}>
+            <Button mg={4} onClick={() => setSelected(options[0])}>
                 reset
             </Button>
-        </FutureHouseApp>
+        </>
     );
 }
 
