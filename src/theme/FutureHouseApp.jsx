@@ -12,11 +12,11 @@ const theme = extendTheme({
         red,
         blue
     },
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: false,
+    },
     styles: {
-        config: {
-            initialColorMode: 'dark',
-            useSystemColorMode: false,
-        },
         global: (props) => ({
             'html': {
                 fontSize: `${remBase}px`
