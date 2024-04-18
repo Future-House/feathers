@@ -81,3 +81,51 @@ export function TypeWriterComponent({ desiredText, setIsDone }) {
 
     return displayText;
 }
+
+export function WordTypeWriterComponent({ desiredText, setIsDone }) {
+    const [displayText, setDisplayText] = useState('');
+    const displayTextRef = useRef('');
+    const timeoutRef = useRef(null);
+
+    useEffect(() => {
+        const wordsArray = desiredText.split(' ');
+        displayTextRef.current = '';
+        let index = 0;
+        let isUsingFirstDelayRange = true;
+
+        const typeNextWord = () => {
+            if (index < wordsArray.length) {
+                setIsDone(false);
+                displayTextRef.current += (index === 0 ? '' : ' ') + wordsArray[index];
+                setDisplayText(displayTextRef.current);
+                index++;
+
+                let delay;
+                if (isUsingFirstDelayRange) {
+                    delay = Math.random() * (20 - 1) + 1;
+                } else {
+                    delay = Math.random() * (35 - 1) + 1;
+                }
+
+                if (index % 20 === 0) {
+                    isUsingFirstDelayRange = !isUsingFirstDelayRange;
+                }
+
+                timeoutRef.current = setTimeout(typeNextWord, delay);
+            } else {
+                setIsDone(true);
+            }
+        };
+
+        typeNextWord();
+
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            displayTextRef.current = '';
+        };
+    }, [desiredText, setIsDone]);
+
+    return displayText;
+}
