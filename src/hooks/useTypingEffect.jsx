@@ -54,9 +54,9 @@ export function TypeWriterComponent({ desiredText, setIsDone }) {
 
                 let delay;
                 if (isUsingFirstDelayRange) {
-                    delay = Math.random() * (5 - 1) + 1;
+                    delay = Math.random() * (1 - 0.5) + 0.5;
                 } else {
-                    delay = Math.random() * (25 - 1) + 1;
+                    delay = Math.random() * (7.5 - 0.5) + 0.5;
                 }
 
                 if (index % 35 === 0) {
