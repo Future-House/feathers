@@ -12,10 +12,6 @@ const theme = extendTheme({
         red,
         blue
     },
-    config: {
-        initialColorMode: 'dark',
-        useSystemColorMode: false,
-    },
     styles: {
         global: (props) => ({
             'html': {
@@ -106,6 +102,10 @@ const theme = extendTheme({
                 },
             }),
         },
+    },
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: false,
     }
 });
 
