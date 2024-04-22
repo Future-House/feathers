@@ -44,7 +44,7 @@ const WordTypeWriterTemplate = () => {
     return (
         <FutureHouseApp>
             <Typography>
-                <WordTypeWriterComponent desiredText={text} setIsDone={() => {}}/>
+                <WordTypeWriterComponent desiredText={text} setIsDone={() => {}} percentageCompleteCallBack={percent => console.log('percent:', percent)}/>
             </Typography>
         </FutureHouseApp>
     )

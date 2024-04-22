@@ -82,7 +82,7 @@ export function TypeWriterComponent({ desiredText, setIsDone }) {
     return displayText;
 }
 
-export function WordTypeWriterComponent({ desiredText, setIsDone }) {
+export function WordTypeWriterComponent({ desiredText, setIsDone, percentageCompleteCallBack }) {
     const [displayText, setDisplayText] = useState('');
     const displayTextRef = useRef('');
     const timeoutRef = useRef(null);
@@ -98,6 +98,11 @@ export function WordTypeWriterComponent({ desiredText, setIsDone }) {
                 setIsDone(false);
                 displayTextRef.current += (index === 0 ? '' : ' ') + wordsArray[index];
                 setDisplayText(displayTextRef.current);
+
+                // Calculate and report the percentage completion
+                const completionPercentage = Math.floor((index / wordsArray.length) * 100);
+                percentageCompleteCallBack(completionPercentage);
+
                 index++;
 
                 let delay;
@@ -114,6 +119,8 @@ export function WordTypeWriterComponent({ desiredText, setIsDone }) {
                 timeoutRef.current = setTimeout(typeNextWord, delay);
             } else {
                 setIsDone(true);
+                // Ensure 100% is reported when done
+                percentageCompleteCallBack(100);
             }
         };
 
@@ -124,8 +131,10 @@ export function WordTypeWriterComponent({ desiredText, setIsDone }) {
                 clearTimeout(timeoutRef.current);
             }
             displayTextRef.current = '';
+            // Report 0% when the component is reset or unmounted
+            percentageCompleteCallBack(0);
         };
-    }, [desiredText, setIsDone]);
+    }, [desiredText, setIsDone, percentageCompleteCallBack]);
 
     return displayText;
 }
