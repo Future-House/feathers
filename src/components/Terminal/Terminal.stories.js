@@ -5,7 +5,7 @@ import Terminal from './Terminal.jsx';
 import { FutureHouseApp, Box } from '../index';
 
 export default {
-    title: 'Future House/Terminal (beta)',
+    title: 'Future House/Terminal (alpha)',
     component: Terminal,
     decorators: [
         (Story) => (
