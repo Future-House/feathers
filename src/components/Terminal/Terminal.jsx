@@ -35,13 +35,13 @@ function Terminal() {
                 </Flex>
                 <Flex flex="1" flexDirection="column-reverse" overflowY="auto" px={4} pt={2} ref={outputRef}>
                     {lines.map((line, index) => (
-                        <Text key={index} as="span" fontFamily="monospace" fontSize="sm">
+                        <Text key={index} as="span" fontFamily="Space Mono" fontSize="sm">
                             {line}
                         </Text>
                     ))}
                 </Flex>
                 <Flex align="center" p={4}>
-                    <Text as="span" fontFamily="monospace" fontSize="sm" sx={{ whiteSpace: 'nowrap', marginRight: spacingXxxs }}>{prompt}</Text>
+                    <Text as="span" fontFamily="Space Mono" fontSize="sm" sx={{ whiteSpace: 'nowrap', marginRight: spacingXxxs }}>{prompt}</Text>
                     <Input
                         ref={inputRef}
                         variant="unstyled"
