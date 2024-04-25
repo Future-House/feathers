@@ -1,7 +1,5 @@
-// src/components/Terminal.js
-
-import React, { useState, useEffect, useRef } from 'react';
-import { Box, Input, Text, useColorModeValue, HStack, Icon, Flex, VStack } from '@chakra-ui/react';
+import React, { useState, useRef } from 'react';
+import { Box, Input, Text, useColorModeValue, HStack, Icon, Flex } from '@chakra-ui/react';
 import { FaCircle } from 'react-icons/fa';
 import { spacingXxxs } from '../../theme';
 
@@ -9,7 +7,8 @@ function Terminal() {
     const [input, setInput] = useState('');
     const [lines, setLines] = useState(["Last login: " + new Date().toLocaleString() + " on ttys000"]);
     const prompt = `aviary-DEV@~ $ `;
-    const containerRef = useRef(null);
+    const inputRef = useRef(null);
+    const outputRef = useRef(null);
 
     const bg = useColorModeValue('gray.200', 'gray.800');
     const color = useColorModeValue('gray.500', 'white');
@@ -18,47 +17,46 @@ function Terminal() {
     const handleInputChange = (e) => setInput(e.target.value);
     const handleInputKeyPress = (e) => {
         if (e.key === 'Enter' && input.trim() !== '') {
-            setLines(prevLines => [`${prompt}${input}`, ...prevLines]);
+            setLines([`${prompt}${input}`, ...lines]);
             setInput('');
             e.preventDefault();
         }
     };
 
-    useEffect(() => {
-        containerRef.current.scrollTop = containerRef.current.scrollHeight;
-    }, []);
-
     return (
-        <Box bg={bg} color={color} height="300px" overflowY="auto" borderRadius="10px" border="1px solid" borderColor="gray.700">
-            <Flex position="sticky" p={4} top="0" zIndex="sticky" bg={bg} alignItems="center" justifyContent="flex-start" mb="0" w="full">
-                <HStack spacing={2}>
-                    <Icon as={FaCircle} color="red.500" boxSize={3} />
-                    <Icon as={FaCircle} color="yellow.400" boxSize={3} />
-                    <Icon as={FaCircle} color="green.500" boxSize={3} />
-                </HStack>
-            </Flex>
-            <VStack spacing={4} align="stretch" overflowY="auto" ref={containerRef} flexDirection="column-reverse" px={4} pb={2}>
-                {lines.map((line, index) => (
-                    <Text key={index} as="span" fontFamily="monospace" fontSize="sm">
-                        {line}
-                    </Text>
-                ))}
-            </VStack>
-            <Flex align="center" p={4} sx={{ alignItems: 'stretch' }}>
-                <Text as="span" fontFamily="monospace" fontSize="sm" sx={{ whiteSpace: 'nowrap', marginRight: spacingXxxs }}>{prompt}</Text>
-                <Input
-                    variant="unstyled"
-                    placeholder="Type here..."
-                    value={input}
-                    onChange={handleInputChange}
-                    onKeyPress={handleInputKeyPress}
-                    borderColor="transparent"
-                    bg={inputBg}
-                    _placeholder={{ color: 'gray.500' }}
-                    focusBorderColor="transparent"
-                    fontSize="sm"
-                    flex="1"
-                />
+        <Box bg={bg} color={color} height="300px" overflow="hidden" borderRadius="10px" border="1px solid" borderColor="gray.700">
+            <Flex direction="column" height="100%">
+                <Flex position="sticky" top="0" zIndex="sticky" bg={bg} alignItems="center" justifyContent="flex-start" px={4} py={2}>
+                    <HStack spacing={2}>
+                        <Icon as={FaCircle} color="red.500" boxSize={3} />
+                        <Icon as={FaCircle} color="yellow.400" boxSize={3} />
+                        <Icon as={FaCircle} color="green.500" boxSize={3} />
+                    </HStack>
+                </Flex>
+                <Flex flex="1" flexDirection="column-reverse" overflowY="auto" px={4} pt={2} ref={outputRef}>
+                    {lines.map((line, index) => (
+                        <Text key={index} as="span" fontFamily="monospace" fontSize="sm">
+                            {line}
+                        </Text>
+                    ))}
+                </Flex>
+                <Flex align="center" p={4}>
+                    <Text as="span" fontFamily="monospace" fontSize="sm" sx={{ whiteSpace: 'nowrap', marginRight: spacingXxxs }}>{prompt}</Text>
+                    <Input
+                        ref={inputRef}
+                        variant="unstyled"
+                        placeholder="Type here..."
+                        value={input}
+                        onChange={handleInputChange}
+                        onKeyPress={handleInputKeyPress}
+                        borderColor="transparent"
+                        bg={inputBg}
+                        _placeholder={{ color: 'gray.500' }}
+                        focusBorderColor="transparent"
+                        fontSize="sm"
+                        flex="1"
+                    />
+                </Flex>
             </Flex>
         </Box>
     );
