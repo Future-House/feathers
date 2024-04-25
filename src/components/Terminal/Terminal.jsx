@@ -26,7 +26,7 @@ function Terminal() {
     return (
         <Box bg={bg} color={color} height="300px" overflow="hidden" borderRadius="10px" border="1px solid" borderColor="gray.700">
             <Flex direction="column" height="100%">
-                <Flex position="sticky" top="0" zIndex="sticky" bg={bg} alignItems="center" justifyContent="flex-start" p={4}>
+                <Flex position="sticky" top="0" zIndex="sticky" bg={bg} alignItems="center" p={4} justifyContent="flex-start">
                     <HStack spacing={2}>
                         <Icon as={FaCircle} color="red.500" boxSize={3} />
                         <Icon as={FaCircle} color="yellow.400" boxSize={3} />
