@@ -23,13 +23,13 @@ function percentageToRem(percentage) {
 
 // typography
 export const typographyStyles = {
-    h1: { size: '5.25rem', weight: 'normal', lineHeight: '115%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
-    h2: { size: '3rem', weight: 'normal', lineHeight: '115%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
+    h1: { size: '3.25rem', weight: 'normal', lineHeight: '115%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
+    h2: { size: '2.5rem', weight: 'normal', lineHeight: '115%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
     h3: { size: '1.875rem', weight: 'normal', lineHeight: '125%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
     h4: { size: '1.5rem', weight: 'normal', lineHeight: '130%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
-    'p-large': { size: '1.5rem', weight: 'normal', lineHeight: '153%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
-    'p-medium': { size: '1.125rem', weight: 'normal', lineHeight: '160%', spacing: percentageToRem(-2), family: 'Space Grotesk' },
-    'p-small': { size: '1rem', weight: 'normal', lineHeight: '160%', spacing: percentageToRem(0), family: 'Space Grotesk' },
+    'p-large': { size: '1.125rem', weight: 'normal', lineHeight: '153%', spacing: percentageToRem(-2.5), family: 'Space Grotesk' },
+    'p-medium': { size: '1.0rem', weight: 'normal', lineHeight: '160%', spacing: percentageToRem(-2), family: 'Space Grotesk' },
+    'p-small': { size: '0.9rem', weight: 'normal', lineHeight: '160%', spacing: percentageToRem(0), family: 'Space Grotesk' },
     terminal1: { size: '1.125rem', weight: 'normal', lineHeight: '140%', spacing: percentageToRem(-2.5), family: 'Space Mono' },
     terminal2: { size: '1rem', weight: 'normal', lineHeight: '140%', spacing: percentageToRem(-2.5), family: 'Space Mono' },
     label1: { size: '0.875rem', weight: 'normal', lineHeight: '115%', spacing: percentageToRem(2.5), family: 'Courier Prime' },
