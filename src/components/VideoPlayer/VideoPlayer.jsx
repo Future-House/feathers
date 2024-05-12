@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 const VideoPlayer = forwardRef(({ src, BoxProps, ...props }, ref) => {
     return (
-        <Box {...BoxProps} ref={ref}>
-            <video src={src} autoPlay loop muted playsInline width="100%" height="auto" {...props} />
+        <Box {...BoxProps}>
+            <video src={src} autoPlay loop muted playsInline width="100%" height="auto" ref={ref} {...props} />
         </Box>
     );
 });
