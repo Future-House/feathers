@@ -34,3 +34,10 @@ NoOptions.args = {
     placeholder: 'Type here...',
     onSelect: (selectedOption) => console.log('Selected:', selectedOption),
 };
+
+export const ManyOpts = Template.bind({});
+ManyOpts.args = {
+    options: ['Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape'],
+    placeholder: 'Type here...',
+    onSelect: (selectedOption) => console.log('Selected:', selectedOption),
+};

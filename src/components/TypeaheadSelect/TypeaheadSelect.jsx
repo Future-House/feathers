@@ -11,7 +11,7 @@ import {
 } from '../index';
 import PropTypes from 'prop-types';
 
-const Typeahead = forwardRef(({ 
+const Typeahead = forwardRef(({
     options = [],
     onSelect = () => { },
     placeholder = 'Type here...',
@@ -19,7 +19,8 @@ const Typeahead = forwardRef(({
     ListItemProps,
     InputProps,
     ContainerBoxProps,
-    TypographyProps
+    TypographyProps,
+    maxVisibleOptions = 8,
 }, ref) => {
     const [query, setQuery] = useState('');
     const [filteredOptions, setFilteredOptions] = useState([]);
@@ -104,6 +105,8 @@ const Typeahead = forwardRef(({
                     borderRadius="md"
                     boxShadow="md"
                     zIndex="1"
+                    maxH={`${maxVisibleOptions * 2}rem`} // Assumes each item is ~2rem high
+                    overflowY="auto"
                     {...ContainerBoxProps}
                 >
                     <List spacing={1} {...ListProps}>
@@ -140,7 +143,8 @@ Typeahead.propTypes = {
     ListProps: PropTypes.object,
     ContainerBoxProps: PropTypes.object,
     TypographyProps: PropTypes.object,
-    ListItemProps: PropTypes.object
+    ListItemProps: PropTypes.object,
+    maxVisibleOptions: PropTypes.number,
 };
 
 export default Typeahead;
