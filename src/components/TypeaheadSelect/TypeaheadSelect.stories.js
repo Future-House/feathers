@@ -41,3 +41,11 @@ ManyOpts.args = {
     placeholder: 'Type here...',
     onSelect: (selectedOption) => console.log('Selected:', selectedOption),
 };
+
+export const IndexDefault = Template.bind({});
+IndexDefault.args = {
+    options: ['Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape'],
+    placeholder: 'Type here...',
+    onSelect: (selectedOption) => console.log('Selected:', selectedOption),
+    defaultIndex: 2
+};

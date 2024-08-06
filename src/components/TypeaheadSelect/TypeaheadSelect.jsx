@@ -21,6 +21,7 @@ const Typeahead = forwardRef(({
     ContainerBoxProps,
     TypographyProps,
     maxVisibleOptions = 8,
+    defaultIndex
 }, ref) => {
     const [query, setQuery] = useState('');
     const [filteredOptions, setFilteredOptions] = useState(options);
@@ -32,6 +33,13 @@ const Typeahead = forwardRef(({
     if (!ref) {
         fallbackRef = internalRef;
     }
+
+    useEffect(() => {
+        if (defaultIndex && options[defaultIndex]) {
+            setQuery(options[defaultIndex]);
+            onSelect(options[defaultIndex]);
+        }
+    }, [defaultIndex, options, onSelect]);
 
     useEffect(() => {
         if (query) {
@@ -153,6 +161,7 @@ Typeahead.propTypes = {
     TypographyProps: PropTypes.object,
     ListItemProps: PropTypes.object,
     maxVisibleOptions: PropTypes.number,
+    defaultIndex: PropTypes.number
 };
 
 export default Typeahead;
