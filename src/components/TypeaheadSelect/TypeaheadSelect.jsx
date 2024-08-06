@@ -37,7 +37,6 @@ const Typeahead = forwardRef(({
     useEffect(() => {
         if (typeof defaultIndex === 'number' && options[defaultIndex]) {
             setQuery(options[defaultIndex]);
-            onSelect(options[defaultIndex]);
         }
     }, [defaultIndex, options, onSelect]);
 
