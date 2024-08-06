@@ -11,7 +11,16 @@ import {
 } from '../index';
 import PropTypes from 'prop-types';
 
-const Typeahead = forwardRef(({ options = [], onSelect = () => { }, placeholder = 'Type here...', ListProps, InputProps, ContainerBoxProps }, ref) => {
+const Typeahead = forwardRef(({ 
+    options = [],
+    onSelect = () => { },
+    placeholder = 'Type here...',
+    ListProps,
+    ListItemProps,
+    InputProps,
+    ContainerBoxProps,
+    TypographyProps
+}, ref) => {
     const [query, setQuery] = useState('');
     const [filteredOptions, setFilteredOptions] = useState([]);
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -95,9 +104,9 @@ const Typeahead = forwardRef(({ options = [], onSelect = () => { }, placeholder 
                     borderRadius="md"
                     boxShadow="md"
                     zIndex="1"
-                    {...ListProps}
+                    {...ContainerBoxProps}
                 >
-                    <List spacing={1}>
+                    <List spacing={1} {...ListProps}>
                         {filteredOptions.length > 0 ? (
                             filteredOptions.map((option, index) => (
                                 <ListItem
@@ -105,13 +114,14 @@ const Typeahead = forwardRef(({ options = [], onSelect = () => { }, placeholder 
                                     padding="2"
                                     _hover={{ bg: colorMode === 'light' ? 'gray.100' : 'gray.600', cursor: 'pointer' }}
                                     onClick={() => handleSelect(option)}
+                                    {...ListItemProps}
                                 >
                                     {option}
                                 </ListItem>
                             ))
                         ) : (
-                            <ListItem padding="2">
-                                <Typography color={colorMode === 'light' ? 'gray.500' : 'gray.300'}>No results found</Typography>
+                            <ListItem padding="2" {...ListItemProps}>
+                                <Typography color={colorMode === 'light' ? 'gray.500' : 'gray.300'} {...TypographyProps}>No results found</Typography>
                             </ListItem>
                         )}
                     </List>
@@ -128,7 +138,9 @@ Typeahead.propTypes = {
     placeholder: PropTypes.string,
     InputProps: PropTypes.object,
     ListProps: PropTypes.object,
-    ContainerBoxProps: PropTypes.object
+    ContainerBoxProps: PropTypes.object,
+    TypographyProps: PropTypes.object,
+    ListItemProps: PropTypes.object
 };
 
 export default Typeahead;
