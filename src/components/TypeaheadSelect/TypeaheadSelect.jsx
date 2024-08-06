@@ -23,7 +23,7 @@ const Typeahead = forwardRef(({
     maxVisibleOptions = 8,
 }, ref) => {
     const [query, setQuery] = useState('');
-    const [filteredOptions, setFilteredOptions] = useState([]);
+    const [filteredOptions, setFilteredOptions] = useState(options);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode } = useColorMode();
 
@@ -40,7 +40,7 @@ const Typeahead = forwardRef(({
             );
             setFilteredOptions(filtered);
         } else {
-            setFilteredOptions([]);
+            setFilteredOptions(options);
         }
     }, [query, options]);
 
@@ -52,11 +52,10 @@ const Typeahead = forwardRef(({
                 option.toLowerCase().includes(newQuery.toLowerCase())
             );
             setFilteredOptions(filtered);
-            onOpen();
         } else {
-            setFilteredOptions([]);
-            onClose();
+            setFilteredOptions(options);
         }
+        onOpen();
     };
 
     const handleSelect = (option) => {
@@ -76,6 +75,12 @@ const Typeahead = forwardRef(({
             setFilteredOptions(options);
         }
         onOpen();
+    };
+
+    const handleBlur = (event) => {
+        if (!fallbackRef.current.contains(event.relatedTarget)) {
+            onClose();
+        }
     };
 
     useOutsideClick({
@@ -107,6 +112,7 @@ const Typeahead = forwardRef(({
                     zIndex="1"
                     maxH={`${maxVisibleOptions * 2}rem`} // Assumes each item is ~2rem high
                     overflowY="auto"
+                    onBlur={handleBlur}
                     {...ContainerBoxProps}
                 >
                     <List spacing={1} {...ListProps}>
@@ -114,6 +120,8 @@ const Typeahead = forwardRef(({
                             filteredOptions.map((option, index) => (
                                 <ListItem
                                     key={index}
+                                    tabIndex={0}
+                                    role="button"
                                     padding="2"
                                     _hover={{ bg: colorMode === 'light' ? 'gray.100' : 'gray.600', cursor: 'pointer' }}
                                     onClick={() => handleSelect(option)}
