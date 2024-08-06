@@ -1,3 +1,0 @@
-import{L as a,j as r,F as p}from"./TypeaheadSelect-BwVI_rz-.js";import"./index-BBkUAzwr.js";import"./index-YMbfICiA.js";import"./inheritsLoose-DvxMVriv.js";import"./index-BfZ0jBbx.js";const x={title:"Future House/Link",component:a},i=n=>r.jsx(p,{children:r.jsx(a,{...n})}),e=i.bind({});e.args={href:"https://reactjs.org/",children:"React",isExternal:!0};var s,t,o;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`args => <FutureHouseApp>
-        <Link {...args} />
-    </FutureHouseApp>`,...(o=(t=e.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const L=["LinkDemo"];export{e as LinkDemo,L as __namedExportsOrder,x as default};
