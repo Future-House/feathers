@@ -28,6 +28,8 @@ const Typeahead = forwardRef(({
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode } = useColorMode();
 
+    const isMounted = useRef(false);
+
     let fallbackRef = ref;
     const internalRef = useRef();
     if (!ref) {
@@ -35,8 +37,9 @@ const Typeahead = forwardRef(({
     }
 
     useEffect(() => {
-        if (typeof defaultIndex === 'number' && options[defaultIndex]) {
+        if (typeof defaultIndex === 'number' && options[defaultIndex] && !isMounted.current) {
             setQuery(options[defaultIndex]);
+            isMounted.current = true;
         }
     }, [defaultIndex, options, onSelect]);
 
