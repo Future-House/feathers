@@ -10,17 +10,18 @@ import {
     Typography,
 } from '../index';
 import PropTypes from 'prop-types';
+import { FixedSizeList as VirtualizedList } from 'react-window';
 
 const Typeahead = forwardRef(({
     options = [],
     onSelect = () => { },
     placeholder = 'Type here...',
-    ListProps,
-    ListItemProps,
+    VirtualizedListProps,
+    VirtualizedListItemProps,
     InputProps,
     ContainerBoxProps,
     TypographyProps,
-    maxVisibleOptions = 8,
+    maxVisibleOptions = options.length > 5 ? 5 : options.length,
     defaultIndex
 }, ref) => {
     const [query, setQuery] = useState('');
@@ -100,6 +101,19 @@ const Typeahead = forwardRef(({
         },
     });
 
+    const renderRow = ({ index, style }) => (
+        <Box
+            as="button"
+            key={index}
+            onClick={() => handleSelect(filteredOptions[index])}
+            style={{ ...style, textAlign: 'left', paddingLeft: '1rem' }}
+            _hover={{ bg: colorMode === 'light' ? 'gray.100' : 'gray.600', cursor: 'pointer' }}
+            {...VirtualizedListItemProps}
+        >
+            {filteredOptions[index]}
+        </Box>
+    );
+
     return (
         <Box position="relative" ref={fallbackRef} {...ContainerBoxProps}>
             <Input
@@ -120,32 +134,26 @@ const Typeahead = forwardRef(({
                     borderRadius="md"
                     boxShadow="md"
                     zIndex="1"
-                    maxH={`${maxVisibleOptions * 2}rem`} // Assumes each item is ~2rem high
                     overflowY="auto"
                     onBlur={handleBlur}
                     {...ContainerBoxProps}
                 >
-                    <List spacing={1} {...ListProps}>
-                        {filteredOptions.length > 0 ? (
-                            filteredOptions.map((option, index) => (
-                                <ListItem
-                                    key={index}
-                                    tabIndex={0}
-                                    role="button"
-                                    padding="2"
-                                    _hover={{ bg: colorMode === 'light' ? 'gray.100' : 'gray.600', cursor: 'pointer' }}
-                                    onClick={() => handleSelect(option)}
-                                    {...ListItemProps}
-                                >
-                                    {option}
-                                </ListItem>
-                            ))
-                        ) : (
-                            <ListItem padding="2" {...ListItemProps}>
-                                <Typography color={colorMode === 'light' ? 'gray.500' : 'gray.300'} {...TypographyProps}>No results found</Typography>
-                            </ListItem>
-                        )}
-                    </List>
+                    {filteredOptions.length > 0 ? (
+                        <VirtualizedList
+                            height={maxVisibleOptions * 35}
+                            itemCount={filteredOptions.length}
+                            itemSize={35}
+                            {...VirtualizedListProps}
+                        >
+                            {renderRow}
+                        </VirtualizedList>
+                    ) : (
+                        <Box padding="2">
+                            <Typography color={colorMode === 'light' ? 'gray.500' : 'gray.300'} {...TypographyProps}>
+                                No results found
+                            </Typography>
+                        </Box>
+                    )}
                 </Box>
             )}
         </Box>
@@ -158,10 +166,10 @@ Typeahead.propTypes = {
     onSelect: PropTypes.func,
     placeholder: PropTypes.string,
     InputProps: PropTypes.object,
-    ListProps: PropTypes.object,
+    VirtualizedListProps: PropTypes.object,
     ContainerBoxProps: PropTypes.object,
     TypographyProps: PropTypes.object,
-    ListItemProps: PropTypes.object,
+    VirtualizedListItemProps: PropTypes.object,
     maxVisibleOptions: PropTypes.number,
     defaultIndex: PropTypes.number
 };

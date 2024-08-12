@@ -36,10 +36,20 @@ NoOptions.args = {
 };
 
 export const ManyOpts = Template.bind({});
+
+const generateGeneOptions = () => {
+    const genes = [];
+    for (let i = 1; i <= 20000; i++) {
+        genes.push(`Gene${i}`);
+    }
+    return genes;
+};
+
 ManyOpts.args = {
-    options: ['Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape'],
-    placeholder: 'Type here...',
+    options: generateGeneOptions(),
+    placeholder: 'Type a gene...',
     onSelect: (selectedOption) => console.log('Selected:', selectedOption),
+    maxVisibleOptions: 5,
 };
 
 export const IndexDefault = Template.bind({});
