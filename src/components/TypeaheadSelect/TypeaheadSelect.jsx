@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useRef, useEffect } from 'react';
+import React, { useState, forwardRef, useRef, useEffect, useCallback } from 'react';
 import {
     Input,
     Box,
@@ -69,12 +69,18 @@ const Typeahead = forwardRef(({
         onOpen();
     };
 
-    const handleSelect = (option) => {
+    const handleSelect = useCallback((option) => {
         setQuery(option);
         setFilteredOptions([]);
         onSelect(option);
         onClose();
-    };
+    }, [onClose, onSelect]);
+
+    const handleKeyDown = useCallback((event) => {
+        if (event.key === 'Enter' && filteredOptions.length > 0) {
+            handleSelect(filteredOptions[0]);
+        }
+    }, [filteredOptions, handleSelect]);
 
     const handleFocus = () => {
         if (query) {
@@ -121,6 +127,7 @@ const Typeahead = forwardRef(({
                 value={query}
                 onChange={handleChange}
                 onFocus={handleFocus}
+                onKeyDown={handleKeyDown}
                 {...InputProps}
             />
             {isOpen && (
