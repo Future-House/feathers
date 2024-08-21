@@ -6,7 +6,7 @@ import { TypeWriterComponent } from '../../hooks';
 import { StarIcon } from '../../icons';
 import PropTypes from 'prop-types';
 
-const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = false, typeWriterSpeedOverride, ...rest }, ref) => {
+const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = false, typeWriterSpeedOverride, includeIcon = true, ...rest }, ref) => {
     const { size, weight, lineHeight, spacing, family } = typographyStyles[variant] || typographyStyles['p-medium'];
     const [isDone, setIsDone] = useState(false);
 
@@ -49,7 +49,7 @@ const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = fa
                     children
                 )}
             </Text>
-            {!isDone && typeWriter && (
+            {!isDone && typeWriter && includeIcon && (
                 <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: spacingXxs }}>
                     <Animator>
                         <StarIcon />
@@ -64,9 +64,11 @@ Typography.propTypes = {
     variant: PropTypes.oneOf(['p-large', 'p-medium', 'p-small', 'terminal1', 'terminal2', 'label1', 'label2', 'h1', 'h2', 'h3', 'h4']),
     children: PropTypes.node.isRequired,
     typeWriter: PropTypes.bool,
-    typeWriterSpeedOverride: PropTypes.number
+    typeWriterSpeedOverride: PropTypes.number,
+    includeIcon: PropTypes.bool
 };
 Typography.defaultProps = {
-    variant: 'p-medium'
+    variant: 'p-medium',
+    includeIcon: true
 };
 export default Typography;
