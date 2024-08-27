@@ -62,7 +62,7 @@ const Typography = forwardRef(({ variant = 'p-medium', children, typeWriter = fa
 Typography.displayName = 'Typography';
 Typography.propTypes = {
     variant: PropTypes.oneOf(['p-large', 'p-medium', 'p-small', 'terminal1', 'terminal2', 'label1', 'label2', 'h1', 'h2', 'h3', 'h4']),
-    children: PropTypes.node.isRequired,
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     typeWriter: PropTypes.bool,
     typeWriterSpeedOverride: PropTypes.number,
     includeIcon: PropTypes.bool
