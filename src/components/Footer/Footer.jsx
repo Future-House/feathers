@@ -139,7 +139,7 @@ const Logo = (props) => (
 );
 
 
-const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, ...rest }) => {
+const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, FooterProps, ...rest }) => {
     const { colorMode } = useColorMode();
 
     const handleScrollToTop = () => {
@@ -147,7 +147,7 @@ const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, ..
     };
 
     return (
-        <Box bg="bg.accent.default" color="fg.accent.default">
+        <Box bg="bg.accent.default" color="fg.accent.default" {...rest}>
             {(showCareerOpportunities || enableScrollToTop) && (
                 <Box sx={{ display: 'flex', alignItems: 'baseline', marginTop: '.5rem' }}>
                     {enableScrollToTop && (
@@ -165,7 +165,7 @@ const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, ..
                     )}
                 </Box>
             )}
-            <Box as="footer" role="contentinfo" {...rest}>
+            <Box as="footer" role="contentinfo" {...FooterProps}>
                 <Stack spacing={{ base: '4', md: '5' }}>
                     <Stack justify="space-between" direction="row" align="center">
                         <Logo fill={colorMode === 'dark' ? 'white' : 'black'} />
@@ -187,6 +187,7 @@ const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, ..
 Footer.propTypes = {
     enableScrollToTop: PropTypes.bool,
     showCareerOpportunities: PropTypes.bool,
+    FooterProps: PropTypes.object,
 };
 Footer.defaultProps = {
     enableScrollToTop: false,
