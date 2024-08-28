@@ -7,6 +7,7 @@ const postcss = require('rollup-plugin-postcss');
 const visualizer = require('rollup-plugin-visualizer').visualizer;
 const ignore = require('rollup-plugin-ignore');
 const copy = require('rollup-plugin-copy');
+const url = require('@rollup/plugin-url');
 
 module.exports = {
     // NOTE: this is to ignore all warnings from node_modules but since chakra-ui is such a large part of this lib I don't want to omit it entirely
@@ -43,6 +44,10 @@ module.exports = {
         postcss({
             extract: true,
             sourceMap: process.env.NODE_ENV === 'development',
+        }),
+        url({
+            include: ['**/*.svg'],
+            limit: 0,
         }),
         resolve(),
         commonjs(),

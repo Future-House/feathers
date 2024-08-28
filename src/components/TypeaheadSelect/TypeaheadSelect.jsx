@@ -1,14 +1,6 @@
 import React, { useState, forwardRef, useRef, useEffect, useCallback } from 'react';
-import {
-    Input,
-    Box,
-    List,
-    ListItem,
-    useDisclosure,
-    useOutsideClick,
-    useColorMode,
-    Typography,
-} from '../index';
+import { Input, Box, useDisclosure, useOutsideClick, useColorMode } from '@chakra-ui/react';
+import Typography from '../Typography/Typography.jsx';
 import PropTypes from 'prop-types';
 import { FixedSizeList as VirtualizedList } from 'react-window';
 
