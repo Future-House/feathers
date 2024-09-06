@@ -191,7 +191,7 @@ Footer.propTypes = {
 };
 Footer.defaultProps = {
     enableScrollToTop: false,
-    showCareerOppertunities: false,
+    showCareerOpportunities: false,
 };
 
 export default Footer;
