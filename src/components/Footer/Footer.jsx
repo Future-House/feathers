@@ -149,7 +149,7 @@ const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, Fo
     return (
         <Box bg="bg.accent.default" color="fg.accent.default" {...rest}>
             {(showCareerOpportunities || enableScrollToTop) && (
-                <Box sx={{ display: 'flex', alignItems: 'baseline', marginTop: '.5rem' }}>
+                <Box sx={{ display: 'flex', alignItems: 'baseline', padding: '.5rem' }}>
                     {enableScrollToTop && (
                         <StyledLink onClick={handleScrollToTop} display="block" textAlign="center">
                             ↑ Scroll to top
@@ -175,6 +175,11 @@ const Footer = ({ enableScrollToTop = false, showCareerOpportunities = false, Fo
                             <IconButton as="a" href="https://x.com/futurehousesf" aria-label="X (formaly known as Twitter)" target="_blank" icon={<FaTwitter />} />
                         </ButtonGroup>
                     </Stack>
+                    <Box sx={{ display: 'flex' }}>
+                        <Link href="https://www.futurehouse.org/terms-of-service" target="_blank" sx={{ border: 'none', marginRight: '.5rem' }}>Terms of Service</Link>
+                        {' | '}
+                        <Link href="https://www.futurehouse.org/privacy-policy" target="_blank" sx={{ border: 'none', marginLeft: '.5rem ' }}>Privacy Policy</Link>
+                    </Box>
                     <Typography fontSize="sm" color="fg.subtle">
                         &copy; {new Date().getFullYear()} FutureHouse. All rights reserved.
                     </Typography>
