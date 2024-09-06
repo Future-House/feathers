@@ -1,3 +1,0 @@
-import{a,j as e,F as u}from"./Footer-BZDJbKMI.js";import"./index-BBkUAzwr.js";import"./index-BfZ0jBbx.js";import"./index-YMbfICiA.js";import"./extends-CF3RwP-h.js";const d={title:"Future House/Footer",component:a,argTypes:{enableScrollToTop:{control:"boolean"},showCareerOpportunities:{control:"boolean"}}},n=p=>e.jsx(u,{children:e.jsx(a,{...p})}),o=n.bind({});o.args={enableScrollToTop:!0,showCareerOpportunities:!0};var r,t,s;o.parameters={...o.parameters,docs:{...(r=o.parameters)==null?void 0:r.docs,source:{originalSource:`args => <FutureHouseApp>
-        <Footer {...args} />
-    </FutureHouseApp>`,...(s=(t=o.parameters)==null?void 0:t.docs)==null?void 0:s.source}}};const x=["Default"];export{o as Default,x as __namedExportsOrder,d as default};
