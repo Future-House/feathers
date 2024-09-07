@@ -5,20 +5,23 @@ import FutureHouseApp from "../../theme/FutureHouseApp.jsx";
 export default {
     title: 'Future House/Footer',
     component: Footer,
-    argTypes: {
-        enableScrollToTop: { control: 'boolean' },
-        showCareerOpportunities: { control: 'boolean' },
-    },
 };
 
 const Template = (args) => (
-    <FutureHouseApp>
-        <Footer {...args} />
-    </FutureHouseApp>
+        <FutureHouseApp>
+            <Footer {...args} />
+        </FutureHouseApp>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-    enableScrollToTop: true,
-    showCareerOpportunities: true,
+    links: [
+        {
+            title: 'Custom',
+            links: [
+                { label: 'CustomLink 1', href: '#' },
+                { label: 'CustomAction 1', onClick: () => console.log('CustomAction 1') },
+            ],
+        },
+    ]
 };
