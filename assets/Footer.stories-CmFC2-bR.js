@@ -1,0 +1,3 @@
+import{a,j as e,F as n}from"./Footer-DOMpCMCy.js";import"./index-BBkUAzwr.js";import"./index-BfZ0jBbx.js";import"./index-YMbfICiA.js";import"./extends-CF3RwP-h.js";const d={title:"Future House/Footer",component:a},p=u=>e.jsx(n,{children:e.jsx(a,{...u})}),o=p.bind({});o.args={links:[{title:"Custom",links:[{label:"CustomLink 1",href:"#"},{label:"CustomAction 1",onClick:()=>console.log("CustomAction 1")}]}]};var t,s,r;o.parameters={...o.parameters,docs:{...(t=o.parameters)==null?void 0:t.docs,source:{originalSource:`args => <FutureHouseApp>
+            <Footer {...args} />
+        </FutureHouseApp>`,...(r=(s=o.parameters)==null?void 0:s.docs)==null?void 0:r.source}}};const x=["Default"];export{o as Default,x as __namedExportsOrder,d as default};
