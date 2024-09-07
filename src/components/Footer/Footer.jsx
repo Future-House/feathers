@@ -18,8 +18,8 @@ const internalLinks = [
     {
         title: 'Company',
         links: [
-            { label: 'About Us', href: 'https://www.futurehouse.org' },
-            { label: 'Careers', href: 'https://job-boards.greenhouse.io/futurehouse' },
+            { label: 'About Us', href: 'https://www.futurehouse.org', target: '_blank' },
+            { label: 'Careers', href: 'https://job-boards.greenhouse.io/futurehouse', target: '_blank' },
         ],
     },
     {
