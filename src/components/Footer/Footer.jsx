@@ -12,6 +12,7 @@ import {
 import Typography from '../Typography/Typography.jsx';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { Fragment } from 'react';
 
 const internalLinks = [
     {
@@ -140,7 +141,7 @@ const Logo = (props) => (
     </a>
 );
 
-const Footer = ({ FooterProps, links = [], ...rest }) => {
+const Footer = ({ FooterProps, links = [], disclaimers = [], ...rest }) => {
     const linksToRender = [...links, ...internalLinks];
     const { colorMode } = useColorMode();
 
@@ -156,6 +157,9 @@ const Footer = ({ FooterProps, links = [], ...rest }) => {
                 >
                     <Stack spacing={{ base: '6', md: '8' }} align="start">
                         <Logo fill={colorMode === 'dark' ? 'white' : 'black'} />
+                        {disclaimers.length > 0 && (
+                            disclaimers.map((disclaimer, idx) => <Fragment key={idx}>{disclaimer}</Fragment>)
+                        )}
                     </Stack>
                     <SimpleGrid columns={{ base: 2, md: Math.min(4, linksToRender.length) }} gap="8" width={{ base: 'full', lg: 'auto' }}>
                         {linksToRender.map((group, idx) => (
@@ -239,7 +243,8 @@ Footer.propTypes = {
                 })
             )
         })
-    )
+    ),
+    disclaimers: PropTypes.arrayOf(PropTypes.node),
 };
 
 export default Footer;
