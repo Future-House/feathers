@@ -157,7 +157,7 @@ const Footer = ({ FooterProps, links = [], ...rest }) => {
                     <Stack spacing={{ base: '6', md: '8' }} align="start">
                         <Logo fill={colorMode === 'dark' ? 'white' : 'black'} />
                     </Stack>
-                    <SimpleGrid columns={{ base: 2, md: 4 }} gap="8" width={{ base: 'full', lg: 'auto' }}>
+                    <SimpleGrid columns={{ base: 2, md: Math.min(4, linksToRender.length) }} gap="8" width={{ base: 'full', lg: 'auto' }}>
                         {linksToRender.map((group, idx) => (
                             <Stack key={idx} spacing="4" minW={{ lg: '40' }}>
                                 <Typography fontSize="sm" fontWeight="semibold" color="fg.subtle">
