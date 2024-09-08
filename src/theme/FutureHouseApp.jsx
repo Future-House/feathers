@@ -24,8 +24,7 @@ const theme = extendTheme({
                 fontFamily: "Space Mono, sans-serif"
             },
             'a': {
-                fontFamily: "Space Mono, sans-serif",
-                fontStyle: 'italic'
+                fontFamily: "Space Mono, sans-serif"
             },
             // 'body': {
             //     color: props.colorMode === 'dark' ? 'white' : 'black',
