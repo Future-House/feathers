@@ -14,7 +14,8 @@ const Typeahead = forwardRef(({
     ContainerBoxProps,
     TypographyProps,
     maxVisibleOptions = options.length > 5 ? 5 : options.length,
-    defaultIndex
+    defaultIndex,
+    noResultsText = 'No results found'
 }, ref) => {
     const [query, setQuery] = useState('');
     const [filteredOptions, setFilteredOptions] = useState(options);
@@ -149,7 +150,7 @@ const Typeahead = forwardRef(({
                     ) : (
                         <Box padding="2">
                             <Typography color={colorMode === 'light' ? 'gray.500' : 'gray.300'} {...TypographyProps}>
-                                No results found
+                                {noResultsText}
                             </Typography>
                         </Box>
                     )}
@@ -170,7 +171,8 @@ Typeahead.propTypes = {
     TypographyProps: PropTypes.object,
     VirtualizedListItemProps: PropTypes.object,
     maxVisibleOptions: PropTypes.number,
-    defaultIndex: PropTypes.number
+    defaultIndex: PropTypes.number,
+    noResultsText: PropTypes.string
 };
 
 export default Typeahead;
