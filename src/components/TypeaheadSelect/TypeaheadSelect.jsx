@@ -6,6 +6,8 @@ import { FixedSizeList as VirtualizedList } from 'react-window';
 
 const Typeahead = forwardRef(({
     options = [],
+    value,
+    onChange,
     onSelect = () => { },
     placeholder = 'Type here...',
     VirtualizedListProps,
@@ -17,12 +19,15 @@ const Typeahead = forwardRef(({
     defaultIndex,
     noResultsText = 'No results found'
 }, ref) => {
-    const [query, setQuery] = useState('');
+    const [internalQuery, setInternalQuery] = useState('');
+    const query = value !== undefined ? value : internalQuery;
+
     const [filteredOptions, setFilteredOptions] = useState(options);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode } = useColorMode();
 
     const isMounted = useRef(false);
+    const isControlled = useRef(value !== undefined);
 
     let fallbackRef = ref;
     const internalRef = useRef();
@@ -31,11 +36,28 @@ const Typeahead = forwardRef(({
     }
 
     useEffect(() => {
+        if (process.env.NODE_ENV !== 'development') return;
+        const currentlyControlled = value !== undefined;
+
+        if (isControlled.current !== currentlyControlled) {
+            console.warn(`
+                Typeahead component is changing from ${isControlled.current ? 'controlled' : 'uncontrolled'} to 
+                ${currentlyControlled ? 'controlled' : 'uncontrolled'}. This is not recommended. Decide whether 
+                you want the component to be controlled or uncontrolled.`
+            );
+        }
+
+        isControlled.current = currentlyControlled;
+    }, [value]);
+
+    useEffect(() => {
         if (typeof defaultIndex === 'number' && options[defaultIndex] && !isMounted.current) {
-            setQuery(options[defaultIndex]);
+            const defaultQuery = options[defaultIndex];
+            if (value === undefined) setInternalQuery(defaultQuery);
+            onChange?.(defaultQuery);
             isMounted.current = true;
         }
-    }, [defaultIndex, options, onSelect]);
+    }, [defaultIndex, options, onSelect, value, onChange]);
 
     useEffect(() => {
         if (query) {
@@ -50,24 +72,18 @@ const Typeahead = forwardRef(({
 
     const handleChange = (event) => {
         const newQuery = event.target.value;
-        setQuery(newQuery);
-        if (newQuery) {
-            const filtered = options.filter((option) =>
-                option.toLowerCase().includes(newQuery.toLowerCase())
-            );
-            setFilteredOptions(filtered);
-        } else {
-            setFilteredOptions(options);
-        }
+        if (value === undefined) setInternalQuery(newQuery);
+        onChange?.(newQuery);
         onOpen();
     };
 
     const handleSelect = useCallback((option) => {
-        setQuery(option);
-        setFilteredOptions([]);
+        if (value === undefined) setInternalQuery(option);
+        onChange?.(option);
         onSelect(option);
+        setFilteredOptions([]);
         onClose();
-    }, [onClose, onSelect]);
+    }, [onClose, onSelect, onChange, value]);
 
     const handleKeyDown = useCallback((event) => {
         if (event.key === 'Enter' && filteredOptions.length > 0) {
@@ -76,14 +92,6 @@ const Typeahead = forwardRef(({
     }, [filteredOptions, handleSelect]);
 
     const handleFocus = () => {
-        if (query) {
-            const filtered = options.filter((option) =>
-                option.toLowerCase().includes(query.toLowerCase())
-            );
-            setFilteredOptions(filtered);
-        } else {
-            setFilteredOptions(options);
-        }
         onOpen();
     };
 
@@ -95,9 +103,7 @@ const Typeahead = forwardRef(({
 
     useOutsideClick({
         ref: fallbackRef,
-        handler: () => {
-            onClose();
-        },
+        handler: onClose,
     });
 
     const renderRow = ({ index, style }) => (
@@ -163,6 +169,8 @@ const Typeahead = forwardRef(({
 Typeahead.displayName = "Typeahead";
 Typeahead.propTypes = {
     options: PropTypes.array,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
     onSelect: PropTypes.func,
     placeholder: PropTypes.string,
     InputProps: PropTypes.object,
