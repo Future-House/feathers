@@ -18,13 +18,13 @@ const theme = extendTheme({
                 fontSize: `${remBase}px`
             },
             'html, body': {
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "Noto Sans, sans-serif",
             },
             'caption': {
-                fontFamily: "Space Mono, sans-serif"
+                fontFamily: "Noto Sans, sans-serif"
             },
             'a': {
-                fontFamily: "Space Mono, sans-serif"
+                fontFamily: "Noto Sans, sans-serif"
             },
             // 'body': {
             //     color: props.colorMode === 'dark' ? 'white' : 'black',
@@ -32,8 +32,8 @@ const theme = extendTheme({
             // },
         }),
         fonts: {
-            heading: "'Space Grotesk', sans-serif",
-            body: "'Space Grotesk', sans-serif",
+            heading: "Noto Sans, sans-serif",
+            body: "Noto Sans, sans-serif",
             caption: "Space Mono, sans-serif"
         }
     },
