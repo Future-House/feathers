@@ -32,17 +32,20 @@ const internalLinks = [
 ]
 
 const Logo = (props) => (
-    <a href="https://futurehouse.org" target="_blank" rel="noreferrer">
+    <a href="https://futurehouse.org" target="_blank" rel="noopener noreferrer" aria-label="FutureHouse Home">
         <chakra.svg
-            id="Layer_1"
-            data-name="Layer 1"
+            id="FutureHouse_Logo"
+            data-name="FutureHouse Logo"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 581.7301 86.014"
             height="8"
             width="auto"
+            aria-labelledby="logoTitle logoDesc"
             {...props}
         >
+            <title id="logoTitle">FutureHouse Logo</title>
+            <desc id="logoDesc">The official logo of FutureHouse</desc>
             <g id="type">
                 <path
                     id="type_PathItem_"
