@@ -20,26 +20,24 @@ const Typeahead = forwardRef(({
     noResultsText = 'No results found'
 }, ref) => {
     const [internalQuery, setInternalQuery] = useState('');
-    const [selectedStr, setSelectedStr] = useState('');
+    const [selected, setSelected] = useState('');
     const query = value !== undefined ? value : internalQuery;
-
     const [filteredOptions, setFilteredOptions] = useState(options);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode } = useColorMode();
-
     const isMounted = useRef(false);
     const isControlled = useRef(value !== undefined);
+    const listRef = useRef();
 
     let fallbackRef = ref;
     const internalRef = useRef();
+    
     if (!ref) {
         fallbackRef = internalRef;
     }
 
     useEffect(() => {
-        if (process.env.NODE_ENV !== 'development') return;
         const currentlyControlled = value !== undefined;
-
         if (isControlled.current !== currentlyControlled) {
             console.warn(`
                 Typeahead component is changing from ${isControlled.current ? 'controlled' : 'uncontrolled'} to 
@@ -47,7 +45,6 @@ const Typeahead = forwardRef(({
                 you want the component to be controlled or uncontrolled.`
             );
         }
-
         isControlled.current = currentlyControlled;
     }, [value]);
 
@@ -71,18 +68,25 @@ const Typeahead = forwardRef(({
         }
     }, [query, options]);
 
+    useEffect(() => {
+        if (isOpen && listRef.current && selected) {
+            const selectedIndex = options.indexOf(selected);
+            if (selectedIndex >= 0) {
+                listRef.current.scrollToItem(selectedIndex, 'center');  // Scroll to the selected item
+            }
+        }
+    }, [isOpen, selected, options]);
+
     const handleChange = (event) => {
         const newQuery = event.target.value;
-        if (value === undefined) {
-            setInternalQuery(newQuery);
-        }
-        setSelectedStr('');
+        if (value === undefined) setInternalQuery(newQuery);
+        setSelected('');
         onChange?.(newQuery);
         onOpen();
     };
 
     const handleSelect = useCallback((option) => {
-        setSelectedStr(option);
+        setSelected(option);
         setInternalQuery('');
         onChange?.(option);
         onSelect(option);
@@ -131,7 +135,7 @@ const Typeahead = forwardRef(({
         <Box position="relative" ref={fallbackRef} {...ContainerBoxProps}>
             <Input
                 placeholder={placeholder}
-                value={query || selectedStr}
+                value={selected || query}
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onKeyDown={handleKeyDown}
@@ -157,6 +161,7 @@ const Typeahead = forwardRef(({
                             height={maxVisibleOptions * 35}
                             itemCount={filteredOptions.length}
                             itemSize={35}
+                            ref={listRef} // Attach the list reference
                             {...VirtualizedListProps}
                         >
                             {renderRow}
