@@ -20,7 +20,7 @@ const Typeahead = forwardRef(({
     noResultsText = 'No results found'
 }, ref) => {
     const [internalQuery, setInternalQuery] = useState('');
-    const [selected, setSelected] = useState('');
+    const [selectedStr, setSelectedStr] = useState(value || '');
     const query = value !== undefined ? value : internalQuery;
     const [filteredOptions, setFilteredOptions] = useState(options);
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,6 +53,7 @@ const Typeahead = forwardRef(({
             const defaultQuery = options[defaultIndex];
             if (value === undefined) setInternalQuery(defaultQuery);
             onChange?.(defaultQuery);
+            setSelectedStr(defaultQuery);
             isMounted.current = true;
         }
     }, [defaultIndex, options, onSelect, value, onChange]);
@@ -69,24 +70,28 @@ const Typeahead = forwardRef(({
     }, [query, options]);
 
     useEffect(() => {
-        if (isOpen && listRef.current && selected) {
-            const selectedIndex = options.indexOf(selected);
-            if (selectedIndex >= 0) {
-                listRef.current.scrollToItem(selectedIndex, 'center');  // Scroll to the selected item
+        const scrollToSelectedItem = () => {
+            const selectedIndex = options.indexOf(selectedStr);
+            if (listRef.current && selectedIndex >= 0) {
+                listRef.current.scrollToItem(selectedIndex, 'center');
             }
+        };
+
+        if (isOpen || !isMounted.current) {
+            scrollToSelectedItem();
         }
-    }, [isOpen, selected, options]);
+    }, [isOpen, selectedStr, options]);
 
     const handleChange = (event) => {
         const newQuery = event.target.value;
         if (value === undefined) setInternalQuery(newQuery);
-        setSelected('');
+        setSelectedStr('');
         onChange?.(newQuery);
         onOpen();
     };
 
     const handleSelect = useCallback((option) => {
-        setSelected(option);
+        setSelectedStr(option);
         setInternalQuery('');
         onChange?.(option);
         onSelect(option);
@@ -135,7 +140,7 @@ const Typeahead = forwardRef(({
         <Box position="relative" ref={fallbackRef} {...ContainerBoxProps}>
             <Input
                 placeholder={placeholder}
-                value={selected || query}
+                value={selectedStr || query}
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onKeyDown={handleKeyDown}
@@ -161,7 +166,7 @@ const Typeahead = forwardRef(({
                             height={maxVisibleOptions * 35}
                             itemCount={filteredOptions.length}
                             itemSize={35}
-                            ref={listRef} // Attach the list reference
+                            ref={listRef}
                             {...VirtualizedListProps}
                         >
                             {renderRow}
