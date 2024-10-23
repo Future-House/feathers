@@ -20,6 +20,7 @@ const Typeahead = forwardRef(({
     noResultsText = 'No results found'
 }, ref) => {
     const [internalQuery, setInternalQuery] = useState('');
+    const [selectedStr, setSelectedStr] = useState('');
     const query = value !== undefined ? value : internalQuery;
 
     const [filteredOptions, setFilteredOptions] = useState(options);
@@ -72,18 +73,22 @@ const Typeahead = forwardRef(({
 
     const handleChange = (event) => {
         const newQuery = event.target.value;
-        if (value === undefined) setInternalQuery(newQuery);
+        if (value === undefined) {
+            setInternalQuery(newQuery);
+        }
+        setSelectedStr('');
         onChange?.(newQuery);
         onOpen();
     };
 
     const handleSelect = useCallback((option) => {
-        if (value === undefined) setInternalQuery(option);
+        setSelectedStr(option);
+        setInternalQuery('');
         onChange?.(option);
         onSelect(option);
-        setFilteredOptions([]);
+        setFilteredOptions(options);
         onClose();
-    }, [onClose, onSelect, onChange, value]);
+    }, [onChange, onSelect, options, onClose]);
 
     const handleKeyDown = useCallback((event) => {
         if (event.key === 'Enter' && filteredOptions.length > 0) {
@@ -92,6 +97,9 @@ const Typeahead = forwardRef(({
     }, [filteredOptions, handleSelect]);
 
     const handleFocus = () => {
+        if (!internalQuery) {
+            setFilteredOptions(options);
+        }
         onOpen();
     };
 
@@ -123,7 +131,7 @@ const Typeahead = forwardRef(({
         <Box position="relative" ref={fallbackRef} {...ContainerBoxProps}>
             <Input
                 placeholder={placeholder}
-                value={query}
+                value={query || selectedStr}
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onKeyDown={handleKeyDown}
