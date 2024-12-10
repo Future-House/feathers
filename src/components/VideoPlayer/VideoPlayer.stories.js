@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import tcReceptor from '../../../mocks/tc-receptor.mp4';
-import { FutureHouseApp, Drawer, VideoPlayer } from '../index.js';
+import { FutureHouseApp, VideoPlayer } from '../index.js';
 
 export default {
     title: 'Future House/VideoPlayer',
@@ -9,13 +9,9 @@ export default {
 
 const Template = (args) => {
 
-    const [isOpen, setIsOpen] = useState(false);
-
     return (
         <FutureHouseApp>
-            <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-                <VideoPlayer {...args} src={tcReceptor} />
-            </Drawer>
+            <VideoPlayer {...args} src={tcReceptor} />
         </FutureHouseApp>
     )
 }
