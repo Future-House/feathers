@@ -14,3 +14,4 @@ Thumbs.db
 stats.html
 bundle-analysis.html
 storybook-static
+*storybook.log

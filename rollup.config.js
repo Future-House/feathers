@@ -1,67 +1,64 @@
-const resolve = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
-const babel = require('@rollup/plugin-babel');
-const peerDepsExternal = require('rollup-plugin-peer-deps-external');
-const terser = require('@rollup/plugin-terser');
-const postcss = require('rollup-plugin-postcss');
-const visualizer = require('rollup-plugin-visualizer').visualizer;
-const ignore = require('rollup-plugin-ignore');
-const copy = require('rollup-plugin-copy');
-const url = require('@rollup/plugin-url');
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import alias from '@rollup/plugin-alias';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-module.exports = {
-    // NOTE: this is to ignore all warnings from node_modules but since chakra-ui is such a large part of this lib I don't want to omit it entirely
-    onwarn(warning, warn) {
-        if (warning.code === 'THIS_IS_UNDEFINED' || warning.message.includes('use client')) {
-            return;
-        } else if (/node_modules/.test(warning.loc)) {
-            return;
-        }
-        warn(warning);
-    },
-    external: [
-        // '@chakra-ui/react'
-        'react',
-        'react-dom',
-        'prop-types'
-    ],
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
     input: 'src/index.js',
     output: [
         {
             file: 'dist/index.js',
             format: 'cjs',
-            sourcemap: true,
+            sourcemap: true
+        },
+        {
+            file: 'dist/index.esm.js',
+            format: 'esm',
+            sourcemap: true
         }
     ],
+    external: [
+        'react',
+        'react-dom',
+        '@chakra-ui/react',
+        'next-themes',
+        /^@chakra-ui\/.*/,
+        /^@emotion\/.*/,
+    ],
     plugins: [
-        ignore(['*.stories.js']),
-        copy({
-            targets: [
-                { src: "src/assets/fonts", dest: "dist" },
-            ],
-        }),
         peerDepsExternal(),
+        {
+            name: 'remove-use-client',
+            transform(code) {
+                return code.replace(/"use client";?/g, '').replace(/'use client';?/g, '');
+            }
+        },
+        alias({
+            entries: [
+                { find: '@', replacement: path.resolve(__dirname, 'src') }
+            ]
+        }),
         postcss({
-            extract: true,
-            sourceMap: process.env.NODE_ENV === 'development',
+            minimize: true,
+            modules: true,
+            extract: false
         }),
-        url({
-            include: ['**/*.svg'],
-            limit: 0,
+        resolve({
+            extensions: ['.js', '.jsx']
         }),
-        resolve(),
         commonjs(),
         babel({
             babelHelpers: 'bundled',
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ['@babel/preset-react'],
+            extensions: ['.js', '.jsx'],
             exclude: 'node_modules/**'
-        }),
-        terser(),
-        visualizer({
-            filename: './bundle-analysis.html',
-            open: false,
-            gzipSize: true,
-            brotliSize: true,
-        }),
-    ],
+        })
+    ]
 };

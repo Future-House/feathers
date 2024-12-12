@@ -20,8 +20,6 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:storybook/recommended",
-    "plugin:storybook/recommended",
     "plugin:react/recommended",
     "plugin:eslint-plugin-import/recommended"
   ],
@@ -36,6 +34,12 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
+      }
     }
   }
 }

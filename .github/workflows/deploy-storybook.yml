@@ -1,8 +1,9 @@
 name: Build and Deploy to Storybook
 on:
-    push:
-      branches:
-        - main
+    # push:
+    #   branches:
+    #     - main
+    workflow_dispatch:
 permissions:
   contents: write
 jobs:
