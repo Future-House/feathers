@@ -1,0 +1,1 @@
+import{j as o}from"./index-DQIh8hVk.js";import"./index-Cm2GpHgX.js";import{F as t,C as s}from"./visually-hidden-DvylkdhI.js";import"./index-VzOxryM2.js";const m={parameters:{controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}}},decorators:[r=>o.jsxs(t,{children:[o.jsx(s,{}),o.jsx(r,{})]})]};export{m as default};
