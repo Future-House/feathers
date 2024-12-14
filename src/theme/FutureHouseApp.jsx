@@ -19,6 +19,7 @@ const theme = extendTheme({
             },
             'html, body': {
                 fontFamily: "Noto Sans, sans-serif",
+                transition: 'all 0.5s ease'
             },
             'caption': {
                 fontFamily: "Noto Sans, sans-serif"
@@ -26,10 +27,6 @@ const theme = extendTheme({
             'a': {
                 fontFamily: "Noto Sans, sans-serif"
             },
-            // 'body': {
-            //     color: props.colorMode === 'dark' ? 'white' : 'black',
-            //     bg: props.colorMode === 'dark' ? 'black' : 'white',
-            // },
         }),
         fonts: {
             heading: "Noto Sans, sans-serif",
