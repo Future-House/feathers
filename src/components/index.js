@@ -10,3 +10,4 @@ export { default as FutureHouseApp } from '../theme/FutureHouseApp.jsx';
 export { default as TypeaheadSelect } from './TypeaheadSelect/TypeaheadSelect.jsx';
 export { default as Footer } from './Footer/Footer.jsx';
 export { default as Crows } from './Crows/Crows.jsx';
+export { useColorModeValue } from '@chakra-ui/react';
