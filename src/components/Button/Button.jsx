@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { Button as ChakraButton } from "@chakra-ui/react";
 import { ArrowForwardIcon } from '../../icons';
 
-const Button = forwardRef(({ children, type, action, ...rest }, ref) => {
+const Button = forwardRef(({ children, action, ...rest }, ref) => {
     let supportingIcon;
-    if (type === 'actionable') {
-        if (action === 'internal') {
-            supportingIcon = <ArrowForwardIcon />;
-        } else if (action === 'external') {
-            supportingIcon = <ArrowForwardIcon style={{ transform: "rotate(-45deg)" }} />;
-        }
+    if (action === 'internal') {
+        supportingIcon = <ArrowForwardIcon />;
+    } else if (action === 'external') {
+        supportingIcon = <ArrowForwardIcon style={{ transform: "rotate(-45deg)" }} />;
     }
 
     return (
@@ -24,7 +22,6 @@ const Button = forwardRef(({ children, type, action, ...rest }, ref) => {
 Button.displayName = 'Button';
 Button.propTypes = {
     children: PropTypes.node.isRequired,
-    type: PropTypes.string,
     action: PropTypes.string,
 };
 
