@@ -1,3 +1,0 @@
-import{j as e}from"./index-DYsiV-Pg.js";import"./index-WgBwkUTT.js";import{L as a}from"./Crows-GC9l7lC-.js";import{F as p}from"./Footer-_SxdGCa5.js";import"./index-CyqBJf1o.js";const x={title:"Future House/Link",component:a},i=n=>e.jsx(p,{children:e.jsx(a,{...n})}),r=i.bind({});r.args={href:"https://reactjs.org/",children:"React",isExternal:!0};var s,t,o;r.parameters={...r.parameters,docs:{...(s=r.parameters)==null?void 0:s.docs,source:{originalSource:`args => <FutureHouseApp>
-        <Link {...args} />
-    </FutureHouseApp>`,...(o=(t=r.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const L=["LinkDemo"];export{r as LinkDemo,L as __namedExportsOrder,x as default};
