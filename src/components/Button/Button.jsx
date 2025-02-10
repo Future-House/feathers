@@ -14,7 +14,7 @@ const Button = forwardRef(({ children, variant, action, ...rest }, ref) => {
     }
 
     return (
-        <ChakraButton ref={ref} {...rest} variant={"futureHouse"}>
+        <ChakraButton ref={ref} {...rest}>
             {children}
             {supportingIcon}
         </ChakraButton>
