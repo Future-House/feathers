@@ -37,7 +37,7 @@ const defaultTheme = extendTheme({
     components: {
         Link: {
             baseStyle: ({ theme }) => ({
-                borderBottom: `solid 1px ${theme.colors.red.base}`,
+                borderBottom: `solid 1px ${theme.colors.red[500]}`,
                 _hover: {
                     textDecoration: 'none'
                 },
@@ -53,10 +53,10 @@ const defaultTheme = extendTheme({
                 bg: colorMode === 'dark' ? 'gray.800' : 'white',
                 color: colorMode === 'dark' ? 'white' : 'black',
                 _hover: {
-                    border: `solid 1px ${theme.colors.red.hover}`
+                    border: `solid 1px ${theme.colors.red[600]}`
                 },
                 _active: {
-                    border: `solid 1px ${theme.colors.red.active}`
+                    border: `solid 1px ${theme.colors.red[700]}`
                 }
             })
         },
