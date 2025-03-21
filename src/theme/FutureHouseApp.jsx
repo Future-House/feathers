@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { remBase, red, blue, gray, black, white } from "./tokens/designTokens";
 import "../assets/index.css";
 
-const theme = extendTheme({
+const defaultTheme = extendTheme({
     colors: {
         white,
         black,
@@ -37,8 +37,6 @@ const theme = extendTheme({
     components: {
         Link: {
             baseStyle: ({ theme }) => ({
-                // this color is what the figma wanted, however, I opted to not do this.
-                // color: props.colorMode === 'dark' ? props.theme.colors.white : props.theme.colors.black,
                 borderBottom: `solid 1px ${theme.colors.red.base}`,
                 _hover: {
                     textDecoration: 'none'
@@ -63,8 +61,6 @@ const theme = extendTheme({
             })
         },
         Menu: {
-            // this is difference than the base theme extensions:
-            // https://github.com/chakra-ui/chakra-ui/discussions/5326
             baseStyle: ({ theme }) => ({
                 list: {
                     _dark: {
@@ -109,16 +105,20 @@ const theme = extendTheme({
  * Provides a Chakra UI theme context for its children, applying a custom theme.
  * @param {object} props - The props object.
  * @param {React.ReactNode} props.children - The child components to be wrapped by the theme provider.
+ * @param {object} [props.theme] - Optional custom theme to override the default theme.
  * @returns {React.ReactElement} A theme wrapped component
  */
-export default function FutureHouseApp({ children }) {
+export default function FutureHouseApp({ children, theme = defaultTheme, ...props }) {
+    const mergedTheme = theme === defaultTheme ? theme : extendTheme(defaultTheme, theme);
+
     return (
-        <ChakraProvider theme={theme}>
+        <ChakraProvider theme={mergedTheme} {...props}>
             {children}
         </ChakraProvider>
     );
 }
 
 FutureHouseApp.propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    theme: PropTypes.object
 };
