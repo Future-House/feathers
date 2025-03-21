@@ -1,0 +1,1 @@
+import{j as o}from"./index-DYsiV-Pg.js";import{f as r,d as s}from"./Footer-VYIk_d2R.js";const c=r((a,t)=>o.jsx(s,{align:"center",...a,direction:"column",ref:t}));c.displayName="VStack";export{c as V};
