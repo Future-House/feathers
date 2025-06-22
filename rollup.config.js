@@ -1,67 +1,75 @@
-const resolve = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
-const babel = require('@rollup/plugin-babel');
-const peerDepsExternal = require('rollup-plugin-peer-deps-external');
-const terser = require('@rollup/plugin-terser');
-const postcss = require('rollup-plugin-postcss');
-const visualizer = require('rollup-plugin-visualizer').visualizer;
-const ignore = require('rollup-plugin-ignore');
-const copy = require('rollup-plugin-copy');
-const url = require('@rollup/plugin-url');
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import babel from '@rollup/plugin-babel';
+import postcss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import dts from 'rollup-plugin-dts';
+import sourcemaps from 'rollup-plugin-sourcemaps';
+import copy from 'rollup-plugin-copy';
+import { readFileSync } from 'fs';
 
-module.exports = {
-    // NOTE: this is to ignore all warnings from node_modules but since chakra-ui is such a large part of this lib I don't want to omit it entirely
-    onwarn(warning, warn) {
-        if (warning.code === 'THIS_IS_UNDEFINED' || warning.message.includes('use client')) {
-            return;
-        } else if (/node_modules/.test(warning.loc)) {
-            return;
-        }
-        warn(warning);
-    },
-    external: [
-        // '@chakra-ui/react'
-        'react',
-        'react-dom',
-        'prop-types'
-    ],
-    input: 'src/index.js',
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
+
+export default [
+  {
+    input: 'src/index.ts',
     output: [
-        {
-            file: 'dist/index.js',
-            format: 'cjs',
-            sourcemap: true,
-        }
+      {
+        file: packageJson.main,
+        format: 'cjs',
+        sourcemap: true,
+        exports: 'named',
+      },
+      {
+        file: packageJson.module,
+        format: 'esm',
+        sourcemap: true,
+        exports: 'named',
+      },
     ],
     plugins: [
-        ignore(['*.stories.js']),
-        copy({
-            targets: [
-                { src: "src/assets/fonts", dest: "dist" },
-            ],
-        }),
-        peerDepsExternal(),
-        postcss({
-            extract: true,
-            sourceMap: process.env.NODE_ENV === 'development',
-        }),
-        url({
-            include: ['**/*.svg'],
-            limit: 0,
-        }),
-        resolve(),
-        commonjs(),
-        babel({
-            babelHelpers: 'bundled',
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            exclude: 'node_modules/**'
-        }),
-        terser(),
-        visualizer({
-            filename: './bundle-analysis.html',
-            open: false,
-            gzipSize: true,
-            brotliSize: true,
-        }),
+      peerDepsExternal(),
+      resolve({
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: false,
+        declarationMap: false,
+        sourceMap: true,
+        inlineSources: true,
+      }),
+      babel({
+        babelHelpers: 'bundled',
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        exclude: 'node_modules/**',
+      }),
+      postcss({
+        config: {
+          path: './postcss.config.js',
+        },
+        extensions: ['.css'],
+        minimize: true,
+        inject: {
+          insertAt: 'top',
+        },
+        sourceMap: true,
+      }),
+      sourcemaps(),
+      copy({
+        targets: [
+          { src: 'src/lib/styles/globals.css', dest: 'dist' },
+        ],
+      }),
     ],
-};
+    external: ['react', 'react-dom', 'react/jsx-runtime'],
+  },
+  {
+    input: 'src/index.ts',
+    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    plugins: [dts()],
+    external: [/\.css$/],
+  },
+];

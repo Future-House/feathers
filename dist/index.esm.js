@@ -1,26 +1,5 @@
-'use strict';
-
-var jsxRuntime = require('react/jsx-runtime');
-var React = require('react');
-
-function _interopNamespaceDefault(e) {
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () { return e[k]; }
-        });
-      }
-    });
-  }
-  n.default = e;
-  return Object.freeze(n);
-}
-
-var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
+import { jsx } from 'react/jsx-runtime';
+import * as React from 'react';
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -2654,23 +2633,23 @@ function composeRefs(...refs) {
 // @__NO_SIDE_EFFECTS__
 function createSlot(ownerName) {
   const SlotClone = /* @__PURE__ */ createSlotClone(ownerName);
-  const Slot2 = React__namespace.forwardRef((props, forwardedRef) => {
+  const Slot2 = React.forwardRef((props, forwardedRef) => {
     const { children, ...slotProps } = props;
-    const childrenArray = React__namespace.Children.toArray(children);
+    const childrenArray = React.Children.toArray(children);
     const slottable = childrenArray.find(isSlottable);
     if (slottable) {
       const newElement = slottable.props.children;
       const newChildren = childrenArray.map((child) => {
         if (child === slottable) {
-          if (React__namespace.Children.count(newElement) > 1) return React__namespace.Children.only(null);
-          return React__namespace.isValidElement(newElement) ? newElement.props.children : null;
+          if (React.Children.count(newElement) > 1) return React.Children.only(null);
+          return React.isValidElement(newElement) ? newElement.props.children : null;
         } else {
           return child;
         }
       });
-      return /* @__PURE__ */ jsxRuntime.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: React__namespace.isValidElement(newElement) ? React__namespace.cloneElement(newElement, void 0, newChildren) : null });
+      return /* @__PURE__ */ jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: React.isValidElement(newElement) ? React.cloneElement(newElement, void 0, newChildren) : null });
     }
-    return /* @__PURE__ */ jsxRuntime.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
+    return /* @__PURE__ */ jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
   });
   Slot2.displayName = `${ownerName}.Slot`;
   return Slot2;
@@ -2678,24 +2657,24 @@ function createSlot(ownerName) {
 var Slot = /* @__PURE__ */ createSlot("Slot");
 // @__NO_SIDE_EFFECTS__
 function createSlotClone(ownerName) {
-  const SlotClone = React__namespace.forwardRef((props, forwardedRef) => {
+  const SlotClone = React.forwardRef((props, forwardedRef) => {
     const { children, ...slotProps } = props;
-    if (React__namespace.isValidElement(children)) {
+    if (React.isValidElement(children)) {
       const childrenRef = getElementRef(children);
       const props2 = mergeProps(slotProps, children.props);
-      if (children.type !== React__namespace.Fragment) {
+      if (children.type !== React.Fragment) {
         props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
       }
-      return React__namespace.cloneElement(children, props2);
+      return React.cloneElement(children, props2);
     }
-    return React__namespace.Children.count(children) > 1 ? React__namespace.Children.only(null) : null;
+    return React.Children.count(children) > 1 ? React.Children.only(null) : null;
   });
   SlotClone.displayName = `${ownerName}.SlotClone`;
   return SlotClone;
 }
 var SLOTTABLE_IDENTIFIER = Symbol("radix.slottable");
 function isSlottable(child) {
-  return React__namespace.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
+  return React.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
 }
 function mergeProps(slotProps, childProps) {
   const overrideProps = { ...childProps };
@@ -2799,7 +2778,7 @@ const buttonVariants = cva("inline-flex items-center justify-center gap-2 whites
     size: "default"
   }
 });
-const Button = /*#__PURE__*/React__namespace.forwardRef((_ref, ref) => {
+const Button = /*#__PURE__*/React.forwardRef((_ref, ref) => {
   let {
       className,
       variant,
@@ -2808,7 +2787,7 @@ const Button = /*#__PURE__*/React__namespace.forwardRef((_ref, ref) => {
     } = _ref,
     props = _objectWithoutProperties(_ref, _excluded$1);
   const Comp = asChild ? Slot : "button";
-  return jsxRuntime.jsx(Comp, _objectSpread2({
+  return jsx(Comp, _objectSpread2({
     className: cn(buttonVariants({
       variant,
       size,
@@ -2825,80 +2804,72 @@ const _excluded = ["className"],
   _excluded4 = ["className"],
   _excluded5 = ["className"],
   _excluded6 = ["className"];
-const Card = /*#__PURE__*/React__namespace.forwardRef((_ref, ref) => {
+const Card = /*#__PURE__*/React.forwardRef((_ref, ref) => {
   let {
       className
     } = _ref,
     props = _objectWithoutProperties(_ref, _excluded);
-  return jsxRuntime.jsx("div", _objectSpread2({
+  return jsx("div", _objectSpread2({
     ref: ref,
     className: cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)
   }, props));
 });
 Card.displayName = "Card";
-const CardHeader = /*#__PURE__*/React__namespace.forwardRef((_ref2, ref) => {
+const CardHeader = /*#__PURE__*/React.forwardRef((_ref2, ref) => {
   let {
       className
     } = _ref2,
     props = _objectWithoutProperties(_ref2, _excluded2);
-  return jsxRuntime.jsx("div", _objectSpread2({
+  return jsx("div", _objectSpread2({
     ref: ref,
     className: cn("flex flex-col space-y-1.5 p-6", className)
   }, props));
 });
 CardHeader.displayName = "CardHeader";
-const CardTitle = /*#__PURE__*/React__namespace.forwardRef((_ref3, ref) => {
+const CardTitle = /*#__PURE__*/React.forwardRef((_ref3, ref) => {
   let {
       className
     } = _ref3,
     props = _objectWithoutProperties(_ref3, _excluded3);
-  return jsxRuntime.jsx("div", _objectSpread2({
+  return jsx("div", _objectSpread2({
     ref: ref,
     className: cn("text-2xl font-semibold leading-none tracking-tight", className)
   }, props));
 });
 CardTitle.displayName = "CardTitle";
-const CardDescription = /*#__PURE__*/React__namespace.forwardRef((_ref4, ref) => {
+const CardDescription = /*#__PURE__*/React.forwardRef((_ref4, ref) => {
   let {
       className
     } = _ref4,
     props = _objectWithoutProperties(_ref4, _excluded4);
-  return jsxRuntime.jsx("div", _objectSpread2({
+  return jsx("div", _objectSpread2({
     ref: ref,
     className: cn("text-sm text-muted-foreground", className)
   }, props));
 });
 CardDescription.displayName = "CardDescription";
-const CardContent = /*#__PURE__*/React__namespace.forwardRef((_ref5, ref) => {
+const CardContent = /*#__PURE__*/React.forwardRef((_ref5, ref) => {
   let {
       className
     } = _ref5,
     props = _objectWithoutProperties(_ref5, _excluded5);
-  return jsxRuntime.jsx("div", _objectSpread2({
+  return jsx("div", _objectSpread2({
     ref: ref,
     className: cn("p-6 pt-0", className)
   }, props));
 });
 CardContent.displayName = "CardContent";
-const CardFooter = /*#__PURE__*/React__namespace.forwardRef((_ref6, ref) => {
+const CardFooter = /*#__PURE__*/React.forwardRef((_ref6, ref) => {
   let {
       className
     } = _ref6,
     props = _objectWithoutProperties(_ref6, _excluded6);
-  return jsxRuntime.jsx("div", _objectSpread2({
+  return jsx("div", _objectSpread2({
     ref: ref,
     className: cn("flex items-center p-6 pt-0", className)
   }, props));
 });
 CardFooter.displayName = "CardFooter";
 
-exports.Button = Button;
-exports.Card = Card;
-exports.CardContent = CardContent;
-exports.CardDescription = CardDescription;
-exports.CardFooter = CardFooter;
-exports.CardHeader = CardHeader;
-exports.CardTitle = CardTitle;
-exports.buttonVariants = buttonVariants;
-exports.cn = cn;
-//# sourceMappingURL=index.js.map
+export { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, buttonVariants, cn };
+//# sourceMappingURL=index.esm.js.map
