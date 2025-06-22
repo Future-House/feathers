@@ -117,8 +117,8 @@ export const Disabled: Story = {
 export const AsChild: Story = {
   render: () => (
     <Button asChild>
-      <a href="https://shadcn.com" target="_blank" rel="noopener noreferrer">
-        Visit shadcn/ui
+      <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">
+        Visit shadcn ui
       </a>
     </Button>
   ),
