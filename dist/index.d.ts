@@ -2,6 +2,7 @@ import { ClassValue } from 'clsx';
 import * as class_variance_authority_types from 'class-variance-authority/types';
 import * as React from 'react';
 import { VariantProps } from 'class-variance-authority';
+import * as react_jsx_runtime from 'react/jsx-runtime';
 
 declare function cn(...inputs: ClassValue[]): string;
 
@@ -21,5 +22,12 @@ declare const CardDescription: React.ForwardRefExoticComponent<React.HTMLAttribu
 declare const CardContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 declare const CardFooter: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 
-export { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, buttonVariants, cn };
-export type { ButtonProps };
+declare const badgeVariants: (props?: ({
+    variant?: "default" | "destructive" | "outline" | "secondary" | null | undefined;
+} & class_variance_authority_types.ClassProp) | undefined) => string;
+interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {
+}
+declare function Badge({ className, variant, ...props }: BadgeProps): react_jsx_runtime.JSX.Element;
+
+export { Badge, Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, badgeVariants, buttonVariants, cn };
+export type { BadgeProps, ButtonProps };

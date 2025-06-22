@@ -62,7 +62,7 @@ export default [
         targets: [{ src: 'src/lib/styles/globals.css', dest: 'dist' }],
       }),
     ],
-    external: ['react', 'react-dom', 'react/jsx-runtime'],
+    external: ['react', 'react-dom', 'react/jsx-runtime', 'class-variance-authority'],
   },
   {
     input: 'src/index.ts',
