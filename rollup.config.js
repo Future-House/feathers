@@ -59,9 +59,7 @@ export default [
       }),
       sourcemaps(),
       copy({
-        targets: [
-          { src: 'src/lib/styles/globals.css', dest: 'dist' },
-        ],
+        targets: [{ src: 'src/lib/styles/globals.css', dest: 'dist' }],
       }),
     ],
     external: ['react', 'react-dom', 'react/jsx-runtime'],

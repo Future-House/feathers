@@ -31,7 +31,10 @@ describe('Badge', () => {
     expect(screen.getByText('Secondary')).toHaveClass('bg-secondary', 'text-secondary-foreground');
 
     rerender(<Badge variant="destructive">Destructive</Badge>);
-    expect(screen.getByText('Destructive')).toHaveClass('bg-destructive', 'text-destructive-foreground');
+    expect(screen.getByText('Destructive')).toHaveClass(
+      'bg-destructive',
+      'text-destructive-foreground'
+    );
 
     rerender(<Badge variant="outline">Outline</Badge>);
     expect(screen.getByText('Outline')).toHaveClass('text-foreground');
@@ -128,7 +131,7 @@ describe('Badge', () => {
   it('forwards ref correctly', () => {
     const ref = React.createRef<HTMLDivElement>();
     render(<Badge ref={ref}>Badge with ref</Badge>);
-    
+
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
     expect(ref.current?.textContent).toBe('Badge with ref');
   });

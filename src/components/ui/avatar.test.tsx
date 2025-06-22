@@ -19,7 +19,15 @@ describe('Avatar', () => {
       </Avatar>
     );
     const avatar = container.firstChild;
-    expect(avatar).toHaveClass('relative', 'flex', 'h-10', 'w-10', 'shrink-0', 'overflow-hidden', 'rounded-full');
+    expect(avatar).toHaveClass(
+      'relative',
+      'flex',
+      'h-10',
+      'w-10',
+      'shrink-0',
+      'overflow-hidden',
+      'rounded-full'
+    );
   });
 
   it('accepts custom className', () => {
@@ -60,7 +68,15 @@ describe('Avatar', () => {
       </Avatar>
     );
     const fallback = screen.getByText('JD');
-    expect(fallback).toHaveClass('flex', 'h-full', 'w-full', 'items-center', 'justify-center', 'rounded-full', 'bg-muted');
+    expect(fallback).toHaveClass(
+      'flex',
+      'h-full',
+      'w-full',
+      'items-center',
+      'justify-center',
+      'rounded-full',
+      'bg-muted'
+    );
   });
 
   it('applies custom className to fallback', () => {
@@ -75,7 +91,11 @@ describe('Avatar', () => {
   it('applies custom className to image', () => {
     render(
       <Avatar>
-        <AvatarImage src="https://example.com/avatar.jpg" alt="User Avatar" className="custom-image" />
+        <AvatarImage
+          src="https://example.com/avatar.jpg"
+          alt="User Avatar"
+          className="custom-image"
+        />
         <AvatarFallback>JD</AvatarFallback>
       </Avatar>
     );

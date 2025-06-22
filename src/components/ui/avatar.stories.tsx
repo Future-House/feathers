@@ -8,7 +8,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A flexible avatar component built with Radix UI for displaying user profile images with fallback text support.',
+        component:
+          'A flexible avatar component built with Radix UI for displaying user profile images with fallback text support.',
       },
     },
   },

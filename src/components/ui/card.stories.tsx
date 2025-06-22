@@ -48,10 +48,12 @@ export const SimpleCard: Story = {
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <label htmlFor="name" className="text-sm font-medium">Name</label>
-              <input 
-                id="name" 
-                placeholder="Name of your project" 
+              <label htmlFor="name" className="text-sm font-medium">
+                Name
+              </label>
+              <input
+                id="name"
+                placeholder="Name of your project"
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               />
             </div>
@@ -77,12 +79,8 @@ export const NotificationCard: Story = {
         <div className="flex items-center space-x-4 rounded-md border p-4">
           <Bell />
           <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium leading-none">
-              Push Notifications
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Send notifications to device.
-            </p>
+            <p className="text-sm font-medium leading-none">Push Notifications</p>
+            <p className="text-sm text-muted-foreground">Send notifications to device.</p>
           </div>
           <Button variant="outline" size="icon">
             <Check className="h-4 w-4" />
@@ -109,19 +107,23 @@ export const WithoutFooter: Story = {
       </CardHeader>
       <CardContent className="space-y-2">
         <div className="space-y-1">
-          <label htmlFor="username" className="text-sm font-medium">Username</label>
-          <input 
-            id="username" 
-            defaultValue="@shadcn" 
+          <label htmlFor="username" className="text-sm font-medium">
+            Username
+          </label>
+          <input
+            id="username"
+            defaultValue="@shadcn"
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
           />
         </div>
         <div className="space-y-1">
-          <label htmlFor="email" className="text-sm font-medium">Email</label>
-          <input 
-            id="email" 
+          <label htmlFor="email" className="text-sm font-medium">
+            Email
+          </label>
+          <input
+            id="email"
             type="email"
-            defaultValue="shadcn@example.com" 
+            defaultValue="shadcn@example.com"
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
           />
         </div>

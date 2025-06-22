@@ -9,7 +9,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A flexible button component built with Radix UI and Tailwind CSS, supporting multiple variants and sizes.',
+        component:
+          'A flexible button component built with Radix UI and Tailwind CSS, supporting multiple variants and sizes.',
       },
     },
   },
@@ -19,7 +20,9 @@ const meta = {
       control: { type: 'select' },
       description: 'The visual style variant of the button',
       table: {
-        type: { summary: 'default | destructive | outline | secondary | ghost | link' },
+        type: {
+          summary: 'default | destructive | outline | secondary | ghost | link',
+        },
         defaultValue: { summary: 'default' },
       },
     },
@@ -61,7 +64,7 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex items-center gap-4 flex-wrap">
+    <div className="flex flex-wrap items-center gap-4">
       <Button variant="default">Default</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="destructive">Destructive</Button>
