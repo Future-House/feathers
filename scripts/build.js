@@ -17,16 +17,11 @@ const componentFiles = fs
   .filter(file => file.endsWith('.tsx') && !file.includes('.stories') && !file.includes('.test'))
   .map(file => file.replace('.tsx', ''));
 
-console.log('📦 Building ESM bundle...');
-execSync(
-  `npx babel src/index.ts --config-file ./babel.config.json --out-file dist/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-  { stdio: 'inherit' }
-);
-
 console.log('📦 Building individual components...');
+fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
   const inputFile = `src/components/${component}.tsx`;
-  const outputFile = `dist/${component}.js`;
+  const outputFile = `dist/components/${component}.js`;
   execSync(
     `npx babel ${inputFile} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
     { stdio: 'inherit' }
@@ -37,6 +32,12 @@ console.log('📦 Building lib utilities...');
 fs.mkdirSync('dist/lib', { recursive: true });
 execSync(
   `npx babel src/lib/utils.ts --config-file ./babel.config.json --out-file dist/lib/utils.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+  { stdio: 'inherit' }
+);
+
+console.log('📦 Building ESM bundle...');
+execSync(
+  `npx babel src/index.ts --config-file ./babel.config.json --out-file dist/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
   { stdio: 'inherit' }
 );
 
@@ -63,11 +64,14 @@ try {
   console.warn('Warning: Could not copy main index declarations');
 }
 
-// Copy individual component declarations to flat structure
+// Copy individual component declarations to components directory
+fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
   try {
-    execSync(`cp temp-types/components/${component}.d.ts dist/${component}.d.ts`);
-    execSync(`cp temp-types/components/${component}.d.ts.map dist/${component}.d.ts.map`);
+    execSync(`cp temp-types/components/${component}.d.ts dist/components/${component}.d.ts`);
+    execSync(
+      `cp temp-types/components/${component}.d.ts.map dist/components/${component}.d.ts.map`
+    );
   } catch (e) {
     console.warn(`Warning: Could not copy declarations for ${component}`);
   }
@@ -85,6 +89,9 @@ try {
 execSync('rm -rf temp-types');
 
 console.log('🎨 Processing CSS...');
+fs.mkdirSync('dist/lib/styles', { recursive: true });
+execSync('npx postcss src/lib/styles/index.css -o dist/lib/styles/index.css', { stdio: 'inherit' });
+// Also copy to root for backward compatibility
 execSync('npx postcss src/lib/styles/index.css -o dist/index.css', { stdio: 'inherit' });
 
 console.log('✅ Build complete!');

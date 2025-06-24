@@ -37,7 +37,7 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["dist", "node_modules", "*.config.js", "*.config.ts"],
+  "ignorePatterns": ["dist", "node_modules", "*.config.js", "*.config.ts", "examples"],
   "overrides": [
     {
       "files": ["**/*.stories.tsx", "**/*.test.tsx", "**/*.test.ts"],

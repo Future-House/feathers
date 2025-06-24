@@ -31,6 +31,15 @@
       {
         "runtimeModule": "react-compiler-runtime"
       }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@": "./src"
+        }
+      }
     ]
   ],
   "ignore": ["**/*.test.js", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"]

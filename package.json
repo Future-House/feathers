@@ -12,9 +12,14 @@
       "default": "./dist/index.js"
     },
     "./styles": "./dist/index.css",
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
+    "./lib/styles": "./dist/lib/styles/index.css",
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "default": "./dist/components/*.js"
+    },
+    "./lib/*": {
+      "types": "./dist/lib/*.d.ts",
+      "default": "./dist/lib/*.js"
     }
   },
   "keywords": [
@@ -84,6 +89,7 @@
     "@typescript-eslint/parser": "^8.19.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "babel-plugin-module-resolver": "^5.0.2",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
     "cpx2": "^8.0.0",
     "cross-env": "^7.0.3",
