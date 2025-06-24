@@ -1,5 +1,5 @@
 // Styles
-import './lib/styles/globals.css';
+import './lib/styles/index.css';
 
 // Utils
 export { cn } from './lib/utils';

@@ -3,8 +3,11 @@
     [
       "@babel/preset-env",
       {
+        "bugfixes": true,
+        "modules": false,
         "targets": {
-          "browsers": [">0.2%", "not dead", "not op_mini all"]
+          "browsers": ["last 2 versions", "ie >= 11"],
+          "node": "14"
         }
       }
     ],
@@ -18,10 +21,28 @@
   ],
   "plugins": [
     [
-      "babel-plugin-react-compiler",
+      "@babel/plugin-transform-runtime",
       {
-        "runtimeModule": "react-compiler-runtime"
+        "useESModules": true
       }
     ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-react-compiler",
+          {
+            "runtimeModule": "react-compiler-runtime"
+          }
+        ]
+      ]
+    }
+  },
+  "ignore": [
+    "**/*.test.js",
+    "**/*.test.ts", 
+    "**/*.test.tsx",
+    "**/*.stories.tsx"
   ]
 }
