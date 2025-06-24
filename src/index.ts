@@ -5,8 +5,8 @@ import './lib/styles/index.css';
 export { cn } from './lib/utils';
 
 // Components
-export { Button, buttonVariants } from './components/ui/button';
-export type { ButtonProps } from './components/ui/button';
+export { Button, buttonVariants } from './components/button';
+export type { ButtonProps } from './components/button';
 
 export {
   Card,
@@ -15,7 +15,7 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
-} from './components/ui/card';
+} from './components/card';
 
-export { Badge, badgeVariants } from './components/ui/badge';
-export type { BadgeProps } from './components/ui/badge';
+export { Badge, badgeVariants } from './components/badge';
+export type { BadgeProps } from './components/badge';

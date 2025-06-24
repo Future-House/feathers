@@ -11,7 +11,7 @@ execSync('rm -rf dist', { stdio: 'inherit' });
 fs.mkdirSync('dist', { recursive: true });
 
 // Get component files
-const componentsDir = 'src/components/ui';
+const componentsDir = 'src/components';
 const componentFiles = fs
   .readdirSync(componentsDir)
   .filter(file => file.endsWith('.tsx') && !file.includes('.stories') && !file.includes('.test'))
@@ -25,7 +25,7 @@ execSync(
 
 console.log('📦 Building individual components...');
 componentFiles.forEach(component => {
-  const inputFile = `src/components/ui/${component}.tsx`;
+  const inputFile = `src/components/${component}.tsx`;
   const outputFile = `dist/${component}.js`;
   execSync(
     `npx babel ${inputFile} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
@@ -66,8 +66,8 @@ try {
 // Copy individual component declarations to flat structure
 componentFiles.forEach(component => {
   try {
-    execSync(`cp temp-types/components/ui/${component}.d.ts dist/${component}.d.ts`);
-    execSync(`cp temp-types/components/ui/${component}.d.ts.map dist/${component}.d.ts.map`);
+    execSync(`cp temp-types/components/${component}.d.ts dist/${component}.d.ts`);
+    execSync(`cp temp-types/components/${component}.d.ts.map dist/${component}.d.ts.map`);
   } catch (e) {
     console.warn(`Warning: Could not copy declarations for ${component}`);
   }
