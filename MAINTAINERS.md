@@ -8,8 +8,8 @@ This guide provides essential information for developers working on the Feathers
 
 ```
 src/
-   components/
-      ui/           # shadcn/ui components
+   components/      # shadcn/ui components
+   icons/           # icons (pass-through of lucide)
    lib/             # Utility functions
    index.ts         # Main entry point
 ```
@@ -18,39 +18,20 @@ src/
 
 ### Adding New Components
 
-1. **Install shadcn/ui components:**
-
-   ```bash
-   npx shadcn@latest add [component-name]
-   ```
-
-2. **Create component stories:**
-
-   - Follow the pattern in `src/components/ui/[component].stories.tsx`
-   - Include DocBlocks for documentation
-   - Add multiple story variants and examples
-
-3. **Write comprehensive tests:**
-
-   - Follow the pattern in `src/components/ui/[component].test.tsx`
-   - Test all variants, props, and edge cases
-   - Ensure 100% test coverage
-
-4. **Export components:**
-   - Add exports to `src/index.ts`
-   - Export component, variants, and types
-
-### AI Prompt
+#### AI Prompt
 
 When creating new components, use the following AI prompt to generate initial code:
 
 ```
 Install the `shadcn/ui` component <component_name>.
 
-Include:
+Enforce the following requirements:
+- Reference the link: <shadcn_URL>
+- Install the component via the manual method
 - Storybook stories with DocBlocks
 - Jest tests with @testing-library/react
 - Follow the existing file directory structure
+
 ```
 
 ### Testing

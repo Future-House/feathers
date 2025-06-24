@@ -76,3 +76,14 @@ Thumbs.db
 
 # Jest cache
 .jest/
+
+# Example projects
+examples/**/node_modules/
+examples/**/dist/
+examples/**/build/
+examples/**/.env*
+examples/**/coverage/
+examples/**/*.log
+examples/**/.cache/
+examples/**/.temp/
+examples/**/.tmp/
