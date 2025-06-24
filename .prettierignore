@@ -5,6 +5,7 @@ coverage
 .next
 .nuxt
 .cache
+.claude
 .parcel-cache
 .nyc_output
 .vscode
