@@ -4,25 +4,25 @@ export default {
       '@babel/preset-env',
       {
         targets: {
-          browsers: ['>0.2%', 'not dead', 'not op_mini all']
-        }
-      }
+          browsers: ['>0.2%', 'not dead', 'not op_mini all'],
+        },
+      },
     ],
     [
       '@babel/preset-react',
       {
-        runtime: 'automatic'
-      }
+        runtime: 'automatic',
+      },
     ],
-    '@babel/preset-typescript'
+    '@babel/preset-typescript',
   ],
   plugins: [
     // Only include React Compiler for stories, not for docgen
     [
       'babel-plugin-react-compiler',
       {
-        runtimeModule: 'react-compiler-runtime'
-      }
-    ]
-  ]
+        runtimeModule: 'react-compiler-runtime',
+      },
+    ],
+  ],
 };

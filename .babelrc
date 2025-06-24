@@ -39,10 +39,5 @@
       ]
     }
   },
-  "ignore": [
-    "**/*.test.js",
-    "**/*.test.ts", 
-    "**/*.test.tsx",
-    "**/*.stories.tsx"
-  ]
+  "ignore": ["**/*.test.js", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"]
 }

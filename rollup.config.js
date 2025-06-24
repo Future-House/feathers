@@ -5,10 +5,8 @@ import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
-import sourcemaps from 'rollup-plugin-sourcemaps';
 import copy from 'rollup-plugin-copy';
 import { readFileSync, readdirSync } from 'fs';
-import { join } from 'path';
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
@@ -44,26 +42,23 @@ const getCommonPlugins = (useESModules = false) => [
           modules: false,
           targets: {
             browsers: ['last 2 versions', 'ie >= 11'],
-            node: '14'
-          }
-        }
+            node: '14',
+          },
+        },
       ],
       ['@babel/preset-react', { runtime: 'automatic' }],
-      '@babel/preset-typescript'
+      '@babel/preset-typescript',
     ],
-    plugins: [
-      ['@babel/plugin-transform-runtime', { useESModules }]
-    ]
+    plugins: [['@babel/plugin-transform-runtime', { useESModules }]],
   }),
-  sourcemaps(),
 ];
 
 const externalDeps = [
-  'react', 
-  'react-dom', 
-  'react/jsx-runtime', 
-  'class-variance-authority', 
-  'class-variance-authority/types'
+  'react',
+  'react-dom',
+  'react/jsx-runtime',
+  'class-variance-authority',
+  'class-variance-authority/types',
 ];
 
 export default [
@@ -90,7 +85,7 @@ export default [
         sourceMap: true,
       }),
       copy({
-        targets: [{ src: 'src/lib/styles/index.css', dest: 'dist', }],
+        targets: [{ src: 'src/lib/styles/index.css', dest: 'dist' }],
       }),
     ],
     external: externalDeps,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Badge } from './badge';
+import { Badge, type BadgeProps } from './badge';
 
 describe('Badge', () => {
   it('renders correctly', () => {
@@ -120,7 +120,7 @@ describe('Badge', () => {
       ['destructive', ['bg-destructive', 'text-destructive-foreground']],
       ['outline', ['text-foreground']],
     ])('applies correct classes for %s variant', (variant, expectedClasses) => {
-      render(<Badge variant={variant as any}>Test</Badge>);
+      render(<Badge variant={variant as BadgeProps['variant']}>Test</Badge>);
       const badge = screen.getByText('Test');
       expectedClasses.forEach(className => {
         expect(badge).toHaveClass(className);

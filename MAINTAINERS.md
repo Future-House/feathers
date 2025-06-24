@@ -41,16 +41,17 @@ src/
    - Export component, variants, and types
 
 ### AI Prompt
+
 When creating new components, use the following AI prompt to generate initial code:
 
 ```
-Install the `shadcn/ui` component <component_name>. 
+Install the `shadcn/ui` component <component_name>.
 
 Include:
 - Storybook stories with DocBlocks
 - Jest tests with @testing-library/react
 - Follow the existing file directory structure
-```   
+```
 
 ### Testing
 

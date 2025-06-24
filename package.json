@@ -45,18 +45,19 @@
     "dist"
   ],
   "scripts": {
-    "clean": "rm -rf dist",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "lint": "eslint . --ext .ts,.tsx",
-    "typecheck": "tsc --noEmit",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy-storybook": "npm run build-storybook && touch ./storybook-static/.nojekyll && gh-pages -d ./storybook-static -t true"
+    "build": "rollup -c",
+    "clean": "rm -rf dist",
+    "deploy-storybook": "npm run build-storybook && touch ./storybook-static/.nojekyll && gh-pages -d ./storybook-static -t true",
+    "dev": "rollup -c -w",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .ts,.tsx",
+    "prebuild": "npm run clean && npm run typecheck && npm run lint && npm run format:check",
+    "storybook": "storybook dev -p 6006",
+    "test:watch": "jest --watch",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",
@@ -121,7 +122,6 @@
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-sourcemaps": "^0.6.3",
     "storybook": "^8.4.7",
     "tailwindcss": "^3.4.16",
     "ts-jest": "^29.2.5",
