@@ -22,44 +22,14 @@
       "import": "./dist/esm/globals.css",
       "require": "./dist/globals.css"
     },
-    "./button": {
+    "./*": {
       "import": {
-        "types": "./dist/esm/button.d.ts",
-        "default": "./dist/esm/button.js"
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
       },
       "require": {
-        "types": "./dist/button.d.ts",
-        "default": "./dist/button.js"
-      }
-    },
-    "./avatar": {
-      "import": {
-        "types": "./dist/esm/avatar.d.ts",
-        "default": "./dist/esm/avatar.js"
-      },
-      "require": {
-        "types": "./dist/avatar.d.ts",
-        "default": "./dist/avatar.js"
-      }
-    },
-    "./badge": {
-      "import": {
-        "types": "./dist/esm/badge.d.ts",
-        "default": "./dist/esm/badge.js"
-      },
-      "require": {
-        "types": "./dist/badge.d.ts",
-        "default": "./dist/badge.js"
-      }
-    },
-    "./card": {
-      "import": {
-        "types": "./dist/esm/card.d.ts",
-        "default": "./dist/esm/card.js"
-      },
-      "require": {
-        "types": "./dist/card.d.ts",
-        "default": "./dist/card.js"
+        "types": "./dist/*.d.ts",
+        "default": "./dist/*.js"
       }
     }
   },
