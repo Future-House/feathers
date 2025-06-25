@@ -8,11 +8,11 @@ import {
   CardDescription,
   Badge,
 } from '@future-house/feathers';
-import '@future-house/feathers/styles';
+import { Mail, Info } from '@future-house/feathers/icons';
+// import '@future-house/feathers/lib/styles/index.css';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-
 function App() {
   const [count, setCount] = useState(0);
 
@@ -48,6 +48,14 @@ function App() {
               <Button size="sm">Small</Button>
               <Button size="default">Default</Button>
               <Button size="lg">Large</Button>
+              <Button>
+                <Mail />
+                With Icon
+              </Button>
+              <Button variant="outline">
+                With Icon
+                <Mail />
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -63,6 +71,10 @@ function App() {
               <Badge variant="secondary">Secondary</Badge>
               <Badge variant="destructive">Destructive</Badge>
               <Badge variant="outline">Outline</Badge>
+              <Badge variant="secondary">
+                <Info className="mr-1 h-3 w-3" />
+                Info
+              </Badge>
             </div>
           </CardContent>
         </Card>
