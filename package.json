@@ -20,6 +20,10 @@
     "./lib/*": {
       "types": "./dist/lib/*.d.ts",
       "default": "./dist/lib/*.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "default": "./dist/icons/index.js"
     }
   },
   "keywords": [
@@ -41,8 +45,9 @@
     "dev": "npm run build -- --watch",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
+    "gen:icons": "node scripts/generate-icons.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "prebuild": "npm run clean && npm run typecheck && npm run lint && npm run format:check",
+    "prebuild": "npm run clean && npm run typecheck && npm run lint && npm run format:check && npm run gen:icons",
     "storybook": "storybook dev -p 6006",
     "test:watch": "jest --watch",
     "test": "jest",

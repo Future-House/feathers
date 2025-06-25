@@ -35,6 +35,13 @@ execSync(
   { stdio: 'inherit' }
 );
 
+console.log('📦 Building icons...');
+fs.mkdirSync('dist/icons', { recursive: true });
+execSync(
+  `npx babel src/icons/index.ts --config-file ./babel.config.json --out-file dist/icons/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+  { stdio: 'inherit' }
+);
+
 console.log('📦 Building ESM bundle...');
 execSync(
   `npx babel src/index.ts --config-file ./babel.config.json --out-file dist/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
@@ -83,6 +90,14 @@ try {
   execSync(`cp temp-types/lib/utils.d.ts.map dist/lib/utils.d.ts.map`);
 } catch (e) {
   console.warn('Warning: Could not copy lib utility declarations');
+}
+
+// Copy icons declarations
+try {
+  execSync(`cp temp-types/icons/index.d.ts dist/icons/index.d.ts`);
+  execSync(`cp temp-types/icons/index.d.ts.map dist/icons/index.d.ts.map`);
+} catch (e) {
+  console.warn('Warning: Could not copy icons declarations');
 }
 
 // Clean up temp directory
