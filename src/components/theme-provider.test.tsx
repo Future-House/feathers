@@ -8,22 +8,14 @@ const localStorageMock = {
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.localStorage = localStorageMock as any;
 
-// Mock matchMedia
-Object.defineProperty(window, 'matchMedia', {
+// Replace global localStorage
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
 });
+
+global.localStorage = localStorageMock as any;
 
 // Test component that uses the theme context
 function TestComponent() {
@@ -45,11 +37,37 @@ function TestComponent() {
   );
 }
 
+// Mock matchMedia
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
 describe('ThemeProvider', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     localStorageMock.getItem.mockReturnValue(null);
     document.documentElement.className = '';
+    // Reset matchMedia mock to default
+    (window.matchMedia as jest.Mock).mockImplementation(query => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
   });
 
   it('renders correctly with default theme', () => {
@@ -86,6 +104,8 @@ describe('ThemeProvider', () => {
   });
 
   it('uses custom storage key', () => {
+    localStorageMock.getItem.mockReturnValue('dark');
+
     render(
       <ThemeProvider storageKey="custom-theme">
         <TestComponent />
@@ -93,6 +113,7 @@ describe('ThemeProvider', () => {
     );
 
     expect(localStorageMock.getItem).toHaveBeenCalledWith('custom-theme');
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
   });
 
   it('changes theme and saves to localStorage', () => {
@@ -109,6 +130,21 @@ describe('ThemeProvider', () => {
   });
 
   it('applies correct CSS classes for light theme', () => {
+    // Mock light system preference
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false, // This makes system preference light
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+
     render(
       <ThemeProvider defaultTheme="light">
         <TestComponent />
@@ -155,8 +191,14 @@ describe('ThemeProvider', () => {
   it('throws error when useTheme is used outside provider', () => {
     const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
 
+    // Create a component that tries to use useTheme outside provider
+    function ComponentWithoutProvider() {
+      useTheme(); // This should throw
+      return <div>Should not render</div>;
+    }
+
     expect(() => {
-      render(<TestComponent />);
+      render(<ComponentWithoutProvider />);
     }).toThrow('useTheme must be used within a ThemeProvider');
 
     consoleError.mockRestore();

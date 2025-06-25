@@ -9,6 +9,13 @@ const localStorageMock = {
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
+
+// Replace window localStorage
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
+  writable: true,
+});
+
 global.localStorage = localStorageMock as any;
 
 // Mock matchMedia
@@ -31,6 +38,17 @@ describe('ThemeToggle', () => {
     jest.clearAllMocks();
     localStorageMock.getItem.mockReturnValue(null);
     document.documentElement.className = '';
+    // Reset matchMedia mock
+    (window.matchMedia as jest.Mock).mockImplementation(query => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
   });
 
   const renderWithProvider = (defaultTheme = 'system') => {
