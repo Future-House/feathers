@@ -46,6 +46,7 @@
     "storybook": "storybook dev -p 6006",
     "test:watch": "jest --watch",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
