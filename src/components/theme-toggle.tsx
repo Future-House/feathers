@@ -3,6 +3,7 @@ import { Moon, Sun } from 'lucide-react';
 import { Button } from './button';
 import { useTheme } from './theme-provider';
 
+// TODO: update this to consider light, dark, and system themes
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 

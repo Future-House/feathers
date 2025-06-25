@@ -1,32 +1,21 @@
 import { useState } from 'react';
 import {
+  Badge,
   Button,
   Card,
   CardHeader,
   CardContent,
   CardTitle,
   CardDescription,
-  Badge,
 } from '@future-house/feathers';
 import { Mail, Info } from '@future-house/feathers/icons';
 // import '@future-house/feathers/lib/styles/index.css';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className="mb-8 flex justify-center gap-4">
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-
       <h1 className="mb-8">Feathers Component Library Test</h1>
 
       <div className="mx-auto max-w-2xl space-y-8">
