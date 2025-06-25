@@ -19,3 +19,8 @@ export {
 
 export { Badge, badgeVariants } from './components/badge';
 export type { BadgeProps } from './components/badge';
+
+export { Avatar, AvatarImage, AvatarFallback } from './components/avatar';
+
+export { ThemeProvider, useTheme } from './components/theme-provider';
+export { ThemeToggle } from './components/theme-toggle';
