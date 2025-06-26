@@ -17,7 +17,7 @@ const preview: Preview = {
     darkMode: {
       classTarget: 'html',
       darkClass: 'dark',
-      lightClass: 'light',
+      lightClass: '',
     },
     backgrounds: { disable: true },
   },
