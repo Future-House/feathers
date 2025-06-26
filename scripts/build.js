@@ -105,8 +105,12 @@ execSync('rm -rf temp-types');
 
 console.log('🎨 Processing CSS...');
 fs.mkdirSync('dist/lib/styles', { recursive: true });
-execSync('npx postcss src/lib/styles/index.css -o dist/lib/styles/index.css', { stdio: 'inherit' });
+execSync('npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/lib/styles/index.css', {
+  stdio: 'inherit',
+});
 // Also copy to root for backward compatibility
-execSync('npx postcss src/lib/styles/index.css -o dist/index.css', { stdio: 'inherit' });
+execSync('npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/index.css', {
+  stdio: 'inherit',
+});
 
 console.log('✅ Build complete!');

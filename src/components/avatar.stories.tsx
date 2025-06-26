@@ -80,7 +80,7 @@ export const Sizes: Story = {
 export const CustomStyling: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Avatar className="border-2 border-primary">
+      <Avatar className="border-primary border-2">
         <AvatarImage src="https://github.com/shadcn.png" alt="With border" />
         <AvatarFallback>BR</AvatarFallback>
       </Avatar>
@@ -101,18 +101,18 @@ export const CustomStyling: Story = {
 export const Group: Story = {
   render: () => (
     <div className="flex -space-x-2">
-      <Avatar className="border-2 border-background">
+      <Avatar className="border-background border-2">
         <AvatarImage src="https://github.com/shadcn.png" alt="User 1" />
         <AvatarFallback>U1</AvatarFallback>
       </Avatar>
-      <Avatar className="border-2 border-background">
+      <Avatar className="border-background border-2">
         <AvatarImage src="https://github.com/vercel.png" alt="User 2" />
         <AvatarFallback>U2</AvatarFallback>
       </Avatar>
-      <Avatar className="border-2 border-background">
+      <Avatar className="border-background border-2">
         <AvatarFallback>U3</AvatarFallback>
       </Avatar>
-      <Avatar className="border-2 border-background">
+      <Avatar className="border-background border-2">
         <AvatarFallback>+2</AvatarFallback>
       </Avatar>
     </div>

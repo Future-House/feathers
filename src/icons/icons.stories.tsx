@@ -91,7 +91,7 @@ const IconGrid = ({ size = 24, color = 'currentColor' }: { size?: number; color?
           className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-lg border border-gray-200 p-3"
         >
           <IconComponent size={size} color={color} />
-          <span className="break-words text-center text-xs leading-tight">{name}</span>
+          <span className="text-center text-xs leading-tight break-words">{name}</span>
         </div>
       ))}
     </div>

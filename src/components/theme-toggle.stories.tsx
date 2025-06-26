@@ -42,10 +42,10 @@ export const Default: Story = {
 export const WithCards: Story = {
   render: () => (
     <div className="space-y-4">
-      <div className="flex items-center justify-between rounded-lg border bg-card p-4">
+      <div className="bg-card flex items-center justify-between rounded-lg border p-4">
         <div>
-          <h3 className="text-lg font-semibold text-card-foreground">Dark Mode Demo</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="text-card-foreground text-lg font-semibold">Dark Mode Demo</h3>
+          <p className="text-muted-foreground text-sm">
             Toggle the theme to see the card colors change
           </p>
         </div>
@@ -53,11 +53,11 @@ export const WithCards: Story = {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <div className="rounded-lg border bg-primary p-4 text-primary-foreground">
+        <div className="bg-primary text-primary-foreground rounded-lg border p-4">
           <h4 className="font-medium">Primary Card</h4>
           <p className="text-sm opacity-90">This uses primary colors</p>
         </div>
-        <div className="rounded-lg border bg-secondary p-4 text-secondary-foreground">
+        <div className="bg-secondary text-secondary-foreground rounded-lg border p-4">
           <h4 className="font-medium">Secondary Card</h4>
           <p className="text-sm opacity-90">This uses secondary colors</p>
         </div>

@@ -11,7 +11,7 @@ function ThemeDemo() {
   return (
     <div className="space-y-6 p-6">
       <div className="space-y-2 text-center">
-        <h2 className="text-2xl font-bold text-foreground">Theme Demo</h2>
+        <h2 className="text-foreground text-2xl font-bold">Theme Demo</h2>
         <p className="text-muted-foreground">
           Current theme: <Badge variant="outline">{theme}</Badge>
         </p>
@@ -58,19 +58,19 @@ function ThemeDemo() {
           <CardContent className="space-y-2">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <div className="h-4 w-4 rounded bg-primary"></div>
+                <div className="bg-primary h-4 w-4 rounded"></div>
                 <span className="text-sm">Primary</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="h-4 w-4 rounded bg-secondary"></div>
+                <div className="bg-secondary h-4 w-4 rounded"></div>
                 <span className="text-sm">Secondary</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="h-4 w-4 rounded bg-muted"></div>
+                <div className="bg-muted h-4 w-4 rounded"></div>
                 <span className="text-sm">Muted</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="h-4 w-4 rounded bg-accent"></div>
+                <div className="bg-accent h-4 w-4 rounded"></div>
                 <span className="text-sm">Accent</span>
               </div>
             </div>
@@ -102,7 +102,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <ThemeProvider defaultTheme="system">
-      <div className="min-h-screen bg-background">
+      <div className="bg-background min-h-screen">
         <ThemeDemo />
       </div>
     </ThemeProvider>
@@ -119,7 +119,7 @@ export const Default: Story = {
 export const LightTheme: Story = {
   render: () => (
     <ThemeProvider defaultTheme="light">
-      <div className="min-h-screen bg-background">
+      <div className="bg-background min-h-screen">
         <ThemeDemo />
       </div>
     </ThemeProvider>
@@ -136,7 +136,7 @@ export const LightTheme: Story = {
 export const DarkTheme: Story = {
   render: () => (
     <ThemeProvider defaultTheme="dark">
-      <div className="min-h-screen bg-background">
+      <div className="bg-background min-h-screen">
         <ThemeDemo />
       </div>
     </ThemeProvider>

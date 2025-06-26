@@ -12,7 +12,7 @@ describe('Button', () => {
   it('applies default variant and size classes', () => {
     render(<Button>Default Button</Button>);
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bg-primary', 'text-primary-foreground', 'h-10', 'px-4');
+    expect(button).toHaveClass('bg-primary', 'text-primary-foreground', 'h-9', 'px-4');
   });
 
   it('applies variant classes correctly', () => {
@@ -20,7 +20,7 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveClass('bg-destructive');
 
     rerender(<Button variant="outline">Outline</Button>);
-    expect(screen.getByRole('button')).toHaveClass('border', 'border-input');
+    expect(screen.getByRole('button')).toHaveClass('border', 'bg-background');
 
     rerender(<Button variant="ghost">Ghost</Button>);
     expect(screen.getByRole('button')).toHaveClass('hover:bg-accent');
@@ -28,13 +28,13 @@ describe('Button', () => {
 
   it('applies size classes correctly', () => {
     const { rerender } = render(<Button size="sm">Small</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-9', 'px-3');
+    expect(screen.getByRole('button')).toHaveClass('h-8', 'px-3');
 
     rerender(<Button size="lg">Large</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-11', 'px-8');
+    expect(screen.getByRole('button')).toHaveClass('h-10', 'px-6');
 
     rerender(<Button size="icon">Icon</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-10', 'w-10');
+    expect(screen.getByRole('button')).toHaveClass('size-9');
   });
 
   it('handles onClick events', async () => {
