@@ -22,11 +22,15 @@ function App() {
       <Card>
         <CardHeader>
           <CardTitle>Button Components</CardTitle>
-          <CardDescription>Testing different button variants and sizes</CardDescription>
+          <CardDescription>
+            Testing different button variants and sizes
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-2">
-            <Button onClick={() => setCount(count => count + 1)}>Default: {count}</Button>
+            <Button onClick={() => setCount(count => count + 1)}>
+              Default: {count}
+            </Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="destructive">Destructive</Button>
             <Button variant="outline">Outline</Button>
@@ -71,12 +75,14 @@ function App() {
       <Card>
         <CardHeader>
           <CardTitle>Card Components</CardTitle>
-          <CardDescription>This card demonstrates the card component structure</CardDescription>
+          <CardDescription>
+            This card demonstrates the card component structure
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p>
-            This is the card content area. The card component includes header, content, and other
-            sections for organizing information.
+            This is the card content area. The card component includes header,
+            content, and other sections for organizing information.
           </p>
         </CardContent>
       </Card>

@@ -18,7 +18,8 @@ const meta: Meta<typeof ThemeToggle> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A button component for toggling between light, dark, and system themes.',
+        component:
+          'A button component for toggling between light, dark, and system themes.',
       },
     },
   },
@@ -44,7 +45,9 @@ export const WithCards: Story = {
     <div className="space-y-4">
       <div className="bg-card flex items-center justify-between rounded-lg border p-4">
         <div>
-          <h3 className="text-card-foreground text-lg font-semibold">Dark Mode Demo</h3>
+          <h3 className="text-card-foreground text-lg font-semibold">
+            Dark Mode Demo
+          </h3>
           <p className="text-muted-foreground text-sm">
             Toggle the theme to see the card colors change
           </p>
@@ -67,7 +70,8 @@ export const WithCards: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Theme toggle shown with various card components to demonstrate the color changes.',
+        story:
+          'Theme toggle shown with various card components to demonstrate the color changes.',
       },
     },
   },

@@ -1,7 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemeProvider, useTheme } from './theme-provider';
 import { Button } from './button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from './card';
 import { Badge } from './badge';
 
 // Demo component that uses the theme context
@@ -24,7 +30,10 @@ function ThemeDemo() {
         >
           Light
         </Button>
-        <Button variant={theme === 'dark' ? 'default' : 'outline'} onClick={() => setTheme('dark')}>
+        <Button
+          variant={theme === 'dark' ? 'default' : 'outline'}
+          onClick={() => setTheme('dark')}
+        >
           Dark
         </Button>
         <Button
@@ -53,7 +62,9 @@ function ThemeDemo() {
         <Card>
           <CardHeader>
             <CardTitle>Color Tokens</CardTitle>
-            <CardDescription>CSS custom properties that change with theme.</CardDescription>
+            <CardDescription>
+              CSS custom properties that change with theme.
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
@@ -110,7 +121,8 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Complete theme provider setup with interactive demo showing all theme modes.',
+        story:
+          'Complete theme provider setup with interactive demo showing all theme modes.',
       },
     },
   },

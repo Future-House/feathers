@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './card';
 import { Button } from './button';
 import { Bell, Check } from 'lucide-react';
 
@@ -10,7 +17,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A versatile card component for displaying content in a contained format.',
+        component:
+          'A versatile card component for displaying content in a contained format.',
       },
     },
   },
@@ -79,8 +87,12 @@ export const NotificationCard: Story = {
         <div className="flex items-center space-x-4 rounded-md border p-4">
           <Bell />
           <div className="flex-1 space-y-1">
-            <p className="text-sm leading-none font-medium">Push Notifications</p>
-            <p className="text-muted-foreground text-sm">Send notifications to device.</p>
+            <p className="text-sm leading-none font-medium">
+              Push Notifications
+            </p>
+            <p className="text-muted-foreground text-sm">
+              Send notifications to device.
+            </p>
           </div>
           <Button variant="outline" size="icon">
             <Check className="h-4 w-4" />

@@ -14,7 +14,12 @@ fs.mkdirSync('dist', { recursive: true });
 const componentsDir = 'src/components';
 const componentFiles = fs
   .readdirSync(componentsDir)
-  .filter(file => file.endsWith('.tsx') && !file.includes('.stories') && !file.includes('.test'))
+  .filter(
+    file =>
+      file.endsWith('.tsx') &&
+      !file.includes('.stories') &&
+      !file.includes('.test')
+  )
   .map(file => file.replace('.tsx', ''));
 
 console.log('📦 Building individual components...');
@@ -75,7 +80,9 @@ try {
 fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
   try {
-    execSync(`cp temp-types/components/${component}.d.ts dist/components/${component}.d.ts`);
+    execSync(
+      `cp temp-types/components/${component}.d.ts dist/components/${component}.d.ts`
+    );
     execSync(
       `cp temp-types/components/${component}.d.ts.map dist/components/${component}.d.ts.map`
     );
@@ -105,9 +112,12 @@ execSync('rm -rf temp-types');
 
 console.log('🎨 Processing CSS...');
 fs.mkdirSync('dist/lib/styles', { recursive: true });
-execSync('npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/lib/styles/index.css', {
-  stdio: 'inherit',
-});
+execSync(
+  'npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/lib/styles/index.css',
+  {
+    stdio: 'inherit',
+  }
+);
 // Also copy to root for backward compatibility
 execSync('npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/index.css', {
   stdio: 'inherit',

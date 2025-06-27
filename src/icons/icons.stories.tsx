@@ -82,7 +82,13 @@ export default meta;
 type Story = StoryObj;
 
 // Create a component to display all icons
-const IconGrid = ({ size = 24, color = 'currentColor' }: { size?: number; color?: string }) => {
+const IconGrid = ({
+  size = 24,
+  color = 'currentColor',
+}: {
+  size?: number;
+  color?: string;
+}) => {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-4 p-4">
       {iconComponents.map(([name, IconComponent]) => (
@@ -91,7 +97,9 @@ const IconGrid = ({ size = 24, color = 'currentColor' }: { size?: number; color?
           className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-lg border border-gray-200 p-3"
         >
           <IconComponent size={size} color={color} />
-          <span className="text-center text-xs leading-tight break-words">{name}</span>
+          <span className="text-center text-xs leading-tight break-words">
+            {name}
+          </span>
         </div>
       ))}
     </div>

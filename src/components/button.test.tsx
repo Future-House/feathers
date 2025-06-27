@@ -6,17 +6,26 @@ import { Button } from './button';
 describe('Button', () => {
   it('renders correctly', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Click me' })
+    ).toBeInTheDocument();
   });
 
   it('applies default variant and size classes', () => {
     render(<Button>Default Button</Button>);
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bg-primary', 'text-primary-foreground', 'h-9', 'px-4');
+    expect(button).toHaveClass(
+      'bg-primary',
+      'text-primary-foreground',
+      'h-9',
+      'px-4'
+    );
   });
 
   it('applies variant classes correctly', () => {
-    const { rerender } = render(<Button variant="destructive">Destructive</Button>);
+    const { rerender } = render(
+      <Button variant="destructive">Destructive</Button>
+    );
     expect(screen.getByRole('button')).toHaveClass('bg-destructive');
 
     rerender(<Button variant="outline">Outline</Button>);

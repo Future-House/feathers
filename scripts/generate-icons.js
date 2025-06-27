@@ -15,7 +15,9 @@ console.log('Total icon exports found:', iconNames.length);
 console.log('Sample icons:', iconNames.slice(0, 10));
 
 // Generate the re-export content
-const reExports = iconNames.map(name => `export { ${name} } from 'lucide-react';`).join('\n');
+const reExports = iconNames
+  .map(name => `export { ${name} } from 'lucide-react';`)
+  .join('\n');
 
 const content = `// Re-export all lucide-react icons for tree-shaking support
 // This file is auto-generated - do not edit manually

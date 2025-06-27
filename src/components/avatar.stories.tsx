@@ -89,7 +89,10 @@ export const CustomStyling: Story = {
         <AvatarFallback>SQ</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="Custom fallback" />
+        <AvatarImage
+          src="https://github.com/shadcn.png"
+          alt="Custom fallback"
+        />
         <AvatarFallback className="bg-gradient-to-r from-purple-400 to-pink-400 text-white">
           GR
         </AvatarFallback>

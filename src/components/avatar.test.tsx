@@ -22,8 +22,7 @@ describe('Avatar', () => {
     expect(avatar).toHaveClass(
       'relative',
       'flex',
-      'h-10',
-      'w-10',
+      'size-8',
       'shrink-0',
       'overflow-hidden',
       'rounded-full'
@@ -47,7 +46,11 @@ describe('Avatar', () => {
       </Avatar>
     );
 
-    expect(container.firstChild).toHaveClass('relative', 'flex', 'h-10', 'w-10');
+    expect(container.firstChild).toHaveClass(
+      'relative',
+      'flex',
+      'size-8'
+    );
     expect(screen.getByText('JD')).toBeInTheDocument();
   });
 
@@ -69,13 +72,12 @@ describe('Avatar', () => {
     );
     const fallback = screen.getByText('JD');
     expect(fallback).toHaveClass(
+      'bg-muted',
       'flex',
-      'h-full',
-      'w-full',
+      'size-full',
       'items-center',
       'justify-center',
-      'rounded-full',
-      'bg-muted'
+      'rounded-full'
     );
   });
 
@@ -101,7 +103,11 @@ describe('Avatar', () => {
     );
 
     // Avatar structure should be correct
-    expect(container.firstChild).toHaveClass('relative', 'flex', 'h-10', 'w-10');
+    expect(container.firstChild).toHaveClass(
+      'relative',
+      'flex',
+      'size-8'
+    );
 
     // Shows fallback initially
     expect(screen.getByText('JD')).toBeInTheDocument();
@@ -121,13 +127,21 @@ describe('Avatar', () => {
     const ref = React.createRef<HTMLImageElement>();
     const { container } = render(
       <Avatar>
-        <AvatarImage ref={ref} src="https://example.com/avatar.jpg" alt="User Avatar" />
+        <AvatarImage
+          ref={ref}
+          src="https://example.com/avatar.jpg"
+          alt="User Avatar"
+        />
         <AvatarFallback>JD</AvatarFallback>
       </Avatar>
     );
 
     // Avatar should render correctly
-    expect(container.firstChild).toHaveClass('relative', 'flex', 'h-10', 'w-10');
+    expect(container.firstChild).toHaveClass(
+      'relative',
+      'flex',
+      'size-8'
+    );
     expect(screen.getByText('JD')).toBeInTheDocument();
 
     // Note: ref.current may be null in test environment due to Radix Avatar's image loading behavior

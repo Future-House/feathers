@@ -126,7 +126,10 @@ describe('ThemeProvider', () => {
     fireEvent.click(screen.getByTestId('set-dark'));
 
     expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('feathers-ui-theme', 'dark');
+    expect(localStorageMock.setItem).toHaveBeenCalledWith(
+      'feathers-ui-theme',
+      'dark'
+    );
   });
 
   it('applies correct CSS classes for light theme', () => {
@@ -189,7 +192,9 @@ describe('ThemeProvider', () => {
   });
 
   it('throws error when useTheme is used outside provider', () => {
-    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const consoleError = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
 
     // Create a component that tries to use useTheme outside provider
     function ComponentWithoutProvider() {

@@ -14,12 +14,13 @@ describe('Badge', () => {
     expect(badge).toHaveClass(
       'inline-flex',
       'items-center',
-      'rounded-full',
+      'justify-center',
+      'rounded-md',
       'border',
-      'px-2.5',
+      'px-2',
       'py-0.5',
       'text-xs',
-      'font-semibold',
+      'font-medium',
       'border-transparent',
       'bg-primary',
       'text-primary-foreground'
@@ -28,12 +29,15 @@ describe('Badge', () => {
 
   it('applies variant classes correctly', () => {
     const { rerender } = render(<Badge variant="secondary">Secondary</Badge>);
-    expect(screen.getByText('Secondary')).toHaveClass('bg-secondary', 'text-secondary-foreground');
+    expect(screen.getByText('Secondary')).toHaveClass(
+      'bg-secondary',
+      'text-secondary-foreground'
+    );
 
     rerender(<Badge variant="destructive">Destructive</Badge>);
     expect(screen.getByText('Destructive')).toHaveClass(
       'bg-destructive',
-      'text-destructive-foreground'
+      'text-white'
     );
 
     rerender(<Badge variant="outline">Outline</Badge>);
@@ -41,10 +45,10 @@ describe('Badge', () => {
     expect(screen.getByText('Outline')).not.toHaveClass('border-transparent');
   });
 
-  it('renders as a div element', () => {
+  it('renders as a span element', () => {
     render(<Badge>Badge Content</Badge>);
     const badge = screen.getByText('Badge Content');
-    expect(badge.tagName).toBe('DIV');
+    expect(badge.tagName).toBe('SPAN');
   });
 
   it('accepts custom className', () => {
@@ -100,24 +104,23 @@ describe('Badge', () => {
     render(<Badge>Focusable Badge</Badge>);
     const badge = screen.getByText('Focusable Badge');
     expect(badge).toHaveClass(
-      'focus:outline-none',
-      'focus:ring-2',
-      'focus:ring-ring',
-      'focus:ring-offset-2'
+      'focus-visible:border-ring',
+      'focus-visible:ring-ring/50',
+      'focus-visible:ring-[3px]'
     );
   });
 
   it('has transition classes for animations', () => {
     render(<Badge>Animated Badge</Badge>);
     const badge = screen.getByText('Animated Badge');
-    expect(badge).toHaveClass('transition-colors');
+    expect(badge).toHaveClass('transition-[color,box-shadow]');
   });
 
   describe('variants', () => {
     it.each([
       ['default', ['bg-primary', 'text-primary-foreground']],
       ['secondary', ['bg-secondary', 'text-secondary-foreground']],
-      ['destructive', ['bg-destructive', 'text-destructive-foreground']],
+      ['destructive', ['bg-destructive', 'text-white']],
       ['outline', ['text-foreground']],
     ])('applies correct classes for %s variant', (variant, expectedClasses) => {
       render(<Badge variant={variant as BadgeProps['variant']}>Test</Badge>);
@@ -129,10 +132,10 @@ describe('Badge', () => {
   });
 
   it('forwards ref correctly', () => {
-    const ref = React.createRef<HTMLDivElement>();
+    const ref = React.createRef<HTMLSpanElement>();
     render(<Badge ref={ref}>Badge with ref</Badge>);
 
-    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+    expect(ref.current).toBeInstanceOf(HTMLSpanElement);
     expect(ref.current?.textContent).toBe('Badge with ref');
   });
 

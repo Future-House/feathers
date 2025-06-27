@@ -151,10 +151,18 @@ export const TagsExample: Story = {
 export const CustomColors: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
-      <Badge className="border-blue-200 bg-blue-100 text-blue-800">Custom Blue</Badge>
-      <Badge className="border-green-200 bg-green-100 text-green-800">Custom Green</Badge>
-      <Badge className="border-purple-200 bg-purple-100 text-purple-800">Custom Purple</Badge>
-      <Badge className="border-yellow-200 bg-yellow-100 text-yellow-800">Custom Yellow</Badge>
+      <Badge className="border-blue-200 bg-blue-100 text-blue-800">
+        Custom Blue
+      </Badge>
+      <Badge className="border-green-200 bg-green-100 text-green-800">
+        Custom Green
+      </Badge>
+      <Badge className="border-purple-200 bg-purple-100 text-purple-800">
+        Custom Purple
+      </Badge>
+      <Badge className="border-yellow-200 bg-yellow-100 text-yellow-800">
+        Custom Yellow
+      </Badge>
     </div>
   ),
 };

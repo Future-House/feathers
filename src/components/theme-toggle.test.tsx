@@ -97,7 +97,10 @@ describe('ThemeToggle', () => {
     // Start with light, click to go to dark
     expect(button).toHaveAttribute('title', 'Switch to dark mode');
     fireEvent.click(button);
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('feathers-ui-theme', 'dark');
+    expect(localStorageMock.setItem).toHaveBeenCalledWith(
+      'feathers-ui-theme',
+      'dark'
+    );
   });
 
   it('handles system theme correctly', () => {

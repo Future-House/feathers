@@ -1,18 +1,26 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from './accordion';
 
 describe('Accordion', () => {
   const BasicAccordion = () => (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>Is it styled?</AccordionTrigger>
         <AccordionContent>
-          Yes. It comes with default styles that matches the other components aesthetic.
+          Yes. It comes with default styles that matches the other components
+          aesthetic.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -26,15 +34,25 @@ describe('Accordion', () => {
 
   it('applies correct data attributes', () => {
     const { container } = render(<BasicAccordion />);
-    expect(container.querySelector('[data-slot="accordion"]')).toBeInTheDocument();
-    expect(container.querySelector('[data-slot="accordion-item"]')).toBeInTheDocument();
-    expect(container.querySelector('[data-slot="accordion-trigger"]')).toBeInTheDocument();
-    expect(container.querySelector('[data-slot="accordion-content"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-slot="accordion"]')
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-slot="accordion-item"]')
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-slot="accordion-trigger"]')
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-slot="accordion-content"]')
+    ).toBeInTheDocument();
   });
 
   it('applies default classes to accordion items', () => {
     const { container } = render(<BasicAccordion />);
-    const accordionItems = container.querySelectorAll('[data-slot="accordion-item"]');
+    const accordionItems = container.querySelectorAll(
+      '[data-slot="accordion-item"]'
+    );
     accordionItems.forEach(item => {
       expect(item).toHaveClass('border-b', 'last:border-b-0');
     });
@@ -76,7 +94,9 @@ describe('Accordion', () => {
     await user.click(trigger);
 
     // Content should be visible after clicking
-    const content = screen.getByText('Yes. It adheres to the WAI-ARIA design pattern.');
+    const content = screen.getByText(
+      'Yes. It adheres to the WAI-ARIA design pattern.'
+    );
     expect(content).toBeVisible();
 
     // Click trigger again to collapse
@@ -124,7 +144,9 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    const accordionItem = container.querySelector('[data-slot="accordion-item"]');
+    const accordionItem = container.querySelector(
+      '[data-slot="accordion-item"]'
+    );
     expect(accordionItem).toHaveClass('custom-item-class');
   });
 
@@ -132,7 +154,9 @@ describe('Accordion', () => {
     const { container } = render(
       <Accordion type="single">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="custom-trigger-class">Test</AccordionTrigger>
+          <AccordionTrigger className="custom-trigger-class">
+            Test
+          </AccordionTrigger>
           <AccordionContent>Content</AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -148,7 +172,9 @@ describe('Accordion', () => {
       <Accordion type="single">
         <AccordionItem value="item-1">
           <AccordionTrigger>Test</AccordionTrigger>
-          <AccordionContent className="custom-content-class">Content</AccordionContent>
+          <AccordionContent className="custom-content-class">
+            Content
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     );
@@ -197,6 +223,9 @@ describe('Accordion', () => {
 
     const trigger = screen.getByText('Disabled Trigger');
     expect(trigger).toBeDisabled();
-    expect(trigger).toHaveClass('disabled:pointer-events-none', 'disabled:opacity-50');
+    expect(trigger).toHaveClass(
+      'disabled:pointer-events-none',
+      'disabled:opacity-50'
+    );
   });
 });
