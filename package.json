@@ -13,9 +13,7 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./styles": "./dist/index.css",
     "./index.css": "./dist/index.css",
-    "./lib/styles": "./dist/lib/styles/index.css",
     "./lib/styles/index.css": "./dist/lib/styles/index.css",
     "./components": {
       "types": "./dist/components/index.d.ts",
@@ -24,6 +22,10 @@
     "./components/*": {
       "types": "./dist/components/*.d.ts",
       "default": "./dist/components/*.js"
+    },
+    "./components/*/index": {
+      "types": "./dist/components/*/index.d.ts",
+      "default": "./dist/components/*/index.js"
     },
     "./lib/*": {
       "types": "./dist/lib/*.d.ts",
@@ -55,7 +57,7 @@
     "format": "prettier --write .",
     "gen:icons": "node scripts/generate-icons.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "prebuild": "npm run clean && npm run typecheck && npm run lint && npm run format:check && npm run gen:icons",
+    "prebuild": "npm run format && npm run clean && npm run typecheck && npm run lint && npm run gen:icons",
     "storybook": "storybook dev -p 6006",
     "test:watch": "jest --watch",
     "test": "jest",

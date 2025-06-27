@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Button } from './button';
+import { Button } from '../button/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from './tooltip';
+} from '../tooltip/tooltip';
 import { cn } from '@/lib/utils';
 import {
   Upload,
@@ -194,7 +194,7 @@ function FileUploadChat({
         )}
 
         <div className="flex flex-col gap-2 p-4">
-          <div className="relative flex-1 min-w-200">
+          <div className="relative min-w-200 flex-1">
             <textarea
               ref={textareaRef}
               value={message}

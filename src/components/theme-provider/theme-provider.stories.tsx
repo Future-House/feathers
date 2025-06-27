@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemeProvider, useTheme } from './theme-provider';
-import { Button } from './button';
+import { Button } from '../button/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from './card';
-import { Badge } from './badge';
+} from '../card/card';
+import { Badge } from '../badge/badge';
 
 // Demo component that uses the theme context
 function ThemeDemo() {

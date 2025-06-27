@@ -1,6 +1,6 @@
-import { Moon, Sun, Laptop } from '../icons';
-import { Button } from './button';
-import { useTheme } from './theme-provider';
+import { Moon, Sun, Laptop } from '../../icons';
+import { Button } from '../button/button';
+import { useTheme } from '../theme-provider/theme-provider';
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();

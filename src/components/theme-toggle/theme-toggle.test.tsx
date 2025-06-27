@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeToggle } from './theme-toggle';
-import { ThemeProvider } from './theme-provider';
+import { ThemeProvider } from '../theme-provider/theme-provider';
 
 // Mock localStorage
 const localStorageMock = {

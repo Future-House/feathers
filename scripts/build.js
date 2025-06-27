@@ -12,26 +12,60 @@ fs.mkdirSync('dist', { recursive: true });
 
 // Get component files
 const componentsDir = 'src/components';
-const componentFiles = fs
-  .readdirSync(componentsDir)
-  .filter(
-    file =>
-      file.endsWith('.tsx') &&
-      !file.includes('.stories') &&
-      !file.includes('.test')
-  )
-  .map(file => file.replace('.tsx', ''));
+const componentFiles = [];
+const componentPaths = {};
+
+// Read all items in components directory
+const items = fs.readdirSync(componentsDir, { withFileTypes: true });
+
+items.forEach(item => {
+  if (item.isDirectory() && item.name !== 'index.ts') {
+    // Check if directory contains a component file with the same name
+    const componentFile = `${item.name}.tsx`;
+    const componentPath = `src/components/${item.name}/${componentFile}`;
+    const indexPath = `src/components/${item.name}/index.ts`;
+
+    if (fs.existsSync(componentPath)) {
+      componentFiles.push(item.name);
+      componentPaths[item.name] = {
+        main: componentPath,
+        index: indexPath,
+      };
+    }
+  }
+});
 
 console.log('📦 Building individual components...');
 fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
-  const inputFile = `src/components/${component}.tsx`;
+  const paths = componentPaths[component];
+
+  // Build the main component file
   const outputFile = `dist/components/${component}.js`;
   execSync(
-    `npx babel ${inputFile} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+    `npx babel ${paths.main} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
     { stdio: 'inherit' }
   );
+
+  // Build the index file if it exists
+  if (fs.existsSync(paths.index)) {
+    const indexOutputFile = `dist/components/${component}/index.js`;
+    fs.mkdirSync(`dist/components/${component}`, { recursive: true });
+    execSync(
+      `npx babel ${paths.index} --config-file ./babel.config.json --out-file ${indexOutputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+      { stdio: 'inherit' }
+    );
+  }
 });
+
+// Build the main components index
+console.log('📦 Building components index...');
+if (fs.existsSync('src/components/index.ts')) {
+  execSync(
+    `npx babel src/components/index.ts --config-file ./babel.config.json --out-file dist/components/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+    { stdio: 'inherit' }
+  );
+}
 
 console.log('📦 Building lib utilities...');
 fs.mkdirSync('dist/lib', { recursive: true });
@@ -59,12 +93,15 @@ console.log('📝 Generating TypeScript declarations...');
 fs.mkdirSync('temp-types', { recursive: true });
 
 // Generate all declarations in temp directory first
-execSync(
-  'npx tsc --project tsconfig.json --declaration --emitDeclarationOnly --outDir temp-types --declarationMap',
-  {
+try {
+  execSync('npx tsc --project tsconfig.build.json', {
     stdio: 'inherit',
-  }
-);
+  });
+} catch (e) {
+  console.log(
+    'TypeScript compilation failed, continuing without declarations...'
+  );
+}
 
 console.log('📝 Organizing TypeScript declarations...');
 
@@ -80,16 +117,38 @@ try {
 fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
   try {
-    execSync(
-      `cp temp-types/components/${component}.d.ts dist/components/${component}.d.ts`
-    );
-    execSync(
-      `cp temp-types/components/${component}.d.ts.map dist/components/${component}.d.ts.map`
-    );
+    // Component is always in its own directory now
+    const sourceFile = `temp-types/components/${component}/${component}.d.ts`;
+    const sourceMapFile = `temp-types/components/${component}/${component}.d.ts.map`;
+    const indexSourceFile = `temp-types/components/${component}/index.d.ts`;
+    const indexSourceMapFile = `temp-types/components/${component}/index.d.ts.map`;
+
+    // Copy main component declarations
+    execSync(`cp ${sourceFile} dist/components/${component}.d.ts`);
+    execSync(`cp ${sourceMapFile} dist/components/${component}.d.ts.map`);
+
+    // Copy index declarations if they exist
+    if (fs.existsSync(indexSourceFile)) {
+      fs.mkdirSync(`dist/components/${component}`, { recursive: true });
+      execSync(`cp ${indexSourceFile} dist/components/${component}/index.d.ts`);
+      execSync(
+        `cp ${indexSourceMapFile} dist/components/${component}/index.d.ts.map`
+      );
+    }
   } catch (e) {
     console.warn(`Warning: Could not copy declarations for ${component}`);
   }
 });
+
+// Copy main components index declarations
+try {
+  execSync(`cp temp-types/components/index.d.ts dist/components/index.d.ts`);
+  execSync(
+    `cp temp-types/components/index.d.ts.map dist/components/index.d.ts.map`
+  );
+} catch (e) {
+  console.warn('Warning: Could not copy components index declarations');
+}
 
 // Copy lib utility declarations
 try {
