@@ -475,7 +475,7 @@ export const HorizontalOrientation: Story = {
   render: args => (
     <div className="w-full">
       <Accordion {...args} className="flex gap-4">
-        <AccordionItem value="item-1" className="flex-1 border-r border-b-0 pr-4">
+        <AccordionItem value="item-1" className="flex-1 border-r border-b-0 pr-4 w-36">
           <AccordionTrigger className="justify-center text-center">Tab 1</AccordionTrigger>
           <AccordionContent className="pt-4">
             <div className="text-center">
@@ -483,7 +483,7 @@ export const HorizontalOrientation: Story = {
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2" className="flex-1 border-r border-b-0 pr-4">
+        <AccordionItem value="item-2" className="flex-1 border-r border-b-0 pr-4 w-36">
           <AccordionTrigger className="justify-center text-center">Tab 2</AccordionTrigger>
           <AccordionContent className="pt-4">
             <div className="text-center">
@@ -491,7 +491,7 @@ export const HorizontalOrientation: Story = {
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-3" className="flex-1 border-b-0">
+        <AccordionItem value="item-3" className="flex-1 border-b-0 w-36">
           <AccordionTrigger className="justify-center text-center">Tab 3</AccordionTrigger>
           <AccordionContent className="pt-4">
             <div className="text-center">
