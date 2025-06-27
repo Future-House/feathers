@@ -46,11 +46,7 @@ describe('Avatar', () => {
       </Avatar>
     );
 
-    expect(container.firstChild).toHaveClass(
-      'relative',
-      'flex',
-      'size-8'
-    );
+    expect(container.firstChild).toHaveClass('relative', 'flex', 'size-8');
     expect(screen.getByText('JD')).toBeInTheDocument();
   });
 
@@ -103,11 +99,7 @@ describe('Avatar', () => {
     );
 
     // Avatar structure should be correct
-    expect(container.firstChild).toHaveClass(
-      'relative',
-      'flex',
-      'size-8'
-    );
+    expect(container.firstChild).toHaveClass('relative', 'flex', 'size-8');
 
     // Shows fallback initially
     expect(screen.getByText('JD')).toBeInTheDocument();
@@ -137,11 +129,7 @@ describe('Avatar', () => {
     );
 
     // Avatar should render correctly
-    expect(container.firstChild).toHaveClass(
-      'relative',
-      'flex',
-      'size-8'
-    );
+    expect(container.firstChild).toHaveClass('relative', 'flex', 'size-8');
     expect(screen.getByText('JD')).toBeInTheDocument();
 
     // Note: ref.current may be null in test environment due to Radix Avatar's image loading behavior

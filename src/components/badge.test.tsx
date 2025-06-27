@@ -1,6 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Badge, type BadgeProps } from './badge';
+import { Badge } from './badge';
+import { type VariantProps } from 'class-variance-authority';
+import { badgeVariants } from './badge';
+
+type BadgeProps = VariantProps<typeof badgeVariants>;
 
 describe('Badge', () => {
   it('renders correctly', () => {
