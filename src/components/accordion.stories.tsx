@@ -19,7 +19,8 @@ const meta = {
     // Root component props
     asChild: {
       control: { type: 'boolean' },
-      description: 'Change the default rendered element for the one passed as a child, merging their props and behavior',
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -36,7 +37,8 @@ const meta = {
     },
     value: {
       control: { type: 'text' },
-      description: 'The controlled value of the item to expand. Should be used in conjunction with onValueChange',
+      description:
+        'The controlled value of the item to expand. Should be used in conjunction with onValueChange',
       table: {
         type: { summary: 'string | string[]' },
         defaultValue: { summary: undefined },
@@ -44,7 +46,8 @@ const meta = {
     },
     defaultValue: {
       control: { type: 'text' },
-      description: 'The value of the item to expand when initially rendered (uncontrolled). Use when you do not need to control the state',
+      description:
+        'The value of the item to expand when initially rendered (uncontrolled). Use when you do not need to control the state',
       table: {
         type: { summary: 'string | string[]' },
         defaultValue: { summary: undefined },
@@ -60,7 +63,8 @@ const meta = {
     },
     collapsible: {
       control: { type: 'boolean' },
-      description: 'When type is "single", allows closing content when clicking trigger for an open item',
+      description:
+        'When type is "single", allows closing content when clicking trigger for an open item',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -68,7 +72,8 @@ const meta = {
     },
     disabled: {
       control: { type: 'boolean' },
-      description: 'When true, prevents the user from interacting with the accordion and all its items',
+      description:
+        'When true, prevents the user from interacting with the accordion and all its items',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -77,7 +82,8 @@ const meta = {
     dir: {
       control: { type: 'select' },
       options: ['ltr', 'rtl'],
-      description: 'The reading direction of the accordion when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode',
+      description:
+        'The reading direction of the accordion when applicable. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode',
       table: {
         type: { summary: '"ltr" | "rtl"' },
         defaultValue: { summary: '"ltr"' },
@@ -116,14 +122,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    type: 'single' as const,
+    collapsible: true,
+  },
   render: () => (
     <div className="w-[450px]">
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
+          <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>Is it styled?</AccordionTrigger>
@@ -143,25 +151,31 @@ export const Default: Story = {
 };
 
 export const Multiple: Story = {
+  args: {
+    type: 'multiple' as const,
+  },
   render: () => (
     <div className="w-[450px]">
       <Accordion type="multiple">
         <AccordionItem value="item-1">
           <AccordionTrigger>Frontend Technologies</AccordionTrigger>
           <AccordionContent>
-            React, Vue.js, Angular, TypeScript, JavaScript, HTML5, CSS3, and various UI libraries and frameworks.
+            React, Vue.js, Angular, TypeScript, JavaScript, HTML5, CSS3, and various UI libraries
+            and frameworks.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>Backend Technologies</AccordionTrigger>
           <AccordionContent>
-            Node.js, Python, Java, .NET, PHP, databases like PostgreSQL, MongoDB, and cloud services.
+            Node.js, Python, Java, .NET, PHP, databases like PostgreSQL, MongoDB, and cloud
+            services.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>DevOps & Tools</AccordionTrigger>
           <AccordionContent>
-            Docker, Kubernetes, CI/CD pipelines, AWS, Azure, GCP, monitoring tools, and version control systems.
+            Docker, Kubernetes, CI/CD pipelines, AWS, Azure, GCP, monitoring tools, and version
+            control systems.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -170,35 +184,40 @@ export const Multiple: Story = {
 };
 
 export const FAQ: Story = {
+  args: {
+    type: 'single' as const,
+    collapsible: true,
+  },
   render: () => (
     <div className="w-[550px]">
       <Accordion type="single" collapsible>
         <AccordionItem value="shipping">
           <AccordionTrigger>What are your shipping options?</AccordionTrigger>
           <AccordionContent>
-            We offer standard shipping (5-7 business days), expedited shipping (2-3 business days), 
+            We offer standard shipping (5-7 business days), expedited shipping (2-3 business days),
             and overnight shipping. Free standard shipping is available on orders over $50.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="returns">
           <AccordionTrigger>What is your return policy?</AccordionTrigger>
           <AccordionContent>
-            We accept returns within 30 days of purchase. Items must be in original condition 
-            with tags attached. Refunds are processed within 5-10 business days of receiving the returned item.
+            We accept returns within 30 days of purchase. Items must be in original condition with
+            tags attached. Refunds are processed within 5-10 business days of receiving the returned
+            item.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="warranty">
           <AccordionTrigger>Do you offer warranties?</AccordionTrigger>
           <AccordionContent>
-            Yes, all our products come with a 1-year manufacturer warranty. Extended warranties 
-            are available for purchase. The warranty covers defects in materials and workmanship.
+            Yes, all our products come with a 1-year manufacturer warranty. Extended warranties are
+            available for purchase. The warranty covers defects in materials and workmanship.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="support">
           <AccordionTrigger>How can I contact customer support?</AccordionTrigger>
           <AccordionContent>
-            You can reach our customer support team via email at support@example.com, 
-            phone at 1-800-123-4567, or through our live chat feature available 24/7.
+            You can reach our customer support team via email at support@example.com, phone at
+            1-800-123-4567, or through our live chat feature available 24/7.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -207,6 +226,10 @@ export const FAQ: Story = {
 };
 
 export const WithRichContent: Story = {
+  args: {
+    type: 'single' as const,
+    collapsible: true,
+  },
   render: () => (
     <div className="w-[500px]">
       <Accordion type="single" collapsible>
@@ -215,13 +238,13 @@ export const WithRichContent: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <h4 className="font-semibold">Performance</h4>
-              <ul className="list-disc pl-5 space-y-1 text-sm">
+              <ul className="list-disc space-y-1 pl-5 text-sm">
                 <li>Lightning-fast load times</li>
                 <li>Optimized for mobile devices</li>
                 <li>Server-side rendering support</li>
               </ul>
               <h4 className="font-semibold">Accessibility</h4>
-              <ul className="list-disc pl-5 space-y-1 text-sm">
+              <ul className="list-disc space-y-1 pl-5 text-sm">
                 <li>WCAG 2.1 AA compliant</li>
                 <li>Screen reader compatible</li>
                 <li>Keyboard navigation support</li>
@@ -233,15 +256,15 @@ export const WithRichContent: Story = {
           <AccordionTrigger>Pricing Plans</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4">
-              <div className="border rounded-lg p-3">
+              <div className="rounded-lg border p-3">
                 <h4 className="font-semibold">Basic Plan</h4>
                 <p className="text-2xl font-bold">$9/month</p>
-                <p className="text-sm text-muted-foreground">Perfect for individuals</p>
+                <p className="text-muted-foreground text-sm">Perfect for individuals</p>
               </div>
-              <div className="border rounded-lg p-3">
+              <div className="rounded-lg border p-3">
                 <h4 className="font-semibold">Pro Plan</h4>
                 <p className="text-2xl font-bold">$29/month</p>
-                <p className="text-sm text-muted-foreground">Ideal for small teams</p>
+                <p className="text-muted-foreground text-sm">Ideal for small teams</p>
               </div>
             </div>
           </AccordionContent>
@@ -250,20 +273,20 @@ export const WithRichContent: Story = {
           <AccordionTrigger>Integration Options</AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-2 gap-4">
-              <div className="text-center p-3 border rounded">
-                <div className="h-8 w-8 bg-blue-100 rounded mx-auto mb-2"></div>
+              <div className="rounded border p-3 text-center">
+                <div className="mx-auto mb-2 h-8 w-8 rounded bg-blue-100"></div>
                 <p className="text-sm font-medium">REST API</p>
               </div>
-              <div className="text-center p-3 border rounded">
-                <div className="h-8 w-8 bg-green-100 rounded mx-auto mb-2"></div>
+              <div className="rounded border p-3 text-center">
+                <div className="mx-auto mb-2 h-8 w-8 rounded bg-green-100"></div>
                 <p className="text-sm font-medium">GraphQL</p>
               </div>
-              <div className="text-center p-3 border rounded">
-                <div className="h-8 w-8 bg-purple-100 rounded mx-auto mb-2"></div>
+              <div className="rounded border p-3 text-center">
+                <div className="mx-auto mb-2 h-8 w-8 rounded bg-purple-100"></div>
                 <p className="text-sm font-medium">Webhooks</p>
               </div>
-              <div className="text-center p-3 border rounded">
-                <div className="h-8 w-8 bg-orange-100 rounded mx-auto mb-2"></div>
+              <div className="rounded border p-3 text-center">
+                <div className="mx-auto mb-2 h-8 w-8 rounded bg-orange-100"></div>
                 <p className="text-sm font-medium">SDK</p>
               </div>
             </div>
@@ -280,31 +303,31 @@ export const Controlled: Story = {
   },
   render: function ControlledAccordion() {
     const [value, setValue] = React.useState<string | undefined>('item-2');
-    
+
     return (
       <div className="w-[450px] space-y-4">
         <div className="flex gap-2">
-          <button 
-            onClick={() => setValue('item-1')} 
-            className="px-3 py-1 text-sm border rounded hover:bg-gray-50"
+          <button
+            onClick={() => setValue('item-1')}
+            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
           >
             Open Item 1
           </button>
-          <button 
-            onClick={() => setValue('item-2')} 
-            className="px-3 py-1 text-sm border rounded hover:bg-gray-50"
+          <button
+            onClick={() => setValue('item-2')}
+            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
           >
             Open Item 2
           </button>
-          <button 
-            onClick={() => setValue('item-3')} 
-            className="px-3 py-1 text-sm border rounded hover:bg-gray-50"
+          <button
+            onClick={() => setValue('item-3')}
+            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
           >
             Open Item 3
           </button>
-          <button 
-            onClick={() => setValue(undefined)} 
-            className="px-3 py-1 text-sm border rounded hover:bg-gray-50"
+          <button
+            onClick={() => setValue(undefined)}
+            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
           >
             Close All
           </button>
@@ -313,7 +336,8 @@ export const Controlled: Story = {
           <AccordionItem value="item-1">
             <AccordionTrigger>Controlled Item 1</AccordionTrigger>
             <AccordionContent>
-              This accordion is controlled by external buttons. The current value is: {value || 'none'}
+              This accordion is controlled by external buttons. The current value is:{' '}
+              {value || 'none'}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -340,23 +364,23 @@ export const CustomStyling: Story = {
   },
   render: () => (
     <div className="w-[450px]">
-      <Accordion type="single" collapsible className="bg-gray-50 rounded-lg p-4">
+      <Accordion type="single" collapsible className="rounded-lg bg-gray-50 p-4">
         <AccordionItem value="item-1" className="border-gray-200 last:border-b">
-          <AccordionTrigger className="text-blue-700 hover:text-blue-900 font-semibold">
+          <AccordionTrigger className="font-semibold text-blue-700 hover:text-blue-900">
             Custom Styled Trigger
           </AccordionTrigger>
-          <AccordionContent className="text-gray-600 bg-white rounded p-3 mt-2">
-            This accordion item has custom styling applied to demonstrate the flexibility 
-            of the component. You can customize colors, spacing, borders, and more.
+          <AccordionContent className="mt-2 rounded bg-white p-3 text-gray-600">
+            This accordion item has custom styling applied to demonstrate the flexibility of the
+            component. You can customize colors, spacing, borders, and more.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2" className="border-gray-200 last:border-b">
-          <AccordionTrigger className="text-green-700 hover:text-green-900 font-semibold">
+          <AccordionTrigger className="font-semibold text-green-700 hover:text-green-900">
             Another Custom Item
           </AccordionTrigger>
-          <AccordionContent className="text-gray-600 bg-white rounded p-3 mt-2">
-            Each accordion item can have its own custom styling while maintaining 
-            the core functionality and accessibility features.
+          <AccordionContent className="mt-2 rounded bg-white p-3 text-gray-600">
+            Each accordion item can have its own custom styling while maintaining the core
+            functionality and accessibility features.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -373,9 +397,7 @@ export const DisabledItems: Story = {
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Available Item</AccordionTrigger>
-          <AccordionContent>
-            This item is available and can be toggled normally.
-          </AccordionContent>
+          <AccordionContent>This item is available and can be toggled normally.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger disabled>Disabled Item</AccordionTrigger>
@@ -399,7 +421,7 @@ export const DisabledAccordion: Story = {
     type: 'single' as const,
     disabled: true,
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[450px]">
       <Accordion {...args}>
         <AccordionItem value="item-1">
@@ -424,21 +446,20 @@ export const RTLDirection: Story = {
     type: 'single' as const,
     dir: 'rtl',
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[450px]" dir="rtl">
       <Accordion {...args}>
         <AccordionItem value="item-1">
           <AccordionTrigger>العنصر الأول</AccordionTrigger>
           <AccordionContent>
-            هذا مثال على الأكورديون مع الاتجاه من اليمين إلى اليسار. 
-            لاحظ كيف يتم عكس اتجاه الأيقونة والنص.
+            هذا مثال على الأكورديون مع الاتجاه من اليمين إلى اليسار. لاحظ كيف يتم عكس اتجاه الأيقونة
+            والنص.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>العنصر الثاني</AccordionTrigger>
           <AccordionContent>
-            يدعم المكون الاتجاه من اليمين إلى اليسار بشكل كامل 
-            مع الحفاظ على جميع الوظائف.
+            يدعم المكون الاتجاه من اليمين إلى اليسار بشكل كامل مع الحفاظ على جميع الوظائف.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -451,13 +472,11 @@ export const HorizontalOrientation: Story = {
     type: 'single' as const,
     orientation: 'horizontal',
   },
-  render: (args) => (
+  render: args => (
     <div className="w-full">
       <Accordion {...args} className="flex gap-4">
         <AccordionItem value="item-1" className="flex-1 border-r border-b-0 pr-4">
-          <AccordionTrigger className="justify-center text-center">
-            Tab 1
-          </AccordionTrigger>
+          <AccordionTrigger className="justify-center text-center">Tab 1</AccordionTrigger>
           <AccordionContent className="pt-4">
             <div className="text-center">
               This is a horizontal accordion layout. Content appears below the triggers.
@@ -465,9 +484,7 @@ export const HorizontalOrientation: Story = {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2" className="flex-1 border-r border-b-0 pr-4">
-          <AccordionTrigger className="justify-center text-center">
-            Tab 2
-          </AccordionTrigger>
+          <AccordionTrigger className="justify-center text-center">Tab 2</AccordionTrigger>
           <AccordionContent className="pt-4">
             <div className="text-center">
               Perfect for tab-like interfaces where horizontal space is preferred.
@@ -475,9 +492,7 @@ export const HorizontalOrientation: Story = {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3" className="flex-1 border-b-0">
-          <AccordionTrigger className="justify-center text-center">
-            Tab 3
-          </AccordionTrigger>
+          <AccordionTrigger className="justify-center text-center">Tab 3</AccordionTrigger>
           <AccordionContent className="pt-4">
             <div className="text-center">
               The orientation prop changes the keyboard navigation behavior as well.

@@ -7,9 +7,7 @@ describe('Accordion', () => {
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
+        <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>Is it styled?</AccordionTrigger>
@@ -37,7 +35,7 @@ describe('Accordion', () => {
   it('applies default classes to accordion items', () => {
     const { container } = render(<BasicAccordion />);
     const accordionItems = container.querySelectorAll('[data-slot="accordion-item"]');
-    accordionItems.forEach((item) => {
+    accordionItems.forEach(item => {
       expect(item).toHaveClass('border-b', 'last:border-b-0');
     });
   });
@@ -73,10 +71,10 @@ describe('Accordion', () => {
     render(<BasicAccordion />);
 
     const trigger = screen.getByText('Is it accessible?');
-    
+
     // Click trigger to expand
     await user.click(trigger);
-    
+
     // Content should be visible after clicking
     const content = screen.getByText('Yes. It adheres to the WAI-ARIA design pattern.');
     expect(content).toBeVisible();
@@ -181,7 +179,9 @@ describe('Accordion', () => {
 
     // Use Enter to activate trigger
     await user.keyboard('{Enter}');
-    const content = screen.getByText('Yes. It comes with default styles that matches the other components aesthetic.');
+    const content = screen.getByText(
+      'Yes. It comes with default styles that matches the other components aesthetic.'
+    );
     expect(content).toBeVisible();
   });
 
