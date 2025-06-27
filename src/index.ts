@@ -18,9 +18,14 @@ export {
 } from './components/card';
 
 export { Badge, badgeVariants } from './components/badge';
-export type { BadgeProps } from './components/badge';
 
 export { Avatar, AvatarImage, AvatarFallback } from './components/avatar';
 
 export { ThemeProvider, useTheme } from './components/theme-provider';
 export { ThemeToggle } from './components/theme-toggle';
+
+export { FileUploadChat } from './components/file-upload-chat';
+export type {
+  FileUploadChatProps,
+  UploadedFile,
+} from './components/file-upload-chat';
