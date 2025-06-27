@@ -1,9 +1,7 @@
-import { Moon, Sun } from 'lucide-react';
-
+import { Moon, Sun, Laptop } from '../icons';
 import { Button } from './button';
 import { useTheme } from './theme-provider';
 
-// TODO: update this to consider light, dark, and system themes
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
@@ -24,8 +22,9 @@ export function ThemeToggle() {
       return <Moon className="h-4 w-4" />;
     } else {
       // System theme - show current system preference
-      const isDarkSystem = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return isDarkSystem ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />;
+      // const isDarkSystem = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // return isDarkSystem ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />;
+      return <Laptop className="h-4 w-4" />;
     }
   };
 
