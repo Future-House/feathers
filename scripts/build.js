@@ -107,11 +107,32 @@ try {
 
 console.log('📝 Organizing TypeScript declarations...');
 
+// Helper function to fix path aliases in declaration files
+function fixPathAliases(filePath, isComponentIndex = false) {
+  try {
+    let content = fs.readFileSync(filePath, 'utf8');
+    // Replace @/lib paths with relative paths
+    content = content.replace(/@\/lib\//g, './lib/');
+    // Replace @/components paths with relative paths
+    if (isComponentIndex) {
+      // For components/index.d.ts, replace @/components/ with ./
+      content = content.replace(/@\/components\//g, './');
+    } else {
+      // For main index.d.ts, replace @/components/ with ./components/
+      content = content.replace(/@\/components\//g, './components/');
+    }
+    fs.writeFileSync(filePath, content);
+  } catch (e) {
+    console.warn(`Warning: Could not fix path aliases in ${filePath}`);
+  }
+}
+
 // Copy main index declarations
 try {
   if (fs.existsSync('temp-types/index.d.ts')) {
     execSync(`cp temp-types/index.d.ts dist/index.d.ts`);
     execSync(`cp temp-types/index.d.ts.map dist/index.d.ts.map`);
+    fixPathAliases('dist/index.d.ts');
   }
 } catch (e) {
   console.warn('Warning: Could not copy main index declarations');
@@ -155,6 +176,7 @@ try {
     execSync(
       `cp temp-types/components/index.d.ts.map dist/components/index.d.ts.map`
     );
+    fixPathAliases('dist/components/index.d.ts', true);
   }
 } catch (e) {
   console.warn('Warning: Could not copy components index declarations');

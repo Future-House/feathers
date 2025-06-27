@@ -42,6 +42,7 @@
   },
   "ignorePatterns": [
     "dist",
+    "temp-types",
     "node_modules",
     "*.config.js",
     "*.config.ts",

@@ -1,10 +1,7 @@
-// Styles
-import '@/lib/styles/index.css';
-
 // Utils
 export { cn } from '@/lib/utils';
 
-// Components - using index files for better tree-shaking
+// Components
 export * from '@/components/accordion';
 export * from '@/components/avatar';
 export * from '@/components/badge';
