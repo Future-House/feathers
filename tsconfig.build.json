@@ -5,7 +5,10 @@
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "outDir": "./temp-types",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "exclude": [
     "node_modules",

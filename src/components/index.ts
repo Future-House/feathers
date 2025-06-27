@@ -27,6 +27,15 @@ export type {
   UploadedFile,
 } from '@/components/file-upload-chat';
 
+export { Switch } from '@/components/switch';
+
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
 
 export { ThemeToggle } from '@/components/theme-toggle';
+
+export {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+} from '@/components/tooltip';

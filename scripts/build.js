@@ -40,8 +40,11 @@ fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
   const paths = componentPaths[component];
 
-  // Build the main component file
-  const outputFile = `dist/components/${component}.js`;
+  // Create component directory in dist
+  fs.mkdirSync(`dist/components/${component}`, { recursive: true });
+
+  // Build the main component file to the component directory
+  const outputFile = `dist/components/${component}/${component}.js`;
   execSync(
     `npx babel ${paths.main} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
     { stdio: 'inherit' }
@@ -50,7 +53,6 @@ componentFiles.forEach(component => {
   // Build the index file if it exists
   if (fs.existsSync(paths.index)) {
     const indexOutputFile = `dist/components/${component}/index.js`;
-    fs.mkdirSync(`dist/components/${component}`, { recursive: true });
     execSync(
       `npx babel ${paths.index} --config-file ./babel.config.json --out-file ${indexOutputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
       { stdio: 'inherit' }
@@ -107,14 +109,15 @@ console.log('📝 Organizing TypeScript declarations...');
 
 // Copy main index declarations
 try {
-  execSync(`cp temp-types/index.d.ts dist/index.d.ts`);
-  execSync(`cp temp-types/index.d.ts.map dist/index.d.ts.map`);
+  if (fs.existsSync('temp-types/index.d.ts')) {
+    execSync(`cp temp-types/index.d.ts dist/index.d.ts`);
+    execSync(`cp temp-types/index.d.ts.map dist/index.d.ts.map`);
+  }
 } catch (e) {
   console.warn('Warning: Could not copy main index declarations');
 }
 
 // Copy individual component declarations to components directory
-fs.mkdirSync('dist/components', { recursive: true });
 componentFiles.forEach(component => {
   try {
     // Component is always in its own directory now
@@ -124,12 +127,17 @@ componentFiles.forEach(component => {
     const indexSourceMapFile = `temp-types/components/${component}/index.d.ts.map`;
 
     // Copy main component declarations
-    execSync(`cp ${sourceFile} dist/components/${component}.d.ts`);
-    execSync(`cp ${sourceMapFile} dist/components/${component}.d.ts.map`);
+    if (fs.existsSync(sourceFile)) {
+      execSync(
+        `cp ${sourceFile} dist/components/${component}/${component}.d.ts`
+      );
+      execSync(
+        `cp ${sourceMapFile} dist/components/${component}/${component}.d.ts.map`
+      );
+    }
 
     // Copy index declarations if they exist
     if (fs.existsSync(indexSourceFile)) {
-      fs.mkdirSync(`dist/components/${component}`, { recursive: true });
       execSync(`cp ${indexSourceFile} dist/components/${component}/index.d.ts`);
       execSync(
         `cp ${indexSourceMapFile} dist/components/${component}/index.d.ts.map`
@@ -142,26 +150,34 @@ componentFiles.forEach(component => {
 
 // Copy main components index declarations
 try {
-  execSync(`cp temp-types/components/index.d.ts dist/components/index.d.ts`);
-  execSync(
-    `cp temp-types/components/index.d.ts.map dist/components/index.d.ts.map`
-  );
+  if (fs.existsSync('temp-types/components/index.d.ts')) {
+    execSync(`cp temp-types/components/index.d.ts dist/components/index.d.ts`);
+    execSync(
+      `cp temp-types/components/index.d.ts.map dist/components/index.d.ts.map`
+    );
+  }
 } catch (e) {
   console.warn('Warning: Could not copy components index declarations');
 }
 
 // Copy lib utility declarations
 try {
-  execSync(`cp temp-types/lib/utils.d.ts dist/lib/utils.d.ts`);
-  execSync(`cp temp-types/lib/utils.d.ts.map dist/lib/utils.d.ts.map`);
+  if (fs.existsSync('temp-types/lib/utils.d.ts')) {
+    fs.mkdirSync('dist/lib', { recursive: true });
+    execSync(`cp temp-types/lib/utils.d.ts dist/lib/utils.d.ts`);
+    execSync(`cp temp-types/lib/utils.d.ts.map dist/lib/utils.d.ts.map`);
+  }
 } catch (e) {
   console.warn('Warning: Could not copy lib utility declarations');
 }
 
 // Copy icons declarations
 try {
-  execSync(`cp temp-types/icons/index.d.ts dist/icons/index.d.ts`);
-  execSync(`cp temp-types/icons/index.d.ts.map dist/icons/index.d.ts.map`);
+  if (fs.existsSync('temp-types/icons/index.d.ts')) {
+    fs.mkdirSync('dist/icons', { recursive: true });
+    execSync(`cp temp-types/icons/index.d.ts dist/icons/index.d.ts`);
+    execSync(`cp temp-types/icons/index.d.ts.map dist/icons/index.d.ts.map`);
+  }
 } catch (e) {
   console.warn('Warning: Could not copy icons declarations');
 }
