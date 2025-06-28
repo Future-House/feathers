@@ -34,6 +34,16 @@ export {
   AlertDialogCancel,
 } from '@/components/alert-dialog';
 
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from '@/components/breadcrumb';
+
 export { Checkbox } from '@/components/checkbox';
 
 export { FileUploadChat } from '@/components/file-upload-chat';

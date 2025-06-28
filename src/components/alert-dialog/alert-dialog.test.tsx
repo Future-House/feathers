@@ -124,7 +124,9 @@ describe('AlertDialog', () => {
 
     // Try to click the overlay (backdrop) - AlertDialog should not close
     const alertDialog = screen.getByRole('alertdialog');
-    const overlay = alertDialog.parentElement?.querySelector('[data-slot="alert-dialog-overlay"]');
+    const overlay = alertDialog.parentElement?.querySelector(
+      '[data-slot="alert-dialog-overlay"]'
+    );
     if (overlay) {
       await user.click(overlay);
       // AlertDialog should remain open (unlike regular Dialog)
@@ -163,7 +165,9 @@ describe('AlertDialog', () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Default Open</AlertDialogTitle>
-            <AlertDialogDescription>This dialog is open by default</AlertDialogDescription>
+            <AlertDialogDescription>
+              This dialog is open by default
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Close</AlertDialogCancel>
@@ -228,7 +232,9 @@ describe('AlertDialog', () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Title</AlertDialogTitle>
-            <AlertDialogDescription>Description for accessibility</AlertDialogDescription>
+            <AlertDialogDescription>
+              Description for accessibility
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
@@ -257,7 +263,9 @@ describe('AlertDialog', () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Title</AlertDialogTitle>
-            <AlertDialogDescription>Description for accessibility</AlertDialogDescription>
+            <AlertDialogDescription>
+              Description for accessibility
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={onCancel}>Cancel</AlertDialogCancel>
@@ -304,7 +312,7 @@ describe('AlertDialog', () => {
     // Check that focusable elements are present
     expect(cancelButton).toBeInTheDocument();
     expect(continueButton).toBeInTheDocument();
-    
+
     // Tab navigation should work within the dialog
     await user.tab();
     // One of the buttons should have focus after tabbing
