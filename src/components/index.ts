@@ -44,6 +44,8 @@ export {
   BreadcrumbEllipsis,
 } from '@/components/breadcrumb';
 
+export { Calendar, CalendarDayButton } from '@/components/calendar';
+
 export { Checkbox } from '@/components/checkbox';
 
 export { FileUploadChat } from '@/components/file-upload-chat';

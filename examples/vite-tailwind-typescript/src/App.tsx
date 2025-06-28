@@ -18,6 +18,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
   Button,
+  Calendar,
   Card,
   CardHeader,
   CardContent,
@@ -37,6 +38,11 @@ function App() {
     notifications: 'indeterminate' as boolean | 'indeterminate',
   });
   const [alertAction, setAlertAction] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [selectedRange, setSelectedRange] = useState<{
+    from: Date | undefined;
+    to: Date | undefined;
+  } | undefined>();
 
   return (
     <>
@@ -49,7 +55,9 @@ function App() {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Basic Breadcrumb</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Basic Breadcrumb
+            </h3>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -68,7 +76,9 @@ function App() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">With Custom Separator</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              With Custom Separator
+            </h3>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -99,7 +109,9 @@ function App() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/dashboard/projects">Projects</BreadcrumbLink>
+                  <BreadcrumbLink href="/dashboard/projects">
+                    Projects
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -110,7 +122,9 @@ function App() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Long Navigation Path</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Long Navigation Path
+            </h3>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -122,11 +136,15 @@ function App() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/dashboard/projects">Projects</BreadcrumbLink>
+                  <BreadcrumbLink href="/dashboard/projects">
+                    Projects
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/dashboard/projects/my-project">My Project</BreadcrumbLink>
+                  <BreadcrumbLink href="/dashboard/projects/my-project">
+                    My Project
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -456,6 +474,82 @@ function App() {
               </button>
             </div>
           )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Calendar Components</CardTitle>
+          <CardDescription>
+            Testing different calendar modes and date selection
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                Single Date Selection
+              </h3>
+              <Calendar
+                mode="single"
+                selected={selectedDate}
+                onSelect={setSelectedDate}
+                className="rounded-md border"
+              />
+              {selectedDate && (
+                <div className="rounded border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800">
+                  Selected: {selectedDate.toLocaleDateString()}
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                Date Range Selection
+              </h3>
+              <Calendar
+                mode="range"
+                selected={selectedRange}
+                onSelect={setSelectedRange}
+                className="rounded-md border"
+              />
+              {selectedRange?.from && (
+                <div className="rounded border border-green-200 bg-green-50 p-3 text-sm text-green-800">
+                  {selectedRange.to ? (
+                    <>
+                      From: {selectedRange.from.toLocaleDateString()}
+                      <br />
+                      To: {selectedRange.to.toLocaleDateString()}
+                    </>
+                  ) : (
+                    <>From: {selectedRange.from.toLocaleDateString()}</>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                Multiple Months Display
+              </h3>
+              <Calendar
+                mode="single"
+                numberOfMonths={2}
+                className="rounded-md border"
+              />
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                With Dropdown Navigation
+              </h3>
+              <Calendar
+                mode="single"
+                captionLayout="dropdown"
+                className="rounded-md border"
+              />
+            </div>
+          </div>
         </CardContent>
       </Card>
 
