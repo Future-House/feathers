@@ -21,6 +21,8 @@ export {
   CardContent,
 } from '@/components/card';
 
+export { Checkbox } from '@/components/checkbox';
+
 export { FileUploadChat } from '@/components/file-upload-chat';
 export type {
   FileUploadChatProps,

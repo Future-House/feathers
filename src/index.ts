@@ -7,6 +7,7 @@ export * from '@/components/avatar';
 export * from '@/components/badge';
 export * from '@/components/button';
 export * from '@/components/card';
+export * from '@/components/checkbox';
 export * from '@/components/file-upload-chat';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
