@@ -38,6 +38,8 @@ When adding new components:
 6. Update main exports in `src/components/index.ts` and `src/index.ts`
 7. Ensure tree-shaking is supported for all new components added
 8. Be sure to run `npm run format` before attempting to build the project
+9. For any new code, I want to avoid the `any` type usage as much as possible
+10. Ensure dark mode is supported for new components added
 
 ### Import Patterns
 
