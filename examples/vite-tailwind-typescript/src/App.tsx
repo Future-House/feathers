@@ -242,7 +242,7 @@ function App() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline">Basic Alert</Button>
+                <Button variant="outline">Delete Account</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -332,7 +332,7 @@ function App() {
                 <AlertDialogFooter>
                   <AlertDialogCancel>Maybe Later</AlertDialogCancel>
                   <AlertDialogAction
-                    onClick={() => setAlertAction('Subscribed to Pro')}
+                    onClick={() => setAlertAction('Subscribed')}
                   >
                     Subscribe Now
                   </AlertDialogAction>
@@ -343,7 +343,9 @@ function App() {
 
           {alertAction && (
             <div className="rounded border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800">
-              <strong>Action taken:</strong> {alertAction}
+              <span className="mr-2">
+                <strong>Action taken:</strong> {alertAction}
+              </span>
               <button
                 onClick={() => setAlertAction('')}
                 className="ml-2 text-blue-600 underline hover:no-underline"
