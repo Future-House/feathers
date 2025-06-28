@@ -10,7 +10,6 @@ export { Avatar, AvatarImage, AvatarFallback } from '@/components/avatar';
 export { Badge, badgeVariants } from '@/components/badge';
 
 export { Button, buttonVariants } from '@/components/button';
-export type { ButtonProps } from '@/components/button';
 
 export {
   Card,
@@ -20,6 +19,20 @@ export {
   CardDescription,
   CardContent,
 } from '@/components/card';
+
+export {
+  AlertDialog,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from '@/components/alert-dialog';
 
 export { Checkbox } from '@/components/checkbox';
 
