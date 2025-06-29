@@ -207,7 +207,9 @@ describe('Breadcrumb', () => {
     );
 
     // The default ChevronRight icon should be rendered
-    const separator = document.querySelector('[data-slot="breadcrumb-separator"]');
+    const separator = document.querySelector(
+      '[data-slot="breadcrumb-separator"]'
+    );
     expect(separator).toBeInTheDocument();
     expect(separator).toHaveAttribute('aria-hidden', 'true');
   });
@@ -233,7 +235,9 @@ describe('Breadcrumb', () => {
     const nav = screen.getByRole('navigation');
     const list = screen.getByRole('list');
     const currentPage = screen.getByText('Breadcrumb');
-    const separators = document.querySelectorAll('[data-slot="breadcrumb-separator"]');
+    const separators = document.querySelectorAll(
+      '[data-slot="breadcrumb-separator"]'
+    );
 
     expect(nav).toHaveAttribute('aria-label', 'breadcrumb');
     expect(list).toBeInTheDocument();

@@ -70,7 +70,9 @@ describe('Calendar', () => {
     if (prevButton) {
       await user.click(prevButton);
       // Calendar should navigate to previous month
-      expect(document.querySelector('[data-slot="calendar"]')).toBeInTheDocument();
+      expect(
+        document.querySelector('[data-slot="calendar"]')
+      ).toBeInTheDocument();
     }
   });
 
@@ -87,7 +89,9 @@ describe('Calendar', () => {
     if (nextButton) {
       await user.click(nextButton);
       // Calendar should navigate to next month
-      expect(document.querySelector('[data-slot="calendar"]')).toBeInTheDocument();
+      expect(
+        document.querySelector('[data-slot="calendar"]')
+      ).toBeInTheDocument();
     }
   });
 
@@ -104,7 +108,7 @@ describe('Calendar', () => {
     const calendar = document.querySelector('[data-slot="calendar"]');
 
     // Focus the calendar
-    calendar.focus();
+    (calendar as HTMLElement)?.focus();
 
     // Test arrow key navigation
     await user.keyboard('{ArrowRight}');

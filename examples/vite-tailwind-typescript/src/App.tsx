@@ -21,6 +21,11 @@ import {
   Button,
   Calendar,
   Card,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
   CardHeader,
   CardContent,
   CardTitle,
@@ -561,7 +566,8 @@ function App() {
         <CardHeader>
           <CardTitle>AspectRatio Components</CardTitle>
           <CardDescription>
-            Testing different aspect ratios for images, videos, and other content
+            Testing different aspect ratios for images, videos, and other
+            content
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -570,7 +576,9 @@ function App() {
               <h3 className="text-sm font-medium text-gray-700">16:9 Video</h3>
               <AspectRatio ratio={16 / 9} className="bg-muted">
                 <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed">
-                  <span className="text-sm text-muted-foreground">16:9 Aspect Ratio</span>
+                  <span className="text-muted-foreground text-sm">
+                    16:9 Aspect Ratio
+                  </span>
                 </div>
               </AspectRatio>
             </div>
@@ -579,7 +587,7 @@ function App() {
               <h3 className="text-sm font-medium text-gray-700">1:1 Square</h3>
               <AspectRatio ratio={1} className="bg-muted">
                 <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed">
-                  <span className="text-sm text-muted-foreground">Square</span>
+                  <span className="text-muted-foreground text-sm">Square</span>
                 </div>
               </AspectRatio>
             </div>
@@ -588,7 +596,7 @@ function App() {
               <h3 className="text-sm font-medium text-gray-700">4:3 Classic</h3>
               <AspectRatio ratio={4 / 3} className="bg-muted">
                 <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed">
-                  <span className="text-sm text-muted-foreground">4:3</span>
+                  <span className="text-muted-foreground text-sm">4:3</span>
                 </div>
               </AspectRatio>
             </div>
@@ -602,12 +610,14 @@ function App() {
               {Array.from({ length: 4 }, (_, i) => (
                 <AspectRatio key={i} ratio={3 / 4} className="bg-muted">
                   <img
-                    src={`https://images.unsplash.com/photo-${[
-                      '1588345921523-c2dcdb7f1dcd',
-                      '1469474968028-56623f02e42e',
-                      '1448375240586-dbc73152c844',
-                      '1506905925346-21bda4d32df4',
-                    ][i]}?w=400&h=533&dpr=2&q=80`}
+                    src={`https://images.unsplash.com/photo-${
+                      [
+                        '1588345921523-c2dcdb7f1dcd',
+                        '1469474968028-56623f02e42e',
+                        '1448375240586-dbc73152c844',
+                        '1506905925346-21bda4d32df4',
+                      ][i]
+                    }?w=400&h=533&dpr=2&q=80`}
                     alt={`Gallery image ${i + 1}`}
                     className="h-full w-full rounded-md object-cover"
                   />
@@ -620,7 +630,7 @@ function App() {
             <h3 className="text-sm font-medium text-gray-700">
               Card with AspectRatio Header
             </h3>
-            <div className="max-w-sm overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="bg-card text-card-foreground max-w-sm overflow-hidden rounded-lg border shadow-sm">
               <AspectRatio ratio={16 / 9}>
                 <img
                   src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&dpr=2&q=80"
@@ -630,7 +640,7 @@ function App() {
               </AspectRatio>
               <div className="p-4">
                 <h4 className="text-lg font-semibold">Mountain View</h4>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-muted-foreground mt-2 text-sm">
                   Beautiful landscape captured in perfect 16:9 aspect ratio.
                 </p>
                 <Button className="mt-3" size="sm">
@@ -645,14 +655,162 @@ function App() {
               Interactive AspectRatio (asChild)
             </h3>
             <AspectRatio ratio={21 / 9} asChild>
-              <button className="bg-muted hover:bg-muted/80 transition-colors rounded-md">
-                <div className="flex h-full w-full items-center justify-center border border-dashed rounded-md">
-                  <span className="text-sm text-muted-foreground">
+              <button className="bg-muted hover:bg-muted/80 rounded-md transition-colors">
+                <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed">
+                  <span className="text-muted-foreground text-sm">
                     Click me! (21:9 Ultrawide)
                   </span>
                 </div>
               </button>
             </AspectRatio>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Carousel Components</CardTitle>
+          <CardDescription>
+            Interactive carousel component examples with different configurations
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-8">
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">
+              Basic Horizontal Carousel
+            </h3>
+            <Carousel className="w-full max-w-xs mx-auto">
+              <CarouselContent>
+                {Array.from({ length: 5 }, (_, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <Card>
+                        <CardContent className="flex aspect-square items-center justify-center p-6">
+                          <span className="text-4xl font-semibold">
+                            {index + 1}
+                          </span>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">
+              Multiple Items Per View
+            </h3>
+            <Carousel
+              opts={{
+                align: 'start',
+              }}
+              className="w-full max-w-sm mx-auto"
+            >
+              <CarouselContent>
+                {Array.from({ length: 10 }, (_, index) => (
+                  <CarouselItem key={index} className="basis-1/3">
+                    <div className="p-1">
+                      <Card>
+                        <CardContent className="flex aspect-square items-center justify-center p-6">
+                          <span className="text-2xl font-semibold">
+                            {index + 1}
+                          </span>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">
+              Content Showcase Carousel
+            </h3>
+            <Carousel className="w-full max-w-lg mx-auto">
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                        <h3 className="text-xl font-bold mb-2">Welcome</h3>
+                        <p className="text-center">
+                          Discover our amazing component library
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-500 to-teal-600 text-white">
+                        <h3 className="text-xl font-bold mb-2">Explore</h3>
+                        <p className="text-center">
+                          Find the perfect components for your project
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-orange-500 to-red-600 text-white">
+                        <h3 className="text-xl font-bold mb-2">Get Started</h3>
+                        <p className="text-center">
+                          Begin building your application today
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">
+              Image Gallery Carousel
+            </h3>
+            <Carousel
+              opts={{
+                loop: true,
+              }}
+              className="w-full max-w-md mx-auto"
+            >
+              <CarouselContent>
+                {Array.from({ length: 4 }, (_, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <Card>
+                        <CardContent className="aspect-video bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center p-0">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-slate-300 dark:bg-slate-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                              <span className="text-2xl">🖼️</span>
+                            </div>
+                            <p className="text-sm text-slate-600 dark:text-slate-400">
+                              Image {index + 1}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </CardContent>
       </Card>

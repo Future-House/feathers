@@ -48,6 +48,15 @@ export {
 
 export { Calendar, CalendarDayButton } from '@/components/calendar';
 
+export {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/carousel';
+
 export { Checkbox } from '@/components/checkbox';
 
 export { FileUploadChat } from '@/components/file-upload-chat';
