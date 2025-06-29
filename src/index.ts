@@ -16,6 +16,7 @@ export * from '@/components/checkbox';
 export * from '@/components/collapsible';
 export * from '@/components/dialog';
 export * from '@/components/drawer';
+export * from '@/components/dropdown-menu';
 export * from '@/components/file-upload-chat';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
