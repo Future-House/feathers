@@ -65,6 +65,19 @@ export {
   CollapsibleContent,
 } from '@/components/collapsible';
 
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/dialog';
+
 export { FileUploadChat } from '@/components/file-upload-chat';
 export type {
   FileUploadChatProps,

@@ -14,6 +14,7 @@ export * from '@/components/carousel';
 export * from '@/components/card';
 export * from '@/components/checkbox';
 export * from '@/components/collapsible';
+export * from '@/components/dialog';
 export * from '@/components/file-upload-chat';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
