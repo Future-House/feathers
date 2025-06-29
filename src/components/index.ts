@@ -115,6 +115,12 @@ export type {
   UploadedFile,
 } from '@/components/file-upload-chat';
 
+export {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@/components/hover-card';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
