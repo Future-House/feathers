@@ -5,6 +5,8 @@ export {
   AccordionContent,
 } from '@/components/accordion';
 
+export { AspectRatio } from '@/components/aspect-ratio';
+
 export { Avatar, AvatarImage, AvatarFallback } from '@/components/avatar';
 
 export { Badge, badgeVariants } from '@/components/badge';
