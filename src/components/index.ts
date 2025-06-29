@@ -59,6 +59,12 @@ export {
 
 export { Checkbox } from '@/components/checkbox';
 
+export {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@/components/collapsible';
+
 export { FileUploadChat } from '@/components/file-upload-chat';
 export type {
   FileUploadChatProps,
