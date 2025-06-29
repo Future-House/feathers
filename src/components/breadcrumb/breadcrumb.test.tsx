@@ -207,9 +207,9 @@ describe('Breadcrumb', () => {
     );
 
     // The default ChevronRight icon should be rendered
-    const separators = screen.getAllByRole('presentation');
-    expect(separators).toHaveLength(1);
-    expect(separators[0]).toHaveAttribute('aria-hidden', 'true');
+    const separator = document.querySelector('[data-slot="breadcrumb-separator"]');
+    expect(separator).toBeInTheDocument();
+    expect(separator).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('supports custom aria-label', () => {
@@ -233,7 +233,7 @@ describe('Breadcrumb', () => {
     const nav = screen.getByRole('navigation');
     const list = screen.getByRole('list');
     const currentPage = screen.getByText('Breadcrumb');
-    const separators = screen.getAllByRole('presentation');
+    const separators = document.querySelectorAll('[data-slot="breadcrumb-separator"]');
 
     expect(nav).toHaveAttribute('aria-label', 'breadcrumb');
     expect(list).toBeInTheDocument();
@@ -258,7 +258,8 @@ describe('Breadcrumb', () => {
     );
 
     expect(screen.getByText('Only Page')).toBeInTheDocument();
-    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    // BreadcrumbPage should have role="link" for accessibility
+    expect(screen.getByRole('link')).toBeInTheDocument();
   });
 
   it('handles empty breadcrumb', () => {

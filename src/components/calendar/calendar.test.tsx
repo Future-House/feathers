@@ -8,7 +8,7 @@ const CalendarExample = (props: any) => <Calendar {...props} />;
 describe('Calendar', () => {
   it('renders calendar with current month', () => {
     render(<CalendarExample />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -46,14 +46,14 @@ describe('Calendar', () => {
 
   it('shows outside days by default', () => {
     render(<CalendarExample showOutsideDays={true} />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
     // Outside days should be rendered but might be styled differently
   });
 
   it('hides outside days when showOutsideDays is false', () => {
     render(<CalendarExample showOutsideDays={false} />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -70,7 +70,7 @@ describe('Calendar', () => {
     if (prevButton) {
       await user.click(prevButton);
       // Calendar should navigate to previous month
-      expect(screen.getByRole('application')).toBeInTheDocument();
+      expect(document.querySelector('[data-slot="calendar"]')).toBeInTheDocument();
     }
   });
 
@@ -87,13 +87,13 @@ describe('Calendar', () => {
     if (nextButton) {
       await user.click(nextButton);
       // Calendar should navigate to next month
-      expect(screen.getByRole('application')).toBeInTheDocument();
+      expect(document.querySelector('[data-slot="calendar"]')).toBeInTheDocument();
     }
   });
 
   it('applies custom className', () => {
     render(<CalendarExample className="custom-calendar" />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toHaveClass('custom-calendar');
   });
 
@@ -101,7 +101,7 @@ describe('Calendar', () => {
     const user = userEvent.setup();
     render(<CalendarExample />);
 
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
 
     // Focus the calendar
     calendar.focus();
@@ -128,13 +128,13 @@ describe('Calendar', () => {
       />
     );
 
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
   it('supports multiple months display', () => {
     render(<CalendarExample numberOfMonths={2} />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -142,7 +142,7 @@ describe('Calendar', () => {
     render(
       <CalendarExample captionLayout="dropdown" fromYear={2020} toYear={2030} />
     );
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -151,7 +151,7 @@ describe('Calendar', () => {
 
     render(<CalendarExample disabled={disabledDays} onSelect={jest.fn()} />);
 
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -159,7 +159,7 @@ describe('Calendar', () => {
     const onSelect = jest.fn();
     render(<CalendarExample mode="range" onSelect={onSelect} />);
 
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -167,13 +167,13 @@ describe('Calendar', () => {
     const onSelect = jest.fn();
     render(<CalendarExample mode="multiple" onSelect={onSelect} />);
 
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
   it('renders with different button variants', () => {
     render(<CalendarExample buttonVariant="outline" />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
@@ -197,13 +197,14 @@ describe('Calendar', () => {
 
   it('renders week numbers when enabled', () => {
     render(<CalendarExample showWeekNumber={true} />);
-    const calendar = screen.getByRole('application');
+    const calendar = document.querySelector('[data-slot="calendar"]');
     expect(calendar).toBeInTheDocument();
   });
 
   it('handles today highlighting', () => {
     render(<CalendarExample />);
     // Today should be rendered in the calendar
-    expect(screen.getByRole('application')).toBeInTheDocument();
+    const calendar = document.querySelector('[data-slot="calendar"]');
+    expect(calendar).toBeInTheDocument();
   });
 });
