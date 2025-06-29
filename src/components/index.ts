@@ -78,6 +78,19 @@ export {
   DialogTrigger,
 } from '@/components/dialog';
 
+export {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/drawer';
+
 export { FileUploadChat } from '@/components/file-upload-chat';
 export type {
   FileUploadChatProps,
