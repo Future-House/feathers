@@ -121,6 +121,8 @@ export {
   HoverCardContent,
 } from '@/components/hover-card';
 
+export { Input } from '@/components/input';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';

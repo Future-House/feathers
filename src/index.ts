@@ -19,6 +19,7 @@ export * from '@/components/drawer';
 export * from '@/components/dropdown-menu';
 export * from '@/components/file-upload-chat';
 export * from '@/components/hover-card';
+export * from '@/components/input';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
 export * from '@/components/theme-toggle';
