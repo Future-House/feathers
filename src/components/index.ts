@@ -195,6 +195,17 @@ export {
 
 export { Separator } from '@/components/separator';
 
+export {
+  Sheet,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/sheet';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
