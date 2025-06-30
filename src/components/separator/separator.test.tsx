@@ -87,11 +87,7 @@ describe('Separator', () => {
     render(<Separator className="my-4 bg-red-500" />);
 
     const separator = screen.getByTestId('separator');
-    expect(separator).toHaveClass(
-      'shrink-0',
-      'my-4',
-      'bg-red-500'
-    );
+    expect(separator).toHaveClass('shrink-0', 'my-4', 'bg-red-500');
   });
 
   it('forwards additional props', () => {

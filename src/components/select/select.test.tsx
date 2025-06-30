@@ -49,7 +49,7 @@ jest.mock('@radix-ui/react-select', () => ({
     );
   },
   Content: ({ children, position, ...props }: any) => (
-    <div data-testid="select-content" position={position} {...props}>
+    <div data-testid="select-content" data-position={position} {...props}>
       {children}
     </div>
   ),
@@ -65,9 +65,9 @@ jest.mock('@radix-ui/react-select', () => ({
     </div>
   ),
   Item: ({ children, value, disabled, ...props }: any) => (
-    <div 
-      data-testid="select-item" 
-      data-value={value} 
+    <div
+      data-testid="select-item"
+      data-value={value}
       data-disabled={disabled}
       {...(disabled && { disabled: true })}
       {...props}
@@ -365,7 +365,7 @@ describe('Select', () => {
     );
 
     expect(screen.getByTestId('select-content')).toHaveAttribute(
-      'position',
+      'data-position',
       'item-aligned'
     );
   });

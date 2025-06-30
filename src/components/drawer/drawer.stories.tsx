@@ -21,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A drawer component for overlaying content on either side or top/bottom of the screen. Built with Vaul primitives and styled with Tailwind CSS.',
+          'A drawer component for overlaying content on either side or top/bottom of the screen. Built with Vaul primitives and styled with Tailwind CSS. Optimized for mobile-first bottom and slide-up interactions.',
       },
     },
   },
