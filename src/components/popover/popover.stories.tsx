@@ -11,7 +11,7 @@ import { Input } from '../input/input';
 import { Label } from '../label/label';
 import {
   Calendar,
-  Settings,
+  Settings as SettingsIcon,
   User,
   Mail,
   Phone,
@@ -305,7 +305,7 @@ function NotificationPopoverComponent() {
             </div>
             <div className="flex gap-3 rounded-lg border p-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-100">
-                <Settings className="h-4 w-4 text-orange-600" />
+                <SettingsIcon className="h-4 w-4 text-orange-600" />
               </div>
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-medium">Settings changed</p>
@@ -370,7 +370,7 @@ function SettingsPopoverComponent() {
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline" size="icon">
-          <Settings className="h-4 w-4" />
+          <SettingsIcon className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent>
