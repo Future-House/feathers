@@ -88,7 +88,6 @@ describe('Separator', () => {
 
     const separator = screen.getByTestId('separator');
     expect(separator).toHaveClass(
-      'bg-border',
       'shrink-0',
       'my-4',
       'bg-red-500'

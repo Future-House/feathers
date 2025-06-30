@@ -3903,23 +3903,30 @@ function App() {
         <CardHeader>
           <CardTitle>Separator Component</CardTitle>
           <CardDescription>
-            Simple visual dividers to organize content sections with accessibility support
+            Simple visual dividers to organize content sections with
+            accessibility support
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-8">
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Basic Horizontal Separator</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Basic Horizontal Separator
+            </h3>
             <div className="w-64 space-y-4">
               <div className="space-y-1">
-                <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="text-sm leading-none font-medium">
+                  Radix Primitives
+                </h4>
+                <p className="text-muted-foreground text-sm">
                   An open-source UI component library.
                 </p>
               </div>
               <Separator />
               <div className="space-y-1">
-                <h4 className="text-sm font-medium leading-none">Installation</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="text-sm leading-none font-medium">
+                  Installation
+                </h4>
+                <p className="text-muted-foreground text-sm">
                   Install the component via your package manager.
                 </p>
               </div>
@@ -3927,7 +3934,9 @@ function App() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Vertical Separators</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Vertical Separators
+            </h3>
             <div className="flex items-center space-x-4 text-sm">
               <div>Blog</div>
               <Separator orientation="vertical" className="h-4" />
@@ -3940,15 +3949,24 @@ function App() {
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-gray-700">In Navigation</h3>
             <nav className="flex items-center space-x-1 text-sm font-medium">
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 Home
               </a>
               <Separator orientation="vertical" className="h-4" />
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 Products
               </a>
               <Separator orientation="vertical" className="h-4" />
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 About
               </a>
               <Separator orientation="vertical" className="h-4" />
@@ -3959,61 +3977,77 @@ function App() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Custom Styling</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Custom Styling
+            </h3>
             <div className="w-64 space-y-6">
               <div className="space-y-1">
-                <h4 className="text-sm font-medium leading-none">Default Separator</h4>
-                <p className="text-sm text-muted-foreground">Standard border styling</p>
+                <h4 className="text-sm leading-none font-medium">
+                  Default Separator
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  Standard border styling
+                </p>
               </div>
               <Separator />
-              
+
               <div className="space-y-1">
-                <h4 className="text-sm font-medium leading-none">Colored Separator</h4>
-                <p className="text-sm text-muted-foreground">Custom color and thickness</p>
+                <h4 className="text-sm leading-none font-medium">
+                  Colored Separator
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  Custom color and thickness
+                </p>
               </div>
-              <Separator className="bg-red-500 h-0.5" />
-              
+              <Separator className="h-0.5 bg-red-500" />
+
               <div className="space-y-1">
-                <h4 className="text-sm font-medium leading-none">Dashed Separator</h4>
-                <p className="text-sm text-muted-foreground">Dashed border style</p>
+                <h4 className="text-sm leading-none font-medium">
+                  Dashed Separator
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  Dashed border style
+                </p>
               </div>
-              <Separator className="border-dashed border-t border-gray-300 bg-transparent h-0" />
+              <Separator className="h-0 border-t border-dashed border-gray-300 bg-transparent" />
             </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">In Card Layout</h3>
-            <div className="w-80 rounded-lg border bg-card text-card-foreground shadow-sm">
+            <h3 className="text-sm font-medium text-gray-700">
+              In Card Layout
+            </h3>
+            <div className="bg-card text-card-foreground w-80 rounded-lg border shadow-sm">
               <div className="flex flex-col space-y-1.5 p-6">
-                <h3 className="text-2xl font-semibold leading-none tracking-tight">
+                <h3 className="text-2xl leading-none font-semibold tracking-tight">
                   Account Settings
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Manage your account preferences
                 </p>
               </div>
-              <div className="p-6 pt-0 space-y-4">
+              <div className="space-y-4 p-6 pt-0">
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Profile Information</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Update your personal details
                   </p>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Security</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Password and authentication settings
                   </p>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Notifications</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Manage your notification preferences
                   </p>
                 </div>

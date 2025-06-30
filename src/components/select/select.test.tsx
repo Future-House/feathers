@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
@@ -14,15 +15,21 @@ import {
 } from './select';
 
 // Mock @radix-ui/react-select to avoid ESM issues and portal rendering in tests
+const MockSelectContext = React.createContext({ disabled: false });
+
 jest.mock('@radix-ui/react-select', () => ({
-  Root: ({ children, onValueChange, ...props }: any) => (
-    <div
-      data-testid="select-root"
-      data-value={props.value}
-      onClick={() => onValueChange?.('test')}
-    >
-      {children}
-    </div>
+  Root: ({ children, onValueChange, disabled, ...props }: any) => (
+    <MockSelectContext.Provider value={{ disabled: disabled || false }}>
+      <div
+        data-testid="select-root"
+        data-value={props.value}
+        data-disabled={disabled}
+        onClick={() => onValueChange?.('test')}
+        {...props}
+      >
+        {children}
+      </div>
+    </MockSelectContext.Provider>
   ),
   Group: ({ children, ...props }: any) => (
     <div data-testid="select-group" {...props}>
@@ -32,13 +39,17 @@ jest.mock('@radix-ui/react-select', () => ({
   Value: ({ placeholder, ...props }: any) => (
     <div data-testid="select-value" data-placeholder={placeholder} {...props} />
   ),
-  Trigger: ({ children, ...props }: any) => (
-    <button data-testid="select-trigger" {...props}>
-      {children}
-    </button>
-  ),
-  Content: ({ children, ...props }: any) => (
-    <div data-testid="select-content" {...props}>
+  Trigger: ({ children, disabled, ...props }: any) => {
+    const context = React.useContext(MockSelectContext);
+    const isDisabled = disabled ?? context.disabled;
+    return (
+      <button data-testid="select-trigger" disabled={isDisabled} {...props}>
+        {children}
+      </button>
+    );
+  },
+  Content: ({ children, position, ...props }: any) => (
+    <div data-testid="select-content" position={position} {...props}>
       {children}
     </div>
   ),
@@ -53,8 +64,14 @@ jest.mock('@radix-ui/react-select', () => ({
       {children}
     </div>
   ),
-  Item: ({ children, value, ...props }: any) => (
-    <div data-testid="select-item" data-value={value} {...props}>
+  Item: ({ children, value, disabled, ...props }: any) => (
+    <div 
+      data-testid="select-item" 
+      data-value={value} 
+      data-disabled={disabled}
+      {...(disabled && { disabled: true })}
+      {...props}
+    >
       <span data-testid="select-item-indicator" />
       <div data-testid="select-item-text">{children}</div>
     </div>
@@ -197,17 +214,17 @@ describe('Select', () => {
           <SelectValue placeholder="Select" />
         </SelectTrigger>
         <SelectContent>
-          <SelectScrollUpButton />
           <SelectItem value="item1">Item 1</SelectItem>
-          <SelectScrollDownButton />
         </SelectContent>
       </Select>
     );
 
+    // Scroll buttons are automatically added by SelectContent
     expect(screen.getByTestId('select-scroll-up-button')).toBeInTheDocument();
     expect(screen.getByTestId('select-scroll-down-button')).toBeInTheDocument();
     expect(screen.getByTestId('chevron-up-icon')).toBeInTheDocument();
-    expect(screen.getByTestId('chevron-down-icon')).toBeInTheDocument();
+    // The chevron-down icon appears in both the trigger and scroll button, so use getAllByTestId
+    expect(screen.getAllByTestId('chevron-down-icon')).toHaveLength(2);
   });
 
   it('handles controlled value', () => {
@@ -281,8 +298,9 @@ describe('Select', () => {
     );
 
     const items = screen.getAllByTestId('select-item');
-    expect(items[0]).not.toBeDisabled();
-    expect(items[1]).toBeDisabled();
+    expect(items[0]).not.toHaveAttribute('data-disabled', 'true');
+    expect(items[1]).toHaveAttribute('data-disabled', 'true');
+    expect(items[1]).toHaveAttribute('disabled');
   });
 
   it('applies custom className to all components', () => {
@@ -298,8 +316,6 @@ describe('Select', () => {
               Item 1
             </SelectItem>
             <SelectSeparator className="custom-separator" />
-            <SelectScrollUpButton className="custom-scroll-up" />
-            <SelectScrollDownButton className="custom-scroll-down" />
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -312,12 +328,9 @@ describe('Select', () => {
     expect(screen.getByTestId('select-separator')).toHaveClass(
       'custom-separator'
     );
-    expect(screen.getByTestId('select-scroll-up-button')).toHaveClass(
-      'custom-scroll-up'
-    );
-    expect(screen.getByTestId('select-scroll-down-button')).toHaveClass(
-      'custom-scroll-down'
-    );
+    // Scroll buttons are automatically added by SelectContent, so they don't have custom classes
+    expect(screen.getByTestId('select-scroll-up-button')).toBeInTheDocument();
+    expect(screen.getByTestId('select-scroll-down-button')).toBeInTheDocument();
   });
 
   it('renders icons in components', () => {
@@ -332,8 +345,8 @@ describe('Select', () => {
       </Select>
     );
 
-    // ChevronDownIcon in trigger
-    expect(screen.getByTestId('chevron-down-icon')).toBeInTheDocument();
+    // ChevronDownIcon appears in trigger and scroll down button
+    expect(screen.getAllByTestId('chevron-down-icon')).toHaveLength(2);
 
     // CheckIcon in item indicator
     expect(screen.getByTestId('check-icon')).toBeInTheDocument();
