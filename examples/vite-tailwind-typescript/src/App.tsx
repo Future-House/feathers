@@ -72,6 +72,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
+  Label,
   ThemeToggle,
 } from '@future-house/feathers';
 import {
@@ -264,9 +265,10 @@ function App() {
               </h3>
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm font-medium">Text Input</label>
+                  <Label htmlFor="name-input">Text Input</Label>
                   <Input
                     type="text"
+                    id="name-input"
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={e =>
@@ -275,9 +277,10 @@ function App() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Email Input</label>
+                  <Label htmlFor="email-input">Email Input</Label>
                   <Input
                     type="email"
+                    id="email-input"
                     placeholder="name@example.com"
                     value={formData.email}
                     onChange={e =>
@@ -503,6 +506,52 @@ function App() {
                       </InputOTPGroup>
                     </InputOTP>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                Label Component Examples
+              </h3>
+              <div className="space-y-3">
+                <div>
+                  <Label htmlFor="styled-input">Styled Input with Label</Label>
+                  <Input
+                    type="text"
+                    id="styled-input"
+                    placeholder="This input uses the Label component"
+                  />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="terms-checkbox" />
+                  <Label htmlFor="terms-checkbox">
+                    I agree to the terms and conditions
+                  </Label>
+                </div>
+                <div>
+                  <Label htmlFor="required-field">
+                    Required Field <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    type="email"
+                    id="required-field"
+                    placeholder="This field is required"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label
+                    htmlFor="custom-styled"
+                    className="font-semibold text-blue-600"
+                  >
+                    Custom Styled Label
+                  </Label>
+                  <Input
+                    type="text"
+                    id="custom-styled"
+                    placeholder="Input with custom label styling"
+                  />
                 </div>
               </div>
             </div>

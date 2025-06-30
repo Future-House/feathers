@@ -130,6 +130,8 @@ export {
   InputOTPSeparator,
 } from '@/components/input-otp';
 
+export { Label } from '@/components/label';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
