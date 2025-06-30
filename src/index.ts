@@ -32,6 +32,7 @@ export * from '@/components/select';
 export * from '@/components/separator';
 export * from '@/components/sheet';
 export * from '@/components/skeleton';
+export * from '@/components/slider';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
 export * from '@/components/theme-toggle';
