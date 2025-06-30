@@ -216,6 +216,8 @@ export { Switch } from '@/components/switch';
 
 export { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/tabs';
 
+export { Textarea } from '@/components/textarea';
+
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
 
 export { ThemeToggle } from '@/components/theme-toggle';
