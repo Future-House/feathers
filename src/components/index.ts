@@ -178,6 +178,8 @@ export {
   ResizableHandle,
 } from '@/components/resizable';
 
+export { ScrollArea, ScrollBar } from '@/components/scroll-area';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';

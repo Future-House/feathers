@@ -94,6 +94,8 @@ import {
   ResizablePanelGroup,
   ResizablePanel,
   ResizableHandle,
+  ScrollArea,
+  ScrollBar,
   ThemeToggle,
 } from '@future-house/feathers';
 import {
@@ -3550,12 +3552,15 @@ function App() {
         <CardHeader>
           <CardTitle>Resizable Panel Groups</CardTitle>
           <CardDescription>
-            Interactive resizable layouts with drag handles and keyboard navigation
+            Interactive resizable layouts with drag handles and keyboard
+            navigation
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-8">
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Horizontal Layout</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Horizontal Layout
+            </h3>
             <div className="h-[300px] w-full">
               <ResizablePanelGroup
                 direction="horizontal"
@@ -3595,7 +3600,9 @@ function App() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Nested Layout with Sidebar</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Nested Layout with Sidebar
+            </h3>
             <div className="h-[400px] w-full">
               <ResizablePanelGroup
                 direction="horizontal"
@@ -3622,7 +3629,9 @@ function App() {
                       <div className="flex h-full items-center justify-center p-4">
                         <Card className="w-full">
                           <CardHeader>
-                            <CardTitle className="text-sm">Main Content</CardTitle>
+                            <CardTitle className="text-sm">
+                              Main Content
+                            </CardTitle>
                           </CardHeader>
                           <CardContent className="text-xs">
                             <p className="text-muted-foreground">
@@ -3637,7 +3646,9 @@ function App() {
                       <div className="flex h-full items-center justify-center p-4">
                         <Card className="w-full">
                           <CardHeader>
-                            <CardTitle className="text-sm">Details Panel</CardTitle>
+                            <CardTitle className="text-sm">
+                              Details Panel
+                            </CardTitle>
                           </CardHeader>
                           <CardContent className="text-xs">
                             <p className="text-muted-foreground">
@@ -3654,7 +3665,7 @@ function App() {
           </div>
 
           <div className="bg-muted rounded-md p-4 text-sm">
-            <h4 className="font-medium mb-2">Resizable Panel Features:</h4>
+            <h4 className="mb-2 font-medium">Resizable Panel Features:</h4>
             <ul className="grid grid-cols-1 gap-1 md:grid-cols-2">
               <li>• Drag-to-resize with mouse or touch</li>
               <li>• Keyboard navigation support</li>
@@ -3664,6 +3675,93 @@ function App() {
               <li>• Minimum and maximum size constraints</li>
               <li>• Optional visual grip handles</li>
               <li>• Automatic state persistence</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Scroll Area Component</CardTitle>
+          <CardDescription>
+            Custom styled scrollbars for cross-browser consistency and better UX
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-8">
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">Basic Vertical Scroll</h3>
+            <ScrollArea className="h-72 w-48 rounded-md border">
+              <div className="p-4">
+                <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+                {Array.from({ length: 50 }).map((_, i) => (
+                  <div key={i} className="text-sm">
+                    Tag {i + 1}
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">Horizontal Scroll</h3>
+            <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+              <div className="flex w-max space-x-4 p-4">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="shrink-0 rounded-md border border-slate-200 w-24 h-16 flex items-center justify-center bg-slate-50"
+                  >
+                    <span className="text-xs font-medium">Item {i + 1}</span>
+                  </div>
+                ))}
+              </div>
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">Chat Messages</h3>
+            <Card className="w-80">
+              <CardHeader>
+                <CardTitle className="text-base">Recent Messages</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <ScrollArea className="h-64 px-4 pb-4">
+                  <div className="space-y-3">
+                    {Array.from({ length: 20 }).map((_, i) => (
+                      <div key={i} className="flex flex-col space-y-1">
+                        <div className="flex items-center space-x-2">
+                          <span className="text-sm font-semibold">
+                            {i % 3 === 0 ? 'Alice' : i % 3 === 1 ? 'Bob' : 'Charlie'}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {Math.floor(Math.random() * 12) + 1}:
+                            {String(Math.floor(Math.random() * 60)).padStart(2, '0')} 
+                            {Math.random() > 0.5 ? 'AM' : 'PM'}
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Message {i + 1}: This is some example chat content that demonstrates scrolling.
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="bg-muted rounded-md p-4 text-sm">
+            <h4 className="font-medium mb-2">ScrollArea Features:</h4>
+            <ul className="grid grid-cols-1 gap-1 md:grid-cols-2">
+              <li>• Custom styled scrollbars</li>
+              <li>• Cross-browser consistency</li>
+              <li>• Horizontal and vertical scrolling</li>
+              <li>• Keyboard navigation support</li>
+              <li>• Touch-friendly scrolling</li>
+              <li>• Customizable scroll behavior</li>
+              <li>• Nested scroll areas support</li>
+              <li>• Accessibility compliant</li>
             </ul>
           </div>
         </CardContent>
