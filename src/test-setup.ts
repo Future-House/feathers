@@ -33,3 +33,13 @@ window.getComputedStyle = (element: Element, pseudoElt?: string | null) => {
     },
   } as CSSStyleDeclaration;
 };
+
+// Polyfill for ResizeObserver (required by input-otp)
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
+
+// Polyfill for document.elementFromPoint (required by input-otp)
+document.elementFromPoint = jest.fn().mockReturnValue(null);

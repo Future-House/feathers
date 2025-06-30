@@ -68,6 +68,10 @@ import {
   HoverCardTrigger,
   HoverCardContent,
   Input,
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
   ThemeToggle,
 } from '@future-house/feathers';
 import {
@@ -437,6 +441,68 @@ function App() {
                 <div>
                   <label className="text-sm font-medium">Range Input</label>
                   <Input type="range" min="0" max="100" defaultValue="50" />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                OTP Input Examples
+              </h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="text-sm font-medium">
+                    Basic OTP (6 digits)
+                  </label>
+                  <div className="flex justify-center">
+                    <InputOTP maxLength={6}>
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                        <InputOTPSlot index={3} />
+                        <InputOTPSlot index={4} />
+                        <InputOTPSlot index={5} />
+                      </InputOTPGroup>
+                    </InputOTP>
+                  </div>
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Two-Factor Auth</label>
+                  <div className="flex justify-center">
+                    <InputOTP maxLength={6} pattern="^[0-9]+$">
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                      </InputOTPGroup>
+                      <InputOTPSeparator />
+                      <InputOTPGroup>
+                        <InputOTPSlot index={3} />
+                        <InputOTPSlot index={4} />
+                        <InputOTPSlot index={5} />
+                      </InputOTPGroup>
+                    </InputOTP>
+                  </div>
+                </div>
+                <div>
+                  <label className="text-sm font-medium">
+                    Phone Verification (4 digits)
+                  </label>
+                  <div className="flex justify-center">
+                    <InputOTP
+                      maxLength={4}
+                      pattern="^[0-9]+$"
+                      inputMode="numeric"
+                    >
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                        <InputOTPSlot index={3} />
+                      </InputOTPGroup>
+                    </InputOTP>
+                  </div>
                 </div>
               </div>
             </div>

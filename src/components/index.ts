@@ -123,6 +123,13 @@ export {
 
 export { Input } from '@/components/input';
 
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from '@/components/input-otp';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
