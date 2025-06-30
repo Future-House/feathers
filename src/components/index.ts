@@ -193,6 +193,8 @@ export {
   SelectValue,
 } from '@/components/select';
 
+export { Separator } from '@/components/separator';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';

@@ -29,6 +29,7 @@ export * from '@/components/radio-group';
 export * from '@/components/resizable';
 export * from '@/components/scroll-area';
 export * from '@/components/select';
+export * from '@/components/separator';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
 export * from '@/components/theme-toggle';
