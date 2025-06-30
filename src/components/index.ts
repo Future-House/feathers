@@ -218,6 +218,8 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/tabs';
 
 export { Textarea } from '@/components/textarea';
 
+export { Toggle, toggleVariants } from '@/components/toggle';
+
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
 
 export { ThemeToggle } from '@/components/theme-toggle';
