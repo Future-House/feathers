@@ -214,6 +214,8 @@ export { Toaster } from '@/components/sonner';
 
 export { Switch } from '@/components/switch';
 
+export { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/tabs';
+
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
 
 export { ThemeToggle } from '@/components/theme-toggle';
