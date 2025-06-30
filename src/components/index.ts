@@ -206,6 +206,8 @@ export {
   SheetDescription,
 } from '@/components/sheet';
 
+export { Skeleton } from '@/components/skeleton';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
