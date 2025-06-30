@@ -210,6 +210,8 @@ export { Skeleton } from '@/components/skeleton';
 
 export { Slider } from '@/components/slider';
 
+export { Toaster } from '@/components/sonner';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
