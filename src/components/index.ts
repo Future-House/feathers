@@ -180,6 +180,19 @@ export {
 
 export { ScrollArea, ScrollBar } from '@/components/scroll-area';
 
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/select';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
