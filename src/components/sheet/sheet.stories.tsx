@@ -12,7 +12,7 @@ import {
 } from './sheet';
 
 const meta: Meta<typeof Sheet> = {
-  title: 'Sheet',
+  title: 'Components/Sheet',
   component: Sheet,
   parameters: {
     layout: 'centered',
