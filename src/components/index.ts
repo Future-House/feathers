@@ -163,6 +163,13 @@ export {
   navigationMenuTriggerStyle,
 } from '@/components/navigation-menu';
 
+export {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+} from '@/components/popover';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
