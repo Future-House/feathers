@@ -38,6 +38,7 @@ export * from '@/components/switch';
 export * from '@/components/tabs';
 export * from '@/components/textarea';
 export * from '@/components/toggle';
+export * from '@/components/toggle-group';
 export * from '@/components/theme-provider';
 export * from '@/components/theme-toggle';
 export * from '@/components/tooltip';

@@ -220,6 +220,8 @@ export { Textarea } from '@/components/textarea';
 
 export { Toggle, toggleVariants } from '@/components/toggle';
 
+export { ToggleGroup, ToggleGroupItem } from '@/components/toggle-group';
+
 export { ThemeProvider, useTheme } from '@/components/theme-provider';
 
 export { ThemeToggle } from '@/components/theme-toggle';
