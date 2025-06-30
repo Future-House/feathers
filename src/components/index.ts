@@ -170,6 +170,8 @@ export {
   PopoverAnchor,
 } from '@/components/popover';
 
+export { RadioGroup, RadioGroupItem } from '@/components/radio-group';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';

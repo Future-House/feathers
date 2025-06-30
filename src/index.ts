@@ -25,6 +25,7 @@ export * from '@/components/label';
 export * from '@/components/menubar';
 export * from '@/components/navigation-menu';
 export * from '@/components/popover';
+export * from '@/components/radio-group';
 export * from '@/components/switch';
 export * from '@/components/theme-provider';
 export * from '@/components/theme-toggle';
