@@ -7,6 +7,7 @@ export default {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
+  transformIgnorePatterns: ['node_modules/(?!(react-resizable-panels)/)'],
   transform: {
     '^.+\\.(ts|tsx)$': [
       'ts-jest',

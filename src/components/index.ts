@@ -172,6 +172,12 @@ export {
 
 export { RadioGroup, RadioGroupItem } from '@/components/radio-group';
 
+export {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from '@/components/resizable';
+
 export { Switch } from '@/components/switch';
 
 export { ThemeProvider, useTheme } from '@/components/theme-provider';

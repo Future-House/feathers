@@ -91,6 +91,9 @@ import {
   PopoverTrigger,
   RadioGroup,
   RadioGroupItem,
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
   ThemeToggle,
 } from '@future-house/feathers';
 import {
@@ -3417,52 +3420,72 @@ function App() {
         <CardHeader>
           <CardTitle>RadioGroup Component</CardTitle>
           <CardDescription>
-            Selection controls for mutually exclusive options with proper accessibility
+            Selection controls for mutually exclusive options with proper
+            accessibility
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-8">
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Payment Method Selection</h3>
+            <h3 className="text-sm font-medium text-gray-700">
+              Payment Method Selection
+            </h3>
             <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="card" id="card-example" />
-                <Label htmlFor="card-example" className="flex items-center gap-2 font-normal">
+                <Label
+                  htmlFor="card-example"
+                  className="flex items-center gap-2 font-normal"
+                >
                   💳 Credit Card
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="paypal" id="paypal-example" />
-                <Label htmlFor="paypal-example" className="flex items-center gap-2 font-normal">
+                <Label
+                  htmlFor="paypal-example"
+                  className="flex items-center gap-2 font-normal"
+                >
                   🅿️ PayPal
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="apple" id="apple-example" />
-                <Label htmlFor="apple-example" className="flex items-center gap-2 font-normal">
+                <Label
+                  htmlFor="apple-example"
+                  className="flex items-center gap-2 font-normal"
+                >
                   🍎 Apple Pay
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="google" id="google-example" />
-                <Label htmlFor="google-example" className="flex items-center gap-2 font-normal">
+                <Label
+                  htmlFor="google-example"
+                  className="flex items-center gap-2 font-normal"
+                >
                   🌐 Google Pay
                 </Label>
               </div>
             </RadioGroup>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Selected payment method: <strong>{paymentMethod}</strong>
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">Notification Settings</h3>
-            <RadioGroup value={notificationFrequency} onValueChange={setNotificationFrequency}>
+            <h3 className="text-sm font-medium text-gray-700">
+              Notification Settings
+            </h3>
+            <RadioGroup
+              value={notificationFrequency}
+              onValueChange={setNotificationFrequency}
+            >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="immediate" id="immediate-example" />
                 <Label htmlFor="immediate-example" className="font-normal">
                   <div className="grid gap-1.5 leading-none">
                     <div>Immediate</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       Get notified as soon as something happens
                     </div>
                   </div>
@@ -3473,7 +3496,7 @@ function App() {
                 <Label htmlFor="daily-example" className="font-normal">
                   <div className="grid gap-1.5 leading-none">
                     <div>Daily digest</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       A summary of all activities sent once a day
                     </div>
                   </div>
@@ -3484,7 +3507,7 @@ function App() {
                 <Label htmlFor="weekly-example" className="font-normal">
                   <div className="grid gap-1.5 leading-none">
                     <div>Weekly summary</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       A comprehensive report sent every week
                     </div>
                   </div>
@@ -3495,20 +3518,20 @@ function App() {
                 <Label htmlFor="never-example" className="font-normal">
                   <div className="grid gap-1.5 leading-none">
                     <div>Never</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       Disable all notifications
                     </div>
                   </div>
                 </Label>
               </div>
             </RadioGroup>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Notification frequency: <strong>{notificationFrequency}</strong>
             </p>
           </div>
 
           <div className="bg-muted rounded-md p-4 text-sm">
-            <h4 className="font-medium mb-2">RadioGroup Features:</h4>
+            <h4 className="mb-2 font-medium">RadioGroup Features:</h4>
             <ul className="grid grid-cols-1 gap-1 md:grid-cols-2">
               <li>• Mutually exclusive selection</li>
               <li>• Keyboard navigation support</li>
@@ -3518,6 +3541,129 @@ function App() {
               <li>• Individual item disable states</li>
               <li>• Horizontal and vertical orientation</li>
               <li>• Form integration support</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Resizable Panel Groups</CardTitle>
+          <CardDescription>
+            Interactive resizable layouts with drag handles and keyboard navigation
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-8">
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">Horizontal Layout</h3>
+            <div className="h-[300px] w-full">
+              <ResizablePanelGroup
+                direction="horizontal"
+                className="min-h-[200px] max-w-md rounded-lg border"
+              >
+                <ResizablePanel defaultSize={50}>
+                  <div className="flex h-full items-center justify-center p-4">
+                    <Card className="w-full">
+                      <CardHeader>
+                        <CardTitle className="text-sm">Left Panel</CardTitle>
+                      </CardHeader>
+                      <CardContent className="text-xs">
+                        <p className="text-muted-foreground">
+                          Drag the handle to resize this panel
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </ResizablePanel>
+                <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={50}>
+                  <div className="flex h-full items-center justify-center p-4">
+                    <Card className="w-full">
+                      <CardHeader>
+                        <CardTitle className="text-sm">Right Panel</CardTitle>
+                      </CardHeader>
+                      <CardContent className="text-xs">
+                        <p className="text-muted-foreground">
+                          This panel adjusts automatically
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700">Nested Layout with Sidebar</h3>
+            <div className="h-[400px] w-full">
+              <ResizablePanelGroup
+                direction="horizontal"
+                className="min-h-[200px] max-w-2xl rounded-lg border"
+              >
+                <ResizablePanel defaultSize={25} minSize={15} collapsible>
+                  <div className="flex h-full items-center justify-center p-4">
+                    <Card className="w-full">
+                      <CardHeader>
+                        <CardTitle className="text-sm">Sidebar</CardTitle>
+                      </CardHeader>
+                      <CardContent className="text-xs">
+                        <p className="text-muted-foreground">
+                          Navigation sidebar (collapsible)
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </ResizablePanel>
+                <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={75}>
+                  <ResizablePanelGroup direction="vertical">
+                    <ResizablePanel defaultSize={60}>
+                      <div className="flex h-full items-center justify-center p-4">
+                        <Card className="w-full">
+                          <CardHeader>
+                            <CardTitle className="text-sm">Main Content</CardTitle>
+                          </CardHeader>
+                          <CardContent className="text-xs">
+                            <p className="text-muted-foreground">
+                              Primary content area with nested vertical layout
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </ResizablePanel>
+                    <ResizableHandle />
+                    <ResizablePanel defaultSize={40}>
+                      <div className="flex h-full items-center justify-center p-4">
+                        <Card className="w-full">
+                          <CardHeader>
+                            <CardTitle className="text-sm">Details Panel</CardTitle>
+                          </CardHeader>
+                          <CardContent className="text-xs">
+                            <p className="text-muted-foreground">
+                              Additional details and information
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </ResizablePanel>
+                  </ResizablePanelGroup>
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </div>
+          </div>
+
+          <div className="bg-muted rounded-md p-4 text-sm">
+            <h4 className="font-medium mb-2">Resizable Panel Features:</h4>
+            <ul className="grid grid-cols-1 gap-1 md:grid-cols-2">
+              <li>• Drag-to-resize with mouse or touch</li>
+              <li>• Keyboard navigation support</li>
+              <li>• Horizontal and vertical layouts</li>
+              <li>• Nested panel groups</li>
+              <li>• Collapsible panels</li>
+              <li>• Minimum and maximum size constraints</li>
+              <li>• Optional visual grip handles</li>
+              <li>• Automatic state persistence</li>
             </ul>
           </div>
         </CardContent>
