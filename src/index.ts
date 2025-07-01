@@ -1,6 +1,9 @@
 // Utils
 export { cn } from '@/lib/utils';
 
+// Hooks
+export * from '@/hooks';
+
 // Components
 export * from '@/components/accordion';
 export * from '@/components/alert-dialog';

@@ -76,6 +76,37 @@ execSync(
   { stdio: 'inherit' }
 );
 
+console.log('📦 Building hooks...');
+fs.mkdirSync('dist/hooks', { recursive: true });
+
+// Build individual hook files
+const hooksDir = 'src/hooks';
+if (fs.existsSync(hooksDir)) {
+  const hookFiles = fs
+    .readdirSync(hooksDir, { withFileTypes: true })
+    .filter(
+      item =>
+        item.isFile() && item.name.endsWith('.ts') && item.name !== 'index.ts'
+    )
+    .map(item => item.name);
+
+  hookFiles.forEach(hookFile => {
+    const baseName = hookFile.replace('.ts', '');
+    execSync(
+      `npx babel src/hooks/${hookFile} --config-file ./babel.config.json --out-file dist/hooks/${baseName}.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+      { stdio: 'inherit' }
+    );
+  });
+
+  // Build hooks index
+  if (fs.existsSync('src/hooks/index.ts')) {
+    execSync(
+      `npx babel src/hooks/index.ts --config-file ./babel.config.json --out-file dist/hooks/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+      { stdio: 'inherit' }
+    );
+  }
+}
+
 console.log('📦 Building icons...');
 fs.mkdirSync('dist/icons', { recursive: true });
 execSync(
@@ -111,16 +142,30 @@ console.log('📝 Organizing TypeScript declarations...');
 function fixPathAliases(filePath, isComponentIndex = false) {
   try {
     let content = fs.readFileSync(filePath, 'utf8');
-    // Replace @/lib paths with relative paths
-    content = content.replace(/@\/lib\//g, './lib/');
-    // Replace @/components paths with relative paths
-    if (isComponentIndex) {
-      // For components/index.d.ts, replace @/components/ with ./
-      content = content.replace(/@\/components\//g, './');
+
+    // Determine if this is a component file based on the path
+    const isComponentFile =
+      filePath.includes('/components/') &&
+      !filePath.includes('/components/index.d.ts');
+
+    if (isComponentFile) {
+      // For individual component files, use relative paths to parent directories
+      content = content.replace(/@\/lib\//g, '../../lib/');
+      content = content.replace(/@\/hooks/g, '../../hooks');
+      content = content.replace(/@\/components\//g, '../');
     } else {
-      // For main index.d.ts, replace @/components/ with ./components/
-      content = content.replace(/@\/components\//g, './components/');
+      // For main index.d.ts and other files
+      content = content.replace(/@\/lib\//g, './lib/');
+      content = content.replace(/@\/hooks/g, './hooks');
+      if (isComponentIndex) {
+        // For components/index.d.ts, replace @/components/ with ./
+        content = content.replace(/@\/components\//g, './');
+      } else {
+        // For main index.d.ts, replace @/components/ with ./components/
+        content = content.replace(/@\/components\//g, './components/');
+      }
     }
+
     fs.writeFileSync(filePath, content);
   } catch (e) {
     console.warn(`Warning: Could not fix path aliases in ${filePath}`);
@@ -155,6 +200,8 @@ componentFiles.forEach(component => {
       execSync(
         `cp ${sourceMapFile} dist/components/${component}/${component}.d.ts.map`
       );
+      // Fix path aliases in component declarations
+      fixPathAliases(`dist/components/${component}/${component}.d.ts`);
     }
 
     // Copy index declarations if they exist
@@ -163,6 +210,8 @@ componentFiles.forEach(component => {
       execSync(
         `cp ${indexSourceMapFile} dist/components/${component}/index.d.ts.map`
       );
+      // Fix path aliases in component index declarations
+      fixPathAliases(`dist/components/${component}/index.d.ts`);
     }
   } catch (e) {
     console.warn(`Warning: Could not copy declarations for ${component}`);
@@ -191,6 +240,46 @@ try {
   }
 } catch (e) {
   console.warn('Warning: Could not copy lib utility declarations');
+}
+
+// Copy hooks declarations
+try {
+  if (fs.existsSync('temp-types/hooks')) {
+    fs.mkdirSync('dist/hooks', { recursive: true });
+
+    // Copy individual hook files
+    const hookFiles = fs
+      .readdirSync('temp-types/hooks', { withFileTypes: true })
+      .filter(
+        item =>
+          item.isFile() &&
+          item.name.endsWith('.d.ts') &&
+          item.name !== 'index.d.ts'
+      )
+      .map(item => item.name);
+
+    hookFiles.forEach(hookFile => {
+      const baseName = hookFile.replace('.d.ts', '');
+      if (fs.existsSync(`temp-types/hooks/${hookFile}`)) {
+        execSync(`cp temp-types/hooks/${hookFile} dist/hooks/${hookFile}`);
+        // Copy source map if it exists
+        if (fs.existsSync(`temp-types/hooks/${baseName}.d.ts.map`)) {
+          execSync(
+            `cp temp-types/hooks/${baseName}.d.ts.map dist/hooks/${baseName}.d.ts.map`
+          );
+        }
+      }
+    });
+
+    // Copy hooks index declarations
+    if (fs.existsSync('temp-types/hooks/index.d.ts')) {
+      execSync(`cp temp-types/hooks/index.d.ts dist/hooks/index.d.ts`);
+      execSync(`cp temp-types/hooks/index.d.ts.map dist/hooks/index.d.ts.map`);
+      fixPathAliases('dist/hooks/index.d.ts');
+    }
+  }
+} catch (e) {
+  console.warn('Warning: Could not copy hooks declarations');
 }
 
 // Copy icons declarations
