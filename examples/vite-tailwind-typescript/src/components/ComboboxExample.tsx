@@ -87,10 +87,10 @@ export default function ComboboxExample() {
             />
           </div>
         </div>
-        
-        <div className="rounded-lg border p-4 bg-muted/50">
-          <h4 className="text-sm font-medium mb-2">Selected Values:</h4>
-          <div className="grid grid-cols-1 gap-2 text-sm text-muted-foreground">
+
+        <div className="bg-muted/50 rounded-lg border p-4">
+          <h4 className="mb-2 text-sm font-medium">Selected Values:</h4>
+          <div className="text-muted-foreground grid grid-cols-1 gap-2 text-sm">
             <div>
               <span className="font-medium">Framework:</span>{' '}
               {framework || 'None selected'}
@@ -106,7 +106,7 @@ export default function ComboboxExample() {
           </div>
         </div>
 
-        <div className="text-sm text-muted-foreground">
+        <div className="text-muted-foreground text-sm">
           <p>
             <strong>Features:</strong> Type to search, keyboard navigation with
             arrow keys, press Enter to select, supports disabled options, and
