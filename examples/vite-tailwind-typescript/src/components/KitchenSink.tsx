@@ -30,6 +30,7 @@ import SkeletonExample from './SkeletonExample';
 import SliderExample from './SliderExample';
 import SonnerExample from './SonnerExample';
 import SheetExample from './SheetExample';
+import SidebarExample from './SidebarExample';
 import TabsExample from './TabsExample';
 import CardExample from './CardExample';
 
@@ -65,9 +66,10 @@ export default function KitchenSink() {
       <SliderExample />
       <SonnerExample />
       <SheetExample />
+      <SidebarExample />
       <TabsExample />
       <CardExample />
-      
+
       <Toaster />
     </div>
   );
