@@ -12,6 +12,7 @@ import ToggleExample from './ToggleExample';
 import ToggleGroupExample from './ToggleGroupExample';
 import ButtonExample from './ButtonExample';
 import CheckboxExample from './CheckboxExample';
+import ComboboxExample from './ComboboxExample';
 import AlertDialogExample from './AlertDialogExample';
 import CalendarExample from './CalendarExample';
 import AspectRatioExample from './AspectRatioExample';
@@ -48,6 +49,7 @@ export default function KitchenSink() {
       <ToggleGroupExample />
       <ButtonExample />
       <CheckboxExample />
+      <ComboboxExample />
       <AlertDialogExample />
       <CalendarExample />
       <AspectRatioExample />

@@ -41,7 +41,8 @@ export default function SidebarExample() {
       <CardHeader>
         <CardTitle>Sidebar Component</CardTitle>
         <CardDescription>
-          A comprehensive sidebar with collapsible states, nested menus, and responsive design
+          A comprehensive sidebar with collapsible states, nested menus, and
+          responsive design
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -58,8 +59,12 @@ export default function SidebarExample() {
                             <House className="size-4" />
                           </div>
                           <div className="grid flex-1 text-left text-sm leading-tight">
-                            <span className="truncate font-semibold">Feathers UI</span>
-                            <span className="truncate text-xs">Component Library</span>
+                            <span className="truncate font-semibold">
+                              Feathers UI
+                            </span>
+                            <span className="truncate text-xs">
+                              Component Library
+                            </span>
                           </div>
                         </a>
                       </SidebarMenuButton>
@@ -175,11 +180,11 @@ export default function SidebarExample() {
             </div>
           </SidebarProvider>
         </div>
-        <div className="mt-4 text-sm text-muted-foreground">
+        <div className="text-muted-foreground mt-4 text-sm">
           <p>
-            <strong>Features:</strong> Collapsible to icon mode, tooltips on hover, 
-            keyboard shortcut (Ctrl/Cmd + B), responsive mobile design, badge notifications, 
-            nested menu support, and customizable variants.
+            <strong>Features:</strong> Collapsible to icon mode, tooltips on
+            hover, keyboard shortcut (Ctrl/Cmd + B), responsive mobile design,
+            badge notifications, nested menu support, and customizable variants.
           </p>
         </div>
       </CardContent>

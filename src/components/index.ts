@@ -259,3 +259,21 @@ export {
   SidebarTrigger,
   useSidebar,
 } from '@/components/sidebar';
+
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from '@/components/command';
+
+export {
+  Combobox,
+  type ComboboxOption,
+  type ComboboxProps,
+} from '@/components/combobox';
