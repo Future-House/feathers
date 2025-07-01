@@ -82,9 +82,7 @@ export default function MenubarExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Simple Menubar
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Simple Menubar</h3>
           <Menubar>
             <MenubarMenu>
               <MenubarTrigger>Actions</MenubarTrigger>

@@ -61,8 +61,8 @@ export default function AlertDialogExample() {
               <AlertDialogHeader>
                 <AlertDialogTitle>Delete Item</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This item will be permanently removed from your library.
-                  This action cannot be undone.
+                  This item will be permanently removed from your library. This
+                  action cannot be undone.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -121,9 +121,7 @@ export default function AlertDialogExample() {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Maybe Later</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={() => setAlertAction('Subscribed')}
-                >
+                <AlertDialogAction onClick={() => setAlertAction('Subscribed')}>
                   Subscribe Now
                 </AlertDialogAction>
               </AlertDialogFooter>

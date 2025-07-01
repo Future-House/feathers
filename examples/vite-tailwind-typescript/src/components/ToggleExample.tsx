@@ -64,11 +64,7 @@ export default function ToggleExample() {
                   <Toggle variant="default" aria-label="Bold">
                     <Bell />
                   </Toggle>
-                  <Toggle
-                    variant="default"
-                    defaultPressed
-                    aria-label="Italic"
-                  >
+                  <Toggle variant="default" defaultPressed aria-label="Italic">
                     <Mail />
                   </Toggle>
                 </div>
@@ -79,11 +75,7 @@ export default function ToggleExample() {
                   <Toggle variant="outline" aria-label="Bold">
                     <Bell />
                   </Toggle>
-                  <Toggle
-                    variant="outline"
-                    defaultPressed
-                    aria-label="Italic"
-                  >
+                  <Toggle variant="outline" defaultPressed aria-label="Italic">
                     <Mail />
                   </Toggle>
                 </div>
@@ -92,9 +84,7 @@ export default function ToggleExample() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">
-              Toggle Sizes
-            </h3>
+            <h3 className="text-sm font-medium text-gray-700">Toggle Sizes</h3>
             <div className="space-y-3">
               <div>
                 <p className="mb-2 text-sm font-medium">Small</p>
@@ -118,9 +108,7 @@ export default function ToggleExample() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">
-              Toggle States
-            </h3>
+            <h3 className="text-sm font-medium text-gray-700">Toggle States</h3>
             <div className="space-y-3">
               <div>
                 <p className="mb-2 text-sm font-medium">Normal</p>

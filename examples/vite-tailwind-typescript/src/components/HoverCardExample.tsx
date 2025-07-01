@@ -52,8 +52,7 @@ export default function HoverCardExample() {
                     <div className="space-y-1">
                       <h4 className="text-sm font-semibold">@nextjs</h4>
                       <p className="text-sm">
-                        The React Framework – created and maintained by
-                        @vercel.
+                        The React Framework – created and maintained by @vercel.
                       </p>
                       <div className="flex items-center pt-2">
                         <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
@@ -118,8 +117,8 @@ export default function HoverCardExample() {
                       <span className="text-2xl font-bold">$29/mo</span>
                     </div>
                     <p className="text-muted-foreground text-sm">
-                      Unlock premium features and advanced capabilities for
-                      your projects.
+                      Unlock premium features and advanced capabilities for your
+                      projects.
                     </p>
                     <div className="space-y-2">
                       <h5 className="text-sm font-medium">
@@ -209,8 +208,8 @@ export default function HoverCardExample() {
                       <div className="space-y-1">
                         <h4 className="text-sm font-semibold">Vercel</h4>
                         <p className="text-sm">
-                          The platform for frontend developers, providing
-                          speed and reliability.
+                          The platform for frontend developers, providing speed
+                          and reliability.
                         </p>
                         <div className="flex items-center pt-2">
                           <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
@@ -252,8 +251,8 @@ export default function HoverCardExample() {
                     <div className="space-y-2">
                       <h4 className="text-sm font-semibold">Rate Limiting</h4>
                       <p className="text-muted-foreground text-sm">
-                        Our API has rate limits to ensure fair usage across
-                        all users.
+                        Our API has rate limits to ensure fair usage across all
+                        users.
                       </p>
                       <div className="text-muted-foreground space-y-1 text-xs">
                         <p>• Free tier: 100 requests/hour</p>
@@ -291,9 +290,7 @@ export default function HoverCardExample() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">
-              Custom Timing
-            </h3>
+            <h3 className="text-sm font-medium text-gray-700">Custom Timing</h3>
             <div className="space-y-2">
               <p className="text-muted-foreground text-sm">
                 Different hover delays:
@@ -307,9 +304,7 @@ export default function HoverCardExample() {
                   </HoverCardTrigger>
                   <HoverCardContent>
                     <div className="space-y-2">
-                      <h4 className="text-sm font-semibold">
-                        Quick Response
-                      </h4>
+                      <h4 className="text-sm font-semibold">Quick Response</h4>
                       <p className="text-muted-foreground text-sm">
                         Opens and closes quickly for rapid interactions.
                       </p>

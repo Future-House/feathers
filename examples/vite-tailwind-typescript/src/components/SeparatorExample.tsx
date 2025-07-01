@@ -13,8 +13,8 @@ export default function SeparatorExample() {
       <CardHeader>
         <CardTitle>Separator Component</CardTitle>
         <CardDescription>
-          Simple visual dividers to organize content sections with
-          accessibility support
+          Simple visual dividers to organize content sections with accessibility
+          support
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-8">
@@ -33,9 +33,7 @@ export default function SeparatorExample() {
             </div>
             <Separator />
             <div className="space-y-1">
-              <h4 className="text-sm leading-none font-medium">
-                Installation
-              </h4>
+              <h4 className="text-sm leading-none font-medium">Installation</h4>
               <p className="text-muted-foreground text-sm">
                 Install the component via your package manager.
               </p>
@@ -59,24 +57,15 @@ export default function SeparatorExample() {
         <div className="space-y-4">
           <h3 className="text-sm font-medium text-gray-700">In Navigation</h3>
           <nav className="flex items-center space-x-1 text-sm font-medium">
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
+            <a href="#" className="text-muted-foreground hover:text-foreground">
               Home
             </a>
             <Separator orientation="vertical" className="h-4" />
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
+            <a href="#" className="text-muted-foreground hover:text-foreground">
               Products
             </a>
             <Separator orientation="vertical" className="h-4" />
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
+            <a href="#" className="text-muted-foreground hover:text-foreground">
               About
             </a>
             <Separator orientation="vertical" className="h-4" />
@@ -87,9 +76,7 @@ export default function SeparatorExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Custom Styling
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Custom Styling</h3>
           <div className="w-64 space-y-6">
             <div className="space-y-1">
               <h4 className="text-sm leading-none font-medium">
@@ -124,9 +111,7 @@ export default function SeparatorExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            In Card Layout
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">In Card Layout</h3>
           <div className="bg-card text-card-foreground w-80 rounded-lg border shadow-sm">
             <div className="flex flex-col space-y-1.5 p-6">
               <h3 className="text-2xl leading-none font-semibold tracking-tight">

@@ -14,12 +14,7 @@ import {
   InputOTPSeparator,
   Label,
 } from '@future-house/feathers';
-import {
-  Eye,
-  EyeOff,
-  Mail,
-  Search,
-} from '@future-house/feathers/icons';
+import { Eye, EyeOff, Mail, Search } from '@future-house/feathers/icons';
 
 export default function InputExample() {
   const [formData, setFormData] = useState({
@@ -108,9 +103,7 @@ export default function InputExample() {
             </h3>
             <div className="space-y-3">
               <div>
-                <label className="text-sm font-medium">
-                  Search with Icon
-                </label>
+                <label className="text-sm font-medium">Search with Icon</label>
                 <div className="relative">
                   <Search className="text-muted-foreground absolute top-3 left-3 h-4 w-4" />
                   <Input
@@ -174,9 +167,7 @@ export default function InputExample() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700">
-              Input States
-            </h3>
+            <h3 className="text-sm font-medium text-gray-700">Input States</h3>
             <div className="space-y-3">
               <div>
                 <label className="text-sm font-medium">Default State</label>

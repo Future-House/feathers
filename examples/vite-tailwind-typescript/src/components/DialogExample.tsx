@@ -15,11 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@future-house/feathers';
-import {
-  Settings,
-  Mail,
-  Info,
-} from '@future-house/feathers/icons';
+import { Settings, Mail, Info } from '@future-house/feathers/icons';
 
 export default function DialogExample() {
   return (
@@ -41,8 +37,8 @@ export default function DialogExample() {
               <DialogHeader>
                 <DialogTitle>Welcome to Dialog</DialogTitle>
                 <DialogDescription>
-                  This is a basic dialog example with a title, description,
-                  and action buttons.
+                  This is a basic dialog example with a title, description, and
+                  action buttons.
                 </DialogDescription>
               </DialogHeader>
               <div className="py-4">
@@ -217,8 +213,8 @@ export default function DialogExample() {
               <DialogHeader>
                 <DialogTitle>Required Action</DialogTitle>
                 <DialogDescription>
-                  This dialog requires you to make a choice. Notice
-                  there&apos;s no X button in the top-right corner.
+                  This dialog requires you to make a choice. Notice there&apos;s
+                  no X button in the top-right corner.
                 </DialogDescription>
               </DialogHeader>
               <div className="py-4">
@@ -253,8 +249,8 @@ export default function DialogExample() {
                 </div>
                 <DialogTitle>Success!</DialogTitle>
                 <DialogDescription>
-                  Your changes have been saved successfully. All users will
-                  see the updates immediately.
+                  Your changes have been saved successfully. All users will see
+                  the updates immediately.
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter className="justify-center">

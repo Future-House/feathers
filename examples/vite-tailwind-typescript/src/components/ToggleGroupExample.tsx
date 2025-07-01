@@ -7,11 +7,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from '@future-house/feathers';
-import {
-  Mail,
-  User,
-  Settings,
-} from '@future-house/feathers/icons';
+import { Mail, User, Settings } from '@future-house/feathers/icons';
 
 export default function ToggleGroupExample() {
   return (
@@ -217,11 +213,7 @@ export default function ToggleGroupExample() {
 
             <div>
               <p className="mb-2 text-sm font-medium">View Options</p>
-              <ToggleGroup
-                type="single"
-                variant="outline"
-                defaultValue="grid"
-              >
+              <ToggleGroup type="single" variant="outline" defaultValue="grid">
                 <ToggleGroupItem value="list" aria-label="List view">
                   List View
                 </ToggleGroupItem>

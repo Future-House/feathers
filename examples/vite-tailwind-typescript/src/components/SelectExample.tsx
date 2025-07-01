@@ -51,9 +51,7 @@ export default function SelectExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Grouped Options
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Grouped Options</h3>
           <Select
             value={selectedFramework}
             onValueChange={setSelectedFramework}
@@ -98,9 +96,7 @@ export default function SelectExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Disabled Select
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Disabled Select</h3>
           <Select disabled>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Disabled select" />

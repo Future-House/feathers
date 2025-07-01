@@ -14,8 +14,7 @@ export default function AspectRatioExample() {
       <CardHeader>
         <CardTitle>AspectRatio Components</CardTitle>
         <CardDescription>
-          Testing different aspect ratios for images, videos, and other
-          content
+          Testing different aspect ratios for images, videos, and other content
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -58,13 +57,14 @@ export default function AspectRatioExample() {
             {Array.from({ length: 4 }, (_, i) => (
               <AspectRatio key={i} ratio={3 / 4} className="bg-muted">
                 <img
-                  src={`https://images.unsplash.com/photo-${[
-                    '1588345921523-c2dcdb7f1dcd',
-                    '1469474968028-56623f02e42e',
-                    '1448375240586-dbc73152c844',
-                    '1506905925346-21bda4d32df4',
-                  ][i]
-                    }?w=400&h=533&dpr=2&q=80`}
+                  src={`https://images.unsplash.com/photo-${
+                    [
+                      '1588345921523-c2dcdb7f1dcd',
+                      '1469474968028-56623f02e42e',
+                      '1448375240586-dbc73152c844',
+                      '1506905925346-21bda4d32df4',
+                    ][i]
+                  }?w=400&h=533&dpr=2&q=80`}
                   alt={`Gallery image ${i + 1}`}
                   className="h-full w-full rounded-md object-cover"
                 />

@@ -104,18 +104,12 @@ export default function SonnerExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Custom Duration
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Custom Duration</h3>
           <div className="flex flex-wrap gap-2">
-            <Button
-              onClick={() => toast('Quick message', { duration: 1000 })}
-            >
+            <Button onClick={() => toast('Quick message', { duration: 1000 })}>
               1 Second
             </Button>
-            <Button
-              onClick={() => toast('Long message', { duration: 10000 })}
-            >
+            <Button onClick={() => toast('Long message', { duration: 10000 })}>
               10 Seconds
             </Button>
             <Button
@@ -154,9 +148,7 @@ export default function SonnerExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Loading States
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Loading States</h3>
           <div className="flex flex-wrap gap-2">
             <Button
               onClick={() => {

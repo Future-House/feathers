@@ -17,8 +17,7 @@ export default function CarouselExample() {
       <CardHeader>
         <CardTitle>Carousel Components</CardTitle>
         <CardDescription>
-          Interactive carousel component examples with different
-          configurations
+          Interactive carousel component examples with different configurations
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-8">

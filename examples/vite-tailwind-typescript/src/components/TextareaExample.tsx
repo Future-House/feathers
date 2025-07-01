@@ -19,8 +19,7 @@ export default function TextareaExample() {
       <CardHeader>
         <CardTitle>Textarea Components</CardTitle>
         <CardDescription>
-          Multiline text input component with various configurations and
-          states
+          Multiline text input component with various configurations and states
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">

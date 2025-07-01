@@ -173,9 +173,7 @@ export default function PopoverExample() {
                       <p className="text-muted-foreground text-xs">
                         You have a new message from Sarah
                       </p>
-                      <p className="text-muted-foreground text-xs">
-                        2 min ago
-                      </p>
+                      <p className="text-muted-foreground text-xs">2 min ago</p>
                     </div>
                   </div>
                   <div className="flex gap-3 rounded-lg border p-3">

@@ -158,10 +158,7 @@ export default function DropdownMenuExample() {
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Theme</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup
-                  value={theme}
-                  onValueChange={setTheme}
-                >
+                <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
                   <DropdownMenuRadioItem value="light">
                     Light
                   </DropdownMenuRadioItem>
@@ -228,9 +225,7 @@ export default function DropdownMenuExample() {
                       <span>Email</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                      onSelect={() =>
-                        setDropdownAction('Message invite sent')
-                      }
+                      onSelect={() => setDropdownAction('Message invite sent')}
                     >
                       <MessageSquare className="mr-2 h-4 w-4" />
                       <span>Message</span>
@@ -393,9 +388,7 @@ export default function DropdownMenuExample() {
               <div>
                 <p className="mb-1 font-medium">Appearance Settings:</p>
                 <p>Status Bar: {statusBarVisible ? 'Visible' : 'Hidden'}</p>
-                <p>
-                  Activity Bar: {activityBarVisible ? 'Visible' : 'Hidden'}
-                </p>
+                <p>Activity Bar: {activityBarVisible ? 'Visible' : 'Hidden'}</p>
                 <p>Panel: {panelVisible ? 'Visible' : 'Hidden'}</p>
               </div>
               <div>

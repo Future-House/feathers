@@ -29,8 +29,7 @@ export default function DrawerExample() {
       <CardHeader>
         <CardTitle>Drawer Components</CardTitle>
         <CardDescription>
-          Drawer components for slide-out panels and mobile-friendly
-          navigation
+          Drawer components for slide-out panels and mobile-friendly navigation
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -162,9 +161,7 @@ export default function DrawerExample() {
                       </label>
                       <label className="flex items-center">
                         <Checkbox />
-                        <span className="ml-2 text-sm">
-                          Push notifications
-                        </span>
+                        <span className="ml-2 text-sm">Push notifications</span>
                       </label>
                     </div>
                   </div>

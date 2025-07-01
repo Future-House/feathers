@@ -60,9 +60,7 @@ export default function SliderExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Vertical Slider
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Vertical Slider</h3>
           <div className="flex h-48 items-center justify-center">
             <Slider
               defaultValue={[40]}
@@ -75,18 +73,14 @@ export default function SliderExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Disabled State
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Disabled State</h3>
           <div className="w-80">
             <Slider defaultValue={[60]} max={100} step={1} disabled />
           </div>
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">
-            Multiple Thumbs
-          </h3>
+          <h3 className="text-sm font-medium text-gray-700">Multiple Thumbs</h3>
           <div className="w-80 space-y-2">
             <Slider defaultValue={[10, 30, 60, 90]} max={100} step={1} />
             <div className="text-muted-foreground text-xs">

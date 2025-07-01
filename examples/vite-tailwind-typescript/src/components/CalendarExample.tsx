@@ -12,9 +12,9 @@ export default function CalendarExample() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [selectedRange, setSelectedRange] = useState<
     | {
-      from: Date | undefined;
-      to: Date | undefined;
-    }
+        from: Date | undefined;
+        to: Date | undefined;
+      }
     | undefined
   >();
 

@@ -82,8 +82,8 @@ export default function ScrollAreaExample() {
                         </span>
                       </div>
                       <p className="text-muted-foreground text-sm">
-                        Message {i + 1}: This is some example chat content
-                        that demonstrates scrolling.
+                        Message {i + 1}: This is some example chat content that
+                        demonstrates scrolling.
                       </p>
                     </div>
                   ))}
