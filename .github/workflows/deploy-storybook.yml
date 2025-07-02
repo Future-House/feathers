@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - feathers-v2-dev
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
