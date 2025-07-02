@@ -5,7 +5,8 @@ on:
       - feathers-v2-dev
   workflow_dispatch:
 permissions:
-  contents: write
+  id-token: write
+  pages: write
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
