@@ -2,7 +2,7 @@ name: Build and Deploy to Storybook
 on:
     push:
       branches:
-        - main
+        - feathers-v2-dev
 permissions:
   contents: write
 jobs:
