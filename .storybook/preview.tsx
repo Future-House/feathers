@@ -14,11 +14,6 @@ const preview: Preview = {
     docs: {
       toc: true,
     },
-    darkMode: {
-      classTarget: 'html',
-      darkClass: 'dark',
-      lightClass: '',
-    },
     backgrounds: { disable: true },
   },
   decorators: [
@@ -28,6 +23,7 @@ const preview: Preview = {
         dark: 'dark',
       },
       defaultTheme: 'light',
+      parentSelector: 'html',
     }),
   ],
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { toast } from 'sonner';
 import { Button } from '../button';
+import { ThemeProvider } from '../theme-provider';
 import { Toaster } from './sonner';
 
 const meta = {
@@ -17,15 +18,6 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    theme: {
-      control: { type: 'select' },
-      options: ['light', 'dark', 'system'],
-      description: "Theme of the toasts, either 'light', 'dark', or 'system'",
-      table: {
-        type: { summary: '"light" | "dark" | "system"' },
-        defaultValue: { summary: '"system"' },
-      },
-    },
     richColors: {
       control: { type: 'boolean' },
       description: 'Makes error and success states more colorful',
@@ -116,6 +108,13 @@ const meta = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta<typeof Toaster>;
 
 export default meta;
