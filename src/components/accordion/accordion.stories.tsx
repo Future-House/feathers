@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '../accordion';
+import { Button } from '@/components/button';
 
 const meta = {
   title: 'Components/Accordion',
@@ -327,36 +328,36 @@ export const Controlled: Story = {
     return (
       <div className="w-[450px] space-y-4">
         <div className="flex gap-2">
-          <button
+          <Button
             onClick={() => setValue('item-1')}
-            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
+            variant="outline"
           >
             Open Item 1
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => setValue('item-2')}
-            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
+            variant="outline"
           >
             Open Item 2
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => setValue('item-3')}
-            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
+            variant="outline"
           >
             Open Item 3
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => setValue(undefined)}
-            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
+            variant="outline"
           >
             Close All
-          </button>
+          </Button>
         </div>
         <Accordion type="single" value={value} onValueChange={setValue}>
           <AccordionItem value="item-1">
             <AccordionTrigger>Controlled Item 1</AccordionTrigger>
             <AccordionContent>
-              This accordion is controlled by external buttons. The current
+              This accordion is controlled by external Buttons. The current
               value is: {value || 'none'}
             </AccordionContent>
           </AccordionItem>
