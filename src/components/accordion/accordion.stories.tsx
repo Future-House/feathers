@@ -328,28 +328,16 @@ export const Controlled: Story = {
     return (
       <div className="w-[450px] space-y-4">
         <div className="flex gap-2">
-          <Button
-            onClick={() => setValue('item-1')}
-            variant="outline"
-          >
+          <Button onClick={() => setValue('item-1')} variant="outline">
             Open Item 1
           </Button>
-          <Button
-            onClick={() => setValue('item-2')}
-            variant="outline"
-          >
+          <Button onClick={() => setValue('item-2')} variant="outline">
             Open Item 2
           </Button>
-          <Button
-            onClick={() => setValue('item-3')}
-            variant="outline"
-          >
+          <Button onClick={() => setValue('item-3')} variant="outline">
             Open Item 3
           </Button>
-          <Button
-            onClick={() => setValue(undefined)}
-            variant="outline"
-          >
+          <Button onClick={() => setValue(undefined)} variant="outline">
             Close All
           </Button>
         </div>
