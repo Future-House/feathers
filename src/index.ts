@@ -41,6 +41,7 @@ export * from '@/components/skeleton';
 export * from '@/components/slider';
 export * from '@/components/sonner';
 export * from '@/components/switch';
+export * from '@/components/table';
 export * from '@/components/tabs';
 export * from '@/components/textarea';
 export * from '@/components/toggle';

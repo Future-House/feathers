@@ -214,6 +214,17 @@ export { Toaster } from '@/components/sonner';
 
 export { Switch } from '@/components/switch';
 
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from '@/components/table';
+
 export { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/tabs';
 
 export { Textarea } from '@/components/textarea';

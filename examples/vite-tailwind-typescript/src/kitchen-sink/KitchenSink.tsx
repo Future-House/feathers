@@ -35,6 +35,7 @@ import SheetExample from './SheetExample';
 import SidebarExample from './SidebarExample';
 import TabsExample from './TabsExample';
 import CardExample from './CardExample';
+import { TableExample } from './TableExample';
 
 export default function KitchenSink() {
   return (
@@ -72,6 +73,7 @@ export default function KitchenSink() {
       <SheetExample />
       <SidebarExample />
       <TabsExample />
+      <TableExample />
       <CardExample />
 
       <Toaster />

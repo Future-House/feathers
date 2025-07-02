@@ -58,8 +58,11 @@ function DemoSidebar() {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <SidebarMenuButton
+                  size="lg"
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                >
+                  <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                     <Command className="size-4" />
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
@@ -69,7 +72,12 @@ function DemoSidebar() {
                   <MoreHorizontal className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg" align="start" side="bottom" sideOffset={4}>
+              <DropdownMenuContent
+                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                align="start"
+                side="bottom"
+                sideOffset={4}
+              >
                 <DropdownMenuItem className="gap-2 p-2">
                   <div className="flex size-6 items-center justify-center rounded-sm border">
                     <Command className="size-4 shrink-0" />
@@ -109,7 +117,9 @@ function DemoSidebar() {
               <SidebarMenuButton tooltip="Messages">
                 <Mail />
                 <span>Messages</span>
-                <Badge variant="destructive" className="ml-auto">3</Badge>
+                <Badge variant="destructive" className="ml-auto">
+                  3
+                </Badge>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -127,7 +137,11 @@ function DemoSidebar() {
                   </a>
                 </SidebarMenuButton>
                 <CollapsibleTrigger asChild>
-                  <SidebarMenuButton variant="outline" size="sm" className="ml-auto">
+                  <SidebarMenuButton
+                    variant="outline"
+                    size="sm"
+                    className="ml-auto"
+                  >
                     <ChevronRight className="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
@@ -171,7 +185,11 @@ function DemoSidebar() {
                   </a>
                 </SidebarMenuButton>
                 <CollapsibleTrigger asChild>
-                  <SidebarMenuButton variant="outline" size="sm" className="ml-auto">
+                  <SidebarMenuButton
+                    variant="outline"
+                    size="sm"
+                    className="ml-auto"
+                  >
                     <ChevronRight className="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
@@ -230,7 +248,10 @@ function DemoSidebar() {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+                <SidebarMenuButton
+                  size="lg"
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                >
                   <User2 />
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">John Doe</span>
@@ -239,7 +260,12 @@ function DemoSidebar() {
                   <MoreHorizontal className="ml-auto size-4" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg" side="bottom" align="end" sideOffset={4}>
+              <DropdownMenuContent
+                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                side="bottom"
+                align="end"
+                sideOffset={4}
+              >
                 <DropdownMenuItem>
                   <Settings />
                   Account
@@ -265,11 +291,11 @@ function DemoContent() {
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
       <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-        <div className="aspect-video rounded-xl bg-muted/50" />
-        <div className="aspect-video rounded-xl bg-muted/50" />
-        <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="bg-muted/50 aspect-video rounded-xl" />
+        <div className="bg-muted/50 aspect-video rounded-xl" />
+        <div className="bg-muted/50 aspect-video rounded-xl" />
       </div>
-      <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+      <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
         <div className="p-4">
           <h2 className="text-lg font-semibold">Dashboard Content</h2>
           <p className="text-muted-foreground text-sm">
@@ -294,7 +320,7 @@ export default function SidebarExample() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[600px] rounded-lg border bg-background overflow-hidden">
+        <div className="bg-background h-[600px] overflow-hidden rounded-lg border">
           <SidebarProvider>
             <div className="flex h-full w-full">
               <DemoSidebar />
