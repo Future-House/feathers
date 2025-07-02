@@ -109,7 +109,7 @@ const meta = {
     },
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider>
         <Story />
       </ThemeProvider>
