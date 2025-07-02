@@ -23,10 +23,10 @@ jobs:
           npm ci
           npm run build
 
-      - name: Deploy 🚀
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm run build-storybook
-          touch ./storybook-static/.nojekyll
-          npx gh-pages -d storybook-static -t true -r https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+      - name: Build and Deploy Storybook 🚀
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          install_command: npm ci
+          build_command: npm run build-storybook
+          path: storybook-static
+          checkout: false
