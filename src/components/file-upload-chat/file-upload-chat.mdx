@@ -1,0 +1,73 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as FileUploadChatStories from './file-upload-chat.stories';
+
+<Meta of={FileUploadChatStories} />
+
+<DocLayout meta={FileUploadChatStories.default}>
+  ## Default Example
+
+<Canvas of={FileUploadChatStories.Default} background="dots" />
+
+## Component API
+
+### FileUploadChat
+
+A chat input component with file upload capabilities. Supports drag-and-drop, multiple file types, and displays uploaded files as removable chips. Perfect for chat interfaces that need to support file attachments.
+
+<PropsTable argTypes={FileUploadChatStories.default.argTypes} />
+
+## Examples
+
+### Custom Placeholder
+
+File upload chat with a custom placeholder message.
+
+<Canvas of={FileUploadChatStories.CustomPlaceholder} background="grid" />
+
+### Limited Files
+
+File upload chat with a maximum of 2 files and specific file type restrictions.
+
+<Canvas of={FileUploadChatStories.LimitedFiles} background="muted" />
+
+### Images Only
+
+File upload chat configured to accept only image files with a higher file limit.
+
+<Canvas of={FileUploadChatStories.ImagesOnly} background="card" />
+
+### With Event Handlers
+
+File upload chat with custom event handlers for all interactions.
+
+<Canvas of={FileUploadChatStories.WithHandlers} background="transparent" />
+
+## Accessibility
+
+The `FileUploadChat` component follows accessibility best practices:
+
+- Provides proper ARIA labels for file input and drag-and-drop areas
+- Supports keyboard navigation for all interactive elements
+- Announces file upload status and errors to screen readers
+- Maintains proper focus management throughout the upload process
+- Uses semantic HTML elements for better screen reader compatibility
+- Provides clear visual feedback for drag-and-drop states
+
+## Best Practices
+
+- Set appropriate `maxFiles` limits based on your use case and server capabilities
+- Use specific `acceptedFileTypes` to guide users on what files they can upload
+- Provide clear feedback when files are uploaded or removed
+- Handle file upload errors gracefully with user-friendly messages
+- Consider file size limits and validate them before upload
+- Test drag-and-drop functionality across different browsers and devices
+- Ensure the component works well on mobile devices where drag-and-drop may not be available
+- Use the `onFilesUploaded` callback to handle file processing or validation
+
+</DocLayout>

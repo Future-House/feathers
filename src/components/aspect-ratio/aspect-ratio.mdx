@@ -1,0 +1,120 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as AspectRatioStories from './aspect-ratio.stories';
+
+<Meta of={AspectRatioStories} />
+
+<DocLayout meta={AspectRatioStories.default}>
+  ## Default Example
+
+<Canvas of={AspectRatioStories.Default} background="dots" />
+
+## Component API
+
+### AspectRatio
+
+Maintains a consistent aspect ratio for content, built with Radix UI AspectRatio primitive and styled with Tailwind CSS. Perfect for images, videos, and other media that need to maintain proportions.
+
+<PropsTable argTypes={AspectRatioStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(AspectRatioStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={AspectRatioStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Square Aspect Ratio
+
+Perfect 1:1 aspect ratio for profile images and icons.
+
+<Canvas of={AspectRatioStories.Square} background="grid" />
+
+### Portrait Aspect Ratio
+
+3:4 aspect ratio commonly used for portrait photos.
+
+<Canvas of={AspectRatioStories.Portrait} background="muted" />
+
+### Widescreen Aspect Ratio
+
+21:9 ultrawide aspect ratio for cinematic content.
+
+<Canvas of={AspectRatioStories.Widescreen} background="card" />
+
+### With Image
+
+Displaying images with consistent aspect ratios.
+
+<Canvas of={AspectRatioStories.WithImage} background="transparent" />
+
+### With Video
+
+Embedding videos with proper aspect ratios.
+
+<Canvas of={AspectRatioStories.WithVideo} background="default" />
+
+### Responsive Grid
+
+Grid of different aspect ratios for responsive layouts.
+
+<Canvas of={AspectRatioStories.ResponsiveGrid} background="dots" />
+
+### With Card
+
+Aspect ratio used within a card component.
+
+<Canvas of={AspectRatioStories.WithCard} background="grid" />
+
+### Custom Ratios
+
+Examples of popular aspect ratios for different platforms.
+
+<Canvas of={AspectRatioStories.CustomRatios} background="muted" />
+
+### As Child
+
+Using the asChild prop to merge with other components.
+
+<Canvas of={AspectRatioStories.AsChildExample} background="card" />
+
+## Accessibility
+
+The `AspectRatio` component:
+
+- Maintains semantic HTML structure
+- Preserves accessibility attributes when using `asChild`
+- Ensures proper focus management for interactive content
+- Works with screen readers and keyboard navigation
+
+## Best Practices
+
+- Use consistent aspect ratios across your application for visual harmony
+- Choose appropriate aspect ratios based on content type (16:9 for videos, 1:1 for avatars)
+- Consider responsive design when choosing aspect ratios
+- Use the `asChild` prop when you need to maintain the aspect ratio of interactive elements
+- Test on different screen sizes to ensure content remains accessible
+- Provide alternative text for images within aspect ratio containers
+
+</DocLayout>

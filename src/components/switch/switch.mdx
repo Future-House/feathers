@@ -1,0 +1,95 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as SwitchStories from './switch.stories';
+
+<Meta of={SwitchStories} />
+
+<DocLayout meta={SwitchStories.default}>
+  ## Default Example
+
+<Canvas of={SwitchStories.Default} background="dots" />
+
+## Component API
+
+### Switch
+
+A control that allows the user to toggle between checked and not checked. Built with Radix UI Switch primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={SwitchStories.default.argTypes} />
+
+## Examples
+
+### Checked by Default
+
+Switch component with default checked state.
+
+<Canvas of={SwitchStories.Checked} background="grid" />
+
+### Disabled States
+
+Show disabled switches in both checked and unchecked states.
+
+<Canvas of={SwitchStories.Disabled} background="muted" />
+
+### Controlled Switch
+
+Demonstrate programmatic control of the switch state.
+
+<Canvas of={SwitchStories.Controlled} background="card" />
+
+### Form Example
+
+Integration with form handling and state management.
+
+<Canvas of={SwitchStories.FormExample} background="transparent" />
+
+### Settings Panel
+
+Real-world example of switches in a settings interface.
+
+<Canvas of={SwitchStories.SettingsPanel} background="default" />
+
+### Custom Styling
+
+Apply custom colors and styling to switch components.
+
+<Canvas of={SwitchStories.CustomStyling} background="grid" />
+
+### With Descriptions
+
+Switches with detailed descriptions for better context.
+
+<Canvas of={SwitchStories.WithDescriptions} background="muted" />
+
+### Accessibility Showcase
+
+Demonstrate proper accessibility features and ARIA attributes.
+
+<Canvas of={SwitchStories.AccessibilityShowcase} background="card" />
+
+## Accessibility
+
+The `Switch` component follows the [WAI-ARIA Switch Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) and includes:
+
+- Keyboard navigation support with Space and Enter keys
+- Screen reader announcements for state changes
+- Proper ARIA attributes including `aria-checked` and `aria-labelledby`
+- Focus management and visual focus indicators
+- Support for `aria-describedby` for additional context
+
+## Best Practices
+
+- Always provide clear labels for switch components
+- Use switches for binary on/off states, not for selection between options
+- Group related switches logically in forms and settings
+- Provide immediate visual feedback for state changes
+- Test with keyboard navigation and screen readers
+- Use descriptive text to explain what the switch controls
+- Consider the impact of changes and whether confirmation is needed
+
+</DocLayout>

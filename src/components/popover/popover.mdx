@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as PopoverStories from './popover.stories';
+
+<Meta of={PopoverStories} />
+
+<DocLayout meta={PopoverStories.default}>
+  ## Default Example
+
+<Canvas of={PopoverStories.Default} background="dots" />
+
+## Component API
+
+### Popover
+
+Displays rich content in a portal, triggered by a button. Built with Radix UI Popover primitives for flexible overlay content.
+
+<PropsTable argTypes={PopoverStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(PopoverStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={PopoverStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### User Profile
+
+Display user profile information in a compact popover format.
+
+<Canvas of={PopoverStories.UserProfile} background="grid" />
+
+### Notifications
+
+Show notification lists and updates in an accessible popover interface.
+
+<Canvas of={PopoverStories.Notifications} background="muted" />
+
+### Date Picker
+
+Use popovers to contain date picker interfaces and form controls.
+
+<Canvas of={PopoverStories.DatePicker} background="card" />
+
+### Settings
+
+Compact settings panels work well within popover containers.
+
+<Canvas of={PopoverStories.Settings} background="transparent" />
+
+### With Anchor
+
+Anchor popovers to specific elements separate from the trigger button.
+
+<Canvas of={PopoverStories.WithAnchor} background="default" />
+
+### Custom Alignment
+
+Control the positioning and alignment of popovers relative to their triggers.
+
+<Canvas of={PopoverStories.CustomAlignment} background="grid" />
+
+## Accessibility
+
+The `Popover` component follows the [WAI-ARIA Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) and includes:
+
+- Focus management when opening and closing
+- Escape key handling to close the popover
+- Click outside to close behavior
+- Screen reader announcements for state changes
+- Proper ARIA attributes for accessibility tree
+
+## Best Practices
+
+- Keep popover content concise and focused
+- Use appropriate trigger elements (buttons, not divs)
+- Position popovers to avoid viewport clipping
+- Provide clear visual indicators for interactive elements
+- Test with keyboard navigation and screen readers
+- Consider mobile users where hover interactions don't apply
+
+</DocLayout>

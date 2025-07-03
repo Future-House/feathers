@@ -1,0 +1,97 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as NavigationMenuStories from './navigation-menu.stories';
+
+<Meta of={NavigationMenuStories} />
+
+<DocLayout meta={NavigationMenuStories.default}>
+  ## Default Example
+
+<Canvas of={NavigationMenuStories.Default} background="dots" />
+
+## Component API
+
+### NavigationMenu
+
+A collection of links for navigating websites. Built with Radix UI Navigation Menu primitives and provides flexible navigation interfaces.
+
+<PropsTable argTypes={NavigationMenuStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(NavigationMenuStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={NavigationMenuStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Product Navigation
+
+Navigation menu designed for product websites with rich content previews.
+
+<Canvas of={NavigationMenuStories.ProductNavigation} background="grid" />
+
+### Simple Links
+
+Basic navigation with simple link items for minimal interfaces.
+
+<Canvas of={NavigationMenuStories.SimpleLinks} background="muted" />
+
+### Vertical Orientation
+
+Navigation menu configured for vertical layouts, perfect for sidebars.
+
+<Canvas of={NavigationMenuStories.VerticalOrientation} background="card" />
+
+### Without Viewport
+
+Navigation menu without the viewport component for custom positioning.
+
+<Canvas of={NavigationMenuStories.WithoutViewport} background="transparent" />
+
+### With Delay Duration
+
+Customize the hover delays for different interaction patterns.
+
+<Canvas of={NavigationMenuStories.WithDelayDuration} background="default" />
+
+## Accessibility
+
+The `NavigationMenu` component follows the [WAI-ARIA Navigation Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/navigation/) and includes:
+
+- Keyboard navigation with Tab, arrow keys, Enter, and Escape
+- Screen reader support with proper ARIA attributes
+- Focus management when navigating between items
+- Support for both horizontal and vertical orientations
+- Automatic viewport positioning to prevent content overflow
+
+## Best Practices
+
+- Use clear, descriptive link text that makes sense out of context
+- Group related navigation items logically
+- Consider the visual hierarchy when designing menu content
+- Test with keyboard navigation to ensure smooth interactions
+- Use appropriate delay timing based on your users' needs
+- Provide alternative navigation methods for complex structures
+
+</DocLayout>

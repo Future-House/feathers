@@ -1,0 +1,102 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as DropdownMenuStories from './dropdown-menu.stories';
+
+<Meta of={DropdownMenuStories} />
+
+<DocLayout meta={DropdownMenuStories.default}>
+  ## Default Example
+
+<Canvas of={DropdownMenuStories.Default} background="dots" />
+
+## Component API
+
+### DropdownMenu
+
+A dropdown menu component that displays a list of actions or options that a user can choose from. Built with Radix UI DropdownMenu primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={DropdownMenuStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(DropdownMenuStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={DropdownMenuStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### With Checkbox Items
+
+A dropdown menu containing checkbox items for toggling preferences.
+
+<Canvas of={DropdownMenuStories.WithCheckboxItems} background="grid" />
+
+### With Radio Group
+
+A dropdown menu with radio groups for selecting from mutually exclusive options.
+
+<Canvas of={DropdownMenuStories.WithRadioGroup} background="muted" />
+
+### With Submenus
+
+A dropdown menu featuring nested submenus for organized actions.
+
+<Canvas of={DropdownMenuStories.WithSubmenus} background="card" />
+
+### Context Menu
+
+A minimal dropdown menu suitable for context menu interactions.
+
+<Canvas of={DropdownMenuStories.ContextMenu} background="transparent" />
+
+### With Groups
+
+A dropdown menu with logical grouping and separators for better organization.
+
+<Canvas of={DropdownMenuStories.WithGroups} background="default" />
+
+## Accessibility
+
+The `DropdownMenu` component follows the [WAI-ARIA Menu design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu/) and includes:
+
+- Full keyboard navigation with Arrow keys, Enter, and Escape
+- Screen reader support with proper ARIA roles and attributes
+- Focus management within the menu
+- Support for menu item shortcuts and accelerators
+- Proper handling of checkbox and radio item states
+- Submenu navigation and focus management
+- RTL (right-to-left) language support
+
+## Best Practices
+
+- Group related actions logically with separators
+- Use clear, action-oriented labels for menu items
+- Include keyboard shortcuts for frequently used actions
+- Place destructive actions at the bottom with visual distinction
+- Use submenus sparingly to avoid deep nesting
+- Provide icons to help users quickly identify actions
+- Consider menu positioning relative to trigger buttons
+- Test with keyboard navigation and screen readers
+- Ensure proper focus return when menu closes
+
+</DocLayout>

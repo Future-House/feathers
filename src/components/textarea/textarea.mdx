@@ -1,0 +1,102 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as TextareaStories from './textarea.stories';
+
+<Meta of={TextareaStories} />
+
+<DocLayout meta={TextareaStories.default}>
+  ## Default Example
+
+<Canvas of={TextareaStories.Default} background="dots" />
+
+## Component API
+
+### Textarea
+
+A flexible textarea component built with Tailwind CSS for multiline text input.
+
+<PropsTable argTypes={TextareaStories.default.argTypes} />
+
+## Examples
+
+### With Placeholder
+
+Textarea with helpful placeholder text to guide user input.
+
+<Canvas of={TextareaStories.WithPlaceholder} background="grid" />
+
+### With Value
+
+Textarea displaying existing content.
+
+<Canvas of={TextareaStories.WithValue} background="muted" />
+
+### Disabled State
+
+Show how textarea appears when disabled.
+
+<Canvas of={TextareaStories.Disabled} background="card" />
+
+### Read-only State
+
+Textarea in read-only mode for displaying content that cannot be edited.
+
+<Canvas of={TextareaStories.ReadOnly} background="transparent" />
+
+### Different Row Heights
+
+Various textarea sizes using the rows attribute.
+
+<Canvas of={TextareaStories.WithRows} background="default" />
+
+### With Character Limit
+
+Textarea with maximum length constraint.
+
+<Canvas of={TextareaStories.WithMaxLength} background="grid" />
+
+### Required Field
+
+Textarea marked as required for form validation.
+
+<Canvas of={TextareaStories.Required} background="muted" />
+
+### With Label
+
+Proper labeling for accessibility and user experience.
+
+<Canvas of={TextareaStories.WithLabel} background="card" />
+
+### Error State
+
+Display validation errors with appropriate styling and messaging.
+
+<Canvas of={TextareaStories.WithError} background="transparent" />
+
+## Accessibility
+
+The `Textarea` component includes:
+
+- Proper labeling support with `htmlFor` and `id` associations
+- ARIA attributes for validation states and descriptions
+- Keyboard navigation and focus management
+- Screen reader compatibility
+- Support for required field indicators
+
+## Best Practices
+
+- Always provide clear labels for textarea components
+- Use placeholder text to provide helpful input examples
+- Set appropriate row heights based on expected content length
+- Implement proper validation and error messaging
+- Consider character limits for user-generated content
+- Use read-only state for content that users should see but not edit
+- Test with screen readers to ensure accessibility
+- Provide clear visual indicators for required fields
+
+</DocLayout>

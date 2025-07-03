@@ -1,0 +1,74 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as CommandStories from './command.stories';
+
+<Meta of={CommandStories} />
+
+<DocLayout meta={CommandStories.default}>
+  ## Default Example
+
+<Canvas of={CommandStories.Default} background="dots" />
+
+## Component API
+
+### Command
+
+A fast, composable command palette built with cmdk. Features keyboard navigation, search filtering, and support for complex layouts with groups, separators, and shortcuts.
+
+<PropsTable argTypes={CommandStories.default.argTypes} />
+
+## Examples
+
+### Command Dialog
+
+A command palette opened in a modal dialog overlay.
+
+<Canvas of={CommandStories.CommandDialogVariant} background="grid" />
+
+### Searchable Command
+
+A command palette with controlled search input and dynamic filtering.
+
+<Canvas of={CommandStories.SearchableCommand} background="muted" />
+
+### Grouped Commands
+
+Commands organized into logical groups with separators and headings.
+
+<Canvas of={CommandStories.GroupedCommands} background="card" />
+
+### Loading State
+
+A command palette showing loading states with skeleton placeholders.
+
+<Canvas of={CommandStories.LoadingState} background="transparent" />
+
+## Accessibility
+
+The `Command` component follows the [WAI-ARIA Command design pattern](https://www.w3.org/WAI/ARIA/apg/) and includes:
+
+- Full keyboard navigation with Arrow keys for item selection
+- Enter key to execute commands
+- Escape key to close dialogs
+- Screen reader support with proper ARIA labels
+- Live region updates for search results
+- Focus management and trapping in dialog mode
+- Proper grouping and labeling of command sections
+
+## Best Practices
+
+- Organize commands into logical groups with clear headings
+- Provide keyboard shortcuts for frequently used commands
+- Use icons to help users quickly identify commands
+- Implement search functionality for large command sets
+- Show loading states when commands are being fetched
+- Use separators to visually group related commands
+- Consider the order of commands (most used first, alphabetical, etc.)
+- Provide clear feedback when commands are executed
+
+</DocLayout>

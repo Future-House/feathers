@@ -1,0 +1,116 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as AlertDialogStories from './alert-dialog.stories';
+
+<Meta of={AlertDialogStories} />
+
+<DocLayout meta={AlertDialogStories.default}>
+  ## Default Example
+
+<Canvas of={AlertDialogStories.Default} background="dots" />
+
+## Component API
+
+### AlertDialog
+
+A modal dialog that interrupts the user with important content and expects a response. Built with Radix UI AlertDialog primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={AlertDialogStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(AlertDialogStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={AlertDialogStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Destructive Action
+
+Alert dialog for destructive actions with appropriate styling.
+
+<Canvas of={AlertDialogStories.Destructive} background="grid" />
+
+### Without Description
+
+Simple alert dialog with just a title and actions.
+
+<Canvas of={AlertDialogStories.WithoutDescription} background="muted" />
+
+### Long Content
+
+Alert dialog with scrollable content for longer text.
+
+<Canvas of={AlertDialogStories.LongContent} background="card" />
+
+### Custom Styling
+
+Customize the appearance with custom colors and gradients.
+
+<Canvas of={AlertDialogStories.CustomStyling} background="transparent" />
+
+### Controlled State
+
+Programmatically control the open state of the dialog.
+
+<Canvas of={AlertDialogStories.Controlled} background="default" />
+
+### Multiple Actions
+
+Dialog with multiple action buttons for complex workflows.
+
+<Canvas of={AlertDialogStories.MultipleActions} background="dots" />
+
+### With Form
+
+Include form elements within the alert dialog.
+
+<Canvas of={AlertDialogStories.WithForm} background="grid" />
+
+### Accessibility Features
+
+Demonstrates accessibility features and proper ARIA attributes.
+
+<Canvas of={AlertDialogStories.AccessibilityExample} background="muted" />
+
+## Accessibility
+
+The `AlertDialog` component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/) and includes:
+
+- Focus management and focus trapping within the dialog
+- Proper ARIA attributes for screen readers
+- Keyboard navigation support (ESC to close, Tab to navigate)
+- Screen reader announcements for open/close state
+- Automatic focus restoration when dialog closes
+
+## Best Practices
+
+- Use alert dialogs sparingly for truly important actions that require user attention
+- Keep content concise and actionable
+- Provide clear, descriptive action button labels
+- Use destructive styling for irreversible actions
+- Consider the context and user flow when deciding between alert dialog and regular dialog
+- Test with keyboard navigation to ensure accessibility
+- Provide a way to cancel or dismiss the dialog
+
+</DocLayout>

@@ -1,0 +1,52 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as ThemeToggleStories from './theme-toggle.stories';
+
+<Meta of={ThemeToggleStories} />
+
+<DocLayout meta={ThemeToggleStories.default}>
+  ## Default Example
+
+<Canvas of={ThemeToggleStories.Default} background="dots" />
+
+## Component API
+
+### ThemeToggle
+
+A button component for toggling between light, dark, and system themes. It cycles through the available theme options and displays the appropriate icon for the current theme state.
+
+<PropsTable argTypes={ThemeToggleStories.default.argTypes} />
+
+## Examples
+
+### With Cards
+
+Theme toggle shown with various card components to demonstrate the color changes when switching between themes.
+
+<Canvas of={ThemeToggleStories.WithCards} background="grid" />
+
+## Accessibility
+
+The `ThemeToggle` component follows accessibility best practices:
+
+- Provides proper ARIA labels for screen readers
+- Maintains keyboard navigation support with Enter and Space keys
+- Uses semantic button element for proper interaction
+- Announces theme changes to assistive technologies
+- Maintains proper focus management
+
+## Best Practices
+
+- Place theme toggle in a consistent location (like header or settings menu)
+- Use the component within a `ThemeProvider` context for proper functionality
+- Consider adding a tooltip or label to explain the theme toggle functionality
+- Test the toggle with keyboard navigation to ensure accessibility
+- Provide visual feedback when theme changes occur
+- Consider placement and visibility in both light and dark themes
+
+</DocLayout>

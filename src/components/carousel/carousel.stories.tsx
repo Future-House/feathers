@@ -19,7 +19,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     orientation: {
       control: 'radio',

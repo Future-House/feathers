@@ -1,0 +1,102 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as SeparatorStories from './separator.stories';
+
+<Meta of={SeparatorStories} />
+
+<DocLayout meta={SeparatorStories.default}>
+  ## Default Example
+
+<Canvas of={SeparatorStories.Default} background="dots" />
+
+## Component API
+
+### Separator
+
+A simple separator component built on top of Radix UI's Separator primitive. Provides a visually subtle line to separate content sections with support for both horizontal and vertical orientations.
+
+<PropsTable argTypes={SeparatorStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(SeparatorStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={SeparatorStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Vertical
+
+Use vertical separators in navigation menus or inline content.
+
+<Canvas of={SeparatorStories.Vertical} background="grid" />
+
+### Custom Styling
+
+Apply custom colors, thickness, and border styles to separators.
+
+<Canvas of={SeparatorStories.CustomStyling} background="muted" />
+
+### In Cards
+
+Organize content sections within card components using separators.
+
+<Canvas of={SeparatorStories.InCards} background="card" />
+
+### In Navigation
+
+Use separators in navigation breadcrumbs and menu items.
+
+<Canvas of={SeparatorStories.InNavigation} background="transparent" />
+
+### With Spacing
+
+Control spacing around separators using margin classes.
+
+<Canvas of={SeparatorStories.WithSpacing} background="default" />
+
+### Non Decorative
+
+Create semantic separators that have meaning for screen readers.
+
+<Canvas of={SeparatorStories.NonDecorative} background="grid" />
+
+## Accessibility
+
+The `Separator` component follows accessibility guidelines:
+
+- Decorative separators are hidden from screen readers by default
+- Non-decorative separators are announced to assistive technologies
+- Proper ARIA attributes for semantic meaning
+- No keyboard interaction required (visual element only)
+
+## Best Practices
+
+- Use separators to create visual hierarchy and group related content
+- Choose appropriate orientation (horizontal vs vertical) for your layout
+- Consider spacing around separators for optimal visual balance
+- Use semantic separators when the division has meaning beyond visual design
+- Keep separator styling consistent throughout your application
+- Test with screen readers to ensure appropriate announcements
+
+</DocLayout>

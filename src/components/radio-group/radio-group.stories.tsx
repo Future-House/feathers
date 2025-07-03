@@ -16,6 +16,7 @@ const meta: Meta<typeof RadioGroup> = {
       },
     },
   },
+  tags: [],
   argTypes: {
     // RadioGroup.Root props
     value: {

@@ -16,6 +16,7 @@ const meta: Meta<typeof ScrollArea> = {
       },
     },
   },
+  tags: [],
   argTypes: {
     // ScrollArea.Root props
     type: {

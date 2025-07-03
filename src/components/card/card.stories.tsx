@@ -22,7 +22,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
 } satisfies Meta<typeof Card>;
 
 export default meta;

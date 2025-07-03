@@ -1,0 +1,97 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as MenubarStories from './menubar.stories';
+
+<Meta of={MenubarStories} />
+
+<DocLayout meta={MenubarStories.default}>
+  ## Default Example
+
+<Canvas of={MenubarStories.Default} background="dots" />
+
+## Component API
+
+### Menubar
+
+A visually persistent menu common in desktop applications that provides access to a consistent set of commands. Built with Radix UI Menubar primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={MenubarStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(MenubarStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={MenubarStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### With Checkboxes
+
+Menubar items can include checkbox items for toggleable options like view preferences.
+
+<Canvas of={MenubarStories.WithCheckboxes} background="grid" />
+
+### With Radio Groups
+
+Use radio groups within menubars for mutually exclusive options like theme selection.
+
+<Canvas of={MenubarStories.WithRadioGroup} background="muted" />
+
+### With Submenus
+
+Create nested menu structures with submenu items for complex navigation hierarchies.
+
+<Canvas of={MenubarStories.WithSubmenus} background="card" />
+
+### Application Menubar
+
+A complete example showing how to build a full application menubar with multiple sections and interactions.
+
+<Canvas of={MenubarStories.ApplicationMenubar} background="transparent" />
+
+### Minimal Menubar
+
+A simplified menubar with basic actions for minimal interfaces.
+
+<Canvas of={MenubarStories.MinimalMenubar} background="default" />
+
+## Accessibility
+
+The `Menubar` component follows the [WAI-ARIA Menubar Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) and includes:
+
+- Full keyboard navigation with arrow keys, Enter, and Escape
+- Proper ARIA attributes for screen readers
+- Focus management and tab order
+- Support for keyboard shortcuts display
+- Automatic role and state announcements
+
+## Best Practices
+
+- Use consistent keyboard shortcuts and display them in menu items
+- Group related functionality together using separators
+- Keep menu depth reasonable (avoid deeply nested submenus)
+- Provide clear, descriptive labels for all menu items
+- Use icons consistently to help with visual recognition
+- Consider the menu's position in your application layout
+
+</DocLayout>

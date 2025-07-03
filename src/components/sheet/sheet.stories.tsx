@@ -66,6 +66,7 @@ function Example() {
       },
     },
   },
+  tags: [],
   argTypes: {
     open: {
       control: 'boolean',

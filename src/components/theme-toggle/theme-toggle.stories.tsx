@@ -23,7 +23,7 @@ const meta: Meta<typeof ThemeToggle> = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
 };
 
 export default meta;

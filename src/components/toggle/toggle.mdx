@@ -1,0 +1,95 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as ToggleStories from './toggle.stories';
+
+<Meta of={ToggleStories} />
+
+<DocLayout meta={ToggleStories.default}>
+  ## Default Example
+
+<Canvas of={ToggleStories.Default} background="dots" />
+
+## Component API
+
+### Toggle
+
+A toggle component built with Radix UI and Tailwind CSS, supporting multiple variants and sizes for creating toggleable buttons.
+
+<PropsTable argTypes={ToggleStories.default.argTypes} />
+
+## Examples
+
+### With Icon
+
+Toggle button featuring an icon without text.
+
+<Canvas of={ToggleStories.WithIcon} background="grid" />
+
+### Variants
+
+Different visual styles for toggle buttons.
+
+<Canvas of={ToggleStories.Variants} background="muted" />
+
+### Sizes
+
+Toggle buttons in various sizes.
+
+<Canvas of={ToggleStories.Sizes} background="card" />
+
+### Text Formatting
+
+Common text formatting toggles for rich text editors.
+
+<Canvas of={ToggleStories.TextFormatting} background="transparent" />
+
+### Text Alignment
+
+Toggle buttons for text alignment controls.
+
+<Canvas of={ToggleStories.TextAlignment} background="default" />
+
+### Different States
+
+Showcase various toggle states including pressed and disabled.
+
+<Canvas of={ToggleStories.States} background="grid" />
+
+### With Text
+
+Toggle buttons combining icons with text labels.
+
+<Canvas of={ToggleStories.WithText} background="muted" />
+
+### Custom Styling
+
+Apply custom colors and themes to toggle buttons.
+
+<Canvas of={ToggleStories.CustomStyling} background="card" />
+
+## Accessibility
+
+The `Toggle` component follows the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/) and includes:
+
+- Keyboard support with Space and Enter keys
+- Screen reader announcements for pressed state
+- Proper ARIA attributes including `aria-pressed`
+- Focus management and visual focus indicators
+- Support for custom ARIA labels
+
+## Best Practices
+
+- Provide clear visual feedback for pressed/unpressed states
+- Use meaningful icons and labels that clearly indicate the toggle's purpose
+- Group related toggles using ToggleGroup when appropriate
+- Ensure sufficient color contrast for all states
+- Test with keyboard navigation and screen readers
+- Use appropriate sizes based on the interface context
+- Consider the toggle's purpose: use for on/off states, not for navigation
+
+</DocLayout>

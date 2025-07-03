@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as ScrollAreaStories from './scroll-area.stories';
+
+<Meta of={ScrollAreaStories} />
+
+<DocLayout meta={ScrollAreaStories.default}>
+  ## Default Example
+
+<Canvas of={ScrollAreaStories.Basic} background="dots" />
+
+## Component API
+
+### ScrollArea
+
+Augments native scroll functionality for custom, cross-browser styling. Built with Radix UI Scroll Area primitives for consistent scroll behavior.
+
+<PropsTable argTypes={ScrollAreaStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(ScrollAreaStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={ScrollAreaStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Horizontal Scroll
+
+Enable horizontal scrolling for wide content with custom scrollbar styling.
+
+<Canvas of={ScrollAreaStories.HorizontalScroll} background="grid" />
+
+### Chat Messages
+
+Perfect for chat interfaces and message lists with consistent scrolling behavior.
+
+<Canvas of={ScrollAreaStories.ChatMessages} background="muted" />
+
+### Tag List
+
+Display large lists of tags or badges in a constrained scrollable area.
+
+<Canvas of={ScrollAreaStories.TagList} background="card" />
+
+### Nested Scroll
+
+Create complex layouts with multiple nested scroll areas for rich content.
+
+<Canvas of={ScrollAreaStories.NestedScroll} background="transparent" />
+
+### Code Block
+
+Ideal for displaying code blocks and preformatted content with horizontal scrolling.
+
+<Canvas of={ScrollAreaStories.CodeBlock} background="default" />
+
+### With Scroll Type
+
+Control scrollbar visibility behavior with different scroll types.
+
+<Canvas of={ScrollAreaStories.WithScrollType} background="grid" />
+
+## Accessibility
+
+The `ScrollArea` component maintains:
+
+- Native keyboard scrolling support (arrow keys, Page Up/Down)
+- Screen reader compatibility with proper scroll announcements
+- Focus management within scrollable content
+- Touch scrolling support on mobile devices
+- Preserved tab order for focusable elements
+
+## Best Practices
+
+- Use consistent scroll area styling throughout your application
+- Set appropriate heights for scroll containers
+- Consider the content type when choosing scroll types
+- Test scrolling behavior across different devices
+- Provide visual indicators when content is scrollable
+- Avoid nested scroll areas when possible for better user experience
+
+</DocLayout>

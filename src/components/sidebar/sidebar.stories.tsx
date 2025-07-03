@@ -50,7 +50,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     defaultOpen: {
       control: { type: 'boolean' },

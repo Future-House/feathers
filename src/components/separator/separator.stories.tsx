@@ -49,6 +49,7 @@ function Example() {
       },
     },
   },
+  tags: [],
   argTypes: {
     orientation: {
       control: { type: 'select' },

@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as ResizableStories from './resizable.stories';
+
+<Meta of={ResizableStories} />
+
+<DocLayout meta={ResizableStories.default}>
+  ## Default Example
+
+<Canvas of={ResizableStories.HorizontalLayout} background="dots" />
+
+## Component API
+
+### ResizablePanelGroup
+
+Accessible resizable panel groups and layouts built with react-resizable-panels. Create flexible layouts with user-controlled panel sizing.
+
+<PropsTable argTypes={ResizableStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(ResizableStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={ResizableStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Vertical Layout
+
+Create vertical split layouts with resizable panels for dashboard interfaces.
+
+<Canvas of={ResizableStories.VerticalLayout} background="grid" />
+
+### With Handle
+
+Add visual grip handles to make resize areas more discoverable.
+
+<Canvas of={ResizableStories.WithHandle} background="muted" />
+
+### Nested Layout
+
+Combine horizontal and vertical layouts for complex application interfaces.
+
+<Canvas of={ResizableStories.NestedLayout} background="card" />
+
+### Collapsible Panel
+
+Allow panels to collapse completely when resized to their minimum size.
+
+<Canvas of={ResizableStories.CollapsiblePanel} background="transparent" />
+
+### Min/Max Sizes
+
+Set constraints on panel sizing to maintain usable interface proportions.
+
+<Canvas of={ResizableStories.MinMaxSizes} background="default" />
+
+### Basic Example
+
+A minimal example demonstrating the core resizable functionality.
+
+<Canvas of={ResizableStories.BasicExample} background="grid" />
+
+## Accessibility
+
+The `Resizable` components include:
+
+- Keyboard support with arrow keys for resize operations
+- Screen reader announcements for resize actions
+- Focus management for resize handles
+- ARIA attributes for handle identification
+- Proper tab order through resizable interfaces
+
+## Best Practices
+
+- Set appropriate minimum and maximum sizes for panels
+- Use visual handles to indicate resizable areas
+- Consider the content needs when setting default sizes
+- Test resize behavior at different viewport sizes
+- Provide smooth resize animations for better user experience
+- Save panel sizes in user preferences when appropriate
+
+</DocLayout>

@@ -16,7 +16,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // Standard HTML input props
     type: {

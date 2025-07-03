@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // OTP Input specific props
     maxLength: {

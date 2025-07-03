@@ -25,7 +25,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // AlertDialog (Root) props from @radix-ui/react-alert-dialog
     defaultOpen: {

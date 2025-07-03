@@ -1,0 +1,104 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={BreadcrumbStories} />
+
+<DocLayout meta={BreadcrumbStories.default}>
+  ## Default Example
+
+<Canvas of={BreadcrumbStories.Default} background="dots" />
+
+## Component API
+
+### Breadcrumb
+
+Displays the path to the current resource using a hierarchy of links. Built with semantic HTML and styled with Tailwind CSS.
+
+<PropsTable argTypes={BreadcrumbStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(BreadcrumbStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={BreadcrumbStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Custom Separator
+
+Using custom separators instead of the default chevron.
+
+<Canvas of={BreadcrumbStories.WithCustomSeparator} background="grid" />
+
+### With Ellipsis
+
+Truncating long paths with ellipsis for better space management.
+
+<Canvas of={BreadcrumbStories.WithEllipsis} background="muted" />
+
+### Long Path
+
+Breadcrumb with multiple levels showing deep navigation.
+
+<Canvas of={BreadcrumbStories.LongPath} background="card" />
+
+### As Child Link
+
+Using the asChild prop to integrate with routing libraries.
+
+<Canvas of={BreadcrumbStories.AsChildLink} background="transparent" />
+
+### Custom Styling
+
+Breadcrumb with custom styling and colors.
+
+<Canvas of={BreadcrumbStories.CustomStyling} background="default" />
+
+### Responsive
+
+Responsive breadcrumb that hides items on smaller screens.
+
+<Canvas of={BreadcrumbStories.Responsive} background="dots" />
+
+## Accessibility
+
+The `Breadcrumb` component follows accessibility best practices:
+
+- Uses semantic `nav` element with proper ARIA labels
+- Maintains proper link hierarchy for screen readers
+- Supports keyboard navigation with Tab and Enter keys
+- Provides clear visual distinction between links and current page
+- Uses proper ARIA attributes for navigation context
+
+## Best Practices
+
+- Keep breadcrumb labels concise and descriptive
+- Use consistent navigation patterns throughout your application
+- Consider truncating very long paths with ellipsis
+- Ensure the current page is clearly identified and not clickable
+- Test with screen readers to verify navigation clarity
+- Use semantic HTML structure for better accessibility
+- Consider mobile responsiveness when designing breadcrumbs
+
+</DocLayout>

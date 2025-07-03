@@ -1,0 +1,98 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as SidebarStories from './sidebar.stories';
+
+<Meta of={SidebarStories} />
+
+<DocLayout meta={SidebarStories.default}>
+  ## Default Example
+
+<Canvas of={SidebarStories.Default} background="dots" />
+
+## Component API
+
+### SidebarProvider
+
+A comprehensive sidebar component built with Radix UI primitives and Tailwind CSS. Features responsive design, collapsible states, keyboard shortcuts, and extensive customization options.
+
+<PropsTable argTypes={SidebarStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(SidebarStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={SidebarStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Collapsible
+
+Sidebar with icon-only collapsed state and tooltips for space efficiency.
+
+<Canvas of={SidebarStories.Collapsible} background="grid" />
+
+### Nested Menu
+
+Complex sidebar with nested menu items and sub-navigation structures.
+
+<Canvas of={SidebarStories.NestedMenu} background="muted" />
+
+### Loading State
+
+Show loading states using skeleton components while content loads.
+
+<Canvas of={SidebarStories.LoadingState} background="card" />
+
+### Floating Variant
+
+Floating sidebar variant for modern application layouts.
+
+<Canvas of={SidebarStories.FloatingVariant} background="transparent" />
+
+### Searchable Sidebar
+
+Sidebar with integrated search functionality for quick navigation.
+
+<Canvas of={SidebarStories.SearchableSidebar} background="default" />
+
+## Accessibility
+
+The `Sidebar` components include:
+
+- Keyboard navigation with Tab and arrow keys
+- Screen reader support with proper ARIA attributes
+- Focus management when collapsing/expanding
+- Landmark roles for navigation structure
+- Tooltip announcements in collapsed state
+
+## Best Practices
+
+- Organize navigation items in logical groups
+- Use consistent iconography throughout the sidebar
+- Provide tooltips for collapsed states
+- Consider responsive behavior on mobile devices
+- Use loading states for dynamic content
+- Test collapsible behavior with assistive technologies
+- Maintain clear visual hierarchy in nested structures
+
+</DocLayout>

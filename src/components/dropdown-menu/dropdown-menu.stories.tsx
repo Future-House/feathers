@@ -49,7 +49,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // Root component props from Radix UI DropdownMenu.Root
     defaultOpen: {

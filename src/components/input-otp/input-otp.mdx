@@ -1,0 +1,113 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as InputOTPStories from './input-otp.stories';
+
+<Meta of={InputOTPStories} />
+
+<DocLayout meta={InputOTPStories.default}>
+  ## Default Example
+
+<Canvas of={InputOTPStories.Default} background="dots" />
+
+## Component API
+
+### InputOTP
+
+A one-time password (OTP) input component built on the input-otp library with consistent styling and accessibility features. Perfect for verification codes, 2FA, and secure authentication flows.
+
+<PropsTable argTypes={InputOTPStories.default.argTypes} />
+
+## Examples
+
+### With Separator
+
+An OTP input with visual separator between digit groups.
+
+<Canvas of={InputOTPStories.WithSeparator} background="grid" />
+
+### Numeric Only
+
+An OTP input restricted to numeric characters only.
+
+<Canvas of={InputOTPStories.NumericOnly} background="muted" />
+
+### Two-Factor Authentication
+
+A complete 2FA interface with OTP input and context.
+
+<Canvas of={InputOTPStories.TwoFactorAuth} background="card" />
+
+### Phone Verification
+
+A phone verification flow with 4-digit OTP input.
+
+<Canvas of={InputOTPStories.PhoneVerification} background="transparent" />
+
+### Email Verification
+
+An email verification with 8-character alphanumeric code.
+
+<Canvas of={InputOTPStories.EmailVerification} background="default" />
+
+### Disabled State
+
+An OTP input in disabled state with pre-filled value.
+
+<Canvas of={InputOTPStories.Disabled} background="dots" />
+
+### With Validation
+
+An OTP input with real-time validation and feedback.
+
+<Canvas of={InputOTPStories.WithValidation} background="grid" />
+
+### Different Sizes
+
+OTP inputs in various lengths for different use cases.
+
+<Canvas of={InputOTPStories.DifferentSizes} background="muted" />
+
+### Login Flow
+
+A complete authentication flow with phone and OTP steps.
+
+<Canvas of={InputOTPStories.LoginFlow} background="card" />
+
+### Custom Styling
+
+An OTP input with custom border colors and styling.
+
+<Canvas of={InputOTPStories.CustomStyling} background="transparent" />
+
+## Accessibility
+
+The `InputOTP` component follows accessibility best practices and includes:
+
+- Keyboard navigation between input slots with Arrow keys
+- Screen reader support with proper ARIA labels
+- Focus management within the input group
+- Paste support for complete codes
+- Clear visual focus indicators
+- Proper labeling and instructions
+- Support for assistive technologies
+
+## Best Practices
+
+- Provide clear instructions about the expected code format
+- Use appropriate input lengths (4-8 digits typically)
+- Include visual separators for longer codes
+- Implement auto-advance between slots for better UX
+- Show validation feedback immediately
+- Support paste functionality for convenience
+- Use numeric input mode for numeric-only codes
+- Provide resend options with appropriate timing
+- Test with various input methods and assistive technologies
+- Consider auto-submission when code is complete
+- Implement proper error handling and retry mechanisms
+
+</DocLayout>

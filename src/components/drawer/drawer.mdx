@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as DrawerStories from './drawer.stories';
+
+<Meta of={DrawerStories} />
+
+<DocLayout meta={DrawerStories.default}>
+  ## Default Example
+
+<Canvas of={DrawerStories.Default} background="dots" />
+
+## Component API
+
+### Drawer
+
+A drawer component for overlaying content on either side or top/bottom of the screen. Built with Vaul primitives and styled with Tailwind CSS. Optimized for mobile-first bottom and slide-up interactions.
+
+<PropsTable argTypes={DrawerStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(DrawerStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={DrawerStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Mobile Menu
+
+A left-sliding drawer for mobile navigation menus.
+
+<Canvas of={DrawerStories.MobileMenu} background="grid" />
+
+### Create New Item
+
+A bottom drawer with a form for creating new items.
+
+<Canvas of={DrawerStories.CreateNewItem} background="muted" />
+
+### Settings Panel
+
+A right-sliding drawer for application settings.
+
+<Canvas of={DrawerStories.SettingsPanel} background="card" />
+
+### Action Sheet
+
+A bottom drawer presenting action options in a mobile-friendly layout.
+
+<Canvas of={DrawerStories.ActionSheet} background="transparent" />
+
+### From Top
+
+A drawer that slides down from the top of the screen.
+
+<Canvas of={DrawerStories.FromTop} background="default" />
+
+## Accessibility
+
+The `Drawer` component follows accessibility best practices and includes:
+
+- Focus trapping within the drawer when open
+- Escape key to close the drawer
+- Proper ARIA attributes for screen readers
+- Swipe gestures for mobile interaction
+- Focus return to the trigger element when closed
+- Backdrop interaction to close
+- Proper heading structure with DrawerTitle
+- Optional description support with DrawerDescription
+
+## Best Practices
+
+- Use bottom drawers for mobile-first experiences
+- Consider the drawer direction based on content and user expectations
+- Provide clear titles and descriptions for drawer content
+- Include appropriate action buttons in the footer
+- Use snap points for drawers with variable content heights
+- Test touch gestures on mobile devices
+- Ensure proper keyboard navigation
+- Consider performance impact of background scaling
+- Use drawers for secondary actions that don't require full page navigation
+
+</DocLayout>

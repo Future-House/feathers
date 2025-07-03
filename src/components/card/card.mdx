@@ -1,0 +1,86 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as CardStories from './card.stories';
+
+<Meta of={CardStories} />
+
+<DocLayout meta={CardStories.default}>
+  ## Default Example
+
+<Canvas of={CardStories.Default} background="dots" />
+
+## Component API
+
+### Card
+
+A versatile card component for displaying content in a contained format.
+
+<PropsTable argTypes={CardStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(CardStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={CardStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Simple Card
+
+A card with form elements and actions.
+
+<Canvas of={CardStories.SimpleCard} background="grid" />
+
+### Notification Card
+
+Card designed for displaying notifications with actions.
+
+<Canvas of={CardStories.NotificationCard} background="muted" />
+
+### Without Footer
+
+Card without a footer section for simpler layouts.
+
+<Canvas of={CardStories.WithoutFooter} background="card" />
+
+## Accessibility
+
+The `Card` component follows accessibility best practices:
+
+- Uses semantic HTML structure for better screen reader support
+- Maintains proper heading hierarchy within card content
+- Supports keyboard navigation for interactive elements
+- Provides proper focus management for form elements
+- Ensures adequate contrast ratios for readability
+
+## Best Practices
+
+- Use clear and descriptive card titles
+- Maintain consistent card layouts throughout your application
+- Consider the visual hierarchy when organizing card content
+- Use appropriate spacing between card elements
+- Ensure cards work well on different screen sizes
+- Group related content logically within cards
+- Use cards to create clear content boundaries
+
+</DocLayout>

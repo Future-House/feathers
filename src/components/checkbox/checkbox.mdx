@@ -1,0 +1,94 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as CheckboxStories from './checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+<DocLayout meta={CheckboxStories.default}>
+  ## Default Example
+
+<Canvas of={CheckboxStories.Default} background="dots" />
+
+## Component API
+
+### Checkbox
+
+A control that allows the user to toggle between checked and not checked. Built with Radix UI Checkbox primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={CheckboxStories.default.argTypes} />
+
+## Examples
+
+### Checked State
+
+A checkbox that is checked by default.
+
+<Canvas of={CheckboxStories.Checked} background="grid" />
+
+### Indeterminate State
+
+Displays a checkbox in indeterminate state, useful for partial selections.
+
+<Canvas of={CheckboxStories.Indeterminate} background="muted" />
+
+### Disabled States
+
+Shows checkboxes in various disabled states including unchecked, checked, and indeterminate.
+
+<Canvas of={CheckboxStories.Disabled} background="card" />
+
+### Controlled Checkbox
+
+A fully controlled checkbox with external state management and action buttons.
+
+<Canvas of={CheckboxStories.Controlled} background="transparent" />
+
+### Form Example
+
+Real-world form implementation with multiple checkboxes and validation.
+
+<Canvas of={CheckboxStories.FormExample} background="default" />
+
+### List with Checkboxes
+
+Interactive list with individual checkboxes and a select-all functionality.
+
+<Canvas of={CheckboxStories.ListWithCheckboxes} background="dots" />
+
+### Custom Styling
+
+Examples of checkboxes with custom colors, sizes, and border radius.
+
+<Canvas of={CheckboxStories.CustomStyling} background="grid" />
+
+### With Descriptions
+
+Checkboxes with detailed labels and descriptive text.
+
+<Canvas of={CheckboxStories.WithDescriptions} background="muted" />
+
+## Accessibility
+
+The `Checkbox` component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) and includes:
+
+- Proper keyboard navigation with Space key to toggle
+- Screen reader support with appropriate ARIA attributes
+- Focus management and visual focus indicators
+- Support for indeterminate state announcements
+- Proper labeling associations with `htmlFor` and `id`
+
+## Best Practices
+
+- Always provide a clear, descriptive label for each checkbox
+- Use the `required` attribute for mandatory form fields
+- Group related checkboxes using fieldsets and legends
+- Consider using indeterminate state for parent checkboxes when children have mixed states
+- Ensure sufficient color contrast for accessibility
+- Test with keyboard navigation and screen readers
+
+</DocLayout>

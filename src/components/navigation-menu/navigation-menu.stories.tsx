@@ -32,6 +32,7 @@ const meta: Meta<typeof NavigationMenu> = {
       },
     },
   },
+  tags: [],
   argTypes: {
     // NavigationMenu.Root props
     value: {

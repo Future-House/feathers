@@ -19,6 +19,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
       },
     },
   },
+  tags: [],
   argTypes: {
     // PanelGroup props
     direction: {

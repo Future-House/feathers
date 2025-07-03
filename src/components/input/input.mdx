@@ -1,0 +1,160 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as InputStories from './input.stories';
+
+<Meta of={InputStories} />
+
+<DocLayout meta={InputStories.default}>
+  ## Default Example
+
+<Canvas of={InputStories.Default} background="dots" />
+
+## Component API
+
+### Input
+
+A flexible input component built on the native HTML input element with consistent styling and accessibility features.
+
+<PropsTable argTypes={InputStories.default.argTypes} />
+
+## Examples
+
+### With Value
+
+An input with a pre-filled value.
+
+<Canvas of={InputStories.WithValue} background="grid" />
+
+### Email Input
+
+An input specifically configured for email addresses.
+
+<Canvas of={InputStories.Email} background="muted" />
+
+### Password Input
+
+An input for password entry with obscured text.
+
+<Canvas of={InputStories.Password} background="card" />
+
+### Number Input
+
+A numeric input with min, max, and step constraints.
+
+<Canvas of={InputStories.Number} background="transparent" />
+
+### Search Input
+
+A search-specific input with appropriate styling and behavior.
+
+<Canvas of={InputStories.Search} background="default" />
+
+### Disabled State
+
+An input in disabled state that cannot be interacted with.
+
+<Canvas of={InputStories.Disabled} background="dots" />
+
+### Read Only
+
+A read-only input that displays data but cannot be edited.
+
+<Canvas of={InputStories.ReadOnly} background="grid" />
+
+### Required Field
+
+An input marked as required for form validation.
+
+<Canvas of={InputStories.Required} background="muted" />
+
+### With Max Length
+
+An input with a maximum character limit.
+
+<Canvas of={InputStories.WithMaxLength} background="card" />
+
+### File Input
+
+A file input for uploading documents or images.
+
+<Canvas of={InputStories.File} background="transparent" />
+
+### Date Input
+
+A date picker input for selecting dates.
+
+<Canvas of={InputStories.Date} background="default" />
+
+### Time Input
+
+A time picker input for selecting times.
+
+<Canvas of={InputStories.Time} background="dots" />
+
+### Custom Styling
+
+An input with custom CSS classes for unique styling.
+
+<Canvas of={InputStories.WithCustomStyling} background="grid" />
+
+### Form Example
+
+A complete form with multiple labeled inputs.
+
+<Canvas of={InputStories.FormExample} background="muted" />
+
+### With Icons
+
+Inputs enhanced with icons for better visual context.
+
+<Canvas of={InputStories.WithIcons} background="card" />
+
+### Password Toggle
+
+A password input with show/hide toggle functionality.
+
+<Canvas of={InputStories.PasswordToggle} background="transparent" />
+
+### Validation States
+
+Inputs showing different validation states with feedback messages.
+
+<Canvas of={InputStories.ValidationStates} background="default" />
+
+### Sizing Variations
+
+Inputs in different sizes for various layout needs.
+
+<Canvas of={InputStories.SizingVariations} background="dots" />
+
+## Accessibility
+
+The `Input` component follows standard HTML input accessibility practices and includes:
+
+- Proper labeling with `htmlFor` and `id` associations
+- Support for ARIA attributes like `aria-label` and `aria-describedby`
+- Keyboard navigation with Tab and Enter keys
+- Screen reader announcements for validation states
+- Focus management with visible focus indicators
+- Support for form validation attributes
+- Placeholder text that doesn't replace proper labeling
+
+## Best Practices
+
+- Always provide clear, descriptive labels for inputs
+- Use appropriate input types for better mobile keyboard experience
+- Implement proper form validation with helpful error messages
+- Consider placeholder text as supplementary, not primary guidance
+- Ensure sufficient color contrast for accessibility
+- Use icons thoughtfully to enhance usability without cluttering
+- Test with keyboard navigation and screen readers
+- Group related inputs logically in forms
+- Provide clear feedback for validation states
+- Consider input masking for formatted data like phone numbers
+
+</DocLayout>

@@ -1,0 +1,94 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as SliderStories from './slider.stories';
+
+<Meta of={SliderStories} />
+
+<DocLayout meta={SliderStories.default}>
+  ## Default Example
+
+<Canvas of={SliderStories.Default} background="dots" />
+
+## Component API
+
+### Slider
+
+A range input component built with Radix UI that allows users to select values from a continuous range with smooth thumb interactions.
+
+<PropsTable argTypes={SliderStories.default.argTypes} />
+
+## Examples
+
+### Range Slider
+
+Create a range slider with two handles for selecting a range of values.
+
+<Canvas of={SliderStories.Range} background="grid" />
+
+### Custom Range and Steps
+
+Configure the slider with custom minimum, maximum, and step values.
+
+<Canvas of={SliderStories.CustomRange} background="muted" />
+
+### Step Variations
+
+Different step increments for more granular or coarse value selection.
+
+<Canvas of={SliderStories.Steps} background="card" />
+
+### Vertical Orientation
+
+Display the slider vertically for space-constrained layouts.
+
+<Canvas of={SliderStories.Vertical} background="transparent" />
+
+### Disabled State
+
+Show how the slider appears when disabled.
+
+<Canvas of={SliderStories.Disabled} background="default" />
+
+### Inverted Slider
+
+Compare normal and inverted slider behavior.
+
+<Canvas of={SliderStories.Inverted} background="grid" />
+
+### Multiple Values
+
+Examples of sliders with single, double, and multiple handles.
+
+<Canvas of={SliderStories.MultipleValues} background="muted" />
+
+### Controlled Slider
+
+Demonstrate programmatic control of the slider value.
+
+<Canvas of={SliderStories.Controlled} background="card" />
+
+## Accessibility
+
+The `Slider` component follows the [WAI-ARIA Slider Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) and includes:
+
+- Keyboard navigation support with arrow keys, Home, and End keys
+- Screen reader announcements for current value and range
+- Proper ARIA attributes including `aria-valuemin`, `aria-valuemax`, and `aria-valuenow`
+- Focus management and visual focus indicators
+- Support for custom ARIA labels and descriptions
+
+## Best Practices
+
+- Always provide accessible labels for slider components
+- Use appropriate step values that match your use case
+- Consider the range of values and choose reasonable min/max boundaries
+- Test with keyboard navigation to ensure accessibility
+- Use `onValueCommit` for expensive operations that shouldn't run on every change
+- Provide visual feedback for disabled states
+
+</DocLayout>

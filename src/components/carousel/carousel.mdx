@@ -1,0 +1,106 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as CarouselStories from './carousel.stories';
+
+<Meta of={CarouselStories} />
+
+<DocLayout meta={CarouselStories.default}>
+  ## Default Example
+
+<Canvas of={CarouselStories.Default} background="dots" />
+
+## Component API
+
+### Carousel
+
+A carousel component built with Embla Carousel that allows users to navigate through a collection of items.
+
+<PropsTable argTypes={CarouselStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(CarouselStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={CarouselStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Vertical Orientation
+
+Carousel with vertical scrolling direction.
+
+<Canvas of={CarouselStories.Vertical} background="grid" />
+
+### Multiple Items Per View
+
+Show multiple carousel items at once with partial visibility.
+
+<Canvas of={CarouselStories.MultipleItemsPerView} background="muted" />
+
+### With Custom Content
+
+Carousel featuring rich content with gradients and detailed information.
+
+<Canvas of={CarouselStories.WithCustomContent} background="card" />
+
+### Image Carousel
+
+Carousel optimized for displaying images with looping enabled.
+
+<Canvas of={CarouselStories.ImageCarousel} background="transparent" />
+
+### Without Controls
+
+Carousel without navigation arrows for auto-scrolling or gesture-only navigation.
+
+<Canvas of={CarouselStories.WithoutControls} background="default" />
+
+### Custom Sizing
+
+Carousel with custom item sizing showing multiple items.
+
+<Canvas of={CarouselStories.CustomSizing} background="dots" />
+
+## Accessibility
+
+The `Carousel` component follows accessibility best practices:
+
+- Supports keyboard navigation with Tab, Enter, and arrow keys
+- Provides proper ARIA labels and roles for screen readers
+- Maintains focus management when navigating between items
+- Includes proper semantic structure for carousel content
+- Supports screen reader announcements for slide changes
+- Allows users to pause auto-playing carousels
+
+## Best Practices
+
+- Provide clear navigation controls for users
+- Use appropriate slide transitions and timing
+- Ensure carousel content is accessible via keyboard
+- Consider providing alternative navigation methods
+- Test with assistive technologies for accessibility
+- Use consistent spacing and sizing for carousel items
+- Provide indicators when showing multiple slides
+- Consider performance with large numbers of slides
+
+</DocLayout>

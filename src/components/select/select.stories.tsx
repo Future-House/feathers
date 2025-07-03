@@ -60,6 +60,7 @@ function Example() {
       },
     },
   },
+  tags: [],
   argTypes: {
     value: {
       control: 'text',

@@ -50,7 +50,7 @@ The tooltip components expose all Radix UI Tooltip primitive props:
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // Tooltip Root props
     defaultOpen: {

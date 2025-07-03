@@ -1,0 +1,93 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as LabelStories from './label.stories';
+
+<Meta of={LabelStories} />
+
+<DocLayout meta={LabelStories.default}>
+  ## Default Example
+
+<Canvas of={LabelStories.Default} background="dots" />
+
+## Component API
+
+### Label
+
+Renders an accessible label associated with controls. Built with Radix UI Label primitives and styled with Tailwind CSS for forms and interactive elements.
+
+<PropsTable argTypes={LabelStories.default.argTypes} />
+
+## Examples
+
+### With Input
+
+A label properly associated with an input field.
+
+<Canvas of={LabelStories.WithInput} background="grid" />
+
+### With Checkbox
+
+A label associated with a checkbox for clickable functionality.
+
+<Canvas of={LabelStories.WithCheckbox} background="muted" />
+
+### Required Field
+
+A label indicating a required form field with visual indicator.
+
+<Canvas of={LabelStories.Required} background="card" />
+
+### Disabled State
+
+A label for a disabled input field with appropriate styling.
+
+<Canvas of={LabelStories.Disabled} background="transparent" />
+
+### Form Group
+
+Multiple labels in a form context with various input types.
+
+<Canvas of={LabelStories.FormGroup} background="default" />
+
+### Long Text
+
+A label with longer descriptive text for complex form fields.
+
+<Canvas of={LabelStories.LongText} background="dots" />
+
+### Custom Styling
+
+Labels with custom styling and visual treatments.
+
+<Canvas of={LabelStories.CustomStyling} background="grid" />
+
+## Accessibility
+
+The `Label` component follows accessibility best practices and includes:
+
+- Proper association with form controls via `htmlFor` attribute
+- Click handling that focuses the associated control
+- Screen reader support with semantic HTML
+- Proper text styling that maintains readability
+- Support for nested interactive elements
+- ARIA compatibility for complex form structures
+
+## Best Practices
+
+- Always associate labels with their corresponding form controls
+- Use clear, descriptive text that explains the purpose of the field
+- Include required field indicators when necessary
+- Maintain proper contrast ratios for text visibility
+- Position labels consistently relative to their controls
+- Consider label length and wrapping behavior
+- Test with screen readers to ensure proper announcements
+- Use `htmlFor` attribute to create explicit associations
+- Avoid placeholder text as a replacement for proper labels
+- Group related labels and controls logically in forms
+
+</DocLayout>

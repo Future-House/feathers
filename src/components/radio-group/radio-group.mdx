@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as RadioGroupStories from './radio-group.stories';
+
+<Meta of={RadioGroupStories} />
+
+<DocLayout meta={RadioGroupStories.default}>
+  ## Default Example
+
+<Canvas of={RadioGroupStories.Default} background="dots" />
+
+## Component API
+
+### RadioGroup
+
+A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time. Built with Radix UI Radio Group primitives.
+
+<PropsTable argTypes={RadioGroupStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(RadioGroupStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={RadioGroupStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Payment Method
+
+Use radio groups for payment method selection with clear visual options.
+
+<Canvas of={RadioGroupStories.PaymentMethod} background="grid" />
+
+### Notification Settings
+
+Radio groups work well for settings that require a single choice from multiple options.
+
+<Canvas of={RadioGroupStories.NotificationSettings} background="muted" />
+
+### Horizontal Orientation
+
+Configure radio groups to display horizontally for compact layouts.
+
+<Canvas of={RadioGroupStories.HorizontalOrientation} background="card" />
+
+### Disabled Group
+
+Show how radio groups behave when disabled entirely.
+
+<Canvas of={RadioGroupStories.DisabledGroup} background="transparent" />
+
+### Mixed Disabled
+
+Individual radio items can be disabled while keeping others interactive.
+
+<Canvas of={RadioGroupStories.MixedDisabled} background="default" />
+
+### With Default Value
+
+Set initial values for radio groups using the defaultValue prop.
+
+<Canvas of={RadioGroupStories.WithDefaultValue} background="grid" />
+
+## Accessibility
+
+The `RadioGroup` component follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) and includes:
+
+- Keyboard navigation with arrow keys and Tab
+- Space and Enter key activation
+- Screen reader support with proper ARIA roles
+- Focus management within the group
+- Required field validation support
+
+## Best Practices
+
+- Always provide labels for radio button items
+- Use radio groups when only one option can be selected
+- Group related options logically together
+- Provide clear, descriptive labels that work without context
+- Consider the visual layout (vertical vs horizontal) based on space
+- Use default values when appropriate to guide user choices
+
+</DocLayout>

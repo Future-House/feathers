@@ -1,0 +1,103 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as BadgeStories from './badge.stories';
+
+<Meta of={BadgeStories} />
+
+<DocLayout meta={BadgeStories.default}>
+  ## Default Example
+
+<Canvas of={BadgeStories.Default} background="dots" />
+
+## Component API
+
+### Badge
+
+A badge component for displaying small bits of information, status indicators, or labels. Built with Tailwind CSS and class-variance-authority.
+
+<PropsTable argTypes={BadgeStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(BadgeStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={BadgeStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Variants
+
+All available badge variants with different visual styles.
+
+<Canvas of={BadgeStories.Variants} background="grid" />
+
+### With Icons
+
+Badges enhanced with icons for better visual communication.
+
+<Canvas of={BadgeStories.WithIcons} background="muted" />
+
+### Status Indicators
+
+Using badges to show system and application status.
+
+<Canvas of={BadgeStories.StatusIndicators} background="card" />
+
+### Count Badges
+
+Displaying numerical counts and notifications.
+
+<Canvas of={BadgeStories.CountBadges} background="transparent" />
+
+### Tags Example
+
+Using badges as tags for categories and labels.
+
+<Canvas of={BadgeStories.TagsExample} background="default" />
+
+### Custom Colors
+
+Badges with custom color schemes for specific use cases.
+
+<Canvas of={BadgeStories.CustomColors} background="dots" />
+
+## Accessibility
+
+The `Badge` component:
+
+- Uses semantic HTML with proper contrast ratios
+- Maintains readability across different themes
+- Supports screen readers with meaningful content
+- Works with keyboard navigation when used in interactive contexts
+
+## Best Practices
+
+- Use badges sparingly to avoid visual clutter
+- Choose appropriate variants based on the information hierarchy
+- Ensure sufficient color contrast for accessibility
+- Keep badge text concise and meaningful
+- Use consistent badge styling throughout your application
+- Consider the context when choosing between variants
+- Combine with icons when additional context is helpful
+
+</DocLayout>

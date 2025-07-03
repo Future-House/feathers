@@ -1,0 +1,114 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as AccordionStories from './accordion.stories';
+
+<Meta of={AccordionStories} />
+
+<DocLayout meta={AccordionStories.default}>
+  ## Default Example
+
+<Canvas of={AccordionStories.Default} background="dots" />
+
+## Component API
+
+### Accordion
+
+A vertically stacked set of interactive headings that each reveal a section of content. Built with Radix UI Accordion primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={AccordionStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(AccordionStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={AccordionStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Multiple Selection
+
+Allow multiple accordion items to be open at the same time.
+
+<Canvas of={AccordionStories.Multiple} background="grid" />
+
+### FAQ Example
+
+Common use case for frequently asked questions.
+
+<Canvas of={AccordionStories.FAQ} background="muted" />
+
+### Rich Content
+
+Accordion with complex content including lists, buttons, and styled elements.
+
+<Canvas of={AccordionStories.WithRichContent} background="card" />
+
+### Controlled State
+
+Programmatically control which accordion items are open.
+
+<Canvas of={AccordionStories.Controlled} background="transparent" />
+
+### Custom Styling
+
+Customize the appearance with custom CSS classes.
+
+<Canvas of={AccordionStories.CustomStyling} background="default" />
+
+### Disabled Items
+
+Disable specific accordion items or the entire accordion.
+
+<Canvas of={AccordionStories.DisabledItems} background="dots" />
+
+### RTL Support
+
+Right-to-left text direction support.
+
+<Canvas of={AccordionStories.RTLDirection} background="grid" />
+
+### Horizontal Orientation
+
+Display accordion items horizontally like tabs.
+
+<Canvas of={AccordionStories.HorizontalOrientation} background="muted" />
+
+## Accessibility
+
+The `Accordion` component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) and includes:
+
+- Proper keyboard navigation with Tab, Enter, and Arrow keys
+- ARIA attributes for screen readers
+- Focus management between accordion items
+- Semantic HTML structure with proper heading hierarchy
+
+## Best Practices
+
+- Use descriptive titles that clearly indicate what content will be revealed
+- Keep accordion content concise and scannable
+- Consider using single mode for most use cases to avoid overwhelming users
+- Provide clear visual feedback for the current state (expanded/collapsed)
+- Use collapsible mode when appropriate to allow users to close all items
+- Consider the logical order of accordion items based on user priorities
+
+</DocLayout>

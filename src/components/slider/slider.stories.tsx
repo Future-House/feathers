@@ -14,7 +14,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     defaultValue: {
       control: { type: 'object' },

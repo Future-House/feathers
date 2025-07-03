@@ -22,7 +22,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // Breadcrumb (nav) props
     'aria-label': {

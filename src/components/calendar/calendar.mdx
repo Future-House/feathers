@@ -1,0 +1,117 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as CalendarStories from './calendar.stories';
+
+<Meta of={CalendarStories} />
+
+<DocLayout meta={CalendarStories.default}>
+  ## Default Example
+
+<Canvas of={CalendarStories.Default} background="dots" />
+
+## Component API
+
+### Calendar
+
+A date picker component built with react-day-picker and styled with Tailwind CSS. Supports single date selection, date ranges, and various display modes.
+
+<PropsTable argTypes={CalendarStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(CalendarStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={CalendarStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### Without Outside Days
+
+Calendar without showing days from adjacent months.
+
+<Canvas of={CalendarStories.WithoutOutsideDays} background="grid" />
+
+### Multiple Months
+
+Display multiple months side by side.
+
+<Canvas of={CalendarStories.MultipleMonths} background="muted" />
+
+### With Dropdowns
+
+Calendar with dropdown selectors for month and year navigation.
+
+<Canvas of={CalendarStories.WithDropdowns} background="card" />
+
+### Range Selection
+
+Select date ranges with start and end dates.
+
+<Canvas of={CalendarStories.RangeSelection} background="transparent" />
+
+### Multiple Selection
+
+Select multiple individual dates.
+
+<Canvas of={CalendarStories.MultipleSelection} background="default" />
+
+### With Disabled Dates
+
+Calendar with certain dates disabled based on business logic.
+
+<Canvas of={CalendarStories.WithDisabledDates} background="dots" />
+
+### Preselected Date
+
+Calendar with a date already selected on initialization.
+
+<Canvas of={CalendarStories.PreselectedDate} background="grid" />
+
+### Minimal Styling
+
+Calendar with minimal styling within a card container.
+
+<Canvas of={CalendarStories.MinimalStyling} background="muted" />
+
+## Accessibility
+
+The `Calendar` component follows accessibility best practices:
+
+- Supports keyboard navigation with arrow keys, Tab, Enter, and Space
+- Provides proper ARIA labels and descriptions for screen readers
+- Maintains focus management throughout date selection
+- Uses semantic HTML structure for better accessibility
+- Supports screen reader announcements for date changes
+- Includes proper role attributes for calendar functionality
+
+## Best Practices
+
+- Use appropriate selection modes based on your use case
+- Provide clear visual feedback for selected dates
+- Consider disabling invalid dates based on business logic
+- Use consistent date formatting throughout your application
+- Test with keyboard navigation to ensure accessibility
+- Provide clear instructions for date selection when needed
+- Consider mobile responsiveness for touch interactions
+
+</DocLayout>

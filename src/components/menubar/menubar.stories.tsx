@@ -50,7 +50,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // Root component props from @radix-ui/react-menubar
     value: {

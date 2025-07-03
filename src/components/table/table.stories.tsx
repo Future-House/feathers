@@ -25,7 +25,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     className: {
       control: { type: 'text' },

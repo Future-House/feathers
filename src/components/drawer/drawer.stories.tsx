@@ -25,7 +25,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // Root component props from Vaul Drawer.Root
     open: {

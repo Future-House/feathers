@@ -1,0 +1,97 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as CollapsibleStories from './collapsible.stories';
+
+<Meta of={CollapsibleStories} />
+
+<DocLayout meta={CollapsibleStories.default}>
+  ## Default Example
+
+<Canvas of={CollapsibleStories.Default} background="dots" />
+
+## Component API
+
+### Collapsible
+
+An interactive component which can be expanded/collapsed. Built with Radix UI Collapsible primitives and styled with Tailwind CSS.
+
+<PropsTable argTypes={CollapsibleStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(CollapsibleStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={CollapsibleStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### With Card
+
+A collapsible integrated within a card component with multiple sections.
+
+<Canvas of={CollapsibleStories.WithCard} background="grid" />
+
+### Open by Default
+
+A collapsible that starts in an expanded state.
+
+<Canvas of={CollapsibleStories.OpenByDefault} background="muted" />
+
+### Controlled State
+
+External control over the collapsible state with synchronized buttons.
+
+<Canvas of={CollapsibleStories.Controlled} background="card" />
+
+### Disabled State
+
+A disabled collapsible that cannot be toggled.
+
+<Canvas of={CollapsibleStories.Disabled} background="transparent" />
+
+### Multiple Collapsibles
+
+A navigation menu with multiple independent collapsible sections.
+
+<Canvas of={CollapsibleStories.MultipleCollapsibles} background="default" />
+
+## Accessibility
+
+The `Collapsible` component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/) and includes:
+
+- Keyboard navigation support with Enter and Space keys
+- Screen reader announcements for expanded/collapsed states
+- Proper ARIA attributes including `aria-expanded` and `aria-controls`
+- Focus management when toggling states
+- Semantic HTML structure for screen readers
+
+## Best Practices
+
+- Use clear, descriptive labels for collapsible triggers
+- Provide visual indicators (like chevrons) to show expandable content
+- Consider the initial state - some content may be better shown expanded by default
+- Group related collapsibles logically
+- Ensure keyboard accessibility for all interactive elements
+- Test with screen readers to verify proper announcements
+
+</DocLayout>

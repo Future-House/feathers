@@ -15,7 +15,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // DayPicker root props from react-day-picker
     mode: {

@@ -104,7 +104,7 @@ const meta: Meta<typeof ThemeProvider> = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
 };
 
 export default meta;

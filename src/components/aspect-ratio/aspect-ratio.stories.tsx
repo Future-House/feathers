@@ -14,7 +14,7 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     // AspectRatio (Root) props from @radix-ui/react-aspect-ratio
     ratio: {

@@ -1,0 +1,97 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as SheetStories from './sheet.stories';
+
+<Meta of={SheetStories} />
+
+<DocLayout meta={SheetStories.default}>
+  ## Default Example
+
+<Canvas of={SheetStories.Default} background="dots" />
+
+## Component API
+
+### Sheet
+
+A sheet component that slides in from the side of the screen. Built on top of Radix UI's Dialog primitive and provides a flexible overlay interface for displaying content.
+
+<PropsTable argTypes={SheetStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(SheetStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={SheetStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### From Left
+
+Sheet that slides in from the left side, commonly used for navigation menus.
+
+<Canvas of={SheetStories.FromLeft} background="grid" />
+
+### From Top
+
+Sheet that slides in from the top, useful for notifications or quick actions.
+
+<Canvas of={SheetStories.FromTop} background="muted" />
+
+### From Bottom
+
+Sheet that slides in from the bottom, perfect for mobile-style action sheets.
+
+<Canvas of={SheetStories.FromBottom} background="card" />
+
+### Controlled
+
+Manage the sheet open state with React state for programmatic control.
+
+<Canvas of={SheetStories.Controlled} background="transparent" />
+
+### Non Modal
+
+A non-modal sheet that allows interaction with elements behind it.
+
+<Canvas of={SheetStories.NonModal} background="default" />
+
+## Accessibility
+
+The `Sheet` component follows the [WAI-ARIA Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) and includes:
+
+- Focus management with focus trap when modal
+- Escape key handling to close the sheet
+- Screen reader announcements for open/close states
+- Proper ARIA attributes for accessibility
+- Background click handling for modal sheets
+
+## Best Practices
+
+- Use appropriate slide directions based on content type and user expectations
+- Keep sheet content focused and task-oriented
+- Provide clear close mechanisms (X button, escape key, outside click)
+- Consider mobile users and touch interactions
+- Use proper heading hierarchy within sheet content
+- Test with keyboard navigation and screen readers for full accessibility
+
+</DocLayout>

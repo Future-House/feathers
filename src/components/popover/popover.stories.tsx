@@ -30,6 +30,7 @@ const meta: Meta<typeof Popover> = {
       },
     },
   },
+  tags: [],
   argTypes: {
     // Popover.Root props
     defaultOpen: {

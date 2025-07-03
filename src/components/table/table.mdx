@@ -1,0 +1,98 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as TableStories from './table.stories';
+
+<Meta of={TableStories} />
+
+<DocLayout meta={TableStories.default}>
+  ## Default Example
+
+<Canvas of={TableStories.Default} background="dots" />
+
+## Component API
+
+### Table
+
+A responsive table component for displaying tabular data. Built with semantic HTML table elements and styled with Tailwind CSS.
+
+<PropsTable argTypes={TableStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(TableStories.default.subcomponents);
+return subcomponents.map((sub) => (
+
+<div key={sub.name}>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={TableStories.default.subcomponents[sub.name].argTypes}
+  />
+</div>
+)); }) ()}
+
+## Examples
+
+### With Badges
+
+Enhance table content with badge components for status indicators.
+
+<Canvas of={TableStories.WithBadges} background="grid" />
+
+### With Actions
+
+Include interactive elements like checkboxes and action buttons.
+
+<Canvas of={TableStories.WithActions} background="muted" />
+
+### With Footer
+
+Add summary information using table footer elements.
+
+<Canvas of={TableStories.WithFooter} background="card" />
+
+### Dense Layout
+
+Compact table layout for displaying more data in limited space.
+
+<Canvas of={TableStories.Dense} background="transparent" />
+
+### Striped Rows
+
+Alternate row background colors for improved readability.
+
+<Canvas of={TableStories.Striped} background="default" />
+
+## Accessibility
+
+The `Table` component includes:
+
+- Semantic HTML table structure for screen readers
+- Proper heading associations with `scope` attributes
+- Caption support for table descriptions
+- Keyboard navigation support for interactive elements
+- High contrast styling that meets WCAG guidelines
+
+## Best Practices
+
+- Use table headers (`TableHead`) to clearly label columns
+- Provide a caption (`TableCaption`) to describe the table's purpose
+- Keep table content scannable with proper alignment
+- Use consistent formatting for similar data types
+- Consider responsive design for mobile viewing
+- Implement sorting and filtering for large datasets
+- Use appropriate row hover states for interactive tables
+
+</DocLayout>
