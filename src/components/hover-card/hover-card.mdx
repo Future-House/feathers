@@ -25,19 +25,23 @@ The root component that provides context for all hover card parts.
 {(
 () => {
 const subcomponents = parseSubcomponents(HoverCardStories.default.subcomponents);
-console.log('Subcomponents:', subcomponents);
 return subcomponents.map((sub) => (
+
 <div key={sub.name}>
-<h3 className="sb-unstyled text-xl text-foreground font-bold mt-6 mb-3">{sub.name}</h3>
-{sub.description && <p className="sb-unstyled text-base text-muted-foreground mb-4">{sub.description}</p>}
-<PropsTable
-title={`${sub.name} Props`}
-argTypes={HoverCardStories.default.subcomponents[sub.name].argTypes}
-/>
+  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+    {sub.name}
+  </h3>
+  {sub.description && (
+    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+      {sub.description}
+    </p>
+  )}
+  <PropsTable
+    title={`${sub.name} Props`}
+    argTypes={HoverCardStories.default.subcomponents[sub.name].argTypes}
+  />
 </div>
-));
-})
-()}
+)); }) ()}
 
 ## Examples
 
@@ -73,7 +77,7 @@ Customize the open and close delays for different interaction patterns.
 
 ## Accessibility
 
-The HoverCard component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/) and includes:
+The `HoverCard` component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/) and includes:
 
 - Keyboard navigation support with Tab and arrow keys
 - Screen reader announcements for open/close states
