@@ -72,7 +72,7 @@ const meta = {
   subcomponents: {
     CollapsibleTrigger: {
       description: 'The button that toggles the collapsible',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -83,7 +83,7 @@ const meta = {
     },
     CollapsibleContent: {
       description: 'The component that contains the collapsible content',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:

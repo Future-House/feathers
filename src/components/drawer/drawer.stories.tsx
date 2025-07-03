@@ -93,7 +93,7 @@ const meta = {
   subcomponents: {
     DrawerTrigger: {
       description: 'The button that opens the drawer',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -104,7 +104,7 @@ const meta = {
     },
     DrawerContent: {
       description: 'The content of the drawer',
-      props: {
+      argTypes: {
         className: {
           type: 'string',
           description: 'Additional CSS classes to apply to the content',
@@ -113,7 +113,7 @@ const meta = {
     },
     DrawerHeader: {
       description: 'Container for the drawer title and description',
-      props: {
+      argTypes: {
         className: {
           type: 'string',
           description: 'Additional CSS classes to apply to the header',
@@ -122,7 +122,7 @@ const meta = {
     },
     DrawerFooter: {
       description: 'Container for action buttons at the bottom of the drawer',
-      props: {
+      argTypes: {
         className: {
           type: 'string',
           description: 'Additional CSS classes to apply to the footer',
@@ -132,7 +132,7 @@ const meta = {
     DrawerTitle: {
       description:
         'An accessible title to be announced when the drawer is opened',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -144,7 +144,7 @@ const meta = {
     DrawerDescription: {
       description:
         'An optional accessible description to be announced when the drawer is opened',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -155,7 +155,7 @@ const meta = {
     },
     DrawerClose: {
       description: 'The button that closes the drawer',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:

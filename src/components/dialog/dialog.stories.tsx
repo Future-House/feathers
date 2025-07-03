@@ -75,7 +75,7 @@ const meta = {
   subcomponents: {
     DialogTrigger: {
       description: 'The button that opens the dialog',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -86,7 +86,7 @@ const meta = {
     },
     DialogContent: {
       description: 'The content of the dialog',
-      props: {
+      argTypes: {
         showCloseButton: {
           type: 'boolean',
           description:
@@ -117,7 +117,7 @@ const meta = {
     },
     DialogHeader: {
       description: 'Container for the dialog title and description',
-      props: {
+      argTypes: {
         className: {
           type: 'string',
           description: 'Additional CSS classes to apply to the header',
@@ -126,7 +126,7 @@ const meta = {
     },
     DialogFooter: {
       description: 'Container for action buttons at the bottom of the dialog',
-      props: {
+      argTypes: {
         className: {
           type: 'string',
           description: 'Additional CSS classes to apply to the footer',
@@ -136,7 +136,7 @@ const meta = {
     DialogTitle: {
       description:
         'An accessible title to be announced when the dialog is opened',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -148,7 +148,7 @@ const meta = {
     DialogDescription: {
       description:
         'An optional accessible description to be announced when the dialog is opened',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -159,7 +159,7 @@ const meta = {
     },
     DialogClose: {
       description: 'The button that closes the dialog',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:

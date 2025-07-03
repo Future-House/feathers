@@ -100,7 +100,7 @@ const meta = {
   subcomponents: {
     DropdownMenuTrigger: {
       description: 'The button that toggles the dropdown menu',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -111,7 +111,7 @@ const meta = {
     },
     DropdownMenuContent: {
       description: 'The component that pops out when the dropdown menu is open',
-      props: {
+      argTypes: {
         sideOffset: {
           type: 'number',
           description: 'The distance in pixels from the trigger',
@@ -131,7 +131,7 @@ const meta = {
     },
     DropdownMenuItem: {
       description: 'An item in the dropdown menu',
-      props: {
+      argTypes: {
         inset: {
           type: 'boolean',
           description:
@@ -152,7 +152,7 @@ const meta = {
     },
     DropdownMenuCheckboxItem: {
       description: 'An item in the dropdown menu that can be checked',
-      props: {
+      argTypes: {
         checked: {
           type: 'boolean | indeterminate',
           description: 'The controlled checked state of the checkbox item',
@@ -165,7 +165,7 @@ const meta = {
     },
     DropdownMenuRadioGroup: {
       description: 'A group of radio items in the dropdown menu',
-      props: {
+      argTypes: {
         value: {
           type: 'string',
           description: 'The controlled value of the radio group',
@@ -179,7 +179,7 @@ const meta = {
     DropdownMenuRadioItem: {
       description:
         'An item in the dropdown menu that can be selected as part of a radio group',
-      props: {
+      argTypes: {
         value: {
           type: 'string',
           description: 'The value of the radio item',
@@ -188,7 +188,7 @@ const meta = {
     },
     DropdownMenuLabel: {
       description: 'A label for a group of items in the dropdown menu',
-      props: {
+      argTypes: {
         inset: {
           type: 'boolean',
           description:
@@ -199,15 +199,15 @@ const meta = {
     },
     DropdownMenuSeparator: {
       description: 'A visual separator between groups of items',
-      props: {},
+      argTypes: {},
     },
     DropdownMenuShortcut: {
       description: 'A keyboard shortcut display for menu items',
-      props: {},
+      argTypes: {},
     },
     DropdownMenuSub: {
       description: 'A submenu within the dropdown menu',
-      props: {
+      argTypes: {
         open: {
           type: 'boolean',
           description: 'The controlled open state of the submenu',
@@ -220,7 +220,7 @@ const meta = {
     },
     DropdownMenuSubTrigger: {
       description: 'An item that opens a submenu',
-      props: {
+      argTypes: {
         inset: {
           type: 'boolean',
           description:
@@ -231,7 +231,7 @@ const meta = {
     },
     DropdownMenuSubContent: {
       description: 'The content of a submenu',
-      props: {},
+      argTypes: {},
     },
   },
 } satisfies Meta<typeof DropdownMenu>;
