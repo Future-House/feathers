@@ -1,0 +1,91 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  parseSubcomponents,
+} from '../../../.storybook/components';
+import * as HoverCardStories from './hover-card.stories';
+
+<Meta of={HoverCardStories} />
+
+<DocLayout meta={HoverCardStories.default}>
+  ## Default Example
+
+<Canvas of={HoverCardStories.Default} background="dots" />
+
+## Component API
+
+### HoverCard
+
+The root component that provides context for all hover card parts.
+
+<PropsTable argTypes={HoverCardStories.default.argTypes} />
+
+{(
+() => {
+const subcomponents = parseSubcomponents(HoverCardStories.default.subcomponents);
+console.log('Subcomponents:', subcomponents);
+return subcomponents.map((sub) => (
+<div key={sub.name}>
+<h3 className="sb-unstyled text-xl text-foreground font-bold mt-6 mb-3">{sub.name}</h3>
+{sub.description && <p className="sb-unstyled text-base text-muted-foreground mb-4">{sub.description}</p>}
+<PropsTable
+title={`${sub.name} Props`}
+argTypes={HoverCardStories.default.subcomponents[sub.name].argTypes}
+/>
+</div>
+));
+})
+()}
+
+## Examples
+
+### Without Avatar
+
+A simple hover card without an avatar, perfect for showing additional context or information.
+
+<Canvas of={HoverCardStories.WithoutAvatar} background="grid" />
+
+### User Profile
+
+Display user profile information with avatar and additional details.
+
+<Canvas of={HoverCardStories.UserProfile} background="muted" />
+
+### Product Info
+
+Show detailed product information with pricing and features.
+
+<Canvas of={HoverCardStories.ProductInfo} background="card" />
+
+### Custom Positioning
+
+Control the positioning of the hover card relative to the trigger.
+
+<Canvas of={HoverCardStories.CustomPositioning} background="transparent" />
+
+### Delay Customization
+
+Customize the open and close delays for different interaction patterns.
+
+<Canvas of={HoverCardStories.DelayCustomization} background="default" />
+
+## Accessibility
+
+The HoverCard component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/) and includes:
+
+- Keyboard navigation support with Tab and arrow keys
+- Screen reader announcements for open/close states
+- Proper ARIA attributes for accessibility
+- Focus management when the hover card opens and closes
+
+## Best Practices
+
+- Use appropriate open/close delays based on your use case
+- Keep hover card content concise and relevant
+- Consider mobile users where hover interactions are not available
+- Test with keyboard navigation to ensure accessibility
+- Use the `asChild` prop on `HoverCardTrigger` to maintain semantic HTML
+
+</DocLayout>

@@ -1,0 +1,4 @@
+/* Inject custom background variable to override sb/emotion styles */
+.sbdocs-wrapper {
+  background-color: var(--background) !important;
+}

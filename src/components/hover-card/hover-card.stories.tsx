@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../avatar/avatar';
@@ -17,7 +16,6 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     // Root component props from Radix UI HoverCard.Root
     defaultOpen: {
@@ -68,7 +66,7 @@ const meta = {
   subcomponents: {
     HoverCardTrigger: {
       description: 'The element that triggers the hover card on hover',
-      props: {
+      argTypes: {
         asChild: {
           type: 'boolean',
           description:
@@ -79,7 +77,7 @@ const meta = {
     },
     HoverCardContent: {
       description: 'The component that pops out when the hover card is open',
-      props: {
+      argTypes: {
         side: {
           type: 'string',
           description: 'The preferred side of the trigger to render against',
