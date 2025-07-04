@@ -21,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A modal dialog that interrupts the user with important content and expects a response. Built with Radix UI AlertDialog primitives and styled with Tailwind CSS.',
+          'A modal dialog that interrupts the user with important content and expects a response.',
       },
     },
   },
@@ -56,6 +56,138 @@ const meta = {
       },
     },
   },
+  subcomponents: {
+    AlertDialogTrigger: {
+      description: 'The button that opens the alert dialog',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+    AlertDialogPortal: {
+      description: 'When used, portals your overlay and content parts into the body',
+      argTypes: {
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with external libraries',
+          defaultValue: undefined,
+        },
+        container: {
+          type: 'HTMLElement',
+          description: 'Specify a container element to portal the content into',
+          defaultValue: 'document.body',
+        },
+      },
+    },
+    AlertDialogOverlay: {
+      description: 'A layer that covers the inert portion of the view when the alert dialog is open',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with external libraries',
+          defaultValue: undefined,
+        },
+      },
+    },
+    AlertDialogContent: {
+      description: 'Contains content to be rendered when the alert dialog is open',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with external libraries',
+          defaultValue: undefined,
+        },
+        onOpenAutoFocus: {
+          type: 'function',
+          description:
+            'Event handler called when focus moves into the component after opening',
+          defaultValue: undefined,
+        },
+        onCloseAutoFocus: {
+          type: 'function',
+          description:
+            'Event handler called when focus moves to the trigger after closing',
+          defaultValue: undefined,
+        },
+        onEscapeKeyDown: {
+          type: 'function',
+          description: 'Event handler called when the escape key is down',
+          defaultValue: undefined,
+        },
+      },
+    },
+    AlertDialogHeader: {
+      description: 'Container for the alert dialog title and description',
+      argTypes: {},
+    },
+    AlertDialogFooter: {
+      description: 'Container for the alert dialog action buttons',
+      argTypes: {},
+    },
+    AlertDialogTitle: {
+      description: 'An accessible title to be announced when the alert dialog is opened',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+    AlertDialogDescription: {
+      description: 'An accessible description to be announced when the alert dialog is opened',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+    AlertDialogAction: {
+      description: 'A button that closes the alert dialog. This button should perform the action described by the alert dialog',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+    AlertDialogCancel: {
+      description: 'A button that closes the alert dialog. This button should cancel the action described by the alert dialog',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof AlertDialog>;
 
 export default meta;
@@ -63,8 +195,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-  render: () => (
-    <AlertDialog>
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Show Dialog</Button>
       </AlertDialogTrigger>
@@ -86,8 +218,9 @@ export const Default: Story = {
 };
 
 export const Destructive: Story = {
-  render: () => (
-    <AlertDialog>
+  args: {},
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button variant="destructive">Delete Account</Button>
       </AlertDialogTrigger>
@@ -111,8 +244,9 @@ export const Destructive: Story = {
 };
 
 export const WithoutDescription: Story = {
-  render: () => (
-    <AlertDialog>
+  args: {},
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Simple Dialog</Button>
       </AlertDialogTrigger>
@@ -130,8 +264,9 @@ export const WithoutDescription: Story = {
 };
 
 export const LongContent: Story = {
-  render: () => (
-    <AlertDialog>
+  args: {},
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Terms of Service</Button>
       </AlertDialogTrigger>
@@ -178,8 +313,9 @@ export const LongContent: Story = {
 };
 
 export const CustomStyling: Story = {
-  render: () => (
-    <AlertDialog>
+  args: {},
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button className="bg-purple-600 hover:bg-purple-700">
           Custom Dialog
@@ -208,6 +344,9 @@ export const CustomStyling: Story = {
 };
 
 export const Controlled: Story = {
+  parameters: {
+    controls: { exclude: ['defaultOpen', 'onOpenChange', 'open'], }
+  },
   render: function ControlledDialog() {
     const [open, setOpen] = React.useState(false);
 
@@ -218,7 +357,6 @@ export const Controlled: Story = {
     return (
       <div className="space-y-4">
         <Button onClick={() => setOpen(true)}>Open Dialog</Button>
-
         <AlertDialog open={open} onOpenChange={setOpen}>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -265,10 +403,14 @@ export const MultipleActions: Story = {
                 Discard Changes
               </AlertDialogCancel>
               <AlertDialogAction
-                variant="outline"
-                onClick={() => setAction('Saved as draft')}
+                asChild
               >
-                Save as Draft
+                <Button
+                  variant="secondary"
+                  onClick={() => setAction('Saved as draft')}
+                >
+                  Save as Draft
+                </Button>
               </AlertDialogAction>
               <AlertDialogAction onClick={() => setAction('Published')}>
                 Save & Publish
@@ -288,7 +430,7 @@ export const MultipleActions: Story = {
 };
 
 export const WithForm: Story = {
-  render: function FormDialog() {
+  render: function FormDialog(args) {
     const [feedback, setFeedback] = React.useState('');
     const [submitted, setSubmitted] = React.useState(false);
 
@@ -302,7 +444,7 @@ export const WithForm: Story = {
 
     return (
       <div className="space-y-4">
-        <AlertDialog>
+        <AlertDialog {...args}>
           <AlertDialogTrigger asChild>
             <Button variant="outline">Send Feedback</Button>
           </AlertDialogTrigger>
@@ -343,8 +485,9 @@ export const WithForm: Story = {
 };
 
 export const AccessibilityExample: Story = {
-  render: () => (
-    <AlertDialog>
+  args: {},
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Accessibility Demo</Button>
       </AlertDialogTrigger>

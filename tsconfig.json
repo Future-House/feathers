@@ -30,5 +30,5 @@
     "types": ["@testing-library/jest-dom"]
   },
   "include": ["src/**/*", "src/test-setup.js"],
-  "exclude": ["node_modules", "dist", "**/*.stories.tsx", "scripts", "**/*.mdx"]
+  "exclude": ["node_modules", "dist", "scripts", "**/*.mdx"]
 }
