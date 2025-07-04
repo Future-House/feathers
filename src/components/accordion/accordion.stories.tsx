@@ -6,7 +6,8 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '../accordion';
-import { Button } from '@/components/button';
+import { Button } from '../button';
+import { cn } from '../../lib/utils';
 
 const meta = {
   title: 'Components/Accordion',
@@ -30,6 +31,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     type: {
@@ -49,6 +51,7 @@ const meta = {
       table: {
         type: { summary: 'string | string[]' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     defaultValue: {
@@ -58,6 +61,7 @@ const meta = {
       table: {
         type: { summary: 'string | string[]' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     onValueChange: {
@@ -67,10 +71,12 @@ const meta = {
       table: {
         type: { summary: '(value: string | string[]) => void' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     collapsible: {
       control: { type: 'boolean' },
+      if: { arg: 'type', eq: 'single' },
       description:
         'When type is "single", allows closing content when clicking trigger for an open item',
       table: {
@@ -95,6 +101,7 @@ const meta = {
       table: {
         type: { summary: '"ltr" | "rtl"' },
         defaultValue: { summary: '"ltr"' },
+        disable: true,
       },
     },
     orientation: {
@@ -104,6 +111,7 @@ const meta = {
       table: {
         type: { summary: '"horizontal" | "vertical"' },
         defaultValue: { summary: '"vertical"' },
+        disable: true,
       },
     },
     // HTML attributes
@@ -121,6 +129,58 @@ const meta = {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: undefined },
+        disable: true,
+      },
+    },
+  },
+  subcomponents: {
+    AccordionItem: {
+      description: 'Contains the collapsible content for an accordion item',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'When true, prevents the user from interacting with the accordion item',
+          defaultValue: 'false',
+        },
+        value: {
+          type: 'string',
+          description: 'A unique value for the item',
+          defaultValue: undefined,
+        },
+      },
+    },
+    AccordionTrigger: {
+      description: 'Toggles the collapsed state of its associated item',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+    AccordionContent: {
+      description: 'Contains the collapsible content for an accordion item',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with external libraries',
+          defaultValue: undefined,
+        },
       },
     },
   },
@@ -134,9 +194,9 @@ export const Default: Story = {
     type: 'single' as const,
     collapsible: true,
   },
-  render: () => (
+  render: (args) => (
     <div className="w-[450px]">
-      <Accordion type="single" collapsible>
+      <Accordion {...args}>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent>
@@ -166,9 +226,9 @@ export const Multiple: Story = {
   args: {
     type: 'multiple' as const,
   },
-  render: () => (
+  render: (args) => (
     <div className="w-[450px]">
-      <Accordion type="multiple">
+      <Accordion {...args} >
         <AccordionItem value="item-1">
           <AccordionTrigger>Frontend Technologies</AccordionTrigger>
           <AccordionContent>
@@ -200,9 +260,9 @@ export const FAQ: Story = {
     type: 'single' as const,
     collapsible: true,
   },
-  render: () => (
+  render: (args) => (
     <div className="w-[550px]">
-      <Accordion type="single" collapsible>
+      <Accordion {...args}>
         <AccordionItem value="shipping">
           <AccordionTrigger>What are your shipping options?</AccordionTrigger>
           <AccordionContent>
@@ -247,9 +307,9 @@ export const WithRichContent: Story = {
     type: 'single' as const,
     collapsible: true,
   },
-  render: () => (
+  render: (args) => (
     <div className="w-[500px]">
-      <Accordion type="single" collapsible>
+      <Accordion {...args}>
         <AccordionItem value="features">
           <AccordionTrigger>Key Features</AccordionTrigger>
           <AccordionContent>
@@ -322,6 +382,9 @@ export const Controlled: Story = {
   args: {
     type: 'single' as const,
   },
+  parameters: {
+    controls: { exclude: ['type', 'collapsible'] },
+  },
   render: function ControlledAccordion() {
     const [value, setValue] = React.useState<string | undefined>('item-2');
 
@@ -341,12 +404,13 @@ export const Controlled: Story = {
             Close All
           </Button>
         </div>
+        <p className="text-bg-foreground">The current <code>value</code> is: {value || 'none'}</p>
+        <p className="text-muted-foreground text-sm">Take control of which <code>AccordionItem</code> is open with the <code>value</code> and <code>onValueChange</code> props.</p>
         <Accordion type="single" value={value} onValueChange={setValue}>
           <AccordionItem value="item-1">
             <AccordionTrigger>Controlled Item 1</AccordionTrigger>
             <AccordionContent>
-              This accordion is controlled by external Buttons. The current
-              value is: {value || 'none'}
+              This accordion is controlled by external Buttons.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -372,12 +436,11 @@ export const CustomStyling: Story = {
   args: {
     type: 'single' as const,
   },
-  render: () => (
+  render: (args) => (
     <div className="w-[450px]">
       <Accordion
-        type="single"
-        collapsible
         className="rounded-lg bg-gray-50 p-4"
+        {...args}
       >
         <AccordionItem value="item-1" className="border-gray-200 last:border-b">
           <AccordionTrigger className="font-semibold text-blue-700 hover:text-blue-900">
@@ -442,13 +505,13 @@ export const DisabledAccordion: Story = {
     <div className="w-[450px]">
       <Accordion {...args}>
         <AccordionItem value="item-1">
-          <AccordionTrigger>First Item</AccordionTrigger>
+          <AccordionTrigger>You can&apos;t open me</AccordionTrigger>
           <AccordionContent>
             This entire accordion is disabled, so no items can be opened.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
-          <AccordionTrigger>Second Item</AccordionTrigger>
+          <AccordionTrigger>Me either</AccordionTrigger>
           <AccordionContent>
             All triggers are disabled when the root accordion is disabled.
           </AccordionContent>
@@ -463,8 +526,11 @@ export const RTLDirection: Story = {
     type: 'single' as const,
     dir: 'rtl',
   },
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
   render: args => (
-    <div className="w-[450px]" dir="rtl">
+    <div className="w-[450px]" dir={args.dir}>
       <Accordion {...args}>
         <AccordionItem value="item-1">
           <AccordionTrigger>العنصر الأول</AccordionTrigger>
@@ -492,7 +558,7 @@ export const HorizontalOrientation: Story = {
   },
   render: args => (
     <div className="w-full">
-      <Accordion {...args} className="flex gap-4">
+      <Accordion {...args} className={cn(`flex gap-4 ${args.className}`)}>
         <AccordionItem
           value="item-1"
           className="w-36 flex-1 border-r border-b-0 pr-4"

@@ -38,15 +38,15 @@ export function PropsTable({
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
+                <TableHead>Description</TableHead>
                 <TableHead>Type</TableHead>
                 <TableHead>Default</TableHead>
-                <TableHead>Description</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {parsedProps.map(prop => (
                 <TableRow key={prop.name}>
-                  <TableCell className=".sb-unstyled">
+                  <TableCell className="sb-unstyled">
                     <code className="text-primary text-sm font-medium">
                       {prop.name}
                       {prop.required && (
@@ -54,12 +54,15 @@ export function PropsTable({
                       )}
                     </code>
                   </TableCell>
-                  <TableCell className=".sb-unstyled">
+                  <TableCell className="sb-unstyled text-muted-foreground text-sm max-w-[300px] whitespace-normal">
+                    {prop.description || '-'}
+                  </TableCell>
+                  <TableCell className="sb-unstyled">
                     <code className="bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-xs">
                       {prop.type}
                     </code>
                   </TableCell>
-                  <TableCell className=".sb-unstyled">
+                  <TableCell className="sb-unstyled">
                     {prop.defaultValue ? (
                       <code className="bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-xs">
                         {prop.defaultValue}
@@ -67,9 +70,6 @@ export function PropsTable({
                     ) : (
                       <span className="text-muted-foreground text-sm">-</span>
                     )}
-                  </TableCell>
-                  <TableCell className="sb-unstyled text-muted-foreground text-sm">
-                    {prop.description || '-'}
                   </TableCell>
                 </TableRow>
               ))}
