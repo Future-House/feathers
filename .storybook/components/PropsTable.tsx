@@ -54,7 +54,7 @@ export function PropsTable({
                       )}
                     </code>
                   </TableCell>
-                  <TableCell className="sb-unstyled text-muted-foreground text-sm max-w-[300px] whitespace-normal">
+                  <TableCell className="sb-unstyled text-muted-foreground max-w-[300px] text-sm whitespace-normal">
                     {prop.description || '-'}
                   </TableCell>
                   <TableCell className="sb-unstyled">

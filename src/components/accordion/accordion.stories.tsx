@@ -145,7 +145,8 @@ const meta = {
         },
         disabled: {
           type: 'boolean',
-          description: 'When true, prevents the user from interacting with the accordion item',
+          description:
+            'When true, prevents the user from interacting with the accordion item',
           defaultValue: 'false',
         },
         value: {
@@ -194,7 +195,7 @@ export const Default: Story = {
     type: 'single' as const,
     collapsible: true,
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[450px]">
       <Accordion {...args}>
         <AccordionItem value="item-1">
@@ -226,9 +227,9 @@ export const Multiple: Story = {
   args: {
     type: 'multiple' as const,
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[450px]">
-      <Accordion {...args} >
+      <Accordion {...args}>
         <AccordionItem value="item-1">
           <AccordionTrigger>Frontend Technologies</AccordionTrigger>
           <AccordionContent>
@@ -260,7 +261,7 @@ export const FAQ: Story = {
     type: 'single' as const,
     collapsible: true,
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[550px]">
       <Accordion {...args}>
         <AccordionItem value="shipping">
@@ -307,7 +308,7 @@ export const WithRichContent: Story = {
     type: 'single' as const,
     collapsible: true,
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[500px]">
       <Accordion {...args}>
         <AccordionItem value="features">
@@ -404,8 +405,13 @@ export const Controlled: Story = {
             Close All
           </Button>
         </div>
-        <p className="text-bg-foreground">The current <code>value</code> is: {value || 'none'}</p>
-        <p className="text-muted-foreground text-sm">Take control of which <code>AccordionItem</code> is open with the <code>value</code> and <code>onValueChange</code> props.</p>
+        <p className="text-bg-foreground">
+          The current <code>value</code> is: {value || 'none'}
+        </p>
+        <p className="text-muted-foreground text-sm">
+          Take control of which <code>AccordionItem</code> is open with the{' '}
+          <code>value</code> and <code>onValueChange</code> props.
+        </p>
         <Accordion type="single" value={value} onValueChange={setValue}>
           <AccordionItem value="item-1">
             <AccordionTrigger>Controlled Item 1</AccordionTrigger>
@@ -436,12 +442,9 @@ export const CustomStyling: Story = {
   args: {
     type: 'single' as const,
   },
-  render: (args) => (
+  render: args => (
     <div className="w-[450px]">
-      <Accordion
-        className="rounded-lg bg-gray-50 p-4"
-        {...args}
-      >
+      <Accordion className="rounded-lg bg-gray-50 p-4" {...args}>
         <AccordionItem value="item-1" className="border-gray-200 last:border-b">
           <AccordionTrigger className="font-semibold text-blue-700 hover:text-blue-900">
             Custom Styled Trigger
