@@ -15,11 +15,74 @@ const meta = {
   },
   tags: [],
   argTypes: {
+    asChild: {
+      control: { type: 'boolean' },
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+      defaultValue: false,
+    },
     className: {
       control: { type: 'text' },
       description: 'Additional CSS classes to apply to the avatar root',
       table: {
         type: { summary: 'string' },
+      },
+    },
+  },
+  subcomponents: {
+    AvatarImage: {
+      description:
+        'The image to render. By default it will only render when it has loaded. You can use the onLoadingStatusChange handler if you need more control.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        src: {
+          type: 'string',
+          description: 'The source URL of the image.',
+        },
+        alt: {
+          type: 'string',
+          description: 'Alt text for the image.',
+        },
+        onLoadingStatusChange: {
+          type: 'function',
+          description:
+            'A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the image element.',
+        },
+      },
+    },
+    AvatarFallback: {
+      description:
+        "An element that renders when the image hasn't loaded. This means whilst it's loading, or if there was an error. If you notice a flash during loading, you can provide a delayMs prop to delay its rendering so it only renders for those with slower connections.",
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        delayMs: {
+          type: 'number',
+          description:
+            'Useful for delaying rendering so it only appears for those with slower connections.',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the fallback element.',
+        },
       },
     },
   },
@@ -57,7 +120,7 @@ export const FallbackOnly: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Avatar className="h-8 w-8">
+      <Avatar className="h-6 w-6">
         <AvatarImage src="https://github.com/shadcn.png" alt="Small" />
         <AvatarFallback>SM</AvatarFallback>
       </Avatar>
