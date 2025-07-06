@@ -23,6 +23,7 @@ const meta = {
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '1' },
+        disable: true,
       },
     },
     asChild: {
@@ -32,6 +33,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
   },
@@ -119,27 +121,6 @@ export const WithVideo: Story = {
           allowFullScreen
         />
       </AspectRatio>
-    </div>
-  ),
-};
-
-export const ResponsiveGrid: Story = {
-  render: () => (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {[16 / 9, 4 / 3, 1, 3 / 4, 21 / 9, 2 / 3].map((ratio, index) => (
-        <AspectRatio key={index} ratio={ratio} className="bg-muted">
-          <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed">
-            <span className="text-muted-foreground text-xs">
-              {ratio === 16 / 9 && '16:9'}
-              {ratio === 4 / 3 && '4:3'}
-              {ratio === 1 && '1:1'}
-              {ratio === 3 / 4 && '3:4'}
-              {ratio === 21 / 9 && '21:9'}
-              {ratio === 2 / 3 && '2:3'}
-            </span>
-          </div>
-        </AspectRatio>
-      ))}
     </div>
   ),
 };
