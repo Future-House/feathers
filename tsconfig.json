@@ -29,6 +29,6 @@
     "incremental": true,
     "types": ["@testing-library/jest-dom"]
   },
-  "include": ["src/**/*", "src/test-setup.js"],
-  "exclude": ["node_modules", "dist", "scripts", "**/*.mdx"]
+  "include": ["src/**/*", "src/test-setup.ts"],
+  "exclude": ["node_modules", "dist", "**/*.stories.tsx", "scripts", "**/*.mdx"]
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
 import {
@@ -297,7 +298,7 @@ export const WithDelay: Story = {
  */
 export const Controlled: Story = {
   render: function ControlledTooltip() {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     return (
       <div className="flex items-center gap-4 p-8">
