@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as SheetStories from './sheet.stories';
 
@@ -22,26 +22,7 @@ A sheet component that slides in from the side of the screen. Built on top of Ra
 
 <PropsTable argTypes={SheetStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(SheetStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={SheetStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable subcomponents={SheetStories.default.subcomponents} />
 
 ## Examples
 

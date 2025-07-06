@@ -97,7 +97,7 @@ const IconGrid = ({
           className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-lg border border-gray-200 p-3"
         >
           <IconComponent size={size} color={color} />
-          <span className="text-center text-xs leading-tight break-words">
+          <span className="text-center text-xs leading-tight break-all">
             {name}
           </span>
         </div>

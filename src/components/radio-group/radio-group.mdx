@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as RadioGroupStories from './radio-group.stories';
 
@@ -22,26 +22,9 @@ A set of checkable buttons—known as radio buttons—where no more than one of 
 
 <PropsTable argTypes={RadioGroupStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(RadioGroupStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={RadioGroupStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable
+  subcomponents={RadioGroupStories.default.subcomponents}
+/>
 
 ## Examples
 

@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as ScrollAreaStories from './scroll-area.stories';
 
@@ -22,26 +22,9 @@ Augments native scroll functionality for custom, cross-browser styling. Built wi
 
 <PropsTable argTypes={ScrollAreaStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(ScrollAreaStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={ScrollAreaStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable
+  subcomponents={ScrollAreaStories.default.subcomponents}
+/>
 
 ## Examples
 

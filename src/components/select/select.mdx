@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as SelectStories from './select.stories';
 
@@ -22,26 +22,7 @@ A versatile select component built on top of Radix UI's Select primitive. Provid
 
 <PropsTable argTypes={SelectStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(SelectStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={SelectStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable subcomponents={SelectStories.default.subcomponents} />
 
 ## Examples
 

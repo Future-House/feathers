@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as CarouselStories from './carousel.stories';
 
@@ -22,26 +22,7 @@ A carousel component built with Embla Carousel that allows users to navigate thr
 
 <PropsTable argTypes={CarouselStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(CarouselStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={CarouselStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable subcomponents={CarouselStories.default.subcomponents} />
 
 ## Examples
 

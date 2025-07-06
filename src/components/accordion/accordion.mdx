@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as AccordionStories from './accordion.stories';
 
@@ -22,26 +22,7 @@ A vertically stacked set of interactive headings that each reveal a section of c
 
 <PropsTable argTypes={AccordionStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(AccordionStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={AccordionStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable subcomponents={AccordionStories.default.subcomponents} />
 
 ## Examples
 

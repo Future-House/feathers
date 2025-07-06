@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as CalendarStories from './calendar.stories';
 
@@ -22,26 +22,7 @@ A date picker component built with react-day-picker and styled with Tailwind CSS
 
 <PropsTable argTypes={CalendarStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(CalendarStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={CalendarStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable subcomponents={CalendarStories.default.subcomponents} />
 
 ## Examples
 

@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as DropdownMenuStories from './dropdown-menu.stories';
 
@@ -22,26 +22,9 @@ A dropdown menu component that displays a list of actions or options that a user
 
 <PropsTable argTypes={DropdownMenuStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(DropdownMenuStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={DropdownMenuStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable
+  subcomponents={DropdownMenuStories.default.subcomponents}
+/>
 
 ## Examples
 

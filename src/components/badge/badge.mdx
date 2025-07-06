@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as BadgeStories from './badge.stories';
 
@@ -22,26 +22,7 @@ A badge component for displaying small bits of information, status indicators, o
 
 <PropsTable argTypes={BadgeStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(BadgeStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={BadgeStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable subcomponents={BadgeStories.default.subcomponents} />
 
 ## Examples
 

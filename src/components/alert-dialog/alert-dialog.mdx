@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as AlertDialogStories from './alert-dialog.stories';
 
@@ -21,26 +21,9 @@ import * as AlertDialogStories from './alert-dialog.stories';
 
 <PropsTable argTypes={AlertDialogStories.default.argTypes} />
 
-{(
-() => {
-const subcomponents = parseSubcomponents(AlertDialogStories.default.subcomponents);
-return subcomponents.map((sub) => (
-
-<div key={sub.name}>
-  <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
-    {sub.name}
-  </h3>
-  {sub.description && (
-    <p className="sb-unstyled text-muted-foreground mb-4 text-base">
-      {sub.description}
-    </p>
-  )}
-  <PropsTable
-    title={`${sub.name} Props`}
-    argTypes={AlertDialogStories.default.subcomponents[sub.name].argTypes}
-  />
-</div>
-)); }) ()}
+<SubcomponentPropTable
+  subcomponents={AlertDialogStories.default.subcomponents}
+/>
 
 ## Examples
 
