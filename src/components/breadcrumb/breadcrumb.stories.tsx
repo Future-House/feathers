@@ -42,6 +42,85 @@ const meta = {
       },
     },
   },
+  subcomponents: {
+    BreadcrumbList: {
+      description:
+        'Contains the list of breadcrumb items. Renders as an ordered list (ol) element.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the breadcrumb list',
+        },
+      },
+    },
+    BreadcrumbItem: {
+      description:
+        'A single breadcrumb item container. Renders as a list item (li) element.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the breadcrumb item',
+        },
+      },
+    },
+    BreadcrumbLink: {
+      description:
+        'A clickable breadcrumb link. Can be used with the asChild prop for custom link components.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        href: {
+          type: 'string',
+          description: 'The URL that the link points to.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the breadcrumb link',
+        },
+      },
+    },
+    BreadcrumbPage: {
+      description:
+        'Represents the current page in the breadcrumb trail. Not clickable and has appropriate ARIA attributes.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the breadcrumb page element',
+        },
+      },
+    },
+    BreadcrumbSeparator: {
+      description:
+        'A visual separator between breadcrumb items. Defaults to a chevron icon but can be customized.',
+      argTypes: {
+        children: {
+          type: 'ReactNode',
+          description:
+            'Custom separator content. Defaults to ChevronRight icon if not provided.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the separator',
+        },
+      },
+    },
+    BreadcrumbEllipsis: {
+      description:
+        'Shows an ellipsis to indicate truncated breadcrumb items. Used when the path is too long.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the ellipsis element',
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof Breadcrumb>;
 
 export default meta;
@@ -53,11 +132,11 @@ export const Default: Story = {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="#">Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -69,19 +148,19 @@ export const Default: Story = {
 };
 
 export const WithCustomSeparator: Story = {
-  render: () => (
-    <Breadcrumb>
+  render: args => (
+    <Breadcrumb {...args}>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+          <BreadcrumbLink href="#">Documentation</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="#">Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
         <BreadcrumbItem>
@@ -93,11 +172,11 @@ export const WithCustomSeparator: Story = {
 };
 
 export const WithEllipsis: Story = {
-  render: () => (
-    <Breadcrumb>
+  render: args => (
+    <Breadcrumb {...args}>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -105,7 +184,7 @@ export const WithEllipsis: Story = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="#">Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -117,31 +196,27 @@ export const WithEllipsis: Story = {
 };
 
 export const LongPath: Story = {
-  render: () => (
-    <Breadcrumb>
+  render: args => (
+    <Breadcrumb {...args}>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+          <BreadcrumbLink href="#">Dashboard</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/dashboard/projects">Projects</BreadcrumbLink>
+          <BreadcrumbLink href="#">Projects</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/dashboard/projects/my-project">
-            My Project
-          </BreadcrumbLink>
+          <BreadcrumbLink href="#">My Project</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/dashboard/projects/my-project/settings">
-            Settings
-          </BreadcrumbLink>
+          <BreadcrumbLink href="#">Settings</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -153,7 +228,7 @@ export const LongPath: Story = {
 };
 
 export const AsChildLink: Story = {
-  render: () => {
+  render: args => {
     // Mock Link component for demonstration
     const Link = ({ href, children, ...props }: React.ComponentProps<'a'>) => (
       <a href={href} {...props}>
@@ -162,17 +237,17 @@ export const AsChildLink: Story = {
     );
 
     return (
-      <Breadcrumb>
+      <Breadcrumb {...args}>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
+              <Link href="#">Home</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/products">Products</Link>
+              <Link href="#">Products</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -186,12 +261,15 @@ export const AsChildLink: Story = {
 };
 
 export const CustomStyling: Story = {
-  render: () => (
-    <Breadcrumb className="rounded border bg-gray-50 p-3">
+  render: ({ className, ...rest }) => (
+    <Breadcrumb
+      className={`rounded border bg-gray-50 p-3 ${className}`}
+      {...rest}
+    >
       <BreadcrumbList className="text-base">
         <BreadcrumbItem>
           <BreadcrumbLink
-            href="/"
+            href="#"
             className="font-medium text-blue-600 hover:text-blue-800"
           >
             Home
@@ -200,7 +278,7 @@ export const CustomStyling: Story = {
         <BreadcrumbSeparator className="text-gray-400">→</BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink
-            href="/categories"
+            href="#"
             className="font-medium text-blue-600 hover:text-blue-800"
           >
             Categories
@@ -218,19 +296,19 @@ export const CustomStyling: Story = {
 };
 
 export const Responsive: Story = {
-  render: () => (
-    <Breadcrumb>
+  render: args => (
+    <Breadcrumb {...args}>
       <BreadcrumbList>
         <BreadcrumbItem className="hidden md:inline-flex">
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator className="hidden md:inline-flex" />
         <BreadcrumbItem className="hidden sm:inline-flex">
-          <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+          <BreadcrumbLink href="#">Documentation</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator className="hidden sm:inline-flex" />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="#">Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
