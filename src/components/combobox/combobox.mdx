@@ -9,8 +9,9 @@ import * as ComboboxStories from './combobox.stories';
 
 <Meta of={ComboboxStories} />
 
-<DocLayout meta={ComboboxStories.default}>
-  ## Default Example
+<DocLayout meta={ComboboxStories.default} hideRadixUiUrl>
+
+## Default Example
 
 <Canvas of={ComboboxStories.Default} background="dots" />
 
@@ -18,9 +19,18 @@ import * as ComboboxStories from './combobox.stories';
 
 ### Combobox
 
-A combobox component that combines a popover, command palette, and searchable select functionality. Built on top of Radix UI Popover and cmdk Command components for accessibility and keyboard navigation.
+A combobox component that combines a popover, command palette, and searchable select functionality. Built on top of Radix UI `Popover` and `cmdk` Command components for accessibility and keyboard navigation.
 
 <PropsTable argTypes={ComboboxStories.default.argTypes} />
+
+*`ComboboxOption` shape:
+```
+interface ComboboxOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+```
 
 ## Examples
 
@@ -65,12 +75,6 @@ A combobox with custom width styling.
 A combobox with customized placeholder and empty state messages.
 
 <Canvas of={ComboboxStories.CustomMessages} background="grid" />
-
-### Multiple Comboboxes
-
-Multiple comboboxes working together in a form layout.
-
-<Canvas of={ComboboxStories.MultipleComboboxes} background="muted" />
 
 ## Accessibility
 
