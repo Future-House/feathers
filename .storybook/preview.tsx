@@ -32,6 +32,7 @@ const preview: Preview = {
           </li>
         ),
       },
+      codePanel: true,
     },
     backgrounds: { disable: true },
   },
