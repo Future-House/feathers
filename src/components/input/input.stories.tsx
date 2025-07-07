@@ -90,6 +90,7 @@ const meta = {
       description: 'Event handler called when the input value changes',
       table: {
         type: { summary: '(event: ChangeEvent<HTMLInputElement>) => void' },
+        disable: true,
       },
     },
     onFocus: {
@@ -97,6 +98,7 @@ const meta = {
       description: 'Event handler called when the input receives focus',
       table: {
         type: { summary: '(event: FocusEvent<HTMLInputElement>) => void' },
+        disable: true,
       },
     },
     onBlur: {
@@ -104,6 +106,7 @@ const meta = {
       description: 'Event handler called when the input loses focus',
       table: {
         type: { summary: '(event: FocusEvent<HTMLInputElement>) => void' },
+        disable: true,
       },
     },
     className: {
@@ -289,6 +292,9 @@ export const WithCustomStyling: Story = {
 };
 
 export const FormExample: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="w-96 space-y-4">
       <div className="space-y-2">
@@ -326,6 +332,9 @@ export const FormExample: Story = {
 };
 
 export const WithIcons: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="w-96 space-y-4">
       <div className="space-y-2">
@@ -359,7 +368,11 @@ export const WithIcons: Story = {
   ),
 };
 
-const PasswordToggleComponent = () => {
+const PasswordToggleComponent = ({
+  className = '',
+  disabled = false,
+  ...args
+}) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
@@ -367,12 +380,15 @@ const PasswordToggleComponent = () => {
       <label className="text-sm font-medium">Password with Toggle</label>
       <div className="relative">
         <Input
-          type={showPassword ? 'text' : 'password'}
           placeholder="Enter password"
-          className="pr-10"
+          className={`pr-10 ${className}`}
+          disabled={disabled}
+          {...args}
+          type={showPassword ? 'text' : 'password'}
         />
         <button
           type="button"
+          disabled={disabled}
           onClick={() => setShowPassword(!showPassword)}
           className="text-muted-foreground hover:text-foreground absolute top-3 right-3 h-4 w-4"
         >
@@ -388,10 +404,20 @@ const PasswordToggleComponent = () => {
 };
 
 export const PasswordToggle: Story = {
-  render: () => <PasswordToggleComponent />,
+  args: {
+    disabled: false,
+    className: '',
+  },
+  parameters: {
+    controls: { exclude: ['type'] },
+  },
+  render: args => <PasswordToggleComponent {...args} />,
 };
 
 export const ValidationStates: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="w-96 space-y-4">
       <div className="space-y-2">
@@ -421,6 +447,7 @@ export const ValidationStates: Story = {
   ),
 };
 
+// TODO: make own prop
 export const SizingVariations: Story = {
   render: () => (
     <div className="w-96 space-y-4">
