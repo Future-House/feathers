@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A hover card component that displays rich content when hovering over a trigger element. Built with Radix UI HoverCard primitives and styled with Tailwind CSS.',
+          'A hover card component that displays rich content when hovering over a trigger element.',
       },
     },
   },
@@ -209,7 +209,7 @@ export const UserProfile: Story = {
     openDelay: 400,
   },
   render: args => (
-    <div className="flex space-x-4">
+    <div className="flex items-center space-x-4">
       <HoverCard {...args}>
         <HoverCardTrigger asChild>
           <Button variant="ghost" className="p-0">
