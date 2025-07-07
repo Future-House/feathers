@@ -5,12 +5,14 @@ import {
   PropsTable,
   SubcomponentPropTable,
 } from '../../../.storybook/components';
+import { Badge } from '../badge/badge';
 import * as CarouselStories from './carousel.stories';
 
 <Meta of={CarouselStories} />
 
-<DocLayout meta={CarouselStories.default}>
-  ## Default Example
+<DocLayout meta={CarouselStories.default} hideRadixUiUrl >
+
+## Default Example
 
 <Canvas of={CarouselStories.Default} background="dots" />
 
@@ -18,7 +20,8 @@ import * as CarouselStories from './carousel.stories';
 
 ### Carousel
 
-A carousel component built with Embla Carousel that allows users to navigate through a collection of items.
+You may need to reference the official documentation for the [embla-carousel library](https://www.embla-carousel.com/api/) to understand the full API and available options.
+
 
 <PropsTable argTypes={CarouselStories.default.argTypes} />
 

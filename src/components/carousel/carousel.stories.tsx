@@ -59,6 +59,82 @@ const meta = {
       },
     },
   },
+  subcomponents: {
+    CarouselContent: {
+      description:
+        'The scrollable content container of the carousel. Creates an overflow-hidden wrapper with flexible layout that adapts to horizontal or vertical orientation.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the carousel content container',
+        },
+      },
+    },
+    CarouselItem: {
+      description:
+        'Individual slide item within the carousel. Handles sizing and spacing with responsive basis controls and proper ARIA attributes for accessibility.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the carousel item. Use basis-* classes to control item sizing',
+        },
+      },
+    },
+    CarouselPrevious: {
+      description:
+        'Navigation button to go to the previous slide. Automatically positions itself based on carousel orientation and includes keyboard navigation support.',
+      argTypes: {
+        variant: {
+          type: 'string',
+          description:
+            'Button variant style inherited from the Button component',
+          defaultValue: 'outline',
+        },
+        size: {
+          type: 'string',
+          description: 'Button size inherited from the Button component',
+          defaultValue: 'icon',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the previous button',
+        },
+        disabled: {
+          type: 'boolean',
+          description:
+            'Whether the button is disabled (automatically controlled based on carousel state)',
+        },
+      },
+    },
+    CarouselNext: {
+      description:
+        'Navigation button to go to the next slide. Automatically positions itself based on carousel orientation and includes keyboard navigation support.',
+      argTypes: {
+        variant: {
+          type: 'string',
+          description:
+            'Button variant style inherited from the Button component',
+          defaultValue: 'outline',
+        },
+        size: {
+          type: 'string',
+          description: 'Button size inherited from the Button component',
+          defaultValue: 'icon',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the next button',
+        },
+        disabled: {
+          type: 'boolean',
+          description:
+            'Whether the button is disabled (automatically controlled based on carousel state)',
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof Carousel>;
 
 export default meta;
