@@ -79,14 +79,15 @@ const meta = {
     },
     containerClassName: {
       control: { type: 'text' },
-      description: 'Additional CSS classes for the container',
       table: {
+        description:
+          'Additional CSS classes for the parent container div element',
         type: { summary: 'string' },
       },
     },
     className: {
       control: { type: 'text' },
-      description: 'Additional CSS classes for the input',
+      description: 'Additional CSS classes for the input element',
       table: {
         type: { summary: 'string' },
       },
@@ -208,7 +209,7 @@ export const PhoneVerification: Story = {
     pattern: '^[0-9]+$',
     inputMode: 'numeric',
   },
-  render: args => (
+  render: ({ containerClassName, ...args }) => (
     <div className="space-y-4 text-center">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Verify Phone Number</h3>
@@ -216,7 +217,10 @@ export const PhoneVerification: Story = {
           We sent a 4-digit code to +1 (555) 123-4567
         </p>
       </div>
-      <InputOTP {...args}>
+      <InputOTP
+        containerClassName={`${containerClassName} justify-center`}
+        {...args}
+      >
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />
@@ -285,18 +289,18 @@ export const Disabled: Story = {
 };
 
 const WithValidationComponent = () => {
+  const validCode = '123456';
   const [value, setValue] = React.useState('');
   const [isValid, setIsValid] = React.useState<boolean | null>(null);
 
   const handleComplete = (completedValue: string) => {
     // Simulate validation
-    const validCode = '123456';
     setIsValid(completedValue === validCode);
   };
 
   const handleChange = (newValue: string) => {
     setValue(newValue);
-    setIsValid(null);
+    setIsValid(newValue.length === 6 ? newValue === validCode : null);
   };
 
   return (
@@ -338,7 +342,7 @@ const WithValidationComponent = () => {
 };
 
 export const WithValidation: Story = {
-  render: () => <WithValidationComponent />,
+  render: args => <WithValidationComponent {...args} />,
 };
 
 export const DifferentSizes: Story = {
