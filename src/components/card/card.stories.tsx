@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -23,14 +24,87 @@ const meta = {
     },
   },
   tags: [],
+  argTypes: {
+    className: {
+      control: { type: 'text' },
+      description: 'CSS class name to apply to the Card component',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: undefined },
+      },
+    },
+  },
+  subcomponents: {
+    CardHeader: {
+      description:
+        'Header section of the card that contains the title, description, and optional action. Uses CSS Grid for layout with container queries support.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the card header',
+        },
+      },
+    },
+    CardTitle: {
+      description:
+        'Displays the main title of the card. Uses semantic heading styling with semibold font weight.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the card title',
+        },
+      },
+    },
+    CardDescription: {
+      description:
+        'Provides additional descriptive text below the title. Uses muted foreground color for visual hierarchy.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the card description',
+        },
+      },
+    },
+    CardAction: {
+      description:
+        'Optional action area positioned in the top-right corner of the card header. Automatically positions itself using CSS Grid.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the card action',
+        },
+      },
+    },
+    CardContent: {
+      description:
+        'Main content area of the card. Provides consistent padding and can contain any elements.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the card content',
+        },
+      },
+    },
+    CardFooter: {
+      description:
+        'Footer section of the card typically used for actions like buttons. Uses flexbox for item alignment.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the card footer',
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof Card>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Card className="w-[350px]">
+  render: ({ className }) => (
+    <Card className={`w-[350px] ${className}`}>
       <CardHeader>
         <CardTitle>Card Title</CardTitle>
         <CardDescription>Card description goes here.</CardDescription>
@@ -46,8 +120,8 @@ export const Default: Story = {
 };
 
 export const SimpleCard: Story = {
-  render: () => (
-    <Card className="w-[350px]">
+  render: ({ className }) => (
+    <Card className={`w-[350px] ${className}`}>
       <CardHeader>
         <CardTitle>Create project</CardTitle>
         <CardDescription>Deploy your new project in one-click.</CardDescription>
@@ -77,8 +151,8 @@ export const SimpleCard: Story = {
 };
 
 export const NotificationCard: Story = {
-  render: () => (
-    <Card className="w-[380px]">
+  render: ({ className }) => (
+    <Card className={`w-[380px] ${className}`}>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>You have 3 unread messages.</CardDescription>
@@ -109,8 +183,8 @@ export const NotificationCard: Story = {
 };
 
 export const WithoutFooter: Story = {
-  render: () => (
-    <Card className="w-[350px]">
+  render: ({ className }) => (
+    <Card className={`w-[350px] ${className}`}>
       <CardHeader>
         <CardTitle>Account</CardTitle>
         <CardDescription>
