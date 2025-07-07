@@ -1,12 +1,38 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
+import { Input } from '../input/input';
+import { Label } from '../label/label';
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
 } from './input-otp';
+
+// Define proper types for InputOTP props
+type InputOTPProps = {
+  maxLength: number;
+  value?: string;
+  onChange?: (value: string) => void;
+  onComplete?: (value: string) => void;
+  textAlign?: 'left' | 'center' | 'right';
+  inputMode?:
+    | 'numeric'
+    | 'text'
+    | 'decimal'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+  pattern?: string;
+  placeholder?: string;
+  pasteTransformer?: (pastedText: string) => string;
+  pushPasswordManagerStrategy?: 'increase-width' | 'none';
+  containerClassName?: string;
+  noScriptCSSFallback?: string | null;
+  children: React.ReactNode;
+};
 
 const meta = {
   title: 'Components/InputOTP',
@@ -22,56 +48,92 @@ const meta = {
   },
   tags: [],
   argTypes: {
-    // OTP Input specific props
+    // OTP Input specific props from input-otp library
     maxLength: {
       control: { type: 'number' },
-      description: 'Maximum number of characters allowed',
+      description: 'Number of input slots (required)',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: '6' },
+        defaultValue: { summary: 'Required' },
+        disable: true,
       },
     },
     value: {
       control: { type: 'text' },
-      description: 'The controlled value of the OTP input',
+      description: 'Controlled input value',
       table: {
         type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     onChange: {
       action: 'onChange',
-      description: 'Event handler called when the input value changes',
+      description: 'Value change handler',
       table: {
-        type: { summary: '(value: string) => void' },
+        type: { summary: '(newValue: string) => unknown' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
       },
     },
     onComplete: {
       action: 'onComplete',
-      description: 'Event handler called when the input is complete',
+      description: 'Callback when input is fully filled',
       table: {
-        type: { summary: '(value: string) => void' },
+        type: { summary: '(...args: any[]) => unknown' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
       },
     },
-    disabled: {
-      control: { type: 'boolean' },
-      description: 'Whether the input is disabled',
+    textAlign: {
+      control: { type: 'select' },
+      options: ['left', 'center', 'right'],
+      description: 'Text alignment within input',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        type: { summary: "'left' | 'center' | 'right'" },
+        defaultValue: { summary: "'left'" },
       },
     },
-    autoFocus: {
-      control: { type: 'boolean' },
-      description: 'Whether the input should be focused on mount',
+    inputMode: {
+      control: { type: 'select' },
+      options: ['numeric', 'text', 'decimal', 'tel', 'search', 'email', 'url'],
+      description: 'Virtual keyboard type',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        type: {
+          summary:
+            "'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url'",
+        },
+        defaultValue: { summary: "'numeric'" },
+      },
+    },
+    pattern: {
+      control: { type: 'text' },
+      description: 'Input validation regex',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    placeholder: {
+      control: { type: 'text' },
+      description: 'Placeholder character',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    pasteTransformer: {
+      control: false,
+      description: 'Transform pasted text',
+      table: {
+        type: { summary: '(pastedText: string) => string' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
       },
     },
     pushPasswordManagerStrategy: {
       control: { type: 'select' },
       options: ['increase-width', 'none'],
-      description: 'Strategy for handling password managers',
+      description: 'Strategy for password manager badges',
       table: {
         type: { summary: "'increase-width' | 'none'" },
         defaultValue: { summary: "'increase-width'" },
@@ -79,41 +141,26 @@ const meta = {
     },
     containerClassName: {
       control: { type: 'text' },
+      description: 'CSS class for root container',
       table: {
-        description:
-          'Additional CSS classes for the parent container div element',
         type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' },
       },
     },
-    className: {
+    noScriptCSSFallback: {
       control: { type: 'text' },
-      description: 'Additional CSS classes for the input element',
+      description: 'No-JavaScript styling fallback',
       table: {
-        type: { summary: 'string' },
-      },
-    },
-    pattern: {
-      control: { type: 'text' },
-      description: 'Regular expression pattern for validation',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'REGEXP_ONLY_DIGITS_AND_CHARS' },
-      },
-    },
-    inputMode: {
-      control: { type: 'select' },
-      options: ['text', 'numeric', 'decimal', 'tel', 'search', 'email', 'url'],
-      description: 'Input mode hint for virtual keyboards',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: "'text'" },
+        type: { summary: 'string | null' },
+        defaultValue: { summary: 'Default CSS fallback' },
+        disable: true,
       },
     },
   },
-} satisfies Meta<typeof InputOTP>;
+} satisfies Meta<InputOTPProps>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<InputOTPProps>;
 
 export const Default: Story = {
   args: {
@@ -179,7 +226,7 @@ export const TwoFactorAuth: Story = {
     inputMode: 'numeric',
   },
   render: args => (
-    <div className="space-y-4 text-center">
+    <div className="flex flex-col items-center space-y-4 text-center">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Two-Factor Authentication</h3>
         <p className="text-muted-foreground text-sm">
@@ -230,7 +277,9 @@ export const PhoneVerification: Story = {
       </InputOTP>
       <p className="text-muted-foreground text-xs">
         Didn&apos;t receive the code?{' '}
-        <button className="underline">Resend</button>
+        <Button variant="link" className="h-auto p-0 text-xs underline">
+          Resend
+        </Button>
       </p>
     </div>
   ),
@@ -425,13 +474,13 @@ const LoginFlowComponent = () => {
             </p>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium">Phone Number</label>
-            <input
+            <Label htmlFor="phone">Phone Number</Label>
+            <Input
+              id="phone"
               type="tel"
               placeholder="+1 (555) 123-4567"
               value={phoneNumber}
               onChange={e => setPhoneNumber(e.target.value)}
-              className="border-input w-full rounded border px-3 py-2 text-sm"
             />
           </div>
           <Button onClick={handleSendCode} className="w-full">
@@ -476,7 +525,9 @@ const LoginFlowComponent = () => {
             </Button>
             <p className="text-muted-foreground text-center text-xs">
               Didn&apos;t receive the code?{' '}
-              <button className="underline">Resend</button>
+              <Button variant="link" className="h-auto p-0 text-xs underline">
+                Resend
+              </Button>
             </p>
           </div>
         </div>
