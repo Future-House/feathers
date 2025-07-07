@@ -26,6 +26,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     htmlFor: {
@@ -34,21 +35,7 @@ const meta = {
         'The id of the element the label is associated with. When provided, this will be used as the htmlFor attribute.',
       table: {
         type: { summary: 'string' },
-      },
-    },
-    onClick: {
-      action: 'onClick',
-      description: 'Event handler called when the label is clicked',
-      table: {
-        type: { summary: '(event: MouseEvent) => void' },
-      },
-    },
-    onMouseDown: {
-      action: 'onMouseDown',
-      description:
-        'Event handler called when mouse is pressed down on the label',
-      table: {
-        type: { summary: '(event: MouseEvent) => void' },
+        disable: true,
       },
     },
     className: {
@@ -56,13 +43,6 @@ const meta = {
       description: 'Additional CSS classes to apply to the label',
       table: {
         type: { summary: 'string' },
-      },
-    },
-    children: {
-      control: { type: 'text' },
-      description: 'The content to display inside the label',
-      table: {
-        type: { summary: 'ReactNode' },
       },
     },
   },
@@ -78,27 +58,31 @@ export const Default: Story = {
 };
 
 export const WithInput: Story = {
-  render: () => (
+  render: ({ className }) => (
     <div className="space-y-2">
-      <Label htmlFor="email">Email address</Label>
+      <Label htmlFor="email" className={className}>
+        Email address
+      </Label>
       <Input type="email" id="email" placeholder="Enter your email" />
     </div>
   ),
 };
 
 export const WithCheckbox: Story = {
-  render: () => (
+  render: ({ className }) => (
     <div className="flex items-center space-x-2">
       <Checkbox id="terms" />
-      <Label htmlFor="terms">Accept terms and conditions</Label>
+      <Label htmlFor="terms" className={className}>
+        Accept terms and conditions
+      </Label>
     </div>
   ),
 };
 
 export const Required: Story = {
-  render: () => (
+  render: ({ className }) => (
     <div className="space-y-2">
-      <Label htmlFor="username">
+      <Label htmlFor="username" className={className}>
         Username <span className="text-red-500">*</span>
       </Label>
       <Input type="text" id="username" placeholder="Enter username" required />
@@ -106,10 +90,13 @@ export const Required: Story = {
   ),
 };
 
+// TODO: disabled variant will use opacity-50
 export const Disabled: Story = {
-  render: () => (
+  render: ({ className }) => (
     <div className="space-y-2 opacity-50">
-      <Label htmlFor="disabled-input">Disabled field</Label>
+      <Label htmlFor="disabled-input" className={className}>
+        Disabled field
+      </Label>
       <Input
         type="text"
         id="disabled-input"
@@ -121,6 +108,9 @@ export const Disabled: Story = {
 };
 
 export const FormGroup: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="max-w-sm space-y-4">
       <div className="space-y-2">
@@ -140,9 +130,9 @@ export const FormGroup: Story = {
 };
 
 export const LongText: Story = {
-  render: () => (
+  render: ({ className }) => (
     <div className="max-w-sm space-y-2">
-      <Label htmlFor="description">
+      <Label htmlFor="description" className={className}>
         Please provide a detailed description of your project requirements and
         any specific features you would like to include
       </Label>
@@ -157,6 +147,9 @@ export const LongText: Story = {
 };
 
 export const CustomStyling: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="space-y-2">
