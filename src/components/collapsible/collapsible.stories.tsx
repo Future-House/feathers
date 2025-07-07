@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChevronDown, Calendar, Users, Settings } from 'lucide-react';
 import { Button } from '../button/button';
+import { Checkbox } from '../checkbox/checkbox';
 import { Card, CardContent, CardHeader, CardTitle } from '../card/card';
 import {
   Collapsible,
@@ -31,6 +32,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     defaultOpen: {
@@ -71,7 +73,8 @@ const meta = {
   },
   subcomponents: {
     CollapsibleTrigger: {
-      description: 'The button that toggles the collapsible',
+      description:
+        'The button that toggles the collapsible. Built with Radix UI CollapsibleTrigger primitive with automatic state management and accessibility features. Supports custom triggers via asChild prop.',
       argTypes: {
         asChild: {
           type: 'boolean',
@@ -79,10 +82,25 @@ const meta = {
             'Change the default rendered element for the one passed as a child, merging their props and behavior',
           defaultValue: 'false',
         },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger element',
+        },
+        'data-state': {
+          type: 'string',
+          description:
+            'Data attribute indicating the collapsible state: "open" or "closed"',
+        },
+        'data-disabled': {
+          type: 'boolean',
+          description:
+            'Data attribute present when the collapsible is disabled',
+        },
       },
     },
     CollapsibleContent: {
-      description: 'The component that contains the collapsible content',
+      description:
+        'The container that holds the collapsible content. Built with Radix UI CollapsibleContent primitive with smooth expand/collapse animations and proper accessibility attributes. Includes CSS custom properties for animation control.',
       argTypes: {
         asChild: {
           type: 'boolean',
@@ -95,6 +113,21 @@ const meta = {
           description:
             'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries',
           defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the content container',
+        },
+        'data-state': {
+          type: 'string',
+          description:
+            'Data attribute indicating the collapsible state: "open" or "closed"',
+        },
+        'data-disabled': {
+          type: 'boolean',
+          description:
+            'Data attribute present when the collapsible is disabled',
         },
       },
     },
@@ -178,11 +211,11 @@ export const WithCard: Story = {
           <CollapsibleContent className="space-y-2 pt-4">
             <div className="bg-muted space-y-2 rounded-md p-4">
               <label className="flex items-center space-x-2">
-                <input type="checkbox" />
+                <Checkbox />
                 <span className="text-sm">Enable notifications</span>
               </label>
               <label className="flex items-center space-x-2">
-                <input type="checkbox" />
+                <Checkbox />
                 <span className="text-sm">Auto-save drafts</span>
               </label>
             </div>
@@ -238,7 +271,12 @@ const ControlledExample = (args: React.ComponentProps<typeof Collapsible>) => {
   return (
     <div className="w-[400px] space-y-4">
       <div className="flex items-center space-x-2">
-        <Button onClick={() => setIsOpen(!isOpen)} variant="outline" size="sm">
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          variant="outline"
+          size="sm"
+          disabled={args.disabled}
+        >
           {isOpen ? 'Close' : 'Open'} Section
         </Button>
         <span className="text-muted-foreground text-sm">
@@ -246,7 +284,12 @@ const ControlledExample = (args: React.ComponentProps<typeof Collapsible>) => {
         </span>
       </div>
 
-      <Collapsible {...args} open={isOpen} onOpenChange={setIsOpen}>
+      <Collapsible
+        {...args}
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        disabled={args.disabled}
+      >
         <CollapsibleTrigger asChild>
           <Button variant="outline" className="w-full justify-between">
             Collapsible Section
@@ -268,6 +311,9 @@ const ControlledExample = (args: React.ComponentProps<typeof Collapsible>) => {
 
 export const Controlled: Story = {
   args: {},
+  parameters: {
+    controls: { exclude: /[Oo]pen/ },
+  },
   render: args => <ControlledExample {...args} />,
 };
 
@@ -282,7 +328,7 @@ export const Disabled: Story = {
           Disabled Section
         </h4>
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="sm" className="w-9 p-0" disabled>
+          <Button variant="ghost" size="sm" className="w-9 p-0">
             <ChevronDown className="h-4 w-4" />
             <span className="sr-only">Toggle (disabled)</span>
           </Button>
