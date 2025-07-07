@@ -1,6 +1,19 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
+import { Input } from '../input/input';
+import { Label } from '../label/label';
+import { Textarea } from '../textarea/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../select/select';
+import { RadioGroup, RadioGroupItem } from '../radio-group/radio-group';
+import { Checkbox } from '../checkbox/checkbox';
+import { Separator } from '../separator/separator';
 import { Settings, Menu, Plus, Edit, Trash2 } from 'lucide-react';
 import {
   Drawer,
@@ -28,6 +41,14 @@ const meta = {
   tags: [],
   argTypes: {
     // Root component props from Vaul Drawer.Root
+    defaultOpen: {
+      control: { type: 'boolean' },
+      description:
+        'The open state of the drawer when it is initially rendered. Use when you do not need to control its open state',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     open: {
       control: { type: 'boolean' },
       description:
@@ -43,15 +64,7 @@ const meta = {
         'Event handler called when the open state of the drawer changes',
       table: {
         type: { summary: '(open: boolean) => void' },
-      },
-    },
-    defaultOpen: {
-      control: { type: 'boolean' },
-      description:
-        'The open state of the drawer when it is initially rendered. Use when you do not need to control its open state',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     direction: {
@@ -72,10 +85,46 @@ const meta = {
         defaultValue: { summary: 'true' },
       },
     },
-    shouldScaleBackground: {
+    container: {
+      control: false,
+      description: 'The container element to portal the drawer into',
+      table: {
+        type: { summary: 'HTMLElement' },
+        defaultValue: { summary: 'document.body' },
+        disable: true,
+      },
+    },
+    onAnimationEnd: {
+      action: 'onAnimationEnd',
+      description:
+        'Callback fired after the drawer open/close animation completes',
+      table: {
+        type: { summary: '(open: boolean) => void' },
+        disable: true,
+      },
+    },
+    dismissible: {
       control: { type: 'boolean' },
       description:
-        'When true, the background will scale down when the drawer is open',
+        'When false, prevents the drawer from being closed by dragging or clicking outside',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
+    handleOnly: {
+      control: { type: 'boolean' },
+      description:
+        'When true, only allows dragging the drawer from the handle area',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    repositionInputs: {
+      control: { type: 'boolean' },
+      description:
+        'When true, repositions input elements when the on-screen keyboard appears',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' },
@@ -83,10 +132,51 @@ const meta = {
     },
     snapPoints: {
       control: { type: 'object' },
-      description: 'Array of numbers from 0 to 1 that represents steps',
+      description:
+        'Array of snap points as percentages (0-1) or pixel values for drawer positioning',
       table: {
-        type: { summary: 'number[]' },
+        type: { summary: 'number[] | string[]' },
         defaultValue: { summary: undefined },
+        disable: true,
+      },
+    },
+    activeSnapPoint: {
+      control: { type: 'boolean' },
+      description:
+        'The controlled active snap point. Used with setActiveSnapPoint for controlled snap behavior',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: { summary: undefined },
+        disable: true,
+      },
+    },
+    setActiveSnapPoint: {
+      action: 'setActiveSnapPoint',
+      description: 'Callback fired when the active snap point changes',
+      table: {
+        type: { summary: '(open: boolean) => void' },
+        disable: true,
+      },
+    },
+    fadeFromIndex: {
+      control: { type: 'number' },
+      description:
+        'The snap point index from which the overlay should start to fade out',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: undefined },
+        disable: true,
+      },
+    },
+    snapToSequentialPoint: {
+      control: { type: 'boolean' },
+      description:
+        'When false, allows velocity-based swiping to skip snap points',
+      table: {
+        type: { summary: 'boolean' },
+        disable: true,
       },
     },
   },
@@ -225,31 +315,31 @@ export const MobileMenu: Story = {
         <div className="p-4">
           <nav className="space-y-2">
             <a
-              href="#"
+              tabIndex={0}
               className="hover:bg-accent block rounded-md px-3 py-2 text-sm"
             >
               Dashboard
             </a>
             <a
-              href="#"
+              tabIndex={0}
               className="hover:bg-accent block rounded-md px-3 py-2 text-sm"
             >
               Projects
             </a>
             <a
-              href="#"
+              tabIndex={0}
               className="hover:bg-accent block rounded-md px-3 py-2 text-sm"
             >
               Team
             </a>
             <a
-              href="#"
+              tabIndex={0}
               className="hover:bg-accent block rounded-md px-3 py-2 text-sm"
             >
               Settings
             </a>
             <a
-              href="#"
+              tabIndex={0}
               className="hover:bg-accent block rounded-md px-3 py-2 text-sm"
             >
               Help
@@ -289,41 +379,30 @@ export const CreateNewItem: Story = {
         </DrawerHeader>
         <div className="p-4">
           <div className="space-y-4">
-            <div>
-              <label htmlFor="item-name" className="text-sm font-medium">
-                Item Name
-              </label>
-              <input
-                id="item-name"
-                type="text"
-                placeholder="Enter item name"
-                className="border-input mt-1 w-full rounded-md border px-3 py-2 text-sm"
-              />
+            <div className="space-y-2">
+              <Label htmlFor="item-name">Item Name</Label>
+              <Input id="item-name" type="text" placeholder="Enter item name" />
             </div>
-            <div>
-              <label htmlFor="item-description" className="text-sm font-medium">
-                Description
-              </label>
-              <textarea
+            <div className="space-y-2">
+              <Label htmlFor="item-description">Description</Label>
+              <Textarea
                 id="item-description"
                 placeholder="Enter item description"
                 rows={3}
-                className="border-input mt-1 w-full rounded-md border px-3 py-2 text-sm"
               />
             </div>
-            <div>
-              <label htmlFor="item-category" className="text-sm font-medium">
-                Category
-              </label>
-              <select
-                id="item-category"
-                className="border-input mt-1 w-full rounded-md border px-3 py-2 text-sm"
-              >
-                <option value="">Select category</option>
-                <option value="work">Work</option>
-                <option value="personal">Personal</option>
-                <option value="project">Project</option>
-              </select>
+            <div className="space-y-2">
+              <Label>Category</Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="work">Work</SelectItem>
+                  <SelectItem value="personal">Personal</SelectItem>
+                  <SelectItem value="project">Project</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
@@ -359,53 +438,51 @@ export const SettingsPanel: Story = {
         </DrawerHeader>
         <div className="flex-1 p-4">
           <div className="space-y-6">
-            <div>
+            <div className="space-y-3">
               <h3 className="text-sm font-medium">Appearance</h3>
-              <div className="mt-2 space-y-2">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="light"
-                    className="mr-2"
-                  />
-                  <span className="text-sm">Light mode</span>
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="dark"
-                    className="mr-2"
-                  />
-                  <span className="text-sm">Dark mode</span>
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="system"
-                    className="mr-2"
-                  />
-                  <span className="text-sm">System preference</span>
-                </label>
-              </div>
+              <RadioGroup defaultValue="system" className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="light" id="light" />
+                  <Label htmlFor="light" className="text-sm">
+                    Light mode
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="dark" id="dark" />
+                  <Label htmlFor="dark" className="text-sm">
+                    Dark mode
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="system" id="system" />
+                  <Label htmlFor="system" className="text-sm">
+                    System preference
+                  </Label>
+                </div>
+              </RadioGroup>
             </div>
-            <div>
+            <Separator />
+            <div className="space-y-3">
               <h3 className="text-sm font-medium">Notifications</h3>
-              <div className="mt-2 space-y-2">
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-2" />
-                  <span className="text-sm">Email notifications</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-2" />
-                  <span className="text-sm">Push notifications</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-2" />
-                  <span className="text-sm">Desktop notifications</span>
-                </label>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="email" />
+                  <Label htmlFor="email" className="text-sm">
+                    Email notifications
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="push" />
+                  <Label htmlFor="push" className="text-sm">
+                    Push notifications
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="desktop" />
+                  <Label htmlFor="desktop" className="text-sm">
+                    Desktop notifications
+                  </Label>
+                </div>
               </div>
             </div>
           </div>
@@ -439,22 +516,22 @@ export const ActionSheet: Story = {
         </DrawerHeader>
         <div className="p-4">
           <div className="space-y-2">
-            <button className="hover:bg-accent flex w-full items-center rounded-md px-3 py-2 text-left">
+            <Button variant="ghost" className="w-full justify-start">
               <Edit className="mr-3 h-4 w-4" />
-              <span>Edit Item</span>
-            </button>
-            <button className="hover:bg-accent flex w-full items-center rounded-md px-3 py-2 text-left">
+              Edit Item
+            </Button>
+            <Button variant="ghost" className="w-full justify-start">
               <Plus className="mr-3 h-4 w-4" />
-              <span>Duplicate</span>
-            </button>
-            <button className="hover:bg-accent flex w-full items-center rounded-md px-3 py-2 text-left">
+              Duplicate
+            </Button>
+            <Button variant="ghost" className="w-full justify-start">
               <Settings className="mr-3 h-4 w-4" />
-              <span>Configure</span>
-            </button>
-            <button className="text-destructive hover:bg-destructive/10 flex w-full items-center rounded-md px-3 py-2 text-left">
+              Configure
+            </Button>
+            <Button variant="destructive" className="w-full justify-start">
               <Trash2 className="mr-3 h-4 w-4" />
-              <span>Delete</span>
-            </button>
+              Delete
+            </Button>
           </div>
         </div>
         <DrawerFooter>

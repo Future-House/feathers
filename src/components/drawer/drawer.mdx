@@ -9,8 +9,9 @@ import * as DrawerStories from './drawer.stories';
 
 <Meta of={DrawerStories} />
 
-<DocLayout meta={DrawerStories.default}>
-  ## Default Example
+<DocLayout meta={DrawerStories.default} hideRadixUiUrl>
+
+## Default Example
 
 <Canvas of={DrawerStories.Default} background="dots" />
 
@@ -18,7 +19,7 @@ import * as DrawerStories from './drawer.stories';
 
 ### Drawer
 
-A drawer component for overlaying content on either side or top/bottom of the screen. Built with Vaul primitives and styled with Tailwind CSS. Optimized for mobile-first bottom and slide-up interactions.
+You may need to reference the official documentation for the [Vaul](https://vaul.emilkowal.ski/getting-started) to understand the full API and available options.
 
 <PropsTable argTypes={DrawerStories.default.argTypes} />
 
