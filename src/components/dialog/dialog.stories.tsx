@@ -60,6 +60,7 @@ const meta = {
         'Event handler called when the open state of the dialog changes',
       table: {
         type: { summary: '(open: boolean) => void' },
+        disable: true,
       },
     },
     modal: {
