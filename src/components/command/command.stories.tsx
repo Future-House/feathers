@@ -11,7 +11,7 @@ import {
   CommandShortcut,
   CommandSeparator,
 } from './command';
-import { Button } from '@/components/button';
+import { Button } from '../button';
 import {
   Calculator,
   Calendar,
@@ -42,9 +42,167 @@ const meta = {
   argTypes: {
     className: {
       control: { type: 'text' },
-      description: 'Additional CSS classes',
+      description: 'Additional CSS classes to apply to the command container',
       table: {
         type: { summary: 'string' },
+        defaultValue: { summary: undefined },
+      },
+    },
+  },
+  subcomponents: {
+    CommandDialog: {
+      description:
+        'A command palette rendered in a dialog modal. Built with Dialog primitive and includes proper accessibility with screen reader support through hidden headers.',
+      argTypes: {
+        open: {
+          type: 'boolean',
+          description: 'Controls the open state of the dialog',
+        },
+        onOpenChange: {
+          type: 'function',
+          description: 'Callback fired when the dialog open state changes',
+        },
+        title: {
+          type: 'string',
+          description: 'Accessible title for screen readers',
+          defaultValue: 'Command Palette',
+        },
+        description: {
+          type: 'string',
+          description: 'Accessible description for screen readers',
+          defaultValue: 'Search for a command to run...',
+        },
+        showCloseButton: {
+          type: 'boolean',
+          description: 'Whether to show the close button in the dialog',
+          defaultValue: 'true',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the dialog content',
+        },
+      },
+    },
+    CommandInput: {
+      description:
+        'Search input field with integrated search icon. Built with cmdk Input primitive and includes proper styling for focus states and accessibility.',
+      argTypes: {
+        placeholder: {
+          type: 'string',
+          description: 'Placeholder text for the search input',
+        },
+        value: {
+          type: 'string',
+          description: 'Controlled value of the input',
+        },
+        onValueChange: {
+          type: 'function',
+          description: 'Callback fired when the input value changes',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether the input is disabled',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the input element',
+        },
+      },
+    },
+    CommandList: {
+      description:
+        'Scrollable container for command items with keyboard navigation support. Provides virtualization for large lists and proper scroll management.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the list container',
+        },
+      },
+    },
+    CommandEmpty: {
+      description:
+        'Message displayed when no commands match the search query. Automatically shown/hidden based on filter results from cmdk.',
+      argTypes: {
+        children: {
+          type: 'ReactNode',
+          description: 'The empty state message content',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the empty state',
+        },
+      },
+    },
+    CommandGroup: {
+      description:
+        'Groups related commands together with an optional heading. Provides semantic grouping and supports nested command items with proper styling.',
+      argTypes: {
+        heading: {
+          type: 'string',
+          description: 'Optional heading text for the group',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group container',
+        },
+      },
+    },
+    CommandSeparator: {
+      description:
+        'Visual separator between command groups. Provides clear visual distinction between different sections of commands.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the separator',
+        },
+      },
+    },
+    CommandItem: {
+      description:
+        'Individual selectable command item with keyboard navigation support. Handles selection state, disabled state, and includes proper focus management.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'Unique value for the command item used for searching',
+        },
+        onSelect: {
+          type: 'function',
+          description: 'Callback fired when the item is selected',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether the command item is disabled',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the command item',
+        },
+        'data-selected': {
+          type: 'boolean',
+          description:
+            'Data attribute indicating if the item is currently selected',
+        },
+        'data-disabled': {
+          type: 'boolean',
+          description: 'Data attribute present when the item is disabled',
+        },
+      },
+    },
+    CommandShortcut: {
+      description:
+        'Displays keyboard shortcuts for command items. Positioned at the right side of items with proper spacing and styling for accessibility.',
+      argTypes: {
+        children: {
+          type: 'ReactNode',
+          description: 'The keyboard shortcut text (e.g., "⌘P", "Ctrl+S")',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the shortcut display',
+        },
       },
     },
   },
@@ -101,10 +259,12 @@ function CommandDialogExample() {
 
   return (
     <div className="space-y-4">
-      <p className="text-muted-foreground text-sm">
-        Press the button to open the command dialog
-      </p>
-      <Button onClick={() => setOpen(true)}>Open Command Dialog</Button>
+      <div className="flex flex-col items-center">
+        <p className="text-muted-foreground mb-2 text-sm">
+          Press the button to open the command dialog
+        </p>
+        <Button onClick={() => setOpen(true)}>Open Command Dialog</Button>
+      </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>

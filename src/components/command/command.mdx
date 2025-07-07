@@ -3,24 +3,27 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as CommandStories from './command.stories';
 
 <Meta of={CommandStories} />
 
-<DocLayout meta={CommandStories.default}>
-  ## Default Example
+<DocLayout meta={CommandStories.default} hideRadixUiUrl>
+
+## Default Example
 
 <Canvas of={CommandStories.Default} background="dots" />
 
 ## Component API
 
+You may need to reference the official documentation for the [cmdk docs](https://cmdk.paco.me/) to understand the full API and available options.
+
 ### Command
 
-A fast, composable command palette built with cmdk. Features keyboard navigation, search filtering, and support for complex layouts with groups, separators, and shortcuts.
-
 <PropsTable argTypes={CommandStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={CommandStories.default.subcomponents}/>
 
 ## Examples
 
