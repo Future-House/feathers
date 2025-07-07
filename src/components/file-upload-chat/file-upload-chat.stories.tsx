@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A chat input component with file upload capabilities. Supports drag-and-drop, multiple file types, and displays uploaded files as removable chips.',
+          'A chat input component with file upload capabilities. Supports drag-and-drop, multiple file types, and displays uploaded files as removable chips. Built on top of the `<Tooltip/>`.',
       },
     },
   },

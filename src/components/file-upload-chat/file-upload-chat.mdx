@@ -9,16 +9,15 @@ import * as FileUploadChatStories from './file-upload-chat.stories';
 
 <Meta of={FileUploadChatStories} />
 
-<DocLayout meta={FileUploadChatStories.default}>
-  ## Default Example
+<DocLayout meta={FileUploadChatStories.default} hideRadixUiUrl hideShadcnUrl>
+
+## Default Example
 
 <Canvas of={FileUploadChatStories.Default} background="dots" />
 
 ## Component API
 
 ### FileUploadChat
-
-A chat input component with file upload capabilities. Supports drag-and-drop, multiple file types, and displays uploaded files as removable chips. Perfect for chat interfaces that need to support file attachments.
 
 <PropsTable argTypes={FileUploadChatStories.default.argTypes} />
 
