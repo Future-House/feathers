@@ -76,6 +76,7 @@ const meta = {
         'Event handler called when the open state of the dropdown menu changes',
       table: {
         type: { summary: '(open: boolean) => void' },
+        disable: true,
       },
     },
     modal: {
@@ -440,34 +441,6 @@ export const WithSubmenus: Story = {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  ),
-};
-
-export const ContextMenu: Story = {
-  args: {
-    defaultOpen: false,
-  },
-  render: args => (
-    <div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
-      <DropdownMenu {...args}>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
-            <MoreHorizontal className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem>Edit</DropdownMenuItem>
-          <DropdownMenuItem>Make a copy</DropdownMenuItem>
-          <DropdownMenuItem>Favorite</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <span>Delete</span>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      Right-click for context menu
-    </div>
   ),
 };
 
