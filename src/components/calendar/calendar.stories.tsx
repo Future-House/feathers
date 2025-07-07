@@ -25,6 +25,7 @@ const meta = {
       table: {
         type: { summary: '"single" | "multiple" | "range"' },
         defaultValue: { summary: '"single"' },
+        disable: true,
       },
     },
     selected: {
@@ -33,6 +34,7 @@ const meta = {
       table: {
         type: { summary: 'Date | Date[] | DateRange | undefined' },
         defaultValue: { summary: 'undefined' },
+        disable: true,
       },
     },
     onSelect: {
@@ -43,6 +45,7 @@ const meta = {
           summary: '(date: Date | Date[] | DateRange | undefined) => void',
         },
         defaultValue: { summary: 'undefined' },
+        disable: true,
       },
     },
     disabled: {
@@ -51,6 +54,7 @@ const meta = {
       table: {
         type: { summary: 'Date | Date[] | DateRange | Matcher | Matcher[]' },
         defaultValue: { summary: 'undefined' },
+        disable: true,
       },
     },
     showOutsideDays: {
@@ -114,6 +118,64 @@ const meta = {
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 'undefined' },
+      },
+    },
+  },
+  subcomponents: {
+    CalendarDayButton: {
+      description:
+        'The interactive button for each day in the calendar. Handles day selection and displays date information with appropriate styling for different states.',
+      argTypes: {
+        day: {
+          type: 'object',
+          description:
+            'The day object containing date information from react-day-picker.',
+        },
+        modifiers: {
+          type: 'object',
+          description:
+            'Object containing modifier flags like selected, disabled, focused, range_start, range_end, etc.',
+        },
+        variant: {
+          type: 'string',
+          description:
+            'Button variant style inherited from the Button component.',
+          defaultValue: 'ghost',
+        },
+        size: {
+          type: 'string',
+          description: 'Button size inherited from the Button component.',
+          defaultValue: 'icon',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the day button.',
+        },
+        'data-day': {
+          type: 'string',
+          description:
+            'Data attribute containing the date in local string format.',
+        },
+        'data-selected-single': {
+          type: 'boolean',
+          description:
+            'Data attribute indicating if this day is selected in single mode.',
+        },
+        'data-range-start': {
+          type: 'boolean',
+          description:
+            'Data attribute indicating if this day is the start of a range.',
+        },
+        'data-range-end': {
+          type: 'boolean',
+          description:
+            'Data attribute indicating if this day is the end of a range.',
+        },
+        'data-range-middle': {
+          type: 'boolean',
+          description:
+            'Data attribute indicating if this day is in the middle of a range.',
+        },
       },
     },
   },
