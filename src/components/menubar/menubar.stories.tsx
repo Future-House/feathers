@@ -46,7 +46,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A visually persistent menu common in desktop applications that provides access to a consistent set of commands. Built with Radix UI Menubar primitives and styled with Tailwind CSS.',
+          'A visually persistent menu common in desktop applications that provides access to a consistent set of commands.',
       },
     },
   },
@@ -100,6 +100,323 @@ const meta = {
       description: 'Additional CSS classes to apply to the menubar',
       table: {
         type: { summary: 'string' },
+      },
+    },
+  },
+  subcomponents: {
+    MenubarMenu: {
+      description:
+        'Represents a top-level menu item in the menubar. Built with Radix UI Menu primitive and supports controlled and uncontrolled state.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description:
+            'A unique value that associates the trigger with a content',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+      },
+    },
+    MenubarTrigger: {
+      description:
+        'The button that toggles the menu content. Built with Radix UI Trigger primitive with focus and open state styling.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger button',
+        },
+      },
+    },
+    MenubarContent: {
+      description:
+        'The popup menu component that contains menu items. Built with Radix UI Content primitive with automatic positioning and animations.',
+      argTypes: {
+        side: {
+          type: 'string',
+          description:
+            'The preferred side of the trigger to render against when open',
+          defaultValue: 'bottom',
+        },
+        sideOffset: {
+          type: 'number',
+          description: 'The distance in pixels from the trigger',
+          defaultValue: '8',
+        },
+        align: {
+          type: 'string',
+          description: 'The preferred alignment against the trigger',
+          defaultValue: 'start',
+        },
+        alignOffset: {
+          type: 'number',
+          description: 'The vertical offset in pixels from the trigger',
+          defaultValue: '-4',
+        },
+        avoidCollisions: {
+          type: 'boolean',
+          description:
+            'When true, overrides the side and align preferences to prevent collisions with boundary edges',
+          defaultValue: 'true',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the content container',
+        },
+      },
+    },
+    MenubarGroup: {
+      description:
+        'Groups related menu items together. Built with Radix UI Group primitive for semantic grouping and keyboard navigation.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group container',
+        },
+      },
+    },
+    MenubarItem: {
+      description:
+        'A selectable menu item with focus states and optional destructive variant. Built with Radix UI Item primitive with custom styling.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether the item is disabled and non-interactive',
+          defaultValue: 'false',
+        },
+        onSelect: {
+          type: 'function',
+          description: 'Event handler called when the user selects an item',
+        },
+        textValue: {
+          type: 'string',
+          description:
+            'Optional text used for typeahead purposes. By default uses the text content of the item.',
+        },
+        inset: {
+          type: 'boolean',
+          description:
+            'When true, adds left padding to align with items that have icons',
+          defaultValue: 'false',
+        },
+        variant: {
+          type: 'string',
+          description: 'The visual style variant of the menu item',
+          defaultValue: 'default',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu item',
+        },
+      },
+    },
+    MenubarCheckboxItem: {
+      description:
+        'A checkable menu item with visual indicator. Built with Radix UI CheckboxItem primitive with built-in check icon.',
+      argTypes: {
+        checked: {
+          type: 'boolean',
+          description: 'The controlled checked state of the item',
+        },
+        onCheckedChange: {
+          type: 'function',
+          description: 'Event handler called when the checked state changes',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether the checkbox item is disabled',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the checkbox item',
+        },
+      },
+    },
+    MenubarRadioGroup: {
+      description:
+        'Groups radio items together for mutually exclusive selection. Built with Radix UI RadioGroup primitive.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'The controlled value of the radio group',
+        },
+        onValueChange: {
+          type: 'function',
+          description: 'Event handler called when the value changes',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the radio group',
+        },
+      },
+    },
+    MenubarRadioItem: {
+      description:
+        'A selectable radio item within a radio group. Built with Radix UI RadioItem primitive with circle indicator.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'The unique value of the item (required)',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether the radio item is disabled',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the radio item',
+        },
+      },
+    },
+    MenubarLabel: {
+      description:
+        'A label for a group of menu items. Built with Radix UI Label primitive with optional inset alignment.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        inset: {
+          type: 'boolean',
+          description:
+            'When true, adds left padding to align with items that have icons',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the label',
+        },
+      },
+    },
+    MenubarSeparator: {
+      description:
+        'A visual separator between menu items. Built with Radix UI Separator primitive for semantic grouping.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the separator',
+        },
+      },
+    },
+    MenubarShortcut: {
+      description:
+        'Displays keyboard shortcuts for menu items. Custom styled component with consistent spacing and typography.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the shortcut display',
+        },
+        children: {
+          type: 'ReactNode',
+          description: 'The keyboard shortcut text (e.g., "⌘N", "Ctrl+S")',
+        },
+      },
+    },
+    MenubarSub: {
+      description:
+        'Container for submenu functionality. Built with Radix UI Sub primitive for nested menu management.',
+      argTypes: {
+        open: {
+          type: 'boolean',
+          description: 'The controlled open state of the submenu',
+        },
+        onOpenChange: {
+          type: 'function',
+          description: 'Event handler called when the open state changes',
+        },
+        defaultOpen: {
+          type: 'boolean',
+          description:
+            'The open state of the submenu when it is initially rendered',
+        },
+      },
+    },
+    MenubarSubTrigger: {
+      description:
+        'Trigger for opening a submenu. Built with Radix UI SubTrigger primitive with automatic chevron icon.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether the subtrigger is disabled',
+          defaultValue: 'false',
+        },
+        textValue: {
+          type: 'string',
+          description: 'Optional text used for typeahead purposes',
+        },
+        inset: {
+          type: 'boolean',
+          description:
+            'When true, adds left padding to align with items that have icons',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the subtrigger',
+        },
+      },
+    },
+    MenubarSubContent: {
+      description:
+        'The content of a submenu. Built with Radix UI SubContent primitive with automatic positioning and animations.',
+      argTypes: {
+        sideOffset: {
+          type: 'number',
+          description: 'The distance in pixels from the subtrigger',
+        },
+        alignOffset: {
+          type: 'number',
+          description: 'The alignment offset in pixels from the subtrigger',
+        },
+        avoidCollisions: {
+          type: 'boolean',
+          description:
+            'When true, overrides positioning to prevent collisions with boundary edges',
+          defaultValue: 'true',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the subcontent',
+        },
       },
     },
   },
