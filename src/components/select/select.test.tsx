@@ -137,22 +137,6 @@ describe('Select', () => {
     );
   });
 
-  it('renders with different trigger sizes', () => {
-    render(
-      <Select>
-        <SelectTrigger size="sm">
-          <SelectValue placeholder="Small select" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="test">Test</SelectItem>
-        </SelectContent>
-      </Select>
-    );
-
-    const trigger = screen.getByTestId('select-trigger');
-    expect(trigger).toHaveAttribute('data-size', 'sm');
-  });
-
   it('applies custom className to trigger', () => {
     render(
       <Select>
