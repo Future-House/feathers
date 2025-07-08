@@ -9,16 +9,15 @@ import * as SidebarStories from './sidebar.stories';
 
 <Meta of={SidebarStories} />
 
-<DocLayout meta={SidebarStories.default}>
-  ## Default Example
+<DocLayout meta={SidebarStories.default} hideRadixUiUrl>
+
+## Default Example
 
 <Canvas of={SidebarStories.Default} background="dots" />
 
 ## Component API
 
-### SidebarProvider
-
-A comprehensive sidebar component built with Radix UI primitives and Tailwind CSS. Features responsive design, collapsible states, keyboard shortcuts, and extensive customization options.
+### Sidebar
 
 <PropsTable argTypes={SidebarStories.default.argTypes} />
 

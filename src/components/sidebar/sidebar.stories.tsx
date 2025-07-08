@@ -40,9 +40,10 @@ import {
 
 const meta = {
   title: 'Components/Sidebar',
-  component: SidebarProvider,
+  component: Sidebar,
   parameters: {
     layout: 'fullscreen',
+    controls: { disable: true },
     docs: {
       description: {
         component:
@@ -52,31 +53,11 @@ const meta = {
   },
   tags: [],
   argTypes: {
-    defaultOpen: {
-      control: { type: 'boolean' },
-      description: 'Default open state of the sidebar',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' },
-      },
-    },
-    open: {
-      control: { type: 'boolean' },
-      description: 'Controlled open state of the sidebar',
-      table: {
-        type: { summary: 'boolean' },
-      },
-    },
-    onOpenChange: {
-      description: 'Callback when the sidebar open state changes',
-      table: {
-        type: { summary: '(open: boolean) => void' },
-      },
-    },
     side: {
       control: { type: 'select' },
-      options: ['left', 'right'],
       description: 'Side of the screen where the sidebar appears',
+      options: ['left', 'right'],
+      type: 'string',
       table: {
         type: { summary: 'left | right' },
         defaultValue: { summary: 'left' },
@@ -84,8 +65,9 @@ const meta = {
     },
     variant: {
       control: { type: 'select' },
-      options: ['sidebar', 'floating', 'inset'],
       description: 'Visual variant of the sidebar',
+      options: ['sidebar', 'floating', 'inset'],
+      type: 'string',
       table: {
         type: { summary: 'sidebar | floating | inset' },
         defaultValue: { summary: 'sidebar' },
@@ -93,15 +75,329 @@ const meta = {
     },
     collapsible: {
       control: { type: 'select' },
-      options: ['offcanvas', 'icon', 'none'],
       description: 'Collapsible behavior of the sidebar',
+      options: ['offcanvas', 'icon', 'none'],
+      type: 'string',
       table: {
         type: { summary: 'offcanvas | icon | none' },
         defaultValue: { summary: 'offcanvas' },
       },
     },
+    className: {
+      control: { type: 'text' },
+      description: 'CSS class name to apply to the sidebar element',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
-} satisfies Meta<typeof SidebarProvider>;
+  subcomponents: {
+    SidebarProvider: {
+      description:
+        'The root provider component that manages sidebar state and provides context to all child components.',
+      argTypes: {
+        defaultOpen: {
+          type: 'boolean',
+          description: 'Default open state of the sidebar when first rendered',
+          defaultValue: 'true',
+        },
+        open: {
+          type: 'boolean',
+          description: 'Controlled open state of the sidebar',
+        },
+        onOpenChange: {
+          type: 'function',
+          description:
+            'Callback function called when sidebar open state changes',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the provider wrapper',
+        },
+      },
+    },
+    SidebarTrigger: {
+      description:
+        'A button component that toggles the sidebar open/closed state.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger button',
+        },
+        onClick: {
+          type: 'function',
+          description: 'Custom click handler (called before internal toggle)',
+        },
+      },
+    },
+    SidebarRail: {
+      description:
+        'An invisible rail component that provides a hover area for expanding collapsed sidebars.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the rail',
+        },
+      },
+    },
+    SidebarInset: {
+      description:
+        'The main content area container that adjusts based on sidebar state.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the inset container',
+        },
+      },
+    },
+    SidebarInput: {
+      description:
+        'A styled input component designed for search functionality within the sidebar.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the input',
+        },
+        placeholder: {
+          type: 'string',
+          description: 'Placeholder text for the input',
+        },
+      },
+    },
+    SidebarHeader: {
+      description:
+        'Header section of the sidebar, typically containing branding or main navigation.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the header',
+        },
+      },
+    },
+    SidebarFooter: {
+      description:
+        'Footer section of the sidebar, typically containing user info or secondary actions.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the footer',
+        },
+      },
+    },
+    SidebarSeparator: {
+      description:
+        'A visual separator component to divide sections within the sidebar.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the separator',
+        },
+      },
+    },
+    SidebarContent: {
+      description:
+        'The main scrollable content area of the sidebar containing navigation groups.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the content area',
+        },
+      },
+    },
+    SidebarGroup: {
+      description:
+        'A container for grouping related sidebar items with optional label and actions.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group',
+        },
+      },
+    },
+    SidebarGroupLabel: {
+      description: 'A label component for naming sidebar groups.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group label',
+        },
+        asChild: {
+          type: 'boolean',
+          description: 'Render as a child component instead of default div',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SidebarGroupAction: {
+      description:
+        'An action button component positioned within a sidebar group, typically for adding items.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group action',
+        },
+        asChild: {
+          type: 'boolean',
+          description: 'Render as a child component instead of default button',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SidebarGroupContent: {
+      description:
+        'Container for the content within a sidebar group, typically containing menus.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group content',
+        },
+      },
+    },
+    SidebarMenu: {
+      description:
+        'A list container for sidebar menu items, rendered as an unordered list.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu',
+        },
+      },
+    },
+    SidebarMenuItem: {
+      description: 'A single menu item container, rendered as a list item.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu item',
+        },
+      },
+    },
+    SidebarMenuButton: {
+      description:
+        'An interactive button for menu items with support for active states and tooltips.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description: 'Render as a child component instead of default button',
+          defaultValue: 'false',
+        },
+        isActive: {
+          type: 'boolean',
+          description: 'Whether the menu item is in an active state',
+          defaultValue: 'false',
+        },
+        variant: {
+          type: 'string',
+          description: 'Visual variant of the menu button',
+          defaultValue: 'default',
+        },
+        size: {
+          type: 'string',
+          description: 'Size variant of the menu button',
+          defaultValue: 'default',
+        },
+        tooltip: {
+          type: 'string | object',
+          description: 'Tooltip content to show when sidebar is collapsed',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu button',
+        },
+      },
+    },
+    SidebarMenuAction: {
+      description:
+        'An action button positioned within a menu item for secondary actions.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu action',
+        },
+        asChild: {
+          type: 'boolean',
+          description: 'Render as a child component instead of default button',
+          defaultValue: 'false',
+        },
+        showOnHover: {
+          type: 'boolean',
+          description: 'Whether to show the action only on hover',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SidebarMenuBadge: {
+      description:
+        'A badge component for displaying counts or status within menu items.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu badge',
+        },
+      },
+    },
+    SidebarMenuSkeleton: {
+      description:
+        'A skeleton loading component for menu items during loading states.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the skeleton',
+        },
+        showIcon: {
+          type: 'boolean',
+          description: 'Whether to show an icon skeleton',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SidebarMenuSub: {
+      description:
+        'A container for nested submenu items, rendered as an unordered list.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the submenu',
+        },
+      },
+    },
+    SidebarMenuSubItem: {
+      description: 'A single submenu item container, rendered as a list item.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the submenu item',
+        },
+      },
+    },
+    SidebarMenuSubButton: {
+      description:
+        'An interactive button for submenu items with size and active state support.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description: 'Render as a child component instead of default anchor',
+          defaultValue: 'false',
+        },
+        size: {
+          type: 'string',
+          description: 'Size variant of the submenu button',
+          defaultValue: 'md',
+        },
+        isActive: {
+          type: 'boolean',
+          description: 'Whether the submenu item is in an active state',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the submenu button',
+        },
+      },
+    },
+  },
+} satisfies Meta<typeof Sidebar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -333,7 +629,7 @@ function NestedMenuSidebarExample() {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarHeader>
-          <SidebarContent>
+          <SidebarContent className="overflow-x-hidden">
             <SidebarGroup>
               <SidebarGroupLabel>Projects</SidebarGroupLabel>
               <SidebarGroupAction>
@@ -623,7 +919,7 @@ function SearchableSidebarExample() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
-            <SidebarInput placeholder="Type to search..." />
+            <SidebarInput placeholder="I don't filter anything yet..." />
           </SidebarHeader>
           <SidebarContent>
             <SidebarGroup>
