@@ -80,22 +80,6 @@ export default function SelectExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700">Small Size</h3>
-          <Select>
-            <SelectTrigger size="sm" className="w-[150px]">
-              <SelectValue placeholder="Size: Small" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="xs">Extra Small</SelectItem>
-              <SelectItem value="sm">Small</SelectItem>
-              <SelectItem value="md">Medium</SelectItem>
-              <SelectItem value="lg">Large</SelectItem>
-              <SelectItem value="xl">Extra Large</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-4">
           <h3 className="text-sm font-medium text-gray-700">Disabled Select</h3>
           <Select disabled>
             <SelectTrigger className="w-[180px]">
