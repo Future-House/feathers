@@ -18,12 +18,12 @@ const meta = {
   },
   tags: [],
   argTypes: {
-    // RadioGroup.Root props
     value: {
       control: 'text',
       description: 'The controlled value of the radio item to check.',
       table: {
         type: { summary: 'string' },
+        disable: true,
       },
     },
     defaultValue: {
@@ -32,6 +32,7 @@ const meta = {
         'The value of the radio item to check when initially rendered.',
       table: {
         type: { summary: 'string' },
+        disable: true,
       },
     },
     onValueChange: {
@@ -39,6 +40,7 @@ const meta = {
       description: 'Event handler called when the value changes.',
       table: {
         type: { summary: '(value: string) => void' },
+        disable: true,
       },
     },
     disabled: {
@@ -128,7 +130,7 @@ function BasicRadioGroupComponent(args) {
   const [value, setValue] = React.useState('option1');
 
   return (
-    <RadioGroup value={value} onValueChange={setValue} {...args}>
+    <RadioGroup {...args} value={value} onValueChange={setValue}>
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="option1" id="option1" />
         <Label htmlFor="option1">Option 1</Label>
@@ -155,9 +157,9 @@ function PaymentMethodComponent(args) {
       </CardHeader>
       <CardContent>
         <RadioGroup
+          {...args}
           value={paymentMethod}
           onValueChange={setPaymentMethod}
-          {...args}
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="card" id="card" />
@@ -212,7 +214,7 @@ function NotificationSettingsComponent(args) {
           Choose how often you want to receive notifications.
         </p>
       </div>
-      <RadioGroup value={frequency} onValueChange={setFrequency} {...args}>
+      <RadioGroup {...args} value={frequency} onValueChange={setFrequency}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="immediate" id="immediate" />
           <Label htmlFor="immediate" className="font-normal">
@@ -274,11 +276,11 @@ function HorizontalRadioGroupComponent(args) {
         </p>
       </div>
       <RadioGroup
+        {...args}
         value={size}
         onValueChange={setSize}
         orientation="horizontal"
         className="flex gap-6"
-        {...args}
       >
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="small" id="small" />
@@ -306,7 +308,7 @@ function DisabledRadioGroupComponent(args) {
           This selection is currently disabled.
         </p>
       </div>
-      <RadioGroup defaultValue="basic" disabled {...args}>
+      <RadioGroup {...args} defaultValue="basic" disabled>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="basic" id="basic-disabled" />
           <Label htmlFor="basic-disabled">Basic Plan</Label>
@@ -335,7 +337,7 @@ function MixedDisabledRadioGroupComponent(args) {
           Some options may not be available.
         </p>
       </div>
-      <RadioGroup value={plan} onValueChange={setPlan} {...args}>
+      <RadioGroup {...args} value={plan} onValueChange={setPlan}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="basic" id="basic-mixed" />
           <Label htmlFor="basic-mixed">Basic (Free)</Label>
