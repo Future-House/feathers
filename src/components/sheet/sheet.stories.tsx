@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './sheet';
+import { Button } from '../button';
 
 const meta: Meta<typeof Sheet> = {
   title: 'Components/Sheet',
@@ -18,51 +19,8 @@ const meta: Meta<typeof Sheet> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-A sheet component that slides in from the side of the screen. Built on top of Radix UI's Dialog primitive and provides a flexible overlay interface for displaying content.
-
-## Features
-
-- **Accessible**: Full keyboard navigation and screen reader support
-- **Customizable**: Flexible styling with Tailwind CSS classes
-- **Multiple directions**: Supports sliding from top, right, bottom, or left
-- **Portal rendering**: Content renders in a portal for proper z-index handling
-- **Auto-focus management**: Handles focus management when opening/closing
-- **Escape key handling**: Closes on escape key press
-- **Controlled/Uncontrolled**: Works in both controlled and uncontrolled modes
-
-## Usage
-
-\`\`\`tsx
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@future-house/feathers/components/sheet';
-
-function Example() {
-  return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <button>Open Sheet</button>
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Sheet Title</SheetTitle>
-          <SheetDescription>
-            This is a description of the sheet content.
-          </SheetDescription>
-        </SheetHeader>
-        <p>Sheet content goes here.</p>
-      </SheetContent>
-    </Sheet>
-  );
-}
-\`\`\`
-        `,
+        component:
+          "A sheet component that slides in from the side of the screen. Built on top of Radix UI's Dialog primitive and provides a flexible overlay interface for displaying content.",
       },
     },
   },
@@ -88,6 +46,7 @@ function Example() {
       description: 'Event handler called when the open state changes',
       table: {
         type: { summary: '(open: boolean) => void' },
+        disable: true,
       },
     },
     modal: {
@@ -97,6 +56,136 @@ function Example() {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' },
+      },
+    },
+  },
+  subcomponents: {
+    SheetTrigger: {
+      description:
+        'A button that opens the sheet. Can be used with the asChild prop for custom trigger components.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger element',
+        },
+      },
+    },
+    SheetContent: {
+      description:
+        'The main content area of the sheet. Contains the overlay and positioning logic.',
+      argTypes: {
+        side: {
+          type: 'string',
+          description: 'The side of the screen from which the sheet slides in',
+          defaultValue: 'right',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the content container',
+        },
+        children: {
+          type: 'ReactNode',
+          description: 'Content to display inside the sheet',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+        },
+        onOpenAutoFocus: {
+          type: 'function',
+          description:
+            'Event handler called when the sheet opens and the focus moves to the destructive action after opening.',
+        },
+        onCloseAutoFocus: {
+          type: 'function',
+          description:
+            'Event handler called when the sheet closes and the focus moves to the trigger after closing.',
+        },
+        onEscapeKeyDown: {
+          type: 'function',
+          description:
+            'Event handler called when the escape key is down. Can be prevented by calling event.preventDefault.',
+        },
+        onPointerDownOutside: {
+          type: 'function',
+          description:
+            'Event handler called when a pointer event happens outside of the DismissableLayer. Can be prevented by calling event.preventDefault.',
+        },
+        onInteractOutside: {
+          type: 'function',
+          description:
+            'Event handler called when an interaction happens outside the DismissableLayer. Specifically, when a pointerdown event happens outside or focus moves outside of it.',
+        },
+      },
+    },
+    SheetHeader: {
+      description:
+        'Header section of the sheet, typically containing the title and description.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the header',
+        },
+      },
+    },
+    SheetTitle: {
+      description:
+        'The title of the sheet. Automatically provides accessible labeling for screen readers.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the title',
+        },
+      },
+    },
+    SheetDescription: {
+      description:
+        'A description of the sheet content. Provides additional context for screen readers.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the description',
+        },
+      },
+    },
+    SheetFooter: {
+      description:
+        'Footer section of the sheet, typically containing action buttons.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the footer',
+        },
+      },
+    },
+    SheetClose: {
+      description:
+        'A button that closes the sheet. Can be used with the asChild prop for custom close components.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the close element',
+        },
       },
     },
   },
@@ -120,7 +209,7 @@ export const Default: Story = {
             Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 p-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <label htmlFor="name" className="text-right">
               Name
@@ -177,7 +266,7 @@ export const FromLeft: Story = {
             Navigate through different sections of the application.
           </SheetDescription>
         </SheetHeader>
-        <div className="flex flex-col gap-2 py-4">
+        <div className="flex flex-col gap-2 p-4">
           <a href="#" className="hover:bg-accent rounded-md px-2 py-2 text-sm">
             Dashboard
           </a>
@@ -217,7 +306,7 @@ export const FromTop: Story = {
           <SheetTitle>Notifications</SheetTitle>
           <SheetDescription>You have 3 unread notifications.</SheetDescription>
         </SheetHeader>
-        <div className="flex flex-col gap-3 py-4">
+        <div className="flex flex-col gap-3 p-4">
           <div className="border-border rounded-md border p-3">
             <p className="text-sm font-medium">New message from John</p>
             <p className="text-muted-foreground text-xs">2 minutes ago</p>
@@ -259,7 +348,7 @@ export const FromBottom: Story = {
             Perform common actions quickly from here.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid grid-cols-2 gap-4 py-4">
+        <div className="grid grid-cols-2 gap-4 p-4">
           <button className="border-border hover:bg-accent rounded-md border p-4 text-center text-sm">
             Share
           </button>
@@ -291,11 +380,9 @@ function ControlledSheetExample(args: React.ComponentProps<typeof Sheet>) {
 
   return (
     <div className="space-y-4">
-      <Sheet open={open} onOpenChange={setOpen} {...args}>
+      <Sheet {...args} open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2">
-            Open Controlled Sheet
-          </button>
+          <Button>Open Sheet via {`<Trigger/>`}</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -304,35 +391,23 @@ function ControlledSheetExample(args: React.ComponentProps<typeof Sheet>) {
               This sheet&apos;s open state is controlled by React state.
             </SheetDescription>
           </SheetHeader>
-          <div className="py-4">
+          <div className="p-4">
             <p className="text-sm">
               You can control this sheet programmatically using the buttons
               below.
             </p>
           </div>
           <SheetFooter>
-            <button
-              onClick={() => setOpen(false)}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2"
-            >
+            <Button onClick={() => setOpen(false)} variant="outline">
               Close Sheet
-            </button>
+            </Button>
           </SheetFooter>
         </SheetContent>
       </Sheet>
       <div className="space-x-2">
-        <button
-          onClick={() => setOpen(true)}
-          className="border-input hover:bg-accent rounded-md border px-4 py-2 text-sm"
-        >
+        <Button onClick={() => setOpen(true)} variant="secondary">
           Open Programmatically
-        </button>
-        <button
-          onClick={() => setOpen(false)}
-          className="border-input hover:bg-accent rounded-md border px-4 py-2 text-sm"
-        >
-          Close Programmatically
-        </button>
+        </Button>
       </div>
       <p className="text-muted-foreground text-sm">
         Sheet is currently: {open ? 'Open' : 'Closed'}
@@ -368,7 +443,7 @@ export const NonModal: Story = {
             This sheet allows interaction with elements behind it.
           </SheetDescription>
         </SheetHeader>
-        <div className="py-4">
+        <div className="p-4">
           <p className="text-sm">
             With modal=false, you can interact with elements outside this sheet.
             Try clicking on other elements on the page while this sheet is open.

@@ -67,6 +67,7 @@ interface DocLayoutProps {
   className?: string;
   hideShadcnUrl?: boolean;
   hideRadixUiUrl?: boolean;
+  customRadixUiUrl?: string;
 }
 
 export function DocLayout({
@@ -78,6 +79,7 @@ export function DocLayout({
   className,
   hideShadcnUrl = false,
   hideRadixUiUrl = false,
+  customRadixUiUrl,
 }: DocLayoutProps) {
   const finalTitle = title || (meta ? getComponentTitle(meta) : '');
   const finalDescription =
@@ -90,7 +92,9 @@ export function DocLayout({
 
   // Default URLs if not provided
   const defaultShadcnUrl = `https://ui.shadcn.com/docs/components/${kebabCase}`;
-  const defaultRadixUrl = `https://www.radix-ui.com/primitives/docs/components/${kebabCase}`;
+  const defaultRadixUrl = customRadixUiUrl
+    ? `https://www.radix-ui.com/primitives/docs/components/${customRadixUiUrl}`
+    : `https://www.radix-ui.com/primitives/docs/components/${kebabCase}`;
 
   return (
     <div
@@ -128,7 +132,7 @@ export function DocLayout({
                 className="inline-flex items-center gap-1.5 no-underline hover:no-underline"
               >
                 <RadixLogo className="h-3 w-3" />
-                radix-ui/{kebabCase}
+                radix-ui/{customRadixUiUrl || kebabCase}
                 <ExternalLink className="h-3 w-3" />
               </a>
             </Badge>

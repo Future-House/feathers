@@ -9,16 +9,15 @@ import * as SheetStories from './sheet.stories';
 
 <Meta of={SheetStories} />
 
-<DocLayout meta={SheetStories.default}>
-  ## Default Example
+<DocLayout meta={SheetStories.default} customRadixUiUrl="dialog">
 
-<Canvas of={SheetStories.Default} background="dots" />
+## Default Example
+
+<Canvas of={SheetStories.Default} />
 
 ## Component API
 
 ### Sheet
-
-A sheet component that slides in from the side of the screen. Built on top of Radix UI's Dialog primitive and provides a flexible overlay interface for displaying content.
 
 <PropsTable argTypes={SheetStories.default.argTypes} />
 
@@ -30,31 +29,31 @@ A sheet component that slides in from the side of the screen. Built on top of Ra
 
 Sheet that slides in from the left side, commonly used for navigation menus.
 
-<Canvas of={SheetStories.FromLeft} background="grid" />
+<Canvas of={SheetStories.FromLeft} />
 
 ### From Top
 
 Sheet that slides in from the top, useful for notifications or quick actions.
 
-<Canvas of={SheetStories.FromTop} background="muted" />
+<Canvas of={SheetStories.FromTop} />
 
 ### From Bottom
 
 Sheet that slides in from the bottom, perfect for mobile-style action sheets.
 
-<Canvas of={SheetStories.FromBottom} background="card" />
+<Canvas of={SheetStories.FromBottom} />
 
 ### Controlled
 
 Manage the sheet open state with React state for programmatic control.
 
-<Canvas of={SheetStories.Controlled} background="transparent" />
+<Canvas of={SheetStories.Controlled} />
 
 ### Non Modal
 
 A non-modal sheet that allows interaction with elements behind it.
 
-<Canvas of={SheetStories.NonModal} background="default" />
+<Canvas of={SheetStories.NonModal} />
 
 ## Accessibility
 
