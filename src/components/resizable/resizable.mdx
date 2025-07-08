@@ -9,16 +9,17 @@ import * as ResizableStories from './resizable.stories';
 
 <Meta of={ResizableStories} />
 
-<DocLayout meta={ResizableStories.default}>
-  ## Default Example
+<DocLayout meta={ResizableStories.default} hideRadixUiUrl>
 
-<Canvas of={ResizableStories.HorizontalLayout} background="dots" />
+## Default Example
+
+<Canvas of={ResizableStories.HorizontalLayout} />
 
 ## Component API
 
 ### ResizablePanelGroup
 
-Accessible resizable panel groups and layouts built with react-resizable-panels. Create flexible layouts with user-controlled panel sizing.
+You may need to reference the official documentation for the [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels#props). 
 
 <PropsTable argTypes={ResizableStories.default.argTypes} />
 
@@ -30,37 +31,31 @@ Accessible resizable panel groups and layouts built with react-resizable-panels.
 
 Create vertical split layouts with resizable panels for dashboard interfaces.
 
-<Canvas of={ResizableStories.VerticalLayout} background="grid" />
+<Canvas of={ResizableStories.VerticalLayout} />
 
 ### With Handle
 
 Add visual grip handles to make resize areas more discoverable.
 
-<Canvas of={ResizableStories.WithHandle} background="muted" />
+<Canvas of={ResizableStories.WithHandle} />
 
 ### Nested Layout
 
 Combine horizontal and vertical layouts for complex application interfaces.
 
-<Canvas of={ResizableStories.NestedLayout} background="card" />
+<Canvas of={ResizableStories.NestedLayout} />
 
 ### Collapsible Panel
 
 Allow panels to collapse completely when resized to their minimum size.
 
-<Canvas of={ResizableStories.CollapsiblePanel} background="transparent" />
+<Canvas of={ResizableStories.CollapsiblePanel} />
 
 ### Min/Max Sizes
 
 Set constraints on panel sizing to maintain usable interface proportions.
 
-<Canvas of={ResizableStories.MinMaxSizes} background="default" />
-
-### Basic Example
-
-A minimal example demonstrating the core resizable functionality.
-
-<Canvas of={ResizableStories.BasicExample} background="grid" />
+<Canvas of={ResizableStories.MinMaxSizes} />
 
 ## Accessibility
 

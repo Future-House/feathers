@@ -7,11 +7,11 @@ import {
 } from './resizable';
 import { Card, CardContent, CardHeader, CardTitle } from '../card/card';
 
-const meta: Meta<typeof ResizablePanelGroup> = {
+const meta = {
   title: 'Components/Resizable',
   component: ResizablePanelGroup,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
     docs: {
       description: {
         component:
@@ -27,7 +27,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
       options: ['horizontal', 'vertical'],
       description: 'The direction of the panel group.',
       table: {
-        category: 'PanelGroup',
+        category: 'ResizablePanelGroup',
         type: { summary: 'horizontal | vertical' },
         defaultValue: { summary: 'horizontal' },
       },
@@ -37,15 +37,16 @@ const meta: Meta<typeof ResizablePanelGroup> = {
       description:
         'Unique identifier for automatically saving and restoring panel sizes.',
       table: {
-        category: 'PanelGroup',
+        category: 'ResizablePanelGroup',
         type: { summary: 'string' },
+        disable: true,
       },
     },
     keyboardResizeBy: {
       control: 'number',
       description: 'Keyboard resize increment (as a percentage).',
       table: {
-        category: 'PanelGroup',
+        category: 'ResizablePanelGroup',
         type: { summary: 'number' },
         defaultValue: { summary: '10' },
       },
@@ -54,7 +55,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
       action: 'layoutChanged',
       description: 'Called when panel layout changes.',
       table: {
-        category: 'PanelGroup',
+        category: 'ResizablePanelGroup',
         type: { summary: '(sizes: number[]) => void' },
       },
     },
@@ -62,117 +63,124 @@ const meta: Meta<typeof ResizablePanelGroup> = {
       control: false,
       description: 'Custom storage API for persisting panel sizes.',
       table: {
-        category: 'PanelGroup',
+        category: 'ResizablePanelGroup',
         type: { summary: 'PanelGroupStorage' },
-      },
-    },
-    // Panel props
-    collapsedSize: {
-      control: 'number',
-      description: 'Panel size when collapsed (as a percentage).',
-      table: {
-        category: 'Panel',
-        type: { summary: 'number' },
-        defaultValue: { summary: '0' },
-      },
-    },
-    collapsible: {
-      control: 'boolean',
-      description: 'Panel can be collapsed to its minimum size.',
-      table: {
-        category: 'Panel',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
-    defaultSize: {
-      control: 'number',
-      description: 'Initial panel size (as a percentage).',
-      table: {
-        category: 'Panel',
-        type: { summary: 'number' },
+        disable: true,
       },
     },
     id: {
-      control: 'text',
-      description: 'Panel identifier for imperative API.',
       table: {
-        category: 'Panel',
-        type: { summary: 'string' },
+        disable: true,
       },
     },
-    maxSize: {
-      control: 'number',
-      description: 'Maximum panel size (as a percentage).',
+    tagName: {
       table: {
-        category: 'Panel',
-        type: { summary: 'number' },
-        defaultValue: { summary: '100' },
-      },
-    },
-    minSize: {
-      control: 'number',
-      description: 'Minimum panel size (as a percentage).',
-      table: {
-        category: 'Panel',
-        type: { summary: 'number' },
-        defaultValue: { summary: '10' },
-      },
-    },
-    order: {
-      control: 'number',
-      description: 'Panel order within the group.',
-      table: {
-        category: 'Panel',
-        type: { summary: 'number' },
-      },
-    },
-    // PanelResizeHandle props
-    disabled: {
-      control: 'boolean',
-      description: 'Disable the resize handle.',
-      table: {
-        category: 'PanelResizeHandle',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
-    hitAreaMargins: {
-      control: 'object',
-      description: 'Expand the hit area of the resize handle.',
-      table: {
-        category: 'PanelResizeHandle',
-        type: { summary: '{ coarse: number; fine: number }' },
-      },
-    },
-    onDragging: {
-      action: 'dragging',
-      description: 'Called when dragging state changes.',
-      table: {
-        category: 'PanelResizeHandle',
-        type: { summary: '(isDragging: boolean) => void' },
-      },
-    },
-    // Custom props
-    withHandle: {
-      control: 'boolean',
-      description: 'Show the visual grip handle.',
-      table: {
-        category: 'ResizableHandle',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
   },
-};
+  subcomponents: {
+    ResizablePanel: {
+      description:
+        'A resizable panel within a panel group. Panels can be configured with size constraints and collapsible behavior.',
+      argTypes: {
+        defaultSize: {
+          type: 'number',
+          description:
+            'Panel size as a percentage (0-100) when initially rendered.',
+        },
+        minSize: {
+          type: 'number',
+          description: 'Minimum allowable panel size as a percentage (0-100).',
+          defaultValue: '10',
+        },
+        maxSize: {
+          type: 'number',
+          description: 'Maximum allowable panel size as a percentage (0-100).',
+          defaultValue: '100',
+        },
+        collapsible: {
+          type: 'boolean',
+          description:
+            'Panel should collapse to its minimum size when resized beyond minSize.',
+          defaultValue: 'false',
+        },
+        collapsedSize: {
+          type: 'number',
+          description: 'Size of panel when collapsed as a percentage (0-100).',
+          defaultValue: '0',
+        },
+        order: {
+          type: 'number',
+          description:
+            'Order of panel within group (for keyboard navigation and persistence).',
+        },
+        onCollapse: {
+          type: '(collapsed: boolean) => void',
+          description: 'Called when panel collapsed state changes.',
+        },
+        onResize: {
+          type: '(size: number, prevSize: number) => void',
+          description: 'Called when panel is resized.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the panel.',
+        },
+        id: {
+          type: 'string',
+          description: 'Unique identifier for the panel.',
+        },
+      },
+    },
+    ResizableHandle: {
+      description:
+        'A draggable handle that allows users to resize adjacent panels. Can optionally display a visual grip indicator.',
+      argTypes: {
+        withHandle: {
+          type: 'boolean',
+          description: 'Whether to display a visual grip handle indicator.',
+          defaultValue: 'false',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'When true, panel resizing is disabled.',
+          defaultValue: 'false',
+        },
+        onDragging: {
+          type: '(isDragging: boolean) => void',
+          description: 'Called when dragging starts or stops.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the handle.',
+        },
+        id: {
+          type: 'string',
+          description: 'Unique identifier for the resize handle.',
+        },
+        hitAreaMargins: {
+          type: 'object',
+          description:
+            'Invisible margin to increase the hit area for touch/mouse interactions.',
+        },
+        tabIndex: {
+          type: 'number',
+          description: 'Tab index for keyboard navigation.',
+        },
+      },
+    },
+  },
+} satisfies Meta<typeof ResizablePanelGroup>;
 
 export default meta;
-type Story = StoryObj<typeof ResizablePanelGroup>;
+type Story = StoryObj<typeof meta>;
 
-function HorizontalLayoutComponent() {
+function HorizontalLayoutComponent(args) {
   return (
     <div className="h-[400px] w-full">
       <ResizablePanelGroup
+        {...args}
         direction="horizontal"
         className="min-h-[200px] max-w-md rounded-lg border"
       >
@@ -212,10 +220,11 @@ function HorizontalLayoutComponent() {
   );
 }
 
-function VerticalLayoutComponent() {
+function VerticalLayoutComponent(args) {
   return (
     <div className="h-[500px] w-full max-w-md">
       <ResizablePanelGroup
+        {...args}
         direction="vertical"
         className="min-h-[200px] rounded-lg border"
       >
@@ -268,10 +277,11 @@ function VerticalLayoutComponent() {
   );
 }
 
-function WithHandleComponent() {
+function WithHandleComponent(args) {
   return (
     <div className="h-[400px] w-full">
       <ResizablePanelGroup
+        {...args}
         direction="horizontal"
         className="min-h-[200px] max-w-md rounded-lg border"
       >
@@ -309,10 +319,11 @@ function WithHandleComponent() {
   );
 }
 
-function NestedLayoutComponent() {
+function NestedLayoutComponent(args) {
   return (
     <div className="h-[500px] w-full">
       <ResizablePanelGroup
+        {...args}
         direction="horizontal"
         className="min-h-[200px] max-w-2xl rounded-lg border"
       >
@@ -369,10 +380,11 @@ function NestedLayoutComponent() {
   );
 }
 
-function CollapsiblePanelComponent() {
+function CollapsiblePanelComponent(args) {
   return (
     <div className="h-[400px] w-full">
       <ResizablePanelGroup
+        {...args}
         direction="horizontal"
         className="min-h-[200px] max-w-md rounded-lg border"
       >
@@ -411,10 +423,11 @@ function CollapsiblePanelComponent() {
   );
 }
 
-function MinMaxSizesComponent() {
+function MinMaxSizesComponent(args) {
   return (
     <div className="h-[400px] w-full">
       <ResizablePanelGroup
+        {...args}
         direction="horizontal"
         className="min-h-[200px] max-w-md rounded-lg border"
       >
@@ -453,27 +466,45 @@ function MinMaxSizesComponent() {
 }
 
 export const HorizontalLayout: Story = {
-  render: () => <HorizontalLayoutComponent />,
+  args: {
+    direction: 'horizontal',
+  },
+  render: args => <HorizontalLayoutComponent {...args} />,
 };
 
 export const VerticalLayout: Story = {
-  render: () => <VerticalLayoutComponent />,
+  args: {
+    direction: 'vertical',
+  },
+  render: args => <VerticalLayoutComponent {...args} />,
 };
 
 export const WithHandle: Story = {
-  render: () => <WithHandleComponent />,
+  args: {
+    direction: 'horizontal',
+  },
+  render: args => <WithHandleComponent {...args} />,
 };
 
 export const NestedLayout: Story = {
-  render: () => <NestedLayoutComponent />,
+  args: {
+    direction: 'horizontal',
+  },
+  render: args => <NestedLayoutComponent {...args} />,
 };
 
 export const CollapsiblePanel: Story = {
-  render: () => <CollapsiblePanelComponent />,
+  args: {
+    direction: 'horizontal',
+  },
+  render: args => <CollapsiblePanelComponent {...args} />,
 };
 
 export const MinMaxSizes: Story = {
-  render: () => <MinMaxSizesComponent />,
+  args: {
+    direction: 'horizontal',
+  },
+  render: args => <MinMaxSizesComponent {...args} />,
 };
 
 export const BasicExample: Story = {
