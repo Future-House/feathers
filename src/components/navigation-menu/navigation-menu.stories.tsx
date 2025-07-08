@@ -17,9 +17,7 @@ import {
   Layout,
   Code,
   Mail,
-  Search,
 } from 'lucide-react';
-import React from 'react';
 
 const meta: Meta<typeof NavigationMenu> = {
   title: 'Components/NavigationMenu',
@@ -34,13 +32,21 @@ const meta: Meta<typeof NavigationMenu> = {
   },
   tags: [],
   argTypes: {
-    // NavigationMenu.Root props
+    asChild: {
+      type: 'boolean',
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior',
+      defaultValue: 'false',
+      table: {
+        disable: true,
+      },
+    },
     value: {
       control: 'text',
       description: 'The controlled value of the menu item to activate.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: 'string' },
+        disable: true,
       },
     },
     defaultValue: {
@@ -48,16 +54,16 @@ const meta: Meta<typeof NavigationMenu> = {
       description:
         'The value of the menu item to activate when initially rendered.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: 'string' },
+        disable: true,
       },
     },
     onValueChange: {
       action: 'valueChanged',
       description: 'Event handler called when the value changes.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: '(value: string) => void' },
+        disable: true,
       },
     },
     delayDuration: {
@@ -65,7 +71,6 @@ const meta: Meta<typeof NavigationMenu> = {
       description:
         'The duration from when the mouse enters a trigger until the content opens.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: 'number' },
         defaultValue: { summary: '200' },
       },
@@ -75,7 +80,6 @@ const meta: Meta<typeof NavigationMenu> = {
       description:
         'How much time a user has to enter another trigger without incurring a delay again.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: 'number' },
         defaultValue: { summary: '300' },
       },
@@ -85,7 +89,6 @@ const meta: Meta<typeof NavigationMenu> = {
       options: ['ltr', 'rtl'],
       description: 'The reading direction of the navigation menu.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: 'ltr | rtl' },
       },
     },
@@ -94,7 +97,6 @@ const meta: Meta<typeof NavigationMenu> = {
       options: ['horizontal', 'vertical'],
       description: 'The orientation of the navigation menu.',
       table: {
-        category: 'NavigationMenu.Root',
         type: { summary: 'horizontal | vertical' },
         defaultValue: { summary: 'horizontal' },
       },
@@ -103,9 +105,163 @@ const meta: Meta<typeof NavigationMenu> = {
       control: 'boolean',
       description: 'Whether to show the viewport component.',
       table: {
-        category: 'Custom',
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' },
+      },
+    },
+  },
+  subcomponents: {
+    NavigationMenuList: {
+      description:
+        'Contains the top level menu items. Built with Radix UI List primitive for keyboard navigation and accessibility.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the list container',
+        },
+      },
+    },
+    NavigationMenuItem: {
+      description:
+        'A top level menu item, contains a trigger and content. Built with Radix UI Item primitive.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'A unique value that associates the item with content',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the menu item',
+        },
+      },
+    },
+    NavigationMenuTrigger: {
+      description:
+        'The button that toggles the content. Built with Radix UI Trigger primitive with automatic chevron icon.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger button',
+        },
+      },
+    },
+    NavigationMenuContent: {
+      description:
+        'The component that pops out when the trigger is hovered or focused. Built with Radix UI Content primitive with animations.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries',
+          table: {
+            disable: true,
+          },
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the content container',
+        },
+      },
+    },
+    NavigationMenuLink: {
+      description:
+        'A navigational link. Built with Radix UI Link primitive with focus states and active styling.',
+      argTypes: {
+        active: {
+          type: 'boolean',
+          description: 'Used to identify the currently active page',
+          defaultValue: 'false',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        onSelect: {
+          type: 'function',
+          description: 'Event handler called when the user selects the link',
+          table: {
+            disable: true,
+          },
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the link',
+        },
+      },
+    },
+    NavigationMenuIndicator: {
+      description:
+        'An optional indicator element that highlights the currently active trigger. Built with Radix UI Indicator primitive.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries',
+          table: {
+            disable: true,
+          },
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the indicator',
+        },
+      },
+    },
+    NavigationMenuViewport: {
+      description:
+        'An optional viewport element that contains the content. Built with Radix UI Viewport primitive with automatic sizing.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries',
+          table: {
+            disable: true,
+          },
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the viewport',
+        },
       },
     },
   },
@@ -127,7 +283,7 @@ function SimpleNavigationComponent() {
                 <NavigationMenuLink asChild>
                   <a
                     className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
-                    href="/"
+                    href="#"
                   >
                     <Layout className="h-6 w-6" />
                     <div className="mt-4 mb-2 text-lg font-medium">
@@ -143,7 +299,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -159,7 +315,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/installation"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -196,7 +352,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/primitives/alert-dialog"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -212,7 +368,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/primitives/hover-card"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -228,7 +384,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/primitives/progress"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -243,7 +399,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/primitives/scroll-area"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -258,7 +414,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/primitives/tabs"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">Tabs</div>
@@ -271,7 +427,7 @@ function SimpleNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/docs/primitives/tooltip"
+                    href="#"
                     className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
                   >
                     <div className="text-sm leading-none font-medium">
@@ -288,7 +444,7 @@ function SimpleNavigationComponent() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/docs"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
             Documentation
@@ -314,7 +470,7 @@ function ProductNavigationComponent() {
                 </p>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/products/webapp"
+                    href="#"
                     className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                   >
                     <Laptop className="h-4 w-4" />
@@ -334,7 +490,7 @@ function ProductNavigationComponent() {
                 </p>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/products/database"
+                    href="#"
                     className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                   >
                     <Database className="h-4 w-4" />
@@ -357,7 +513,7 @@ function ProductNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/solutions/enterprise"
+                    href="#"
                     className="hover:bg-accent flex items-center gap-3 rounded-md p-3"
                   >
                     <Users className="h-4 w-4" />
@@ -373,7 +529,7 @@ function ProductNavigationComponent() {
               <li>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/solutions/startup"
+                    href="#"
                     className="hover:bg-accent flex items-center gap-3 rounded-md p-3"
                   >
                     <Code className="h-4 w-4" />
@@ -391,7 +547,7 @@ function ProductNavigationComponent() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/contact"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
             Contact
@@ -408,7 +564,7 @@ function SimpleLinksComponent() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
             Home
@@ -416,7 +572,7 @@ function SimpleLinksComponent() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/about"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
             About
@@ -424,7 +580,7 @@ function SimpleLinksComponent() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/services"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
             Services
@@ -432,7 +588,7 @@ function SimpleLinksComponent() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/contact"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
             Contact
@@ -453,7 +609,7 @@ function VerticalNavigationComponent() {
             <div className="grid w-[300px] gap-3 p-4">
               <NavigationMenuLink asChild>
                 <a
-                  href="/dashboard/overview"
+                  href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
                   <Layout className="h-4 w-4" />
@@ -462,7 +618,7 @@ function VerticalNavigationComponent() {
               </NavigationMenuLink>
               <NavigationMenuLink asChild>
                 <a
-                  href="/dashboard/analytics"
+                  href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
                   <Calendar className="h-4 w-4" />
@@ -478,7 +634,7 @@ function VerticalNavigationComponent() {
             <div className="grid w-[300px] gap-3 p-4">
               <NavigationMenuLink asChild>
                 <a
-                  href="/settings/profile"
+                  href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
                   <Users className="h-4 w-4" />
@@ -487,7 +643,7 @@ function VerticalNavigationComponent() {
               </NavigationMenuLink>
               <NavigationMenuLink asChild>
                 <a
-                  href="/settings/preferences"
+                  href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
                   <Settings className="h-4 w-4" />
@@ -512,7 +668,7 @@ function NoViewportComponent() {
             <div className="grid w-[300px] gap-3 p-4">
               <NavigationMenuLink asChild>
                 <a
-                  href="/docs"
+                  href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
                   <FileText className="h-4 w-4" />
@@ -521,7 +677,7 @@ function NoViewportComponent() {
               </NavigationMenuLink>
               <NavigationMenuLink asChild>
                 <a
-                  href="/blog"
+                  href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
                   <Mail className="h-4 w-4" />
@@ -533,10 +689,9 @@ function NoViewportComponent() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/search"
+            href="#"
             className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           >
-            <Search className="mr-2 h-4 w-4" />
             Search
           </NavigationMenuLink>
         </NavigationMenuItem>
