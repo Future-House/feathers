@@ -1,16 +1,12 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  SubcomponentPropTable,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as SeparatorStories from './separator.stories';
 
 <Meta of={SeparatorStories} />
 
 <DocLayout meta={SeparatorStories.default}>
-  ## Default Example
+
+## Default Example
 
 <Canvas of={SeparatorStories.Default} background="dots" />
 
@@ -18,11 +14,7 @@ import * as SeparatorStories from './separator.stories';
 
 ### Separator
 
-A simple separator component built on top of Radix UI's Separator primitive. Provides a visually subtle line to separate content sections with support for both horizontal and vertical orientations.
-
 <PropsTable argTypes={SeparatorStories.default.argTypes} />
-
-<SubcomponentPropTable subcomponents={SeparatorStories.default.subcomponents} />
 
 ## Examples
 

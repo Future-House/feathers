@@ -8,44 +8,8 @@ const meta: Meta<typeof Separator> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-A simple separator component built on top of Radix UI's Separator primitive. Provides a visually subtle line to separate content sections with support for both horizontal and vertical orientations.
-
-## Features
-
-- **Accessible**: Proper ARIA attributes for screen readers
-- **Flexible orientation**: Horizontal and vertical separators
-- **Decorative by default**: Semantic vs decorative usage control
-- **Customizable**: Easy styling with Tailwind CSS classes
-- **Responsive**: Works well in any layout context
-
-## Usage
-
-\`\`\`tsx
-import { Separator } from '@future-house/feathers/components/separator';
-
-function Example() {
-  return (
-    <div>
-      <div className="space-y-1">
-        <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-        <p className="text-sm text-muted-foreground">
-          An open-source UI component library.
-        </p>
-      </div>
-      <Separator className="my-4" />
-      <div className="flex items-center space-x-4 text-sm">
-        <div>Blog</div>
-        <Separator orientation="vertical" />
-        <div>Docs</div>
-        <Separator orientation="vertical" />
-        <div>Source</div>
-      </div>
-    </div>
-  );
-}
-\`\`\`
-        `,
+        component:
+          "A simple separator component built on top of Radix UI's Separator primitive. Provides a visually subtle line to separate content sections with support for both horizontal and vertical orientations.",
       },
     },
   },
@@ -58,6 +22,7 @@ function Example() {
       table: {
         type: { summary: 'horizontal | vertical' },
         defaultValue: { summary: 'horizontal' },
+        disable: true,
       },
     },
     decorative: {
@@ -83,6 +48,7 @@ function Example() {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
   },
@@ -120,11 +86,11 @@ export const Default: Story = {
 
 export const Vertical: Story = {
   render: args => (
-    <div className="flex items-center space-x-4 text-sm">
+    <div className="flex h-5 items-center space-x-4 text-sm">
       <div>Blog</div>
-      <Separator orientation="vertical" className="h-4" {...args} />
+      <Separator {...args} orientation="vertical" className="h-4" />
       <div>Docs</div>
-      <Separator orientation="vertical" className="h-4" {...args} />
+      <Separator {...args} orientation="vertical" className="h-4" />
       <div>Source</div>
     </div>
   ),
@@ -142,7 +108,7 @@ export const Vertical: Story = {
 };
 
 export const CustomStyling: Story = {
-  render: args => (
+  render: ({ className, ...args }) => (
     <div className="w-64 space-y-6">
       <div className="space-y-1">
         <h4 className="text-sm leading-none font-medium">Default Separator</h4>
@@ -156,14 +122,14 @@ export const CustomStyling: Story = {
           Custom color and thickness
         </p>
       </div>
-      <Separator className="h-0.5 bg-red-500" {...args} />
+      <Separator className={`h-2 bg-red-500 ${className}`} {...args} />
 
       <div className="space-y-1">
         <h4 className="text-sm leading-none font-medium">Dashed Separator</h4>
         <p className="text-muted-foreground text-sm">Dashed border style</p>
       </div>
       <Separator
-        className="h-0 border-t border-dashed border-gray-300 bg-transparent"
+        className={`h-0 border-t border-dashed border-blue-600 bg-transparent ${className}`}
         {...args}
       />
     </div>
@@ -229,19 +195,19 @@ export const InCards: Story = {
 
 export const InNavigation: Story = {
   render: args => (
-    <nav className="flex items-center space-x-1 text-sm font-medium">
+    <nav className="flex h-4 items-center space-x-4 text-sm font-medium">
       <a href="#" className="text-muted-foreground hover:text-foreground">
         Home
       </a>
-      <Separator orientation="vertical" className="h-4" {...args} />
+      <Separator orientation="vertical" {...args} />
       <a href="#" className="text-muted-foreground hover:text-foreground">
         Products
       </a>
-      <Separator orientation="vertical" className="h-4" {...args} />
+      <Separator orientation="vertical" {...args} />
       <a href="#" className="text-muted-foreground hover:text-foreground">
         About
       </a>
-      <Separator orientation="vertical" className="h-4" {...args} />
+      <Separator orientation="vertical" {...args} />
       <a href="#" className="text-foreground">
         Contact
       </a>
@@ -261,7 +227,7 @@ export const InNavigation: Story = {
 };
 
 export const WithSpacing: Story = {
-  render: args => (
+  render: ({ className, ...args }) => (
     <div className="w-64">
       <div className="space-y-1">
         <h4 className="text-sm leading-none font-medium">Section One</h4>
@@ -270,7 +236,7 @@ export const WithSpacing: Story = {
         </p>
       </div>
 
-      <Separator className="my-6" {...args} />
+      <Separator className={`my-6 ${className}`} {...args} />
 
       <div className="space-y-1">
         <h4 className="text-sm leading-none font-medium">Section Two</h4>
@@ -279,7 +245,7 @@ export const WithSpacing: Story = {
         </p>
       </div>
 
-      <Separator className="my-2" {...args} />
+      <Separator className={`my-2 ${className}`} {...args} />
 
       <div className="space-y-1">
         <h4 className="text-sm leading-none font-medium">Section Three</h4>
