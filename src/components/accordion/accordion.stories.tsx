@@ -529,9 +529,6 @@ export const RTLDirection: Story = {
     type: 'single' as const,
     dir: 'rtl',
   },
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
   render: args => (
     <div className="w-[450px]" dir={args.dir}>
       <Accordion {...args}>

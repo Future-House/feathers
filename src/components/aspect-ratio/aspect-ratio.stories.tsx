@@ -7,6 +7,7 @@ const meta = {
   component: AspectRatio,
   parameters: {
     layout: 'centered',
+    controls: { disable: true },
     docs: {
       description: {
         component:
@@ -23,7 +24,6 @@ const meta = {
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '1' },
-        disable: true,
       },
     },
     asChild: {
@@ -33,7 +33,6 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
-        disable: true,
       },
     },
   },
