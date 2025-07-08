@@ -11,52 +11,15 @@ import {
   SelectValue,
 } from './select';
 
-const meta: Meta<typeof Select> = {
+const meta = {
   title: 'Components/Select',
   component: Select,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-A versatile select component built on top of Radix UI's Select primitive. Provides a customizable dropdown selection interface with support for grouping, labeling, and scrolling through large lists of options.
-
-## Features
-
-- **Accessible**: Full keyboard navigation and screen reader support
-- **Customizable**: Flexible styling with Tailwind CSS classes
-- **Portal rendering**: Content renders in a portal for proper z-index handling
-- **Scrollable**: Built-in scroll buttons for long option lists
-- **Grouping**: Support for grouped options with labels and separators
-- **Controlled/Uncontrolled**: Works in both controlled and uncontrolled modes
-
-## Usage
-
-\`\`\`tsx
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@future-house/feathers/components/select';
-
-function Example() {
-  return (
-    <Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="banana">Banana</SelectItem>
-        <SelectItem value="orange">Orange</SelectItem>
-      </SelectContent>
-    </Select>
-  );
-}
-\`\`\`
-        `,
+        component:
+          "A versatile select component built on top of Radix UI's Select primitive. Provides a customizable dropdown selection interface with support for grouping, labeling, and scrolling through large lists of options.",
       },
     },
   },
@@ -148,10 +111,253 @@ function Example() {
       },
     },
   },
-};
+  subcomponents: {
+    SelectTrigger: {
+      description:
+        'The button that triggers the select dropdown. Can be customized with different sizes and displays the selected value.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger.',
+        },
+      },
+    },
+    SelectValue: {
+      description:
+        'The part that reflects the selected value. Can be used as a placeholder when no value is selected.',
+      argTypes: {
+        placeholder: {
+          type: 'string',
+          description:
+            'The content that will be rendered inside the trigger when no value is selected.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the value.',
+        },
+      },
+    },
+    SelectContent: {
+      description:
+        'The component that contains the select items. Handles positioning, scrolling, and animations.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        onCloseAutoFocus: {
+          action: 'onCloseAutoFocus',
+          description:
+            'Event handler called when focus moves to the trigger after closing. It can be prevented by calling event.preventDefault.',
+          table: {
+            type: { summary: '(event: Event) => void' },
+          },
+        },
+        onEscapeKeyDown: {
+          action: 'onEscapeKeyDown',
+          description:
+            'Event handler called when the escape key is down. It can be prevented by calling event.preventDefault.',
+          table: {
+            type: { summary: '(event: Event) => void' },
+          },
+        },
+        onPointerDownOutside: {
+          action: 'onPointerDownOutside',
+          description:
+            'Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling event.preventDefault.',
+          table: {
+            type: { summary: '(event: PointerDownOutsideEvent) => void' },
+          },
+        },
+        position: {
+          type: 'string',
+          description: 'The positioning strategy to use for the content.',
+          defaultValue: 'popper',
+        },
+        side: {
+          type: 'string',
+          description:
+            'The preferred side of the trigger to render against when open.',
+          defaultValue: 'bottom',
+        },
+        sideOffset: {
+          type: 'number',
+          description: 'The distance in pixels from the trigger.',
+          defaultValue: '4',
+        },
+        align: {
+          type: 'string',
+          description: 'The preferred alignment against the trigger.',
+          defaultValue: 'center',
+        },
+        alignOffset: {
+          type: 'number',
+          description:
+            'An offset in pixels from the start or end alignment options.',
+          defaultValue: '0',
+        },
+        avoidCollisions: {
+          type: 'boolean',
+          description:
+            'When true, overrides side and align preferences to prevent collisions.',
+          defaultValue: 'true',
+        },
+        collisionBoundary: {
+          type: 'Element | null | Array<Element | null>',
+          description: 'The element used as the collision boundary.',
+        },
+        collisionPadding: {
+          type: 'number | Partial<Record<Side, number>>',
+          description:
+            'The distance in pixels from the boundary edges where collision detection should occur.',
+          defaultValue: '0',
+        },
+        arrowPadding: {
+          type: 'number',
+          description:
+            'The padding between the arrow and the edges of the content.',
+          defaultValue: '0',
+        },
+        sticky: {
+          type: 'string',
+          description: 'The sticky behavior on the align axis.',
+          defaultValue: 'partial',
+        },
+        hideWhenDetached: {
+          type: 'boolean',
+          description:
+            'Whether to hide the content when the trigger becomes fully occluded.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the content.',
+        },
+      },
+    },
+    SelectItem: {
+      description:
+        'An individual option in the select dropdown. Displays text and indicates when selected.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'The value given as data when submitted with a name.',
+        },
+        disabled: {
+          type: 'boolean',
+          description:
+            'When true, prevents the user from interacting with the item.',
+          defaultValue: 'false',
+        },
+        textValue: {
+          type: 'string',
+          description:
+            'Optional text used for typeahead purposes. By default the typeahead behavior will use the .textContent of the item.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the item.',
+        },
+        onSelect: {
+          type: '(event: Event) => void',
+          description: 'Event handler called when the user selects an item.',
+        },
+      },
+    },
+    SelectGroup: {
+      description:
+        'Used to group multiple items. Use in conjunction with SelectLabel to ensure good accessibility via automatic labelling.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the group.',
+        },
+      },
+    },
+    SelectLabel: {
+      description:
+        "Used to render a label for a group of items. It won't be focusable using arrow keys.",
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the label.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SelectSeparator: {
+      description: 'Used to visually separate items in the select.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the separator.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SelectScrollUpButton: {
+      description:
+        'An optional button used as an affordance to show the user that they can scroll up to see more items.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the scroll up button.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+      },
+    },
+    SelectScrollDownButton: {
+      description:
+        'An optional button used as an affordance to show the user that they can scroll down to see more items.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the scroll down button.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+      },
+    },
+  },
+} satisfies Meta<typeof Select>;
 
 export default meta;
-type Story = StoryObj<typeof Select>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: args => (
@@ -273,30 +479,6 @@ export const WithManyOptions: Story = {
   },
 };
 
-export const SmallSize: Story = {
-  render: args => (
-    <Select {...args}>
-      <SelectTrigger size="sm" className="w-[150px]">
-        <SelectValue placeholder="Size: Small" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="xs">Extra Small</SelectItem>
-        <SelectItem value="sm">Small</SelectItem>
-        <SelectItem value="md">Medium</SelectItem>
-        <SelectItem value="lg">Large</SelectItem>
-        <SelectItem value="xl">Extra Large</SelectItem>
-      </SelectContent>
-    </Select>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Select with small trigger size using the size="sm" prop.',
-      },
-    },
-  },
-};
-
 export const Disabled: Story = {
   render: args => (
     <Select disabled {...args}>
@@ -310,13 +492,6 @@ export const Disabled: Story = {
       </SelectContent>
     </Select>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'A disabled select that cannot be interacted with.',
-      },
-    },
-  },
 };
 
 export const WithDisabledItems: Story = {
@@ -338,13 +513,6 @@ export const WithDisabledItems: Story = {
       </SelectContent>
     </Select>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Select with some disabled items that cannot be selected.',
-      },
-    },
-  },
 };
 
 function ControlledSelectExample(args: React.ComponentProps<typeof Select>) {
@@ -373,10 +541,8 @@ function ControlledSelectExample(args: React.ComponentProps<typeof Select>) {
 export const Controlled: Story = {
   render: ControlledSelectExample,
   parameters: {
-    docs: {
-      description: {
-        story: 'A controlled select where the value is managed by React state.',
-      },
+    controls: {
+      exclude: ['value', 'defaultValue', 'onValueChange'],
     },
   },
 };
@@ -384,7 +550,7 @@ export const Controlled: Story = {
 export const RTL: Story = {
   render: args => (
     <div dir="rtl">
-      <Select dir="rtl" {...args}>
+      <Select {...args} dir="rtl">
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="בחר אפשרות" />
         </SelectTrigger>
@@ -397,10 +563,8 @@ export const RTL: Story = {
     </div>
   ),
   parameters: {
-    docs: {
-      description: {
-        story: 'Select configured for right-to-left (RTL) reading direction.',
-      },
+    controls: {
+      exclude: ['dir'],
     },
   },
 };

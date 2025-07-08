@@ -10,15 +10,14 @@ import * as SelectStories from './select.stories';
 <Meta of={SelectStories} />
 
 <DocLayout meta={SelectStories.default}>
-  ## Default Example
+
+## Default Example
 
 <Canvas of={SelectStories.Default} background="dots" />
 
 ## Component API
 
 ### Select
-
-A versatile select component built on top of Radix UI's Select primitive. Provides a customizable dropdown selection interface with support for grouping, labeling, and scrolling through large lists of options.
 
 <PropsTable argTypes={SelectStories.default.argTypes} />
 
@@ -37,12 +36,6 @@ Organize options into logical groups with labels and separators.
 Handle large lists of options with built-in scrolling and search capabilities.
 
 <Canvas of={SelectStories.WithManyOptions} background="muted" />
-
-### Small Size
-
-Use the small size variant for compact interfaces and dense layouts.
-
-<Canvas of={SelectStories.SmallSize} background="card" />
 
 ### Disabled
 
