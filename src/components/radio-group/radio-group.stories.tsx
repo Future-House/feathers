@@ -4,7 +4,7 @@ import { RadioGroup, RadioGroupItem } from './radio-group';
 import { Label } from '../label/label';
 import { Card, CardContent, CardHeader, CardTitle } from '../card/card';
 
-const meta: Meta<typeof RadioGroup> = {
+const meta = {
   title: 'Components/RadioGroup',
   component: RadioGroup,
   parameters: {
@@ -23,7 +23,6 @@ const meta: Meta<typeof RadioGroup> = {
       control: 'text',
       description: 'The controlled value of the radio item to check.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'string' },
       },
     },
@@ -32,7 +31,6 @@ const meta: Meta<typeof RadioGroup> = {
       description:
         'The value of the radio item to check when initially rendered.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'string' },
       },
     },
@@ -40,7 +38,6 @@ const meta: Meta<typeof RadioGroup> = {
       action: 'valueChanged',
       description: 'Event handler called when the value changes.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: '(value: string) => void' },
       },
     },
@@ -49,7 +46,6 @@ const meta: Meta<typeof RadioGroup> = {
       description:
         'When true, prevents the user from interacting with radio items.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
@@ -59,7 +55,6 @@ const meta: Meta<typeof RadioGroup> = {
       description:
         'When true, indicates that the user must check a radio item before the owning form can be submitted.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
@@ -69,7 +64,6 @@ const meta: Meta<typeof RadioGroup> = {
       options: ['horizontal', 'vertical'],
       description: 'The orientation of the component.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'horizontal | vertical' },
         defaultValue: { summary: 'vertical' },
       },
@@ -79,7 +73,6 @@ const meta: Meta<typeof RadioGroup> = {
       options: ['ltr', 'rtl'],
       description: 'The reading direction of the radio group.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'ltr | rtl' },
       },
     },
@@ -88,51 +81,54 @@ const meta: Meta<typeof RadioGroup> = {
       description:
         'When true, keyboard navigation will loop from last item to first, and vice versa.',
       table: {
-        category: 'RadioGroup.Root',
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' },
       },
     },
-    // RadioGroupItem props
-    value_item: {
-      control: 'text',
-      description: 'The value given as data when submitted with a name.',
-      table: {
-        category: 'RadioGroupItem',
-        type: { summary: 'string' },
-      },
-    },
-    disabled_item: {
-      control: 'boolean',
+  },
+  subcomponents: {
+    RadioGroupItem: {
       description:
-        'When true, prevents the user from interacting with the item.',
-      table: {
-        category: 'RadioGroupItem',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
-    required_item: {
-      control: 'boolean',
-      description:
-        'When true, indicates that the user must check the item before the owning form can be submitted.',
-      table: {
-        category: 'RadioGroupItem',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        'A single radio item in the group. Each item represents one selectable option with a visual indicator when selected.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'The value given as data when submitted with a name.',
+        },
+        disabled: {
+          type: 'boolean',
+          description:
+            'When true, prevents the user from interacting with the item.',
+          defaultValue: 'false',
+        },
+        required: {
+          type: 'boolean',
+          description:
+            'When true, indicates that the user must check the item before the owning form can be submitted.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the radio item.',
+        },
+        id: {
+          type: 'string',
+          description:
+            'The id of the radio item. Used to associate with a label.',
+        },
       },
     },
   },
-};
+} satisfies Meta<typeof RadioGroup>;
 
 export default meta;
-type Story = StoryObj<typeof RadioGroup>;
+type Story = StoryObj<typeof meta>;
 
-function BasicRadioGroupComponent() {
+function BasicRadioGroupComponent(args) {
   const [value, setValue] = React.useState('option1');
 
   return (
-    <RadioGroup value={value} onValueChange={setValue}>
+    <RadioGroup value={value} onValueChange={setValue} {...args}>
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="option1" id="option1" />
         <Label htmlFor="option1">Option 1</Label>
@@ -149,7 +145,7 @@ function BasicRadioGroupComponent() {
   );
 }
 
-function PaymentMethodComponent() {
+function PaymentMethodComponent(args) {
   const [paymentMethod, setPaymentMethod] = React.useState('card');
 
   return (
@@ -158,7 +154,11 @@ function PaymentMethodComponent() {
         <CardTitle>Payment Method</CardTitle>
       </CardHeader>
       <CardContent>
-        <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
+        <RadioGroup
+          value={paymentMethod}
+          onValueChange={setPaymentMethod}
+          {...args}
+        >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="card" id="card" />
             <Label
@@ -201,7 +201,7 @@ function PaymentMethodComponent() {
   );
 }
 
-function NotificationSettingsComponent() {
+function NotificationSettingsComponent(args) {
   const [frequency, setFrequency] = React.useState('daily');
 
   return (
@@ -212,7 +212,7 @@ function NotificationSettingsComponent() {
           Choose how often you want to receive notifications.
         </p>
       </div>
-      <RadioGroup value={frequency} onValueChange={setFrequency}>
+      <RadioGroup value={frequency} onValueChange={setFrequency} {...args}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="immediate" id="immediate" />
           <Label htmlFor="immediate" className="font-normal">
@@ -262,7 +262,7 @@ function NotificationSettingsComponent() {
   );
 }
 
-function HorizontalRadioGroupComponent() {
+function HorizontalRadioGroupComponent(args) {
   const [size, setSize] = React.useState('medium');
 
   return (
@@ -278,6 +278,7 @@ function HorizontalRadioGroupComponent() {
         onValueChange={setSize}
         orientation="horizontal"
         className="flex gap-6"
+        {...args}
       >
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="small" id="small" />
@@ -296,7 +297,7 @@ function HorizontalRadioGroupComponent() {
   );
 }
 
-function DisabledRadioGroupComponent() {
+function DisabledRadioGroupComponent(args) {
   return (
     <div className="space-y-4">
       <div>
@@ -305,7 +306,7 @@ function DisabledRadioGroupComponent() {
           This selection is currently disabled.
         </p>
       </div>
-      <RadioGroup defaultValue="basic" disabled>
+      <RadioGroup defaultValue="basic" disabled {...args}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="basic" id="basic-disabled" />
           <Label htmlFor="basic-disabled">Basic Plan</Label>
@@ -323,7 +324,7 @@ function DisabledRadioGroupComponent() {
   );
 }
 
-function MixedDisabledRadioGroupComponent() {
+function MixedDisabledRadioGroupComponent(args) {
   const [plan, setPlan] = React.useState('basic');
 
   return (
@@ -334,7 +335,7 @@ function MixedDisabledRadioGroupComponent() {
           Some options may not be available.
         </p>
       </div>
-      <RadioGroup value={plan} onValueChange={setPlan}>
+      <RadioGroup value={plan} onValueChange={setPlan} {...args}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="basic" id="basic-mixed" />
           <Label htmlFor="basic-mixed">Basic (Free)</Label>
@@ -355,27 +356,27 @@ function MixedDisabledRadioGroupComponent() {
 }
 
 export const Default: Story = {
-  render: () => <BasicRadioGroupComponent />,
+  render: args => <BasicRadioGroupComponent {...args} />,
 };
 
 export const PaymentMethod: Story = {
-  render: () => <PaymentMethodComponent />,
+  render: args => <PaymentMethodComponent {...args} />,
 };
 
 export const NotificationSettings: Story = {
-  render: () => <NotificationSettingsComponent />,
+  render: args => <NotificationSettingsComponent {...args} />,
 };
 
 export const HorizontalOrientation: Story = {
-  render: () => <HorizontalRadioGroupComponent />,
+  render: args => <HorizontalRadioGroupComponent {...args} />,
 };
 
 export const DisabledGroup: Story = {
-  render: () => <DisabledRadioGroupComponent />,
+  render: args => <DisabledRadioGroupComponent {...args} />,
 };
 
 export const MixedDisabled: Story = {
-  render: () => <MixedDisabledRadioGroupComponent />,
+  render: args => <MixedDisabledRadioGroupComponent {...args} />,
 };
 
 export const WithDefaultValue: Story = {
