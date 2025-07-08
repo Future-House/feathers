@@ -4,7 +4,7 @@ import { ScrollArea, ScrollBar } from './scroll-area';
 import { Card, CardContent, CardHeader, CardTitle } from '../card/card';
 import { Badge } from '../badge/badge';
 
-const meta: Meta<typeof ScrollArea> = {
+const meta = {
   title: 'Components/ScrollArea',
   component: ScrollArea,
   parameters: {
@@ -18,13 +18,20 @@ const meta: Meta<typeof ScrollArea> = {
   },
   tags: [],
   argTypes: {
-    // ScrollArea.Root props
+    asChild: {
+      control: { type: 'boolean' },
+      description: 'Render as a child component using Radix Slot',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+        disable: true,
+      },
+    },
     type: {
       control: { type: 'select' },
       options: ['auto', 'always', 'scroll', 'hover'],
-      description: 'Describes the nature of scrollbar visibility.',
+      description: 'Describes the nature of scrollbar visibility',
       table: {
-        category: 'ScrollArea.Root',
         type: { summary: 'auto | always | scroll | hover' },
         defaultValue: { summary: 'hover' },
       },
@@ -32,9 +39,8 @@ const meta: Meta<typeof ScrollArea> = {
     scrollHideDelay: {
       control: 'number',
       description:
-        'If type is set to either scroll or hover, this prop determines the length of time, in milliseconds, before the scrollbars are hidden after the user stops interacting with scrollbars.',
+        'If type is set to either scroll or hover, this prop determines the length of time, in milliseconds, before the scrollbars are hidden after the user stops interacting with scrollbars',
       table: {
-        category: 'ScrollArea.Root',
         type: { summary: 'number' },
         defaultValue: { summary: '600' },
       },
@@ -42,40 +48,60 @@ const meta: Meta<typeof ScrollArea> = {
     dir: {
       control: { type: 'select' },
       options: ['ltr', 'rtl'],
-      description: 'The reading direction of the scroll area.',
+      description: 'The reading direction of the scroll area',
       table: {
-        category: 'ScrollArea.Root',
         type: { summary: 'ltr | rtl' },
       },
     },
-    // ScrollBar props
-    orientation: {
-      control: { type: 'select' },
-      options: ['horizontal', 'vertical'],
-      description: 'The orientation of the scrollbar.',
+    nonce: {
+      control: 'text',
+      description:
+        'An optional nonce attribute that is passed to the inline styles for use in CSP-enabled environments that use strict rules to enhance security',
       table: {
-        category: 'ScrollBar',
-        type: { summary: 'horizontal | vertical' },
-        defaultValue: { summary: 'vertical' },
+        type: { summary: 'string' },
       },
     },
-    forceMount: {
-      control: 'boolean',
-      description: 'Used to force mounting when more control is needed.',
+    className: {
+      control: { type: 'text' },
+      description: 'Additional CSS classes to apply to the root element',
       table: {
-        category: 'ScrollBar',
-        type: { summary: 'boolean' },
+        type: { summary: 'string' },
       },
     },
   },
-};
+  subcomponents: {
+    ScrollBar: {
+      description:
+        'A customizable scrollbar component that can be used independently or within a ScrollArea. Supports both horizontal and vertical orientations.',
+      argTypes: {
+        orientation: {
+          type: 'string',
+          description: 'The orientation of the scrollbar.',
+          defaultValue: 'vertical',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the scrollbar.',
+        },
+      },
+    },
+  },
+} satisfies Meta<typeof ScrollArea>;
 
 export default meta;
-type Story = StoryObj<typeof ScrollArea>;
+type Story = StoryObj<typeof meta>;
 
-function BasicScrollAreaComponent() {
+function BasicScrollAreaComponent({ className = '', ...args }) {
   return (
-    <ScrollArea className="h-72 w-48 rounded-md border">
+    <ScrollArea
+      className={`h-72 w-48 rounded-md border ${className}`}
+      {...args}
+    >
       <div className="p-4">
         <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
         {Array.from({ length: 50 }).map((_, i) => (
@@ -88,9 +114,12 @@ function BasicScrollAreaComponent() {
   );
 }
 
-function HorizontalScrollComponent() {
+function HorizontalScrollComponent({ className = '', ...args }) {
   return (
-    <ScrollArea className="w-96 rounded-md border whitespace-nowrap">
+    <ScrollArea
+      className={`w-96 rounded-md border whitespace-nowrap ${className}`}
+      {...args}
+    >
       <div className="flex w-max space-x-4 p-4">
         {Array.from({ length: 20 }).map((_, i) => (
           <div
@@ -106,7 +135,7 @@ function HorizontalScrollComponent() {
   );
 }
 
-function ChatMessagesComponent() {
+function ChatMessagesComponent({ className = '', ...args }) {
   const messages = Array.from({ length: 25 }, (_, i) => ({
     id: i,
     author: i % 3 === 0 ? 'Alice' : i % 3 === 1 ? 'Bob' : 'Charlie',
@@ -124,7 +153,7 @@ function ChatMessagesComponent() {
         <CardTitle className="text-lg">Chat Messages</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <ScrollArea className="h-80 px-4 pb-4">
+        <ScrollArea className={`h-80 px-4 pb-4${className}`} {...args}>
           <div className="space-y-3">
             {messages.map(msg => (
               <div key={msg.id} className="flex flex-col space-y-1">
@@ -144,7 +173,7 @@ function ChatMessagesComponent() {
   );
 }
 
-function TagListComponent() {
+function TagListComponent({ className = '', ...args }) {
   const tags = [
     'React',
     'TypeScript',
@@ -186,7 +215,7 @@ function TagListComponent() {
         <CardTitle className="text-lg">Technologies</CardTitle>
       </CardHeader>
       <CardContent>
-        <ScrollArea className="h-48">
+        <ScrollArea className={`h-48 ${className}`} {...args}>
           <div className="flex flex-wrap gap-2">
             {tags.map(tag => (
               <Badge key={tag} variant="secondary" className="text-xs">
@@ -200,14 +229,14 @@ function TagListComponent() {
   );
 }
 
-function NestedScrollComponent() {
+function NestedScrollComponent({ className = '', ...args }) {
   return (
     <Card className="w-96">
       <CardHeader>
         <CardTitle className="text-lg">Nested Scroll Areas</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <ScrollArea className="h-80">
+        <ScrollArea className={`h-80 ${className}`} {...args}>
           <div className="space-y-4 p-4">
             {Array.from({ length: 5 }).map((_, sectionIndex) => (
               <div key={sectionIndex} className="rounded-lg border">
@@ -233,7 +262,7 @@ function NestedScrollComponent() {
   );
 }
 
-function CodeBlockComponent() {
+function CodeBlockComponent({ className = '', ...args }) {
   const codeContent = `import React from 'react';
 import { ScrollArea } from '@/components/scroll-area';
 
@@ -273,7 +302,7 @@ export function CustomScrollArea() {
         <CardTitle className="text-lg">Code Example</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <ScrollArea className="h-80">
+        <ScrollArea className={`h-80 ${className}`} {...args}>
           <pre className="p-4 text-xs">
             <code>{codeContent}</code>
           </pre>
@@ -284,35 +313,38 @@ export function CustomScrollArea() {
 }
 
 export const Basic: Story = {
-  render: () => <BasicScrollAreaComponent />,
+  render: args => <BasicScrollAreaComponent {...args} />,
 };
 
 export const HorizontalScroll: Story = {
-  render: () => <HorizontalScrollComponent />,
+  render: args => <HorizontalScrollComponent {...args} />,
 };
 
 export const ChatMessages: Story = {
-  render: () => <ChatMessagesComponent />,
+  render: args => <ChatMessagesComponent {...args} />,
 };
 
 export const TagList: Story = {
-  render: () => <TagListComponent />,
+  render: args => <TagListComponent {...args} />,
 };
 
 export const NestedScroll: Story = {
-  render: () => <NestedScrollComponent />,
+  render: args => <NestedScrollComponent {...args} />,
 };
 
 export const CodeBlock: Story = {
-  render: () => <CodeBlockComponent />,
+  render: args => <CodeBlockComponent {...args} />,
 };
 
 export const WithScrollType: Story = {
   args: {
     type: 'always',
   },
-  render: args => (
-    <ScrollArea {...args} className="h-72 w-48 rounded-md border">
+  render: ({ className, ...args }) => (
+    <ScrollArea
+      {...args}
+      className={`h-72 w-48 rounded-md border ${className}`}
+    >
       <div className="p-4">
         <h4 className="mb-4 text-sm leading-none font-medium">
           Always Visible Scrollbar
