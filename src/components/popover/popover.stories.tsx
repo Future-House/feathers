@@ -9,8 +9,15 @@ import {
 import { Button } from '../button/button';
 import { Input } from '../input/input';
 import { Label } from '../label/label';
+import { Checkbox } from '../checkbox/checkbox';
 import {
-  Calendar,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../select/select';
+import {
   Settings as SettingsIcon,
   User,
   Mail,
@@ -19,7 +26,7 @@ import {
   Bell,
 } from 'lucide-react';
 
-const meta: Meta<typeof Popover> = {
+const meta = {
   title: 'Components/Popover',
   component: Popover,
   parameters: {
@@ -69,113 +76,155 @@ const meta: Meta<typeof Popover> = {
         defaultValue: { summary: 'false' },
       },
     },
-    // PopoverContent props
-    side: {
-      control: { type: 'select' },
-      options: ['top', 'right', 'bottom', 'left'],
+  },
+  subcomponents: {
+    PopoverTrigger: {
       description:
-        'The preferred side of the trigger to render against when open.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'top | right | bottom | left' },
-        defaultValue: { summary: 'bottom' },
+        'The button that toggles the popover. Can be used with the asChild prop for custom trigger components.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger',
+        },
       },
     },
-    sideOffset: {
-      control: { type: 'number', min: 0, max: 50, step: 1 },
-      description: 'The distance in pixels from the trigger.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'number' },
-        defaultValue: { summary: '4' },
-      },
-    },
-    align: {
-      control: { type: 'select' },
-      options: ['start', 'center', 'end'],
-      description: 'The preferred alignment against the trigger.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'start | center | end' },
-        defaultValue: { summary: 'center' },
-      },
-    },
-    alignOffset: {
-      control: { type: 'number', min: -50, max: 50, step: 1 },
+    PopoverContent: {
       description:
-        'An offset in pixels from the start or end alignment options.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'number' },
-        defaultValue: { summary: '0' },
+        'The content area of the popover. Contains the popover content and handles positioning.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        onOpenAutoFocus: {
+          type: '(event: Event) => void',
+          description:
+            'Event handler called when the popover opens. Use event.preventDefault to prevent focusing.',
+        },
+        onCloseAutoFocus: {
+          type: '(event: Event) => void',
+          description:
+            'Event handler called when the popover closes. Use event.preventDefault to prevent focusing.',
+        },
+        onEscapeKeyDown: {
+          type: '(event: KeyboardEvent) => void',
+          description:
+            'Event handler called when the escape key is down. Use event.preventDefault to prevent dismissing.',
+        },
+        onPointerDownOutside: {
+          type: '(event: PointerEvent) => void',
+          description:
+            'Event handler called when a pointer event happens outside of the popover. Use event.preventDefault to prevent dismissing.',
+        },
+        onFocusOutside: {
+          type: '(event: FocusEvent) => void',
+          description:
+            'Event handler called when focus moves outside of the popover. Use event.preventDefault to prevent dismissing.',
+        },
+        onInteractOutside: {
+          type: '(event: PointerEvent | FocusEvent) => void',
+          description:
+            'Event handler called when an interaction happens outside the popover. Use event.preventDefault to prevent dismissing.',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+        },
+        side: {
+          type: 'string',
+          description:
+            'The preferred side of the trigger to render against when open.',
+          defaultValue: 'bottom',
+        },
+        sideOffset: {
+          type: 'number',
+          description: 'The distance in pixels from the trigger.',
+          defaultValue: '4',
+        },
+        align: {
+          type: 'string',
+          description: 'The preferred alignment against the trigger.',
+          defaultValue: 'center',
+        },
+        alignOffset: {
+          type: 'number',
+          description:
+            'An offset in pixels from the start or end alignment options.',
+          defaultValue: '0',
+        },
+        avoidCollisions: {
+          type: 'boolean',
+          description:
+            'When true, overrides the side and align preferences to prevent collisions with boundary edges.',
+          defaultValue: 'true',
+        },
+        collisionBoundary: {
+          type: 'Element | null | Array<Element | null>',
+          description: 'The element used as the collision boundary.',
+        },
+        collisionPadding: {
+          type: 'number | Partial<Record<Side, number>>',
+          description:
+            'The distance in pixels from the boundary edges where collision detection should occur.',
+          defaultValue: '0',
+        },
+        arrowPadding: {
+          type: 'number',
+          description:
+            'The padding between the arrow and the edges of the content.',
+          defaultValue: '0',
+        },
+        sticky: {
+          type: 'string',
+          description: 'The sticky behavior on the align axis.',
+          defaultValue: 'partial',
+        },
+        hideWhenDetached: {
+          type: 'boolean',
+          description:
+            'Whether to hide the content when the trigger becomes fully occluded.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the content',
+        },
       },
     },
-    avoidCollisions: {
-      control: 'boolean',
+    PopoverAnchor: {
       description:
-        'When true, overrides the side and align preferences to prevent collisions with boundary edges.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' },
-      },
-    },
-    collisionBoundary: {
-      description: 'The element used as the collision boundary.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'Element | null | Array<Element | null>' },
-      },
-    },
-    collisionPadding: {
-      control: { type: 'number', min: 0, max: 50, step: 1 },
-      description:
-        'The distance in pixels from the boundary edges where collision detection should occur.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'number | Partial<Record<Side, number>>' },
-        defaultValue: { summary: '0' },
-      },
-    },
-    arrowPadding: {
-      control: { type: 'number', min: 0, max: 50, step: 1 },
-      description:
-        'The padding between the arrow and the edges of the content.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'number' },
-        defaultValue: { summary: '0' },
-      },
-    },
-    sticky: {
-      control: { type: 'select' },
-      options: ['partial', 'always'],
-      description: 'The sticky behavior on the align axis.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'partial | always' },
-        defaultValue: { summary: 'partial' },
-      },
-    },
-    hideWhenDetached: {
-      control: 'boolean',
-      description:
-        'Whether to hide the content when the trigger becomes fully occluded.',
-      table: {
-        category: 'PopoverContent',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        'An optional element to position the popover against. Useful when you want the popover to be positioned relative to a different element than the trigger.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the anchor',
+        },
       },
     },
   },
-};
+} satisfies Meta<typeof Popover>;
 
 export default meta;
 type Story = StoryObj<typeof Popover>;
 
-function BasicPopoverComponent() {
+function BasicPopoverComponent(args: React.ComponentProps<typeof Popover>) {
   return (
-    <Popover>
+    <Popover {...args}>
       <PopoverTrigger asChild>
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
@@ -227,9 +276,9 @@ function BasicPopoverComponent() {
   );
 }
 
-function UserProfilePopoverComponent() {
+function UserProfilePopoverComponent(args) {
   return (
-    <Popover>
+    <Popover {...args}>
       <PopoverTrigger asChild>
         <Button variant="ghost" className="flex items-center gap-2">
           <User className="h-4 w-4" />
@@ -263,9 +312,9 @@ function UserProfilePopoverComponent() {
   );
 }
 
-function NotificationPopoverComponent() {
+function NotificationPopoverComponent(args) {
   return (
-    <Popover>
+    <Popover {...args}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="icon">
           <Bell className="h-4 w-4" />
@@ -328,47 +377,9 @@ function NotificationPopoverComponent() {
   );
 }
 
-function DatePickerPopoverComponent() {
-  const [date, setDate] = React.useState<Date>();
-
+function SettingsPopoverComponent(args) {
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          className="w-[240px] justify-start text-left font-normal"
-        >
-          <Calendar className="mr-2 h-4 w-4" />
-          {date ? date.toLocaleDateString() : 'Pick a date'}
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
-        <div className="p-4">
-          <div className="space-y-4">
-            <h4 className="leading-none font-medium">Select Date</h4>
-            <div className="grid gap-2">
-              <Label htmlFor="date">Date</Label>
-              <Input
-                id="date"
-                type="date"
-                onChange={e =>
-                  setDate(e.target.value ? new Date(e.target.value) : undefined)
-                }
-              />
-            </div>
-            <div className="flex justify-end">
-              <Button size="sm">Apply</Button>
-            </div>
-          </div>
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-}
-
-function SettingsPopoverComponent() {
-  return (
-    <Popover>
+    <Popover {...args}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="icon">
           <SettingsIcon className="h-4 w-4" />
@@ -387,28 +398,28 @@ function SettingsPopoverComponent() {
               <Label htmlFor="notifications" className="text-sm">
                 Email notifications
               </Label>
-              <input
-                id="notifications"
-                type="checkbox"
-                className="h-4 w-4"
-                defaultChecked
-              />
+              <Checkbox id="notifications" defaultChecked />
             </div>
             <div className="flex items-center justify-between">
               <Label htmlFor="marketing" className="text-sm">
                 Marketing emails
               </Label>
-              <input id="marketing" type="checkbox" className="h-4 w-4" />
+              <Checkbox id="marketing" />
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               <Label htmlFor="theme" className="text-sm">
                 Theme
               </Label>
-              <select id="theme" className="rounded border px-2 py-1 text-sm">
-                <option>Light</option>
-                <option>Dark</option>
-                <option>System</option>
-              </select>
+              <Select>
+                <SelectTrigger className="col-span-2 w-full">
+                  <SelectValue placeholder="Select theme" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="system">System</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
@@ -417,13 +428,13 @@ function SettingsPopoverComponent() {
   );
 }
 
-function WithAnchorComponent() {
+function WithAnchorComponent(args) {
   return (
     <div className="flex gap-4">
       <div className="text-muted-foreground text-sm">
         The popover will be anchored to this text element.
       </div>
-      <Popover>
+      <Popover {...args}>
         <PopoverAnchor asChild>
           <span className="bg-muted rounded px-2 py-1 text-sm">
             Anchor point
@@ -444,45 +455,32 @@ function WithAnchorComponent() {
 }
 
 export const Default: Story = {
-  render: () => <BasicPopoverComponent />,
+  render: args => <BasicPopoverComponent {...args} />,
 };
 
 export const UserProfile: Story = {
-  render: () => <UserProfilePopoverComponent />,
+  render: args => <UserProfilePopoverComponent {...args} />,
 };
 
 export const Notifications: Story = {
-  render: () => <NotificationPopoverComponent />,
-};
-
-export const DatePicker: Story = {
-  render: () => <DatePickerPopoverComponent />,
+  render: args => <NotificationPopoverComponent {...args} />,
 };
 
 export const Settings: Story = {
-  render: () => <SettingsPopoverComponent />,
+  render: args => <SettingsPopoverComponent {...args} />,
 };
 
 export const WithAnchor: Story = {
-  render: () => <WithAnchorComponent />,
+  render: args => <WithAnchorComponent {...args} />,
 };
 
 export const CustomAlignment: Story = {
-  args: {
-    side: 'top',
-    align: 'start',
-    sideOffset: 10,
-  },
   render: args => (
     <Popover {...args}>
       <PopoverTrigger asChild>
         <Button variant="outline">Top Start Aligned</Button>
       </PopoverTrigger>
-      <PopoverContent
-        side={args.side}
-        align={args.align}
-        sideOffset={args.sideOffset}
-      >
+      <PopoverContent side="top" align="start" sideOffset={10}>
         <div className="grid gap-4">
           <h4 className="leading-none font-medium">Custom Positioning</h4>
           <p className="text-muted-foreground text-sm">
