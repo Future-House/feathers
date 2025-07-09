@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Slider } from './slider';
+import { Button } from '../button';
 
 const meta = {
   title: 'Components/Slider',
@@ -16,6 +17,15 @@ const meta = {
   },
   tags: [],
   argTypes: {
+    asChild: {
+      control: { type: 'boolean' },
+      description: 'Merge props into the immediate child',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+        disable: true,
+      },
+    },
     defaultValue: {
       control: { type: 'object' },
       description: 'The default value(s) for the slider when uncontrolled',
@@ -28,6 +38,7 @@ const meta = {
       description: 'The controlled value(s) for the slider',
       table: {
         type: { summary: 'number[]' },
+        disable: true,
       },
     },
     onValueChange: {
@@ -35,6 +46,7 @@ const meta = {
       description: 'Callback fired when the slider value changes',
       table: {
         type: { summary: '(value: number[]) => void' },
+        disable: true,
       },
     },
     onValueCommit: {
@@ -43,6 +55,7 @@ const meta = {
         'Callback fired when the slider value is committed (e.g., on mouse up)',
       table: {
         type: { summary: '(value: number[]) => void' },
+        disable: true,
       },
     },
     min: {
@@ -101,6 +114,72 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    name: {
+      control: { type: 'text' },
+      description: 'The name of the slider, used in forms',
+      table: {
+        type: { summary: 'string' },
+        disable: true,
+      },
+    },
+    dir: {
+      control: { type: 'select' },
+      options: ['ltr', 'rtl'],
+      description: 'The reading direction of the slider',
+      table: {
+        type: { summary: '"ltr" | "rtl"' },
+        disable: true,
+      },
+    },
+    minStepsBetweenThumbs: {
+      control: { type: 'number' },
+      description: 'The minimum steps between thumbs',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '0' },
+        disable: true,
+      },
+    },
+    form: {
+      control: { type: 'text' },
+      description: 'The id of the form associated with the slider',
+      table: {
+        type: { summary: 'string' },
+        disable: true,
+      },
+    },
+  },
+  subcomponents: {
+    SliderTrack: {
+      description:
+        'The track component that represents the full range of the slider.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the slider track',
+        },
+      },
+    },
+    SliderRange: {
+      description:
+        'The range component that represents the selected portion of the slider track.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the slider range',
+        },
+      },
+    },
+    SliderThumb: {
+      description:
+        'The thumb component that can be dragged to change the slider value.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the slider thumb',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof Slider>;
 
@@ -112,6 +191,7 @@ export const Default: Story = {
     defaultValue: [50],
     max: 100,
     step: 1,
+    className: 'w-64',
   },
 };
 
@@ -120,6 +200,7 @@ export const Range: Story = {
     defaultValue: [25, 75],
     max: 100,
     step: 1,
+    className: 'w-64',
   },
 };
 
@@ -129,6 +210,7 @@ export const CustomRange: Story = {
     min: 0,
     max: 50,
     step: 5,
+    className: 'w-64',
   },
 };
 
@@ -171,6 +253,7 @@ export const Disabled: Story = {
     max: 100,
     step: 1,
     disabled: true,
+    className: 'w-64',
   },
 };
 
@@ -218,24 +301,13 @@ const ControlledSlider = () => {
       </div>
       <Slider value={value} onValueChange={setValue} max={100} step={1} />
       <div className="flex gap-2">
-        <button
-          onClick={() => setValue([Math.max(0, value[0] - 10)])}
-          className="rounded bg-gray-200 px-3 py-1 text-xs hover:bg-gray-300"
-        >
+        <Button onClick={() => setValue([Math.max(0, value[0] - 10)])}>
           -10
-        </button>
-        <button
-          onClick={() => setValue([Math.min(100, value[0] + 10)])}
-          className="rounded bg-gray-200 px-3 py-1 text-xs hover:bg-gray-300"
-        >
+        </Button>
+        <Button onClick={() => setValue([Math.min(100, value[0] + 10)])}>
           +10
-        </button>
-        <button
-          onClick={() => setValue([50])}
-          className="rounded bg-gray-200 px-3 py-1 text-xs hover:bg-gray-300"
-        >
-          Reset
-        </button>
+        </Button>
+        <Button onClick={() => setValue([50])}>Reset</Button>
       </div>
     </div>
   );

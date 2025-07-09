@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as SliderStories from './slider.stories';
 
@@ -22,6 +22,8 @@ A range input component built with Radix UI that allows users to select values f
 
 <PropsTable argTypes={SliderStories.default.argTypes} />
 
+<SubcomponentPropTable subcomponents={SliderStories.default.subcomponents} />
+
 ## Examples
 
 ### Range Slider
@@ -39,8 +41,7 @@ Configure the slider with custom minimum, maximum, and step values.
 ### Step Variations
 
 Different step increments for more granular or coarse value selection.
-
-<Canvas of={SliderStories.Steps} background="card" />
+Stories.Steps} background="card" />
 
 ### Vertical Orientation
 
