@@ -3,24 +3,25 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as ToggleGroupStories from './toggle-group.stories';
 
 <Meta of={ToggleGroupStories} />
 
 <DocLayout meta={ToggleGroupStories.default}>
-  ## Default Example
 
-<Canvas of={ToggleGroupStories.Default} background="dots" />
+## Default Example
+
+<Canvas of={ToggleGroupStories.Default} />
 
 ## Component API
 
 ### ToggleGroup
 
-A toggle group component built with Radix UI and Tailwind CSS, allowing users to select one or multiple options from a group of toggle buttons.
-
 <PropsTable argTypes={ToggleGroupStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={ToggleGroupStories.default.subcomponents} />
 
 ## Examples
 
@@ -28,61 +29,49 @@ A toggle group component built with Radix UI and Tailwind CSS, allowing users to
 
 Toggle group using text labels instead of icons.
 
-<Canvas of={ToggleGroupStories.WithText} background="grid" />
+<Canvas of={ToggleGroupStories.WithText} />
 
 ### Multiple Selection
 
 Allow multiple toggles to be pressed simultaneously.
 
-<Canvas of={ToggleGroupStories.Multiple} background="muted" />
+<Canvas of={ToggleGroupStories.Multiple} />
 
 ### Variants
 
 Different visual styles for toggle groups.
 
-<Canvas of={ToggleGroupStories.Variants} background="card" />
+<Canvas of={ToggleGroupStories.Variants} />
 
 ### Sizes
 
 Toggle groups in various sizes.
 
-<Canvas of={ToggleGroupStories.Sizes} background="transparent" />
+<Canvas of={ToggleGroupStories.Sizes} />
 
 ### Text Alignment
 
 Toggle group for text alignment controls.
 
-<Canvas of={ToggleGroupStories.TextAlignment} background="default" />
+<Canvas of={ToggleGroupStories.TextAlignment} />
 
 ### Text Formatting Toolbar
 
 Real-world example of a formatting toolbar with multiple toggle groups.
 
-<Canvas of={ToggleGroupStories.TextFormattingToolbar} background="grid" />
+<Canvas of={ToggleGroupStories.TextFormattingToolbar} />
 
 ### Disabled States
 
 Show disabled toggle groups and individual disabled items.
 
-<Canvas of={ToggleGroupStories.Disabled} background="muted" />
-
-### With Default Value
-
-Toggle group with a pre-selected default value.
-
-<Canvas of={ToggleGroupStories.WithDefaultValue} background="card" />
-
-### Rating Example
-
-Creative use of toggle group for rating systems.
-
-<Canvas of={ToggleGroupStories.RatingExample} background="transparent" />
+<Canvas of={ToggleGroupStories.Disabled} />
 
 ### Social Interactions
 
 Toggle group for social media interaction buttons.
 
-<Canvas of={ToggleGroupStories.SocialInteractions} background="default" />
+<Canvas of={ToggleGroupStories.SocialInteractions} />
 
 ## Accessibility
 

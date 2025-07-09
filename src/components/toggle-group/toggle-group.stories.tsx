@@ -38,6 +38,7 @@ const meta = {
     },
     variant: {
       control: { type: 'select' },
+      options: ['default', 'outline'],
       description: 'The visual style variant of the toggle group',
       table: {
         type: { summary: 'default | outline' },
@@ -46,10 +47,12 @@ const meta = {
     },
     size: {
       control: { type: 'select' },
+      options: ['default', 'sm', 'lg'],
       description: 'The size of the toggle group',
       table: {
         type: { summary: 'default | sm | lg' },
         defaultValue: { summary: 'default' },
+        disable: true,
       },
     },
     disabled: {
@@ -67,6 +70,7 @@ const meta = {
       table: {
         type: { summary: 'horizontal | vertical' },
         defaultValue: { summary: 'horizontal' },
+        disable: true,
       },
     },
     loop: {
@@ -78,6 +82,107 @@ const meta = {
         defaultValue: { summary: 'true' },
       },
     },
+    defaultValue: {
+      control: { type: 'text' },
+      description: 'The initial value of the toggle group (uncontrolled)',
+      table: {
+        type: { summary: 'string | string[]' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
+      },
+    },
+    value: {
+      control: { type: 'text' },
+      description: 'The controlled value of the toggle group',
+      table: {
+        type: { summary: 'string | string[]' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
+      },
+    },
+    onValueChange: {
+      action: 'valueChange',
+      description: 'Callback when the value changes',
+      table: {
+        type: { summary: '(value: string | string[]) => void' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
+      },
+    },
+    rovingFocus: {
+      control: { type: 'boolean' },
+      description: 'Whether to enable roving focus navigation',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
+    dir: {
+      control: { type: 'select' },
+      options: ['ltr', 'rtl'],
+      description: 'The reading direction of the toggle group',
+      table: {
+        type: { summary: '"ltr" | "rtl"' },
+        defaultValue: { summary: 'undefined' },
+        disable: true,
+      },
+    },
+    asChild: {
+      type: 'boolean',
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+      defaultValue: 'false',
+      table: {
+        disable: true,
+      },
+    },
+  },
+  subcomponents: {
+    ToggleGroupItem: {
+      description:
+        'A single item within the toggle group. Can be toggled on/off independently or as part of a group selection.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description:
+            'The unique identifier for this toggle item. Used to determine which items are selected.',
+        },
+        disabled: {
+          type: 'boolean',
+          description: 'Whether this specific toggle item is disabled.',
+          defaultValue: 'false',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        variant: {
+          type: 'string',
+          description:
+            'The visual style variant of the toggle item. Inherits from ToggleGroup if not specified.',
+          defaultValue: 'Inherited from ToggleGroup',
+          options: ['default', 'outline'],
+        },
+        size: {
+          type: 'string',
+          description:
+            'The size of the toggle item. Inherits from ToggleGroup if not specified.',
+          defaultValue: 'Inherited from ToggleGroup',
+          options: ['default', 'sm', 'lg'],
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the toggle item.',
+        },
+        'aria-label': {
+          type: 'string',
+          description:
+            'Accessible label for the toggle item. Important for screen readers when the content is not descriptive.',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof ToggleGroup>;
 
@@ -85,8 +190,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <ToggleGroup type="single">
+  args: {
+    type: 'single',
+  },
+  render: args => (
+    <ToggleGroup {...args}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold />
       </ToggleGroupItem>
@@ -101,8 +209,11 @@ export const Default: Story = {
 };
 
 export const WithText: Story = {
-  render: () => (
-    <ToggleGroup type="single">
+  args: {
+    type: 'single',
+  },
+  render: args => (
+    <ToggleGroup {...args}>
       <ToggleGroupItem value="left">Left</ToggleGroupItem>
       <ToggleGroupItem value="center">Center</ToggleGroupItem>
       <ToggleGroupItem value="right">Right</ToggleGroupItem>
@@ -111,8 +222,11 @@ export const WithText: Story = {
 };
 
 export const Multiple: Story = {
-  render: () => (
-    <ToggleGroup type="multiple">
+  args: {
+    type: 'multiple',
+  },
+  render: args => (
+    <ToggleGroup {...args}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold />
       </ToggleGroupItem>
@@ -127,6 +241,12 @@ export const Multiple: Story = {
 };
 
 export const Variants: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  args: {
+    type: 'single',
+  },
   render: () => (
     <div className="flex flex-col items-center gap-4">
       <div className="text-center">
@@ -162,11 +282,17 @@ export const Variants: Story = {
 };
 
 export const Sizes: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  args: {
+    type: 'single',
+  },
   render: () => (
     <div className="flex flex-col items-center gap-4">
       <div className="text-center">
         <p className="mb-2 text-sm font-medium">Small</p>
-        <ToggleGroup type="single" size="sm">
+        <ToggleGroup type="single" size="sm" defaultValue="bold">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
             <Bold />
           </ToggleGroupItem>
@@ -180,7 +306,7 @@ export const Sizes: Story = {
       </div>
       <div className="text-center">
         <p className="mb-2 text-sm font-medium">Default</p>
-        <ToggleGroup type="single" size="default">
+        <ToggleGroup type="single" size="default" defaultValue="bold">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
             <Bold />
           </ToggleGroupItem>
@@ -194,7 +320,7 @@ export const Sizes: Story = {
       </div>
       <div className="text-center">
         <p className="mb-2 text-sm font-medium">Large</p>
-        <ToggleGroup type="single" size="lg">
+        <ToggleGroup type="single" size="lg" defaultValue="bold">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
             <Bold />
           </ToggleGroupItem>
@@ -211,8 +337,13 @@ export const Sizes: Story = {
 };
 
 export const TextAlignment: Story = {
-  render: () => (
-    <ToggleGroup type="single" variant="outline" defaultValue="center">
+  args: {
+    type: 'single',
+    variant: 'outline',
+    defaultValue: 'center',
+  },
+  render: args => (
+    <ToggleGroup {...args}>
       <ToggleGroupItem value="left" aria-label="Align left">
         <AlignLeft />
       </ToggleGroupItem>
@@ -226,7 +357,34 @@ export const TextAlignment: Story = {
   ),
 };
 
+export const Vertical: Story = {
+  args: {
+    type: 'single',
+    orientation: 'vertical',
+    defaultValue: 'center',
+  },
+  render: args => (
+    <ToggleGroup {...args} className="flex flex-col">
+      <ToggleGroupItem value="top" aria-label="Align top">
+        <AlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Align center">
+        <AlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bottom" aria-label="Align bottom">
+        <AlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  ),
+};
+
 export const TextFormattingToolbar: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  args: {
+    type: 'multiple',
+  },
   render: () => (
     <div className="flex items-center gap-4">
       <ToggleGroup type="multiple" variant="outline">
@@ -257,9 +415,15 @@ export const TextFormattingToolbar: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  args: {
+    type: 'single',
+  },
   render: () => (
     <div className="flex flex-col items-center gap-4">
-      <div className="text-center">
+      <div className="flex flex-col items-center">
         <p className="mb-2 text-sm font-medium text-gray-400">
           Entire Group Disabled
         </p>
@@ -275,7 +439,7 @@ export const Disabled: Story = {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-      <div className="text-center">
+      <div className="flex flex-col items-center">
         <p className="mb-2 text-sm font-medium">Individual Items Disabled</p>
         <ToggleGroup type="single">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -290,44 +454,6 @@ export const Disabled: Story = {
         </ToggleGroup>
       </div>
     </div>
-  ),
-};
-
-export const WithDefaultValue: Story = {
-  render: () => (
-    <ToggleGroup type="single" defaultValue="center" variant="outline">
-      <ToggleGroupItem value="left" aria-label="Align left">
-        <AlignLeft />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="center" aria-label="Align center">
-        <AlignCenter />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="right" aria-label="Align right">
-        <AlignRight />
-      </ToggleGroupItem>
-    </ToggleGroup>
-  ),
-};
-
-export const RatingExample: Story = {
-  render: () => (
-    <ToggleGroup type="multiple" variant="outline">
-      <ToggleGroupItem value="star1" aria-label="1 star">
-        <Star />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="star2" aria-label="2 stars">
-        <Star />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="star3" aria-label="3 stars">
-        <Star />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="star4" aria-label="4 stars">
-        <Star />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="star5" aria-label="5 stars">
-        <Star />
-      </ToggleGroupItem>
-    </ToggleGroup>
   ),
 };
 
