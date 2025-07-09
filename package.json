@@ -62,6 +62,9 @@
     "prepare": "husky"
   },
   "lint-staged": {
+    "*.{ts,tsx,js,jsx,mdx}": [
+      "prettier --write"
+    ],
     "*.{ts,tsx,js,jsx}": [
       "prettier --write",
       "npm run lint -- --fix"
