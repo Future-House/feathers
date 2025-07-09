@@ -1,24 +1,18 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  parseSubcomponents,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as CheckboxStories from './checkbox.stories';
 
 <Meta of={CheckboxStories} />
 
 <DocLayout meta={CheckboxStories.default}>
-  ## Default Example
+
+## Default Example
 
 <Canvas of={CheckboxStories.Default} background="dots" />
 
 ## Component API
 
 ### Checkbox
-
-A control that allows the user to toggle between checked and not checked. Built with Radix UI Checkbox primitives and styled with Tailwind CSS.
 
 <PropsTable argTypes={CheckboxStories.default.argTypes} />
 

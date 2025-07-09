@@ -1,10 +1,5 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  parseSubcomponents,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as LabelStories from './label.stories';
 
 <Meta of={LabelStories} />
@@ -18,8 +13,6 @@ import * as LabelStories from './label.stories';
 ## Component API
 
 ### Label
-
-Renders an accessible label associated with controls. Built with Radix UI Label primitives and styled with Tailwind CSS for forms and interactive elements.
 
 <PropsTable argTypes={LabelStories.default.argTypes} />
 

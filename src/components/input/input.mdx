@@ -1,10 +1,5 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  parseSubcomponents,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as InputStories from './input.stories';
 
 <Meta of={InputStories} />
@@ -18,8 +13,6 @@ import * as InputStories from './input.stories';
 ## Component API
 
 ### Input
-
-A flexible input component built on the native HTML input element with consistent styling and accessibility features.
 
 <PropsTable argTypes={InputStories.default.argTypes} />
 

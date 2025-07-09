@@ -1,10 +1,5 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  parseSubcomponents,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as ComboboxStories from './combobox.stories';
 
 <Meta of={ComboboxStories} />
@@ -18,8 +13,6 @@ import * as ComboboxStories from './combobox.stories';
 ## Component API
 
 ### Combobox
-
-A combobox component that combines a popover, command palette, and searchable select functionality. Built on top of Radix UI `Popover` and `cmdk` Command components for accessibility and keyboard navigation.
 
 <PropsTable argTypes={ComboboxStories.default.argTypes} />
 

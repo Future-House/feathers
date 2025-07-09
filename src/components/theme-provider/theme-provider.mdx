@@ -1,24 +1,18 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  parseSubcomponents,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as ThemeProviderStories from './theme-provider.stories';
 
 <Meta of={ThemeProviderStories} />
 
 <DocLayout meta={ThemeProviderStories.default}>
-  ## Default Example
+
+## Default Example
 
 <Canvas of={ThemeProviderStories.Default} background="dots" />
 
 ## Component API
 
 ### ThemeProvider
-
-Theme provider that manages light/dark/system theme state and applies the appropriate CSS classes. It provides a context that can be consumed by child components to access and modify the current theme.
 
 <PropsTable argTypes={ThemeProviderStories.default.argTypes} />
 
