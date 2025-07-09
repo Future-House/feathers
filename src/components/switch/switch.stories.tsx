@@ -24,6 +24,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     checked: {
@@ -42,6 +43,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     onCheckedChange: {
@@ -51,6 +53,7 @@ const meta = {
       table: {
         type: { summary: '(checked: boolean) => void' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     disabled: {
@@ -78,6 +81,7 @@ const meta = {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     value: {
@@ -138,9 +142,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-  render: () => (
+  render: args => (
     <div className="flex items-center space-x-2">
-      <Switch id="airplane-mode" />
+      <Switch id="airplane-mode" {...args} />
       <label
         htmlFor="airplane-mode"
         className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -197,7 +201,10 @@ export const Disabled: Story = {
 };
 
 export const Controlled: Story = {
-  render: function ControlledSwitch() {
+  parameters: {
+    controls: { exclude: ['checked', 'required', 'value', 'id'] },
+  },
+  render: function ControlledSwitch(args) {
     const [checked, setChecked] = React.useState(false);
 
     return (
@@ -207,6 +214,7 @@ export const Controlled: Story = {
             id="controlled"
             checked={checked}
             onCheckedChange={setChecked}
+            {...args}
           />
           <label
             htmlFor="controlled"
@@ -238,6 +246,9 @@ export const Controlled: Story = {
 };
 
 export const FormExample: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: function FormExample() {
     const [formData, setFormData] = React.useState({
       notifications: true,
@@ -320,6 +331,9 @@ export const FormExample: Story = {
 };
 
 export const SettingsPanel: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: function SettingsPanel() {
     const [settings, setSettings] = React.useState({
       darkMode: false,
@@ -439,6 +453,9 @@ export const SettingsPanel: Story = {
 };
 
 export const CustomStyling: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center space-x-2">
@@ -484,6 +501,9 @@ export const CustomStyling: Story = {
 };
 
 export const WithDescriptions: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="w-96 space-y-6">
       <div className="flex items-start space-x-3">
@@ -536,6 +556,9 @@ export const WithDescriptions: Story = {
 };
 
 export const AccessibilityShowcase: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="w-96 space-y-6">
       <div className="space-y-3">
