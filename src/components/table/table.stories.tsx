@@ -21,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A responsive table component for displaying tabular data. Built with semantic HTML table elements and styled with Tailwind CSS.',
+          'A simple and responsive table component for displaying tabular data. Built with semantic HTML table elements and styled with Tailwind CSS.',
       },
     },
   },
@@ -32,18 +32,110 @@ const meta = {
       description: 'Additional CSS classes to apply to the table',
       table: {
         type: { summary: 'string' },
-        category: 'Table',
       },
     },
   },
   subcomponents: {
-    TableHeader,
-    TableBody,
-    TableFooter,
-    TableRow,
-    TableHead,
-    TableCell,
-    TableCaption,
+    Table: {
+      description:
+        'The root table component that renders a responsive table with semantic HTML. Includes automatic horizontal scrolling for overflow content.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the table element',
+        },
+      },
+    },
+    TableCaption: {
+      description:
+        'A caption element that provides a title or description for the table. Typically used for accessibility and context.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the caption element',
+        },
+      },
+    },
+    TableHeader: {
+      description:
+        'The header section of the table containing column headings. Renders as a thead element.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the thead element',
+        },
+      },
+    },
+    TableBody: {
+      description:
+        'The main body section of the table containing data rows. Renders as a tbody element.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the tbody element',
+        },
+      },
+    },
+    TableFooter: {
+      description:
+        'The footer section of the table, typically used for summary information or totals. Renders as a tfoot element.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the tfoot element',
+        },
+      },
+    },
+    TableRow: {
+      description:
+        'A table row component that can be used in header, body, or footer sections. Includes hover effects and selection states.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the tr element',
+        },
+      },
+    },
+    TableHead: {
+      description:
+        'A table header cell component for column headings. Optimized for checkbox interactions and proper alignment.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the th element',
+        },
+        scope: {
+          type: 'string',
+          description: 'Defines the scope of the header cell for accessibility',
+        },
+        colSpan: {
+          type: 'number',
+          description: 'Number of columns this header cell should span',
+        },
+        rowSpan: {
+          type: 'number',
+          description: 'Number of rows this header cell should span',
+        },
+      },
+    },
+    TableCell: {
+      description:
+        'A table data cell component for displaying content. Supports various content types and interactive elements.',
+      argTypes: {
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the td element',
+        },
+        colSpan: {
+          type: 'number',
+          description: 'Number of columns this cell should span',
+        },
+        rowSpan: {
+          type: 'number',
+          description: 'Number of rows this cell should span',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof Table>;
 
@@ -51,8 +143,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Table>
+  render: args => (
+    <Table {...args}>
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
@@ -99,8 +191,8 @@ export const Default: Story = {
 };
 
 export const WithBadges: Story = {
-  render: () => (
-    <Table>
+  render: args => (
+    <Table {...args}>
       <TableCaption>Project status overview</TableCaption>
       <TableHeader>
         <TableRow>
@@ -147,8 +239,8 @@ export const WithBadges: Story = {
 };
 
 export const WithActions: Story = {
-  render: () => (
-    <Table>
+  render: args => (
+    <Table {...args}>
       <TableCaption>User management table</TableCaption>
       <TableHeader>
         <TableRow>
@@ -205,8 +297,8 @@ export const WithActions: Story = {
 };
 
 export const WithFooter: Story = {
-  render: () => (
-    <Table>
+  render: args => (
+    <Table {...args}>
       <TableCaption>Quarterly sales report</TableCaption>
       <TableHeader>
         <TableRow>
@@ -249,8 +341,8 @@ export const WithFooter: Story = {
 };
 
 export const Dense: Story = {
-  render: () => (
-    <Table>
+  render: args => (
+    <Table {...args}>
       <TableCaption>Dense table layout</TableCaption>
       <TableHeader>
         <TableRow>
@@ -285,8 +377,8 @@ export const Dense: Story = {
 };
 
 export const Striped: Story = {
-  render: () => (
-    <Table>
+  render: args => (
+    <Table {...args}>
       <TableCaption>Striped table example</TableCaption>
       <TableHeader>
         <TableRow>

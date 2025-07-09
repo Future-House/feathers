@@ -9,16 +9,15 @@ import * as TableStories from './table.stories';
 
 <Meta of={TableStories} />
 
-<DocLayout meta={TableStories.default}>
-  ## Default Example
+<DocLayout meta={TableStories.default} hideRadixUiUrl>
 
-<Canvas of={TableStories.Default} background="dots" />
+## Default Example
+
+<Canvas of={TableStories.Default} />
 
 ## Component API
 
 ### Table
-
-A responsive table component for displaying tabular data. Built with semantic HTML table elements and styled with Tailwind CSS.
 
 <PropsTable argTypes={TableStories.default.argTypes} />
 
@@ -30,31 +29,31 @@ A responsive table component for displaying tabular data. Built with semantic HT
 
 Enhance table content with badge components for status indicators.
 
-<Canvas of={TableStories.WithBadges} background="grid" />
+<Canvas of={TableStories.WithBadges} />
 
 ### With Actions
 
 Include interactive elements like checkboxes and action buttons.
 
-<Canvas of={TableStories.WithActions} background="muted" />
+<Canvas of={TableStories.WithActions} />
 
 ### With Footer
 
 Add summary information using table footer elements.
 
-<Canvas of={TableStories.WithFooter} background="card" />
+<Canvas of={TableStories.WithFooter} />
 
 ### Dense Layout
 
 Compact table layout for displaying more data in limited space.
 
-<Canvas of={TableStories.Dense} background="transparent" />
+<Canvas of={TableStories.Dense} />
 
 ### Striped Rows
 
-Alternate row background colors for improved readability.
+Alternate row readability.
 
-<Canvas of={TableStories.Striped} background="default" />
+<Canvas of={TableStories.Striped} />
 
 ## Accessibility
 
