@@ -3,22 +3,20 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
 } from '../../../.storybook/components';
 import * as TextareaStories from './textarea.stories';
 
 <Meta of={TextareaStories} />
 
-<DocLayout meta={TextareaStories.default}>
-  ## Default Example
+<DocLayout meta={TextareaStories.default} hideRadixUiUrl>
 
-<Canvas of={TextareaStories.Default} background="dots" />
+## Default Example
+
+<Canvas of={TextareaStories.Default} />
 
 ## Component API
 
 ### Textarea
-
-A flexible textarea component built with Tailwind CSS for multiline text input.
 
 <PropsTable argTypes={TextareaStories.default.argTypes} />
 
@@ -28,55 +26,49 @@ A flexible textarea component built with Tailwind CSS for multiline text input.
 
 Textarea with helpful placeholder text to guide user input.
 
-<Canvas of={TextareaStories.WithPlaceholder} background="grid" />
+<Canvas of={TextareaStories.WithPlaceholder} />
 
 ### With Value
 
 Textarea displaying existing content.
 
-<Canvas of={TextareaStories.WithValue} background="muted" />
+<Canvas of={TextareaStories.WithValue} />
 
 ### Disabled State
 
 Show how textarea appears when disabled.
 
-<Canvas of={TextareaStories.Disabled} background="card" />
+<Canvas of={TextareaStories.Disabled} />
 
 ### Read-only State
 
 Textarea in read-only mode for displaying content that cannot be edited.
 
-<Canvas of={TextareaStories.ReadOnly} background="transparent" />
+<Canvas of={TextareaStories.ReadOnly} />
 
 ### Different Row Heights
 
 Various textarea sizes using the rows attribute.
 
-<Canvas of={TextareaStories.WithRows} background="default" />
+<Canvas of={TextareaStories.WithRows} />
 
 ### With Character Limit
 
 Textarea with maximum length constraint.
 
-<Canvas of={TextareaStories.WithMaxLength} background="grid" />
-
-### Required Field
-
-Textarea marked as required for form validation.
-
-<Canvas of={TextareaStories.Required} background="muted" />
+<Canvas of={TextareaStories.WithMaxLength} />
 
 ### With Label
 
 Proper labeling for accessibility and user experience.
 
-<Canvas of={TextareaStories.WithLabel} background="card" />
+<Canvas of={TextareaStories.WithLabel} />
 
 ### Error State
 
 Display validation errors with appropriate styling and messaging.
 
-<Canvas of={TextareaStories.WithError} background="transparent" />
+<Canvas of={TextareaStories.WithError} />
 
 ## Accessibility
 

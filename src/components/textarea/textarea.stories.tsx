@@ -93,7 +93,9 @@ export const Default: Story = {
   args: {
     placeholder: 'Type your message here...',
     rows: 4,
+    id: 'textarea',
   },
+  render: args => <Textarea {...args} className="w-80" />,
 };
 
 export const WithPlaceholder: Story = {
@@ -101,13 +103,16 @@ export const WithPlaceholder: Story = {
     placeholder: 'Enter your feedback or comments here...',
     rows: 3,
   },
+  render: args => <Textarea {...args} className="w-80" />,
 };
 
 export const WithValue: Story = {
   args: {
     value:
-      'This is some example text that shows how the textarea looks with content.',
+      'This is some example text that shows how the textarea looks with content and set to readOnly.',
     rows: 4,
+    readOnly: true,
+    className: 'w-80',
   },
 };
 
@@ -116,18 +121,26 @@ export const Disabled: Story = {
     placeholder: 'This textarea is disabled',
     disabled: true,
     rows: 3,
+    className: 'w-80',
   },
 };
 
 export const ReadOnly: Story = {
+  parameters: {
+    controls: { exclude: ['readOnly', 'value'] },
+  },
   args: {
     value: 'This textarea is read-only and cannot be edited.',
     readOnly: true,
     rows: 3,
+    className: 'w-80',
   },
 };
 
 export const WithRows: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="w-80 space-y-4">
       <div>
@@ -153,14 +166,7 @@ export const WithMaxLength: Story = {
     placeholder: 'Type up to 100 characters...',
     maxLength: 100,
     rows: 3,
-  },
-};
-
-export const Required: Story = {
-  args: {
-    placeholder: 'This field is required',
-    required: true,
-    rows: 3,
+    className: 'w-80',
   },
 };
 
