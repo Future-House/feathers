@@ -1,16 +1,12 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import {
-  DocLayout,
-  Canvas,
-  PropsTable,
-  parseSubcomponents,
-} from '../../../.storybook/components';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
 import * as SonnerStories from './sonner.stories';
 
 <Meta of={SonnerStories} />
 
-<DocLayout meta={SonnerStories.default}>
-  ## Default Example
+<DocLayout meta={SonnerStories.default} hideRadixUiUrl>
+
+## Default Example
 
 <Canvas of={SonnerStories.Default} background="dots" />
 
@@ -18,59 +14,9 @@ import * as SonnerStories from './sonner.stories';
 
 ### Toaster
 
-An opinionated toast component for React. A toast is a subtle notification commonly found in modern interfaces.
+You may need to reference the official documentation for [sonner](https://sonner.emilkowal.ski/getting-started) to understand the full API and available options.
 
 <PropsTable argTypes={SonnerStories.default.argTypes} />
-
-## Examples
-
-### Toast Variants
-
-Different types of toast notifications for various use cases.
-
-<Canvas of={SonnerStories.ToastVariants} background="grid" />
-
-### With Description
-
-Add descriptive text to provide additional context in your toasts.
-
-<Canvas of={SonnerStories.WithDescription} background="muted" />
-
-### With Actions
-
-Include action buttons and cancel options in your toast notifications.
-
-<Canvas of={SonnerStories.WithActions} background="card" />
-
-### Rich Colors
-
-Enable rich colors for more vibrant success and error states.
-
-<Canvas of={SonnerStories.RichColors} background="transparent" />
-
-### With Close Button
-
-Add close buttons to all toast notifications for better user control.
-
-<Canvas of={SonnerStories.WithCloseButton} background="default" />
-
-### Expanded View
-
-Show toasts in expanded mode to display more content at once.
-
-<Canvas of={SonnerStories.Expanded} background="grid" />
-
-### Different Positions
-
-Demonstrate toast positioning options across the screen.
-
-<Canvas of={SonnerStories.Positions} background="muted" />
-
-### Custom Styling
-
-Apply custom styles and themes to toast notifications.
-
-<Canvas of={SonnerStories.CustomStyling} background="card" />
 
 ## Accessibility
 

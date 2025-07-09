@@ -107,6 +107,48 @@ const meta = {
         defaultValue: { summary: '14' },
       },
     },
+    mobileOffset: {
+      control: { type: 'text' },
+      description: 'Offset from edges when screen width is less than 600px',
+      table: {
+        type: { summary: 'string | number | object' },
+        defaultValue: { summary: '"16px"' },
+        disable: true,
+      },
+    },
+    swipeDirections: {
+      control: { type: 'object' },
+      description: 'Array of swipe directions for dismissing toasts',
+      table: {
+        type: { summary: 'SwipeDirection[]' },
+        defaultValue: { summary: 'based on position' },
+        disable: true,
+      },
+    },
+    toastOptions: {
+      control: { type: 'object' },
+      description: 'Default options for all toasts',
+      table: {
+        type: { summary: 'ToastOptions' },
+        disable: true,
+      },
+    },
+    className: {
+      control: { type: 'text' },
+      description: 'CSS class name to apply to the toaster',
+      table: {
+        type: { summary: 'string' },
+        disable: true,
+      },
+    },
+    style: {
+      control: { type: 'object' },
+      description: 'Inline styles to apply to the toaster',
+      table: {
+        type: { summary: 'React.CSSProperties' },
+        disable: true,
+      },
+    },
   },
   decorators: [
     Story => (
@@ -255,52 +297,47 @@ export const Positions: Story = {
     <div className="grid grid-cols-3 gap-2">
       <Button
         onClick={() => {
-          toast('Top Left', { duration: 1000 });
+          toast('Top Left', { duration: 1000, position: 'top-left' });
         }}
       >
         Top Left
       </Button>
       <Button
         onClick={() => {
-          toast('Top Center', { duration: 1000 });
+          toast('Top Center', { duration: 1000, position: 'top-center' });
         }}
       >
         Top Center
       </Button>
       <Button
         onClick={() => {
-          toast('Top Right', { duration: 1000 });
+          toast('Top Right', { duration: 1000, position: 'top-right' });
         }}
       >
         Top Right
       </Button>
       <Button
         onClick={() => {
-          toast('Bottom Left', { duration: 1000 });
+          toast('Bottom Left', { duration: 1000, position: 'bottom-left' });
         }}
       >
         Bottom Left
       </Button>
       <Button
         onClick={() => {
-          toast('Bottom Center', { duration: 1000 });
+          toast('Bottom Center', { duration: 1000, position: 'bottom-center' });
         }}
       >
         Bottom Center
       </Button>
       <Button
         onClick={() => {
-          toast('Bottom Right', { duration: 1000 });
+          toast('Bottom Right', { duration: 1000, position: 'bottom-right' });
         }}
       >
         Bottom Right
       </Button>
-      <Toaster position="top-left" />
-      <Toaster position="top-center" />
-      <Toaster position="top-right" />
-      <Toaster position="bottom-left" />
-      <Toaster position="bottom-center" />
-      <Toaster position="bottom-right" />
+      <Toaster />
     </div>
   ),
 };
@@ -311,10 +348,9 @@ export const CustomStyling: Story = {
       <Button
         onClick={() =>
           toast('Custom styled toast', {
-            className: 'my-custom-toast',
+            className: '!bg-indigo-800 !text-indigo-50',
             style: {
-              background: 'hsl(var(--primary))',
-              color: 'hsl(var(--primary-foreground))',
+              // ... add custom style here
             },
           })
         }
