@@ -3,14 +3,15 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as TooltipStories from './tooltip.stories';
 
 <Meta of={TooltipStories} />
 
 <DocLayout meta={TooltipStories.default}>
-  ## Default Example
+
+## Default Example
 
 <Canvas of={TooltipStories.Default} background="dots" />
 
@@ -18,9 +19,9 @@ import * as TooltipStories from './tooltip.stories';
 
 ### Tooltip
 
-A tooltip component built on top of Radix UI Tooltip primitive. Provides contextual information when users hover or focus on an element.
-
 <PropsTable argTypes={TooltipStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={TooltipStories.default.subcomponents} />
 
 ## Examples
 

@@ -15,39 +15,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-A tooltip component built on top of Radix UI Tooltip primitive. Provides contextual information when users hover or focus on an element.
-
-## Radix UI Tooltip Props
-
-The tooltip components expose all Radix UI Tooltip primitive props:
-
-### TooltipProvider Props
-- **delayDuration**: \`number\` - The delay in milliseconds before showing the tooltip (default: 0)
-- **skipDelayDuration**: \`number\` - How long a user has to wait before tooltip can be shown again
-- **disableHoverableContent**: \`boolean\` - Disable hovering over tooltip content
-
-### Tooltip (Root) Props  
-- **defaultOpen**: \`boolean\` - The open state when initially rendered
-- **open**: \`boolean\` - Controlled open state
-- **onOpenChange**: \`(open: boolean) => void\` - Callback when open state changes
-
-### TooltipTrigger Props
-- **asChild**: \`boolean\` - Render as a different element/component
-- All standard button/focusable element props
-
-### TooltipContent Props
-- **side**: \`"top" | "right" | "bottom" | "left"\` - Preferred placement side
-- **sideOffset**: \`number\` - Offset from the trigger (default: 0)
-- **align**: \`"start" | "center" | "end"\` - Alignment relative to trigger
-- **alignOffset**: \`number\` - Offset from the alignment axis  
-- **avoidCollisions**: \`boolean\` - Avoid collisions with viewport edges
-- **collisionBoundary**: \`Element | Element[]\` - Collision boundary elements
-- **collisionPadding**: \`number | { top?: number; right?: number; bottom?: number; left?: number }\` - Padding from collision boundary
-- **arrowPadding**: \`number\` - Padding between arrow and content corners
-- **sticky**: \`"partial" | "always"\` - Stickiness when trigger moves
-- **hideWhenDetached**: \`boolean\` - Hide when trigger becomes detached
-        `,
+        component:
+          'Provides contextual information when users hover or focus on an element. Built on top of Radix UI Tooltip primitive.',
       },
     },
   },
@@ -60,6 +29,7 @@ The tooltip components expose all Radix UI Tooltip primitive props:
       table: {
         category: 'Tooltip Root',
         type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
     open: {
@@ -68,6 +38,7 @@ The tooltip components expose all Radix UI Tooltip primitive props:
       table: {
         category: 'Tooltip Root',
         type: { summary: 'boolean' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     onOpenChange: {
@@ -76,6 +47,144 @@ The tooltip components expose all Radix UI Tooltip primitive props:
       table: {
         category: 'Tooltip Root',
         type: { summary: '(open: boolean) => void' },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    delayDuration: {
+      control: { type: 'number', min: 0, max: 2000, step: 100 },
+      description:
+        'The duration from when the mouse enters the trigger until the tooltip gets opened',
+      table: {
+        category: 'Tooltip Root',
+        type: { summary: 'number' },
+        defaultValue: { summary: '700' },
+      },
+    },
+    disableHoverableContent: {
+      control: 'boolean',
+      description: 'Prevents tooltip content from being hoverable',
+      table: {
+        category: 'Tooltip Root',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
+  subcomponents: {
+    TooltipProvider: {
+      description:
+        'Wraps your app to provide tooltip functionality. Should be placed at the root of your app or around the tooltips you want to share state.',
+      argTypes: {
+        delayDuration: {
+          type: 'number',
+          description:
+            'The duration from when the mouse enters the trigger until the tooltip gets opened (in milliseconds).',
+          defaultValue: '700',
+        },
+        skipDelayDuration: {
+          type: 'number',
+          description:
+            'How much time a user has to enter another trigger without incurring a delay again (in milliseconds).',
+          defaultValue: '300',
+        },
+        disableHoverableContent: {
+          type: 'boolean',
+          description: 'Prevents tooltip content from being hoverable.',
+          defaultValue: 'false',
+        },
+      },
+    },
+    TooltipTrigger: {
+      description:
+        'The button that toggles the tooltip. By default, the tooltip content will position itself based on this trigger.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+      },
+    },
+    TooltipContent: {
+      description:
+        'The component that pops out when the tooltip is open. Contains the tooltip content and arrow.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        'aria-label': {
+          type: 'string',
+          description:
+            'By default, screenreaders will announce the content inside the component. If this is not descriptive enough, you can use aria-label.',
+        },
+        side: {
+          type: 'string',
+          description:
+            'The preferred side of the trigger to render against when open.',
+          defaultValue: 'top',
+          options: ['top', 'right', 'bottom', 'left'],
+        },
+        sideOffset: {
+          type: 'number',
+          description: 'The distance in pixels from the trigger.',
+          defaultValue: '0',
+        },
+        align: {
+          type: 'string',
+          description: 'The preferred alignment against the trigger.',
+          defaultValue: 'center',
+          options: ['start', 'center', 'end'],
+        },
+        alignOffset: {
+          type: 'number',
+          description:
+            'An offset in pixels from the start or end alignment options.',
+          defaultValue: '0',
+        },
+        avoidCollisions: {
+          type: 'boolean',
+          description:
+            'When true, overrides the side and align preferences to prevent collisions with boundary edges.',
+          defaultValue: 'true',
+        },
+        collisionBoundary: {
+          type: 'Element | null | Array<Element | null>',
+          description:
+            'The element used as the collision boundary. By default this is the viewport.',
+        },
+        collisionPadding: {
+          type: 'number | Partial<Record<Side, number>>',
+          description:
+            'The distance in pixels from the boundary edges where collision detection should occur.',
+          defaultValue: '0',
+        },
+        arrowPadding: {
+          type: 'number',
+          description:
+            'The padding between the arrow and the edges of the content.',
+          defaultValue: '0',
+        },
+        sticky: {
+          type: 'string',
+          description: 'The sticky behavior on the align axis.',
+          defaultValue: 'partial',
+          options: ['partial', 'always'],
+        },
+        hideWhenDetached: {
+          type: 'boolean',
+          description:
+            'Whether to hide the content when the trigger becomes fully occluded.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description:
+            'Additional CSS classes to apply to the tooltip content.',
+        },
       },
     },
   },
@@ -104,6 +213,9 @@ export const Default: Story = {
  * Tooltip positioned on different sides of the trigger element.
  */
 export const Positioning: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="flex flex-wrap items-center justify-center gap-4 p-8">
       <Tooltip>
@@ -143,20 +255,15 @@ export const Positioning: Story = {
       </Tooltip>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `side` prop to control tooltip placement: "top", "right", "bottom", or "left".',
-      },
-    },
-  },
 };
 
 /**
  * Tooltip with different alignment options relative to the trigger.
  */
 export const Alignment: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="flex flex-col items-center gap-4 p-8">
       <div className="flex gap-4">
@@ -189,20 +296,15 @@ export const Alignment: Story = {
       </div>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `align` prop to control tooltip alignment: "start", "center", or "end".',
-      },
-    },
-  },
 };
 
 /**
  * Tooltip with custom offset from the trigger element.
  */
 export const WithOffset: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="flex items-center gap-4 p-8">
       <Tooltip>
@@ -233,70 +335,54 @@ export const WithOffset: Story = {
       </Tooltip>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `sideOffset` prop to add space between the tooltip and trigger.',
-      },
-    },
-  },
 };
 
 /**
  * Tooltip with custom delay duration controlled by TooltipProvider.
  */
 export const WithDelay: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="flex items-center gap-4 p-8">
-      <TooltipProvider delayDuration={0}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline">No Delay</Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Shows immediately</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild>
+          <Button variant="outline">No Delay</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Shows immediately</p>
+        </TooltipContent>
+      </Tooltip>
 
-      <TooltipProvider delayDuration={500}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline">500ms Delay</Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Shows after 500ms</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Tooltip delayDuration={500}>
+        <TooltipTrigger asChild>
+          <Button variant="outline">500ms Delay</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Shows after 500ms</p>
+        </TooltipContent>
+      </Tooltip>
 
-      <TooltipProvider delayDuration={1000}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline">1s Delay</Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Shows after 1 second</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Tooltip delayDuration={1000}>
+        <TooltipTrigger asChild>
+          <Button variant="outline">1s Delay</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Shows after 1 second</p>
+        </TooltipContent>
+      </Tooltip>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `delayDuration` prop on TooltipProvider to control show delay.',
-      },
-    },
-  },
 };
 
 /**
  * Controlled tooltip that can be programmatically opened/closed.
  */
 export const Controlled: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: function ControlledTooltip() {
     const [open, setOpen] = useState(false);
 
@@ -311,19 +397,15 @@ export const Controlled: Story = {
           </TooltipContent>
         </Tooltip>
 
-        <Button onClick={() => setOpen(!open)} variant="secondary">
+        <Button
+          onClick={() => setOpen(!open)}
+          disabled={open}
+          variant="secondary"
+        >
           {open ? 'Close' : 'Open'} Tooltip
         </Button>
       </div>
     );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `open` and `onOpenChange` props to control the tooltip state programmatically.',
-      },
-    },
   },
 };
 
@@ -331,8 +413,8 @@ export const Controlled: Story = {
  * Tooltip with rich content including multiple elements.
  */
 export const RichContent: Story = {
-  render: () => (
-    <Tooltip>
+  render: args => (
+    <Tooltip {...args}>
       <TooltipTrigger asChild>
         <Button variant="outline">Rich Content</Button>
       </TooltipTrigger>
@@ -351,20 +433,15 @@ export const RichContent: Story = {
       </TooltipContent>
     </Tooltip>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Tooltips can contain rich content including multiple elements, not just plain text.',
-      },
-    },
-  },
 };
 
 /**
  * Different trigger elements that can show tooltips.
  */
 export const DifferentTriggers: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="flex flex-wrap items-center gap-4 p-8">
       <Tooltip>
@@ -402,12 +479,4 @@ export const DifferentTriggers: Story = {
       </Tooltip>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Tooltips can be triggered by various elements using the `asChild` prop on TooltipTrigger.',
-      },
-    },
-  },
 };
