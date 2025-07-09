@@ -41,9 +41,19 @@ const meta = {
     },
     pressed: {
       control: { type: 'boolean' },
-      description: 'Whether the toggle is pressed (controlled)',
+      description:
+        'Whether the toggle is pressed (controlled). Must be used in conjunction with onPressedChange',
       table: {
         type: { summary: 'boolean' },
+      },
+    },
+    onPressedChange: {
+      action: 'onPressedChange',
+      description:
+        'Event handler called when the pressed state of the toggle changes',
+      table: {
+        type: { summary: '(pressed: boolean) => void' },
+        disable: true,
       },
     },
     defaultPressed: {
@@ -150,37 +160,6 @@ export const TextAlignment: Story = {
   ),
 };
 
-export const States: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <div className="space-y-2">
-        <p className="text-sm font-medium">Default State</p>
-        <Toggle>
-          <Bold />
-        </Toggle>
-      </div>
-      <div className="space-y-2">
-        <p className="text-sm font-medium">Pressed</p>
-        <Toggle defaultPressed>
-          <Bold />
-        </Toggle>
-      </div>
-      <div className="space-y-2">
-        <p className="text-sm font-medium">Disabled</p>
-        <Toggle disabled>
-          <Bold />
-        </Toggle>
-      </div>
-      <div className="space-y-2">
-        <p className="text-sm font-medium">Disabled Pressed</p>
-        <Toggle disabled defaultPressed>
-          <Bold />
-        </Toggle>
-      </div>
-    </div>
-  ),
-};
-
 export const WithText: Story = {
   render: () => (
     <div className="flex items-center gap-4">
@@ -203,10 +182,10 @@ export const WithText: Story = {
 export const CustomStyling: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Toggle className="bg-blue-50 text-blue-700 hover:bg-blue-100">
+      <Toggle className="bg-blue-50 text-blue-700 hover:bg-blue-100 data-[state=on]:bg-blue-800 data-[state=on]:text-white">
         Custom Blue
       </Toggle>
-      <Toggle className="bg-green-50 text-green-700 hover:bg-green-100">
+      <Toggle className="bg-green-50 text-green-700 hover:bg-green-100 data-[state=on]:bg-green-800 data-[state=on]:text-white">
         Custom Green
       </Toggle>
     </div>

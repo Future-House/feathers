@@ -3,22 +3,20 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
 } from '../../../.storybook/components';
 import * as ToggleStories from './toggle.stories';
 
 <Meta of={ToggleStories} />
 
 <DocLayout meta={ToggleStories.default}>
-  ## Default Example
+
+## Default Example
 
 <Canvas of={ToggleStories.Default} background="dots" />
 
 ## Component API
 
 ### Toggle
-
-A toggle component built with Radix UI and Tailwind CSS, supporting multiple variants and sizes for creating toggleable buttons.
 
 <PropsTable argTypes={ToggleStories.default.argTypes} />
 
@@ -53,12 +51,6 @@ Common text formatting toggles for rich text editors.
 Toggle buttons for text alignment controls.
 
 <Canvas of={ToggleStories.TextAlignment} background="default" />
-
-### Different States
-
-Showcase various toggle states including pressed and disabled.
-
-<Canvas of={ToggleStories.States} background="grid" />
 
 ### With Text
 
