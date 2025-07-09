@@ -26,7 +26,6 @@ const meta = {
   },
   tags: [],
   argTypes: {
-    // Root component props from @radix-ui/react-tabs
     asChild: {
       control: { type: 'boolean' },
       description:
@@ -34,6 +33,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+        disable: true,
       },
     },
     value: {
@@ -43,6 +43,7 @@ const meta = {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     defaultValue: {
@@ -60,6 +61,7 @@ const meta = {
       table: {
         type: { summary: '(value: string) => void' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
     orientation: {
@@ -69,6 +71,7 @@ const meta = {
       table: {
         type: { summary: '"horizontal" | "vertical"' },
         defaultValue: { summary: '"horizontal"' },
+        disable: true,
       },
     },
     dir: {
@@ -106,6 +109,84 @@ const meta = {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: undefined },
+      },
+    },
+  },
+  subcomponents: {
+    TabsList: {
+      description:
+        'Contains the triggers that are aligned along the edge of the active content. Acts as a toolbar for the tab triggers.',
+      argTypes: {
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        loop: {
+          type: 'boolean',
+          description:
+            'When true, keyboard navigation will loop from last trigger to first, and vice versa.',
+          defaultValue: 'true',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the tabs list.',
+        },
+      },
+    },
+    TabsTrigger: {
+      description:
+        'The button that activates its associated content. Contains the tab label and is responsible for triggering tab changes.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description:
+            'A unique value that associates the trigger with a content area.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        disabled: {
+          type: 'boolean',
+          description:
+            'When true, prevents the user from interacting with the trigger.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the trigger.',
+        },
+      },
+    },
+    TabsContent: {
+      description:
+        'Contains the content associated with each trigger. The content is shown when its associated trigger is active.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description:
+            'A unique value that associates the content with a trigger.',
+        },
+        asChild: {
+          type: 'boolean',
+          description:
+            'Change the default rendered element for the one passed as a child, merging their props and behavior.',
+          defaultValue: 'false',
+        },
+        forceMount: {
+          type: 'boolean',
+          description:
+            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the content.',
+        },
       },
     },
   },
@@ -171,6 +252,9 @@ export const Default: Story = {
 };
 
 export const Controlled: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: function ControlledTabs() {
     const [activeTab, setActiveTab] = React.useState('overview');
 
@@ -263,8 +347,8 @@ export const VerticalOrientation: Story = {
     defaultValue: 'general',
   },
   render: args => (
-    <Tabs {...args} className="flex w-[600px] space-x-4">
-      <TabsList className="flex h-fit w-[150px] flex-col">
+    <Tabs {...args} className="flex w-[600px] flex-row space-x-4">
+      <TabsList className="flex h-fit w-[150px] flex-1 flex-col">
         <TabsTrigger value="general" className="w-full">
           General
         </TabsTrigger>
@@ -278,7 +362,7 @@ export const VerticalOrientation: Story = {
           Billing
         </TabsTrigger>
       </TabsList>
-      <div className="flex-1">
+      <div className="flex-2">
         <TabsContent value="general">
           <Card>
             <CardHeader>
@@ -363,7 +447,7 @@ export const ManualActivation: Story = {
       </TabsList>
       <TabsContent value="tab1" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               Manual activation mode: tabs are only activated when clicked, not
               when focused. Try using Tab key to navigate between triggers.
@@ -373,7 +457,7 @@ export const ManualActivation: Story = {
       </TabsContent>
       <TabsContent value="tab2" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               Content for Tab 2. Notice how this tab doesn&apos;t activate when
               you navigate here with keyboard unless you press Enter or Space.
@@ -383,7 +467,7 @@ export const ManualActivation: Story = {
       </TabsContent>
       <TabsContent value="tab3" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               Content for Tab 3. Manual activation provides better control over
               when tabs change.
@@ -501,19 +585,19 @@ export const CustomStyling: Story = {
       <TabsList className="grid w-full grid-cols-3 bg-blue-100 dark:bg-blue-900">
         <TabsTrigger
           value="design"
-          className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+          className="data-[state=active]:bg-blue-600 data-[state=active]:text-white dark:data-[state=active]:bg-blue-500"
         >
           Design
         </TabsTrigger>
         <TabsTrigger
           value="develop"
-          className="data-[state=active]:bg-green-600 data-[state=active]:text-white"
+          className="data-[state=active]:bg-green-600 data-[state=active]:text-white dark:data-[state=active]:bg-green-500"
         >
           Develop
         </TabsTrigger>
         <TabsTrigger
           value="deploy"
-          className="data-[state=active]:bg-purple-600 data-[state=active]:text-white"
+          className="data-[state=active]:bg-purple-600 data-[state=active]:text-white dark:data-[state=active]:bg-purple-500"
         >
           Deploy
         </TabsTrigger>
@@ -583,7 +667,7 @@ export const WithDisabledTab: Story = {
       </TabsList>
       <TabsContent value="enabled1" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               This tab is active and accessible. The second tab is disabled and
               cannot be activated.
@@ -593,7 +677,7 @@ export const WithDisabledTab: Story = {
       </TabsContent>
       <TabsContent value="disabled" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               This content should not be accessible since the tab is disabled.
             </p>
@@ -602,7 +686,7 @@ export const WithDisabledTab: Story = {
       </TabsContent>
       <TabsContent value="enabled2" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               This tab is available and can be activated normally.
             </p>
@@ -611,7 +695,7 @@ export const WithDisabledTab: Story = {
       </TabsContent>
       <TabsContent value="enabled3" className="mt-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <p className="text-sm">
               This tab is ready for use and fully functional.
             </p>

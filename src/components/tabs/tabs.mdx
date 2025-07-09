@@ -3,7 +3,7 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
+  SubcomponentPropTable,
 } from '../../../.storybook/components';
 import * as TabsStories from './tabs.stories';
 
@@ -18,9 +18,9 @@ import * as TabsStories from './tabs.stories';
 
 ### Tabs
 
-A set of layered sections of content—known as tab panels—that are displayed one at a time. Built with Radix UI Tabs primitives and styled with Tailwind CSS.
-
 <PropsTable argTypes={TabsStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={TabsStories.default.subcomponents} />
 
 ## Examples
 
