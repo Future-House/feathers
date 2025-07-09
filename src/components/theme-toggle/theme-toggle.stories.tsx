@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemeToggle } from '../theme-toggle';
 import { ThemeProvider } from '../theme-provider';
+import { Button } from '../button';
 
 const meta: Meta<typeof ThemeToggle> = {
   title: 'Components/ThemeToggle',
@@ -40,7 +41,7 @@ export const Default: Story = {
   },
 };
 
-export const WithCards: Story = {
+export const WithComponents: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="bg-card flex items-center justify-between rounded-lg border p-4">
@@ -64,6 +65,14 @@ export const WithCards: Story = {
           <h4 className="font-medium">Secondary Card</h4>
           <p className="text-sm opacity-90">This uses secondary colors</p>
         </div>
+      </div>
+      <div className="flex flex-wrap items-center gap-4">
+        <Button variant="default">Default</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="destructive">Destructive</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="link">Link</Button>
       </div>
     </div>
   ),
