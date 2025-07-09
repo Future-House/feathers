@@ -3,14 +3,14 @@ import {
   DocLayout,
   Canvas,
   PropsTable,
-  parseSubcomponents,
 } from '../../../.storybook/components';
 import * as SkeletonStories from './skeleton.stories';
 
 <Meta of={SkeletonStories} />
 
-<DocLayout meta={SkeletonStories.default}>
-  ## Default Example
+<DocLayout meta={SkeletonStories.default} hideRadixUiUrl>
+
+## Default Example
 
 <Canvas of={SkeletonStories.Default} background="dots" />
 
@@ -18,7 +18,7 @@ import * as SkeletonStories from './skeleton.stories';
 
 ### Skeleton
 
-A skeleton placeholder component that displays a loading state with a pulsing animation while content is being loaded.
+This is a simple component that relies heavily on Tailwind classes to create a mock UI structure. 
 
 <PropsTable argTypes={SkeletonStories.default.argTypes} />
 
@@ -48,20 +48,10 @@ Skeleton placeholder for a list of items with repeated structure.
 
 <Canvas of={SkeletonStories.ListExample} background="transparent" />
 
-## Accessibility
-
-The `Skeleton` component includes:
-
-- Proper ARIA attributes for screen readers
-- Semantic HTML structure that indicates loading state
-- Sufficient color contrast for visibility
-- Respects user preferences for reduced motion
-
 ## Best Practices
 
 - Use skeleton placeholders that match the shape and size of your actual content
 - Ensure skeleton layouts are consistent with your final content structure
-- Keep skeleton animations subtle and not overwhelming
 - Use skeletons for perceived performance improvement during loading states
 - Consider showing skeleton placeholders for at least 300ms to avoid flashing
 
