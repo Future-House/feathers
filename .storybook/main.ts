@@ -34,6 +34,7 @@ const config: StorybookConfig = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
+  staticDirs: ['./static'], // This serves files from .storybook/static/
   core: {
     disableTelemetry: true,
   },
