@@ -5,7 +5,7 @@ export default {
   fontCode:
     '"Space Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   // Brand colors
-  brandTitle: '@futurehouse/feathers',
+  brandTitle: '@futurehouse/feathers design system',
   brandUrl: 'https://www.futurehouse.org/',
   brandTarget: '_blank',
 };

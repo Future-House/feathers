@@ -1,23 +1,18 @@
 /* tailwind styles */
 /* @import 'tailwindcss'; */
 /* @import '../src/lib/styles/index.css'; */
+/*
+  These are styles applied to the Storybook preview html/iframe element
+  i.e. when visiting a story and when visiting Documentation page
 
+  our design system css variables are available in here
+*/
 /* 
-
-CLAUDE
-
-light background for content side/preview is: #FFFFFF
+light background for content side/preview is: #fafafa
 light sidebar background is: #F4F4F5
-
 dark theme background is: #111111
 dark theme sidebar background is: #18181B
-
 */
-
-/* Inject custom background variable to override sb/emotion styles */
-.sbdocs-wrapper {
-  background-color: var(--background) !important;
-}
 
 /* -------------------- Storybook Preview UI -------------------- */
 /* -------------------- General -------------------- */
@@ -89,21 +84,34 @@ dark theme sidebar background is: #18181B
 }
 
 html.dark {
-  background-color: #030712; /* bg-gray-950 */
+  /* bg-gray-950 */
+  /* background-color: #030712;  */
+  background-color: var(--color-neutral-900);
 }
 
 html.light {
-  background-color: #f9fafb; /* bg-gray-50 */
+  /* bg-gray-50 */
+  /* background-color: #f9fafb; */
 }
 
-html.vl-dark #storybook-root {
-  background-color: #111827; /* bg-gray-900 */
+html.dark #storybook-root {
+  /* bg-gray-900 */
+  background-color: var(--color-neutral-900);
 }
 /* 
 body {
   font-family: Rubik, sans-serif;
 } */
 
+/* override background color of wrapper div for doc pages */
+.light .sbdocs.sbdocs-wrapper {
+  background-color: var(--color-neutral-100);
+}
+.dark .sbdocs.sbdocs-wrapper {
+  background-color: var(--color-neutral-900);
+}
+
+/* override font color */
 .light .sbdocs .sbdocs-content > h1,
 .light .sbdocs .sbdocs-content > h2,
 .light .sbdocs .sbdocs-content > h3,
@@ -205,6 +213,8 @@ body {
   background-color: #d1d5db; /* bg-gray-300 */
 }
 
+/* arg table */
+
 .light .sb-argstableBlock-body {
   border-radius: 0.125rem; /* rounded-sm */
   box-shadow:
@@ -277,7 +287,8 @@ body {
 /* -------------------- All docs block -------------------- */
 
 .dark .sbdocs {
-  background-color: #030712; /* bg-gray-950 */
+  /* bg-gray-950 */
+  /* background-color: #030712; */
 }
 
 /* -------------------- Main story -------------------- */
@@ -292,24 +303,29 @@ body {
 }
 
 .dark .sb-anchor > p > a {
-  color: #4ade80; /* text-green-400 */
-  text-decoration: underline dashed #4ade80;
+  color: #f87171; /* text-green-red */
+  text-decoration: underline dashed #f87171;
 }
 
 .light .sb-anchor > p > a {
-  color: #16a34a; /* text-green-600 */
-  text-decoration: underline dashed #16a34a;
+  color: #dc2626; /* text-green-600 */
+  text-decoration: underline dashed #dc2626;
 }
 
-.sb-bar,
-.docs-story {
+.sb-bar {
   background-color: #ffffff; /* bg-white */
+  border-width: 0; /* border-0 */
 }
 
-.vl-dark .sb-bar,
-.vl-dark .docs-story,
-.vl-dark .docs-story + div {
-  background-color: #111827 !important; /* !bg-gray-900 */
+.docs-story {
+  background-color: transparent; /* bg-white */
+}
+
+.dark .sb-bar,
+.dark .docs-story,
+.dark .docs-story + div {
+  /* background-color: #111827 !important; !bg-gray-900 */
+  background-color: var(--color-neutral-900) !important;
 }
 
 /* prevents showing scrollbar in buttons stories */
@@ -317,16 +333,12 @@ body {
   overflow-y: hidden;
 }
 
-.sb-bar {
-  border-width: 0; /* border-0 */
-}
-
 .dark .sb-bar {
   border-bottom: 1px solid #d1d5db; /* border-b border-gray-300 */
   box-shadow: none !important;
 }
 
-.vl-dark .sb-bar {
+.dark .sb-bar {
   border-bottom: 1px solid #1f2937; /* border-b border-gray-800 */
   box-shadow: none !important;
 }
@@ -336,18 +348,26 @@ body {
   background-color: #1f2937; /* bg-gray-800 */
 }
 
-.vl-dark .docblock-code-toggle {
-  background-color: #1f2937; /* bg-gray-800 */
-  border-color: #1f2937; /* border-gray-800 */
-  color: #9ca3af; /* text-gray-400 */
+/* button for code */
+.dark .docblock-code-toggle {
+  /* bg-gray-800 */
+  background-color: #1f2937;
+
+  /* border-gray-800 */
+  border-color: #1f2937;
+
+  /* text-gray-400 */
+  color: #9ca3af;
 }
 
-.vl-light .docblock-code-toggle {
-  border: 1px solid #d1d5db !important; /* !border border-gray-300 */
+.light .docblock-code-toggle {
+  /* !border border-gray-300 */
+  border: 1px solid #d1d5db !important;
 }
 
-.vl-dark .docblock-code-toggle {
-  border: 1px solid #374151 !important; /* !border border-gray-700 */
+.dark .docblock-code-toggle {
+  /* !border border-gray-700 */
+  border: 1px solid #374151 !important;
 }
 
 .docblock-code-toggle,
@@ -372,7 +392,7 @@ body {
 }
 
 .dark .sbdocs.sbdocs-preview,
-.vl-dark .sbdocs.sbdocs-preview {
+.dark .sbdocs.sbdocs-preview {
   border-color: #1f2937; /* border-gray-800 */
 }
 
@@ -628,12 +648,13 @@ body {
 
 /* -------------------- Storybook story preview -------------------- */
 
-.vl-dark {
+/* NOTE: this should match  */
+.dark {
   min-height: 100%; /* min-h-full */
   background-color: rgb(17, 24, 39); /* bg-gray-900 */
 }
 
-.vl-light {
+.light {
   min-height: 100%; /* min-h-full */
   background-color: #ffffff; /* bg-white */
 }

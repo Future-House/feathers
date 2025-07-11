@@ -6,14 +6,14 @@ export default create({
   base: 'light',
 
   brandImage: '/black-logo.svg',
-  ...commonThemeProps,
+  ...commonThemeProps, // font and brand
 
   // Main colors
   colorPrimary: TAILWIND_COLORS.gray['900'],
   colorSecondary: TAILWIND_COLORS.gray['500'],
 
   // UI
-  appBg: TAILWIND_COLORS.white,
+  appBg: TAILWIND_COLORS.gray['100'],
   appPreviewBg: TAILWIND_COLORS.gray['50'],
   appBorderColor: TAILWIND_COLORS.gray['300'],
   appBorderRadius: 0,
@@ -26,7 +26,7 @@ export default create({
   barTextColor: TAILWIND_COLORS.gray['500'],
   barHoverColor: TAILWIND_COLORS.gray['600'],
   barSelectedColor: TAILWIND_COLORS.gray['700'],
-  barBg: TAILWIND_COLORS.gray['50'],
+  barBg: TAILWIND_COLORS.gray['100'],
 
   // Form colors
   inputBg: TAILWIND_COLORS.white,

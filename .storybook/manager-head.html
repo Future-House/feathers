@@ -1,3 +1,4 @@
+<!-- manager head -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -9,9 +10,24 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="/favico.png" />
 
-<!-- Custom Storybook Manager Styles -->
-<!-- <style>
-  /* Apply Rubik font globally */
+<!-- 
+  Custom Storybook Manager Styles 
+  CSS variables are not available
+  Server restart is required to see changes
+-->
+<style>
+  /* Custom animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Styles applied to the MAIN document head -- mainly targeting Storybook UI elements */
   html,
   body,
   #storybook-root {
@@ -64,26 +80,12 @@
     background-color: rgba(255, 255, 255, 0.3);
   }
 
-  /* Custom focus styles */
-  button:focus-visible,
-  a:focus-visible,
-  [tabindex]:focus-visible {
-    outline: 2px solid #b5b5b5;
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
   /* Enhanced brand area styling */
   [data-nodetype='brand'] {
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   /* Sidebar enhancement */
   [data-nodetype='sidebar'] {
-    font-feature-settings:
-      'cv01', 'cv02', 'cv03', 'cv04', 'cv05', 'cv06', 'cv07', 'cv08', 'cv09',
-      'cv10', 'cv11';
   }
 
   /* Story tree styling */
@@ -91,6 +93,12 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.4;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  [data-nodetype='story'] svg {
+    color: var(--color-red-600);
+    fill: var(--color-red-600);
   }
 
   [data-nodetype='story']:hover {
@@ -101,23 +109,7 @@
   [data-selected='true'] {
     font-weight: 600;
   }
-
-  /* Custom animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(4px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  [data-nodetype='story'] {
-    animation: fadeIn 0.2s ease-out;
-  }
-</style> -->
+</style>
 
 <!-- Custom meta tags -->
 <meta name="theme-color" content="#353535" />
@@ -150,3 +142,4 @@
   property="twitter:image"
   content="https://cdn.prod.website-files.com/669f0d63ca36f46df2e0682f/66a0346885d0e329f9e79446_FutureHouse-Logo-White.svg"
 />
+<!-- END manager head -->

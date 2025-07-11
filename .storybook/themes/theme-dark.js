@@ -7,7 +7,7 @@ export default create({
 
   brandImage:
     'https://cdn.prod.website-files.com/669f0d63ca36f46df2e0682f/66a0346885d0e329f9e79446_FutureHouse-Logo-White.svg', // Add your logo URL here if needed
-  ...commonThemeProps,
+  ...commonThemeProps, // font and brand
 
   // Main colors
   colorPrimary: TAILWIND_COLORS.gray['200'],
@@ -38,5 +38,5 @@ export default create({
   buttonBg: TAILWIND_COLORS.gray['800'],
   buttonBorder: TAILWIND_COLORS.gray['800'],
   booleanBg: TAILWIND_COLORS.gray['900'],
-  booleanSelectedBg: TAILWIND_COLORS.gray['800'],
+  booleanSelectedBg: TAILWIND_COLORS.red['800'],
 });

@@ -97,12 +97,7 @@ export function DocLayout({
     : `https://www.radix-ui.com/primitives/docs/components/${kebabCase}`;
 
   return (
-    <div
-      className={cn(
-        'bg-background text-foreground mx-auto max-w-6xl px-8 py-8',
-        className
-      )}
-    >
+    <div className={cn('mx-auto max-w-6xl px-8 py-8', className)}>
       <div className="!mb-8 space-y-4">
         <h1 className="!text-foreground text-4xl font-bold tracking-tight">
           {finalTitle}

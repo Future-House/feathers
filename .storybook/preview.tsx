@@ -6,17 +6,19 @@ import themeLight from './themes/theme-light.js';
 import themeDark from './themes/theme-dark.js';
 // import themeLightDocs from "./themes/theme-lightDocs.js";
 
+// preview style for inner html
 import '../src/lib/styles/index.css'; // feathers/tailwind css
 import './styles.css'; // custom storybook overrides
 
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    layout: 'centered',
+    // layout: 'centered',
+    layout: 'fullscreen',
 
     controls: {
       expanded: true, // showcase more info on dedicated story pages
-      // disableSaveFromUI: true
+      disableSaveFromUI: true,
     },
     docs: {
       // theme: themeLightDocs,
