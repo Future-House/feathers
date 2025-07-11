@@ -18,7 +18,6 @@ describe('Textarea', () => {
       'focus-visible:border-ring',
       'focus-visible:ring-ring/50',
       'flex',
-      'field-sizing-content',
       'min-h-16',
       'w-full',
       'rounded-md',

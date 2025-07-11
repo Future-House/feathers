@@ -320,14 +320,13 @@ describe('ToggleGroup', () => {
     const item = screen.getByRole('radio');
     expect(item).toHaveClass(
       'min-w-0',
-      'flex-1',
       'shrink-0',
       'rounded-none',
       'shadow-none',
-      'first:rounded-l-md',
-      'last:rounded-r-md',
       'focus:z-10',
-      'focus-visible:z-10'
+      'focus-visible:z-10',
+      'first:rounded-s-md',
+      'last:rounded-e-md'
     );
   });
 
