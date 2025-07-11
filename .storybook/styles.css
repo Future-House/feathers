@@ -2,16 +2,11 @@
 /* @import 'tailwindcss'; */
 /* @import '../src/lib/styles/index.css'; */
 /*
-  These are styles applied to the Storybook preview html/iframe element
+  NOTE: PREVIEW HTML/FRAME STYLES
+
   i.e. when visiting a story and when visiting Documentation page
 
   our design system css variables are available in here
-*/
-/* 
-light background for content side/preview is: #fafafa
-light sidebar background is: #F4F4F5
-dark theme background is: #111111
-dark theme sidebar background is: #18181B
 */
 
 /* -------------------- Storybook Preview UI -------------------- */
@@ -43,7 +38,8 @@ dark theme sidebar background is: #18181B
 
 .light::-webkit-scrollbar-thumb,
 .light ::-webkit-scrollbar-thumb {
-  background-color: #9ca3af; /* bg-gray-400 */
+  /* bg-gray-400 */
+  background-color: #9ca3af;
 }
 
 .light::-webkit-scrollbar-thumb:hover,
@@ -86,7 +82,8 @@ dark theme sidebar background is: #18181B
 html.dark {
   /* bg-gray-950 */
   /* background-color: #030712;  */
-  background-color: var(--color-neutral-900);
+  /* BACKGROUND FOR DOC AND STORIES */
+  background-color: #111111;
 }
 
 html.light {
@@ -96,7 +93,8 @@ html.light {
 
 html.dark #storybook-root {
   /* bg-gray-900 */
-  background-color: var(--color-neutral-900);
+  /* BACKGROUND FOR DOC AND STORIES */
+  background-color: #111111;
 }
 /* 
 body {
@@ -105,10 +103,10 @@ body {
 
 /* override background color of wrapper div for doc pages */
 .light .sbdocs.sbdocs-wrapper {
-  background-color: var(--color-neutral-100);
+  background-color: var(--color-neutral-50);
 }
 .dark .sbdocs.sbdocs-wrapper {
-  background-color: var(--color-neutral-900);
+  background-color: #111111;
 }
 
 /* override font color */
@@ -301,31 +299,33 @@ body {
   margin-top: -0.5rem; /* mt-2 */
   margin-bottom: -0.5rem; /* -mt-2 */
 }
-
+/* 
 .dark .sb-anchor > p > a {
-  color: #f87171; /* text-green-red */
-  text-decoration: underline dashed #f87171;
 }
 
 .light .sb-anchor > p > a {
-  color: #dc2626; /* text-green-600 */
-  text-decoration: underline dashed #dc2626;
-}
+} 
+*/
 
+/* 
+top toolbar - handled via SB themes
+ .sb-bar
+*/
 .sb-bar {
-  background-color: #ffffff; /* bg-white */
-  border-width: 0; /* border-0 */
+  background-color: #ffffff;
+  border-width: 0;
 }
 
 .docs-story {
-  background-color: transparent; /* bg-white */
+  background-color: transparent;
 }
 
 .dark .sb-bar,
 .dark .docs-story,
 .dark .docs-story + div {
   /* background-color: #111827 !important; !bg-gray-900 */
-  background-color: var(--color-neutral-900) !important;
+  /* TODO: this is the current colors according to prod env */
+  background-color: #111111 !important;
 }
 
 /* prevents showing scrollbar in buttons stories */
@@ -360,9 +360,13 @@ body {
   color: #9ca3af;
 }
 
+/* TODO: add focus state */
 .light .docblock-code-toggle {
   /* !border border-gray-300 */
   border: 1px solid #d1d5db !important;
+}
+.light .docblock-code-toggle:focus {
+  outline: oklch(0.708 0 0) 2px solid !important;
 }
 
 .dark .docblock-code-toggle {
@@ -648,7 +652,6 @@ body {
 
 /* -------------------- Storybook story preview -------------------- */
 
-/* NOTE: this should match  */
 .dark {
   min-height: 100%; /* min-h-full */
   background-color: rgb(17, 24, 39); /* bg-gray-900 */
