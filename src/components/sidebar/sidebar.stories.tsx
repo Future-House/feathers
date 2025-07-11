@@ -424,7 +424,7 @@ function BasicSidebarExample() {
               <SidebarGroupLabel>Platform</SidebarGroupLabel>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive>
                     <a href="#">
                       <House />
                       <span>Home</span>
@@ -535,7 +535,7 @@ function CollapsibleSidebarExample() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton tooltip="Inbox" asChild>
+                  <SidebarMenuButton tooltip="Inbox" asChild isActive>
                     <a href="#">
                       <Inbox />
                       <span>Inbox</span>
