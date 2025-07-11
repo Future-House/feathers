@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/addon-links',
     '@storybook/addon-docs',
+    '@vueless/storybook-dark-mode',
   ],
   framework: {
     name: '@storybook/react-vite',

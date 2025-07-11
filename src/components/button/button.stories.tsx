@@ -18,6 +18,14 @@ const meta = {
   argTypes: {
     variant: {
       control: { type: 'select' },
+      options: [
+        'default',
+        'destructive',
+        'outline',
+        'secondary',
+        'ghost',
+        'link',
+      ],
       description: 'The visual style variant of the button',
       table: {
         type: {
