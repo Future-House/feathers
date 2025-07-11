@@ -52,6 +52,7 @@ const meta = {
       table: {
         type: { summary: '(open: boolean) => void' },
         defaultValue: { summary: undefined },
+        disable: true,
       },
     },
   },
