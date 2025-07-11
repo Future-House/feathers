@@ -42,7 +42,6 @@ const meta = {
   title: 'Components/Menubar',
   component: Menubar,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

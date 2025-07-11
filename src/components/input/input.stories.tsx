@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/Input',
   component: Input,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

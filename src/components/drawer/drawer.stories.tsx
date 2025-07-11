@@ -30,7 +30,6 @@ const meta = {
   title: 'Components/Drawer',
   component: Drawer,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

@@ -6,7 +6,6 @@ const meta = {
   title: 'Components/AspectRatio',
   component: AspectRatio,
   parameters: {
-    layout: 'centered',
     controls: { disable: true },
     docs: {
       description: {

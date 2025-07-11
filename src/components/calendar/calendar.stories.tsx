@@ -7,7 +7,6 @@ const meta = {
   title: 'Components/Calendar',
   component: Calendar,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

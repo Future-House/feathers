@@ -13,7 +13,6 @@ const meta = {
   title: 'Components/Toggle',
   component: Toggle,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Textarea',
   component: Textarea,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

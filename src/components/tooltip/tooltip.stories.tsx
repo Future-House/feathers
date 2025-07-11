@@ -12,7 +12,6 @@ const meta = {
   title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

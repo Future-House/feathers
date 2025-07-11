@@ -14,7 +14,6 @@ const meta = {
   title: 'Components/Collapsible',
   component: Collapsible,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

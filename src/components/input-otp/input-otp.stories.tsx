@@ -38,7 +38,6 @@ const meta = {
   title: 'Components/InputOTP',
   component: InputOTP,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

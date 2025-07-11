@@ -25,7 +25,6 @@ const meta = {
   title: 'Components/Dialog',
   component: Dialog,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

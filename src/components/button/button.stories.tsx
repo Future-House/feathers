@@ -6,7 +6,6 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

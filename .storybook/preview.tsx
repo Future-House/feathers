@@ -12,7 +12,7 @@ import './styles.css'; // custom storybook overrides
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    layout: 'fullscreen',
+    layout: 'centered',
 
     controls: {
       expanded: true, // showcase more info on dedicated story pages
@@ -56,12 +56,13 @@ const preview: Preview = {
   },
   decorators: [
     Story => (
-      <ThemeProvider
-        defaultTheme="system"
-        storageKey="feathers-storybook-theme"
-      >
+      // <ThemeProvider
+      //   storageKey="feathers-storybook-theme"
+      // >
+      <div className="p-4">
         <Story />
-      </ThemeProvider>
+      </div>
+      // </ThemeProvider>
     ),
   ],
 };

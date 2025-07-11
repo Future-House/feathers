@@ -5,7 +5,6 @@ const meta: Meta<typeof Separator> = {
   title: 'Components/Separator',
   component: Separator,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

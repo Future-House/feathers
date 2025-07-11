@@ -6,7 +6,6 @@ const meta = {
   title: 'Components/Combobox',
   component: Combobox,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

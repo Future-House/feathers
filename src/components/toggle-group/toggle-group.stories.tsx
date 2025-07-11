@@ -16,7 +16,6 @@ const meta = {
   title: 'Components/ToggleGroup',
   component: ToggleGroup,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

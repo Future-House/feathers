@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/FileUploadChat',
   component: FileUploadChat,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

@@ -20,7 +20,6 @@ const meta = {
   title: 'Components/Breadcrumb',
   component: Breadcrumb,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

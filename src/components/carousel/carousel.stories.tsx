@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/Carousel',
   component: Carousel,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/HoverCard',
   component: HoverCard,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

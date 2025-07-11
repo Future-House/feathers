@@ -15,7 +15,6 @@ const meta = {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

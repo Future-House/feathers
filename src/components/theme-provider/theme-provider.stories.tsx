@@ -96,7 +96,6 @@ const meta: Meta<typeof ThemeProvider> = {
   title: 'Providers/ThemeProvider',
   component: ThemeProvider,
   parameters: {
-    layout: 'fullscreen',
     docs: {
       description: {
         component:

@@ -6,7 +6,6 @@ const meta = {
   title: 'Components/Badge',
   component: Badge,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

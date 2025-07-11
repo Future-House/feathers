@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Skeleton',
   component: Skeleton,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

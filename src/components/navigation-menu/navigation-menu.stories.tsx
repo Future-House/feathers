@@ -23,7 +23,6 @@ const meta: Meta<typeof NavigationMenu> = {
   title: 'Components/NavigationMenu',
   component: NavigationMenu,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component: 'A collection of links for navigating websites.',

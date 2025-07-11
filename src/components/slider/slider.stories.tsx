@@ -7,7 +7,6 @@ const meta = {
   title: 'Components/Slider',
   component: Slider,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

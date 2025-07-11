@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/Resizable',
   component: ResizablePanelGroup,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

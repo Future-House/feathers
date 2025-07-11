@@ -17,7 +17,6 @@ const meta = {
   title: 'Components/AlertDialog',
   component: AlertDialog,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

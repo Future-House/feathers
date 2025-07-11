@@ -16,7 +16,6 @@ const meta: Meta<typeof Sheet> = {
   title: 'Components/Sheet',
   component: Sheet,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

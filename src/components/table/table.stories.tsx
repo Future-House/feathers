@@ -17,7 +17,6 @@ const meta = {
   title: 'Components/Table',
   component: Table,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

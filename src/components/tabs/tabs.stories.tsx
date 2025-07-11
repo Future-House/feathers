@@ -16,7 +16,6 @@ const meta = {
   title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

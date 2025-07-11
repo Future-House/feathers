@@ -16,7 +16,6 @@ const meta: Meta<typeof ThemeToggle> = {
     ),
   ],
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

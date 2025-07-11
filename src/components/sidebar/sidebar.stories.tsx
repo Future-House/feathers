@@ -42,7 +42,6 @@ const meta = {
   title: 'Components/Sidebar',
   component: Sidebar,
   parameters: {
-    layout: 'fullscreen',
     controls: { disable: true },
     docs: {
       description: {

@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/Sonner',
   component: Toaster,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

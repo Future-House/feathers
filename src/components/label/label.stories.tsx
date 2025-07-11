@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/Label',
   component: Label,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

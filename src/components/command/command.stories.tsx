@@ -30,7 +30,6 @@ const meta = {
   title: 'Components/Command',
   component: Command,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:
@@ -437,9 +436,6 @@ export const Default: Story = {
 export const CommandDialogVariant: Story = {
   render: () => <CommandDialogExample />,
   args: {},
-  parameters: {
-    layout: 'padded',
-  },
 };
 
 export const SearchableCommand: Story = {

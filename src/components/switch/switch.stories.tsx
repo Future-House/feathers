@@ -6,7 +6,6 @@ const meta = {
   title: 'Components/Switch',
   component: Switch,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

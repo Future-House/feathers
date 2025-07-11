@@ -6,7 +6,6 @@ const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

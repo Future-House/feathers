@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/ScrollArea',
   component: ScrollArea,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:

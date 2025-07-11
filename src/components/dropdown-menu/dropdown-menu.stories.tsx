@@ -41,7 +41,6 @@ const meta = {
   title: 'Components/DropdownMenu',
   component: DropdownMenu,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component:
