@@ -57,12 +57,12 @@ export function PropsTable({
                   <TableCell className="sb-unstyled text-muted-foreground max-w-[300px] text-sm whitespace-normal">
                     {prop.description || '-'}
                   </TableCell>
-                  <TableCell className="sb-unstyled">
+                  <TableCell className="sb-unstyled whitespace-normal">
                     <code className="bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-xs">
                       {prop.type}
                     </code>
                   </TableCell>
-                  <TableCell className="sb-unstyled">
+                  <TableCell className="sb-unstyled whitespace-normal">
                     {prop.defaultValue ? (
                       <code className="bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-xs">
                         {prop.defaultValue}

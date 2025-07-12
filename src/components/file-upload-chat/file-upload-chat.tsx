@@ -41,7 +41,7 @@ function FileUploadChat({
   onSendMessage,
   placeholder = 'Type your message...',
   maxFiles = 5,
-  acceptedFileTypes = '.pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.gif,.svg',
+  acceptedFileTypes = '.pdf, .doc, .docx, .txt, .jpg, .jpeg, .png, .gif, .svg',
   className,
   ...props
 }: FileUploadChatProps) {
@@ -157,7 +157,7 @@ function FileUploadChat({
     <TooltipProvider>
       <div
         className={cn(
-          'bg-background relative mx-auto w-full max-w-4xl rounded-2xl border shadow-sm transition-all',
+          'bg-background relative w-full max-w-4xl rounded-2xl border shadow-sm transition-all',
           isDragOver && 'border-primary/50 bg-primary/5',
           className
         )}

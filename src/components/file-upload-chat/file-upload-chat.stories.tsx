@@ -4,6 +4,13 @@ import { FileUploadChat } from './file-upload-chat';
 const meta = {
   title: 'Components/FileUploadChat',
   component: FileUploadChat,
+  decorators: [
+    Story => (
+      <div className="max-w-10/12">
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     docs: {
       description: {
@@ -16,38 +23,68 @@ const meta = {
   argTypes: {
     placeholder: {
       control: 'text',
-      description: 'Placeholder text for the message input',
+      description:
+        'Placeholder text displayed in the message input field when empty',
       table: {
-        defaultValue: { summary: 'Type your message...' },
+        type: { summary: 'string' },
+        defaultValue: { summary: '"Type your message..."' },
       },
     },
     maxFiles: {
       control: 'number',
-      description: 'Maximum number of files that can be uploaded',
+      description:
+        'Maximum number of files that can be uploaded simultaneously. When limit is reached, upload button becomes disabled.',
       table: {
+        type: { summary: 'number' },
         defaultValue: { summary: '5' },
       },
     },
     acceptedFileTypes: {
       control: 'text',
-      description: 'Accepted file types for upload',
+      description:
+        'Comma-separated list of accepted file extensions. Controls both file picker filter and drag-and-drop validation.',
       table: {
+        type: { summary: 'string' },
         defaultValue: {
-          summary: '.pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.gif,.svg',
+          summary: '".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.gif,.svg"',
         },
       },
     },
     onSendMessage: {
       action: 'message sent',
-      description: 'Callback fired when send button is clicked',
+      description:
+        'Callback fired when the send button is clicked or Enter key is pressed. Receives the message text and array of uploaded files.',
+      table: {
+        type: { summary: '(message: string, files: UploadedFile[]) => void' },
+        defaultValue: { summary: 'undefined' },
+      },
     },
     onFilesUploaded: {
       action: 'files uploaded',
-      description: 'Callback fired when files are uploaded',
+      description:
+        'Callback fired when files are successfully uploaded via drag-and-drop or file picker. Receives the complete array of currently uploaded files.',
+      table: {
+        type: { summary: '(files: UploadedFile[]) => void' },
+        defaultValue: { summary: 'undefined' },
+      },
     },
     onFileRemoved: {
       action: 'file removed',
-      description: 'Callback fired when a file is removed',
+      description:
+        'Callback fired when a file is removed by clicking the X button on a file chip. Receives the unique ID of the removed file.',
+      table: {
+        type: { summary: '(fileId: string) => void' },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    className: {
+      control: 'text',
+      description:
+        'Additional CSS class names to apply to the root container element. Merged with default styling using cn() utility.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' },
+      },
     },
   },
 } satisfies Meta<typeof FileUploadChat>;

@@ -1,9 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-/* TODO: may not need if we depend on consumer apps adding in the fonts */
-/* @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap'); */
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
