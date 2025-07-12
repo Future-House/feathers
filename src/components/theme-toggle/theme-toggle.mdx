@@ -6,9 +6,37 @@ import * as ThemeToggleStories from './theme-toggle.stories';
 
 <DocLayout meta={ThemeToggleStories.default} hideRadixUiUrl hideShadcnUrl>
 
+## Overview
+
+The ThemeToggle component provides three different ways to switch between light and dark themes. Each variant offers a different user experience:
+
+- **Button**: Simple toggle between light and dark modes
+- **Switch**: Animated sliding toggle with theme icons on the thumb
+- **Dropdown**: Full theme selector with light, dark, and system options
+
+**_The `ThemeToggle` pages are wrapped with their own nested theme, so there may be some weirdness when toggling themes._**
+
 ## Default Example
 
 <Canvas of={ThemeToggleStories.Default} background="dots" />
+
+## Variants
+
+### Switch Variant
+
+A compact animated switch that displays the current theme icon on the sliding thumb with smooth fade transitions.
+
+<Canvas of={ThemeToggleStories.Switch} background="dots" />
+
+### Dropdown Variant
+
+A dropdown menu that supports all three theme modes including the system preference option.
+
+<Canvas of={ThemeToggleStories.Dropdown} background="dots" />
+
+## Variant Comparison
+
+<Canvas of={ThemeToggleStories.Comparison} background="grid" />
 
 ## Component API
 

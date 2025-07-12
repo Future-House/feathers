@@ -8,24 +8,32 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '../dropdown-menu/dropdown-menu';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
 export interface ThemeToggleProps {
   variant?: 'button' | 'switch' | 'dropdown';
+  DropdownMenuContentProps?: React.ComponentProps<
+    typeof DropdownMenuPrimitive.Content
+  >;
 }
 
-export function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
+export function ThemeToggle({
+  variant = 'button',
+  DropdownMenuContentProps = {},
+  ...rest
+}: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    if (variant === 'switch') {
-      // Switch variant only toggles between dark and light
+    if (variant === 'switch' || variant === 'button') {
+      // Switch and button variants only toggle between dark and light
       if (theme === 'light' || theme === 'system') {
         setTheme('dark');
       } else {
         setTheme('light');
       }
     } else {
-      // Button variant cycles through all three modes
+      // This shouldn't happen with current variants, but keep for safety
       if (theme === 'light') {
         setTheme('dark');
       } else if (theme === 'dark') {
@@ -50,9 +58,10 @@ export function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
   };
 
   const getTitle = () => {
-    if (variant === 'switch') {
+    if (variant === 'switch' || variant === 'button') {
       return theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
     } else {
+      // Fallback for other variants (currently only dropdown)
       if (theme === 'light') {
         return 'Switch to dark mode';
       } else if (theme === 'dark') {
@@ -73,32 +82,28 @@ export function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
           aria-checked={isDark}
           onClick={toggleTheme}
           title={getTitle()}
-          className="group bg-muted focus:ring-ring focus:ring-offset-background relative inline-flex h-[30px] w-[52px] items-center rounded-full transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          className="group bg-muted focus:ring-ring focus:ring-offset-background relative inline-flex h-[26px] w-[50px] items-center rounded-full transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
-          {/* Icons inside the track */}
-          <div className="absolute inset-0 flex items-center justify-between px-1.5">
-            <Sun
-              className={`h-3 w-3 transition-all duration-300 ${
-                !isDark
-                  ? 'text-primary scale-100 opacity-100'
-                  : 'text-muted-foreground scale-90 opacity-50'
-              }`}
-            />
-            <Moon
-              className={`h-3 w-3 transition-all duration-300 ${
-                isDark
-                  ? 'text-primary scale-100 opacity-100'
-                  : 'text-muted-foreground scale-90 opacity-50'
-              }`}
-            />
-          </div>
-
-          {/* Sliding thumb */}
+          {/* Sliding thumb with icon */}
           <div
-            className={`bg-background relative z-10 h-[26px] w-[26px] rounded-full shadow-md transition-transform duration-300 ease-in-out ${
+            className={`bg-background relative z-10 flex h-[24px] w-[24px] items-center justify-center rounded-full shadow-md transition-transform duration-300 ease-in-out ${
               isDark ? 'translate-x-[24px]' : 'translate-x-[2px]'
             }`}
-          />
+          >
+            {/* Icon on the thumb with fade transitions */}
+            <div className="relative h-3 w-3">
+              <Sun
+                className={`text-foreground absolute inset-0 h-3 w-3 transition-opacity duration-300 ${
+                  !isDark ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+              <Moon
+                className={`text-foreground absolute inset-0 h-3 w-3 transition-opacity duration-300 ${
+                  isDark ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            </div>
+          </div>
         </button>
         <span className="sr-only">Toggle between light and dark theme</span>
       </div>
@@ -107,14 +112,14 @@ export function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
 
   if (variant === 'dropdown') {
     return (
-      <DropdownMenu>
+      <DropdownMenu {...rest}>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon" className="h-9 w-9">
             {getIcon()}
             <span className="sr-only">Open theme selector</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent align="end" {...DropdownMenuContentProps}>
           <DropdownMenuRadioGroup
             value={theme}
             onValueChange={value =>

@@ -89,13 +89,13 @@ describe('ThemeToggle', () => {
     renderWithProvider('dark');
 
     const button = screen.getByRole('button');
-    expect(button).toHaveAttribute('title', 'Switch to system mode');
+    expect(button).toHaveAttribute('title', 'Switch to light mode');
 
     const svg = button.querySelector('svg');
     expect(svg).toBeInTheDocument();
   });
 
-  it('cycles through themes when clicked', () => {
+  it('toggles between themes when clicked', () => {
     renderWithProvider('light');
 
     const button = screen.getByRole('button');
@@ -109,11 +109,18 @@ describe('ThemeToggle', () => {
     );
   });
 
-  it('handles system theme correctly', () => {
+  it('handles system theme correctly by switching to dark', () => {
     renderWithProvider('system');
 
     const button = screen.getByRole('button');
-    expect(button).toHaveAttribute('title', 'Switch to light mode');
+    expect(button).toHaveAttribute('title', 'Switch to dark mode');
+
+    // When system theme is active, clicking should go to dark mode
+    fireEvent.click(button);
+    expect(localStorageMock.setItem).toHaveBeenCalledWith(
+      'feathers-ui-theme',
+      'dark'
+    );
   });
 
   it('shows appropriate icon for system theme based on preference', () => {
@@ -160,10 +167,10 @@ describe('ThemeToggle', () => {
       const switchElement = screen.getByRole('switch');
       expect(switchElement).toBeInTheDocument();
 
-      // Should show sun and moon icons
+      // Should show both icons on the thumb with fade transitions
       const container = switchElement.closest('div');
       const svgs = container?.querySelectorAll('svg');
-      expect(svgs).toHaveLength(2); // Sun and Moon icons
+      expect(svgs).toHaveLength(2); // Both Sun and Moon icons for fade transition
     });
 
     it('toggles between light and dark only in switch variant', () => {
@@ -208,6 +215,30 @@ describe('ThemeToggle', () => {
 
       const switchElement = screen.getByRole('switch');
       expect(switchElement).toHaveAttribute('title', 'Switch to light mode');
+    });
+
+    it('shows correct icon opacity for current theme', () => {
+      renderWithProvider('light', 'switch');
+
+      const container = screen.getByRole('switch').closest('div');
+      const sunIcon = container?.querySelector('.lucide-sun');
+      const moonIcon = container?.querySelector('.lucide-moon');
+
+      // In light mode, sun should be visible (opacity-100) and moon hidden (opacity-0)
+      expect(sunIcon).toHaveClass('opacity-100');
+      expect(moonIcon).toHaveClass('opacity-0');
+    });
+
+    it('shows fade transition classes on icons', () => {
+      renderWithProvider('light', 'switch');
+
+      const container = screen.getByRole('switch').closest('div');
+      const sunIcon = container?.querySelector('.lucide-sun');
+      const moonIcon = container?.querySelector('.lucide-moon');
+
+      // Both icons should have transition-opacity duration-300
+      expect(sunIcon).toHaveClass('transition-opacity', 'duration-300');
+      expect(moonIcon).toHaveClass('transition-opacity', 'duration-300');
     });
   });
 
