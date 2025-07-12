@@ -5,7 +5,7 @@ import commonThemeProps from './common.js';
 export default create({
   base: 'light',
 
-  brandImage: '/black-logo.svg',
+  brandImage: 'https://future-house.github.io/feathers/black-logo.svg',
   ...commonThemeProps, // font and brand
 
   // Main colors
