@@ -36,6 +36,7 @@ import SidebarExample from './SidebarExample';
 import TabsExample from './TabsExample';
 import CardExample from './CardExample';
 import { TableExample } from './TableExample';
+import TypographyExample from './TypographyExample';
 
 export default function KitchenSink() {
   return (
@@ -75,6 +76,7 @@ export default function KitchenSink() {
       <TabsExample />
       <TableExample />
       <CardExample />
+      <TypographyExample />
 
       <Toaster />
     </div>

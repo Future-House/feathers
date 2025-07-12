@@ -49,3 +49,4 @@ export * from '@/components/toggle-group';
 export * from '@/components/theme-provider';
 export * from '@/components/theme-toggle';
 export * from '@/components/tooltip';
+export * from '@/components/typography';

@@ -1,0 +1,151 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as TypographyStories from './typography.stories';
+
+<Meta of={TypographyStories} />
+
+<DocLayout meta={TypographyStories.default} hideRadixUiUrl hideShadcnUrl>
+
+## Default Example
+
+<Canvas of={TypographyStories.Default} background="dots" />
+
+## Component API
+
+### Typography
+
+<PropsTable argTypes={TypographyStories.default.argTypes} />
+
+## Variants
+
+The Typography component provides the following variants:
+
+- **h1**: Large heading for page titles (4xl font, extrabold weight)
+- **h2**: Section headings with border bottom (3xl font, semibold weight)
+- **h3**: Subsection headings (2xl font, semibold weight)
+- **h4**: Minor headings (xl font, semibold weight)
+- **p**: Default paragraph text with proper line height and spacing
+- **lead**: Introductory text, larger and muted (xl font, muted foreground)
+- **large**: Emphasized text (lg font, semibold weight)
+- **small**: Fine print text (sm font, medium weight)
+- **muted**: De-emphasized text (sm font, muted foreground)
+- **blockquote**: Quote styling with left border and italic text
+- **code**: Inline code with monospace font and background
+- **list**: Unordered list styling with proper spacing
+
+## HTML Elements
+
+Each variant renders as the appropriate semantic HTML element:
+
+- **h1-h4**: Render as `<h1>`, `<h2>`, `<h3>`, `<h4>` respectively
+- **p, lead, muted**: Render as `<p>` elements
+- **large**: Renders as `<div>`
+- **small**: Renders as `<small>`
+- **blockquote**: Renders as `<blockquote>`
+- **code**: Renders as `<code>`
+- **list**: Renders as `<ul>`
+
+## Examples
+
+### All Variants
+
+Typography supports multiple semantic variants for different types of content.
+
+<Canvas of={TypographyStories.AllVariants} background="grid" />
+
+### Headings
+
+Semantic heading variants with proper hierarchy and styling.
+
+<Canvas of={TypographyStories.Headings} background="muted" />
+
+### Content Blocks
+
+Complex content layouts with multiple typography elements.
+
+<Canvas of={TypographyStories.ContentBlocks} background="card" />
+
+### Lists
+
+Typography variants for displaying list content.
+
+<Canvas of={TypographyStories.Lists} background="transparent" />
+
+## Accessibility
+
+The `Typography` component follows accessibility best practices:
+
+- Uses semantic HTML elements that provide proper document structure
+- Maintains proper heading hierarchy for screen readers
+- Provides adequate contrast ratios in both light and dark modes
+- Supports keyboard navigation and focus management
+- Works with assistive technologies out of the box
+- Preserves text selection and copy functionality
+- Maintains readable font sizes and line heights
+
+## Best Practices
+
+### Heading Hierarchy
+
+- Always maintain proper heading hierarchy (h1 → h2 → h3 → h4)
+- Use only one h1 per page for the main page title
+- Don&apos;t skip heading levels (e.g., h1 directly to h3)
+
+### Content Structure
+
+- Use `lead` variant for introductory paragraphs
+- Use `muted` variant for secondary information
+- Use `blockquote` for highlighting important quotes or statements
+- Use `code` variant for inline code snippets
+
+### Responsive Design
+
+- Typography automatically adapts to different screen sizes
+- h1 variant includes responsive sizing (lg:text-5xl)
+- All variants maintain proper spacing and readability on mobile
+
+### Composition
+
+- Use `asChild` prop when you need typography styling on custom elements
+- Combine variants for complex content layouts
+- Maintain consistent spacing between typography elements
+
+### Dark Mode
+
+- All variants automatically support dark mode
+- Colors and contrast ratios are optimized for both themes
+- No additional configuration needed for dark mode support
+
+## Usage Examples
+
+```tsx
+// Basic headings
+<Typography variant="h1">Page Title</Typography>
+<Typography variant="h2">Section Header</Typography>
+
+// Paragraph content
+<Typography variant="lead">
+  This is an introductory paragraph that stands out.
+</Typography>
+<Typography variant="p">
+  This is regular body text with proper spacing.
+</Typography>
+
+// Special content
+<Typography variant="blockquote">
+  &ldquo;This is an important quote.&rdquo;
+</Typography>
+<Typography variant="code">const example = true;</Typography>
+
+// Custom elements with typography styling
+<Typography variant="h2" asChild>
+  <span>Custom element with h2 styling</span>
+</Typography>
+
+// With custom classes
+<Typography variant="p" className="text-center">
+  Centered paragraph text
+</Typography>
+```
+
+</DocLayout>

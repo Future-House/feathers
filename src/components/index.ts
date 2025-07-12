@@ -288,3 +288,6 @@ export {
   type ComboboxOption,
   type ComboboxProps,
 } from '@/components/combobox';
+
+export { Typography, typographyVariants } from '@/components/typography';
+export type { TypographyProps } from '@/components/typography';
