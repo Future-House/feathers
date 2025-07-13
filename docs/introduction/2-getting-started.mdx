@@ -19,18 +19,26 @@ Install Feathers using your preferred package manager:
 
 <Tabs defaultValue="npm" className="my-6">
   <TabsList>
-    <TabsTrigger value="npm">npm - Recommended</TabsTrigger>
+    <TabsTrigger value="npm" className="flex items-center gap-2">
+      npm <Badge variant="outline" className="text-xs">Recommended</Badge>
+    </TabsTrigger>
     <TabsTrigger value="yarn">yarn</TabsTrigger>
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
   </TabsList>
   <TabsContent value="npm">
-    ```bash npm install @future-house/feathers ```
+    ```bash
+    npm install @future-house/feathers
+    ```
   </TabsContent>
   <TabsContent value="yarn">
-    ```bash yarn add @future-house/feathers ```
+    ```bash
+    yarn add @future-house/feathers
+    ```
   </TabsContent>
   <TabsContent value="pnpm">
-    ```bash pnpm add @future-house/feathers ```
+    ```bash
+    pnpm add @future-house/feathers
+    ```
   </TabsContent>
 </Tabs>
 
@@ -74,20 +82,23 @@ Feathers supports multiple import patterns for flexibility:
 
 <Tabs defaultValue="named" className="my-6">
   <TabsList>
-    <TabsTrigger value="named"> Named Imports - Recommended </TabsTrigger>
+    <TabsTrigger value="named" className="flex items-center gap-2">
+      Named Imports <Badge variant="outline" className="text-xs">Recommended</Badge>
+    </TabsTrigger>
     <TabsTrigger value="individual">Individual Imports</TabsTrigger>
   </TabsList>
   <TabsContent value="named" className="space-y-2">
-    Import specific components for better tree-shaking ```javascript import{' '}
-    {(Button, Card, Badge)} from '@future-house/feathers'; ```
+    <p className="text-sm text-muted-foreground">Import specific components for better tree-shaking</p>
+    ```jsx
+    import { Button, Card, Badge } from '@future-house/feathers';
+    ```
   </TabsContent>
   <TabsContent value="individual" className="space-y-2">
-    <p className="text-muted-foreground text-sm">
-      Import from specific component paths
-    </p>
-    ```javascript import {Button} from
-    '@future-house/feathers/components/button'; import {Card} from
-    '@future-house/feathers/components/card'; ```
+    <p className="text-sm text-muted-foreground">Import from specific component paths</p>
+    ```jsx
+    import { Button } from '@future-house/feathers/components/button';
+    import { Card } from '@future-house/feathers/components/card';
+    ```
   </TabsContent>
 </Tabs>
 
@@ -153,14 +164,7 @@ function Header() {
 
 If you run into any issues or have questions, check out our component documentation or reach out to the maintainers.
 
-<div className="mt-4 flex gap-2">
-  <Badge variant="secondary">TypeScript Ready</Badge>
-  <Badge variant="secondary">Tree Shakable</Badge>
-  <Badge variant="secondary">Accessible</Badge>
-</div>
-
 ## Next Steps
 
-- Browse the [Component Documentation](?path=/docs/components-button--docs) to explore all available components
-- Check out the [Icons Library](?path=/docs/icons--docs) for available icons
-- View examples in our [Example Application](https://github.com/future-house/feathers/tree/main/examples)
+- Browse the [Component Documentation](?path=/docs/components-accordion--documentation) to explore all available components
+- Check out the [Icons Library](?path=/docs/icons-icons--all-icons) for available icons
