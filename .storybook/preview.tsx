@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 
 import { ThemeProvider } from '../src/components/theme-provider';
+import { Typography } from '../src/components/typography';
 
 import themeLight from './themes/theme-light.js';
 import themeDark from './themes/theme-dark.js';
@@ -24,25 +25,46 @@ const preview: Preview = {
       // theme: themeLightDocs,
       // source: { language: "html" },
       components: {
-        h2: ({ children }) => (
-          <h2 className="sb-unstyled text-foreground mt-8 mb-4 text-2xl font-bold">
+        h1: ({ children }) => (
+          <Typography variant="h1" className="sb-unstyled mt-8 mb-6">
             {children}
-          </h2>
+          </Typography>
+        ),
+        h2: ({ children }) => (
+          <Typography variant="h2" className="sb-unstyled mt-8 mb-4">
+            {children}
+          </Typography>
         ),
         h3: ({ children }) => (
-          <h3 className="sb-unstyled text-foreground mt-6 mb-3 text-xl font-bold">
+          <Typography variant="h3" className="sb-unstyled mt-6 mb-3">
             {children}
-          </h3>
+          </Typography>
+        ),
+        h4: ({ children }) => (
+          <Typography variant="h4" className="sb-unstyled mt-4 mb-2">
+            {children}
+          </Typography>
         ),
         p: ({ children }) => (
-          <p className="sb-unstyled text-muted-foreground mb-4 text-base">
+          <Typography variant="p" className="sb-unstyled mb-4">
             {children}
-          </p>
+          </Typography>
         ),
         li: ({ children }) => (
-          <li className="sb-unstyled text-muted-foreground mb-2 text-base">
+          <Typography variant="p" asChild className="sb-unstyled mb-2">
+            <li>{children}</li>
+          </Typography>
+        ),
+        code: ({ children }) => (
+          <Typography variant="code">{children}</Typography>
+        ),
+        blockquote: ({ children }) => (
+          <Typography variant="blockquote">{children}</Typography>
+        ),
+        pre: ({ children }) => (
+          <pre className="sb-unstyled rounded-md bg-gray-200 p-2 dark:bg-gray-800">
             {children}
-          </li>
+          </pre>
         ),
       },
       codePanel: true,

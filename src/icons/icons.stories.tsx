@@ -8,7 +8,7 @@ const iconComponents = Object.entries(Icons).filter(([name, component]) => {
 }) as [string, React.ComponentType<LucideProps>][];
 
 const meta: Meta = {
-  title: 'Design System/Icons',
+  title: 'Icons/Icons',
   parameters: {
     docs: {
       description: {

@@ -467,8 +467,8 @@ top toolbar - handled via SB themes
 .light .docblock-argstable-body tr > td:nth-child(2) > div > div > span[class],
 .light .docblock-argstable-body tr > td:nth-child(3) > div > span[class],
 .light .docblock-argstable-body tr > td:nth-child(3) > span[class] {
-  background-color: rgb(243, 244, 246); /* bg-gray-100 */
-  border-color: rgb(229, 231, 235); /* border-gray-200 */
+  background-color: #e5e7eb; /* bg-gray-200 */
+  border-color: #d1d5db; /* border-gray-300 */
   color: rgb(31, 41, 55); /* text-gray-800 */
 }
 
