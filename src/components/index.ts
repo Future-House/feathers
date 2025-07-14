@@ -5,6 +5,8 @@ export {
   AccordionContent,
 } from '@/components/accordion';
 
+export { Alert, AlertTitle, AlertDescription } from '@/components/alert';
+
 export { AspectRatio } from '@/components/aspect-ratio';
 
 export { Avatar, AvatarImage, AvatarFallback } from '@/components/avatar';

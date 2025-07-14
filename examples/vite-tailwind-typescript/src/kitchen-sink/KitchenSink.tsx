@@ -14,6 +14,7 @@ import ButtonExample from './ButtonExample';
 import CheckboxExample from './CheckboxExample';
 import ComboboxExample from './ComboboxExample';
 import CommandExample from './CommandExample';
+import AlertExample from './AlertExample';
 import AlertDialogExample from './AlertDialogExample';
 import CalendarExample from './CalendarExample';
 import AspectRatioExample from './AspectRatioExample';
@@ -54,6 +55,7 @@ export default function KitchenSink() {
       <CheckboxExample />
       <ComboboxExample />
       <CommandExample />
+      <AlertExample />
       <AlertDialogExample />
       <CalendarExample />
       <AspectRatioExample />

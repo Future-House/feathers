@@ -18,6 +18,18 @@ const preview: Preview = {
       expanded: true, // showcase more info on dedicated story pages
       disableSaveFromUI: true,
     },
+    options: {
+      storySort: {
+        method: 'alphabetical',
+        order: [
+          'Introduction',
+          'Design System',
+          'Icons',
+          'Providers',
+          'Components',
+        ],
+      },
+    },
     docs: {
       // theme: themeLightDocs,
       // source: { language: "html" },
