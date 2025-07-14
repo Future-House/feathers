@@ -5,9 +5,8 @@ import {
   TabsTrigger,
   TabsContent,
 } from '../../src/components/tabs';
-import { Badge } from '../../src/components/badge';
 
-<Meta title="Introduction/Getting Started" />
+<Meta title="Introduction/Getting Started" parameters={{ layout: 'fullscreen', docs: { page: null } }} />
 
 # Getting Started
 
@@ -19,9 +18,7 @@ Install Feathers using your preferred package manager:
 
 <Tabs defaultValue="npm" className="my-6">
   <TabsList>
-    <TabsTrigger value="npm" className="flex items-center gap-2">
-      npm <Badge variant="outline" className="text-xs">Recommended</Badge>
-    </TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
     <TabsTrigger value="yarn">yarn</TabsTrigger>
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
   </TabsList>
@@ -83,7 +80,7 @@ Feathers supports multiple import patterns for flexibility:
 <Tabs defaultValue="named" className="my-6">
   <TabsList>
     <TabsTrigger value="named" className="flex items-center gap-2">
-      Named Imports <Badge variant="outline" className="text-xs">Recommended</Badge>
+      Named Imports
     </TabsTrigger>
     <TabsTrigger value="individual">Individual Imports</TabsTrigger>
   </TabsList>

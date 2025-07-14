@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react';
 
-import { ThemeProvider } from '../src/components/theme-provider';
 import { Typography } from '../src/components/typography';
 
 import themeLight from './themes/theme-light.js';
@@ -14,9 +13,7 @@ import './styles.css'; // custom storybook overrides
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    // layout: 'centered',
     layout: 'fullscreen',
-
     controls: {
       expanded: true, // showcase more info on dedicated story pages
       disableSaveFromUI: true,
@@ -80,13 +77,9 @@ const preview: Preview = {
   },
   decorators: [
     Story => (
-      // <ThemeProvider
-      //   storageKey="feathers-storybook-theme"
-      // >
       <div className="p-4">
         <Story />
       </div>
-      // </ThemeProvider>
     ),
   ],
 };
@@ -99,6 +92,7 @@ const preview: Preview = {
 
 // function onFailedToFetchModule(message) {
 //   const isProd = process.env.MODE === "production";
+//   const isProd = import.meta.env.MODE === "production";
 
 //   if (isProd && message?.includes("Failed to fetch dynamically imported module")) {
 //     window.location.reload();

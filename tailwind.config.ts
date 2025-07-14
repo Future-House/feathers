@@ -1,7 +1,11 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['./src/**/*.{ts,tsx}', './stories/**/*.{ts,tsx}'],
+  content: [
+    './src/**/*.{ts,tsx}',
+    './stories/**/*.{ts,tsx}',
+    './docs/**/*.{ts,tsx,mdx}',
+  ],
   darkMode: 'class',
   theme: {
     extend: {
