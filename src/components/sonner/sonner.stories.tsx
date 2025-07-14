@@ -149,13 +149,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    Story => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
 } satisfies Meta<typeof Toaster>;
 
 export default meta;
