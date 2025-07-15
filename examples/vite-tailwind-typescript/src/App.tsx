@@ -4,11 +4,11 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from '@future-house/feathers';
-import '@future-house/feathers/index.css';
 
 import KitchenSink from './kitchen-sink/KitchenSink';
 import Content from './components/Content';
 import SidebarNavigation from './components/SidebarNavigation';
+import CustomTheme from './components/CustomTheme';
 
 function App() {
   return (
@@ -28,6 +28,14 @@ function App() {
                   element={
                     <div className="p-6">
                       <KitchenSink />
+                    </div>
+                  }
+                />
+                <Route
+                  path="/custom-theme"
+                  element={
+                    <div className="p-6">
+                      <CustomTheme />
                     </div>
                   }
                 />

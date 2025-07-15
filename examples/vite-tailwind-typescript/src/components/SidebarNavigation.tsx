@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Home, Package2 } from 'lucide-react';
+import { House, Package2, Palette } from '@future-house/feathers/icons';
 import {
   Sidebar,
   SidebarContent,
@@ -33,7 +33,7 @@ function SidebarNavigation() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link to="/">
-                    <Home className="h-4 w-4" />
+                    <House className="h-4 w-4" />
                     <span>Home</span>
                   </Link>
                 </SidebarMenuButton>
@@ -46,13 +46,21 @@ function SidebarNavigation() {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link to="/custom-theme">
+                    <Palette className="h-4 w-4" />
+                    <span>Custom Theme</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <div className="ml-auto">
-          <ThemeToggle />
+          <ThemeToggle variant="dropdown" />
         </div>
       </SidebarFooter>
     </Sidebar>

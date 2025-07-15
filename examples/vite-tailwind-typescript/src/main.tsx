@@ -6,7 +6,7 @@ import { ThemeProvider } from '@future-house/feathers';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="system">
       <App />
     </ThemeProvider>
   </StrictMode>
