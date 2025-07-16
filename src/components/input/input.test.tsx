@@ -330,6 +330,35 @@ describe('Input', () => {
     expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
+  it('handles error prop', () => {
+    render(<Input error data-testid="input" />);
+
+    const input = screen.getByTestId('input');
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('applies error styling when error prop is true', () => {
+    render(<Input error data-testid="input" />);
+
+    const input = screen.getByTestId('input');
+    expect(input).toHaveClass('ring-destructive/20', 'border-destructive');
+  });
+
+  it('does not apply error styling when error prop is false', () => {
+    render(<Input error={false} data-testid="input" />);
+
+    const input = screen.getByTestId('input');
+    expect(input).not.toHaveClass('ring-destructive/20', 'border-destructive');
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid', () => {
+    render(<Input error aria-invalid="false" data-testid="input" />);
+
+    const input = screen.getByTestId('input');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input).toHaveClass('ring-destructive/20', 'border-destructive');
+  });
+
   it('forwards ref correctly', () => {
     const ref = React.createRef<HTMLInputElement>();
 

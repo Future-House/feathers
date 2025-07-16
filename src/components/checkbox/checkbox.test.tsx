@@ -277,4 +277,34 @@ describe('Checkbox', () => {
     checkbox = screen.getByRole('checkbox');
     expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
   });
+
+  it('handles error prop', () => {
+    render(<Checkbox error aria-label="Error checkbox" />);
+    const checkbox = screen.getByRole('checkbox');
+    expect(checkbox).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('applies error styling when error prop is true', () => {
+    render(<Checkbox error aria-label="Error checkbox" />);
+    const checkbox = screen.getByRole('checkbox');
+    expect(checkbox).toHaveClass('ring-destructive/20', 'border-destructive');
+  });
+
+  it('does not apply error styling when error prop is false', () => {
+    render(<Checkbox error={false} aria-label="No error checkbox" />);
+    const checkbox = screen.getByRole('checkbox');
+    expect(checkbox).not.toHaveClass(
+      'ring-destructive/20',
+      'border-destructive'
+    );
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid', () => {
+    render(
+      <Checkbox error aria-invalid="false" aria-label="Override checkbox" />
+    );
+    const checkbox = screen.getByRole('checkbox');
+    expect(checkbox).toHaveAttribute('aria-invalid', 'false');
+    expect(checkbox).toHaveClass('ring-destructive/20', 'border-destructive');
+  });
 });

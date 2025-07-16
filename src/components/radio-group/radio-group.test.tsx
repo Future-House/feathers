@@ -163,6 +163,34 @@ describe('RadioGroup', () => {
     const radioGroup = screen.getByRole('radiogroup');
     expect(radioGroup).toHaveAttribute('aria-required', 'true');
   });
+
+  it('handles error prop on RadioGroup', () => {
+    render(
+      <RadioGroup error data-testid="radio-group">
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option1" id="option1" />
+          <Label htmlFor="option1">Option 1</Label>
+        </div>
+      </RadioGroup>
+    );
+
+    const radioGroup = screen.getByTestId('radio-group');
+    expect(radioGroup).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid on RadioGroup', () => {
+    render(
+      <RadioGroup error aria-invalid="false" data-testid="radio-group">
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option1" id="option1" />
+          <Label htmlFor="option1">Option 1</Label>
+        </div>
+      </RadioGroup>
+    );
+
+    const radioGroup = screen.getByTestId('radio-group');
+    expect(radioGroup).toHaveAttribute('aria-invalid', 'false');
+  });
 });
 
 describe('RadioGroupItem', () => {
@@ -207,5 +235,71 @@ describe('RadioGroupItem', () => {
       '[data-slot="radio-group-indicator"]'
     );
     expect(indicator).toBeInTheDocument();
+  });
+
+  it('handles error prop on RadioGroupItem', () => {
+    render(
+      <RadioGroup>
+        <RadioGroupItem value="option1" error data-testid="radio-item" />
+      </RadioGroup>
+    );
+
+    const radioItem = screen.getByTestId('radio-item');
+    expect(radioItem).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('applies error styling when error prop is true on RadioGroupItem', () => {
+    render(
+      <RadioGroup>
+        <RadioGroupItem value="option1" error data-testid="radio-item" />
+      </RadioGroup>
+    );
+
+    const radioItem = screen.getByTestId('radio-item');
+    expect(radioItem).toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
+
+  it('does not apply error styling when error prop is false on RadioGroupItem', () => {
+    render(
+      <RadioGroup>
+        <RadioGroupItem
+          value="option1"
+          error={false}
+          data-testid="radio-item"
+        />
+      </RadioGroup>
+    );
+
+    const radioItem = screen.getByTestId('radio-item');
+    expect(radioItem).not.toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid on RadioGroupItem', () => {
+    render(
+      <RadioGroup>
+        <RadioGroupItem
+          value="option1"
+          error
+          aria-invalid="false"
+          data-testid="radio-item"
+        />
+      </RadioGroup>
+    );
+
+    const radioItem = screen.getByTestId('radio-item');
+    expect(radioItem).toHaveAttribute('aria-invalid', 'false');
+    expect(radioItem).toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
   });
 });

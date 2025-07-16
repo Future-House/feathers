@@ -250,6 +250,36 @@ describe('Textarea', () => {
     expect(textarea).toHaveClass('aria-invalid:ring-destructive/20');
   });
 
+  it('handles error prop', () => {
+    render(<Textarea error aria-label="Error textarea" />);
+    const textarea = screen.getByRole('textbox');
+    expect(textarea).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('applies error styling when error prop is true', () => {
+    render(<Textarea error aria-label="Error textarea" />);
+    const textarea = screen.getByRole('textbox');
+    expect(textarea).toHaveClass('ring-destructive/20', 'border-destructive');
+  });
+
+  it('does not apply error styling when error prop is false', () => {
+    render(<Textarea error={false} aria-label="No error textarea" />);
+    const textarea = screen.getByRole('textbox');
+    expect(textarea).not.toHaveClass(
+      'ring-destructive/20',
+      'border-destructive'
+    );
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid', () => {
+    render(
+      <Textarea error aria-invalid="false" aria-label="Override textarea" />
+    );
+    const textarea = screen.getByRole('textbox');
+    expect(textarea).toHaveAttribute('aria-invalid', 'false');
+    expect(textarea).toHaveClass('ring-destructive/20', 'border-destructive');
+  });
+
   it('has correct data-slot attribute', () => {
     render(<Textarea aria-label="Data slot textarea" />);
     const textarea = screen.getByRole('textbox');

@@ -131,6 +131,14 @@ const meta = {
         defaultValue: { summary: undefined },
       },
     },
+    error: {
+      control: { type: 'boolean' },
+      description: 'Whether the checkbox is in an error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 } satisfies Meta<typeof Checkbox>;
 
@@ -496,6 +504,26 @@ export const CustomStyling: Story = {
           Rounded purple checkbox
         </label>
       </div>
+    </div>
+  ),
+};
+
+export const Error: Story = {
+  args: {
+    error: true,
+  },
+  render: args => (
+    <div className="space-y-4">
+      <div className="flex items-center space-x-2">
+        <Checkbox id="error-checkbox" {...args} />
+        <label
+          htmlFor="error-checkbox"
+          className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          This checkbox has an error
+        </label>
+      </div>
+      <p className="text-sm text-red-600">This field is required</p>
     </div>
   ),
 };

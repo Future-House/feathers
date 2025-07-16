@@ -186,6 +186,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    error: {
+      control: { type: 'boolean' },
+      description: 'Whether the input is in an error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 } satisfies Meta<typeof Input>;
 
@@ -254,6 +262,13 @@ export const Required: Story = {
   args: {
     placeholder: 'Required field *',
     required: true,
+  },
+};
+
+export const Error: Story = {
+  args: {
+    placeholder: 'Enter text...',
+    error: true,
   },
 };
 
@@ -430,7 +445,7 @@ export const ValidationStates: Story = {
 
       <div className="space-y-2">
         <label className="text-sm font-medium">Invalid Input</label>
-        <Input placeholder="Invalid input" aria-invalid="true" />
+        <Input placeholder="Invalid input" error />
         <p className="text-destructive text-xs">This field is required</p>
       </div>
 

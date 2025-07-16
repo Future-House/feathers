@@ -262,4 +262,41 @@ describe('Switch', () => {
       'data-[state=checked]:translate-x-[calc(100%-2px)]'
     );
   });
+
+  it('handles error prop', () => {
+    render(<Switch error aria-label="Error switch" />);
+    const switchElement = screen.getByRole('switch');
+    expect(switchElement).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('applies error styling when error prop is true', () => {
+    render(<Switch error aria-label="Error switch" />);
+    const switchElement = screen.getByRole('switch');
+    expect(switchElement).toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
+
+  it('does not apply error styling when error prop is false', () => {
+    render(<Switch error={false} aria-label="No error switch" />);
+    const switchElement = screen.getByRole('switch');
+    expect(switchElement).not.toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid', () => {
+    render(<Switch error aria-invalid="false" aria-label="Override switch" />);
+    const switchElement = screen.getByRole('switch');
+    expect(switchElement).toHaveAttribute('aria-invalid', 'false');
+    expect(switchElement).toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
 });

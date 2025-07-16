@@ -109,6 +109,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    error: {
+      control: 'boolean',
+      description: 'Whether the select is in an error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
   subcomponents: {
     SelectTrigger: {
@@ -124,6 +132,11 @@ const meta = {
         className: {
           type: 'string',
           description: 'Additional CSS classes to apply to the trigger.',
+        },
+        error: {
+          type: 'boolean',
+          description: 'Whether the select is in an error state',
+          defaultValue: 'false',
         },
       },
     },
@@ -542,6 +555,30 @@ export const Controlled: Story = {
   parameters: {
     controls: {
       exclude: ['value', 'defaultValue', 'onValueChange'],
+    },
+  },
+};
+
+export const Error: Story = {
+  render: args => (
+    <Select error {...args}>
+      <SelectTrigger className="w-[180px]" error>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="orange">Orange</SelectItem>
+        <SelectItem value="grape">Grape</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectContent>
+    </Select>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'A select in an error state with error styling applied.',
+      },
     },
   },
 };

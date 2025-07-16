@@ -392,4 +392,119 @@ describe('Select', () => {
       'custom-value'
     );
   });
+
+  it('handles error prop on Select', () => {
+    render(
+      <Select error>
+        <SelectTrigger>
+          <SelectValue placeholder="Error select" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="test">Test</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    expect(screen.getByTestId('select-root')).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    );
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid on Select', () => {
+    render(
+      <Select error aria-invalid="false">
+        <SelectTrigger>
+          <SelectValue placeholder="Error select" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="test">Test</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    expect(screen.getByTestId('select-root')).toHaveAttribute(
+      'aria-invalid',
+      'false'
+    );
+  });
+
+  it('handles error prop on SelectTrigger', () => {
+    render(
+      <Select>
+        <SelectTrigger error>
+          <SelectValue placeholder="Error trigger" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="test">Test</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    expect(screen.getByTestId('select-trigger')).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    );
+  });
+
+  it('applies error styling when error prop is true on SelectTrigger', () => {
+    render(
+      <Select>
+        <SelectTrigger error>
+          <SelectValue placeholder="Error trigger" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="test">Test</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    const trigger = screen.getByTestId('select-trigger');
+    expect(trigger).toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
+
+  it('does not apply error styling when error prop is false on SelectTrigger', () => {
+    render(
+      <Select>
+        <SelectTrigger error={false}>
+          <SelectValue placeholder="No error trigger" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="test">Test</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    const trigger = screen.getByTestId('select-trigger');
+    expect(trigger).not.toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
+
+  it('error prop applies styling regardless of explicit aria-invalid on SelectTrigger', () => {
+    render(
+      <Select>
+        <SelectTrigger error aria-invalid="false">
+          <SelectValue placeholder="Override trigger" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="test">Test</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    const trigger = screen.getByTestId('select-trigger');
+    expect(trigger).toHaveAttribute('aria-invalid', 'false');
+    expect(trigger).toHaveClass(
+      'ring-destructive/20',
+      'border-destructive',
+      'dark:ring-destructive/40'
+    );
+  });
 });

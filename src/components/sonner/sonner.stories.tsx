@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { toast } from 'sonner';
 import { Button } from '../button';
-import { ThemeProvider } from '../theme-provider';
 import { Toaster } from './sonner';
 
 const meta = {
@@ -15,6 +14,13 @@ const meta = {
       },
     },
   },
+  decorators: [
+    Story => (
+      <div className="min-h-32">
+        <Story />
+      </div>
+    ),
+  ],
   tags: [],
   argTypes: {
     richColors: {

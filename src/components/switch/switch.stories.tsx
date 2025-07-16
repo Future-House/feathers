@@ -133,6 +133,14 @@ const meta = {
         defaultValue: { summary: undefined },
       },
     },
+    error: {
+      control: { type: 'boolean' },
+      description: 'Whether the switch is in an error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 } satisfies Meta<typeof Switch>;
 
@@ -550,6 +558,28 @@ export const WithDescriptions: Story = {
           </p>
         </div>
       </div>
+    </div>
+  ),
+};
+
+export const Error: Story = {
+  args: {
+    error: true,
+  },
+  render: args => (
+    <div className="space-y-4">
+      <div className="flex items-center space-x-2">
+        <Switch id="error-switch" {...args} />
+        <label
+          htmlFor="error-switch"
+          className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Accept terms and conditions
+        </label>
+      </div>
+      <p className="text-sm text-red-600">
+        You must accept the terms and conditions to continue.
+      </p>
     </div>
   ),
 };

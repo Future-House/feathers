@@ -86,36 +86,54 @@ const meta = {
         defaultValue: { summary: 'true' },
       },
     },
+    error: {
+      control: 'boolean',
+      description: 'Whether the radio group is in an error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
-  subcomponents: {
-    RadioGroupItem: {
-      description:
-        'A single radio item in the group. Each item represents one selectable option with a visual indicator when selected.',
-      argTypes: {
-        value: {
-          type: 'string',
-          description: 'The value given as data when submitted with a name.',
-        },
-        disabled: {
-          type: 'boolean',
+  parameters: {
+    docs: {
+      subcomponents: {
+        RadioGroupItem: {
           description:
-            'When true, prevents the user from interacting with the item.',
-          defaultValue: 'false',
-        },
-        required: {
-          type: 'boolean',
-          description:
-            'When true, indicates that the user must check the item before the owning form can be submitted.',
-          defaultValue: 'false',
-        },
-        className: {
-          type: 'string',
-          description: 'Additional CSS classes to apply to the radio item.',
-        },
-        id: {
-          type: 'string',
-          description:
-            'The id of the radio item. Used to associate with a label.',
+            'A single radio item in the group. Each item represents one selectable option with a visual indicator when selected.',
+          argTypes: {
+            value: {
+              type: 'string',
+              description:
+                'The value given as data when submitted with a name.',
+            },
+            disabled: {
+              type: 'boolean',
+              description:
+                'When true, prevents the user from interacting with the item.',
+              defaultValue: 'false',
+            },
+            required: {
+              type: 'boolean',
+              description:
+                'When true, indicates that the user must check the item before the owning form can be submitted.',
+              defaultValue: 'false',
+            },
+            className: {
+              type: 'string',
+              description: 'Additional CSS classes to apply to the radio item.',
+            },
+            id: {
+              type: 'string',
+              description:
+                'The id of the radio item. Used to associate with a label.',
+            },
+            error: {
+              type: 'boolean',
+              description: 'Whether the radio item is in an error state',
+              defaultValue: 'false',
+            },
+          },
         },
       },
     },
@@ -125,7 +143,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function BasicRadioGroupComponent(args) {
+function BasicRadioGroupComponent(args: Story['args']) {
   const [value, setValue] = React.useState('option1');
 
   return (
@@ -146,7 +164,7 @@ function BasicRadioGroupComponent(args) {
   );
 }
 
-function PaymentMethodComponent(args) {
+function PaymentMethodComponent(args: Story['args']) {
   const [paymentMethod, setPaymentMethod] = React.useState('card');
 
   return (
@@ -202,7 +220,7 @@ function PaymentMethodComponent(args) {
   );
 }
 
-function NotificationSettingsComponent(args) {
+function NotificationSettingsComponent(args: Story['args']) {
   const [frequency, setFrequency] = React.useState('daily');
 
   return (
@@ -263,7 +281,7 @@ function NotificationSettingsComponent(args) {
   );
 }
 
-function HorizontalRadioGroupComponent(args) {
+function HorizontalRadioGroupComponent(args: Story['args']) {
   const [size, setSize] = React.useState('medium');
 
   return (
@@ -298,7 +316,7 @@ function HorizontalRadioGroupComponent(args) {
   );
 }
 
-function DisabledRadioGroupComponent(args) {
+function DisabledRadioGroupComponent(args: Story['args']) {
   return (
     <div className="space-y-4">
       <div>
@@ -325,7 +343,7 @@ function DisabledRadioGroupComponent(args) {
   );
 }
 
-function MixedDisabledRadioGroupComponent(args) {
+function MixedDisabledRadioGroupComponent(args: Story['args']) {
   const [plan, setPlan] = React.useState('basic');
 
   return (
@@ -352,6 +370,38 @@ function MixedDisabledRadioGroupComponent(args) {
           </Label>
         </div>
       </RadioGroup>
+    </div>
+  );
+}
+
+function ErrorRadioGroupComponent(args: Story['args']) {
+  const [value, setValue] = React.useState('');
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <h3 className="text-lg font-medium">Required Selection</h3>
+        <p className="text-muted-foreground text-sm">
+          Please select an option to continue.
+        </p>
+      </div>
+      <RadioGroup {...args} value={value} onValueChange={setValue} error>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem error value="option1" id="error-option1" />
+          <Label htmlFor="error-option1">Option 1</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem error value="option2" id="error-option2" />
+          <Label htmlFor="error-option2">Option 2</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem error value="option3" id="error-option3" />
+          <Label htmlFor="error-option3">Option 3</Label>
+        </div>
+      </RadioGroup>
+      <p className="text-destructive text-sm">
+        This field is required. Please make a selection.
+      </p>
     </div>
   );
 }
@@ -400,4 +450,8 @@ export const WithDefaultValue: Story = {
       </div>
     </RadioGroup>
   ),
+};
+
+export const Error: Story = {
+  render: args => <ErrorRadioGroupComponent {...args} />,
 };

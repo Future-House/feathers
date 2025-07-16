@@ -82,6 +82,14 @@ const meta = {
         defaultValue: { summary: 'soft' },
       },
     },
+    error: {
+      control: { type: 'boolean' },
+      description: 'Whether the textarea is in an error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 } satisfies Meta<typeof Textarea>;
 
@@ -196,7 +204,7 @@ export const WithError: Story = {
       <Textarea
         id="error-textarea"
         placeholder="Enter your comments..."
-        aria-invalid="true"
+        error
         aria-describedby="error-message"
         rows={3}
       />
@@ -205,4 +213,13 @@ export const WithError: Story = {
       </p>
     </div>
   ),
+};
+
+export const Error: Story = {
+  args: {
+    placeholder: 'Type your message here...',
+    error: true,
+    rows: 4,
+    className: 'w-80',
+  },
 };
