@@ -15,6 +15,13 @@ const meta = {
       },
     },
   },
+  decorators: [
+    Story => (
+      <div className="w-[320px]">
+        <Story />
+      </div>
+    ),
+  ],
   tags: [],
   argTypes: {
     // Standard HTML input props
@@ -265,13 +272,6 @@ export const Required: Story = {
   },
 };
 
-export const Error: Story = {
-  args: {
-    placeholder: 'Enter text...',
-    error: true,
-  },
-};
-
 export const WithMaxLength: Story = {
   args: {
     placeholder: 'Max 10 characters',
@@ -428,34 +428,16 @@ export const PasswordToggle: Story = {
   render: args => <PasswordToggleComponent {...args} />,
 };
 
-export const ValidationStates: Story = {
+export const Error: Story = {
   parameters: {
     controls: { disable: true },
   },
   render: () => (
     <div className="w-96 space-y-4">
       <div className="space-y-2">
-        <label className="text-sm font-medium">Valid Input</label>
-        <Input
-          placeholder="Valid input"
-          className="border-green-500 focus-visible:border-green-600 focus-visible:ring-green-500/20"
-        />
-        <p className="text-xs text-green-600">This field is valid</p>
-      </div>
-
-      <div className="space-y-2">
         <label className="text-sm font-medium">Invalid Input</label>
         <Input placeholder="Invalid input" error />
         <p className="text-destructive text-xs">This field is required</p>
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-sm font-medium">Warning Input</label>
-        <Input
-          placeholder="Warning input"
-          className="border-yellow-500 focus-visible:border-yellow-600 focus-visible:ring-yellow-500/20"
-        />
-        <p className="text-xs text-yellow-600">Please check this field</p>
       </div>
     </div>
   ),

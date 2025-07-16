@@ -60,7 +60,7 @@ const preview: Preview = {
           </Typography>
         ),
         li: ({ children }) => (
-          <Typography variant="p" asChild className="sb-unstyled mb-2">
+          <Typography asChild className="sb-unstyled mb-2">
             <li>{children}</li>
           </Typography>
         ),
