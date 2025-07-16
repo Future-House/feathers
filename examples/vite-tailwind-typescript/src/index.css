@@ -10,10 +10,10 @@
 
 :root {
   /* --radius: 1rem; */
-  --success: #1F7A1F;
+  --success: #1f7a1f;
   --success-foreground: oklch(0.95 0 0);
   --warning: #d77812;
-  --warning-foreground:  oklch(0.95 0 0);
+  --warning-foreground: oklch(0.95 0 0);
 }
 
 .dark {
@@ -21,5 +21,5 @@
   --success: #269c26;
   --success-foreground: oklch(0.95 0 0);
   --warning: #fa8c16;
-  --warning-foreground:  oklch(0.95 0 0);
+  --warning-foreground: oklch(0.95 0 0);
 }

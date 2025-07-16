@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { LucideProps } from 'lucide-react';
+import { useState } from 'react';
 import * as Icons from './index';
+import { Input } from '../components/input';
 
 // Extract all icon components (filter out the LucideProps type)
 const iconComponents = Object.entries(Icons).filter(([name, component]) => {
@@ -89,19 +91,39 @@ const IconGrid = ({
   size?: number;
   color?: string;
 }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredIcons = iconComponents.filter(([name]) =>
+    name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-4 p-4">
-      {iconComponents.map(([name, IconComponent]) => (
-        <div
-          key={name}
-          className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-lg border border-gray-200 p-3"
-        >
-          <IconComponent size={size} color={color} />
-          <span className="text-center text-xs leading-tight break-all">
-            {name}
-          </span>
-        </div>
-      ))}
+    <div className="p-4">
+      <div className="mb-6">
+        <Input
+          type="text"
+          placeholder="Search icons..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          className="w-full max-w-md rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+        <p className="mt-2 text-sm text-gray-600">
+          Showing {filteredIcons.length} of {iconComponents.length} icons
+        </p>
+      </div>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-4">
+        {filteredIcons.map(([name, IconComponent]) => (
+          <div
+            key={name}
+            className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-lg border border-gray-200 p-3"
+          >
+            <IconComponent size={size} color={color} />
+            <span className="text-center text-xs leading-tight break-all">
+              {name}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -111,7 +133,7 @@ export const AllIcons: Story = {
   parameters: {
     docs: {
       description: {
-        story: `All available icons in the library (${iconComponents.length} total).`,
+        story: `All available icons in the library (${iconComponents.length} total). Use the search field to filter icons by name.`,
       },
     },
   },
