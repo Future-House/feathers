@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './select';
+import { Label } from '@/components/label';
 
 const meta = {
   title: 'Components/Select',
@@ -578,6 +579,64 @@ export const Error: Story = {
     docs: {
       description: {
         story: 'A select in an error state with error styling applied.',
+      },
+    },
+  },
+};
+
+export const WithLabel: Story = {
+  render: args => (
+    <div className="space-y-2">
+      <Label htmlFor="framework-select">Framework</Label>
+      <Select {...args}>
+        <SelectTrigger id="framework-select" className="w-[180px]">
+          <SelectValue placeholder="Select a framework" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="react">React</SelectItem>
+          <SelectItem value="vue">Vue</SelectItem>
+          <SelectItem value="angular">Angular</SelectItem>
+          <SelectItem value="svelte">Svelte</SelectItem>
+          <SelectItem value="next">Next.js</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A select with a Label component for better accessibility and form structure. The Label is properly associated with the select trigger using the htmlFor and id attributes.',
+      },
+    },
+  },
+};
+
+export const WithLabelAndHelperText: Story = {
+  render: args => (
+    <div className="space-y-2">
+      <Label htmlFor="priority-select">Priority Level</Label>
+      <Select {...args}>
+        <SelectTrigger id="priority-select" className="w-[200px]">
+          <SelectValue placeholder="Select priority" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="low">Low</SelectItem>
+          <SelectItem value="medium">Medium</SelectItem>
+          <SelectItem value="high">High</SelectItem>
+          <SelectItem value="urgent">Urgent</SelectItem>
+        </SelectContent>
+      </Select>
+      <p className="text-muted-foreground text-sm">
+        Choose the priority level for this task
+      </p>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A select with a Label and helper text showing how to create a complete form field with descriptive text.',
       },
     },
   },
