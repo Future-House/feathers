@@ -79,19 +79,17 @@ Feathers supports multiple import patterns for flexibility:
 
 <Tabs defaultValue="named" className="my-6">
   <TabsList>
-    <TabsTrigger value="named" className="flex items-center gap-2">
-      Named Imports
-    </TabsTrigger>
+    <TabsTrigger value="named">Named Imports</TabsTrigger>
     <TabsTrigger value="individual">Individual Imports</TabsTrigger>
   </TabsList>
   <TabsContent value="named" className="space-y-2">
-    <p className="text-sm text-muted-foreground">Import specific components for better tree-shaking</p>
+Import specific components for better tree-shaking
     ```jsx
     import { Button, Card, Badge } from '@future-house/feathers';
     ```
   </TabsContent>
   <TabsContent value="individual" className="space-y-2">
-    <p className="text-sm text-muted-foreground">Import from specific component paths</p>
+Import from specific component paths
     ```jsx
     import { Button } from '@future-house/feathers/components/button';
     import { Card } from '@future-house/feathers/components/card';
