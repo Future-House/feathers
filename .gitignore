@@ -4,9 +4,9 @@ node_modules/
 .pnp.js
 
 # Production builds
-dist/
+# dist/
 build/
-!dist/index.html
+# !dist/index.html
 
 # Development
 .cache/

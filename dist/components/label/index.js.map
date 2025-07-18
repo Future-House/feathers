@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Label"],"sources":["../../../src/components/label/index.ts"],"sourcesContent":["export { Label } from './label';\n"],"mappings":"AAAA,SAASA,KAAK","ignoreList":[]}

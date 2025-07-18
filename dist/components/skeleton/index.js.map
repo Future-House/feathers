@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Skeleton"],"sources":["../../../src/components/skeleton/index.ts"],"sourcesContent":["export { Skeleton } from './skeleton';\n"],"mappings":"AAAA,SAASA,QAAQ","ignoreList":[]}

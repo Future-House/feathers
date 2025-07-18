@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["FileUploadChat"],"sources":["../../../src/components/file-upload-chat/index.ts"],"sourcesContent":["export { FileUploadChat } from './file-upload-chat';\nexport type { UploadedFile, FileUploadChatProps } from './file-upload-chat';\n"],"mappings":"AAAA,SAASA,cAAc","ignoreList":[]}

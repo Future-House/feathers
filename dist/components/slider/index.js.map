@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Slider"],"sources":["../../../src/components/slider/index.ts"],"sourcesContent":["export { Slider } from './slider';\n"],"mappings":"AAAA,SAASA,MAAM","ignoreList":[]}

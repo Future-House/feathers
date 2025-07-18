@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Typography","typographyVariants"],"sources":["../../../src/components/typography/index.ts"],"sourcesContent":["export { Typography, typographyVariants } from './typography';\nexport type { TypographyProps } from './typography';\n"],"mappings":"AAAA,SAASA,UAAU,EAAEC,kBAAkB","ignoreList":[]}

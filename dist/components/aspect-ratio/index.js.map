@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["AspectRatio"],"sources":["../../../src/components/aspect-ratio/index.ts"],"sourcesContent":["export { AspectRatio } from './aspect-ratio';\n"],"mappings":"AAAA,SAASA,WAAW","ignoreList":[]}

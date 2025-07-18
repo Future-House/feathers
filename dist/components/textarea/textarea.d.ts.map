@@ -1,0 +1,1 @@
+{"version":3,"file":"textarea.d.ts","sourceRoot":"","sources":["../../../src/components/textarea/textarea.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAI/B,UAAU,aAAc,SAAQ,KAAK,CAAC,cAAc,CAAC,UAAU,CAAC;IAC9D,KAAK,CAAC,EAAE,OAAO,CAAC;CACjB;AAED,iBAAS,QAAQ,CAAC,EAAE,SAAS,EAAE,KAAK,EAAE,GAAG,KAAK,EAAE,EAAE,aAAa,2CAc9D;AAED,OAAO,EAAE,QAAQ,EAAE,CAAC"}
