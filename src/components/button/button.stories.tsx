@@ -57,6 +57,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    fullWidth: {
+      control: { type: 'boolean' },
+      description: 'Whether the button is full width',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -89,6 +97,25 @@ export const Sizes: Story = {
       <Button size="default">Default</Button>
       <Button size="lg">Large</Button>
       <Button size="icon">
+        <Mail />
+      </Button>
+    </div>
+  ),
+};
+
+export const FullWidth: Story = {
+  render: () => (
+    <div className="flex flex-col items-center gap-4">
+      <Button fullWidth size="sm">
+        Small
+      </Button>
+      <Button fullWidth size="default">
+        Default
+      </Button>
+      <Button fullWidth size="lg">
+        Large
+      </Button>
+      <Button fullWidth size="icon">
         <Mail />
       </Button>
     </div>
