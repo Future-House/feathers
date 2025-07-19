@@ -1923,9 +1923,6 @@
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
-  .px-\[0\.3rem\] {
-    padding-inline: 0.3rem;
-  }
   .py-0 {
     padding-block: calc(var(--spacing) * 0);
   }
