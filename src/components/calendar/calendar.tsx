@@ -5,6 +5,7 @@ import {
   ChevronRightIcon,
 } from 'lucide-react';
 import { DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker';
+import type { DateRange } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
 import { Button, buttonVariants } from '@/components/button';
@@ -206,3 +207,4 @@ function CalendarDayButton({
 }
 
 export { Calendar, CalendarDayButton };
+export type { DateRange };

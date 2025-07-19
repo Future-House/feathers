@@ -49,6 +49,7 @@ export {
 } from '@/components/breadcrumb';
 
 export { Calendar, CalendarDayButton } from '@/components/calendar';
+export type { DateRange } from '@/components/calendar';
 
 export {
   type CarouselApi,

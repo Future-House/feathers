@@ -8,6 +8,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, 
 export { AlertDialog, AlertDialogPortal, AlertDialogOverlay, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, } from './alert-dialog';
 export { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis, } from './breadcrumb';
 export { Calendar, CalendarDayButton } from './calendar';
+export type { DateRange } from './calendar';
 export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, } from './carousel';
 export { Checkbox } from './checkbox';
 export { Collapsible, CollapsibleTrigger, CollapsibleContent, } from './collapsible';

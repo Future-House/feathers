@@ -7,16 +7,11 @@ import {
   CardContent,
   Calendar,
 } from '@future-house/feathers';
+import type { DateRange } from '@future-house/feathers';
 
 export default function CalendarExample() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-  const [selectedRange, setSelectedRange] = useState<
-    | {
-        from: Date | undefined;
-        to: Date | undefined;
-      }
-    | undefined
-  >();
+  const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
 
   return (
     <Card>

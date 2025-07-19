@@ -5,8 +5,8 @@ import {
   CardHeader,
   CardTitle,
   Button,
+  toast,
 } from '@future-house/feathers';
-import { toast } from 'sonner';
 
 export default function SonnerExample() {
   return (
@@ -129,7 +129,7 @@ export default function SonnerExample() {
           <div className="flex flex-wrap gap-2">
             <Button
               onClick={() => {
-                const myPromise = () =>
+                const myPromise = (): Promise<{ name: string }> =>
                   new Promise(resolve =>
                     setTimeout(() => resolve({ name: 'Sonner' }), 2000)
                   );
