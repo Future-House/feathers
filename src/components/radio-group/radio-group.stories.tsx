@@ -95,45 +95,40 @@ const meta = {
       },
     },
   },
-  parameters: {
-    docs: {
-      subcomponents: {
-        RadioGroupItem: {
+  subcomponents: {
+    RadioGroupItem: {
+      description:
+        'A single radio item in the group. Each item represents one selectable option with a visual indicator when selected.',
+      argTypes: {
+        value: {
+          type: 'string',
+          description: 'The value given as data when submitted with a name.',
+        },
+        disabled: {
+          type: 'boolean',
           description:
-            'A single radio item in the group. Each item represents one selectable option with a visual indicator when selected.',
-          argTypes: {
-            value: {
-              type: 'string',
-              description:
-                'The value given as data when submitted with a name.',
-            },
-            disabled: {
-              type: 'boolean',
-              description:
-                'When true, prevents the user from interacting with the item.',
-              defaultValue: 'false',
-            },
-            required: {
-              type: 'boolean',
-              description:
-                'When true, indicates that the user must check the item before the owning form can be submitted.',
-              defaultValue: 'false',
-            },
-            className: {
-              type: 'string',
-              description: 'Additional CSS classes to apply to the radio item.',
-            },
-            id: {
-              type: 'string',
-              description:
-                'The id of the radio item. Used to associate with a label.',
-            },
-            error: {
-              type: 'boolean',
-              description: 'Whether the radio item is in an error state',
-              defaultValue: 'false',
-            },
-          },
+            'When true, prevents the user from interacting with the item.',
+          defaultValue: 'false',
+        },
+        required: {
+          type: 'boolean',
+          description:
+            'When true, indicates that the user must check the item before the owning form can be submitted.',
+          defaultValue: 'false',
+        },
+        className: {
+          type: 'string',
+          description: 'Additional CSS classes to apply to the radio item.',
+        },
+        id: {
+          type: 'string',
+          description:
+            'The id of the radio item. Used to associate with a label.',
+        },
+        error: {
+          type: 'boolean',
+          description: 'Whether the radio item is in an error state',
+          defaultValue: 'false',
         },
       },
     },
