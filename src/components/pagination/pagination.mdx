@@ -1,0 +1,79 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as PaginationStories from './pagination.stories';
+
+<Meta of={PaginationStories} />
+
+<DocLayout meta={PaginationStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={PaginationStories.Default} />
+
+## Component API
+
+### Pagination
+
+<PropsTable argTypes={PaginationStories.default.argTypes} />
+
+<SubcomponentPropTable
+  subcomponents={PaginationStories.default.subcomponents}
+/>
+
+## Examples
+
+### With Ellipsis
+
+Pagination with ellipsis for handling large page sets efficiently.
+
+<Canvas of={PaginationStories.WithEllipsis} />
+
+### Large Set
+
+Comprehensive pagination showing ellipsis on both sides for very large datasets.
+
+<Canvas of={PaginationStories.LargeSet} />
+
+### First Page
+
+Pagination state when on the first page, showing appropriate navigation options.
+
+<Canvas of={PaginationStories.FirstPage} />
+
+### Last Page
+
+Pagination state when on the last page, with proper navigation controls.
+
+<Canvas of={PaginationStories.LastPage} />
+
+## Accessibility
+
+The `Pagination` component follows accessibility best practices:
+
+- Uses semantic `nav` element with proper ARIA labels for navigation context
+- Provides proper `aria-current="page"` attribute for the active page
+- Supports keyboard navigation with Tab, Enter, and Space keys
+- Uses descriptive `aria-label` attributes for Previous/Next buttons
+- Provides screen reader accessible text for ellipsis elements
+- Maintains proper focus management throughout navigation
+- Uses appropriate button and link semantics for different interactions
+
+## Best Practices
+
+- Use clear and descriptive labels for navigation buttons
+- Implement proper page state management in your application
+- Consider the total number of pages when choosing pagination layout
+- Provide visual feedback for the current page state
+- Use ellipsis appropriately to avoid overwhelming users with too many page links
+- Ensure adequate spacing between clickable elements for touch interfaces
+- Test with keyboard navigation and screen readers
+- Consider mobile responsiveness for smaller screens
+- Implement proper loading states during page transitions
+- Use consistent pagination patterns throughout your application
+
+</DocLayout>

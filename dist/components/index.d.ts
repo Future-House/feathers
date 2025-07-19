@@ -22,6 +22,7 @@ export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator, } from './inp
 export { Label } from './label';
 export { Menubar, MenubarPortal, MenubarMenu, MenubarTrigger, MenubarContent, MenubarGroup, MenubarSeparator, MenubarLabel, MenubarItem, MenubarShortcut, MenubarCheckboxItem, MenubarRadioGroup, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent, } from './menubar';
 export { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport, navigationMenuTriggerStyle, } from './navigation-menu';
+export { Pagination, PaginationContent, PaginationLink, PaginationItem, PaginationPrevious, PaginationNext, PaginationEllipsis, } from './pagination';
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, } from './popover';
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export { ResizablePanelGroup, ResizablePanel, ResizableHandle, } from './resizable';

@@ -166,6 +166,16 @@ export {
 } from '@/components/navigation-menu';
 
 export {
+  Pagination,
+  PaginationContent,
+  PaginationLink,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@/components/pagination';
+
+export {
   Popover,
   PopoverTrigger,
   PopoverContent,

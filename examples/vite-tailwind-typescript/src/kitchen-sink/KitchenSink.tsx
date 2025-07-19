@@ -4,6 +4,7 @@ import { Toaster } from '@future-house/feathers';
 import Badge from './Badge';
 import MenubarExample from './MenubarExample';
 import NavigationMenuExample from './NavigationMenuExample';
+import PaginationExample from './PaginationExample';
 import PopoverExample from './PopoverExample';
 import BreadcrumbExample from './BreadcrumbExample';
 import InputExample from './InputExample';
@@ -45,6 +46,7 @@ export default function KitchenSink() {
       <Badge />
       <MenubarExample />
       <NavigationMenuExample />
+      <PaginationExample />
       <PopoverExample />
       <BreadcrumbExample />
       <InputExample />
