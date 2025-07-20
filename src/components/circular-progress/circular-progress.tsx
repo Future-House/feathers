@@ -1,104 +1,120 @@
 import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-const circularProgressVariants = cva('inline-block relative', {
-  variants: {
-    size: {
-      sm: 'size-4',
-      default: 'size-6',
-      lg: 'size-8',
-      xl: 'size-12',
-    },
-    variant: {
-      default: 'text-primary',
-      secondary: 'text-secondary',
-      muted: 'text-muted-foreground',
-    },
-  },
-  defaultVariants: {
-    size: 'default',
-    variant: 'default',
-  },
-});
+const circularProgressVariants = cva(
+  'relative inline-flex items-center justify-center text-primary'
+);
 
-export type CircularProgressProps = React.ComponentProps<'div'> &
-  VariantProps<typeof circularProgressVariants> & {
-    /**
-     * The value of the progress indicator for the determinate variant.
-     * Value between 0 and 100.
-     */
-    value?: number;
-    /**
-     * The thickness of the progress ring.
-     */
-    thickness?: number;
-    /**
-     * If true, the circular progress is indeterminate.
-     * @default false
-     */
-    indeterminate?: boolean;
-  };
+export type CircularProgressProps = React.ComponentProps<'div'> & {
+  /**
+   * The value of the progress indicator for the determinate variant.
+   * Value between 0 and 100.
+   */
+  value?: number;
+  /**
+   * The size of the circular progress indicator.
+   * @default 'md'
+   */
+  size?: 'sm' | 'md' | 'lg';
+  /**
+   * If true, the component is in determinate mode.
+   * If false, the component is in indeterminate mode.
+   * @default false
+   */
+  determinate?: boolean;
+  /**
+   * Content to display in the center of the circular progress.
+   */
+  children?: React.ReactNode;
+};
 
 function CircularProgress({
   className,
-  size,
-  variant,
+  size = 'md',
   value = 0,
-  thickness = 3.6,
-  indeterminate = false,
+  determinate = false,
+  children,
+  style,
   ...props
 }: CircularProgressProps) {
-  const normalizedValue = Math.min(Math.max(value, 0), 100);
-  const circumference = 2 * Math.PI * 16; // radius is 16 for a 40x40 viewBox
-  const strokeDasharray = `${circumference} ${circumference}`;
-  const strokeDashoffset =
-    circumference - (normalizedValue / 100) * circumference;
+  const normalizedValue = Math.min(Math.max(value || 0, 0), 100);
+
+  // Calculate size-based dimensions
+  const sizeMap = {
+    sm: 24,
+    md: 40,
+    lg: 64,
+  };
+
+  const pixelSize = sizeMap[size];
+  const strokeWidth = 6; // Fixed thickness
+  const radius = (pixelSize - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+
+  const strokeDashoffset = determinate
+    ? circumference - (normalizedValue / 100) * circumference
+    : circumference * 0.75; // For indeterminate, show partial arc
+
+  const viewBox = `0 0 ${pixelSize} ${pixelSize}`;
+
+  const combinedStyle = {
+    width: pixelSize,
+    height: pixelSize,
+    ...style,
+  };
 
   return (
     <div
       data-slot="circular-progress"
-      className={cn(circularProgressVariants({ size, variant, className }))}
+      className={cn(circularProgressVariants(), className)}
+      style={combinedStyle}
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-valuenow={indeterminate ? undefined : normalizedValue}
+      aria-valuenow={determinate ? normalizedValue : undefined}
       {...props}
     >
       <svg
-        className="size-full -rotate-90 transform"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        width={pixelSize}
+        height={pixelSize}
+        viewBox={viewBox}
+        style={{ transform: 'rotate(-90deg)' }}
+        className="relative"
       >
         {/* Background circle */}
         <circle
-          cx="20"
-          cy="20"
-          r="16"
-          stroke="currentColor"
-          strokeWidth={thickness}
-          className="opacity-20"
-          fill="none"
+          r={radius}
+          cx={pixelSize / 2}
+          cy={pixelSize / 2}
+          fill="transparent"
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          strokeDashoffset="0"
+          className="stroke-current opacity-20"
         />
         {/* Progress circle */}
         <circle
-          cx="20"
-          cy="20"
-          r="16"
-          stroke="currentColor"
-          strokeWidth={thickness}
-          fill="none"
+          r={radius}
+          cx={pixelSize / 2}
+          cy={pixelSize / 2}
+          strokeWidth={strokeWidth}
           strokeLinecap="round"
-          strokeDasharray={strokeDasharray}
-          strokeDashoffset={indeterminate ? 0 : strokeDashoffset}
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+          fill="transparent"
           className={cn(
-            'transition-all duration-300 ease-in-out',
-            indeterminate && 'circular-progress-indeterminate'
+            'stroke-current transition-all duration-300 ease-in-out',
+            !determinate && 'circular-progress-indeterminate'
           )}
         />
       </svg>
+      {children && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          {children}
+        </div>
+      )}
     </div>
   );
 }

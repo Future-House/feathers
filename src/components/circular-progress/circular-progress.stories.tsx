@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A circular progress indicator that can show determinate progress or spin indefinitely in indeterminate mode.',
+          'A circular progress indicator that shows determinate or indeterminate progress with optional children content in the center.',
       },
     },
   },
@@ -22,39 +22,29 @@ const meta = {
         defaultValue: { summary: '0' },
       },
     },
-    thickness: {
-      control: { type: 'range', min: 1, max: 8, step: 0.1 },
-      description: 'The thickness of the progress ring.',
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+      description: 'The size of the circular progress indicator.',
       table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '3.6' },
+        type: { summary: 'sm | md | lg' },
+        defaultValue: { summary: 'md' },
       },
     },
-    indeterminate: {
-      control: 'boolean',
+    determinate: {
+      control: { type: 'boolean' },
       description:
-        'If true, the circular progress is indeterminate and will spin continuously.',
+        'If true, the component is in determinate mode. If false, indeterminate mode.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    size: {
-      control: { type: 'select' },
-      options: ['sm', 'default', 'lg', 'xl'],
-      description: 'The size of the circular progress indicator.',
+    children: {
+      control: false,
+      description: 'Content to display in the center of the circular progress.',
       table: {
-        type: { summary: 'sm | default | lg | xl' },
-        defaultValue: { summary: 'default' },
-      },
-    },
-    variant: {
-      control: { type: 'select' },
-      options: ['default', 'secondary', 'muted'],
-      description: 'The color variant of the circular progress indicator.',
-      table: {
-        type: { summary: 'default | secondary | muted' },
-        defaultValue: { summary: 'default' },
+        type: { summary: 'React.ReactNode' },
       },
     },
     className: {
@@ -66,11 +56,8 @@ const meta = {
     },
   },
   args: {
-    value: 75,
-    thickness: 3.6,
-    indeterminate: false,
-    size: 'default',
-    variant: 'default',
+    size: 'md',
+    determinate: false,
   },
 } satisfies Meta<typeof CircularProgress>;
 
@@ -78,15 +65,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    value: 75,
-  },
-};
-
-export const Indeterminate: Story = {
-  args: {
-    indeterminate: true,
-  },
+  args: {},
 };
 
 export const Sizes: Story = {
@@ -95,37 +74,18 @@ export const Sizes: Story = {
   },
   render: args => (
     <div className="flex items-center gap-4">
-      <CircularProgress {...args} size="sm" value={75} />
-      <CircularProgress {...args} size="default" value={75} />
-      <CircularProgress {...args} size="lg" value={75} />
-      <CircularProgress {...args} size="xl" value={75} />
-    </div>
-  ),
-};
-
-export const Variants: Story = {
-  parameters: {
-    controls: { disable: true },
-  },
-  render: args => (
-    <div className="flex items-center gap-4">
-      <CircularProgress {...args} variant="default" value={75} />
-      <CircularProgress {...args} variant="secondary" value={75} />
-      <CircularProgress {...args} variant="muted" value={75} />
-    </div>
-  ),
-};
-
-export const Thickness: Story = {
-  parameters: {
-    controls: { exclude: 'thickness' },
-  },
-  render: args => (
-    <div className="flex items-center gap-4">
-      <CircularProgress {...args} thickness={2} value={75} />
-      <CircularProgress {...args} thickness={3.6} value={75} />
-      <CircularProgress {...args} thickness={5} value={75} />
-      <CircularProgress {...args} thickness={7} value={75} />
+      <div className="text-center">
+        <CircularProgress {...args} size="sm" />
+        <p className="mt-2 text-xs">Small (24px)</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} size="md" />
+        <p className="mt-2 text-xs">Medium (40px)</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} size="lg" />
+        <p className="mt-2 text-xs">Large (64px)</p>
+      </div>
     </div>
   ),
 };
@@ -137,24 +97,59 @@ export const ProgressValues: Story = {
   render: args => (
     <div className="flex items-center gap-4">
       <div className="text-center">
-        <CircularProgress {...args} value={0} />
+        <CircularProgress {...args} determinate={true} value={0} />
         <p className="mt-2 text-xs">0%</p>
       </div>
       <div className="text-center">
-        <CircularProgress {...args} value={25} />
+        <CircularProgress {...args} determinate={true} value={25} />
         <p className="mt-2 text-xs">25%</p>
       </div>
       <div className="text-center">
-        <CircularProgress {...args} value={50} />
+        <CircularProgress {...args} determinate={true} value={50} />
         <p className="mt-2 text-xs">50%</p>
       </div>
       <div className="text-center">
-        <CircularProgress {...args} value={75} />
+        <CircularProgress {...args} determinate={true} value={75} />
         <p className="mt-2 text-xs">75%</p>
       </div>
       <div className="text-center">
-        <CircularProgress {...args} value={100} />
+        <CircularProgress {...args} determinate={true} value={100} />
         <p className="mt-2 text-xs">100%</p>
+      </div>
+    </div>
+  ),
+};
+
+/**
+ * Circular progress with children content in the center.
+ */
+export const WithChildren: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: args => (
+    <div className="flex items-center gap-8">
+      <div className="text-center">
+        <CircularProgress {...args} determinate={true} value={90}>
+          <div className="flex items-center gap-1">
+            <svg
+              className="size-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </div>
+        </CircularProgress>
+        <p className="mt-2 text-xs">With icon</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} determinate={true} value={25} size="lg">
+          <span className="text-sm font-medium">25%</span>
+        </CircularProgress>
+        <p className="mt-2 text-xs">Simple text</p>
       </div>
     </div>
   ),

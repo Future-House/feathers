@@ -124,23 +124,17 @@
     @apply bg-background text-foreground;
   }
 
-  @keyframes circular-progress-spin {
+  @keyframes circular-progress-circulate {
     0% {
-      stroke-dasharray: 1 200;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      stroke-dasharray: 89 200;
-      stroke-dashoffset: -35;
+      transform: rotate(-90deg);
     }
     100% {
-      stroke-dasharray: 89 200;
-      stroke-dashoffset: -124;
+      transform: rotate(270deg);
     }
   }
 
   .circular-progress-indeterminate {
-    animation: circular-progress-spin 1.4s ease-in-out infinite;
+    animation: circular-progress-circulate 0.8s linear infinite;
     transform-origin: center;
   }
 }
