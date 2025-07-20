@@ -31,6 +31,17 @@ const meta = {
         defaultValue: { summary: 'md' },
       },
     },
+    color: {
+      control: { type: 'select' },
+      options: ['primary', 'success', 'warning', 'info', 'destructive'],
+      description: 'The color theme of the circular progress.',
+      table: {
+        type: {
+          summary: '"primary" | "success" | "warning" | "info" | "destructive"',
+        },
+        defaultValue: { summary: '"primary"' },
+      },
+    },
     determinate: {
       control: { type: 'boolean' },
       description:
@@ -150,6 +161,91 @@ export const WithChildren: Story = {
           <span className="text-sm font-medium">25%</span>
         </CircularProgress>
         <p className="mt-2 text-xs">Simple text</p>
+      </div>
+    </div>
+  ),
+};
+
+export const ColorVariants: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: args => (
+    <div className="flex items-center gap-6">
+      <div className="text-center">
+        <CircularProgress
+          {...args}
+          color="primary"
+          determinate={true}
+          value={75}
+        />
+        <p className="mt-2 text-xs">Primary</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress
+          {...args}
+          color="success"
+          determinate={true}
+          value={75}
+        />
+        <p className="mt-2 text-xs">Success</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress
+          {...args}
+          color="warning"
+          determinate={true}
+          value={75}
+        />
+        <p className="mt-2 text-xs">Warning</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress
+          {...args}
+          color="info"
+          determinate={true}
+          value={75}
+        />
+        <p className="mt-2 text-xs">Info</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress
+          {...args}
+          color="destructive"
+          determinate={true}
+          value={75}
+        />
+        <p className="mt-2 text-xs">Destructive</p>
+      </div>
+    </div>
+  ),
+};
+
+export const ColorVariantsIndeterminate: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: args => (
+    <div className="flex items-center gap-6">
+      <div className="text-center">
+        <CircularProgress {...args} color="primary" />
+        <p className="mt-2 text-xs">Primary</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} color="success" />
+        <p className="mt-2 text-xs">Success</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} color="warning" />
+        <p className="mt-2 text-xs">Warning</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} color="info" />
+        <p className="mt-2 text-xs">Info</p>
+      </div>
+      <div className="text-center">
+        <CircularProgress {...args} color="destructive" />
+        <p className="mt-2 text-xs">Destructive</p>
       </div>
     </div>
   ),

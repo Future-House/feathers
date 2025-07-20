@@ -18,6 +18,15 @@ const badgeVariants = cva(
         outline:
           'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
       },
+      color: {
+        success:
+          'border-transparent bg-green-600/10 dark:bg-green-600/20 text-green-600 [a&]:hover:bg-green-600/15 dark:[a&]:hover:bg-green-600/25 focus-visible:ring-green-600/20 dark:focus-visible:ring-green-600/40 shadow-none',
+        warning:
+          'border-transparent bg-amber-600/10 dark:bg-amber-600/20 text-amber-600 [a&]:hover:bg-amber-600/15 dark:[a&]:hover:bg-amber-600/25 focus-visible:ring-amber-600/20 dark:focus-visible:ring-amber-600/40 shadow-none',
+        info: 'border-transparent bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 [a&]:hover:bg-blue-600/15 dark:[a&]:hover:bg-blue-600/25 focus-visible:ring-blue-600/20 dark:focus-visible:ring-blue-600/40 shadow-none',
+        destructive:
+          'border-transparent bg-red-600/10 dark:bg-red-600/20 text-red-600 [a&]:hover:bg-red-600/15 dark:[a&]:hover:bg-red-600/25 focus-visible:ring-red-600/20 dark:focus-visible:ring-red-600/40 shadow-none',
+      },
     },
     defaultVariants: {
       variant: 'default',
@@ -28,16 +37,33 @@ const badgeVariants = cva(
 function Badge({
   className,
   variant,
+  color,
   asChild = false,
   ...props
 }: React.ComponentProps<'span'> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  VariantProps<typeof badgeVariants> & {
+    asChild?: boolean;
+    /**
+     * The color theme of the badge.
+     */
+    color?: 'success' | 'warning' | 'info' | 'destructive';
+  }) {
   const Comp = asChild ? Slot : 'span';
+
+  // If color is specified, use it; otherwise fall back to variant-based color
+  const effectiveColor =
+    color || (variant === 'destructive' ? 'destructive' : undefined);
 
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn(
+        badgeVariants({
+          variant: color ? 'default' : variant,
+          color: effectiveColor,
+        }),
+        className
+      )}
       {...props}
     />
   );

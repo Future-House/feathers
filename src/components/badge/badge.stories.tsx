@@ -32,6 +32,15 @@ const meta = {
         defaultValue: { summary: 'default' },
       },
     },
+    color: {
+      control: { type: 'select' },
+      options: ['success', 'warning', 'info', 'destructive'],
+      description: 'The color theme of the badge',
+      table: {
+        type: { summary: '"success" | "warning" | "info" | "destructive"' },
+        defaultValue: { summary: undefined },
+      },
+    },
     children: {
       control: { type: 'text' },
       description: 'The content to display inside the badge',
@@ -62,22 +71,37 @@ export const Variants: Story = {
   ),
 };
 
+export const ColorVariants: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="flex flex-wrap items-center gap-4">
+      <Badge>Default</Badge>
+      <Badge color="success">Success</Badge>
+      <Badge color="warning">Warning</Badge>
+      <Badge color="info">Info</Badge>
+      <Badge color="destructive">Destructive</Badge>
+    </div>
+  ),
+};
+
 export const WithIcons: Story = {
   render: args => (
     <div className="flex flex-wrap items-center gap-4">
-      <Badge variant="default" {...args}>
+      <Badge color="success" {...args}>
         <CheckCircle2 className="mr-1 h-3 w-3" />
         Success
       </Badge>
-      <Badge variant="secondary" {...args}>
+      <Badge color="info" {...args}>
         <Info className="mr-1 h-3 w-3" />
         Info
       </Badge>
-      <Badge variant="destructive" {...args}>
+      <Badge color="destructive" {...args}>
         <XCircle className="mr-1 h-3 w-3" />
         Error
       </Badge>
-      <Badge variant="outline" {...args}>
+      <Badge color="warning" {...args}>
         <AlertCircle className="mr-1 h-3 w-3" />
         Warning
       </Badge>
@@ -90,25 +114,25 @@ export const StatusIndicators: Story = {
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
         <span className="text-sm">Server Status:</span>
-        <Badge variant="default" {...args}>
+        <Badge color="success" {...args}>
           Online
         </Badge>
       </div>
       <div className="flex items-center gap-2">
         <span className="text-sm">Build Status:</span>
-        <Badge variant="destructive" {...args}>
+        <Badge color="destructive" {...args}>
           Failed
         </Badge>
       </div>
       <div className="flex items-center gap-2">
         <span className="text-sm">Deployment:</span>
-        <Badge variant="secondary" {...args}>
+        <Badge color="warning" {...args}>
           Pending
         </Badge>
       </div>
       <div className="flex items-center gap-2">
         <span className="text-sm">Environment:</span>
-        <Badge variant="outline" {...args}>
+        <Badge color="info" {...args}>
           Development
         </Badge>
       </div>

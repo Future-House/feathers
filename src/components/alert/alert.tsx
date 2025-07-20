@@ -12,6 +12,15 @@ const alertVariants = cva(
         destructive:
           'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90',
       },
+      color: {
+        success:
+          'text-green-600 bg-green-600/10 dark:bg-green-600/20 border-green-600/20 dark:border-green-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-green-600/90',
+        warning:
+          'text-amber-600 bg-amber-600/10 dark:bg-amber-600/20 border-amber-600/20 dark:border-amber-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-amber-600/90',
+        info: 'text-blue-600 bg-blue-600/10 dark:bg-blue-600/20 border-blue-600/20 dark:border-blue-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-blue-600/90',
+        destructive:
+          'text-red-600 bg-red-600/10 dark:bg-red-600/20 border-red-600/20 dark:border-red-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-red-600/90',
+      },
     },
     defaultVariants: {
       variant: 'default',
@@ -22,13 +31,30 @@ const alertVariants = cva(
 function Alert({
   className,
   variant,
+  color,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof alertVariants>) {
+}: React.ComponentProps<'div'> &
+  VariantProps<typeof alertVariants> & {
+    /**
+     * The color theme of the alert.
+     */
+    color?: 'success' | 'warning' | 'info' | 'destructive';
+  }) {
+  // If color is specified, use it; otherwise fall back to variant-based color
+  const effectiveColor =
+    color || (variant === 'destructive' ? 'destructive' : undefined);
+
   return (
     <div
       data-slot="alert"
       role="alert"
-      className={cn(alertVariants({ variant }), className)}
+      className={cn(
+        alertVariants({
+          variant: color ? 'default' : variant,
+          color: effectiveColor,
+        }),
+        className
+      )}
       {...props}
     />
   );

@@ -4,7 +4,21 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const circularProgressVariants = cva(
-  'relative inline-flex items-center justify-center text-primary'
+  'relative inline-flex items-center justify-center',
+  {
+    variants: {
+      color: {
+        primary: 'text-primary',
+        success: 'text-success',
+        warning: 'text-warning',
+        info: 'text-info',
+        destructive: 'text-destructive',
+      },
+    },
+    defaultVariants: {
+      color: 'primary',
+    },
+  }
 );
 
 export type CircularProgressProps = React.ComponentProps<'div'> & {
@@ -25,6 +39,11 @@ export type CircularProgressProps = React.ComponentProps<'div'> & {
    */
   determinate?: boolean;
   /**
+   * The color theme of the circular progress.
+   * @default 'primary'
+   */
+  color?: 'primary' | 'success' | 'warning' | 'info' | 'destructive';
+  /**
    * Content to display in the center of the circular progress.
    */
   children?: React.ReactNode;
@@ -35,6 +54,7 @@ function CircularProgress({
   size = 'md',
   value = 0,
   determinate = false,
+  color = 'primary',
   children,
   style,
   ...props
@@ -68,7 +88,7 @@ function CircularProgress({
   return (
     <div
       data-slot="circular-progress"
-      className={cn(circularProgressVariants(), className)}
+      className={cn(circularProgressVariants({ color }), className)}
       style={combinedStyle}
       role="progressbar"
       aria-valuemin={0}

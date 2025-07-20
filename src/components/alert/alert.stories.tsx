@@ -1,7 +1,13 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Alert, AlertTitle, AlertDescription } from '../alert';
-import { Terminal, AlertCircle, CheckCircle2, Info } from 'lucide-react';
+import {
+  Terminal,
+  AlertCircle,
+  CheckCircle2,
+  Info,
+  AlertTriangle,
+} from 'lucide-react';
 
 const meta = {
   title: 'Components/Alert',
@@ -24,6 +30,15 @@ const meta = {
       table: {
         type: { summary: '"default" | "destructive"' },
         defaultValue: { summary: '"default"' },
+      },
+    },
+    color: {
+      control: { type: 'select' },
+      options: ['success', 'warning', 'info', 'destructive'],
+      description: 'The color theme of the alert',
+      table: {
+        type: { summary: '"success" | "warning" | "info" | "destructive"' },
+        defaultValue: { summary: undefined },
       },
     },
     // HTML attributes
@@ -154,11 +169,11 @@ export const DescriptionOnly: Story = {
 
 export const Success: Story = {
   args: {
-    variant: 'default',
+    color: 'success',
   },
   render: args => (
     <Alert {...args}>
-      <CheckCircle2 className="text-green-600" />
+      <CheckCircle2 />
       <AlertTitle>Success!</AlertTitle>
       <AlertDescription>
         Your changes have been saved successfully.
@@ -167,17 +182,47 @@ export const Success: Story = {
   ),
 };
 
-export const Information: Story = {
+export const Warning: Story = {
   args: {
-    variant: 'default',
+    color: 'warning',
   },
   render: args => (
     <Alert {...args}>
-      <Info className="text-blue-600" />
+      <AlertTriangle />
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>
+        Please review this action before proceeding. This cannot be undone.
+      </AlertDescription>
+    </Alert>
+  ),
+};
+
+export const Information: Story = {
+  args: {
+    color: 'info',
+  },
+  render: args => (
+    <Alert {...args}>
+      <Info />
       <AlertTitle>Information</AlertTitle>
       <AlertDescription>
         This feature will be available in the next release. Subscribe to our
         newsletter for updates.
+      </AlertDescription>
+    </Alert>
+  ),
+};
+
+export const DestructiveColor: Story = {
+  args: {
+    color: 'destructive',
+  },
+  render: args => (
+    <Alert {...args}>
+      <AlertCircle />
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>
+        Your session has expired. Please log in again.
       </AlertDescription>
     </Alert>
   ),
@@ -225,26 +270,67 @@ export const CustomStyling: Story = {
   ),
 };
 
+export const ColorVariants: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-4">
+      <Alert>
+        <Terminal />
+        <AlertTitle>Default</AlertTitle>
+        <AlertDescription>This is a default alert message.</AlertDescription>
+      </Alert>
+      <Alert color="success">
+        <CheckCircle2 />
+        <AlertTitle>Success</AlertTitle>
+        <AlertDescription>
+          This is a success message confirming an action.
+        </AlertDescription>
+      </Alert>
+      <Alert color="warning">
+        <AlertTriangle />
+        <AlertTitle>Warning</AlertTitle>
+        <AlertDescription>
+          This is a warning message that requires attention.
+        </AlertDescription>
+      </Alert>
+      <Alert color="info">
+        <Info />
+        <AlertTitle>Information</AlertTitle>
+        <AlertDescription>This is an informational message.</AlertDescription>
+      </Alert>
+      <Alert color="destructive">
+        <AlertCircle />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>
+          This is an error message indicating a problem.
+        </AlertDescription>
+      </Alert>
+    </div>
+  ),
+};
+
 export const MultipleAlerts: Story = {
   args: {
     variant: 'default',
   },
   render: () => (
     <div className="space-y-4">
-      <Alert variant="default">
+      <Alert color="info">
         <Info />
         <AlertTitle>Information</AlertTitle>
         <AlertDescription>This is an informational message.</AlertDescription>
       </Alert>
-      <Alert variant="destructive">
-        <AlertCircle />
+      <Alert color="warning">
+        <AlertTriangle />
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>
           This is a warning message that requires attention.
         </AlertDescription>
       </Alert>
-      <Alert variant="default">
-        <CheckCircle2 className="text-green-600" />
+      <Alert color="success">
+        <CheckCircle2 />
         <AlertTitle>Success</AlertTitle>
         <AlertDescription>
           This is a success message confirming an action.
