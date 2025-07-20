@@ -65,11 +65,33 @@ module.exports = {
 
 ### 3. Import Styles
 
-Import the Feathers CSS in your main CSS file or `index.css`:
+Feathers provides two CSS import options:
+
+<Tabs defaultValue="full" className="my-6">
+  <TabsList>
+    <TabsTrigger value="full">Complete Styles</TabsTrigger>
+    <TabsTrigger value="theme">Theme Only</TabsTrigger>
+  </TabsList>
+  <TabsContent value="full" className="space-y-2">
+**Recommended**: Import the complete stylesheet that includes Tailwind CSS and all theme variables:
 
 ```css
-@import '@future-house/feathers/styles';
+@import '@future-house/feathers/index.css';
 ```
+
+  </TabsContent>
+  <TabsContent value="theme" className="space-y-2">
+**Advanced**: Import only the theme variables if you're already using Tailwind CSS and want more control:
+
+```css
+@import 'tailwindcss';
+@import '@future-house/feathers/lib/styles/default.css';
+```
+
+**Note**: This approach requires your local Tailwind configuration to scan all content properly to generate the needed utilities. The complete styles approach is recommended for most projects.
+
+  </TabsContent>
+</Tabs>
 
 ## Basic Usage
 
