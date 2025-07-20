@@ -40,18 +40,14 @@ function Alert({
      */
     color?: 'success' | 'warning' | 'info' | 'error';
   }) {
-  // If color is specified, use it; otherwise fall back to variant-based color
-  const effectiveColor =
-    color || (variant === 'destructive' ? 'error' : undefined);
-
   return (
     <div
       data-slot="alert"
       role="alert"
       className={cn(
         alertVariants({
-          variant: color ? 'default' : variant,
-          color: effectiveColor,
+          variant,
+          color,
         }),
         className
       )}

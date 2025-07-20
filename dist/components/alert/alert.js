@@ -17,10 +17,10 @@ var alertVariants = cva('relative w-full rounded-lg border px-4 py-3 text-sm gri
       destructive: 'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90'
     },
     color: {
-      success: 'text-success bg-success/10 border-success/20 [&>svg]:text-current *:data-[slot=alert-description]:text-success/90',
-      warning: 'text-warning bg-warning/10 border-warning/20 [&>svg]:text-current *:data-[slot=alert-description]:text-warning/90',
-      info: 'text-info bg-info/10 border-info/20 [&>svg]:text-current *:data-[slot=alert-description]:text-info/90',
-      error: 'text-error bg-error/10 border-error/20 [&>svg]:text-current *:data-[slot=alert-description]:text-error/90'
+      success: 'text-success-foreground bg-success/10 border-success/20 [&>svg]:text-current *:data-[slot=alert-description]:text-success-foreground/90',
+      warning: 'text-warning-foreground bg-warning/10 border-warning/20 [&>svg]:text-current *:data-[slot=alert-description]:text-warning-foreground/90',
+      info: 'text-info-foreground bg-info/10 border-info/20 [&>svg]:text-current *:data-[slot=alert-description]:text-info-foreground/90',
+      error: 'text-error-foreground bg-error/10 border-error/20 [&>svg]:text-current *:data-[slot=alert-description]:text-error-foreground/90'
     }
   },
   defaultVariants: {
@@ -51,35 +51,33 @@ function Alert(t0) {
     props = $[3];
     variant = $[4];
   }
-  var effectiveColor = color || (variant === "destructive" ? "error" : undefined);
-  var t1 = color ? "default" : variant;
-  var t2;
-  if ($[5] !== className || $[6] !== effectiveColor || $[7] !== t1) {
-    t2 = cn(alertVariants({
-      variant: t1,
-      color: effectiveColor
+  var t1;
+  if ($[5] !== className || $[6] !== color || $[7] !== variant) {
+    t1 = cn(alertVariants({
+      variant: variant,
+      color: color
     }), className);
     $[5] = className;
-    $[6] = effectiveColor;
-    $[7] = t1;
-    $[8] = t2;
+    $[6] = color;
+    $[7] = variant;
+    $[8] = t1;
   } else {
-    t2 = $[8];
+    t1 = $[8];
   }
-  var t3;
-  if ($[9] !== props || $[10] !== t2) {
-    t3 = /*#__PURE__*/_jsx("div", _objectSpread({
+  var t2;
+  if ($[9] !== props || $[10] !== t1) {
+    t2 = /*#__PURE__*/_jsx("div", _objectSpread({
       "data-slot": "alert",
       role: "alert",
-      className: t2
+      className: t1
     }, props));
     $[9] = props;
-    $[10] = t2;
-    $[11] = t3;
+    $[10] = t1;
+    $[11] = t2;
   } else {
-    t3 = $[11];
+    t2 = $[11];
   }
-  return t3;
+  return t2;
 }
 function AlertTitle(t0) {
   var $ = _c(8);

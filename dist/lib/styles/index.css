@@ -1731,6 +1731,12 @@
       background-color: color-mix(in oklab, var(--destructive) 10%, transparent);
     }
   }
+  .bg-error {
+    background-color: var(--error);
+  }
+  .bg-error-foreground {
+    background-color: var(--error-foreground);
+  }
   .bg-error\/10 {
     background-color: var(--error);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1757,6 +1763,12 @@
   }
   .bg-green-500 {
     background-color: var(--color-green-500);
+  }
+  .bg-info {
+    background-color: var(--info);
+  }
+  .bg-info-foreground {
+    background-color: var(--info-foreground);
   }
   .bg-info\/10 {
     background-color: var(--info);
@@ -1857,6 +1869,9 @@
   .bg-success {
     background-color: var(--success);
   }
+  .bg-success-foreground {
+    background-color: var(--success-foreground);
+  }
   .bg-success\/10 {
     background-color: var(--success);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1868,6 +1883,9 @@
   }
   .bg-warning {
     background-color: var(--warning);
+  }
+  .bg-warning-foreground {
+    background-color: var(--warning-foreground);
   }
   .bg-warning\/10 {
     background-color: var(--warning);
@@ -2284,6 +2302,9 @@
   .text-error {
     color: var(--error);
   }
+  .text-error-foreground {
+    color: var(--error-foreground);
+  }
   .text-foreground {
     color: var(--foreground);
   }
@@ -2316,6 +2337,9 @@
   }
   .text-info {
     color: var(--info);
+  }
+  .text-info-foreground {
+    color: var(--info-foreground);
   }
   .text-input {
     color: var(--input);
@@ -2374,8 +2398,14 @@
   .text-success {
     color: var(--success);
   }
+  .text-success-foreground {
+    color: var(--success-foreground);
+  }
   .text-warning {
     color: var(--warning);
+  }
+  .text-warning-foreground {
+    color: var(--warning-foreground);
   }
   .text-white {
     color: var(--color-white);
@@ -4137,42 +4167,42 @@
       }
     }
   }
-  .\*\:data-\[slot\=alert-description\]\:text-error\/90 {
+  .\*\:data-\[slot\=alert-description\]\:text-error-foreground\/90 {
     :is(& > *) {
       &[data-slot="alert-description"] {
-        color: var(--error);
+        color: var(--error-foreground);
         @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklab, var(--error) 90%, transparent);
+          color: color-mix(in oklab, var(--error-foreground) 90%, transparent);
         }
       }
     }
   }
-  .\*\:data-\[slot\=alert-description\]\:text-info\/90 {
+  .\*\:data-\[slot\=alert-description\]\:text-info-foreground\/90 {
     :is(& > *) {
       &[data-slot="alert-description"] {
-        color: var(--info);
+        color: var(--info-foreground);
         @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklab, var(--info) 90%, transparent);
+          color: color-mix(in oklab, var(--info-foreground) 90%, transparent);
         }
       }
     }
   }
-  .\*\:data-\[slot\=alert-description\]\:text-success\/90 {
+  .\*\:data-\[slot\=alert-description\]\:text-success-foreground\/90 {
     :is(& > *) {
       &[data-slot="alert-description"] {
-        color: var(--success);
+        color: var(--success-foreground);
         @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklab, var(--success) 90%, transparent);
+          color: color-mix(in oklab, var(--success-foreground) 90%, transparent);
         }
       }
     }
   }
-  .\*\:data-\[slot\=alert-description\]\:text-warning\/90 {
+  .\*\:data-\[slot\=alert-description\]\:text-warning-foreground\/90 {
     :is(& > *) {
       &[data-slot="alert-description"] {
-        color: var(--warning);
+        color: var(--warning-foreground);
         @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklab, var(--warning) 90%, transparent);
+          color: color-mix(in oklab, var(--warning-foreground) 90%, transparent);
         }
       }
     }

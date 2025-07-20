@@ -111,18 +111,28 @@ export const Default: Story = {
   ),
 };
 
-export const Destructive: Story = {
-  args: {
-    variant: 'destructive',
+export const Variants: Story = {
+  parameters: {
+    controls: { disable: true },
   },
-  render: args => (
-    <Alert {...args}>
-      <AlertCircle />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        Your session has expired. Please log in again.
-      </AlertDescription>
-    </Alert>
+  render: () => (
+    <>
+      <Alert variant="default">
+        <Terminal />
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          You can add components and dependencies to your app using the CLI.
+        </AlertDescription>
+      </Alert>
+      <br />
+      <Alert variant="destructive">
+        <Terminal />
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          You can add components and dependencies to your app using the CLI.
+        </AlertDescription>
+      </Alert>
+    </>
   ),
 };
 

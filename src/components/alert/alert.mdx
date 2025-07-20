@@ -1,0 +1,163 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as AlertStories from './alert.stories';
+
+<Meta of={AlertStories} />
+
+<DocLayout meta={AlertStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={AlertStories.Default} />
+
+## Component API
+
+### Alert
+
+<PropsTable argTypes={AlertStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={AlertStories.default.subcomponents} />
+
+## Examples
+
+### Variants
+
+<Canvas of={AlertStories.Variants} />
+
+### Color Variants
+
+Status alerts using semantic colors for different message types.
+
+<Canvas of={AlertStories.ColorVariants} />
+
+### Without Icon
+
+Sometimes you might want to display an alert without an icon for a cleaner look.
+
+<Canvas of={AlertStories.WithoutIcon} />
+
+### Title Only
+
+Simple alerts with just a title, perfect for brief notifications.
+
+<Canvas of={AlertStories.TitleOnly} />
+
+### Description Only
+
+Alerts with just a description, ideal for longer informational messages.
+
+<Canvas of={AlertStories.DescriptionOnly} />
+
+### Long Content
+
+Alerts can handle longer content including lists and structured information.
+
+<Canvas of={AlertStories.LongContent} />
+
+### Custom Styling
+
+Customize alert appearance with custom classes while maintaining accessibility.
+
+<Canvas of={AlertStories.CustomStyling} />
+
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@future-house/feathers';
+import { CheckCircle2, AlertTriangle, Info } from 'lucide-react';
+
+// Basic alert
+<Alert>
+  <CheckCircle2 />
+  <AlertTitle>Success!</AlertTitle>
+  <AlertDescription>
+    Your changes have been saved successfully.
+  </AlertDescription>
+</Alert>
+
+// Error alert
+<Alert variant="destructive">
+  <AlertTriangle />
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>
+    Something went wrong. Please try again.
+  </AlertDescription>
+</Alert>
+
+// Status color alerts
+<Alert color="success">
+  <CheckCircle2 />
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>Operation completed successfully.</AlertDescription>
+</Alert>
+
+<Alert color="warning">
+  <AlertTriangle />
+  <AlertTitle>Warning</AlertTitle>
+  <AlertDescription>Please review before proceeding.</AlertDescription>
+</Alert>
+
+<Alert color="info">
+  <Info />
+  <AlertTitle>Information</AlertTitle>
+  <AlertDescription>Additional context for the user.</AlertDescription>
+</Alert>
+```
+
+## Structure
+
+The Alert component is composed of three parts:
+
+- `Alert` - The main container with background, border, and spacing
+- `AlertTitle` - The heading text (optional)
+- `AlertDescription` - The body content (optional)
+
+You can use any combination of these components. Icons are placed as direct children of the Alert component.
+
+## Variants
+
+- **default** - Standard alert with neutral styling
+- **destructive** - Error state with emphasis for critical issues
+
+## Color Props
+
+- **success** - Green styling for positive outcomes
+- **warning** - Amber styling for cautions and warnings
+- **info** - Blue styling for informational content
+- **error** - Red styling for errors and problems
+
+## Accessibility
+
+The `Alert` component:
+
+- Uses the `alert` ARIA role to announce important changes to screen readers
+- Maintains proper color contrast ratios for all variants
+- Supports both light and dark themes automatically
+- Icons inherit appropriate colors and are properly sized
+- Text hierarchy is maintained with semantic heading levels
+
+## Best Practices
+
+- Use alerts sparingly to avoid overwhelming users
+- Choose appropriate variants based on message urgency and type
+- Include relevant icons to improve visual scanning
+- Keep titles concise and descriptive
+- Use appropriate color variants for different message types
+- Ensure critical alerts are prominently placed in the interface
+- Consider dismissible behavior for non-critical alerts
+- Test color variants in both light and dark themes
+
+## When to Use
+
+- **Error states** - System errors, validation failures, critical issues
+- **Success confirmations** - Successful actions, completed processes
+- **Warnings** - Potential issues, confirmations needed, cautions
+- **Information** - Tips, updates, contextual help, feature announcements
+- **Status updates** - Progress indicators, system status, temporary states
+
+</DocLayout>
