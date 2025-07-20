@@ -3,10 +3,6 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-orange-100: oklch(95.4% 0.038 75.164);
@@ -122,8 +118,8 @@
     --aspect-video: 16 / 9;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --default-font-family: var(--font-sans);
-    --default-mono-font-family: var(--font-mono);
+    --default-font-family: var(--font-family-sans);
+    --default-mono-font-family: var(--font-family-mono);
   }
 }
 @layer base {
@@ -2026,7 +2022,7 @@
     vertical-align: middle;
   }
   .font-mono {
-    font-family: var(--font-mono);
+    font-family: var(--font-family-mono);
   }
   .\!text-sm {
     font-size: var(--text-sm) !important;
@@ -5635,6 +5631,8 @@
 }
 :root {
   --radius: 0.625rem;
+  --font-family-sans: 'Rubik', sans-serif;
+  --font-family-mono: 'Space Mono', monospace;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
