@@ -4,6 +4,8 @@ export { AspectRatio } from './aspect-ratio';
 export { Avatar, AvatarImage, AvatarFallback } from './avatar';
 export { Badge, badgeVariants } from './badge';
 export { Button, buttonVariants } from './button';
+export { CircularProgress, circularProgressVariants, } from './circular-progress';
+export type { CircularProgressProps } from './circular-progress';
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, } from './card';
 export { AlertDialog, AlertDialogPortal, AlertDialogOverlay, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, } from './alert-dialog';
 export { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis, } from './breadcrumb';

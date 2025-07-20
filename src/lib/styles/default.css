@@ -123,4 +123,24 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  @keyframes circular-progress-spin {
+    0% {
+      stroke-dasharray: 1 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 89 200;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 89 200;
+      stroke-dashoffset: -124;
+    }
+  }
+
+  .circular-progress-indeterminate {
+    animation: circular-progress-spin 1.4s ease-in-out infinite;
+    transform-origin: center;
+  }
 }

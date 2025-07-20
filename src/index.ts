@@ -14,6 +14,7 @@ export * from '@/components/breadcrumb';
 export * from '@/components/badge';
 export * from '@/components/button';
 export * from '@/components/calendar';
+export * from '@/components/circular-progress';
 export * from '@/components/carousel';
 export * from '@/components/card';
 export * from '@/components/checkbox';

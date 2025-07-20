@@ -1,0 +1,69 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+} from '../../../.storybook/components';
+import * as CircularProgressStories from './circular-progress.stories';
+
+<Meta of={CircularProgressStories} />
+
+<DocLayout meta={CircularProgressStories.default} hideRadixUiUrl hideShadcnUrl>
+
+## Default Example
+
+<Canvas of={CircularProgressStories.Default} />
+
+## Component API
+
+<PropsTable argTypes={CircularProgressStories.default.argTypes} />
+
+## Examples
+
+### Indeterminate
+
+Use the indeterminate variant when the progress cannot be determined or for loading states.
+
+<Canvas of={CircularProgressStories.Indeterminate} />
+
+### Sizes
+
+The circular progress comes in four different sizes to fit your design needs.
+
+<Canvas of={CircularProgressStories.Sizes} />
+
+### Variants
+
+Choose from different color variants to match your design system.
+
+<Canvas of={CircularProgressStories.Variants} />
+
+### Thickness
+
+Customize the thickness of the progress ring to achieve the desired visual weight.
+
+<Canvas of={CircularProgressStories.Thickness} />
+
+### Progress Values
+
+Demonstrating different completion percentages from 0% to 100%.
+
+<Canvas of={CircularProgressStories.ProgressValues} />
+
+## Accessibility
+
+The CircularProgress component includes proper accessibility features:
+
+- Uses `role="progressbar"` for screen reader compatibility
+- Includes `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes
+- The `aria-valuenow` attribute is omitted for indeterminate progress as recommended by ARIA guidelines
+
+## Best Practices
+
+- Use determinate mode when you can calculate progress percentage
+- Use indeterminate mode for operations where duration is unknown
+- Pair with descriptive text when possible
+- Consider the context - smaller sizes for inline elements, larger for prominent loading states
+- Choose appropriate thickness based on the overall design density
+
+</DocLayout>

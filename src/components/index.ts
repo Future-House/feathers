@@ -16,6 +16,12 @@ export { Badge, badgeVariants } from '@/components/badge';
 export { Button, buttonVariants } from '@/components/button';
 
 export {
+  CircularProgress,
+  circularProgressVariants,
+} from '@/components/circular-progress';
+export type { CircularProgressProps } from '@/components/circular-progress';
+
+export {
   Card,
   CardHeader,
   CardFooter,

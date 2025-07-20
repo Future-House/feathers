@@ -157,6 +157,24 @@
     background-color: var(--background);
     color: var(--foreground);
   }
+  @keyframes circular-progress-spin {
+    0% {
+      stroke-dasharray: 1 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 89 200;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 89 200;
+      stroke-dashoffset: -124;
+    }
+  }
+  .circular-progress-indeterminate {
+    animation: circular-progress-spin 1.4s ease-in-out infinite;
+    transform-origin: center;
+  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
