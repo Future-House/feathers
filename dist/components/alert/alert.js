@@ -17,10 +17,10 @@ var alertVariants = cva('relative w-full rounded-lg border px-4 py-3 text-sm gri
       destructive: 'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90'
     },
     color: {
-      success: 'text-success-foreground bg-success/10 border-success/20 [&>svg]:text-current *:data-[slot=alert-description]:text-success-foreground/90',
-      warning: 'text-warning-foreground bg-warning/10 border-warning/20 [&>svg]:text-current *:data-[slot=alert-description]:text-warning-foreground/90',
-      info: 'text-info-foreground bg-info/10 border-info/20 [&>svg]:text-current *:data-[slot=alert-description]:text-info-foreground/90',
-      error: 'text-error-foreground bg-error/10 border-error/20 [&>svg]:text-current *:data-[slot=alert-description]:text-error-foreground/90'
+      success: 'text-success bg-success/10 border-success/20 [&>svg]:text-current *:data-[slot=alert-description]:text-success/90',
+      warning: 'text-warning bg-warning/10 border-warning/20 [&>svg]:text-current *:data-[slot=alert-description]:text-warning/90',
+      info: 'text-info bg-info/10 border-info/20 [&>svg]:text-current *:data-[slot=alert-description]:text-info/90',
+      error: 'text-error bg-error/10 border-error/20 [&>svg]:text-current *:data-[slot=alert-description]:text-error/90'
     }
   },
   defaultVariants: {

@@ -2,6 +2,7 @@
 
 import { execSync } from 'child_process';
 import fs from 'fs';
+import path from 'path';
 
 // Clean dist directory
 console.log('🧹 Cleaning dist directory...');
@@ -20,15 +21,23 @@ const items = fs.readdirSync(componentsDir, { withFileTypes: true });
 
 items.forEach(item => {
   if (item.isDirectory() && item.name !== 'index.ts') {
-    // Check if directory contains a component file with the same name
-    const componentFile = `${item.name}.tsx`;
-    const componentPath = `src/components/${item.name}/${componentFile}`;
-    const indexPath = `src/components/${item.name}/index.ts`;
+    const componentDir = `src/components/${item.name}`;
+    const indexPath = `${componentDir}/index.ts`;
 
-    if (fs.existsSync(componentPath)) {
+    // Find all .tsx files in the component directory
+    const tsxFiles = fs
+      .readdirSync(componentDir)
+      .filter(
+        file =>
+          file.endsWith('.tsx') &&
+          !file.includes('.stories.') &&
+          !file.includes('.test.')
+      );
+
+    if (tsxFiles.length > 0) {
       componentFiles.push(item.name);
       componentPaths[item.name] = {
-        main: componentPath,
+        tsxFiles: tsxFiles.map(file => `${componentDir}/${file}`),
         index: indexPath,
       };
     }
@@ -43,12 +52,15 @@ componentFiles.forEach(component => {
   // Create component directory in dist
   fs.mkdirSync(`dist/components/${component}`, { recursive: true });
 
-  // Build the main component file to the component directory
-  const outputFile = `dist/components/${component}/${component}.js`;
-  execSync(
-    `npx babel ${paths.main} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-    { stdio: 'inherit' }
-  );
+  // Build all .tsx files in the component directory
+  paths.tsxFiles.forEach(tsxFile => {
+    const fileName = path.basename(tsxFile, '.tsx');
+    const outputFile = `dist/components/${component}/${fileName}.js`;
+    execSync(
+      `npx babel ${tsxFile} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+      { stdio: 'inherit' }
+    );
+  });
 
   // Build the index file if it exists
   if (fs.existsSync(paths.index)) {
