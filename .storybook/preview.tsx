@@ -27,6 +27,7 @@ const preview: Preview = {
           'Providers',
           'Components',
         ],
+        method: 'alphabetical',
       },
     },
     docs: {

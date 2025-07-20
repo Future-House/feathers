@@ -46,5 +46,6 @@ export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupActio
 export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator } from "./command";
 export { Combobox } from "./combobox";
 export { Typography, typographyVariants } from "./typography";
+export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineHeader, TimelineTrigger, TimelineContent } from "./timeline";
 
 //# sourceMappingURL=index.js.map

@@ -50,4 +50,5 @@ export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, Comman
 export { Combobox, type ComboboxOption, type ComboboxProps, } from './combobox';
 export { Typography, typographyVariants } from './typography';
 export type { TypographyProps } from './typography';
+export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineHeader, TimelineTrigger, TimelineContent, } from './timeline';
 //# sourceMappingURL=index.d.ts.map

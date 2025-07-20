@@ -1,6 +1,6 @@
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
-var _excluded = ["className", "variant", "asChild"];
+var _excluded = ["className", "variant", "color", "asChild"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
@@ -16,6 +16,12 @@ var badgeVariants = cva('inline-flex items-center justify-center rounded-md bord
       secondary: 'border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90',
       destructive: 'border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
       outline: 'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground'
+    },
+    color: {
+      success: 'border-transparent bg-green-600/10 dark:bg-green-600/20 text-green-600 [a&]:hover:bg-green-600/15 dark:[a&]:hover:bg-green-600/25 focus-visible:ring-green-600/20 dark:focus-visible:ring-green-600/40 shadow-none',
+      warning: 'border-transparent bg-amber-600/10 dark:bg-amber-600/20 text-amber-600 [a&]:hover:bg-amber-600/15 dark:[a&]:hover:bg-amber-600/25 focus-visible:ring-amber-600/20 dark:focus-visible:ring-amber-600/40 shadow-none',
+      info: 'border-transparent bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 [a&]:hover:bg-blue-600/15 dark:[a&]:hover:bg-blue-600/25 focus-visible:ring-blue-600/20 dark:focus-visible:ring-blue-600/40 shadow-none',
+      destructive: 'border-transparent bg-red-600/10 dark:bg-red-600/20 text-red-600 [a&]:hover:bg-red-600/15 dark:[a&]:hover:bg-red-600/25 focus-visible:ring-red-600/20 dark:focus-visible:ring-red-600/40 shadow-none'
     }
   },
   defaultVariants: {
@@ -23,8 +29,9 @@ var badgeVariants = cva('inline-flex items-center justify-center rounded-md bord
   }
 });
 function Badge(t0) {
-  var $ = _c(12);
+  var $ = _c(14);
   var className;
+  var color;
   var props;
   var t1;
   var variant;
@@ -32,47 +39,54 @@ function Badge(t0) {
     var _t = t0;
     className = _t.className;
     variant = _t.variant;
+    color = _t.color;
     t1 = _t.asChild;
     props = _objectWithoutProperties(_t, _excluded);
     _t;
     $[0] = t0;
     $[1] = className;
-    $[2] = props;
-    $[3] = t1;
-    $[4] = variant;
+    $[2] = color;
+    $[3] = props;
+    $[4] = t1;
+    $[5] = variant;
   } else {
     className = $[1];
-    props = $[2];
-    t1 = $[3];
-    variant = $[4];
+    color = $[2];
+    props = $[3];
+    t1 = $[4];
+    variant = $[5];
   }
   var asChild = t1 === undefined ? false : t1;
   var Comp = asChild ? Slot : "span";
-  var t2;
-  if ($[5] !== className || $[6] !== variant) {
-    t2 = cn(badgeVariants({
-      variant: variant
-    }), className);
-    $[5] = className;
-    $[6] = variant;
-    $[7] = t2;
-  } else {
-    t2 = $[7];
-  }
+  var effectiveColor = color || (variant === "destructive" ? "destructive" : undefined);
+  var t2 = color ? "default" : variant;
   var t3;
-  if ($[8] !== Comp || $[9] !== props || $[10] !== t2) {
-    t3 = /*#__PURE__*/_jsx(Comp, _objectSpread({
-      "data-slot": "badge",
-      className: t2
-    }, props));
-    $[8] = Comp;
-    $[9] = props;
-    $[10] = t2;
-    $[11] = t3;
+  if ($[6] !== className || $[7] !== effectiveColor || $[8] !== t2) {
+    t3 = cn(badgeVariants({
+      variant: t2,
+      color: effectiveColor
+    }), className);
+    $[6] = className;
+    $[7] = effectiveColor;
+    $[8] = t2;
+    $[9] = t3;
   } else {
-    t3 = $[11];
+    t3 = $[9];
   }
-  return t3;
+  var t4;
+  if ($[10] !== Comp || $[11] !== props || $[12] !== t3) {
+    t4 = /*#__PURE__*/_jsx(Comp, _objectSpread({
+      "data-slot": "badge",
+      className: t3
+    }, props));
+    $[10] = Comp;
+    $[11] = props;
+    $[12] = t3;
+    $[13] = t4;
+  } else {
+    t4 = $[13];
+  }
+  return t4;
 }
 export { Badge, badgeVariants };
 

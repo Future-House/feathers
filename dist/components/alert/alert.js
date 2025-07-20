@@ -1,6 +1,6 @@
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
-var _excluded = ["className", "variant"],
+var _excluded = ["className", "variant", "color"],
   _excluded2 = ["className"],
   _excluded3 = ["className"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -15,6 +15,12 @@ var alertVariants = cva('relative w-full rounded-lg border px-4 py-3 text-sm gri
     variant: {
       default: 'bg-card text-card-foreground',
       destructive: 'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90'
+    },
+    color: {
+      success: 'text-green-600 bg-green-600/10 dark:bg-green-600/20 border-green-600/20 dark:border-green-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-green-600/90',
+      warning: 'text-amber-600 bg-amber-600/10 dark:bg-amber-600/20 border-amber-600/20 dark:border-amber-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-amber-600/90',
+      info: 'text-blue-600 bg-blue-600/10 dark:bg-blue-600/20 border-blue-600/20 dark:border-blue-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-blue-600/90',
+      destructive: 'text-red-600 bg-red-600/10 dark:bg-red-600/20 border-red-600/20 dark:border-red-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-red-600/90'
     }
   },
   defaultVariants: {
@@ -22,50 +28,58 @@ var alertVariants = cva('relative w-full rounded-lg border px-4 py-3 text-sm gri
   }
 });
 function Alert(t0) {
-  var $ = _c(10);
+  var $ = _c(12);
   var className;
+  var color;
   var props;
   var variant;
   if ($[0] !== t0) {
     var _t = t0;
     className = _t.className;
     variant = _t.variant;
+    color = _t.color;
     props = _objectWithoutProperties(_t, _excluded);
     _t;
     $[0] = t0;
     $[1] = className;
-    $[2] = props;
-    $[3] = variant;
+    $[2] = color;
+    $[3] = props;
+    $[4] = variant;
   } else {
     className = $[1];
-    props = $[2];
-    variant = $[3];
+    color = $[2];
+    props = $[3];
+    variant = $[4];
   }
-  var t1;
-  if ($[4] !== className || $[5] !== variant) {
-    t1 = cn(alertVariants({
-      variant: variant
-    }), className);
-    $[4] = className;
-    $[5] = variant;
-    $[6] = t1;
-  } else {
-    t1 = $[6];
-  }
+  var effectiveColor = color || (variant === "destructive" ? "destructive" : undefined);
+  var t1 = color ? "default" : variant;
   var t2;
-  if ($[7] !== props || $[8] !== t1) {
-    t2 = /*#__PURE__*/_jsx("div", _objectSpread({
+  if ($[5] !== className || $[6] !== effectiveColor || $[7] !== t1) {
+    t2 = cn(alertVariants({
+      variant: t1,
+      color: effectiveColor
+    }), className);
+    $[5] = className;
+    $[6] = effectiveColor;
+    $[7] = t1;
+    $[8] = t2;
+  } else {
+    t2 = $[8];
+  }
+  var t3;
+  if ($[9] !== props || $[10] !== t2) {
+    t3 = /*#__PURE__*/_jsx("div", _objectSpread({
       "data-slot": "alert",
       role: "alert",
-      className: t1
+      className: t2
     }, props));
-    $[7] = props;
-    $[8] = t1;
-    $[9] = t2;
+    $[9] = props;
+    $[10] = t2;
+    $[11] = t3;
   } else {
-    t2 = $[9];
+    t3 = $[11];
   }
-  return t2;
+  return t3;
 }
 function AlertTitle(t0) {
   var $ = _c(8);

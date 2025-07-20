@@ -310,3 +310,13 @@ export {
 
 export { Typography, typographyVariants } from '@/components/typography';
 export type { TypographyProps } from '@/components/typography';
+
+export {
+  Timeline,
+  TimelineItem,
+  TimelineHeading,
+  TimelineAccordion,
+  TimelineHeader,
+  TimelineTrigger,
+  TimelineContent,
+} from '@/components/timeline';
