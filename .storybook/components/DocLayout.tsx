@@ -105,7 +105,7 @@ export function DocLayout({
         <p className="!text-muted-foreground text-lg">{finalDescription}</p>
         <div className="flex flex-wrap gap-2">
           {!hideShadcnUrl && (
-            <Badge asChild variant="outline">
+            <Badge asChild color="info">
               <a
                 href={defaultShadcnUrl}
                 target="_blank"
@@ -119,7 +119,7 @@ export function DocLayout({
             </Badge>
           )}
           {!hideRadixUiUrl && (
-            <Badge asChild variant="outline">
+            <Badge asChild color="info">
               <a
                 href={defaultRadixUrl}
                 target="_blank"
