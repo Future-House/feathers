@@ -17,10 +17,10 @@ var alertVariants = cva('relative w-full rounded-lg border px-4 py-3 text-sm gri
       destructive: 'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90'
     },
     color: {
-      success: 'text-green-600 bg-green-600/10 dark:bg-green-600/20 border-green-600/20 dark:border-green-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-green-600/90',
-      warning: 'text-amber-600 bg-amber-600/10 dark:bg-amber-600/20 border-amber-600/20 dark:border-amber-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-amber-600/90',
-      info: 'text-blue-600 bg-blue-600/10 dark:bg-blue-600/20 border-blue-600/20 dark:border-blue-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-blue-600/90',
-      destructive: 'text-red-600 bg-red-600/10 dark:bg-red-600/20 border-red-600/20 dark:border-red-600/30 [&>svg]:text-current *:data-[slot=alert-description]:text-red-600/90'
+      success: 'text-success bg-success/10 border-success/20 [&>svg]:text-current *:data-[slot=alert-description]:text-success/90',
+      warning: 'text-warning bg-warning/10 border-warning/20 [&>svg]:text-current *:data-[slot=alert-description]:text-warning/90',
+      info: 'text-info bg-info/10 border-info/20 [&>svg]:text-current *:data-[slot=alert-description]:text-info/90',
+      error: 'text-error bg-error/10 border-error/20 [&>svg]:text-current *:data-[slot=alert-description]:text-error/90'
     }
   },
   defaultVariants: {
@@ -51,7 +51,7 @@ function Alert(t0) {
     props = $[3];
     variant = $[4];
   }
-  var effectiveColor = color || (variant === "destructive" ? "destructive" : undefined);
+  var effectiveColor = color || (variant === "destructive" ? "error" : undefined);
   var t1 = color ? "default" : variant;
   var t2;
   if ($[5] !== className || $[6] !== effectiveColor || $[7] !== t1) {

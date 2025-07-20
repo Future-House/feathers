@@ -34,10 +34,10 @@ const meta = {
     },
     color: {
       control: { type: 'select' },
-      options: ['success', 'warning', 'info', 'destructive'],
+      options: ['success', 'warning', 'info', 'error'],
       description: 'The color theme of the badge',
       table: {
-        type: { summary: '"success" | "warning" | "info" | "destructive"' },
+        type: { summary: '"success" | "warning" | "info" | "error"' },
         defaultValue: { summary: undefined },
       },
     },
@@ -65,7 +65,7 @@ export const Variants: Story = {
     <div className="flex flex-wrap items-center gap-4">
       <Badge variant="default">Default</Badge>
       <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="destructive">Destructive</Badge>
+      <Badge variant="destructive">Error</Badge>
       <Badge variant="outline">Outline</Badge>
     </div>
   ),
@@ -81,7 +81,7 @@ export const ColorVariants: Story = {
       <Badge color="success">Success</Badge>
       <Badge color="warning">Warning</Badge>
       <Badge color="info">Info</Badge>
-      <Badge color="destructive">Destructive</Badge>
+      <Badge color="error">Error</Badge>
     </div>
   ),
 };
@@ -97,7 +97,7 @@ export const WithIcons: Story = {
         <Info className="mr-1 h-3 w-3" />
         Info
       </Badge>
-      <Badge color="destructive" {...args}>
+      <Badge color="error" {...args}>
         <XCircle className="mr-1 h-3 w-3" />
         Error
       </Badge>
@@ -120,7 +120,7 @@ export const StatusIndicators: Story = {
       </div>
       <div className="flex items-center gap-2">
         <span className="text-sm">Build Status:</span>
-        <Badge color="destructive" {...args}>
+        <Badge color="error" {...args}>
           Failed
         </Badge>
       </div>

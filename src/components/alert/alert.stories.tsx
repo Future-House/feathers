@@ -34,10 +34,10 @@ const meta = {
     },
     color: {
       control: { type: 'select' },
-      options: ['success', 'warning', 'info', 'destructive'],
+      options: ['success', 'warning', 'info', 'error'],
       description: 'The color theme of the alert',
       table: {
-        type: { summary: '"success" | "warning" | "info" | "destructive"' },
+        type: { summary: '"success" | "warning" | "info" | "error"' },
         defaultValue: { summary: undefined },
       },
     },
@@ -167,67 +167,6 @@ export const DescriptionOnly: Story = {
   ),
 };
 
-export const Success: Story = {
-  args: {
-    color: 'success',
-  },
-  render: args => (
-    <Alert {...args}>
-      <CheckCircle2 />
-      <AlertTitle>Success!</AlertTitle>
-      <AlertDescription>
-        Your changes have been saved successfully.
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
-export const Warning: Story = {
-  args: {
-    color: 'warning',
-  },
-  render: args => (
-    <Alert {...args}>
-      <AlertTriangle />
-      <AlertTitle>Warning</AlertTitle>
-      <AlertDescription>
-        Please review this action before proceeding. This cannot be undone.
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
-export const Information: Story = {
-  args: {
-    color: 'info',
-  },
-  render: args => (
-    <Alert {...args}>
-      <Info />
-      <AlertTitle>Information</AlertTitle>
-      <AlertDescription>
-        This feature will be available in the next release. Subscribe to our
-        newsletter for updates.
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
-export const DestructiveColor: Story = {
-  args: {
-    color: 'destructive',
-  },
-  render: args => (
-    <Alert {...args}>
-      <AlertCircle />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        Your session has expired. Please log in again.
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
 export const LongContent: Story = {
   args: {
     variant: 'default',
@@ -300,40 +239,11 @@ export const ColorVariants: Story = {
         <AlertTitle>Information</AlertTitle>
         <AlertDescription>This is an informational message.</AlertDescription>
       </Alert>
-      <Alert color="destructive">
+      <Alert color="error">
         <AlertCircle />
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>
           This is an error message indicating a problem.
-        </AlertDescription>
-      </Alert>
-    </div>
-  ),
-};
-
-export const MultipleAlerts: Story = {
-  args: {
-    variant: 'default',
-  },
-  render: () => (
-    <div className="space-y-4">
-      <Alert color="info">
-        <Info />
-        <AlertTitle>Information</AlertTitle>
-        <AlertDescription>This is an informational message.</AlertDescription>
-      </Alert>
-      <Alert color="warning">
-        <AlertTriangle />
-        <AlertTitle>Warning</AlertTitle>
-        <AlertDescription>
-          This is a warning message that requires attention.
-        </AlertDescription>
-      </Alert>
-      <Alert color="success">
-        <CheckCircle2 />
-        <AlertTitle>Success</AlertTitle>
-        <AlertDescription>
-          This is a success message confirming an action.
         </AlertDescription>
       </Alert>
     </div>

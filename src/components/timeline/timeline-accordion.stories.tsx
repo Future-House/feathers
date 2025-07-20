@@ -67,7 +67,7 @@ export const Default: Story = {
               <div className="flex gap-2">
                 <Badge color="success">Machine Learning</Badge>
                 <Badge variant="default">Language Models</Badge>
-                <Badge variant="destructive">Pre-training</Badge>
+                <Badge color="error">Pre-training</Badge>
               </div>
               <Typography variant="muted">
                 We introduce a new language representation model called BERT,
@@ -94,7 +94,7 @@ export const Default: Story = {
             <div className="space-y-3">
               <div className="flex gap-2">
                 <Badge color="success">Machine Learning</Badge>
-                <Badge variant="destructive">Large Models</Badge>
+                <Badge color="error">Large Models</Badge>
                 <Badge variant="default">Few-shot Learning</Badge>
               </div>
               <Typography variant="muted">

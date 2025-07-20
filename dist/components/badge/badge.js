@@ -18,10 +18,10 @@ var badgeVariants = cva('inline-flex items-center justify-center rounded-md bord
       outline: 'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground'
     },
     color: {
-      success: 'border-transparent bg-green-600/10 dark:bg-green-600/20 text-green-600 [a&]:hover:bg-green-600/15 dark:[a&]:hover:bg-green-600/25 focus-visible:ring-green-600/20 dark:focus-visible:ring-green-600/40 shadow-none',
-      warning: 'border-transparent bg-amber-600/10 dark:bg-amber-600/20 text-amber-600 [a&]:hover:bg-amber-600/15 dark:[a&]:hover:bg-amber-600/25 focus-visible:ring-amber-600/20 dark:focus-visible:ring-amber-600/40 shadow-none',
-      info: 'border-transparent bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 [a&]:hover:bg-blue-600/15 dark:[a&]:hover:bg-blue-600/25 focus-visible:ring-blue-600/20 dark:focus-visible:ring-blue-600/40 shadow-none',
-      destructive: 'border-transparent bg-red-600/10 dark:bg-red-600/20 text-red-600 [a&]:hover:bg-red-600/15 dark:[a&]:hover:bg-red-600/25 focus-visible:ring-red-600/20 dark:focus-visible:ring-red-600/40 shadow-none'
+      success: 'border-transparent bg-success/10 text-success [a&]:hover:bg-success/15 focus-visible:ring-success/20 shadow-none',
+      warning: 'border-transparent bg-warning/10 text-warning [a&]:hover:bg-warning/15 focus-visible:ring-warning/20 shadow-none',
+      info: 'border-transparent bg-info/10 text-info [a&]:hover:bg-info/15 focus-visible:ring-info/20 shadow-none',
+      error: 'border-transparent bg-error/10 text-error [a&]:hover:bg-error/15 focus-visible:ring-error/20 shadow-none'
     }
   },
   defaultVariants: {
@@ -58,7 +58,7 @@ function Badge(t0) {
   }
   var asChild = t1 === undefined ? false : t1;
   var Comp = asChild ? Slot : "span";
-  var effectiveColor = color || (variant === "destructive" ? "destructive" : undefined);
+  var effectiveColor = color || (variant === "destructive" ? "error" : undefined);
   var t2 = color ? "default" : variant;
   var t3;
   if ($[6] !== className || $[7] !== effectiveColor || $[8] !== t2) {

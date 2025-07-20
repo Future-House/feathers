@@ -40,8 +40,8 @@ describe('Badge', () => {
 
     rerender(<Badge variant="destructive">Destructive</Badge>);
     expect(screen.getByText('Destructive')).toHaveClass(
-      'bg-destructive',
-      'text-white'
+      'bg-error/10',
+      'text-error'
     );
 
     rerender(<Badge variant="outline">Outline</Badge>);
@@ -124,7 +124,7 @@ describe('Badge', () => {
     it.each([
       ['default', ['bg-primary', 'text-primary-foreground']],
       ['secondary', ['bg-secondary', 'text-secondary-foreground']],
-      ['destructive', ['bg-destructive', 'text-white']],
+      ['destructive', ['bg-error/10', 'text-error']],
       ['outline', ['text-foreground']],
     ])('applies correct classes for %s variant', (variant, expectedClasses) => {
       render(<Badge variant={variant as BadgeProps['variant']}>Test</Badge>);

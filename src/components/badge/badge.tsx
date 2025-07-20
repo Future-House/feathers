@@ -20,12 +20,12 @@ const badgeVariants = cva(
       },
       color: {
         success:
-          'border-transparent bg-green-600/10 dark:bg-green-600/20 text-green-600 [a&]:hover:bg-green-600/15 dark:[a&]:hover:bg-green-600/25 focus-visible:ring-green-600/20 dark:focus-visible:ring-green-600/40 shadow-none',
+          'border-transparent bg-success/10 text-success [a&]:hover:bg-success/15 focus-visible:ring-success/20 shadow-none',
         warning:
-          'border-transparent bg-amber-600/10 dark:bg-amber-600/20 text-amber-600 [a&]:hover:bg-amber-600/15 dark:[a&]:hover:bg-amber-600/25 focus-visible:ring-amber-600/20 dark:focus-visible:ring-amber-600/40 shadow-none',
-        info: 'border-transparent bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 [a&]:hover:bg-blue-600/15 dark:[a&]:hover:bg-blue-600/25 focus-visible:ring-blue-600/20 dark:focus-visible:ring-blue-600/40 shadow-none',
-        destructive:
-          'border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+          'border-transparent bg-warning/10 text-warning [a&]:hover:bg-warning/15 focus-visible:ring-warning/20 shadow-none',
+        info: 'border-transparent bg-info/10 text-info [a&]:hover:bg-info/15 focus-visible:ring-info/20 shadow-none',
+        error:
+          'border-transparent bg-error/10 text-error [a&]:hover:bg-error/15 focus-visible:ring-error/20 shadow-none',
       },
     },
     defaultVariants: {
@@ -46,13 +46,13 @@ function Badge({
     /**
      * The color theme of the badge.
      */
-    color?: 'success' | 'warning' | 'info' | 'destructive';
+    color?: 'success' | 'warning' | 'info' | 'error';
   }) {
   const Comp = asChild ? Slot : 'span';
 
   // If color is specified, use it; otherwise fall back to variant-based color
   const effectiveColor =
-    color || (variant === 'destructive' ? 'destructive' : undefined);
+    color || (variant === 'destructive' ? 'error' : undefined);
 
   return (
     <Comp
