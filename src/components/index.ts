@@ -316,7 +316,6 @@ export {
   TimelineItem,
   TimelineHeading,
   TimelineAccordion,
-  TimelineHeader,
   TimelineTrigger,
   TimelineContent,
 } from '@/components/timeline';

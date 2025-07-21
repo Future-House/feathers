@@ -5,8 +5,8 @@ import { ChevronDownIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const TimelineAccordion = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
+  React.ComponentRef<typeof AccordionPrimitive.Root>,
+  AccordionPrimitive.AccordionMultipleProps
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Root
     ref={ref}
@@ -16,21 +16,13 @@ const TimelineAccordion = React.forwardRef<
 ));
 TimelineAccordion.displayName = 'TimelineAccordion';
 
-const TimelineHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('mb-6 space-y-2', className)} {...props} />
-));
-TimelineHeader.displayName = 'TimelineHeader';
-
 interface TimelineItemProps
   extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {
   number?: string | number;
 }
 
 const TimelineItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentRef<typeof AccordionPrimitive.Item>,
   TimelineItemProps
 >(({ className, number, children, ...props }, ref) => (
   <AccordionPrimitive.Item
@@ -61,7 +53,7 @@ interface TimelineTriggerProps
 }
 
 const TimelineTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentRef<typeof AccordionPrimitive.Trigger>,
   TimelineTriggerProps
 >(({ className, title, subtitle, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
@@ -88,7 +80,7 @@ const TimelineTrigger = React.forwardRef<
 TimelineTrigger.displayName = 'TimelineTrigger';
 
 const TimelineContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
@@ -101,10 +93,4 @@ const TimelineContent = React.forwardRef<
 ));
 TimelineContent.displayName = 'TimelineContent';
 
-export {
-  TimelineAccordion,
-  TimelineHeader,
-  TimelineItem,
-  TimelineTrigger,
-  TimelineContent,
-};
+export { TimelineAccordion, TimelineItem, TimelineTrigger, TimelineContent };

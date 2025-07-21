@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   TimelineAccordion,
-  TimelineHeader,
   TimelineItem,
   TimelineTrigger,
   TimelineContent,
@@ -20,12 +19,10 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <div className="mx-auto max-w-2xl">
-      <TimelineHeader>
-        <Typography variant="h3">Research Papers Search</Typography>
-        <Typography>
-          Browse and explore research papers with detailed abstracts
-        </Typography>
-      </TimelineHeader>
+      <Typography variant="h3">Research Papers Search</Typography>
+      <Typography>
+        Browse and explore research papers with detailed abstracts
+      </Typography>
 
       <TimelineAccordion type="multiple">
         <TimelineItem value="item-1" number="1">
@@ -80,34 +77,6 @@ export const Default: Story = {
               <Typography variant="muted">
                 <strong>Citation count:</strong> 67,891 •{' '}
                 <strong>Published:</strong> October 2018
-              </Typography>
-            </div>
-          </TimelineContent>
-        </TimelineItem>
-
-        <TimelineItem value="item-3" number="3">
-          <TimelineTrigger
-            title="GPT-3: Language Models are Few-Shot Learners"
-            subtitle="Brown et al. • 2020 • Neural Information Processing Systems"
-          />
-          <TimelineContent>
-            <div className="space-y-3">
-              <div className="flex gap-2">
-                <Badge color="success">Machine Learning</Badge>
-                <Badge color="error">Large Models</Badge>
-                <Badge variant="default">Few-shot Learning</Badge>
-              </div>
-              <Typography variant="muted">
-                Recent work has demonstrated substantial gains on many NLP tasks
-                and benchmarks by pre-training on a large corpus of text
-                followed by fine-tuning on a specific task. While typically
-                task-agnostic in architecture, this method still requires
-                task-specific fine-tuning datasets of thousands or tens of
-                thousands of examples.
-              </Typography>
-              <Typography variant="muted">
-                <strong>Citation count:</strong> 34,567 •{' '}
-                <strong>Published:</strong> May 2020
               </Typography>
             </div>
           </TimelineContent>

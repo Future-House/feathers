@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import {
   TimelineAccordion,
-  TimelineHeader,
   TimelineItem,
   TimelineTrigger,
   TimelineContent,
@@ -10,7 +9,7 @@ import {
 describe('TimelineAccordion', () => {
   it('renders correctly', () => {
     render(
-      <TimelineAccordion type="single" collapsible>
+      <TimelineAccordion type="multiple">
         <TimelineItem value="item-1">
           <TimelineTrigger title="Test Title" />
           <TimelineContent>Test Content</TimelineContent>
@@ -23,7 +22,7 @@ describe('TimelineAccordion', () => {
 
   it('renders with default expanded item', () => {
     render(
-      <TimelineAccordion type="single" collapsible defaultValue="item-1">
+      <TimelineAccordion type="multiple" defaultValue={['item-1']}>
         <TimelineItem value="item-1">
           <TimelineTrigger title="Test Title" />
           <TimelineContent>Test Content</TimelineContent>
@@ -35,24 +34,10 @@ describe('TimelineAccordion', () => {
   });
 });
 
-describe('TimelineHeader', () => {
-  it('renders header content', () => {
-    render(
-      <TimelineHeader>
-        <h2>Timeline Header</h2>
-        <p>Description</p>
-      </TimelineHeader>
-    );
-
-    expect(screen.getByText('Timeline Header')).toBeInTheDocument();
-    expect(screen.getByText('Description')).toBeInTheDocument();
-  });
-});
-
 describe('TimelineItem', () => {
   it('renders with number', () => {
     render(
-      <TimelineAccordion type="single" collapsible defaultValue="item-1">
+      <TimelineAccordion type="multiple" defaultValue={['item-1']}>
         <TimelineItem value="item-1" number="1">
           <TimelineTrigger title="Test Title" />
           <TimelineContent>Test Content</TimelineContent>
@@ -65,7 +50,7 @@ describe('TimelineItem', () => {
 
   it('renders without number', () => {
     render(
-      <TimelineAccordion type="single" collapsible defaultValue="item-1">
+      <TimelineAccordion type="multiple" defaultValue={['item-1']}>
         <TimelineItem value="item-1">
           <TimelineTrigger title="Test Title" />
           <TimelineContent>Test Content</TimelineContent>
@@ -81,7 +66,7 @@ describe('TimelineItem', () => {
 describe('TimelineTrigger', () => {
   it('renders title and subtitle', () => {
     render(
-      <TimelineAccordion type="single" collapsible>
+      <TimelineAccordion type="multiple">
         <TimelineItem value="item-1">
           <TimelineTrigger title="Main Title" subtitle="Subtitle text" />
           <TimelineContent>Content</TimelineContent>
@@ -95,7 +80,7 @@ describe('TimelineTrigger', () => {
 
   it('toggles content on click', () => {
     render(
-      <TimelineAccordion type="single" collapsible>
+      <TimelineAccordion type="multiple">
         <TimelineItem value="item-1">
           <TimelineTrigger title="Test Title" />
           <TimelineContent>Test Content</TimelineContent>
@@ -121,7 +106,7 @@ describe('TimelineTrigger', () => {
 describe('TimelineContent', () => {
   it('renders content when expanded', () => {
     render(
-      <TimelineAccordion type="single" collapsible defaultValue="item-1">
+      <TimelineAccordion type="multiple" defaultValue={['item-1']}>
         <TimelineItem value="item-1">
           <TimelineTrigger title="Test Title" />
           <TimelineContent>

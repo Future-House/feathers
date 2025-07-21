@@ -1,10 +1,9 @@
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
 var _excluded = ["className"],
-  _excluded2 = ["className"],
-  _excluded3 = ["className", "number", "children"],
-  _excluded4 = ["className", "title", "subtitle"],
-  _excluded5 = ["className", "children"];
+  _excluded2 = ["className", "number", "children"],
+  _excluded3 = ["className", "title", "subtitle"],
+  _excluded4 = ["className", "children"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
@@ -53,46 +52,6 @@ var TimelineAccordion = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   return t2;
 });
 TimelineAccordion.displayName = 'TimelineAccordion';
-var TimelineHeader = /*#__PURE__*/React.forwardRef(function (t0, ref) {
-  var $ = _c(9);
-  var className;
-  var props;
-  if ($[0] !== t0) {
-    var _t2 = t0;
-    className = _t2.className;
-    props = _objectWithoutProperties(_t2, _excluded2);
-    _t2;
-    $[0] = t0;
-    $[1] = className;
-    $[2] = props;
-  } else {
-    className = $[1];
-    props = $[2];
-  }
-  var t1;
-  if ($[3] !== className) {
-    t1 = cn("mb-6 space-y-2", className);
-    $[3] = className;
-    $[4] = t1;
-  } else {
-    t1 = $[4];
-  }
-  var t2;
-  if ($[5] !== props || $[6] !== ref || $[7] !== t1) {
-    t2 = /*#__PURE__*/_jsx("div", _objectSpread({
-      ref: ref,
-      className: t1
-    }, props));
-    $[5] = props;
-    $[6] = ref;
-    $[7] = t1;
-    $[8] = t2;
-  } else {
-    t2 = $[8];
-  }
-  return t2;
-});
-TimelineHeader.displayName = 'TimelineHeader';
 var TimelineItem = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   var $ = _c(15);
   var children;
@@ -100,12 +59,12 @@ var TimelineItem = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   var number;
   var props;
   if ($[0] !== t0) {
-    var _t3 = t0;
-    className = _t3.className;
-    number = _t3.number;
-    children = _t3.children;
-    props = _objectWithoutProperties(_t3, _excluded3);
-    _t3;
+    var _t2 = t0;
+    className = _t2.className;
+    number = _t2.number;
+    children = _t2.children;
+    props = _objectWithoutProperties(_t2, _excluded2);
+    _t2;
     $[0] = t0;
     $[1] = children;
     $[2] = className;
@@ -163,12 +122,12 @@ var TimelineTrigger = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   var subtitle;
   var title;
   if ($[0] !== t0) {
-    var _t4 = t0;
-    className = _t4.className;
-    title = _t4.title;
-    subtitle = _t4.subtitle;
-    props = _objectWithoutProperties(_t4, _excluded4);
-    _t4;
+    var _t3 = t0;
+    className = _t3.className;
+    title = _t3.title;
+    subtitle = _t3.subtitle;
+    props = _objectWithoutProperties(_t3, _excluded3);
+    _t3;
     $[0] = t0;
     $[1] = className;
     $[2] = props;
@@ -259,11 +218,11 @@ var TimelineContent = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   var className;
   var props;
   if ($[0] !== t0) {
-    var _t5 = t0;
-    className = _t5.className;
-    children = _t5.children;
-    props = _objectWithoutProperties(_t5, _excluded5);
-    _t5;
+    var _t4 = t0;
+    className = _t4.className;
+    children = _t4.children;
+    props = _objectWithoutProperties(_t4, _excluded4);
+    _t4;
     $[0] = t0;
     $[1] = children;
     $[2] = className;
@@ -311,6 +270,6 @@ var TimelineContent = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   return t3;
 });
 TimelineContent.displayName = 'TimelineContent';
-export { TimelineAccordion, TimelineHeader, TimelineItem, TimelineTrigger, TimelineContent };
+export { TimelineAccordion, TimelineItem, TimelineTrigger, TimelineContent };
 
 //# sourceMappingURL=timeline-accordion.js.map
