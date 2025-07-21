@@ -319,3 +319,6 @@ export {
   TimelineTrigger,
   TimelineContent,
 } from '@/components/timeline';
+
+export { Editor, editorVariants, EditorToolbar } from '@/components/editor';
+export type { EditorProps, SlashCommand } from '@/components/editor';

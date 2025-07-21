@@ -54,5 +54,6 @@ export * from "./components/theme-toggle";
 export * from "./components/tooltip";
 export * from "./components/typography";
 export * from "./components/timeline";
+export * from "./components/editor";
 
 //# sourceMappingURL=index.js.map

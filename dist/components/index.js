@@ -47,5 +47,6 @@ export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, Comman
 export { Combobox } from "./combobox";
 export { Typography, typographyVariants } from "./typography";
 export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineTrigger, TimelineContent } from "./timeline";
+export { Editor, editorVariants, EditorToolbar } from "./editor";
 
 //# sourceMappingURL=index.js.map

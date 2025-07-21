@@ -51,4 +51,6 @@ export { Combobox, type ComboboxOption, type ComboboxProps, } from './combobox';
 export { Typography, typographyVariants } from './typography';
 export type { TypographyProps } from './typography';
 export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineTrigger, TimelineContent, } from './timeline';
+export { Editor, editorVariants, EditorToolbar } from './editor';
+export type { EditorProps, SlashCommand } from './editor';
 //# sourceMappingURL=index.d.ts.map
