@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { EditorState } from 'lexical';
-import { type VariantProps } from 'class-variance-authority';
-declare const editorVariants: (props?: ({
-    size?: "default" | "sm" | "lg" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+declare const editorVariants: (props?: import("class-variance-authority/dist/types").ClassProp | undefined) => string;
 export interface SlashCommand {
     key: string;
     label: string;
@@ -11,7 +8,7 @@ export interface SlashCommand {
     description?: string;
     onSelect: () => void;
 }
-export interface EditorProps extends VariantProps<typeof editorVariants> {
+export interface EditorProps {
     className?: string;
     placeholder?: string;
     value?: string;
@@ -24,6 +21,6 @@ export interface EditorProps extends VariantProps<typeof editorVariants> {
     disabled?: boolean;
     'aria-invalid'?: boolean;
 }
-declare function Editor({ className, size, placeholder, value: _value, onChange: _onChange, onValueChange: _onValueChange, slashCommands, showToolbar, showMarkdownToggle, autoFocus, disabled, 'aria-invalid': ariaInvalid, ...props }: EditorProps): import("react/jsx-runtime").JSX.Element;
+declare function Editor({ className, placeholder, value: _value, onChange, onValueChange, slashCommands, showToolbar, showMarkdownToggle, autoFocus, disabled, 'aria-invalid': ariaInvalid, ...props }: EditorProps): import("react/jsx-runtime").JSX.Element;
 export { Editor, editorVariants };
 //# sourceMappingURL=editor.d.ts.map

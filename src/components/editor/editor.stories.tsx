@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { EditorState } from 'lexical';
 import { Play, FileText, Database } from 'lucide-react';
 
@@ -111,6 +111,7 @@ const ControlledEditor = () => {
     <div className="space-y-4">
       <Editor
         placeholder="This is a controlled editor..."
+        value={value}
         onValueChange={setValue}
         onChange={setEditorState}
       />
@@ -164,8 +165,6 @@ This editor supports **markdown** formatting, including:
 \`\`\`javascript
 // Code blocks work too
 console.log('Hello, world!');
-\`\`\`
-
-Try typing **/** to see slash commands!`,
+\`\`\``,
   },
 };

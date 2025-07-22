@@ -8,11 +8,22 @@ import {
   REDO_COMMAND,
   CAN_UNDO_COMMAND,
   CAN_REDO_COMMAND,
+  $createParagraphNode,
 } from 'lexical';
 import { $setBlocksType } from '@lexical/selection';
-import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
+import {
+  $createHeadingNode,
+  $createQuoteNode,
+  HeadingTagType,
+  $isHeadingNode,
+} from '@lexical/rich-text';
 import { $createCodeNode } from '@lexical/code';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
+import {
+  INSERT_ORDERED_LIST_COMMAND,
+  INSERT_UNORDERED_LIST_COMMAND,
+  $isListNode,
+} from '@lexical/list';
 import {
   Bold,
   Italic,
@@ -21,22 +32,39 @@ import {
   Link,
   Undo,
   Redo,
-  Heading1,
-  Heading2,
-  Heading3,
-  Quote,
+  ChevronDown,
+  Strikethrough,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Toggle } from '@/components/toggle';
 import { Button } from '@/components/button';
 import { Separator } from '@/components/separator';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/dropdown-menu';
+
+const blockTypeToBlockName: Record<string, string> = {
+  paragraph: 'Paragraph',
+  h1: 'Heading 1',
+  h2: 'Heading 2',
+  h3: 'Heading 3',
+  quote: 'Quote',
+  code: 'Code Block',
+  bullet: 'Bulleted List',
+  number: 'Numbered List',
+};
 
 export function EditorToolbar({ className }: { className?: string }) {
   const [editor] = useLexicalComposerContext();
+  const [blockType, setBlockType] = React.useState('paragraph');
   const [isBold, setIsBold] = React.useState(false);
   const [isItalic, setIsItalic] = React.useState(false);
   const [isUnderline, setIsUnderline] = React.useState(false);
+  const [isStrikethrough, setIsStrikethrough] = React.useState(false);
   const [isCode, setIsCode] = React.useState(false);
   const [isLink, setIsLink] = React.useState(false);
   const [canUndo, setCanUndo] = React.useState(false);
@@ -48,12 +76,29 @@ export function EditorToolbar({ className }: { className?: string }) {
       setIsBold(selection.hasFormat('bold'));
       setIsItalic(selection.hasFormat('italic'));
       setIsUnderline(selection.hasFormat('underline'));
+      setIsStrikethrough(selection.hasFormat('strikethrough'));
       setIsCode(selection.hasFormat('code'));
 
       // Check if we're in a link
       const node = selection.anchor.getNode();
       const parent = node.getParent();
       setIsLink($isLinkNode(parent) || $isLinkNode(node));
+
+      // Update block type
+      const anchorNode = selection.anchor.getNode();
+      const element = anchorNode.getTopLevelElementOrThrow();
+
+      if ($isListNode(element)) {
+        const type = element.getListType();
+        setBlockType(type);
+      } else {
+        const type = $isHeadingNode(element)
+          ? element.getTag()
+          : element.getType();
+        if (type in blockTypeToBlockName) {
+          setBlockType(type);
+        }
+      }
     }
   }, []);
 
@@ -91,8 +136,38 @@ export function EditorToolbar({ className }: { className?: string }) {
     };
   }, [editor, updateToolbar]);
 
-  const formatText = (format: 'bold' | 'italic' | 'underline' | 'code') => {
+  const formatText = (
+    format: 'bold' | 'italic' | 'underline' | 'strikethrough' | 'code'
+  ) => {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+  };
+
+  const formatBlockType = (blockType: string) => {
+    if (blockType === 'paragraph') {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          $setBlocksType(selection, () => $createParagraphNode());
+        }
+      });
+    } else if (blockType === 'h1' || blockType === 'h2' || blockType === 'h3') {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          $setBlocksType(selection, () =>
+            $createHeadingNode(blockType as HeadingTagType)
+          );
+        }
+      });
+    } else if (blockType === 'quote') {
+      formatQuote();
+    } else if (blockType === 'code') {
+      formatCodeBlock();
+    } else if (blockType === 'bullet') {
+      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+    } else if (blockType === 'number') {
+      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+    }
   };
 
   const insertLink = () => {
@@ -104,15 +179,6 @@ export function EditorToolbar({ className }: { className?: string }) {
     } else {
       editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
-  };
-
-  const formatHeading = (headingSize: 'h1' | 'h2' | 'h3') => {
-    editor.update(() => {
-      const selection = $getSelection();
-      if ($isRangeSelection(selection)) {
-        $setBlocksType(selection, () => $createHeadingNode(headingSize));
-      }
-    });
   };
 
   const formatQuote = () => {
@@ -136,7 +202,7 @@ export function EditorToolbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'border-input bg-background flex flex-wrap items-center gap-1 rounded-md border p-1',
+        'border-input bg-background flex w-full flex-wrap items-center gap-1 border-b py-1',
         className
       )}
       role="toolbar"
@@ -144,7 +210,7 @@ export function EditorToolbar({ className }: { className?: string }) {
     >
       {/* Undo/Redo */}
       <Button
-        variant="ghost"
+        variant="outline"
         size="icon"
         onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
         disabled={!canUndo}
@@ -154,7 +220,7 @@ export function EditorToolbar({ className }: { className?: string }) {
       </Button>
 
       <Button
-        variant="ghost"
+        variant="outline"
         size="icon"
         onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
         disabled={!canRedo}
@@ -163,10 +229,34 @@ export function EditorToolbar({ className }: { className?: string }) {
         <Redo className="size-4" />
       </Button>
 
-      <Separator orientation="vertical" className="mx-1 h-6" />
+      <Separator orientation="vertical" className="mx-1 h-6!" />
+
+      {/* Block Type Dropdown */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="sm" className="w-auto px-2">
+            {blockTypeToBlockName[blockType] || 'Paragraph'}
+            <ChevronDown className="ml-1 size-3" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          {Object.entries(blockTypeToBlockName).map(([key, name]) => (
+            <DropdownMenuItem
+              key={key}
+              onClick={() => formatBlockType(key)}
+              className={cn(blockType === key && 'bg-accent')}
+            >
+              {name}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <Separator orientation="vertical" className="mx-1 h-6!" />
 
       {/* Text Formatting */}
       <Toggle
+        variant="outline"
         pressed={isBold}
         onPressedChange={() => formatText('bold')}
         aria-label="Bold"
@@ -177,6 +267,7 @@ export function EditorToolbar({ className }: { className?: string }) {
       </Toggle>
 
       <Toggle
+        variant="outline"
         pressed={isItalic}
         onPressedChange={() => formatText('italic')}
         aria-label="Italic"
@@ -187,6 +278,7 @@ export function EditorToolbar({ className }: { className?: string }) {
       </Toggle>
 
       <Toggle
+        variant="outline"
         pressed={isUnderline}
         onPressedChange={() => formatText('underline')}
         aria-label="Underline"
@@ -197,6 +289,18 @@ export function EditorToolbar({ className }: { className?: string }) {
       </Toggle>
 
       <Toggle
+        variant="outline"
+        pressed={isStrikethrough}
+        onPressedChange={() => formatText('strikethrough')}
+        aria-label="Strikethrough"
+        title="Strikethrough"
+        size="sm"
+      >
+        <Strikethrough className="size-4" />
+      </Toggle>
+
+      <Toggle
+        variant="outline"
         pressed={isCode}
         onPressedChange={() => formatText('code')}
         aria-label="Code"
@@ -206,10 +310,11 @@ export function EditorToolbar({ className }: { className?: string }) {
         <Code className="size-4" />
       </Toggle>
 
-      <Separator orientation="vertical" className="mx-1 h-6" />
+      <Separator orientation="vertical" className="mx-1 h-6!" />
 
       {/* Link */}
       <Toggle
+        variant="outline"
         pressed={isLink}
         onPressedChange={insertLink}
         aria-label="Link"
@@ -218,49 +323,6 @@ export function EditorToolbar({ className }: { className?: string }) {
       >
         <Link className="size-4" />
       </Toggle>
-
-      <Separator orientation="vertical" className="mx-1 h-6" />
-
-      {/* Block Formatting */}
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => formatHeading('h1')}
-        title="Heading 1"
-      >
-        <Heading1 className="size-4" />
-      </Button>
-
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => formatHeading('h2')}
-        title="Heading 2"
-      >
-        <Heading2 className="size-4" />
-      </Button>
-
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => formatHeading('h3')}
-        title="Heading 3"
-      >
-        <Heading3 className="size-4" />
-      </Button>
-
-      <Button variant="ghost" size="icon" onClick={formatQuote} title="Quote">
-        <Quote className="size-4" />
-      </Button>
-
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={formatCodeBlock}
-        title="Code Block"
-      >
-        <Code className="size-4" />
-      </Button>
     </div>
   );
 }

@@ -108,23 +108,11 @@ describe('Editor', () => {
   });
 
   it('applies correct size classes', () => {
-    const { rerender } = render(<Editor size="sm" />);
-    let editorContainer = screen
-      .getByTestId('content-editable')
-      .closest('div[class*="min-h"]');
-    expect(editorContainer).toHaveClass('min-h-20');
-
-    rerender(<Editor size="default" />);
-    editorContainer = screen
+    render(<Editor />);
+    const editorContainer = screen
       .getByTestId('content-editable')
       .closest('div[class*="min-h"]');
     expect(editorContainer).toHaveClass('min-h-32');
-
-    rerender(<Editor size="lg" />);
-    editorContainer = screen
-      .getByTestId('content-editable')
-      .closest('div[class*="min-h"]');
-    expect(editorContainer).toHaveClass('min-h-40');
   });
 
   it('applies disabled styling when disabled', () => {
