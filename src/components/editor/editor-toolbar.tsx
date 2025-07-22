@@ -44,12 +44,22 @@ import {
   RemoveFormatting,
   Indent,
   Outdent,
+  X,
+  Check,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Toggle } from '@/components/toggle';
 import { Button } from '@/components/button';
 import { Separator } from '@/components/separator';
+import { Input } from '@/components/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/tooltip';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -79,6 +89,8 @@ export function EditorToolbar({ className }: { className?: string }) {
   const [isLink, setIsLink] = React.useState(false);
   const [canUndo, setCanUndo] = React.useState(false);
   const [canRedo, setCanRedo] = React.useState(false);
+  const [showLinkPopover, setShowLinkPopover] = React.useState(false);
+  const [linkUrl, setLinkUrl] = React.useState('');
 
   const updateToolbar = React.useCallback(() => {
     const selection = $getSelection();
@@ -180,15 +192,28 @@ export function EditorToolbar({ className }: { className?: string }) {
     }
   };
 
-  const insertLink = () => {
-    if (!isLink) {
-      const url = prompt('Enter URL:');
-      if (url) {
-        editor.dispatchCommand(TOGGLE_LINK_COMMAND, url);
-      }
-    } else {
+  const handleLinkClick = () => {
+    if (isLink) {
+      // Remove existing link
       editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+    } else {
+      // Show popover to add link
+      setShowLinkPopover(true);
+      setLinkUrl('https://');
     }
+  };
+
+  const handleLinkSubmit = () => {
+    if (linkUrl.trim()) {
+      editor.dispatchCommand(TOGGLE_LINK_COMMAND, linkUrl.trim());
+    }
+    setShowLinkPopover(false);
+    setLinkUrl('');
+  };
+
+  const handleLinkCancel = () => {
+    setShowLinkPopover(false);
+    setLinkUrl('');
   };
 
   const formatQuote = () => {
@@ -281,166 +306,279 @@ export function EditorToolbar({ className }: { className?: string }) {
   };
 
   return (
-    <div
-      className={cn(
-        'border-input bg-background flex w-full flex-wrap items-center gap-1 border-b py-1',
-        className
-      )}
-      role="toolbar"
-      aria-label="Editor toolbar"
-    >
-      {/* Undo/Redo */}
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
-        disabled={!canUndo}
-        title="Undo"
+    <TooltipProvider>
+      <div
+        className={cn(
+          'border-input bg-background flex w-full flex-wrap items-center gap-1 border-b py-1',
+          className
+        )}
+        role="toolbar"
+        aria-label="Editor toolbar"
       >
-        <Undo className="size-4" />
-      </Button>
-
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
-        disabled={!canRedo}
-        title="Redo"
-      >
-        <Redo className="size-4" />
-      </Button>
-
-      <Separator orientation="vertical" className="mx-1 h-6!" />
-
-      {/* Block Type Dropdown */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className="w-auto px-2">
-            {blockTypeToBlockName[blockType] || 'Paragraph'}
-            <ChevronDown className="ml-1 size-3" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          {Object.entries(blockTypeToBlockName).map(([key, name]) => (
-            <DropdownMenuItem
-              key={key}
-              onClick={() => formatBlockType(key)}
-              className={cn(blockType === key && 'bg-accent')}
+        {/* Undo/Redo */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
+              disabled={!canUndo}
             >
-              {name}
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+              <Undo className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Undo</p>
+          </TooltipContent>
+        </Tooltip>
 
-      <Separator orientation="vertical" className="mx-1 h-6!" />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
+              disabled={!canRedo}
+            >
+              <Redo className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Redo</p>
+          </TooltipContent>
+        </Tooltip>
 
-      {/* Text Formatting */}
-      <Toggle
-        variant="outline"
-        pressed={isBold}
-        onPressedChange={() => formatText('bold')}
-        aria-label="Bold"
-        title="Bold"
-        size="sm"
-      >
-        <Bold className="size-4" />
-      </Toggle>
+        <Separator orientation="vertical" className="mx-1 h-6!" />
 
-      <Toggle
-        variant="outline"
-        pressed={isItalic}
-        onPressedChange={() => formatText('italic')}
-        aria-label="Italic"
-        title="Italic"
-        size="sm"
-      >
-        <Italic className="size-4" />
-      </Toggle>
+        {/* Block Type Dropdown */}
+        <DropdownMenu>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="w-auto px-2">
+                  {blockTypeToBlockName[blockType] || 'Paragraph'}
+                  <ChevronDown className="ml-1 size-3" />
+                </Button>
+              </DropdownMenuTrigger>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Text Format</p>
+            </TooltipContent>
+          </Tooltip>
+          <DropdownMenuContent>
+            {Object.entries(blockTypeToBlockName).map(([key, name]) => (
+              <DropdownMenuItem
+                key={key}
+                onClick={() => formatBlockType(key)}
+                className={cn(blockType === key && 'bg-accent')}
+              >
+                {name}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
 
-      <Toggle
-        variant="outline"
-        pressed={isUnderline}
-        onPressedChange={() => formatText('underline')}
-        aria-label="Underline"
-        title="Underline"
-        size="sm"
-      >
-        <Underline className="size-4" />
-      </Toggle>
+        <Separator orientation="vertical" className="mx-1 h-6!" />
 
-      <Toggle
-        variant="outline"
-        pressed={isStrikethrough}
-        onPressedChange={() => formatText('strikethrough')}
-        aria-label="Strikethrough"
-        title="Strikethrough"
-        size="sm"
-      >
-        <Strikethrough className="size-4" />
-      </Toggle>
+        {/* Text Formatting */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Toggle
+              variant="outline"
+              pressed={isBold}
+              onPressedChange={() => formatText('bold')}
+              aria-label="Bold"
+              size="sm"
+            >
+              <Bold className="size-4" />
+            </Toggle>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Bold</p>
+          </TooltipContent>
+        </Tooltip>
 
-      <Toggle
-        variant="outline"
-        pressed={isCode}
-        onPressedChange={() => formatText('code')}
-        aria-label="Code"
-        title="Inline Code"
-        size="sm"
-      >
-        <Code className="size-4" />
-      </Toggle>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Toggle
+              variant="outline"
+              pressed={isItalic}
+              onPressedChange={() => formatText('italic')}
+              aria-label="Italic"
+              size="sm"
+            >
+              <Italic className="size-4" />
+            </Toggle>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Italic</p>
+          </TooltipContent>
+        </Tooltip>
 
-      <Separator orientation="vertical" className="mx-1 h-6!" />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Toggle
+              variant="outline"
+              pressed={isUnderline}
+              onPressedChange={() => formatText('underline')}
+              aria-label="Underline"
+              size="sm"
+            >
+              <Underline className="size-4" />
+            </Toggle>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Underline</p>
+          </TooltipContent>
+        </Tooltip>
 
-      {/* Link */}
-      <Toggle
-        variant="outline"
-        pressed={isLink}
-        onPressedChange={insertLink}
-        aria-label="Link"
-        title="Insert Link"
-        size="sm"
-      >
-        <Link className="size-4" />
-      </Toggle>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Toggle
+              variant="outline"
+              pressed={isStrikethrough}
+              onPressedChange={() => formatText('strikethrough')}
+              aria-label="Strikethrough"
+              size="sm"
+            >
+              <Strikethrough className="size-4" />
+            </Toggle>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Strikethrough</p>
+          </TooltipContent>
+        </Tooltip>
 
-      <Separator orientation="vertical" className="mx-1 h-6!" />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Toggle
+              variant="outline"
+              pressed={isCode}
+              onPressedChange={() => formatText('code')}
+              aria-label="Code"
+              size="sm"
+            >
+              <Code className="size-4" />
+            </Toggle>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Inline Code</p>
+          </TooltipContent>
+        </Tooltip>
 
-      {/* Clear Formatting */}
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={clearFormatting}
-        title="Clear Formatting"
-        aria-label="Clear Formatting"
-        className="h-8 w-8 p-0"
-      >
-        <RemoveFormatting className="size-4" />
-      </Button>
+        <Separator orientation="vertical" className="mx-1 h-6!" />
 
-      {/* Indent/Outdent */}
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleOutdent}
-        title="Decrease Indent"
-        aria-label="Decrease Indent"
-        className="h-8 w-8 p-0"
-      >
-        <Outdent className="size-4" />
-      </Button>
+        {/* Link */}
+        <Popover open={showLinkPopover} onOpenChange={setShowLinkPopover}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <PopoverTrigger asChild>
+                <Toggle
+                  variant="outline"
+                  pressed={isLink}
+                  onPressedChange={handleLinkClick}
+                  aria-label="Link"
+                  size="sm"
+                >
+                  <Link className="size-4" />
+                </Toggle>
+              </PopoverTrigger>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{isLink ? 'Remove Link' : 'Insert Link'}</p>
+            </TooltipContent>
+          </Tooltip>
+          <PopoverContent className="w-80" align="start">
+            <div className="flex items-center gap-2">
+              <Input
+                placeholder="https://"
+                value={linkUrl}
+                onChange={e => setLinkUrl(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    handleLinkSubmit();
+                  } else if (e.key === 'Escape') {
+                    handleLinkCancel();
+                  }
+                }}
+                className="flex-1"
+                autoFocus
+              />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleLinkCancel}
+                className="h-8 w-8 p-0"
+              >
+                <X className="size-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleLinkSubmit}
+                className="h-8 w-8 p-0"
+              >
+                <Check className="size-4" />
+              </Button>
+            </div>
+          </PopoverContent>
+        </Popover>
 
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleIndent}
-        title="Increase Indent"
-        aria-label="Increase Indent"
-        className="h-8 w-8 p-0"
-      >
-        <Indent className="size-4" />
-      </Button>
-    </div>
+        <Separator orientation="vertical" className="mx-1 h-6!" />
+
+        {/* Indent/Outdent */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleOutdent}
+              aria-label="Decrease Indent"
+              className="h-8 w-8 p-0"
+            >
+              <Outdent className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Decrease Indent</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleIndent}
+              aria-label="Increase Indent"
+              className="h-8 w-8 p-0"
+            >
+              <Indent className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Increase Indent</p>
+          </TooltipContent>
+        </Tooltip>
+
+        {/* Clear Formatting */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={clearFormatting}
+              aria-label="Clear Formatting"
+              className="h-8 w-8 p-0"
+            >
+              <RemoveFormatting className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Clear Formatting</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipProvider>
   );
 }

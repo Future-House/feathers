@@ -266,8 +266,10 @@ function Editor({
 
         {/* footer/action bar */}
         {showMarkdownToggle && (
-          // <div className="border-input bg-muted/30 flex justify-end border-t px-3 py-2">
-          <div data-slot="actions-bar" className="flex justify-end">
+          <div
+            data-slot="actions-bar"
+            className="border-input flex w-full justify-end border-t-1 py-1"
+          >
             <MarkdownTogglePlugin />
           </div>
         )}

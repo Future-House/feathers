@@ -11,6 +11,7 @@ import { FileText } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip';
 
 export function MarkdownTogglePlugin({ className }: { className?: string }) {
   const [editor] = useLexicalComposerContext();
@@ -35,15 +36,21 @@ export function MarkdownTogglePlugin({ className }: { className?: string }) {
   }, [editor]);
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={handleMarkdownToggle}
-      className={cn('h-8 px-2', className)}
-      title="Convert From Markdown"
-      aria-label="Convert from markdown"
-    >
-      <FileText className="size-4" />
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleMarkdownToggle}
+          className={cn('px-2', className)}
+          aria-label="Toggle Markdown Editor"
+        >
+          <FileText className="size-4" />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Toggle Markdown Editor</p>
+      </TooltipContent>
+    </Tooltip>
   );
 }
