@@ -72,8 +72,8 @@ const theme = {
     nested: {
       listitem: 'list-none',
     },
-    ol: 'list-decimal list-inside my-2',
-    ul: 'list-disc list-inside my-2',
+    ol: 'list-decimal list-inside',
+    ul: 'list-disc list-inside',
     listitem: 'mb-1',
     listitemChecked: 'line-through text-muted-foreground',
     listitemUnchecked: '',
@@ -162,6 +162,10 @@ function EditorPlaceholder({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * TODO:
+ * - Add keyboard shortcuts
+ */
 function Editor({
   className,
   placeholder = 'Start typing...',

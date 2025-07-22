@@ -46,6 +46,8 @@ import {
   Outdent,
   X,
   Check,
+  List,
+  ListOrdered,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -190,6 +192,9 @@ export function EditorToolbar({ className }: { className?: string }) {
     } else if (blockType === 'number') {
       editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
     }
+
+    // Focus the editor after block type change
+    editor.focus();
   };
 
   const handleLinkClick = () => {
@@ -303,6 +308,14 @@ export function EditorToolbar({ className }: { className?: string }) {
 
   const handleOutdent = () => {
     editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
+  };
+
+  const handleUnorderedList = () => {
+    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+  };
+
+  const handleOrderedList = () => {
+    editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
   };
 
   return (
@@ -523,6 +536,43 @@ export function EditorToolbar({ className }: { className?: string }) {
             </div>
           </PopoverContent>
         </Popover>
+
+        <Separator orientation="vertical" className="mx-1 h-6!" />
+
+        {/* List Buttons */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleUnorderedList}
+              aria-label="Bulleted List"
+              className="h-8 w-8 p-0"
+            >
+              <List className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Bulleted List</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleOrderedList}
+              aria-label="Numbered List"
+              className="h-8 w-8 p-0"
+            >
+              <ListOrdered className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Numbered List</p>
+          </TooltipContent>
+        </Tooltip>
 
         <Separator orientation="vertical" className="mx-1 h-6!" />
 
