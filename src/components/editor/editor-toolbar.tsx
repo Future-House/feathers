@@ -9,13 +9,19 @@ import {
   CAN_UNDO_COMMAND,
   CAN_REDO_COMMAND,
   $createParagraphNode,
+  $isTextNode,
 } from 'lexical';
+import { $isTableSelection } from '@lexical/table';
+import { $isDecoratorBlockNode } from '@lexical/react/LexicalDecoratorBlockNode';
+import { $getNearestBlockElementAncestorOrThrow } from '@lexical/utils';
+
 import { $setBlocksType } from '@lexical/selection';
 import {
   $createHeadingNode,
   $createQuoteNode,
   HeadingTagType,
   $isHeadingNode,
+  $isQuoteNode,
 } from '@lexical/rich-text';
 import { $createCodeNode } from '@lexical/code';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
@@ -24,6 +30,7 @@ import {
   INSERT_UNORDERED_LIST_COMMAND,
   $isListNode,
 } from '@lexical/list';
+import { INDENT_CONTENT_COMMAND, OUTDENT_CONTENT_COMMAND } from 'lexical';
 import {
   Bold,
   Italic,
@@ -34,6 +41,9 @@ import {
   Redo,
   ChevronDown,
   Strikethrough,
+  RemoveFormatting,
+  Indent,
+  Outdent,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -199,6 +209,77 @@ export function EditorToolbar({ className }: { className?: string }) {
     });
   };
 
+  const clearFormatting = () => {
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection) || $isTableSelection(selection)) {
+        const anchor = selection.anchor;
+        const focus = selection.focus;
+        const nodes = selection.getNodes();
+        const extractedNodes = selection.extract();
+
+        if (anchor.key === focus.key && anchor.offset === focus.offset) {
+          return;
+        }
+
+        nodes.forEach((node, idx) => {
+          // We split the first and last node by the selection
+          // So that we don't format unselected text inside those nodes
+          if ($isTextNode(node)) {
+            // Use a separate variable to ensure TS does not lose the refinement
+            let textNode = node;
+            if (idx === 0 && anchor.offset !== 0) {
+              textNode = textNode.splitText(anchor.offset)[1] || textNode;
+            }
+            if (idx === nodes.length - 1) {
+              textNode = textNode.splitText(focus.offset)[0] || textNode;
+            }
+            /**
+             * If the selected text has one format applied
+             * selecting a portion of the text, could
+             * clear the format to the wrong portion of the text.
+             *
+             * The cleared text is based on the length of the selected text.
+             */
+            // We need this in case the selected text only has one format
+            const extractedTextNode = extractedNodes[0];
+            if (nodes.length === 1 && $isTextNode(extractedTextNode)) {
+              textNode = extractedTextNode;
+            }
+
+            if (textNode.__style !== '') {
+              textNode.setStyle('');
+            }
+            if (textNode.__format !== 0) {
+              textNode.setFormat(0);
+            }
+            const nearestBlockElement =
+              $getNearestBlockElementAncestorOrThrow(textNode);
+            if (nearestBlockElement.__format !== 0) {
+              nearestBlockElement.setFormat('');
+            }
+            if (nearestBlockElement.__indent !== 0) {
+              nearestBlockElement.setIndent(0);
+            }
+            node = textNode;
+          } else if ($isHeadingNode(node) || $isQuoteNode(node)) {
+            node.replace($createParagraphNode(), true);
+          } else if ($isDecoratorBlockNode(node)) {
+            node.setFormat('');
+          }
+        });
+      }
+    });
+  };
+
+  const handleIndent = () => {
+    editor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
+  };
+
+  const handleOutdent = () => {
+    editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
+  };
+
   return (
     <div
       className={cn(
@@ -323,6 +404,43 @@ export function EditorToolbar({ className }: { className?: string }) {
       >
         <Link className="size-4" />
       </Toggle>
+
+      <Separator orientation="vertical" className="mx-1 h-6!" />
+
+      {/* Clear Formatting */}
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={clearFormatting}
+        title="Clear Formatting"
+        aria-label="Clear Formatting"
+        className="h-8 w-8 p-0"
+      >
+        <RemoveFormatting className="size-4" />
+      </Button>
+
+      {/* Indent/Outdent */}
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleOutdent}
+        title="Decrease Indent"
+        aria-label="Decrease Indent"
+        className="h-8 w-8 p-0"
+      >
+        <Outdent className="size-4" />
+      </Button>
+
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleIndent}
+        title="Increase Indent"
+        aria-label="Increase Indent"
+        className="h-8 w-8 p-0"
+      >
+        <Indent className="size-4" />
+      </Button>
     </div>
   );
 }
