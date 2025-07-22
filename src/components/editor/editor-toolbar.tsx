@@ -164,6 +164,7 @@ export function EditorToolbar({ className }: { className?: string }) {
     format: 'bold' | 'italic' | 'underline' | 'strikethrough' | 'code'
   ) => {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+    editor.focus();
   };
 
   const formatBlockType = (blockType: string) => {
@@ -201,6 +202,7 @@ export function EditorToolbar({ className }: { className?: string }) {
     if (isLink) {
       // Remove existing link
       editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+      editor.focus();
     } else {
       // Show popover to add link
       setShowLinkPopover(true);
@@ -214,11 +216,13 @@ export function EditorToolbar({ className }: { className?: string }) {
     }
     setShowLinkPopover(false);
     setLinkUrl('');
+    editor.focus();
   };
 
   const handleLinkCancel = () => {
     setShowLinkPopover(false);
     setLinkUrl('');
+    editor.focus();
   };
 
   const formatQuote = () => {
@@ -228,6 +232,7 @@ export function EditorToolbar({ className }: { className?: string }) {
         $setBlocksType(selection, () => $createQuoteNode());
       }
     });
+    editor.focus();
   };
 
   const formatCodeBlock = () => {
@@ -237,6 +242,7 @@ export function EditorToolbar({ className }: { className?: string }) {
         $setBlocksType(selection, () => $createCodeNode());
       }
     });
+    editor.focus();
   };
 
   const clearFormatting = () => {
@@ -300,22 +306,27 @@ export function EditorToolbar({ className }: { className?: string }) {
         });
       }
     });
+    editor.focus();
   };
 
   const handleIndent = () => {
     editor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
+    editor.focus();
   };
 
   const handleOutdent = () => {
     editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
+    editor.focus();
   };
 
   const handleUnorderedList = () => {
     editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+    editor.focus();
   };
 
   const handleOrderedList = () => {
     editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+    editor.focus();
   };
 
   return (
@@ -334,7 +345,10 @@ export function EditorToolbar({ className }: { className?: string }) {
             <Button
               variant="outline"
               size="icon"
-              onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
+              onClick={() => {
+                editor.dispatchCommand(UNDO_COMMAND, undefined);
+                editor.focus();
+              }}
               disabled={!canUndo}
             >
               <Undo className="size-4" />
@@ -350,7 +364,10 @@ export function EditorToolbar({ className }: { className?: string }) {
             <Button
               variant="outline"
               size="icon"
-              onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
+              onClick={() => {
+                editor.dispatchCommand(REDO_COMMAND, undefined);
+                editor.focus();
+              }}
               disabled={!canRedo}
             >
               <Redo className="size-4" />

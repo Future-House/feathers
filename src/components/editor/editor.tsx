@@ -87,12 +87,12 @@ const theme = {
     underline: 'underline',
     strikethrough: 'line-through',
     underlineStrikethrough: 'underline line-through',
-    code: 'bg-muted px-1.5 py-0.5 rounded font-mono ',
+    code: 'bg-muted px-1 py-0.5 rounded font-mono ', // inline code
     highlight: 'bg-yellow-200 dark:bg-yellow-800',
     subscript: 'text-xs align-sub',
     superscript: 'text-xs align-super',
   },
-  code: 'Editor-code block bg-muted overflow-x-auto',
+  code: 'Editor-code block bg-muted overflow-x-auto', // code block
   codeHighlight: {
     atrule: 'text-purple-600',
     attr: 'text-blue-600',
