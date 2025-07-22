@@ -10,7 +10,6 @@ const meta: Meta<typeof Editor> = {
   title: 'Components/Editor',
   component: Editor,
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         component:
@@ -18,19 +17,93 @@ const meta: Meta<typeof Editor> = {
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
+    className: {
+      control: 'text',
+      description: 'Additional CSS classes to apply to the editor wrapper',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text displayed when the editor is empty',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Start typing...' },
+      },
+    },
+    value: {
+      control: 'text',
+      description:
+        'Controlled value as markdown/text string. Use for simple content management.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    onChange: {
+      control: false,
+      description:
+        'Callback fired when editor state changes. Receives full Lexical EditorState object.',
+      table: {
+        type: { summary: '(editorState: EditorState) => void' },
+      },
+    },
+    onValueChange: {
+      control: false,
+      description:
+        'Callback fired when text content changes. Receives plain text string.',
+      table: {
+        type: { summary: '(value: string) => void' },
+      },
+    },
+    slashCommands: {
+      control: false,
+      description:
+        'Array of custom slash commands. Type "/" in editor to trigger.',
+      table: {
+        type: { summary: 'SlashCommand[]' },
+      },
+    },
     showToolbar: {
       control: 'boolean',
+      description: 'Whether to display the formatting toolbar above the editor',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
     },
     showMarkdownToggle: {
       control: 'boolean',
+      description:
+        'Whether to display the markdown toggle button in the action bar',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
     },
     autoFocus: {
       control: 'boolean',
+      description: 'Whether the editor should automatically focus when mounted',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     disabled: {
       control: 'boolean',
+      description: 'Whether the editor is disabled and read-only',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    'aria-invalid': {
+      control: 'boolean',
+      description: 'Indicates whether the editor has a validation error',
+      table: {
+        type: { summary: 'boolean' },
+      },
     },
   },
 };

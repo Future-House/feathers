@@ -1,0 +1,198 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as EditorStories from './editor.stories';
+
+<Meta of={EditorStories} />
+
+<DocLayout meta={EditorStories.default} hideRadixUiUrl hideShadcnUrl>
+
+## Default Example
+
+<Canvas of={EditorStories.Default} />
+
+## Component API
+
+### Editor
+
+You may need to reference the official documentation for the [lexical](https://lexical.dev/) to understand the full API and available options.
+
+<PropsTable argTypes={EditorStories.default.argTypes} />
+
+## Examples
+
+### Basic Editor
+
+A simple rich text editor with toolbar and markdown toggle.
+
+<Canvas of={EditorStories.Default} />
+
+### Without Toolbar
+
+Editor without the formatting toolbar for minimal use cases.
+
+<Canvas of={EditorStories.WithoutToolbar} />
+
+### Disabled State
+
+Editor in disabled mode for read-only content display.
+
+<Canvas of={EditorStories.Disabled} />
+
+### With Slash Commands
+
+Editor with custom slash commands for quick content insertion.
+
+<Canvas of={EditorStories.WithSlashCommands} />
+
+### Controlled Editor
+
+Editor with controlled state showing both text value and editor state.
+
+<Canvas of={EditorStories.Controlled} />
+
+### With Initial Content
+
+Editor pre-populated with markdown content demonstrating various formatting options.
+
+<Canvas of={EditorStories.WithInitialContent} />
+
+## Features
+
+### Rich Text Formatting
+
+- **Text formatting**: Bold, italic, underline, strikethrough, inline code
+- **Headings**: H1, H2, H3 support
+- **Lists**: Ordered and unordered lists with nesting
+- **Links**: Insert and edit links with custom UI
+- **Quotes**: Blockquote formatting
+- **Code blocks**: Syntax-highlighted code blocks
+
+### Toolbar Controls
+
+- **Undo/Redo**: Full history management
+- **Format dropdown**: Quick access to block types
+- **Text formatting buttons**: Bold, italic, underline, etc.
+- **List controls**: Create bulleted and numbered lists
+- **Indent/Outdent**: Adjust content indentation
+- **Clear formatting**: Remove all formatting
+- **Link management**: Insert, edit, and remove links
+
+### Keyboard Shortcuts
+
+- **Cmd/Ctrl + B**: Bold
+- **Cmd/Ctrl + I**: Italic
+- **Cmd/Ctrl + U**: Underline
+- **Cmd/Ctrl + K**: Insert link
+- **Cmd/Ctrl + Z**: Undo
+- **Cmd/Ctrl + Y**: Redo
+- **Tab**: Indent content
+- **Shift + Tab**: Outdent content
+
+### Advanced Features
+
+- **Markdown support**: Import and export markdown
+- **Slash commands**: Type "/" for quick commands
+- **Auto-focus**: Automatic editor focus after toolbar actions
+- **Controlled/Uncontrolled**: Supports both usage patterns
+- **Plugin architecture**: Built on Lexical's extensible system
+
+## Props Overview
+
+### Core Props
+
+- `value` (string): Controlled value as markdown/text
+- `onChange` (EditorState): Raw editor state changes
+- `onValueChange` (string): Simplified text content changes
+- `placeholder`: Placeholder text when empty
+
+### Display Options
+
+- `showToolbar`: Show/hide the formatting toolbar
+- `showMarkdownToggle`: Show/hide markdown toggle button
+- `autoFocus`: Auto-focus editor on mount
+- `disabled`: Make editor read-only
+
+### Advanced Props
+
+- `slashCommands`: Custom slash command definitions
+- `className`: Additional CSS classes
+- `aria-invalid`: Accessibility support
+
+## Value vs EditorState
+
+The Editor component supports two different state management approaches:
+
+### Simple Text Control (`value` / `onValueChange`)
+
+```tsx
+const [content, setContent] = useState('');
+
+<Editor
+  value={content}
+  onValueChange={setContent}
+/>
+```
+
+- **Use case**: Simple form handling, content storage
+- **Format**: Plain text string
+- **Best for**: Basic implementations, form integration
+
+### Advanced State Control (`onChange`)
+
+```tsx
+const [editorState, setEditorState] = useState<EditorState>();
+
+<Editor onChange={setEditorState} />
+```
+
+- **Use case**: Advanced editor manipulation, plugins
+- **Format**: Lexical EditorState object
+- **Best for**: Complex editor features, custom plugins
+
+## Accessibility
+
+The `Editor` component follows accessibility best practices:
+
+- **Keyboard navigation**: Full keyboard support for all formatting options
+- **Screen reader support**: Proper ARIA labels and descriptions
+- **Focus management**: Automatic focus handling after toolbar interactions
+- **Semantic HTML**: Uses appropriate semantic elements
+- **High contrast**: Works with system high contrast modes
+- **Tooltips**: Descriptive tooltips for all toolbar buttons
+
+## Best Practices
+
+### Content Management
+
+- Use `value` prop for simple text content
+- Use `onChange` with EditorState for advanced features
+- Provide meaningful placeholder text
+- Consider initial content for better UX
+
+### UI/UX Guidelines
+
+- Enable toolbar for rich formatting needs
+- Consider hiding toolbar for simple text inputs
+- Use auto-focus judiciously (avoid on mobile)
+- Provide clear visual feedback for actions
+
+### Performance
+
+- Use controlled components sparingly with large content
+- Implement debounced change handlers for auto-save
+- Consider lazy loading for complex slash commands
+- Optimize plugin loading for faster initialization
+
+### Integration
+
+- Validate and sanitize content on save
+- Handle markdown conversion carefully
+- Implement proper error boundaries
+- Consider offline/sync capabilities for collaborative editing
+
+</DocLayout>
