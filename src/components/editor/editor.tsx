@@ -92,7 +92,7 @@ const theme = {
     subscript: 'text-xs align-sub',
     superscript: 'text-xs align-super',
   },
-  code: 'Editor-code block bg-muted overflow-x-auto', // code block
+  code: 'Editor-code block bg-card overflow-x-auto', // code block
   codeHighlight: {
     atrule: 'text-purple-600',
     attr: 'text-blue-600',

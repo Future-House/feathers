@@ -42,13 +42,13 @@ import {
   ChevronDown,
   Strikethrough,
   RemoveFormatting,
-  Indent,
-  Outdent,
+  IndentIncrease,
+  IndentDecrease,
   X,
   Check,
   List,
   ListOrdered,
-} from 'lucide-react';
+} from '../../icons';
 
 import { cn } from '@/lib/utils';
 import { Toggle } from '@/components/toggle';
@@ -603,7 +603,7 @@ export function EditorToolbar({ className }: { className?: string }) {
               aria-label="Decrease Indent"
               className="h-8 w-8 p-0"
             >
-              <Outdent className="size-4" />
+              <IndentDecrease className="size-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -620,7 +620,7 @@ export function EditorToolbar({ className }: { className?: string }) {
               aria-label="Increase Indent"
               className="h-8 w-8 p-0"
             >
-              <Indent className="size-4" />
+              <IndentIncrease className="size-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>

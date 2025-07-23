@@ -175,6 +175,8 @@
     position: relative;
     tab-size: 2;
     border: 1px solid oklch(var(--border));
+    border-top-left-radius: calc(var(--radius) - 2px);
+    border-bottom-left-radius: calc(var(--radius) - 2px);
   }
 
   .Editor-code:before {
@@ -198,12 +200,12 @@
 
   /* Dark mode specific adjustments */
   .dark .Editor-code {
-    background-color: oklch(var(--card));
+    background-color: var(--card);
     border-color: oklch(var(--border));
   }
 
   .dark .Editor-code:before {
-    background-color: oklch(var(--muted) / 0.8);
+    background-color: var(--muted);
     border-right-color: oklch(var(--border));
   }
 }

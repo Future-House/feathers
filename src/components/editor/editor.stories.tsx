@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { EditorState } from 'lexical';
-import { Play, FileText, Database } from 'lucide-react';
+import { Play, FileText, Database } from '../../icons';
 
 import { Editor } from './editor';
 import type { SlashCommand } from './editor';

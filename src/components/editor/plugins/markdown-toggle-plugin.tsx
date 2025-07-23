@@ -7,7 +7,7 @@ import {
 } from '@lexical/markdown';
 import { $createCodeNode, $isCodeNode } from '@lexical/code';
 import { $getRoot, $createTextNode } from 'lexical';
-import { FileText } from 'lucide-react';
+import { FileText } from '@/icons';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/button';
