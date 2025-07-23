@@ -11,6 +11,38 @@ execSync('rm -rf dist', { stdio: 'inherit' });
 // Create dist directory
 fs.mkdirSync('dist', { recursive: true });
 
+// Helper function to recursively find all TypeScript files in a directory
+function findAllTsFiles(dir, basePath = '') {
+  const files = [];
+  const items = fs.readdirSync(dir, { withFileTypes: true });
+
+  items.forEach(item => {
+    const itemPath = path.join(dir, item.name);
+    const relativePath = basePath ? `${basePath}/${item.name}` : item.name;
+
+    if (item.isDirectory()) {
+      // Recursively search subdirectories
+      const subFiles = findAllTsFiles(itemPath, relativePath);
+      files.push(...subFiles);
+    } else if (
+      (item.name.endsWith('.tsx') || item.name.endsWith('.ts')) &&
+      !item.name.includes('.stories.') &&
+      !item.name.includes('.test.') &&
+      item.name !== 'index.ts'
+    ) {
+      files.push({
+        fullPath: itemPath,
+        relativePath: relativePath,
+        dirPath: basePath,
+        fileName: path.basename(item.name, path.extname(item.name)),
+        extension: path.extname(item.name),
+      });
+    }
+  });
+
+  return files;
+}
+
 // Get component files
 const componentsDir = 'src/components';
 const componentFiles = [];
@@ -24,20 +56,13 @@ items.forEach(item => {
     const componentDir = `src/components/${item.name}`;
     const indexPath = `${componentDir}/index.ts`;
 
-    // Find all .tsx files in the component directory
-    const tsxFiles = fs
-      .readdirSync(componentDir)
-      .filter(
-        file =>
-          file.endsWith('.tsx') &&
-          !file.includes('.stories.') &&
-          !file.includes('.test.')
-      );
+    // Find all .tsx/.ts files recursively in the component directory
+    const allTsFiles = findAllTsFiles(componentDir);
 
-    if (tsxFiles.length > 0) {
+    if (allTsFiles.length > 0) {
       componentFiles.push(item.name);
       componentPaths[item.name] = {
-        tsxFiles: tsxFiles.map(file => `${componentDir}/${file}`),
+        tsFiles: allTsFiles,
         index: indexPath,
       };
     }
@@ -52,12 +77,20 @@ componentFiles.forEach(component => {
   // Create component directory in dist
   fs.mkdirSync(`dist/components/${component}`, { recursive: true });
 
-  // Build all .tsx files in the component directory
-  paths.tsxFiles.forEach(tsxFile => {
-    const fileName = path.basename(tsxFile, '.tsx');
-    const outputFile = `dist/components/${component}/${fileName}.js`;
+  // Build all .ts/.tsx files in the component directory and subdirectories
+  paths.tsFiles.forEach(fileInfo => {
+    const { fullPath, dirPath, fileName, extension } = fileInfo;
+
+    // Create subdirectory structure in dist if needed
+    const outputDir = `dist/components/${component}${dirPath ? `/${dirPath}` : ''}`;
+    fs.mkdirSync(outputDir, { recursive: true });
+
+    // Generate output file path
+    const outputFile = `${outputDir}/${fileName}.js`;
+
+    console.log(`  Building: ${fullPath} -> ${outputFile}`);
     execSync(
-      `npx babel ${tsxFile} --config-file ./babel.config.json --out-file ${outputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+      `npx babel "${fullPath}" --config-file ./babel.config.json --out-file "${outputFile}" --extensions ".ts,.tsx" --source-maps --no-babelrc`,
       { stdio: 'inherit' }
     );
   });
@@ -65,8 +98,9 @@ componentFiles.forEach(component => {
   // Build the index file if it exists
   if (fs.existsSync(paths.index)) {
     const indexOutputFile = `dist/components/${component}/index.js`;
+    console.log(`  Building index: ${paths.index} -> ${indexOutputFile}`);
     execSync(
-      `npx babel ${paths.index} --config-file ./babel.config.json --out-file ${indexOutputFile} --extensions ".ts,.tsx" --source-maps --no-babelrc`,
+      `npx babel "${paths.index}" --config-file ./babel.config.json --out-file "${indexOutputFile}" --extensions ".ts,.tsx" --source-maps --no-babelrc`,
       { stdio: 'inherit' }
     );
   }
@@ -161,14 +195,24 @@ function fixPathAliases(filePath, isComponentIndex = false) {
       !filePath.includes('/components/index.d.ts');
 
     if (isComponentFile) {
+      // Calculate relative depth based on subdirectory structure
+      const componentPath = filePath.replace(/.*\/components\//, '');
+      const depth = (componentPath.match(/\//g) || []).length;
+      const relativePath = '../'.repeat(depth + 1);
+
       // For individual component files, use relative paths to parent directories
-      content = content.replace(/@\/lib\//g, '../../lib/');
-      content = content.replace(/@\/hooks/g, '../../hooks');
-      content = content.replace(/@\/components\//g, '../');
+      content = content.replace(/@\/lib\//g, `${relativePath}lib/`);
+      content = content.replace(/@\/hooks/g, `${relativePath}hooks`);
+      content = content.replace(
+        /@\/components\//g,
+        `${relativePath}components/`
+      );
+      content = content.replace(/@\/icons/g, `${relativePath}icons`);
     } else {
       // For main index.d.ts and other files
       content = content.replace(/@\/lib\//g, './lib/');
       content = content.replace(/@\/hooks/g, './hooks');
+      content = content.replace(/@\/icons/g, './icons');
       if (isComponentIndex) {
         // For components/index.d.ts, replace @/components/ with ./
         content = content.replace(/@\/components\//g, './');
@@ -182,6 +226,38 @@ function fixPathAliases(filePath, isComponentIndex = false) {
   } catch (e) {
     console.warn(`Warning: Could not fix path aliases in ${filePath}`);
   }
+}
+
+// Helper function to recursively copy TypeScript declarations
+function copyDeclarationsRecursively(sourceDir, targetDir, component) {
+  if (!fs.existsSync(sourceDir)) {
+    return;
+  }
+
+  const items = fs.readdirSync(sourceDir, { withFileTypes: true });
+
+  items.forEach(item => {
+    const sourcePath = path.join(sourceDir, item.name);
+    const targetPath = path.join(targetDir, item.name);
+
+    if (item.isDirectory()) {
+      // Create target directory and recurse
+      fs.mkdirSync(targetPath, { recursive: true });
+      copyDeclarationsRecursively(sourcePath, targetPath, component);
+    } else if (item.name.endsWith('.d.ts') || item.name.endsWith('.d.ts.map')) {
+      try {
+        // Copy the declaration file
+        execSync(`cp "${sourcePath}" "${targetPath}"`);
+
+        // Fix path aliases for .d.ts files (not .map files)
+        if (item.name.endsWith('.d.ts') && !item.name.endsWith('.d.ts.map')) {
+          fixPathAliases(targetPath);
+        }
+      } catch (e) {
+        console.warn(`Warning: Could not copy ${sourcePath}`);
+      }
+    }
+  });
 }
 
 // Copy main index declarations
@@ -198,33 +274,14 @@ try {
 // Copy individual component declarations to components directory
 componentFiles.forEach(component => {
   try {
-    // Component is always in its own directory now
-    const sourceFile = `temp-types/components/${component}/${component}.d.ts`;
-    const sourceMapFile = `temp-types/components/${component}/${component}.d.ts.map`;
-    const indexSourceFile = `temp-types/components/${component}/index.d.ts`;
-    const indexSourceMapFile = `temp-types/components/${component}/index.d.ts.map`;
+    const sourceDir = `temp-types/components/${component}`;
+    const targetDir = `dist/components/${component}`;
 
-    // Copy main component declarations
-    if (fs.existsSync(sourceFile)) {
-      execSync(
-        `cp ${sourceFile} dist/components/${component}/${component}.d.ts`
-      );
-      execSync(
-        `cp ${sourceMapFile} dist/components/${component}/${component}.d.ts.map`
-      );
-      // Fix path aliases in component declarations
-      fixPathAliases(`dist/components/${component}/${component}.d.ts`);
-    }
+    // Create target directory
+    fs.mkdirSync(targetDir, { recursive: true });
 
-    // Copy index declarations if they exist
-    if (fs.existsSync(indexSourceFile)) {
-      execSync(`cp ${indexSourceFile} dist/components/${component}/index.d.ts`);
-      execSync(
-        `cp ${indexSourceMapFile} dist/components/${component}/index.d.ts.map`
-      );
-      // Fix path aliases in component index declarations
-      fixPathAliases(`dist/components/${component}/index.d.ts`);
-    }
+    // Recursively copy all declarations including subdirectories
+    copyDeclarationsRecursively(sourceDir, targetDir, component);
   } catch (e) {
     console.warn(`Warning: Could not copy declarations for ${component}`);
   }

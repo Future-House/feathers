@@ -6,12 +6,12 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { CheckIcon } from 'lucide-react';
+import { CheckIcon, MinusIcon } from 'lucide-react';
 import { cn } from "../../lib/utils";
 import { jsx as _jsx } from "react/jsx-runtime";
 // TODO: add indeterminate state support
 function Checkbox(t0) {
-  var $ = _c(12);
+  var $ = _c(15);
   var className;
   var error;
   var props;
@@ -41,33 +41,39 @@ function Checkbox(t0) {
     t2 = $[6];
   }
   var t3;
-  if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
+  if ($[7] !== props.checked || $[8] !== props.defaultChecked) {
     t3 = /*#__PURE__*/_jsx(CheckboxPrimitive.Indicator, {
       "data-slot": "checkbox-indicator",
       className: "flex items-center justify-center text-current transition-none",
-      children: /*#__PURE__*/_jsx(CheckIcon, {
+      children: props.defaultChecked === "indeterminate" || props.checked === "indeterminate" ? /*#__PURE__*/_jsx(MinusIcon, {
+        className: "size-3.5"
+      }) : /*#__PURE__*/_jsx(CheckIcon, {
         className: "size-3.5"
       })
     });
-    $[7] = t3;
+    $[7] = props.checked;
+    $[8] = props.defaultChecked;
+    $[9] = t3;
   } else {
-    t3 = $[7];
+    t3 = $[9];
   }
   var t4;
-  if ($[8] !== error || $[9] !== props || $[10] !== t2) {
+  if ($[10] !== error || $[11] !== props || $[12] !== t2 || $[13] !== t3) {
     t4 = /*#__PURE__*/_jsx(CheckboxPrimitive.Root, _objectSpread(_objectSpread({
       "data-slot": "checkbox",
+      "data-state": "indeterminate",
       "aria-invalid": error,
       className: t2
     }, props), {}, {
       children: t3
     }));
-    $[8] = error;
-    $[9] = props;
-    $[10] = t2;
-    $[11] = t4;
+    $[10] = error;
+    $[11] = props;
+    $[12] = t2;
+    $[13] = t3;
+    $[14] = t4;
   } else {
-    t4 = $[11];
+    t4 = $[14];
   }
   return t4;
 }

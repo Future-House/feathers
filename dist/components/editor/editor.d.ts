@@ -21,6 +21,10 @@ export interface EditorProps {
     disabled?: boolean;
     'aria-invalid'?: boolean;
 }
+/**
+ * TODO:
+ * - Add keyboard shortcuts
+ */
 declare function Editor({ className, placeholder, value: _value, onChange, onValueChange, slashCommands, showToolbar, showMarkdownToggle, autoFocus, disabled, 'aria-invalid': ariaInvalid, ...props }: EditorProps): import("react/jsx-runtime").JSX.Element;
 export { Editor, editorVariants };
 //# sourceMappingURL=editor.d.ts.map

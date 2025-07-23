@@ -58,8 +58,8 @@ var theme = {
     nested: {
       listitem: 'list-none'
     },
-    ol: 'list-decimal list-inside my-2',
-    ul: 'list-disc list-inside my-2',
+    ol: 'list-decimal list-inside',
+    ul: 'list-disc list-inside',
     listitem: 'mb-1',
     listitemChecked: 'line-through text-muted-foreground',
     listitemUnchecked: '',
@@ -73,13 +73,14 @@ var theme = {
     underline: 'underline',
     strikethrough: 'line-through',
     underlineStrikethrough: 'underline line-through',
-    code: 'bg-muted px-1.5 py-0.5 rounded text-sm font-mono',
+    code: 'bg-muted px-1 py-0.5 rounded font-mono ',
+    // inline code
     highlight: 'bg-yellow-200 dark:bg-yellow-800',
     subscript: 'text-xs align-sub',
     superscript: 'text-xs align-super'
   },
-  // code: 'Editor-code bg-muted p-4 rounded-md font-mono text-sm block my-2 overflow-x-auto',
-  code: 'Editor-code font-mono block',
+  code: 'Editor-code block bg-card overflow-x-auto',
+  // code block
   codeHighlight: {
     atrule: 'text-purple-600',
     attr: 'text-blue-600',
@@ -133,6 +134,11 @@ function EditorPlaceholder(t0) {
   }
   return t1;
 }
+
+/**
+ * TODO:
+ * - Add keyboard shortcuts
+ */
 function Editor(t0) {
   var $ = _c(66);
   var _value;
@@ -411,7 +417,7 @@ function Editor(t0) {
   if ($[55] !== showMarkdownToggle) {
     t32 = showMarkdownToggle && /*#__PURE__*/_jsx("div", {
       "data-slot": "actions-bar",
-      className: "flex justify-end",
+      className: "border-input flex w-full justify-end border-t-1 py-1",
       children: /*#__PURE__*/_jsx(MarkdownTogglePlugin, {})
     });
     $[55] = showMarkdownToggle;

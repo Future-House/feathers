@@ -192,18 +192,19 @@
     display: block;
     padding: 0.75rem 0.75rem 0.75rem 3.25rem;
     line-height: 1.6;
-    font-size: 0.875rem;
+    font-size: 13px;
     margin: 0.5rem 0;
     overflow-x: auto;
     position: relative;
     tab-size: 2;
-    border-radius: calc(var(--radius) - 2px);
     border: 1px solid oklch(var(--border));
+    border-top-left-radius: calc(var(--radius) - 2px);
+    border-bottom-left-radius: calc(var(--radius) - 2px);
   }
   .Editor-code:before {
     content: attr(data-gutter);
     position: absolute;
-    background-color: oklch(var(--muted) / 0.6);
+    background-color: var(--input);
     border-right: 1px solid oklch(var(--border));
     left: 0;
     top: 0;
@@ -213,17 +214,17 @@
     white-space: pre-wrap;
     text-align: right;
     min-width: 2.5rem;
-    font-size: 0.75rem;
+    font-size: 13px;
     line-height: 1.6;
     border-top-left-radius: calc(var(--radius) - 2px);
     border-bottom-left-radius: calc(var(--radius) - 2px);
   }
   .dark .Editor-code {
-    background-color: oklch(var(--card));
+    background-color: var(--card);
     border-color: oklch(var(--border));
   }
   .dark .Editor-code:before {
-    background-color: oklch(var(--muted) / 0.8);
+    background-color: var(--muted);
     border-right-color: oklch(var(--border));
   }
 }
