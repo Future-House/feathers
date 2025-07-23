@@ -429,7 +429,7 @@ You can test all features by:
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-medium">Character Count</h4>
+          <h4 className="font-medium">Editor Statistics</h4>
           <div className="bg-muted rounded p-3 text-sm">
             <div className="space-y-1">
               <div>Characters: {content.length}</div>
@@ -444,6 +444,9 @@ You can test all features by:
                   content.split(/\n\s*\n/).filter(p => p.trim().length > 0)
                     .length
                 }
+              </div>
+              <div>
+                Editor State: {editorState ? 'Active' : 'Not initialized'}
               </div>
             </div>
           </div>
