@@ -35,6 +35,20 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveClass('hover:bg-accent');
   });
 
+  it('applies new variant color classes correctly', () => {
+    const { rerender } = render(<Button variant="success">Success</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-success', 'text-white');
+
+    rerender(<Button variant="warning">Warning</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-warning', 'text-white');
+
+    rerender(<Button variant="info">Info</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-info', 'text-white');
+
+    rerender(<Button variant="error">Error</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-error', 'text-white');
+  });
+
   it('applies size classes correctly', () => {
     const { rerender } = render(<Button size="sm">Small</Button>);
     expect(screen.getByRole('button')).toHaveClass('h-8', 'px-3');
