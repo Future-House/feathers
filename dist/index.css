@@ -3210,6 +3210,16 @@
       }
     }
   }
+  .hover\:bg-error\/90 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--error);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--error) 90%, transparent);
+        }
+      }
+    }
+  }
   .hover\:bg-gray-50 {
     &:hover {
       @media (hover: hover) {
@@ -3221,6 +3231,16 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-green-100);
+      }
+    }
+  }
+  .hover\:bg-info\/90 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--info);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--info) 90%, transparent);
+        }
       }
     }
   }
@@ -3302,12 +3322,32 @@
       }
     }
   }
+  .hover\:bg-success\/90 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--success);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--success) 90%, transparent);
+        }
+      }
+    }
+  }
   .hover\:bg-warning\/80 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--warning);
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--warning) 80%, transparent);
+        }
+      }
+    }
+  }
+  .hover\:bg-warning\/90 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--warning);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--warning) 90%, transparent);
         }
       }
     }
@@ -5374,6 +5414,46 @@
         --tw-ring-color: var(--destructive);
         @supports (color: color-mix(in lab, red, red)) {
           --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+        }
+      }
+    }
+  }
+  .dark\:focus-visible\:ring-error\/40 {
+    &:is(.dark *) {
+      &:focus-visible {
+        --tw-ring-color: var(--error);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-ring-color: color-mix(in oklab, var(--error) 40%, transparent);
+        }
+      }
+    }
+  }
+  .dark\:focus-visible\:ring-info\/40 {
+    &:is(.dark *) {
+      &:focus-visible {
+        --tw-ring-color: var(--info);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-ring-color: color-mix(in oklab, var(--info) 40%, transparent);
+        }
+      }
+    }
+  }
+  .dark\:focus-visible\:ring-success\/40 {
+    &:is(.dark *) {
+      &:focus-visible {
+        --tw-ring-color: var(--success);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-ring-color: color-mix(in oklab, var(--success) 40%, transparent);
+        }
+      }
+    }
+  }
+  .dark\:focus-visible\:ring-warning\/40 {
+    &:is(.dark *) {
+      &:focus-visible {
+        --tw-ring-color: var(--warning);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-ring-color: color-mix(in oklab, var(--warning) 40%, transparent);
         }
       }
     }
