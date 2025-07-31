@@ -96,19 +96,21 @@ const preview: Preview = {
   ],
 };
 
-// TODO: enable this
-// basic code to "fix" imported module error
 /* Reload the page on the error "Failed to fetch dynamically imported module..." */
-// window.addEventListener("error", (ev) => onFailedToFetchModule(ev.message));
-// window.addEventListener("unhandledrejection", (ev) => onFailedToFetchModule(ev?.reason?.message));
+window.addEventListener('error', ev => onFailedToFetchModule(ev.message));
+window.addEventListener('unhandledrejection', ev =>
+  onFailedToFetchModule(ev?.reason?.message)
+);
 
-// function onFailedToFetchModule(message) {
-//   const isProd = process.env.MODE === "production";
-//   const isProd = import.meta.env.MODE === "production";
+function onFailedToFetchModule(message: string) {
+  const isProd = (import.meta as any).env.MODE === 'production';
 
-//   if (isProd && message?.includes("Failed to fetch dynamically imported module")) {
-//     window.location.reload();
-//   }
-// }
+  if (
+    isProd &&
+    message?.includes('Failed to fetch dynamically imported module')
+  ) {
+    window.location.reload();
+  }
+}
 
 export default preview;
