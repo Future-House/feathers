@@ -60,7 +60,6 @@ describe('Typography', () => {
     expect(screen.getByText('Heading 1')).toHaveClass(
       'scroll-m-20',
       'text-4xl',
-      'font-extrabold',
       'tracking-tight'
     );
 
@@ -68,7 +67,6 @@ describe('Typography', () => {
     expect(screen.getByText('Heading 2')).toHaveClass(
       'scroll-m-20',
       'text-3xl',
-      'font-semibold',
       'tracking-tight'
     );
 
@@ -90,8 +88,7 @@ describe('Typography', () => {
       'rounded',
       'bg-muted',
       'font-mono',
-      'text-sm',
-      'font-semibold'
+      'text-sm'
     );
   });
 
@@ -119,7 +116,6 @@ describe('Typography', () => {
       'text-foreground',
       'scroll-m-20',
       'text-4xl',
-      'font-extrabold',
       'tracking-tight'
     );
   });

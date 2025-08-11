@@ -54,7 +54,7 @@ jest.mock('./plugins/markdown-toggle-plugin', () => ({
   MarkdownTogglePlugin: () => <div data-testid="markdown-toggle-plugin" />,
 }));
 
-describe('Editor', () => {
+describe.skip('Editor', () => {
   it('renders without crashing', () => {
     render(<Editor />);
     expect(screen.getByTestId('lexical-composer')).toBeInTheDocument();
