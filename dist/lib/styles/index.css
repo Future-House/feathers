@@ -2041,6 +2041,9 @@
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
+  .p-\[0\.2rem\] {
+    padding: 0.2rem;
+  }
   .p-\[3px\] {
     padding: 3px;
   }
@@ -2100,9 +2103,6 @@
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
-  }
-  .py-\[0\.2rem\] {
-    padding-block: 0.2rem;
   }
   .pt-0 {
     padding-top: calc(var(--spacing) * 0);
@@ -2227,9 +2227,9 @@
   .text-\[0\.8rem\] {
     font-size: 0.8rem;
   }
-  .leading-7 {
-    --tw-leading: calc(var(--spacing) * 7);
-    line-height: calc(var(--spacing) * 7);
+  .leading-\[1\.5\] {
+    --tw-leading: 1.5;
+    line-height: 1.5;
   }
   .leading-none {
     --tw-leading: 1;

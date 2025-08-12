@@ -90,7 +90,14 @@ export const AllVariants: Story = {
         important statements.&rdquo;
       </Typography>
       <Typography variant="code">
-        const example = &apos;inline code&apos;;
+        const example = &apos;example code&apos;;
+      </Typography>
+      <Typography variant="p" className="mt-2">
+        This is some code that is actually&nbsp;
+        <Typography variant="code">
+          const example = &apos;inline code&apos;;
+        </Typography>
+        &nbsp;inline with me.
       </Typography>
       <Typography variant="list">
         <li>List item one</li>
