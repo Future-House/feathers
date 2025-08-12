@@ -127,7 +127,7 @@ export const Comparison: Story = {
                 selection indicator
               </p>
             </div>
-            <ThemeToggle variant="dropdown" />
+            <ThemeToggle variant="dropdown" buttonProps={{ variant: 'info' }} />
           </div>
         </div>
       </div>

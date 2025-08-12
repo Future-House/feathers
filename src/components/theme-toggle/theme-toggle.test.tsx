@@ -59,7 +59,7 @@ describe('ThemeToggle', () => {
     const user = userEvent.setup();
     const result = render(
       <ThemeProvider defaultTheme={defaultTheme as any}>
-        <ThemeToggle variant={variant} />
+        <ThemeToggle variant={variant as any} />
       </ThemeProvider>
     );
     return { ...result, user };

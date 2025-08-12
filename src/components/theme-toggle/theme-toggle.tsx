@@ -1,5 +1,5 @@
 import { Moon, Sun, Laptop } from '../../icons';
-import { Button } from '../button/button';
+import { Button, ButtonProps } from '../button/button';
 import { useTheme } from '../theme-provider/theme-provider';
 import {
   DropdownMenu,
@@ -10,18 +10,38 @@ import {
 } from '../dropdown-menu/dropdown-menu';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
-export interface ThemeToggleProps {
+// TODO: add support for classname combination
+
+type BaseThemeToggleProps = {
   variant?: 'button' | 'switch' | 'dropdown';
+};
+
+type ButtonVariantProps = BaseThemeToggleProps & {
+  variant?: 'button';
+} & Omit<ButtonProps, 'onClick' | 'children'>;
+
+type SwitchVariantProps = BaseThemeToggleProps & {
+  variant: 'switch';
+} & Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    'onClick' | 'type' | 'role' | 'aria-checked'
+  >;
+
+type DropdownVariantProps = BaseThemeToggleProps & {
+  variant: 'dropdown';
   DropdownMenuContentProps?: React.ComponentProps<
     typeof DropdownMenuPrimitive.Content
   >;
-}
+  buttonProps?: Omit<ButtonProps, 'onClick' | 'children'>;
+} & React.ComponentProps<typeof DropdownMenu>;
 
-export function ThemeToggle({
-  variant = 'button',
-  DropdownMenuContentProps = {},
-  ...rest
-}: ThemeToggleProps) {
+export type ThemeToggleProps =
+  | ButtonVariantProps
+  | SwitchVariantProps
+  | DropdownVariantProps;
+
+export function ThemeToggle(props: ThemeToggleProps) {
+  const { variant = 'button' } = props;
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -73,6 +93,7 @@ export function ThemeToggle({
   };
 
   if (variant === 'switch') {
+    const { variant: _, ...switchProps } = props as SwitchVariantProps;
     const isDark = theme === 'dark';
     return (
       <div className="relative inline-flex">
@@ -83,6 +104,7 @@ export function ThemeToggle({
           onClick={toggleTheme}
           title={getTitle()}
           className="group bg-muted focus:ring-ring focus:ring-offset-background relative inline-flex h-[26px] w-[50px] items-center rounded-full transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          {...switchProps}
         >
           {/* Sliding thumb with icon */}
           <div
@@ -111,10 +133,21 @@ export function ThemeToggle({
   }
 
   if (variant === 'dropdown') {
+    const {
+      variant: _,
+      DropdownMenuContentProps = {},
+      buttonProps = {},
+      ...dropdownProps
+    } = props as DropdownVariantProps;
     return (
-      <DropdownMenu {...rest}>
+      <DropdownMenu {...dropdownProps}>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" className="h-9 w-9">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-9 w-9"
+            {...buttonProps}
+          >
             {getIcon()}
             <span className="sr-only">Open theme selector</span>
           </Button>
@@ -144,13 +177,15 @@ export function ThemeToggle({
     );
   }
 
+  const { variant: _, ...buttonProps } = props as ButtonVariantProps;
   return (
     <Button
       variant="outline"
       size="icon"
+      className="h-9 w-9"
+      {...buttonProps}
       onClick={toggleTheme}
       title={getTitle()}
-      className="h-9 w-9"
     >
       {getIcon()}
       <span className="sr-only">Toggle theme</span>
