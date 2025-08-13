@@ -12,10 +12,10 @@ import { jsx as _jsx } from "react/jsx-runtime";
 var typographyVariants = cva('text-foreground', {
   variants: {
     variant: {
-      h1: 'scroll-m-20 text-4xl tracking-tight lg:text-5xl',
-      h2: 'scroll-m-20 text-3xl tracking-tight',
-      h3: 'scroll-m-20 text-2xl tracking-tight',
-      h4: 'scroll-m-20 text-xl tracking-tight',
+      h1: 'scroll-m-20 text-4xl lg:text-5xl',
+      h2: 'scroll-m-20 text-3xl',
+      h3: 'scroll-m-20 text-2xl',
+      h4: 'scroll-m-20 text-xl',
       p: 'leading-[1.5]',
       lead: 'text-xl text-muted-foreground',
       large: 'text-lg',
