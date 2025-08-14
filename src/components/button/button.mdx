@@ -23,11 +23,15 @@ import * as ButtonStories from './button.stories';
 
 <SubcomponentPropTable subcomponents={ButtonStories.default.subcomponents} />
 
+## Design Philosophy
+
+The Button component now features a soft variant design inspired by modern UI libraries. All variants use subtle background colors with matching text colors, creating a more refined and contemporary appearance while maintaining excellent accessibility and contrast ratios.
+
 ## Examples
 
 ### Variants
 
-All available button variants with different visual styles.
+All available button variants featuring the new soft styling approach with subtle backgrounds and matching text colors.
 
 <Canvas of={ButtonStories.Variants} />
 
@@ -48,6 +52,18 @@ Buttons can be rendered full width
 Buttons combined with icons for enhanced visual communication.
 
 <Canvas of={ButtonStories.WithIcon} />
+
+### Loading State
+
+Buttons with loading spinner to indicate async operations in progress.
+
+<Canvas of={ButtonStories.Loading} />
+
+### Loading Sizes
+
+Loading state works with all button sizes.
+
+<Canvas of={ButtonStories.LoadingSizes} />
 
 ### Disabled State
 
@@ -71,15 +87,38 @@ The `Button` component follows accessibility best practices:
 - Maintains adequate contrast ratios in all variants
 - Supports screen readers with meaningful content
 - Handles disabled states appropriately
+- Includes `aria-busy` attribute when loading for screen reader support
+- Automatically disables interaction during loading state
+
+## Variant Guidelines
+
+### Soft Styling Approach
+
+All button variants now use a soft, subtle design pattern:
+
+- **Default**: Primary color with 10% opacity background
+- **Destructive**: Soft red background for dangerous actions
+- **Success**: Soft green background for positive actions
+- **Warning**: Soft amber background for caution actions
+- **Info**: Soft blue background for informational actions
+- **Error**: Soft red background for error states
+- **Outline**: Transparent with border, subtle hover effects
+- **Secondary**: Muted background with secondary foreground
+- **Ghost**: Minimal styling with hover states only
+- **Link**: Text-only with underline on hover
 
 ## Best Practices
 
 - Use descriptive button text that clearly indicates the action
 - Choose appropriate variants based on the action's importance
-- Ensure sufficient color contrast for accessibility
+- The soft styling provides better visual hierarchy without being overwhelming
+- Ensure sufficient color contrast for accessibility (all variants maintain WCAG compliance)
 - Use consistent button styling throughout your application
 - Consider the context when choosing between variants
-- Provide loading states for asynchronous actions
+- Always provide loading states for asynchronous actions using the `loading` prop
+- The loading spinner automatically appears with the content, maintaining button text visibility
 - Test with keyboard navigation to ensure accessibility
+- The soft backgrounds work well in both light and dark modes
+- Loading state automatically disables the button to prevent duplicate submissions
 
 </DocLayout>

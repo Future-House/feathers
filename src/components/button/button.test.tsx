@@ -14,39 +14,43 @@ describe('Button', () => {
   it('applies default variant and size classes', () => {
     render(<Button>Default Button</Button>);
     const button = screen.getByRole('button');
-    expect(button).toHaveClass(
-      'bg-primary',
-      'text-primary-foreground',
-      'h-9',
-      'px-4'
-    );
+    expect(button).toHaveClass('bg-primary/10', 'text-primary', 'h-9', 'px-4');
   });
 
   it('applies variant classes correctly', () => {
     const { rerender } = render(
       <Button variant="destructive">Destructive</Button>
     );
-    expect(screen.getByRole('button')).toHaveClass('bg-destructive');
+    expect(screen.getByRole('button')).toHaveClass(
+      'bg-destructive/10',
+      'text-destructive'
+    );
 
     rerender(<Button variant="outline">Outline</Button>);
-    expect(screen.getByRole('button')).toHaveClass('border', 'bg-background');
+    expect(screen.getByRole('button')).toHaveClass('border', 'bg-transparent');
 
     rerender(<Button variant="ghost">Ghost</Button>);
-    expect(screen.getByRole('button')).toHaveClass('hover:bg-accent');
+    expect(screen.getByRole('button')).toHaveClass('hover:bg-accent/10');
   });
 
   it('applies new variant color classes correctly', () => {
     const { rerender } = render(<Button variant="success">Success</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-success', 'text-white');
+    expect(screen.getByRole('button')).toHaveClass(
+      'bg-success/10',
+      'text-success'
+    );
 
     rerender(<Button variant="warning">Warning</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-warning', 'text-white');
+    expect(screen.getByRole('button')).toHaveClass(
+      'bg-warning/10',
+      'text-warning'
+    );
 
     rerender(<Button variant="info">Info</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-info', 'text-white');
+    expect(screen.getByRole('button')).toHaveClass('bg-info/10', 'text-info');
 
     rerender(<Button variant="error">Error</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-error', 'text-white');
+    expect(screen.getByRole('button')).toHaveClass('bg-error/10', 'text-error');
   });
 
   it('applies size classes correctly', () => {
@@ -110,5 +114,62 @@ describe('Button', () => {
   it('accepts custom className', () => {
     render(<Button className="custom-class">Custom</Button>);
     expect(screen.getByRole('button')).toHaveClass('custom-class');
+  });
+
+  describe('loading state', () => {
+    it('shows loading spinner when loading prop is true', () => {
+      render(<Button loading>Loading Button</Button>);
+
+      const button = screen.getByRole('button');
+      const spinner = button.querySelector('svg');
+
+      expect(spinner).toBeInTheDocument();
+      expect(spinner).toHaveClass('animate-spin');
+      expect(button).toHaveAttribute('aria-busy', 'true');
+    });
+
+    it('disables button when loading', async () => {
+      const handleClick = jest.fn();
+      render(
+        <Button loading onClick={handleClick}>
+          Loading
+        </Button>
+      );
+
+      const button = screen.getByRole('button');
+      expect(button).toBeDisabled();
+
+      await userEvent.click(button);
+      expect(handleClick).not.toHaveBeenCalled();
+    });
+
+    it('shows both loading spinner and children', () => {
+      render(<Button loading>Button Text</Button>);
+
+      const button = screen.getByRole('button');
+      expect(button).toHaveTextContent('Button Text');
+      expect(button.querySelector('svg')).toBeInTheDocument();
+    });
+
+    it('does not show spinner when loading is false', () => {
+      render(<Button loading={false}>Normal Button</Button>);
+
+      const button = screen.getByRole('button');
+      const spinner = button.querySelector('svg');
+
+      expect(spinner).not.toBeInTheDocument();
+      expect(button).toHaveAttribute('aria-busy', 'false');
+    });
+
+    it('loading state overrides disabled prop', () => {
+      render(
+        <Button loading disabled={false}>
+          Loading Button
+        </Button>
+      );
+
+      const button = screen.getByRole('button');
+      expect(button).toBeDisabled();
+    });
   });
 });

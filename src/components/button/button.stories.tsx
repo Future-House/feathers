@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A flexible button component built with Radix UI and Tailwind CSS, supporting multiple variants and sizes.',
+          'A modern button component featuring soft variant styling inspired by MUI Joy. Built with Radix UI and Tailwind CSS, it provides subtle backgrounds with matching text colors for a refined appearance while maintaining excellent accessibility.',
       },
     },
   },
@@ -29,7 +29,8 @@ const meta = {
         'ghost',
         'link',
       ],
-      description: 'The visual style variant of the button',
+      description:
+        'The visual style variant of the button. All variants feature soft styling with subtle backgrounds and matching text colors.',
       table: {
         type: {
           summary:
@@ -65,6 +66,14 @@ const meta = {
     fullWidth: {
       control: { type: 'boolean' },
       description: 'Whether the button is full width',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    loading: {
+      control: { type: 'boolean' },
+      description: 'Shows a loading spinner and disables the button',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -141,6 +150,57 @@ export const WithIcon: Story = {
       <Button variant="outline">
         Continue
         <Mail />
+      </Button>
+    </div>
+  ),
+};
+
+export const Loading: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-4">
+      <Button loading>Default Loading</Button>
+      <Button loading variant="secondary">
+        Secondary Loading
+      </Button>
+      <Button loading variant="destructive">
+        Destructive Loading
+      </Button>
+      <Button loading variant="success">
+        Success Loading
+      </Button>
+      <Button loading variant="warning">
+        Warning Loading
+      </Button>
+      <Button loading variant="info">
+        Info Loading
+      </Button>
+      <Button loading variant="error">
+        Error Loading
+      </Button>
+      <Button loading variant="outline">
+        Outline Loading
+      </Button>
+      <Button loading variant="ghost">
+        Ghost Loading
+      </Button>
+    </div>
+  ),
+};
+
+export const LoadingSizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button loading size="sm">
+        Small
+      </Button>
+      <Button loading size="default">
+        Default
+      </Button>
+      <Button loading size="lg">
+        Large
+      </Button>
+      <Button loading size="icon">
+        <span className="sr-only">Loading</span>
       </Button>
     </div>
   ),

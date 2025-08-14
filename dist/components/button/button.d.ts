@@ -8,7 +8,8 @@ declare const buttonVariants: (props?: ({
 export type ButtonProps = React.ComponentProps<'button'> & VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     fullWidth?: boolean;
+    loading?: boolean;
 };
-declare function Button({ className, variant, size, asChild, fullWidth, ...props }: ButtonProps): import("react/jsx-runtime").JSX.Element;
+declare function Button({ className, variant, size, asChild, fullWidth, loading, children, disabled, ...props }: ButtonProps): import("react/jsx-runtime").JSX.Element;
 export { Button, buttonVariants };
 //# sourceMappingURL=button.d.ts.map

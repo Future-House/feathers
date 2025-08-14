@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { Loader } from '@/icons';
 
 import { cn } from '@/lib/utils';
 
@@ -10,22 +11,22 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
+          'bg-primary/10 text-primary hover:bg-primary/15 active:bg-primary/20 dark:bg-primary/15 dark:hover:bg-primary/20 dark:active:bg-primary/25',
         destructive:
-          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+          'bg-destructive/10 text-destructive hover:bg-destructive/15 active:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/15 dark:hover:bg-destructive/20 dark:active:bg-destructive/25',
         success:
-          'bg-success text-white shadow-xs hover:bg-success/90 focus-visible:ring-success/20 dark:focus-visible:ring-success/40',
+          'bg-success/10 text-success hover:bg-success/15 active:bg-success/20 focus-visible:ring-success/20 dark:focus-visible:ring-success/40 dark:bg-success/15 dark:hover:bg-success/20 dark:active:bg-success/25',
         warning:
-          'bg-warning text-white shadow-xs hover:bg-warning/90 focus-visible:ring-warning/20 dark:focus-visible:ring-warning/40',
-        info: 'bg-info text-white shadow-xs hover:bg-info/90 focus-visible:ring-info/20 dark:focus-visible:ring-info/40',
+          'bg-warning/10 text-warning hover:bg-warning/15 active:bg-warning/20 focus-visible:ring-warning/20 dark:focus-visible:ring-warning/40 dark:bg-warning/15 dark:hover:bg-warning/20 dark:active:bg-warning/25',
+        info: 'bg-info/10 text-info hover:bg-info/15 active:bg-info/20 focus-visible:ring-info/20 dark:focus-visible:ring-info/40 dark:bg-info/15 dark:hover:bg-info/20 dark:active:bg-info/25',
         error:
-          'bg-error text-white shadow-xs hover:bg-error/90 focus-visible:ring-error/20 dark:focus-visible:ring-error/40',
+          'bg-error/10 text-error hover:bg-error/15 active:bg-error/20 focus-visible:ring-error/20 dark:focus-visible:ring-error/40 dark:bg-error/15 dark:hover:bg-error/20 dark:active:bg-error/25',
         outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+          'border border-input bg-transparent text-foreground hover:bg-accent/10 active:bg-accent/15 dark:border-input dark:hover:bg-accent/10 dark:active:bg-accent/15',
         secondary:
-          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+          'bg-secondary/60 text-secondary-foreground hover:bg-secondary/70 active:bg-secondary/80 dark:bg-secondary/40 dark:hover:bg-secondary/50 dark:active:bg-secondary/60',
         ghost:
-          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+          'text-foreground hover:bg-accent/10 hover:text-accent-foreground active:bg-accent/15 dark:hover:bg-accent/10 dark:active:bg-accent/15',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
@@ -51,6 +52,7 @@ export type ButtonProps = React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     fullWidth?: boolean;
+    loading?: boolean;
   };
 
 function Button({
@@ -59,16 +61,34 @@ function Button({
   size,
   asChild = false,
   fullWidth = false,
+  loading = false,
+  children,
+  disabled,
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
+
+  if (asChild && loading) {
+    console.warn('Loading state is not supported when asChild is true');
+  }
+
+  const buttonContent = (
+    <>
+      {!asChild && loading && <Loader className="animate-spin" />}
+      {children}
+    </>
+  );
 
   return (
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className, fullWidth }))}
+      disabled={disabled || loading}
+      aria-busy={loading}
       {...props}
-    />
+    >
+      {asChild ? children : buttonContent}
+    </Comp>
   );
 }
 
