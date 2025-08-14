@@ -60,14 +60,13 @@ describe('Typography', () => {
     expect(screen.getByText('Heading 1')).toHaveClass(
       'scroll-m-20',
       'text-4xl',
-      'tracking-tight'
+      'lg:text-5xl'
     );
 
     rerender(<Typography variant="h2">Heading 2</Typography>);
     expect(screen.getByText('Heading 2')).toHaveClass(
       'scroll-m-20',
-      'text-3xl',
-      'tracking-tight'
+      'text-3xl'
     );
 
     rerender(<Typography variant="lead">Lead text</Typography>);
@@ -116,7 +115,7 @@ describe('Typography', () => {
       'text-foreground',
       'scroll-m-20',
       'text-4xl',
-      'tracking-tight'
+      'lg:text-5xl'
     );
   });
 

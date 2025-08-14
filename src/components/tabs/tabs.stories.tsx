@@ -10,6 +10,7 @@ import {
 import { Button } from '../button';
 import { Input } from '../input';
 import { Label } from '../label';
+import { Copy } from '@/icons';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
 
 const meta = {
@@ -91,6 +92,15 @@ const meta = {
       table: {
         type: { summary: '"automatic" | "manual"' },
         defaultValue: { summary: '"automatic"' },
+      },
+    },
+    variant: {
+      control: { type: 'select' },
+      options: ['default', 'underlined'],
+      description: 'The visual style variant of the tabs',
+      table: {
+        type: { summary: '"default" | "underlined"' },
+        defaultValue: { summary: '"default"' },
       },
     },
     // HTML attributes
@@ -702,5 +712,150 @@ export const WithDisabledTab: Story = {
         </Card>
       </TabsContent>
     </Tabs>
+  ),
+};
+
+export const UnderlinedVariant: Story = {
+  args: {
+    variant: 'underlined',
+    defaultValue: 'pnpm',
+  },
+  render: args => {
+    const tabs = [
+      {
+        name: 'pnpm',
+        value: 'pnpm',
+        content: 'pnpm dlx shadcn@latest add tabs',
+      },
+      {
+        name: 'npm',
+        value: 'npm',
+        content: 'npx shadcn@latest add tabs',
+      },
+      {
+        name: 'yarn',
+        value: 'yarn',
+        content: 'npx shadcn@latest add tabs',
+      },
+      {
+        name: 'bun',
+        value: 'bun',
+        content: 'bunx --bun shadcn@latest add tabs',
+      },
+    ];
+
+    return (
+      <Tabs {...args} className="w-full max-w-md">
+        <TabsList>
+          {tabs.map(tab => (
+            <TabsTrigger key={tab.value} value={tab.value}>
+              <code className="text-[13px]">{tab.name}</code>
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        {tabs.map(tab => (
+          <TabsContent key={tab.value} value={tab.value}>
+            <div className="flex h-10 items-center justify-between gap-2 rounded-md border pr-1.5 pl-3">
+              <code className="text-[13px]">{tab.content}</code>
+              <Button size="icon" variant="secondary" className="h-7 w-7">
+                <Copy />
+              </Button>
+            </div>
+          </TabsContent>
+        ))}
+      </Tabs>
+    );
+  },
+};
+
+export const VariantComparison: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="w-full max-w-2xl space-y-8">
+      <div>
+        <h3 className="mb-4 text-lg font-semibold">Default Variant</h3>
+        <Tabs defaultValue="tab1" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="tab1">Profile</TabsTrigger>
+            <TabsTrigger value="tab2">Settings</TabsTrigger>
+            <TabsTrigger value="tab3">Notifications</TabsTrigger>
+          </TabsList>
+          <TabsContent value="tab1" className="mt-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Profile</CardTitle>
+                <CardDescription>
+                  Manage your profile information and preferences.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </TabsContent>
+          <TabsContent value="tab2" className="mt-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Settings</CardTitle>
+                <CardDescription>
+                  Configure your application settings.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </TabsContent>
+          <TabsContent value="tab3" className="mt-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Notifications</CardTitle>
+                <CardDescription>
+                  Manage your notification preferences.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      <div>
+        <h3 className="mb-4 text-lg font-semibold">Underlined Variant</h3>
+        <Tabs defaultValue="tab1" variant="underlined" className="w-full">
+          <TabsList>
+            <TabsTrigger value="tab1">Profile</TabsTrigger>
+            <TabsTrigger value="tab2">Settings</TabsTrigger>
+            <TabsTrigger value="tab3">Notifications</TabsTrigger>
+          </TabsList>
+          <TabsContent value="tab1" className="mt-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Profile</CardTitle>
+                <CardDescription>
+                  Manage your profile information and preferences.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </TabsContent>
+          <TabsContent value="tab2" className="mt-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Settings</CardTitle>
+                <CardDescription>
+                  Configure your application settings.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </TabsContent>
+          <TabsContent value="tab3" className="mt-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Notifications</CardTitle>
+                <CardDescription>
+                  Manage your notification preferences.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
   ),
 };

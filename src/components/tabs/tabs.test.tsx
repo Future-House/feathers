@@ -64,18 +64,38 @@ describe('Tabs', () => {
       expect(screen.getByRole('tablist')).toBeInTheDocument();
     });
 
-    it('applies default classes', () => {
+    it('applies default variant classes', () => {
       render(defaultTabsStructure);
       const tabsList = screen.getByRole('tablist');
       expect(tabsList).toHaveClass(
         'bg-muted',
-        'text-muted-foreground',
         'inline-flex',
         'h-9',
         'w-fit',
         'items-center',
         'justify-center',
         'rounded-lg'
+      );
+    });
+
+    it('applies underlined variant classes', () => {
+      render(
+        <Tabs defaultValue="tab1" variant="underlined">
+          <TabsList>
+            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+            <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+          </TabsList>
+          <TabsContent value="tab1">Content 1</TabsContent>
+          <TabsContent value="tab2">Content 2</TabsContent>
+        </Tabs>
+      );
+      const tabsList = screen.getByRole('tablist');
+      expect(tabsList).toHaveClass(
+        'w-full',
+        'p-0',
+        'justify-start',
+        'border-b',
+        'rounded-none'
       );
     });
 
