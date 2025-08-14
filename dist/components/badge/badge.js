@@ -18,16 +18,16 @@ var badgeVariants = cva('inline-flex items-center justify-center rounded-md bord
       outline: 'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground'
     },
     color: {
-      success: 'border-transparent bg-success/10 text-success [a&]:hover:bg-success/15 focus-visible:ring-success/20 shadow-none',
-      warning: 'border-transparent bg-warning/10 text-warning [a&]:hover:bg-warning/15 focus-visible:ring-warning/20 shadow-none',
-      info: 'border-transparent bg-info/10 text-info [a&]:hover:bg-info/15 focus-visible:ring-info/20 shadow-none',
-      error: 'border-transparent bg-error/10 text-error [a&]:hover:bg-error/15 focus-visible:ring-error/20 shadow-none',
-      purple: 'border-transparent bg-purple-500/10 text-purple-600 [a&]:hover:bg-purple-500/15 focus-visible:ring-purple-500/20 shadow-none dark:text-purple-400',
-      fuchsia: 'border-transparent bg-fuchsia-500/10 text-fuchsia-600 [a&]:hover:bg-fuchsia-500/15 focus-visible:ring-fuchsia-500/20 shadow-none dark:text-fuchsia-400',
-      teal: 'border-transparent bg-teal-500/10 text-teal-600 [a&]:hover:bg-teal-500/15 focus-visible:ring-teal-500/20 shadow-none dark:text-teal-400',
-      lime: 'border-transparent bg-lime-500/10 text-lime-600 [a&]:hover:bg-lime-500/15 focus-visible:ring-lime-500/20 shadow-none dark:text-lime-400',
-      orange: 'border-transparent bg-orange-500/10 text-orange-600 [a&]:hover:bg-orange-500/15 focus-visible:ring-orange-500/20 shadow-none dark:text-orange-400',
-      rose: 'border-transparent bg-rose-500/10 text-rose-600 [a&]:hover:bg-rose-500/15 focus-visible:ring-rose-500/20 shadow-none dark:text-rose-400'
+      success: 'border-success/30 bg-success/10 text-success [a&]:hover:bg-success/15 focus-visible:ring-success/20 shadow-none',
+      warning: 'border-warning/30 bg-warning/10 text-warning [a&]:hover:bg-warning/15 focus-visible:ring-warning/20 shadow-none',
+      info: 'border-info/30 bg-info/10 text-info [a&]:hover:bg-info/15 focus-visible:ring-info/20 shadow-none',
+      error: 'border-error/30 bg-error/10 text-error [a&]:hover:bg-error/15 focus-visible:ring-error/20 shadow-none',
+      purple: 'border-purple-600/30 bg-purple-500/10 text-purple-600 [a&]:hover:bg-purple-500/15 focus-visible:ring-purple-500/20 shadow-none dark:text-purple-400 dark:border-purple-400/30',
+      fuchsia: 'border-fuchsia-600/30 bg-fuchsia-500/10 text-fuchsia-600 [a&]:hover:bg-fuchsia-500/15 focus-visible:ring-fuchsia-500/20 shadow-none dark:text-fuchsia-400 dark:border-fuchsia-400/30',
+      teal: 'border-teal-600/30 bg-teal-500/10 text-teal-600 [a&]:hover:bg-teal-500/15 focus-visible:ring-teal-500/20 shadow-none dark:text-teal-400 dark:border-teal-400/30',
+      lime: 'border-lime-600/30 bg-lime-500/10 text-lime-600 [a&]:hover:bg-lime-500/15 focus-visible:ring-lime-500/20 shadow-none dark:text-lime-400 dark:border-lime-400/30',
+      orange: 'border-orange-600/30 bg-orange-500/10 text-orange-600 [a&]:hover:bg-orange-500/15 focus-visible:ring-orange-500/20 shadow-none dark:text-orange-400 dark:border-orange-400/30',
+      rose: 'border-rose-600/30 bg-rose-500/10 text-rose-600 [a&]:hover:bg-rose-500/15 focus-visible:ring-rose-500/20 shadow-none dark:text-rose-400 dark:border-rose-400/30'
     }
   },
   defaultVariants: {
