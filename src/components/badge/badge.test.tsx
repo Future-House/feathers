@@ -135,6 +135,56 @@ describe('Badge', () => {
     });
   });
 
+  describe('color variants', () => {
+    it.each([
+      ['success', ['bg-success/10', 'text-success']],
+      ['warning', ['bg-warning/10', 'text-warning']],
+      ['info', ['bg-info/10', 'text-info']],
+      ['error', ['bg-error/10', 'text-error']],
+      ['purple', ['bg-purple-500/10', 'text-purple-600']],
+      ['fuchsia', ['bg-fuchsia-500/10', 'text-fuchsia-600']],
+      ['teal', ['bg-teal-500/10', 'text-teal-600']],
+      ['lime', ['bg-lime-500/10', 'text-lime-600']],
+      ['orange', ['bg-orange-500/10', 'text-orange-600']],
+      ['rose', ['bg-rose-500/10', 'text-rose-600']],
+    ])('applies correct classes for %s color', (color, expectedClasses) => {
+      render(
+        <Badge
+          color={
+            color as
+              | 'success'
+              | 'warning'
+              | 'info'
+              | 'error'
+              | 'purple'
+              | 'fuchsia'
+              | 'teal'
+              | 'lime'
+              | 'orange'
+              | 'rose'
+          }
+        >
+          {color} Badge
+        </Badge>
+      );
+      const badge = screen.getByText(`${color} Badge`);
+      expectedClasses.forEach(className => {
+        expect(badge).toHaveClass(className);
+      });
+    });
+
+    it('color prop overrides variant styling', () => {
+      render(
+        <Badge variant="destructive" color="success">
+          Color Override
+        </Badge>
+      );
+      const badge = screen.getByText('Color Override');
+      expect(badge).toHaveClass('bg-success/10', 'text-success');
+      expect(badge).not.toHaveClass('bg-destructive');
+    });
+  });
+
   it('forwards ref correctly', () => {
     const ref = React.createRef<HTMLSpanElement>();
     render(<Badge ref={ref}>Badge with ref</Badge>);

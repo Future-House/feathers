@@ -10,6 +10,7 @@ import { CheckIcon, MinusIcon } from 'lucide-react';
 import { cn } from "../../lib/utils";
 import { jsx as _jsx } from "react/jsx-runtime";
 // TODO: add indeterminate state support
+// example: https://www.shadcnui-blocks.com/components/checkbox
 function Checkbox(t0) {
   var $ = _c(15);
   var className;

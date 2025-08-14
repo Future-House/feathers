@@ -12,6 +12,9 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { cn } from "../../lib/utils";
+
+// TODO: add accented background variant
+// https://www.shadcnui-blocks.com/components/card
 import { jsx as _jsx } from "react/jsx-runtime";
 function Card(t0) {
   var $ = _c(8);

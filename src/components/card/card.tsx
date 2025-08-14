@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
+// TODO: add accented background variant
+// https://www.shadcnui-blocks.com/components/card
 function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div

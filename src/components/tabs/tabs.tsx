@@ -3,6 +3,9 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 import { cn } from '@/lib/utils';
 
+// TODO: add an underlined variant and the Vertical Left Bordered
+// https://www.shadcnui-blocks.com/components/tabs
+
 function Tabs({
   className,
   ...props

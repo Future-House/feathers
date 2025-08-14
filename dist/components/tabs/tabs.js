@@ -10,6 +10,9 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cn } from "../../lib/utils";
+
+// TODO: add an underlined variant and the Vertical Left Bordered
+// https://www.shadcnui-blocks.com/components/tabs
 import { jsx as _jsx } from "react/jsx-runtime";
 function Tabs(t0) {
   var $ = _c(8);

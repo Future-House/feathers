@@ -34,10 +34,24 @@ const meta = {
     },
     color: {
       control: { type: 'select' },
-      options: ['success', 'warning', 'info', 'error'],
+      options: [
+        'success',
+        'warning',
+        'info',
+        'error',
+        'purple',
+        'fuchsia',
+        'teal',
+        'lime',
+        'orange',
+        'rose',
+      ],
       description: 'The color theme of the badge',
       table: {
-        type: { summary: '"success" | "warning" | "info" | "error"' },
+        type: {
+          summary:
+            '"success" | "warning" | "info" | "error" | "purple" | "fuchsia" | "teal" | "lime" | "orange" | "rose"',
+        },
         defaultValue: { summary: undefined },
       },
     },
@@ -76,13 +90,23 @@ export const ColorVariants: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="flex flex-wrap items-center gap-4">
-      <Badge>Default</Badge>
-      <Badge color="success">Success</Badge>
-      <Badge color="warning">Warning</Badge>
-      <Badge color="info">Info</Badge>
-      <Badge color="error">Error</Badge>
-    </div>
+    <>
+      <div className="flex flex-col flex-wrap gap-4">
+        <Badge>Default</Badge>
+        <Badge color="success">Success</Badge>
+        <Badge color="warning">Warning</Badge>
+        <Badge color="info">Info</Badge>
+        <Badge color="error">Error</Badge>
+      </div>
+      <div className="mt-8 flex flex-col flex-wrap gap-4">
+        <Badge color="purple">Purple</Badge>
+        <Badge color="fuchsia">Fuchsia</Badge>
+        <Badge color="teal">Teal</Badge>
+        <Badge color="lime">Lime</Badge>
+        <Badge color="orange">Orange</Badge>
+        <Badge color="rose">Rose</Badge>
+      </div>
+    </>
   ),
 };
 

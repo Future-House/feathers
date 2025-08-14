@@ -10,6 +10,7 @@ interface CheckboxProps
 }
 
 // TODO: add indeterminate state support
+// example: https://www.shadcnui-blocks.com/components/checkbox
 function Checkbox({ className, error, ...props }: CheckboxProps) {
   return (
     <CheckboxPrimitive.Root
