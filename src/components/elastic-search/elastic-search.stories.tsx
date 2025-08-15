@@ -358,3 +358,80 @@ export const CustomErrorHandling: Story = {
     ],
   },
 };
+
+export const MobileResponsive: Story = {
+  render: args => <SearchWithOutput {...args} />,
+  args: {
+    fields: WORLD_MODEL_FIELDS,
+    placeholder: 'Search on mobile...',
+    maxCriteria: 3,
+    defaultCriteria: [
+      {
+        field: { key: 'name' },
+        operator: SearchOperator.CONTAINS,
+        value: 'Research',
+      },
+      {
+        field: { key: 'status' },
+        operator: SearchOperator.EQUALS,
+        value: 'active',
+      },
+    ],
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+    chromatic: {
+      viewports: [320, 375, 414],
+    },
+  },
+  decorators: [
+    Story => (
+      <div className="mx-auto max-w-[375px] p-4">
+        <div className="mb-4">
+          <h2 className="mb-2 text-lg font-semibold">Mobile Layout</h2>
+          <p className="text-muted-foreground text-sm">
+            Responsive layout: Dropdowns in 2-column grid above full-width
+            search bar
+          </p>
+        </div>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const TabletResponsive: Story = {
+  render: args => <SearchWithOutput {...args} />,
+  args: {
+    fields: WORLD_MODEL_FIELDS,
+    placeholder: 'Search on tablet...',
+    maxCriteria: 3,
+    defaultCriteria: [
+      {
+        field: { key: 'name' },
+        operator: SearchOperator.CONTAINS,
+        value: 'Sample',
+      },
+    ],
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet',
+    },
+  },
+  decorators: [
+    Story => (
+      <div className="mx-auto max-w-[768px] p-4">
+        <div className="mb-4">
+          <h2 className="mb-2 text-lg font-semibold">Tablet Layout</h2>
+          <p className="text-muted-foreground text-sm">
+            Mid-size responsive view
+          </p>
+        </div>
+        <Story />
+      </div>
+    ),
+  ],
+};

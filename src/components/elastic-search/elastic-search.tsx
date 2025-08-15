@@ -428,87 +428,94 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
   return (
     <div className="space-y-4" role="search" aria-label="Advanced search form">
       {criteria.map(criterion => (
-        <div key={criterion.id} className="flex items-center space-x-3">
-          <div className="w-44 shrink-0">
-            <Label htmlFor={`field-${criterion.id}`} className="sr-only">
-              Search field
-            </Label>
-            <Select
-              value={criterion.field.key}
-              onValueChange={value => {
-                const newField = fields.find(f => f.key === value);
-                if (newField) {
-                  updateCriteria(criterion.id, { field: newField });
-                }
-              }}
-            >
-              <SelectTrigger
-                id={`field-${criterion.id}`}
-                aria-label="Select search field"
-                className="w-full"
+        <div
+          key={criterion.id}
+          className="flex flex-col gap-3 sm:flex-row sm:items-center"
+        >
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-shrink-0 sm:gap-3">
+            <div className="sm:w-44">
+              <Label htmlFor={`field-${criterion.id}`} className="sr-only">
+                Search field
+              </Label>
+              <Select
+                value={criterion.field.key}
+                onValueChange={value => {
+                  const newField = fields.find(f => f.key === value);
+                  if (newField) {
+                    updateCriteria(criterion.id, { field: newField });
+                  }
+                }}
               >
-                <SelectValue className="truncate" />
-              </SelectTrigger>
-              <SelectContent>
-                {fields.map(field => (
-                  <SelectItem key={field.key} value={field.key}>
-                    {field.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="w-32 shrink-0">
-            <Label htmlFor={`operator-${criterion.id}`} className="sr-only">
-              Search operator
-            </Label>
-            <Select
-              value={criterion.operator}
-              onValueChange={value =>
-                updateCriteria(criterion.id, {
-                  operator: value as SearchOperator,
-                })
-              }
-            >
-              <SelectTrigger
-                id={`operator-${criterion.id}`}
-                aria-label="Select search operator"
-                className="w-full"
-              >
-                <SelectValue className="truncate" />
-              </SelectTrigger>
-              <SelectContent>
-                {(criterion.field.operators || [SearchOperator.EQUALS]).map(
-                  operator => (
-                    <SelectItem key={operator} value={operator}>
-                      {OPERATOR_LABELS[operator]}
+                <SelectTrigger
+                  id={`field-${criterion.id}`}
+                  aria-label="Select search field"
+                  className="w-full"
+                >
+                  <SelectValue className="truncate" />
+                </SelectTrigger>
+                <SelectContent>
+                  {fields.map(field => (
+                    <SelectItem key={field.key} value={field.key}>
+                      {field.label}
                     </SelectItem>
-                  )
-                )}
-              </SelectContent>
-            </Select>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="sm:w-32">
+              <Label htmlFor={`operator-${criterion.id}`} className="sr-only">
+                Search operator
+              </Label>
+              <Select
+                value={criterion.operator}
+                onValueChange={value =>
+                  updateCriteria(criterion.id, {
+                    operator: value as SearchOperator,
+                  })
+                }
+              >
+                <SelectTrigger
+                  id={`operator-${criterion.id}`}
+                  aria-label="Select search operator"
+                  className="w-full"
+                >
+                  <SelectValue className="truncate" />
+                </SelectTrigger>
+                <SelectContent>
+                  {(criterion.field.operators || [SearchOperator.EQUALS]).map(
+                    operator => (
+                      <SelectItem key={operator} value={operator}>
+                        {OPERATOR_LABELS[operator]}
+                      </SelectItem>
+                    )
+                  )}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
-          <div className="min-w-0 flex-1">{renderValueInput(criterion)}</div>
+          <div className="flex flex-1 gap-3">
+            <div className="min-w-0 flex-1">{renderValueInput(criterion)}</div>
 
-          {criteria.length > 1 && (
-            <div className="w-10 shrink-0">
-              <Button
-                onClick={() => removeCriteria(criterion.id)}
-                aria-label={`Remove search criteria for ${criterion.field.label}`}
-                variant="ghost"
-                size="icon"
-                className="w-full"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          )}
+            {criteria.length > 1 && (
+              <div className="flex-shrink-0">
+                <Button
+                  onClick={() => removeCriteria(criterion.id)}
+                  aria-label={`Remove search criteria for ${criterion.field.label}`}
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       ))}
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex space-x-2">
           {criteria.length < maxCriteria && (
             <Button
@@ -527,7 +534,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
         <Button
           onClick={handleSearch}
           aria-label="Execute search"
-          className="flex items-center space-x-2"
+          className="flex w-full items-center justify-center space-x-2 sm:w-auto"
         >
           <Search className="h-4 w-4" />
           <span>Search</span>

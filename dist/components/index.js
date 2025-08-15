@@ -48,5 +48,6 @@ export { Combobox } from "./combobox";
 export { Typography, typographyVariants } from "./typography";
 export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineTrigger, TimelineContent } from "./timeline";
 export { Editor, editorVariants, EditorToolbar } from "./editor";
+export { ElasticSearch, SearchQueryBuilder } from "./elastic-search";
 
 //# sourceMappingURL=index.js.map
