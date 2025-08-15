@@ -222,8 +222,8 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
             })
           }
         >
-          <SelectTrigger className="flex-1">
-            <SelectValue placeholder="Select..." />
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select..." className="truncate" />
           </SelectTrigger>
           <SelectContent>
             {field.options.map(option => (
@@ -282,7 +282,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
           }
           onKeyDown={handleKeyDown}
           aria-label={`${field.label} value`}
-          className="flex-1"
+          className="w-full"
         />
       );
     }
@@ -333,7 +333,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
           onKeyDown={handleKeyDown}
           placeholder="Enter number..."
           aria-label={`${field.label} value`}
-          className="flex-1"
+          className="w-full"
         />
       );
     }
@@ -357,7 +357,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
             onKeyDown={handleKeyDown}
             placeholder="Enter UUIDs separated by commas..."
             aria-label={`${field.label} value`}
-            className="flex-1"
+            className="w-full"
           />
         );
       }
@@ -371,7 +371,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
           onKeyDown={handleKeyDown}
           placeholder="Enter UUID..."
           aria-label={`${field.label} value`}
-          className="flex-1"
+          className="w-full"
         />
       );
     }
@@ -394,7 +394,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
           onKeyDown={handleKeyDown}
           placeholder="Enter values separated by commas..."
           aria-label={`${field.label} value`}
-          className="flex-1"
+          className="w-full"
         />
       );
     }
@@ -407,7 +407,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         aria-label={`${field.label} value`}
-        className="flex-1"
+        className="w-full"
       />
     );
   };
@@ -424,7 +424,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
     <div className="space-y-4" role="search" aria-label="Advanced search form">
       {criteria.map(criterion => (
         <div key={criterion.id} className="flex items-center space-x-3">
-          <div className="w-48">
+          <div className="w-44 shrink-0">
             <Label htmlFor={`field-${criterion.id}`} className="sr-only">
               Search field
             </Label>
@@ -440,8 +440,9 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
               <SelectTrigger
                 id={`field-${criterion.id}`}
                 aria-label="Select search field"
+                className="w-full"
               >
-                <SelectValue />
+                <SelectValue className="truncate" />
               </SelectTrigger>
               <SelectContent>
                 {fields.map(field => (
@@ -453,7 +454,7 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
             </Select>
           </div>
 
-          <div className="w-32">
+          <div className="w-32 shrink-0">
             <Label htmlFor={`operator-${criterion.id}`} className="sr-only">
               Search operator
             </Label>
@@ -468,8 +469,9 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
               <SelectTrigger
                 id={`operator-${criterion.id}`}
                 aria-label="Select search operator"
+                className="w-full"
               >
-                <SelectValue />
+                <SelectValue className="truncate" />
               </SelectTrigger>
               <SelectContent>
                 {(criterion.field.operators || [SearchOperator.EQUALS]).map(
@@ -483,17 +485,20 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
             </Select>
           </div>
 
-          {renderValueInput(criterion)}
+          <div className="min-w-0 flex-1">{renderValueInput(criterion)}</div>
 
           {criteria.length > 1 && (
-            <Button
-              onClick={() => removeCriteria(criterion.id)}
-              aria-label={`Remove search criteria for ${criterion.field.label}`}
-              variant="ghost"
-              size="icon"
-            >
-              <X className="h-4 w-4" />
-            </Button>
+            <div className="w-10 shrink-0">
+              <Button
+                onClick={() => removeCriteria(criterion.id)}
+                aria-label={`Remove search criteria for ${criterion.field.label}`}
+                variant="ghost"
+                size="icon"
+                className="w-full"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
           )}
         </div>
       ))}
