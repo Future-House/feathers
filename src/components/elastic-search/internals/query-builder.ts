@@ -415,7 +415,7 @@ export default class SearchQueryBuilder {
     return false;
   }
 
-  // utility to help structure the query into a menaingful api request
+  // utility to help structure the query into a meaningful api request
   // perhaps should be moved to the consuming app, pending
   // unknown because this varies based on consumer's design
   static toAPIQuery(query: SearchQuery): Record<string, unknown> {
