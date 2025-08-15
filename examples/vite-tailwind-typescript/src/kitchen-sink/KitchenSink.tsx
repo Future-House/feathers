@@ -24,6 +24,7 @@ import CollapsibleExample from './CollapsibleExample';
 import DialogExample from './DialogExample';
 import DrawerExample from './DrawerExample';
 import DropdownMenuExample from './DropdownMenuExample';
+import ElasticSearchExample from './ElasticSearchExample';
 import HoverCardExample from './HoverCardExample';
 import RadioGroupExample from './RadioGroupExample';
 import ResizableExample from './ResizableExample';
@@ -67,6 +68,7 @@ export default function KitchenSink() {
       <DialogExample />
       <DrawerExample />
       <DropdownMenuExample />
+      <ElasticSearchExample />
       <HoverCardExample />
       <RadioGroupExample />
       <ResizableExample />

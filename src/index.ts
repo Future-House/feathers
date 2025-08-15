@@ -55,3 +55,4 @@ export * from '@/components/tooltip';
 export * from '@/components/typography';
 export * from '@/components/timeline';
 export * from '@/components/editor';
+export * from '@/components/elastic-search';

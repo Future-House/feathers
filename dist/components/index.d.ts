@@ -53,4 +53,6 @@ export type { TypographyProps } from './typography';
 export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineTrigger, TimelineContent, } from './timeline';
 export { Editor, editorVariants, EditorToolbar } from './editor';
 export type { EditorProps, SlashCommand } from './editor';
+export { ElasticSearch, SearchQueryBuilder } from './elastic-search';
+export type { SearchField, SearchOperator, SearchFieldType, SearchCriteria, SearchQuery, } from './elastic-search';
 //# sourceMappingURL=index.d.ts.map

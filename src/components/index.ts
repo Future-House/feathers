@@ -322,3 +322,12 @@ export {
 
 export { Editor, editorVariants, EditorToolbar } from '@/components/editor';
 export type { EditorProps, SlashCommand } from '@/components/editor';
+
+export { ElasticSearch, SearchQueryBuilder } from '@/components/elastic-search';
+export type {
+  SearchField,
+  SearchOperator,
+  SearchFieldType,
+  SearchCriteria,
+  SearchQuery,
+} from '@/components/elastic-search';
