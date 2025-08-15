@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { validate as isValidUUID } from 'uuid';
+import { validate as isValidUUID, v4 as uuidv4 } from 'uuid';
 
 import { Plus, X, Search } from '@/icons';
 
@@ -52,7 +52,7 @@ const OPERATOR_LABELS: Record<SearchOperator, string> = {
   in: 'In',
 };
 
-const generateId = () => Math.random().toString(36).substr(2, 9);
+const generateId = () => uuidv4();
 
 export const ElasticSearch: FC<ElasticSearchProps> = ({
   fields = [],
