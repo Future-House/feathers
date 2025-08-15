@@ -204,141 +204,179 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
     [handleSearch]
   );
 
-  const renderValueInput = (criterion: SearchCriteria) => {
-    const { field, operator, value } = criterion;
+  const renderValueInput = useCallback(
+    (criterion: SearchCriteria) => {
+      const { field, operator, value } = criterion;
 
-    if (field.type === 'boolean' && field.options) {
-      return (
-        <Select
-          value={String(value || '')}
-          onValueChange={newValue =>
-            updateCriteria(criterion.id, {
-              value:
-                newValue === 'true'
-                  ? true
-                  : newValue === 'false'
-                    ? false
-                    : undefined,
-            })
-          }
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select..." className="truncate" />
-          </SelectTrigger>
-          <SelectContent>
-            {field.options.map(option => (
-              <SelectItem
-                key={String(option.value)}
-                value={String(option.value)}
-              >
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      );
-    }
-
-    if (field.type === 'date') {
-      if (operator === SearchOperator.BETWEEN) {
-        const values = Array.isArray(value) ? (value as string[]) : ['', ''];
+      if (field.type === 'boolean' && field.options) {
         return (
-          <div className="flex flex-1 space-x-2">
-            <Input
-              type="date"
-              value={String(values[0] || '')}
-              onChange={e => {
-                const newValues = Array.isArray(value)
-                  ? [...(value as string[])]
-                  : ['', ''];
-                newValues[0] = e.target.value;
-                updateCriteria(criterion.id, { value: newValues });
-              }}
-              onKeyDown={handleKeyDown}
-              aria-label={`${field.label} start date`}
-            />
-            <Input
-              type="date"
-              value={String(values[1] || '')}
-              onChange={e => {
-                const newValues = Array.isArray(value)
-                  ? [...(value as string[])]
-                  : ['', ''];
-                newValues[1] = e.target.value;
-                updateCriteria(criterion.id, { value: newValues });
-              }}
-              onKeyDown={handleKeyDown}
-              aria-label={`${field.label} end date`}
-            />
-          </div>
+          <Select
+            value={String(value || '')}
+            onValueChange={newValue =>
+              updateCriteria(criterion.id, {
+                value:
+                  newValue === 'true'
+                    ? true
+                    : newValue === 'false'
+                      ? false
+                      : undefined,
+              })
+            }
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select..." className="truncate" />
+            </SelectTrigger>
+            <SelectContent>
+              {field.options.map(option => (
+                <SelectItem
+                  key={String(option.value)}
+                  value={String(option.value)}
+                >
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         );
       }
-      return (
-        <Input
-          type="date"
-          value={String(value || '')}
-          onChange={e =>
-            updateCriteria(criterion.id, { value: e.target.value })
-          }
-          onKeyDown={handleKeyDown}
-          aria-label={`${field.label} value`}
-          className="w-full"
-        />
-      );
-    }
 
-    if (field.type === 'number') {
-      if (operator === SearchOperator.BETWEEN) {
-        const values = Array.isArray(value) ? (value as number[]) : [0, 0];
+      if (field.type === 'date') {
+        if (operator === SearchOperator.BETWEEN) {
+          const values = Array.isArray(value) ? (value as string[]) : ['', ''];
+          return (
+            <div className="flex flex-1 space-x-2">
+              <Input
+                type="date"
+                value={String(values[0] || '')}
+                onChange={e => {
+                  const newValues = Array.isArray(value)
+                    ? [...(value as string[])]
+                    : ['', ''];
+                  newValues[0] = e.target.value;
+                  updateCriteria(criterion.id, { value: newValues });
+                }}
+                onKeyDown={handleKeyDown}
+                aria-label={`${field.label} start date`}
+              />
+              <Input
+                type="date"
+                value={String(values[1] || '')}
+                onChange={e => {
+                  const newValues = Array.isArray(value)
+                    ? [...(value as string[])]
+                    : ['', ''];
+                  newValues[1] = e.target.value;
+                  updateCriteria(criterion.id, { value: newValues });
+                }}
+                onKeyDown={handleKeyDown}
+                aria-label={`${field.label} end date`}
+              />
+            </div>
+          );
+        }
         return (
-          <div className="flex flex-1 space-x-2">
-            <Input
-              type="number"
-              value={String(values[0] || '')}
-              onChange={e => {
-                const newValues = Array.isArray(value)
-                  ? [...(value as number[])]
-                  : [0, 0];
-                newValues[0] = parseFloat(e.target.value) || 0;
-                updateCriteria(criterion.id, { value: newValues });
-              }}
-              onKeyDown={handleKeyDown}
-              aria-label={`${field.label} minimum value`}
-            />
-            <Input
-              type="number"
-              value={String(values[1] || '')}
-              onChange={e => {
-                const newValues = Array.isArray(value)
-                  ? [...(value as number[])]
-                  : [0, 0];
-                newValues[1] = parseFloat(e.target.value) || 0;
-                updateCriteria(criterion.id, { value: newValues });
-              }}
-              onKeyDown={handleKeyDown}
-              aria-label={`${field.label} maximum value`}
-            />
-          </div>
+          <Input
+            type="date"
+            value={String(value || '')}
+            onChange={e =>
+              updateCriteria(criterion.id, { value: e.target.value })
+            }
+            onKeyDown={handleKeyDown}
+            aria-label={`${field.label} value`}
+            className="w-full"
+          />
         );
       }
-      return (
-        <Input
-          type="number"
-          value={String(value || '')}
-          onChange={e =>
-            updateCriteria(criterion.id, {
-              value: parseFloat(e.target.value) || 0,
-            })
-          }
-          onKeyDown={handleKeyDown}
-          placeholder="Enter number..."
-          aria-label={`${field.label} value`}
-          className="w-full"
-        />
-      );
-    }
 
-    if (field.type === SearchFieldType.UUID) {
+      if (field.type === 'number') {
+        if (operator === SearchOperator.BETWEEN) {
+          const values = Array.isArray(value) ? (value as number[]) : [0, 0];
+          return (
+            <div className="flex flex-1 space-x-2">
+              <Input
+                type="number"
+                value={String(values[0] || '')}
+                onChange={e => {
+                  const newValues = Array.isArray(value)
+                    ? [...(value as number[])]
+                    : [0, 0];
+                  newValues[0] = parseFloat(e.target.value) || 0;
+                  updateCriteria(criterion.id, { value: newValues });
+                }}
+                onKeyDown={handleKeyDown}
+                aria-label={`${field.label} minimum value`}
+              />
+              <Input
+                type="number"
+                value={String(values[1] || '')}
+                onChange={e => {
+                  const newValues = Array.isArray(value)
+                    ? [...(value as number[])]
+                    : [0, 0];
+                  newValues[1] = parseFloat(e.target.value) || 0;
+                  updateCriteria(criterion.id, { value: newValues });
+                }}
+                onKeyDown={handleKeyDown}
+                aria-label={`${field.label} maximum value`}
+              />
+            </div>
+          );
+        }
+        return (
+          <Input
+            type="number"
+            value={String(value || '')}
+            onChange={e =>
+              updateCriteria(criterion.id, {
+                value: parseFloat(e.target.value) || 0,
+              })
+            }
+            onKeyDown={handleKeyDown}
+            placeholder="Enter number..."
+            aria-label={`${field.label} value`}
+            className="w-full"
+          />
+        );
+      }
+
+      if (field.type === SearchFieldType.UUID) {
+        if (operator === SearchOperator.IN) {
+          const values = Array.isArray(value)
+            ? (value as string[]).join(', ')
+            : String(value || '');
+          return (
+            <Input
+              type="text"
+              value={values}
+              onChange={e => {
+                const newValues = e.target.value
+                  .split(',')
+                  .map(v => v.trim())
+                  .filter(v => v);
+                updateCriteria(criterion.id, { value: newValues });
+              }}
+              onKeyDown={handleKeyDown}
+              placeholder="Enter UUIDs separated by commas..."
+              aria-label={`${field.label} value`}
+              className="w-full"
+            />
+          );
+        }
+        return (
+          <Input
+            type="text"
+            value={String(value || '')}
+            onChange={e =>
+              updateCriteria(criterion.id, { value: e.target.value })
+            }
+            onKeyDown={handleKeyDown}
+            placeholder="Enter UUID..."
+            aria-label={`${field.label} value`}
+            className="w-full"
+          />
+        );
+      }
+
       if (operator === SearchOperator.IN) {
         const values = Array.isArray(value)
           ? (value as string[]).join(', ')
@@ -355,12 +393,13 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
               updateCriteria(criterion.id, { value: newValues });
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Enter UUIDs separated by commas..."
+            placeholder="Enter values separated by commas..."
             aria-label={`${field.label} value`}
             className="w-full"
           />
         );
       }
+
       return (
         <Input
           type="text"
@@ -369,48 +408,14 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
             updateCriteria(criterion.id, { value: e.target.value })
           }
           onKeyDown={handleKeyDown}
-          placeholder="Enter UUID..."
+          placeholder={placeholder}
           aria-label={`${field.label} value`}
           className="w-full"
         />
       );
-    }
-
-    if (operator === SearchOperator.IN) {
-      const values = Array.isArray(value)
-        ? (value as string[]).join(', ')
-        : String(value || '');
-      return (
-        <Input
-          type="text"
-          value={values}
-          onChange={e => {
-            const newValues = e.target.value
-              .split(',')
-              .map(v => v.trim())
-              .filter(v => v);
-            updateCriteria(criterion.id, { value: newValues });
-          }}
-          onKeyDown={handleKeyDown}
-          placeholder="Enter values separated by commas..."
-          aria-label={`${field.label} value`}
-          className="w-full"
-        />
-      );
-    }
-
-    return (
-      <Input
-        type="text"
-        value={String(value || '')}
-        onChange={e => updateCriteria(criterion.id, { value: e.target.value })}
-        onKeyDown={handleKeyDown}
-        placeholder={placeholder}
-        aria-label={`${field.label} value`}
-        className="w-full"
-      />
-    );
-  };
+    },
+    [handleKeyDown, placeholder, updateCriteria]
+  );
 
   if (fields.length === 0) {
     return (
