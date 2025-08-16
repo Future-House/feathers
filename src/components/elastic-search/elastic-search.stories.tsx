@@ -29,6 +29,15 @@ const meta = {
       action: 'searched',
       description: 'Callback function called when search is executed',
     },
+    onError: {
+      action: 'error',
+      description: 'Callback function called when validation errors occur',
+    },
+    defaultCriteria: {
+      control: 'object',
+      description:
+        'Initial search criteria to pre-populate the search form. Should match the structure of individual criteria.',
+    },
   },
   args: {
     onSearch: () => {},
