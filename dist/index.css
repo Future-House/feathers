@@ -934,6 +934,9 @@
   .w-36 {
     width: calc(var(--spacing) * 36);
   }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
   .w-48 {
     width: calc(var(--spacing) * 48);
   }
@@ -1036,14 +1039,8 @@
   .max-w-\[300px\] {
     max-width: 300px;
   }
-  .max-w-\[375px\] {
-    max-width: 375px;
-  }
   .max-w-\[450px\] {
     max-width: 450px;
-  }
-  .max-w-\[768px\] {
-    max-width: 768px;
   }
   .max-w-\[calc\(100\%-2rem\)\] {
     max-width: calc(100% - 2rem);
@@ -2299,6 +2296,9 @@
   }
   .pr-10 {
     padding-right: calc(var(--spacing) * 10);
+  }
+  .pb-1 {
+    padding-bottom: calc(var(--spacing) * 1);
   }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
@@ -6355,6 +6355,16 @@
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--muted) 50%, transparent);
       }
+    }
+  }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:hidden {
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:appearance-none {
+    &::-webkit-calendar-picker-indicator {
+      appearance: none;
     }
   }
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md {

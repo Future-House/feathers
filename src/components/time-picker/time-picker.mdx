@@ -1,0 +1,127 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as TimePickerStories from './time-picker.stories';
+
+<Meta of={TimePickerStories} />
+
+<DocLayout meta={TimePickerStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={TimePickerStories.Default} />
+
+## Component API
+
+### TimePicker
+
+<PropsTable argTypes={TimePickerStories.default.argTypes} />
+
+## Examples
+
+### With Seconds
+
+A time picker that includes seconds for more precise time selection.
+
+<Canvas of={TimePickerStories.WithSeconds} />
+
+### Disabled State
+
+A disabled time picker that cannot be interacted with.
+
+<Canvas of={TimePickerStories.Disabled} />
+
+### Error State
+
+A time picker in an error state with visual feedback.
+
+<Canvas of={TimePickerStories.Error} />
+
+### Form Example
+
+Integration of time pickers within a form structure.
+
+<Canvas of={TimePickerStories.FormExample} />
+
+### Time Range
+
+A time range selector with start and end times, calculating duration.
+
+<Canvas of={TimePickerStories.TimeRange} />
+
+### With Labels
+
+Time pickers with descriptive labels and helper text.
+
+<Canvas of={TimePickerStories.WithLabels} />
+
+## Features
+
+The `TimePicker` component provides:
+
+- **Native time input** - Uses the browser's built-in time picker for consistency
+- **Seconds precision** - Optional seconds display with the `showSeconds` prop
+- **Visual feedback** - Clock icon indicator for better UX
+- **Error states** - Built-in error styling for validation feedback
+- **Controlled/Uncontrolled** - Works in both controlled and uncontrolled modes
+- **Dark mode support** - Inherits theme styling from the Input component
+- **Accessibility** - Full keyboard and screen reader support
+
+## Usage
+
+```tsx
+import { TimePicker } from '@future-house/feathers';
+
+// Basic usage
+<TimePicker defaultValue="14:30" />
+
+// With seconds
+<TimePicker showSeconds defaultValue="14:30:45" />
+
+// Controlled component
+const [time, setTime] = useState('09:00');
+<TimePicker
+  value={time}
+  onChange={(e) => setTime(e.target.value)}
+/>
+
+// With validation
+<TimePicker
+  required
+  min="09:00"
+  max="17:00"
+  error={!isValidTime}
+/>
+```
+
+## Accessibility
+
+The `TimePicker` component follows web accessibility standards:
+
+- Uses semantic HTML5 `input[type="time"]` for native browser support
+- Proper labeling with `htmlFor` and `id` associations
+- Keyboard navigation with Tab, arrow keys, and number input
+- Screen reader announcements for time values
+- ARIA attributes support including `aria-invalid` for error states
+- Focus management with visible focus indicators
+- Native browser validation support
+
+## Best Practices
+
+- **Use appropriate formats** - Consider your users' locale and preferences for 12/24 hour format
+- **Provide clear labels** - Always include descriptive labels for context
+- **Set reasonable constraints** - Use `min` and `max` attributes for business hours or scheduling
+- **Consider seconds carefully** - Only include seconds when precision is necessary
+- **Validate input** - Implement proper validation with helpful error messages
+- **Group related times** - For time ranges, clearly indicate start and end times
+- **Mobile experience** - Native time pickers provide optimal mobile interfaces
+- **Default values** - Consider providing sensible defaults for common use cases
+- **Time zones** - Be clear about time zone context when relevant
+- **Accessibility testing** - Test with keyboard navigation and screen readers
+
+## Related Components
+
+- [Input](/docs/components-input--docs) - Base input component
+- [DateInput](/docs/components-dateinput--docs) - For date selection
+- [Calendar](/docs/components-calendar--docs) - For date picking with calendar view
+
+</DocLayout>
