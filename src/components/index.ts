@@ -55,6 +55,9 @@ export {
 } from '@/components/breadcrumb';
 
 export { Calendar, CalendarDayButton } from '@/components/calendar';
+
+export { DateInput, formatDate, isValidDate } from '@/components/date-input';
+export type { DateInputProps } from '@/components/date-input';
 export type { DateRange } from '@/components/calendar';
 
 export {
