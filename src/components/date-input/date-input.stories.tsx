@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { addDays, subDays } from 'date-fns';
 import { DateInput } from './date-input';
+import { Button } from '../button';
 
 const meta = {
   title: 'Components/DateInput',
@@ -213,30 +214,30 @@ export const Controlled: Story = {
       <div className="space-y-4">
         <DateInput label="Select Date" selected={date} onSelect={setDate} />
         <div className="flex gap-2">
-          <button
+          <Button
             className="rounded border px-4 py-2"
             onClick={() => setDate(new Date())}
           >
             Today
-          </button>
-          <button
+          </Button>
+          <Button
             className="rounded border px-4 py-2"
             onClick={() => setDate(addDays(new Date(), 1))}
           >
             Tomorrow
-          </button>
-          <button
+          </Button>
+          <Button
             className="rounded border px-4 py-2"
             onClick={() => setDate(subDays(new Date(), 1))}
           >
             Yesterday
-          </button>
-          <button
+          </Button>
+          <Button
             className="rounded border px-4 py-2"
             onClick={() => setDate(undefined)}
           >
             Clear
-          </button>
+          </Button>
         </div>
         {date && (
           <p className="text-muted-foreground text-sm">
@@ -307,22 +308,5 @@ export const MultipleInputs: Story = {
         )}
       </div>
     );
-  },
-};
-
-export const DarkMode: Story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-  decorators: [
-    Story => (
-      <div className="dark">
-        <Story />
-      </div>
-    ),
-  ],
-  args: {
-    label: 'Date Selection',
-    selected: new Date(),
   },
 };

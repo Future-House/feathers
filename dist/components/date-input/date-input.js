@@ -49,7 +49,7 @@ function DateInput(t0) {
   var side = t4 === undefined ? "bottom" : t4;
   var alignOffset = t5 === undefined ? -8 : t5;
   var sideOffset = t6 === undefined ? 10 : t6;
-  var captionLayout = t7 === undefined ? "dropdown" : t7;
+  var captionLayout = t7 === undefined ? "label" : t7;
   var _React$useState = React.useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     open = _React$useState2[0],
