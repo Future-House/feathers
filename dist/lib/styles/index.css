@@ -673,10 +673,6 @@
     width: calc(var(--spacing) * 4);
     height: calc(var(--spacing) * 4);
   }
-  .size-5 {
-    width: calc(var(--spacing) * 5);
-    height: calc(var(--spacing) * 5);
-  }
   .size-6 {
     width: calc(var(--spacing) * 6);
     height: calc(var(--spacing) * 6);
@@ -1668,9 +1664,6 @@
   .border-green-200 {
     border-color: var(--color-green-200);
   }
-  .border-green-500 {
-    border-color: var(--color-green-500);
-  }
   .border-info\/20 {
     border-color: var(--info);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1721,9 +1714,6 @@
   }
   .border-purple-300 {
     border-color: var(--color-purple-300);
-  }
-  .border-purple-500 {
-    border-color: var(--color-purple-500);
   }
   .border-purple-600\/30 {
     border-color: color-mix(in srgb, oklch(55.8% 0.288 302.321) 30%, transparent);
@@ -4760,29 +4750,9 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
-  .data-\[state\=checked\]\:border-blue-600 {
-    &[data-state="checked"] {
-      border-color: var(--color-blue-600);
-    }
-  }
-  .data-\[state\=checked\]\:border-green-600 {
-    &[data-state="checked"] {
-      border-color: var(--color-green-600);
-    }
-  }
   .data-\[state\=checked\]\:border-primary {
     &[data-state="checked"] {
       border-color: var(--primary);
-    }
-  }
-  .data-\[state\=checked\]\:border-purple-600 {
-    &[data-state="checked"] {
-      border-color: var(--color-purple-600);
-    }
-  }
-  .data-\[state\=checked\]\:bg-blue-600 {
-    &[data-state="checked"] {
-      background-color: var(--color-blue-600);
     }
   }
   .data-\[state\=checked\]\:bg-green-600 {

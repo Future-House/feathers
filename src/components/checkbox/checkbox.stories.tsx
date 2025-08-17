@@ -463,51 +463,6 @@ export const ListWithCheckboxes: Story = {
   },
 };
 
-export const CustomStyling: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="flex items-center space-x-2">
-        <Checkbox
-          id="custom-1"
-          className="border-blue-500 data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600"
-        />
-        <label
-          htmlFor="custom-1"
-          className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Blue checkbox
-        </label>
-      </div>
-
-      <div className="flex items-center space-x-2">
-        <Checkbox
-          id="custom-2"
-          className="size-5 border-green-500 data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600"
-        />
-        <label
-          htmlFor="custom-2"
-          className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Larger green checkbox
-        </label>
-      </div>
-
-      <div className="flex items-center space-x-2">
-        <Checkbox
-          id="custom-3"
-          className="rounded-full border-purple-500 data-[state=checked]:border-purple-600 data-[state=checked]:bg-purple-600"
-        />
-        <label
-          htmlFor="custom-3"
-          className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Rounded purple checkbox
-        </label>
-      </div>
-    </div>
-  ),
-};
-
 export const Error: Story = {
   args: {
     error: true,
