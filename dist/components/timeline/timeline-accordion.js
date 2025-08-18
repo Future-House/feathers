@@ -9,7 +9,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDown as ChevronDownIcon } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var TimelineAccordion = /*#__PURE__*/React.forwardRef(function (t0, ref) {

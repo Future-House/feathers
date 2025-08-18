@@ -14,7 +14,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { cva } from 'class-variance-authority';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDown as ChevronDownIcon } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function NavigationMenu(t0) {

@@ -10,7 +10,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDown } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function Accordion(t0) {
@@ -106,7 +106,7 @@ function AccordionTrigger(t0) {
   }
   var t2;
   if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
-    t2 = /*#__PURE__*/_jsx(ChevronDownIcon, {
+    t2 = /*#__PURE__*/_jsx(ChevronDown, {
       className: "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
     });
     $[6] = t2;

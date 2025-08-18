@@ -69,11 +69,11 @@ Customize alert appearance with custom classes while maintaining accessibility.
 
 ```tsx
 import { Alert, AlertTitle, AlertDescription } from '@future-house/feathers';
-import { CheckCircle2, AlertTriangle, Info } from 'lucide-react';
+import { CircleCheck, TriangleAlert, Info } from '@/icons';
 
 // Basic alert
 <Alert>
-  <CheckCircle2 />
+  <CircleCheck />
   <AlertTitle>Success!</AlertTitle>
   <AlertDescription>
     Your changes have been saved successfully.
@@ -82,7 +82,7 @@ import { CheckCircle2, AlertTriangle, Info } from 'lucide-react';
 
 // Error alert
 <Alert variant="destructive">
-  <AlertTriangle />
+  <TriangleAlert />
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>
     Something went wrong. Please try again.
@@ -91,13 +91,13 @@ import { CheckCircle2, AlertTriangle, Info } from 'lucide-react';
 
 // Status color alerts
 <Alert color="success">
-  <CheckCircle2 />
+  <CircleCheck />
   <AlertTitle>Success</AlertTitle>
   <AlertDescription>Operation completed successfully.</AlertDescription>
 </Alert>
 
 <Alert color="warning">
-  <AlertTriangle />
+  <TriangleAlert />
   <AlertTitle>Warning</AlertTitle>
   <AlertDescription>Please review before proceeding.</AlertDescription>
 </Alert>

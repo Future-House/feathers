@@ -14,7 +14,7 @@ import {
 import { RadioGroup, RadioGroupItem } from '../radio-group/radio-group';
 import { Checkbox } from '../checkbox/checkbox';
 import { Separator } from '../separator/separator';
-import { Settings, Menu, Plus, Edit, Trash2 } from 'lucide-react';
+import { Settings, Menu, Plus, Pencil, Trash2 } from '@/icons';
 import {
   Drawer,
   DrawerClose,
@@ -516,8 +516,8 @@ export const ActionSheet: Story = {
         <div className="p-4">
           <div className="space-y-2">
             <Button variant="ghost" className="w-full justify-start">
-              <Edit className="mr-3 h-4 w-4" />
-              Edit Item
+              <Pencil className="mr-3 h-4 w-4" />
+              Pencil Item
             </Button>
             <Button variant="ghost" className="w-full justify-start">
               <Plus className="mr-3 h-4 w-4" />

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from '@/icons';
 import { Button } from '../button/button';
 import {
   Collapsible,

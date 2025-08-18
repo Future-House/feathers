@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Alert, AlertTitle, AlertDescription } from '../alert';
 import {
   Terminal,
-  AlertCircle,
-  CheckCircle2,
+  CircleAlert,
+  CircleCheck,
   Info,
-  AlertTriangle,
-} from 'lucide-react';
+  TriangleAlert,
+} from '../../icons';
 
 const meta = {
   title: 'Components/Alert',
@@ -169,7 +169,7 @@ export const DescriptionOnly: Story = {
   },
   render: args => (
     <Alert {...args}>
-      <CheckCircle2 />
+      <CircleCheck />
       <AlertDescription>
         Operation completed successfully without any issues.
       </AlertDescription>
@@ -231,14 +231,14 @@ export const ColorVariants: Story = {
         <AlertDescription>This is a default alert message.</AlertDescription>
       </Alert>
       <Alert color="success">
-        <CheckCircle2 />
+        <CircleCheck />
         <AlertTitle>Success</AlertTitle>
         <AlertDescription>
           This is a success message confirming an action.
         </AlertDescription>
       </Alert>
       <Alert color="warning">
-        <AlertTriangle />
+        <TriangleAlert />
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>
           This is a warning message that requires attention.
@@ -250,7 +250,7 @@ export const ColorVariants: Story = {
         <AlertDescription>This is an informational message.</AlertDescription>
       </Alert>
       <Alert color="error">
-        <AlertCircle />
+        <CircleAlert />
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>
           This is an error message indicating a problem.

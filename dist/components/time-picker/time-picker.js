@@ -5,7 +5,7 @@ function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbol
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { Clock } from 'lucide-react';
+import { Clock } from "../../icons";
 import { cn } from "../../lib/utils";
 import { Input } from "../input";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";

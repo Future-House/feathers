@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { CheckIcon, MinusIcon } from 'lucide-react';
+import { Check, Minus } from '@/icons';
 
 import { cn } from '@/lib/utils';
 
@@ -35,9 +35,9 @@ function Checkbox({ className, error, ...props }: CheckboxProps) {
         }
         {props.defaultChecked === 'indeterminate' ||
         props.checked === 'indeterminate' ? (
-          <MinusIcon className="size-3.5" />
+          <Minus className="size-3.5" />
         ) : (
-          <CheckIcon className="size-3.5" />
+          <Check className="size-3.5" />
         )}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

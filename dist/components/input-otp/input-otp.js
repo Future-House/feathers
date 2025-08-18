@@ -10,7 +10,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { OTPInput, OTPInputContext } from 'input-otp';
-import { MinusIcon } from 'lucide-react';
+import { Minus } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function InputOTP(t0) {
@@ -194,7 +194,7 @@ function InputOTPSeparator(t0) {
   }
   var t1;
   if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = /*#__PURE__*/_jsx(MinusIcon, {});
+    t1 = /*#__PURE__*/_jsx(Minus, {});
     $[2] = t1;
   } else {
     t1 = $[2];

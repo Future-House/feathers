@@ -15,7 +15,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Command as CommandPrimitive } from 'cmdk';
-import { SearchIcon } from 'lucide-react';
+import { Search } from "../../icons";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../dialog";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
@@ -189,7 +189,7 @@ function CommandInput(t0) {
   }
   var t1;
   if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = /*#__PURE__*/_jsx(SearchIcon, {
+    t1 = /*#__PURE__*/_jsx(Search, {
       className: "size-4 shrink-0 opacity-50"
     });
     $[3] = t1;

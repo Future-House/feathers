@@ -9,7 +9,7 @@ import {
   TimelineContent,
   Typography,
 } from '@future-house/feathers';
-import { CheckCircle2, Clock, AlertCircle } from 'lucide-react';
+import { CircleCheck, Clock, CircleAlert } from '@future-house/feathers/icons';
 
 export default function TimelineExample() {
   return (
@@ -23,9 +23,7 @@ export default function TimelineExample() {
             </h4>
             <Timeline>
               <TimelineItem
-                iconElement={
-                  <CheckCircle2 className="h-3 w-3 text-green-500" />
-                }
+                iconElement={<CircleCheck className="h-3 w-3 text-green-500" />}
               >
                 <TimelineHeading>Project Kickoff</TimelineHeading>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -46,7 +44,7 @@ export default function TimelineExample() {
 
               <TimelineItem
                 iconElement={
-                  <AlertCircle className="h-3 w-3 text-yellow-500" />
+                  <CircleAlert className="h-3 w-3 text-yellow-500" />
                 }
               >
                 <TimelineHeading>Testing & Review</TimelineHeading>

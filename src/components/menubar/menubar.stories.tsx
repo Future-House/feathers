@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   File,
-  Edit,
+  Pencil,
   Copy,
   Clipboard,
   Scissors,
@@ -12,7 +12,7 @@ import {
   Search,
   Share,
   Settings,
-  HelpCircle,
+  CircleQuestionMark,
   User,
   Users,
   CreditCard,
@@ -20,7 +20,7 @@ import {
   Mail,
   MessageSquare,
   Plus,
-} from 'lucide-react';
+} from '@/icons';
 import {
   Menubar,
   MenubarContent,
@@ -436,7 +436,7 @@ export const Default: Story = {
             <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            <Edit className="mr-2 h-4 w-4" />
+            <Pencil className="mr-2 h-4 w-4" />
             Open File
             <MenubarShortcut>⌘O</MenubarShortcut>
           </MenubarItem>
@@ -449,7 +449,7 @@ export const Default: Story = {
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarTrigger>Pencil</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
             <Undo className="mr-2 h-4 w-4" />
@@ -619,7 +619,7 @@ export const WithSubmenus: Story = {
         <MenubarTrigger>Help</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            <HelpCircle className="mr-2 h-4 w-4" />
+            <CircleQuestionMark className="mr-2 h-4 w-4" />
             Documentation
           </MenubarItem>
           <MenubarItem>Support</MenubarItem>
@@ -647,7 +647,7 @@ const ApplicationMenubarComponent = () => {
             <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            <Edit className="mr-2 h-4 w-4" />
+            <Pencil className="mr-2 h-4 w-4" />
             Open
             <MenubarShortcut>⌘O</MenubarShortcut>
           </MenubarItem>
@@ -671,7 +671,7 @@ const ApplicationMenubarComponent = () => {
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarTrigger>Pencil</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
             <Undo className="mr-2 h-4 w-4" />
@@ -758,7 +758,7 @@ const ApplicationMenubarComponent = () => {
         <MenubarTrigger>Help</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            <HelpCircle className="mr-2 h-4 w-4" />
+            <CircleQuestionMark className="mr-2 h-4 w-4" />
             Help Center
           </MenubarItem>
           <MenubarItem>Keyboard Shortcuts</MenubarItem>
@@ -782,7 +782,7 @@ export const MinimalMenubar: Story = {
         <MenubarTrigger>Actions</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>New</MenubarItem>
-          <MenubarItem>Edit</MenubarItem>
+          <MenubarItem>Pencil</MenubarItem>
           <MenubarItem>Delete</MenubarItem>
         </MenubarContent>
       </MenubarMenu>

@@ -1,7 +1,7 @@
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon } from "../../icons";
 import { cn } from "../../lib/utils";
 import { Button } from "../button";
 import { Calendar } from "../calendar";

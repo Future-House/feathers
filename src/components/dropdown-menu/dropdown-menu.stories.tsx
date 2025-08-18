@@ -12,14 +12,13 @@ import {
   LogOut,
   Mail,
   MessageSquare,
-  PlusCircle,
+  CirclePlus,
   UserPlus,
   Github,
   Cloud,
-  MoreHorizontal,
-  Edit,
+  Pencil,
   Trash2,
-} from 'lucide-react';
+} from '@/icons';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -403,8 +402,8 @@ export const WithSubmenus: Story = {
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Edit className="mr-2 h-4 w-4" />
-          <span>Edit</span>
+          <Pencil className="mr-2 h-4 w-4" />
+          <span>Pencil</span>
           <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
@@ -427,7 +426,7 @@ export const WithSubmenus: Story = {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <PlusCircle className="mr-2 h-4 w-4" />
+              <CirclePlus className="mr-2 h-4 w-4" />
               <span>More...</span>
             </DropdownMenuItem>
           </DropdownMenuSubContent>

@@ -24,7 +24,7 @@ import {
   Phone,
   MapPin,
   Bell,
-} from 'lucide-react';
+} from '@/icons';
 
 const meta = {
   title: 'Components/Popover',

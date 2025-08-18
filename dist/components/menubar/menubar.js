@@ -18,7 +18,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
-import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
+import { Check as CheckIcon, ChevronRight as ChevronRightIcon, Circle as CircleIcon } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function Menubar(t0) {

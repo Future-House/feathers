@@ -30,8 +30,8 @@ import {
   Terminal,
   Mail,
   MessageSquare,
-  PlusCircle,
-} from 'lucide-react';
+  CirclePlus,
+} from '@future-house/feathers/icons';
 
 export default function CommandExample() {
   const [open, setOpen] = useState(false);
@@ -183,7 +183,7 @@ export default function CommandExample() {
                   <CommandShortcut>⌘⇧F</CommandShortcut>
                 </CommandItem>
                 <CommandItem>
-                  <PlusCircle className="mr-2 h-4 w-4" />
+                  <CirclePlus className="mr-2 h-4 w-4" />
                   <span>Create new file</span>
                   <CommandShortcut>⌘N</CommandShortcut>
                 </CommandItem>

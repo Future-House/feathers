@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Alert, AlertTitle, AlertDescription } from './alert';
-import { Terminal, AlertCircle } from 'lucide-react';
+import { Terminal, CircleAlert } from '@/icons';
 
 describe('Alert', () => {
   describe('Alert component', () => {
@@ -186,7 +186,7 @@ describe('Alert', () => {
     it('renders destructive alert with error icon', () => {
       render(
         <Alert variant="destructive">
-          <AlertCircle data-testid="error-icon" />
+          <CircleAlert data-testid="error-icon" />
           <AlertTitle>Error Occurred</AlertTitle>
           <AlertDescription>
             Something went wrong. Please try again.

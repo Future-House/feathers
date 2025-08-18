@@ -6,7 +6,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { CheckIcon, MinusIcon } from 'lucide-react';
+import { Check, Minus } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx } from "react/jsx-runtime";
 // TODO: add indeterminate state support
@@ -46,9 +46,9 @@ function Checkbox(t0) {
     t3 = /*#__PURE__*/_jsx(CheckboxPrimitive.Indicator, {
       "data-slot": "checkbox-indicator",
       className: "flex items-center justify-center text-current transition-none",
-      children: props.defaultChecked === "indeterminate" || props.checked === "indeterminate" ? /*#__PURE__*/_jsx(MinusIcon, {
+      children: props.defaultChecked === "indeterminate" || props.checked === "indeterminate" ? /*#__PURE__*/_jsx(Minus, {
         className: "size-3.5"
-      }) : /*#__PURE__*/_jsx(CheckIcon, {
+      }) : /*#__PURE__*/_jsx(Check, {
         className: "size-3.5"
       })
     });

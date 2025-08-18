@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDown } from '@/icons';
 
 import { cn } from '@/lib/utils';
 
@@ -64,7 +64,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
                 return null;
               })}
             </div>
-            <ChevronDownIcon
+            <ChevronDown
               className={cn(
                 'h-4 w-4 shrink-0 text-gray-500 transition-transform duration-200 dark:text-gray-400',
                 isCollapsed && 'rotate-180'

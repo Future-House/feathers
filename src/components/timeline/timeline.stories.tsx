@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { CheckIcon, ClockIcon, AlertCircleIcon } from 'lucide-react';
+import { Check, Clock, CircleAlert } from '@/icons';
 import { Timeline, TimelineItem, TimelineHeading } from './timeline';
 import { Typography } from '../typography';
 
@@ -17,7 +17,7 @@ export const Default: Story = {
     <div className="mx-auto max-w-lg">
       <Timeline>
         <TimelineItem
-          iconElement={<CheckIcon className="h-3 w-3 text-green-600" />}
+          iconElement={<Check className="h-3 w-3 text-green-600" />}
         >
           <TimelineHeading>Project Initialized</TimelineHeading>
           <Typography className="mt-1">
@@ -32,9 +32,7 @@ export const Default: Story = {
           </Typography>
         </TimelineItem>
 
-        <TimelineItem
-          iconElement={<ClockIcon className="h-3 w-3 text-blue-600" />}
-        >
+        <TimelineItem iconElement={<Clock className="h-3 w-3 text-blue-600" />}>
           <TimelineHeading>Development in Progress</TimelineHeading>
           <Typography variant="muted" className="mt-1">
             Currently working on the core component implementation.
@@ -48,7 +46,7 @@ export const Default: Story = {
         </TimelineItem>
 
         <TimelineItem
-          iconElement={<AlertCircleIcon className="h-3 w-3 text-amber-600" />}
+          iconElement={<CircleAlert className="h-3 w-3 text-amber-600" />}
         >
           <TimelineHeading>Pending Review</TimelineHeading>
           <Typography variant="muted" className="mt-1">

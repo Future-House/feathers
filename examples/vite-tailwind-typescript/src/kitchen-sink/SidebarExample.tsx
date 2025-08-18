@@ -30,16 +30,16 @@ import {
   ThemeToggle,
 } from '@future-house/feathers';
 import {
-  Home,
+  House,
   Package2,
   Settings,
   Users,
   FileText,
   ChevronRight,
   Plus,
-  User2,
+  UserRound,
   Command,
-  MoreHorizontal,
+  Ellipsis,
   Bell,
   Calendar,
   Search,
@@ -48,7 +48,7 @@ import {
   File,
   Archive,
   Trash2,
-} from 'lucide-react';
+} from '@future-house/feathers/icons';
 
 function DemoSidebar() {
   return (
@@ -69,7 +69,7 @@ function DemoSidebar() {
                     <span className="truncate font-semibold">Feathers Inc</span>
                     <span className="truncate text-xs">Enterprise</span>
                   </div>
-                  <MoreHorizontal className="ml-auto" />
+                  <Ellipsis className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -101,9 +101,9 @@ function DemoSidebar() {
           <SidebarGroupLabel>Platform</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Home">
-                <Home />
-                <span>Home</span>
+              <SidebarMenuButton tooltip="House">
+                <House />
+                <span>House</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
@@ -252,12 +252,12 @@ function DemoSidebar() {
                   size="lg"
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 >
-                  <User2 />
+                  <UserRound />
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">John Doe</span>
                     <span className="truncate text-xs">john@example.com</span>
                   </div>
-                  <MoreHorizontal className="ml-auto size-4" />
+                  <Ellipsis className="ml-auto size-4" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent

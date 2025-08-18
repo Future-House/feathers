@@ -11,7 +11,7 @@ function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbol
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight } from "../../icons";
 import { DayPicker, getDefaultClassNames } from 'react-day-picker';
 import { cn } from "../../lib/utils";
 import { Button, buttonVariants } from "../button";
@@ -87,16 +87,16 @@ function Calendar(_ref) {
           orientation = _ref3.orientation,
           props_1 = _objectWithoutProperties(_ref3, _excluded3);
         if (orientation === 'left') {
-          return /*#__PURE__*/_jsx(ChevronLeftIcon, _objectSpread({
+          return /*#__PURE__*/_jsx(ChevronLeft, _objectSpread({
             className: cn('size-4', className_1)
           }, props_1));
         }
         if (orientation === 'right') {
-          return /*#__PURE__*/_jsx(ChevronRightIcon, _objectSpread({
+          return /*#__PURE__*/_jsx(ChevronRight, _objectSpread({
             className: cn('size-4', className_1)
           }, props_1));
         }
-        return /*#__PURE__*/_jsx(ChevronDownIcon, _objectSpread({
+        return /*#__PURE__*/_jsx(ChevronDown, _objectSpread({
           className: cn('size-4', className_1)
         }, props_1));
       },

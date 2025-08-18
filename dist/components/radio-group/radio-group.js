@@ -7,7 +7,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { CircleIcon } from 'lucide-react';
+import { Circle as CircleIcon } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx } from "react/jsx-runtime";
 function RadioGroup(t0) {

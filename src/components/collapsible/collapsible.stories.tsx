@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ChevronDown, Calendar, Users, Settings } from 'lucide-react';
+import { ChevronDown, Calendar, Users, Settings } from '@/icons';
 import { Button } from '../button/button';
 import { Checkbox } from '../checkbox/checkbox';
 import { Card, CardContent, CardHeader, CardTitle } from '../card/card';

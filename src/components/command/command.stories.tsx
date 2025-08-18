@@ -24,7 +24,7 @@ import {
   Folder,
   Search,
   Terminal,
-} from 'lucide-react';
+} from '@/icons';
 
 const meta = {
   title: 'Components/Command',

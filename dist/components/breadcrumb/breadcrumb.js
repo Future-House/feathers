@@ -13,7 +13,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { ChevronRight, MoreHorizontal } from 'lucide-react';
+import { ChevronRight, Ellipsis } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function Breadcrumb(t0) {
@@ -285,7 +285,7 @@ function BreadcrumbEllipsis(t0) {
   var t2;
   var t3;
   if ($[5] === Symbol.for("react.memo_cache_sentinel")) {
-    t2 = /*#__PURE__*/_jsx(MoreHorizontal, {
+    t2 = /*#__PURE__*/_jsx(Ellipsis, {
       className: "size-4"
     });
     t3 = /*#__PURE__*/_jsx("span", {

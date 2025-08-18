@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon } from '@/icons';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/button';

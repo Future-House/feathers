@@ -7,9 +7,9 @@ import {
   User,
   Settings,
   Info,
-  AlertTriangle,
-  CheckCircle,
-} from 'lucide-react';
+  TriangleAlert,
+  CircleCheck,
+} from '@/icons';
 import {
   Dialog,
   DialogClose,
@@ -286,7 +286,7 @@ export const ConfirmationDialog: Story = {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <AlertTriangle className="text-destructive h-5 w-5" />
+            <TriangleAlert className="text-destructive h-5 w-5" />
             Are you absolutely sure?
           </DialogTitle>
           <DialogDescription>
@@ -385,7 +385,7 @@ export const SuccessMessage: Story = {
       <DialogContent className="max-w-md">
         <DialogHeader className="text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
-            <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
+            <CircleCheck className="h-6 w-6 text-green-600 dark:text-green-400" />
           </div>
           <DialogTitle>Success!</DialogTitle>
           <DialogDescription>

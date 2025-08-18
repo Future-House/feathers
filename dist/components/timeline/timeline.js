@@ -7,7 +7,7 @@ function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbol
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDown } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var Timeline = /*#__PURE__*/React.forwardRef(function (t0, ref) {
@@ -115,7 +115,7 @@ var TimelineItem = /*#__PURE__*/React.forwardRef(function (t0, ref) {
       children: [/*#__PURE__*/_jsx("div", {
         className: "flex-1",
         children: React.Children.map(children, _temp)
-      }), /*#__PURE__*/_jsx(ChevronDownIcon, {
+      }), /*#__PURE__*/_jsx(ChevronDown, {
         className: cn("h-4 w-4 shrink-0 text-gray-500 transition-transform duration-200 dark:text-gray-400", isCollapsed && "rotate-180")
       })]
     }) : React.Children.map(children, _temp2);

@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from './card';
 import { Button } from '../button/button';
-import { Bell, Check } from 'lucide-react';
+import { Bell, Check } from '@/icons';
 
 const meta = {
   title: 'Components/Card',

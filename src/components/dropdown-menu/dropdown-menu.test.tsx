@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { Button } from '../button/button';
-import { User, Settings, LogOut } from 'lucide-react';
+import { User, Settings, LogOut } from '@/icons';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,

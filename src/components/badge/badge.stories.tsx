@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './badge';
-import { CheckCircle2, AlertCircle, XCircle, Info } from 'lucide-react';
+import { CircleCheck, CircleAlert, X, Info } from '@/icons';
 
 const meta = {
   title: 'Components/Badge',
@@ -114,7 +114,7 @@ export const WithIcons: Story = {
   render: args => (
     <div className="flex flex-wrap items-center gap-4">
       <Badge color="success" {...args}>
-        <CheckCircle2 className="mr-1 h-3 w-3" />
+        <CircleCheck className="mr-1 h-3 w-3" />
         Success
       </Badge>
       <Badge color="info" {...args}>
@@ -122,11 +122,11 @@ export const WithIcons: Story = {
         Info
       </Badge>
       <Badge color="error" {...args}>
-        <XCircle className="mr-1 h-3 w-3" />
+        <X className="mr-1 h-3 w-3" />
         Error
       </Badge>
       <Badge color="warning" {...args}>
-        <AlertCircle className="mr-1 h-3 w-3" />
+        <CircleAlert className="mr-1 h-3 w-3" />
         Warning
       </Badge>
     </div>

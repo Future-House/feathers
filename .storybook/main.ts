@@ -22,11 +22,13 @@ const config: StorybookConfig = {
   viteFinal: async config => {
     return {
       ...config,
+      minify: false, // Don't minify in Storybook
       resolve: {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
           '@': '/src',
+          '@/icons': '../src/icons',
         },
       },
     };

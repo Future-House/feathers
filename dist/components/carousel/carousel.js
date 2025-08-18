@@ -11,7 +11,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from "../../icons";
 import { cn } from "../../lib/utils";
 import { Button } from "../button/button";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";

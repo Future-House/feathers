@@ -7,15 +7,7 @@ import {
   TooltipTrigger,
 } from '../tooltip/tooltip';
 import { cn } from '@/lib/utils';
-import {
-  Upload,
-  X,
-  FileText,
-  Image,
-  FileX,
-  Send,
-  Paperclip,
-} from 'lucide-react';
+import { Upload, X, FileText, Image, FileX, Send, Paperclip } from '@/icons';
 
 export interface UploadedFile {
   id: string;

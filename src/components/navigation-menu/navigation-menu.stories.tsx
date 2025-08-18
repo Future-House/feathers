@@ -14,10 +14,10 @@ import {
   Laptop,
   Users,
   Settings,
-  Layout,
+  LayoutDashboard,
   Code,
   Mail,
-} from 'lucide-react';
+} from '@/icons';
 
 const meta: Meta<typeof NavigationMenu> = {
   title: 'Components/NavigationMenu',
@@ -284,7 +284,7 @@ function SimpleNavigationComponent() {
                     className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
                     href="#"
                   >
-                    <Layout className="h-6 w-6" />
+                    <LayoutDashboard className="h-6 w-6" />
                     <div className="mt-4 mb-2 text-lg font-medium">
                       shadcn/ui
                     </div>
@@ -611,7 +611,7 @@ function VerticalNavigationComponent() {
                   href="#"
                   className="hover:bg-accent flex items-center gap-2 rounded-md p-2"
                 >
-                  <Layout className="h-4 w-4" />
+                  <LayoutDashboard className="h-4 w-4" />
                   <span>Overview</span>
                 </a>
               </NavigationMenuLink>

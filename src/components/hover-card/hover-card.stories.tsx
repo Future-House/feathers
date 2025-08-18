@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../avatar/avatar';
-import { Calendar, MapPin, Clock } from 'lucide-react';
+import { Calendar, MapPin, Clock } from '@/icons';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from './hover-card';
 
 const meta = {

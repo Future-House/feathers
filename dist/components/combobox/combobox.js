@@ -1,7 +1,7 @@
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { Check, ChevronsUpDown } from "../../icons";
 import { cn } from "../../lib/utils";
 import { Button } from "../button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../command";

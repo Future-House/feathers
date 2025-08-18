@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { CheckIcon } from 'lucide-react';
+import { Check } from '@/icons';
 import { Timeline, TimelineItem, TimelineHeading } from './timeline';
 
 describe('Timeline', () => {
@@ -51,7 +51,7 @@ describe('TimelineItem', () => {
   it('renders with icon element', () => {
     render(
       <Timeline>
-        <TimelineItem iconElement={<CheckIcon data-testid="check-icon" />}>
+        <TimelineItem iconElement={<Check data-testid="check-icon" />}>
           <TimelineHeading>Item with Icon</TimelineHeading>
         </TimelineItem>
       </Timeline>

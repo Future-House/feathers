@@ -1,5 +1,10 @@
 import { Alert, AlertTitle, AlertDescription } from '@future-house/feathers';
-import { Terminal, AlertCircle, CheckCircle2, Info } from 'lucide-react';
+import {
+  Terminal,
+  CircleAlert,
+  CircleCheck,
+  Info,
+} from '@future-house/feathers/icons';
 
 export default function AlertExample() {
   return (
@@ -19,7 +24,7 @@ export default function AlertExample() {
 
           {/* Destructive Alert */}
           <Alert variant="destructive">
-            <AlertCircle />
+            <CircleAlert />
             <AlertTitle>Connection Error</AlertTitle>
             <AlertDescription>
               Unable to connect to the server. Please check your internet
@@ -29,7 +34,7 @@ export default function AlertExample() {
 
           {/* Success Alert (using default variant with custom styling) */}
           <Alert className="border-green-200 bg-green-50">
-            <CheckCircle2 className="text-green-600" />
+            <CircleCheck className="text-green-600" />
             <AlertTitle className="text-green-800">Success!</AlertTitle>
             <AlertDescription className="text-green-700">
               Your settings have been saved successfully.
