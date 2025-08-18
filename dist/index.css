@@ -3285,11 +3285,6 @@
       }
     }
   }
-  .first\:mt-0 {
-    &:first-child {
-      margin-top: calc(var(--spacing) * 0);
-    }
-  }
   .first\:rounded-s-md {
     &:first-child {
       border-start-start-radius: calc(var(--radius) - 2px);

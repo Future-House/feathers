@@ -47,12 +47,12 @@ var theme = {
   paragraph: 'mb-1 relative',
   quote: 'border-l-4 border-muted-foreground/20 pl-4 italic my-2',
   heading: {
-    h1: 'text-3xl font-bold mb-2 mt-4 first:mt-0',
-    h2: 'text-2xl font-bold mb-2 mt-3 first:mt-0',
-    h3: 'text-xl font-bold mb-1 mt-2 first:mt-0',
-    h4: 'text-lg font-bold mb-1 mt-2 first:mt-0',
-    h5: 'text-base font-bold mb-1 mt-1 first:mt-0',
-    h6: 'text-sm font-bold mb-1 mt-1 first:mt-0'
+    h1: 'scroll-m-20 text-4xl lg:text-5xl',
+    h2: 'scroll-m-20 text-3xl',
+    h3: 'scroll-m-20 text-2xl',
+    h4: 'scroll-m-20 text-xl',
+    h5: 'scroll-m-20 text-lg',
+    h6: 'scroll-m-20 text-base'
   },
   list: {
     nested: {
