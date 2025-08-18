@@ -7,28 +7,30 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/components/*": ["../src/components/*"],
+      "@/icons": ["../src/icons/index.ts"],
+      "@/icons/*": ["../src/icons/*"],
+      "@/lib/*": ["../src/lib/*"],
+      "@/hooks/*": ["../src/hooks/*"],
+      "@/*": ["../src/*"]
     },
     "resolveJsonModule": true,
     "allowImportingTsExtensions": false,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "incremental": true,
     "types": ["@testing-library/jest-dom"]
   },
-  "include": ["src/**/*", "src/test-setup.ts"],
-  "exclude": ["node_modules", "dist", "scripts", "**/*.mdx"]
+  "include": [
+    "../src/**/*.stories.tsx",
+    "../src/**/*.stories.ts",
+    "../src/**/*.tsx",
+    "../src/**/*.ts",
+    "../docs/**/*.stories.tsx",
+    "../docs/**/*.stories.ts"
+  ],
+  "exclude": ["../node_modules", "../dist"]
 }

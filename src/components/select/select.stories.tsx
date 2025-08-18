@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from './select';
 import { Label } from '@/components/label';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/Select',
@@ -544,9 +545,7 @@ function ControlledSelectExample(args: React.ComponentProps<typeof Select>) {
           <SelectItem value="svelte">Svelte</SelectItem>
         </SelectContent>
       </Select>
-      <p className="text-muted-foreground text-sm">
-        Selected value: {value || 'None'}
-      </p>
+      <Typography variant="muted">Selected value: {value || 'None'}</Typography>
     </div>
   );
 }
@@ -627,9 +626,9 @@ export const WithLabelAndHelperText: Story = {
           <SelectItem value="urgent">Urgent</SelectItem>
         </SelectContent>
       </Select>
-      <p className="text-muted-foreground text-sm">
+      <Typography variant="muted">
         Choose the priority level for this task
-      </p>
+      </Typography>
     </div>
   ),
   parameters: {

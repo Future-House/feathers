@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from './card';
 import { Button } from '../button/button';
+import { Typography } from '../typography';
 import { Bell, Check } from '@/icons';
 
 const meta = {
@@ -109,7 +110,7 @@ export const Default: Story = {
         <CardDescription>Card description goes here.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card content can contain any elements.</p>
+        <Typography>Card content can contain any elements.</Typography>
       </CardContent>
       <CardFooter>
         <Button>Action</Button>
@@ -160,12 +161,12 @@ export const NotificationCard: Story = {
         <div className="flex items-center space-x-4 rounded-md border p-4">
           <Bell />
           <div className="flex-1 space-y-1">
-            <p className="text-sm leading-none font-medium">
+            <Typography variant="small" className="font-medium">
               Push Notifications
-            </p>
-            <p className="text-muted-foreground text-sm">
+            </Typography>
+            <Typography variant="muted">
               Send notifications to device.
-            </p>
+            </Typography>
           </div>
           <Button variant="outline" size="icon">
             <Check className="h-4 w-4" />

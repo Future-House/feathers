@@ -97,10 +97,10 @@ html.dark #storybook-root {
   /* BACKGROUND FOR DOC AND STORIES */
   background-color: #111111;
 }
-/* 
+
 body {
   font-family: Rubik, sans-serif;
-} */
+}
 
 /* override background color of wrapper div for doc pages */
 .light .sbdocs.sbdocs-wrapper {
@@ -611,7 +611,6 @@ top toolbar - handled via SB themes
   margin-top: 2rem; /* mt-8 */
   margin-bottom: 1.5rem; /* mb-6 */
   padding-bottom: 0.5rem; /* pb-2 */
-  font-weight: 700; /* font-bold */
 }
 
 .dark h2 {

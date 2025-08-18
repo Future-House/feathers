@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../avatar/avatar';
 import { Calendar, MapPin, Clock } from '@/icons';
+import { Typography } from '../typography';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from './hover-card';
 
 const meta = {
@@ -157,10 +158,12 @@ export const Default: Story = {
             <AvatarFallback>VC</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
-            <h4 className="text-sm font-semibold">@nextjs</h4>
-            <p className="text-sm">
+            <Typography variant="small" className="font-semibold">
+              @nextjs
+            </Typography>
+            <Typography variant="small">
               The React Framework – created and maintained by @vercel.
-            </p>
+            </Typography>
             <div className="flex items-center pt-2">
               <Calendar className="mr-2 h-4 w-4 opacity-70" />{' '}
               <span className="text-muted-foreground text-xs">
@@ -186,11 +189,13 @@ export const WithoutAvatar: Story = {
       </HoverCardTrigger>
       <HoverCardContent>
         <div className="space-y-2">
-          <h4 className="text-sm font-semibold">Quick Info</h4>
-          <p className="text-muted-foreground text-sm">
+          <Typography variant="small" className="font-semibold">
+            Quick Info
+          </Typography>
+          <Typography variant="muted">
             This is a simple hover card without an avatar. Perfect for showing
             additional context or information.
-          </p>
+          </Typography>
           <div className="flex items-center pt-2">
             <Clock className="mr-2 h-4 w-4 opacity-70" />
             <span className="text-muted-foreground text-xs">
@@ -225,11 +230,13 @@ export const UserProfile: Story = {
               <AvatarFallback>SC</AvatarFallback>
             </Avatar>
             <div className="space-y-1">
-              <h4 className="text-sm font-semibold">shadcn</h4>
-              <p className="text-sm">
+              <Typography variant="small" className="font-semibold">
+                shadcn
+              </Typography>
+              <Typography variant="small">
                 Building beautiful, accessible user interfaces with React and
                 Tailwind CSS.
-              </p>
+              </Typography>
               <div className="flex items-center pt-2">
                 <Calendar className="mr-2 h-4 w-4 opacity-70" />
                 <span className="text-muted-foreground text-xs">
@@ -247,9 +254,9 @@ export const UserProfile: Story = {
         </HoverCardContent>
       </HoverCard>
 
-      <span className="text-muted-foreground text-sm">
+      <Typography variant="muted">
         Hover over the avatar to see the profile card
-      </span>
+      </Typography>
     </div>
   ),
 };
@@ -261,9 +268,7 @@ export const ProductInfo: Story = {
   },
   render: args => (
     <div className="space-y-4">
-      <p className="text-muted-foreground text-sm">
-        Check out our latest product:
-      </p>
+      <Typography variant="muted">Check out our latest product:</Typography>
       <HoverCard {...args}>
         <HoverCardTrigger asChild>
           <Button>Pro Plan</Button>
@@ -271,15 +276,19 @@ export const ProductInfo: Story = {
         <HoverCardContent className="w-96">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h4 className="text-lg font-semibold">Pro Plan</h4>
+              <Typography variant="h4" className="text-lg font-semibold">
+                Pro Plan
+              </Typography>
               <span className="text-2xl font-bold">$29/mo</span>
             </div>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Unlock premium features and advanced capabilities for your
               projects.
-            </p>
+            </Typography>
             <div className="space-y-2">
-              <h5 className="text-sm font-medium">Features included:</h5>
+              <Typography variant="small" className="font-medium">
+                Features included:
+              </Typography>
               <ul className="text-muted-foreground space-y-1 text-xs">
                 <li>• Unlimited projects</li>
                 <li>• Advanced analytics</li>
@@ -307,68 +316,84 @@ export const CustomPositioning: Story = {
   render: args => (
     <div className="grid grid-cols-2 gap-8 p-8">
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">Top Side</h3>
+        <Typography variant="small" className="font-medium">
+          Top Side
+        </Typography>
         <HoverCard {...args}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Hover (Top)</Button>
           </HoverCardTrigger>
           <HoverCardContent side="top" className="w-64">
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Top Positioned</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Top Positioned
+              </Typography>
+              <Typography variant="muted">
                 This hover card appears above the trigger element.
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">Left Side</h3>
+        <Typography variant="small" className="font-medium">
+          Left Side
+        </Typography>
         <HoverCard {...args}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Hover (Left)</Button>
           </HoverCardTrigger>
           <HoverCardContent side="left" className="w-64">
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Left Positioned</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Left Positioned
+              </Typography>
+              <Typography variant="muted">
                 This hover card appears to the left of the trigger element.
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">Right Side</h3>
+        <Typography variant="small" className="font-medium">
+          Right Side
+        </Typography>
         <HoverCard {...args}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Hover (Right)</Button>
           </HoverCardTrigger>
           <HoverCardContent side="right" className="w-64">
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Right Positioned</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Right Positioned
+              </Typography>
+              <Typography variant="muted">
                 This hover card appears to the right of the trigger element.
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">Bottom Side (Default)</h3>
+        <Typography variant="small" className="font-medium">
+          Bottom Side (Default)
+        </Typography>
         <HoverCard {...args}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Hover (Bottom)</Button>
           </HoverCardTrigger>
           <HoverCardContent side="bottom" className="w-64">
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Bottom Positioned</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Bottom Positioned
+              </Typography>
+              <Typography variant="muted">
                 This hover card appears below the trigger element (default).
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>
@@ -381,53 +406,63 @@ export const DelayCustomization: Story = {
   render: () => (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">Fast (100ms open, 50ms close)</h3>
+        <Typography variant="small" className="font-medium">
+          Fast (100ms open, 50ms close)
+        </Typography>
         <HoverCard openDelay={100} closeDelay={50}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Fast Response</Button>
           </HoverCardTrigger>
           <HoverCardContent>
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Quick Hover</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Quick Hover
+              </Typography>
+              <Typography variant="muted">
                 Opens and closes quickly for rapid interactions.
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">
+        <Typography variant="small" className="font-medium">
           Medium (500ms open, 200ms close)
-        </h3>
+        </Typography>
         <HoverCard openDelay={500} closeDelay={200}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Medium Response</Button>
           </HoverCardTrigger>
           <HoverCardContent>
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Balanced Timing</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Balanced Timing
+              </Typography>
+              <Typography variant="muted">
                 Balanced timing for most use cases.
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium">Slow (1000ms open, 500ms close)</h3>
+        <Typography variant="small" className="font-medium">
+          Slow (1000ms open, 500ms close)
+        </Typography>
         <HoverCard openDelay={1000} closeDelay={500}>
           <HoverCardTrigger asChild>
             <Button variant="outline">Slow Response</Button>
           </HoverCardTrigger>
           <HoverCardContent>
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold">Deliberate Hover</h4>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="small" className="font-semibold">
+                Deliberate Hover
+              </Typography>
+              <Typography variant="muted">
                 Requires intentional hovering to prevent accidental triggers.
-              </p>
+              </Typography>
             </div>
           </HoverCardContent>
         </HoverCard>

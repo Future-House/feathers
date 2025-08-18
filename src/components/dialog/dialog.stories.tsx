@@ -10,6 +10,7 @@ import {
   TriangleAlert,
   CircleCheck,
 } from '@/icons';
+import { Typography } from '../typography';
 import {
   Dialog,
   DialogClose,
@@ -192,10 +193,10 @@ export const Default: Story = {
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">
-          <p className="text-sm">
+          <Typography variant="small">
             This is the main content of the dialog. You can put any content
             here, including forms, images, or other components.
-          </p>
+          </Typography>
         </div>
         <DialogFooter>
           <DialogClose asChild>
@@ -296,9 +297,9 @@ export const ConfirmationDialog: Story = {
         </DialogHeader>
         <div className="py-4">
           <div className="bg-destructive/10 rounded-md p-4">
-            <p className="text-destructive text-sm">
+            <Typography variant="small" className="text-destructive">
               <strong>Warning:</strong> Deleting this item will also remove:
-            </p>
+            </Typography>
             <ul className="text-destructive mt-2 list-inside list-disc text-sm">
               <li>All related files and documents</li>
               <li>Associated user permissions</li>
@@ -424,16 +425,18 @@ export const SettingsDialog: Story = {
         </DialogHeader>
         <div className="space-y-6 py-4">
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Notifications</h3>
+            <Typography variant="small" className="font-medium">
+              Notifications
+            </Typography>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <label className="text-sm font-medium">
                     Email Notifications
                   </label>
-                  <p className="text-muted-foreground text-xs">
+                  <Typography variant="muted" className="text-xs">
                     Receive notifications via email
-                  </p>
+                  </Typography>
                 </div>
                 <Checkbox defaultChecked />
               </div>
@@ -442,9 +445,9 @@ export const SettingsDialog: Story = {
                   <label className="text-sm font-medium">
                     Push Notifications
                   </label>
-                  <p className="text-muted-foreground text-xs">
+                  <Typography variant="muted" className="text-xs">
                     Receive push notifications on your device
-                  </p>
+                  </Typography>
                 </div>
                 <Checkbox />
               </div>
@@ -453,9 +456,9 @@ export const SettingsDialog: Story = {
                   <label className="text-sm font-medium">
                     Marketing Updates
                   </label>
-                  <p className="text-muted-foreground text-xs">
+                  <Typography variant="muted" className="text-xs">
                     Receive updates about new features and products
-                  </p>
+                  </Typography>
                 </div>
                 <Checkbox />
               </div>
@@ -463,23 +466,25 @@ export const SettingsDialog: Story = {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Privacy</h3>
+            <Typography variant="small" className="font-medium">
+              Privacy
+            </Typography>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <label className="text-sm font-medium">Analytics</label>
-                  <p className="text-muted-foreground text-xs">
+                  <Typography variant="muted" className="text-xs">
                     Help improve our services by sharing usage data
-                  </p>
+                  </Typography>
                 </div>
                 <Checkbox defaultChecked />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <label className="text-sm font-medium">Crash Reports</label>
-                  <p className="text-muted-foreground text-xs">
+                  <Typography variant="muted" className="text-xs">
                     Automatically send crash reports to help us fix issues
-                  </p>
+                  </Typography>
                 </div>
                 <Checkbox defaultChecked />
               </div>
@@ -487,7 +492,9 @@ export const SettingsDialog: Story = {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Appearance</h3>
+            <Typography variant="small" className="font-medium">
+              Appearance
+            </Typography>
             <div className="space-y-3">
               <div className="grid grid-cols-3 gap-2">
                 <label className="text-sm font-medium">Theme</label>
@@ -541,11 +548,14 @@ export const WithoutCloseButton: Story = {
           <div className="rounded-md bg-blue-50 p-4 dark:bg-blue-950">
             <div className="flex items-center gap-2">
               <Info className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-              <p className="text-sm text-blue-800 dark:text-blue-200">
+              <Typography
+                variant="small"
+                className="text-blue-800 dark:text-blue-200"
+              >
                 Notice: This dialog doesn&apos;t have a close button in the
                 top-right corner. You must use one of the buttons below to
                 proceed.
-              </p>
+              </Typography>
             </div>
           </div>
         </div>

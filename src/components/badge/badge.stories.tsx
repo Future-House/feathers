@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './badge';
 import { CircleCheck, CircleAlert, X, Info } from '@/icons';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/Badge',
@@ -199,7 +200,9 @@ export const TagsExample: Story = {
   render: args => (
     <div className="flex items-start gap-4">
       <div>
-        <h4 className="mb-2 text-sm font-medium">Categories</h4>
+        <Typography variant="h4" className="mb-2 font-medium">
+          Categories
+        </Typography>
         <div className="flex flex-wrap gap-2">
           <Badge variant="outline" {...args}>
             React
@@ -216,7 +219,9 @@ export const TagsExample: Story = {
         </div>
       </div>
       <div>
-        <h4 className="mb-2 text-sm font-medium">Skills</h4>
+        <Typography variant="h4" className="mb-2 font-medium">
+          Skills
+        </Typography>
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary" {...args}>
             Frontend

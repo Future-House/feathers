@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CircularProgress } from './circular-progress';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/CircularProgress',
@@ -87,15 +88,21 @@ export const Sizes: Story = {
     <div className="flex items-center gap-4">
       <div className="text-center">
         <CircularProgress {...args} size="sm" />
-        <p className="mt-2 text-xs">Small (24px)</p>
+        <Typography variant="small" className="mt-2">
+          Small (24px)
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} size="md" />
-        <p className="mt-2 text-xs">Medium (40px)</p>
+        <Typography variant="small" className="mt-2">
+          Medium (40px)
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} size="lg" />
-        <p className="mt-2 text-xs">Large (64px)</p>
+        <Typography variant="small" className="mt-2">
+          Large (64px)
+        </Typography>
       </div>
     </div>
   ),
@@ -109,23 +116,33 @@ export const ProgressValues: Story = {
     <div className="flex items-center gap-4">
       <div className="text-center">
         <CircularProgress {...args} determinate={true} value={0} />
-        <p className="mt-2 text-xs">0%</p>
+        <Typography variant="small" className="mt-2">
+          0%
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} determinate={true} value={25} />
-        <p className="mt-2 text-xs">25%</p>
+        <Typography variant="small" className="mt-2">
+          25%
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} determinate={true} value={50} />
-        <p className="mt-2 text-xs">50%</p>
+        <Typography variant="small" className="mt-2">
+          50%
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} determinate={true} value={75} />
-        <p className="mt-2 text-xs">75%</p>
+        <Typography variant="small" className="mt-2">
+          75%
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} determinate={true} value={100} />
-        <p className="mt-2 text-xs">100%</p>
+        <Typography variant="small" className="mt-2">
+          100%
+        </Typography>
       </div>
     </div>
   ),
@@ -154,13 +171,17 @@ export const WithChildren: Story = {
             </svg>
           </div>
         </CircularProgress>
-        <p className="mt-2 text-xs">With icon</p>
+        <Typography variant="small" className="mt-2">
+          With icon
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} determinate={true} value={25} size="lg">
           <span className="text-sm font-medium">25%</span>
         </CircularProgress>
-        <p className="mt-2 text-xs">Simple text</p>
+        <Typography variant="small" className="mt-2">
+          Simple text
+        </Typography>
       </div>
     </div>
   ),
@@ -179,7 +200,9 @@ export const ColorVariants: Story = {
           determinate={true}
           value={75}
         />
-        <p className="mt-2 text-xs">Primary</p>
+        <Typography variant="small" className="mt-2">
+          Primary
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress
@@ -188,7 +211,9 @@ export const ColorVariants: Story = {
           determinate={true}
           value={75}
         />
-        <p className="mt-2 text-xs">Success</p>
+        <Typography variant="small" className="mt-2">
+          Success
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress
@@ -197,7 +222,9 @@ export const ColorVariants: Story = {
           determinate={true}
           value={75}
         />
-        <p className="mt-2 text-xs">Warning</p>
+        <Typography variant="small" className="mt-2">
+          Warning
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress
@@ -206,7 +233,9 @@ export const ColorVariants: Story = {
           determinate={true}
           value={75}
         />
-        <p className="mt-2 text-xs">Info</p>
+        <Typography variant="small" className="mt-2">
+          Info
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress
@@ -215,7 +244,9 @@ export const ColorVariants: Story = {
           determinate={true}
           value={75}
         />
-        <p className="mt-2 text-xs">Destructive</p>
+        <Typography variant="small" className="mt-2">
+          Destructive
+        </Typography>
       </div>
     </div>
   ),
@@ -229,23 +260,33 @@ export const ColorVariantsIndeterminate: Story = {
     <div className="flex items-center gap-6">
       <div className="text-center">
         <CircularProgress {...args} color="primary" />
-        <p className="mt-2 text-xs">Primary</p>
+        <Typography variant="small" className="mt-2">
+          Primary
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} color="success" />
-        <p className="mt-2 text-xs">Success</p>
+        <Typography variant="small" className="mt-2">
+          Success
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} color="warning" />
-        <p className="mt-2 text-xs">Warning</p>
+        <Typography variant="small" className="mt-2">
+          Warning
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} color="info" />
-        <p className="mt-2 text-xs">Info</p>
+        <Typography variant="small" className="mt-2">
+          Info
+        </Typography>
       </div>
       <div className="text-center">
         <CircularProgress {...args} color="destructive" />
-        <p className="mt-2 text-xs">Destructive</p>
+        <Typography variant="small" className="mt-2">
+          Destructive
+        </Typography>
       </div>
     </div>
   ),

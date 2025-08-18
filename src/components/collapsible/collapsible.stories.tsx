@@ -4,6 +4,7 @@ import { ChevronDown, Calendar, Users, Settings } from '@/icons';
 import { Button } from '../button/button';
 import { Checkbox } from '../checkbox/checkbox';
 import { Card, CardContent, CardHeader, CardTitle } from '../card/card';
+import { Typography } from '../typography';
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -143,9 +144,9 @@ export const Default: Story = {
   render: args => (
     <Collapsible {...args} className="w-[350px] space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">
-        <h4 className="text-sm font-semibold">
+        <Typography variant="small" className="font-semibold">
           @peduarte starred 3 repositories
-        </h4>
+        </Typography>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm" className="w-9 p-0">
             <ChevronDown className="h-4 w-4" />
@@ -190,9 +191,9 @@ export const WithCard: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent className="space-y-2 pt-4">
             <div className="bg-muted rounded-md p-4">
-              <p className="text-sm">Name: John Doe</p>
-              <p className="text-sm">Email: john@example.com</p>
-              <p className="text-sm">Role: Administrator</p>
+              <Typography variant="small">Name: John Doe</Typography>
+              <Typography variant="small">Email: john@example.com</Typography>
+              <Typography variant="small">Role: Administrator</Typography>
             </div>
           </CollapsibleContent>
         </Collapsible>
@@ -232,7 +233,9 @@ export const OpenByDefault: Story = {
   render: args => (
     <Collapsible {...args} className="w-[350px] space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">
-        <h4 className="text-sm font-semibold">Upcoming Events</h4>
+        <Typography variant="small" className="font-semibold">
+          Upcoming Events
+        </Typography>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm" className="w-9 p-0">
             <ChevronDown className="h-4 w-4" />
@@ -278,9 +281,9 @@ const ControlledExample = (args: React.ComponentProps<typeof Collapsible>) => {
         >
           {isOpen ? 'Close' : 'Open'} Section
         </Button>
-        <span className="text-muted-foreground text-sm">
+        <Typography variant="muted">
           External control: {isOpen ? 'Open' : 'Closed'}
-        </span>
+        </Typography>
       </div>
 
       <Collapsible
@@ -297,10 +300,10 @@ const ControlledExample = (args: React.ComponentProps<typeof Collapsible>) => {
         </CollapsibleTrigger>
         <CollapsibleContent className="pt-4">
           <div className="bg-muted rounded-md p-4">
-            <p className="text-sm">
+            <Typography variant="small">
               This collapsible can be controlled both by clicking the trigger
               button and by using the external controls above.
-            </p>
+            </Typography>
           </div>
         </CollapsibleContent>
       </Collapsible>
@@ -323,9 +326,9 @@ export const Disabled: Story = {
   render: args => (
     <Collapsible {...args} className="w-[350px] space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">
-        <h4 className="text-muted-foreground text-sm font-semibold">
+        <Typography variant="muted" className="font-semibold">
           Disabled Section
-        </h4>
+        </Typography>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm" className="w-9 p-0">
             <ChevronDown className="h-4 w-4" />
@@ -343,7 +346,9 @@ export const Disabled: Story = {
 export const MultipleCollapsibles: Story = {
   render: () => (
     <div className="w-[400px] space-y-4">
-      <h3 className="text-lg font-semibold">Navigation Menu</h3>
+      <Typography variant="h3" className="font-semibold">
+        Navigation Menu
+      </Typography>
 
       <Collapsible className="space-y-2">
         <CollapsibleTrigger asChild>

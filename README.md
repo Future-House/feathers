@@ -1,56 +1,109 @@
-# Feathers (Future House Design System)
+# Feathers - Future House Component Library
+
+A modern React component library built with TypeScript, Tailwind CSS, and Radix UI primitives. Transitioned from Chakra UI to a shadcn/ui-based architecture for better customization and performance.
 
 ## Prerequisites
 
-- React ^18.0.0
-- React-dom ^18.0.0
+- React ^19.0.0
+- React DOM ^19.0.0
+- Tailwind CSS ^4.0.0
 
 ## Demo environment
 
 https://future-house.github.io/feathers/
 
-## Getting Started
+## Installation
 
-Install this package as a dependency in the consuming application
-
-```
+```bash
+npm install @future-house/feathers
+# or from GitHub
 npm install https://github.com/future-house/feathers#main
 ```
 
-your application must manually include the component library's fonts, in the `<head>` area:
+## Setup
 
+### 1. Configure Tailwind CSS
+
+Add Feathers components to your `tailwind.config.ts` content paths:
+
+```ts
+export default {
+  content: [
+    // ... your app's paths
+    './node_modules/@future-house/feathers/dist/**/*.{js,ts,jsx,tsx}',
+  ],
+  // ... rest of your config
+};
 ```
+
+### 2. Import CSS
+
+Import the component styles in your app's entry point:
+
+```js
+import '@future-house/feathers/dist/index.css';
+```
+
+### 3. Add Fonts
+
+Include the required fonts in your HTML `<head>`:
+
+```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
-lastly, import the components you would like to use
+## Usage
 
+```jsx
+import { Button, Card, Typography } from '@future-house/feathers';
+
+function App() {
+  return (
+    <Card>
+      <Typography variant="h1">Welcome</Typography>
+      <Button>Get Started</Button>
+    </Card>
+  );
+}
 ```
-import { Typography } from '@future-house/feathers';
-```
 
-## Running the App Locally with Storybook
+## Development
 
-Storybook is integrated into this project to serve as a component playground, allowing you to view and interact with all the currently built components in isolation. This is especially useful for development, testing, and showcasing component designs.
+### Running Storybook
 
-### Starting Storybook
-
-To run Storybook locally and explore the components, follow these steps:
-
-```
+```bash
+npm install
 npm run storybook
 ```
 
-This will start the Storybook server and open it in your default web browser. By default, Storybook runs on port 6006. The terminal will specify the URL to access Storybook once it's up and running in the event storybook fails to launch
+Storybook runs on http://localhost:6006 and provides:
 
-### Navigating Storybook
+- Interactive component playground
+- Component documentation and props
+- Different states and variations
 
-Within Storybook, you'll find:
+### Building
 
-Component Library: A list of all the components that have been developed, each with its own set of stories showcasing different states and variations.
+```bash
+npm run build        # Production build
+npm run dev         # Development mode
+npm run lint        # ESLint checking
+npm run format      # Prettier formatting
+npm run typecheck   # TypeScript checking
+npm test           # Run tests
+```
 
-Docs: For some components, there may be additional documentation available in the Docs tab, providing more details on usage and props.
+## Component Architecture
 
-Chakra-UI Library: The providing package of our design system components. These components will fully respect the Future House theme, even if not customized
+Built with:
+
+- **Radix UI** - Accessible, unstyled UI primitives
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Component patterns and styling
+- **Lucide React** - Icon library
+- **TypeScript** - Full type safety

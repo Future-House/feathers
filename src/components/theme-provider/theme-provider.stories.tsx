@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from '../card/card';
 import { Badge } from '../badge/badge';
+import { Typography } from '../typography';
 
 // Demo component that uses the theme context
 function ThemeDemo() {
@@ -17,10 +18,12 @@ function ThemeDemo() {
   return (
     <div className="space-y-6 p-6">
       <div className="space-y-2 text-center">
-        <h2 className="text-foreground text-2xl font-bold">Theme Demo</h2>
-        <p className="text-muted-foreground">
+        <Typography variant="h2" className="text-foreground">
+          Theme Demo
+        </Typography>
+        <Typography variant="muted">
           Current theme: <Badge variant="outline">{theme}</Badge>
-        </p>
+        </Typography>
       </div>
 
       <div className="flex justify-center gap-2">

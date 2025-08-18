@@ -6,6 +6,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from './carousel';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/Carousel',
@@ -221,26 +222,36 @@ export const WithCustomContent: Story = {
         <CarouselItem>
           <div className="p-1">
             <div className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white">
-              <h3 className="mb-2 text-xl font-bold">Welcome</h3>
-              <p className="text-center">
+              <Typography variant="h3" className="mb-2 font-bold">
+                Welcome
+              </Typography>
+              <Typography className="text-center">
                 Start exploring our amazing features
-              </p>
+              </Typography>
             </div>
           </div>
         </CarouselItem>
         <CarouselItem>
           <div className="p-1">
             <div className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-teal-600 p-8 text-white">
-              <h3 className="mb-2 text-xl font-bold">Discover</h3>
-              <p className="text-center">Find what you need with our tools</p>
+              <Typography variant="h3" className="mb-2 font-bold">
+                Discover
+              </Typography>
+              <Typography className="text-center">
+                Find what you need with our tools
+              </Typography>
             </div>
           </div>
         </CarouselItem>
         <CarouselItem>
           <div className="p-1">
             <div className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-red-600 p-8 text-white">
-              <h3 className="mb-2 text-xl font-bold">Get Started</h3>
-              <p className="text-center">Begin your journey today</p>
+              <Typography variant="h3" className="mb-2 font-bold">
+                Get Started
+              </Typography>
+              <Typography className="text-center">
+                Begin your journey today
+              </Typography>
             </div>
           </div>
         </CarouselItem>
@@ -269,9 +280,12 @@ export const ImageCarousel: Story = {
                   <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-lg bg-slate-300 dark:bg-slate-600">
                     <span className="text-2xl">🖼️</span>
                   </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <Typography
+                    variant="small"
+                    className="text-slate-600 dark:text-slate-400"
+                  >
                     Image {index + 1}
-                  </p>
+                  </Typography>
                 </div>
               </div>
             </div>

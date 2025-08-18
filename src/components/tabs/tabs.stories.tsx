@@ -11,6 +11,7 @@ import { Button } from '../button';
 import { Input } from '../input';
 import { Label } from '../label';
 import { Copy } from '@/icons';
+import { Typography } from '../typography';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
 
 const meta = {
@@ -308,9 +309,9 @@ export const Controlled: Story = {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <Typography variant="muted">
                   Current active tab: <strong>{activeTab}</strong>
-                </p>
+                </Typography>
               </CardContent>
             </Card>
           </TabsContent>
@@ -323,9 +324,9 @@ export const Controlled: Story = {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <Typography variant="muted">
                   Current active tab: <strong>{activeTab}</strong>
-                </p>
+                </Typography>
               </CardContent>
             </Card>
           </TabsContent>
@@ -338,9 +339,9 @@ export const Controlled: Story = {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <Typography variant="muted">
                   Current active tab: <strong>{activeTab}</strong>
-                </p>
+                </Typography>
               </CardContent>
             </Card>
           </TabsContent>
@@ -401,9 +402,9 @@ export const VerticalOrientation: Story = {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="muted">
                 Security settings would go here.
-              </p>
+              </Typography>
             </CardContent>
           </Card>
         </TabsContent>
@@ -416,9 +417,9 @@ export const VerticalOrientation: Story = {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="muted">
                 Integration settings would go here.
-              </p>
+              </Typography>
             </CardContent>
           </Card>
         </TabsContent>
@@ -431,9 +432,9 @@ export const VerticalOrientation: Story = {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="muted">
                 Billing information would go here.
-              </p>
+              </Typography>
             </CardContent>
           </Card>
         </TabsContent>
@@ -457,30 +458,30 @@ export const ManualActivation: Story = {
       <TabsContent value="tab1" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               Manual activation mode: tabs are only activated when clicked, not
               when focused. Try using Tab key to navigate between triggers.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="tab2" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               Content for Tab 2. Notice how this tab doesn&apos;t activate when
               you navigate here with keyboard unless you press Enter or Space.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="tab3" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               Content for Tab 3. Manual activation provides better control over
               when tabs change.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -509,10 +510,10 @@ export const ManyTabs: Story = {
             <CardDescription>This is the home page content.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Home page with navigation tabs showing how the component handles
               multiple tabs.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -523,9 +524,9 @@ export const ManyTabs: Story = {
             <CardDescription>Explore our product offerings.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Product catalog and information would be displayed here.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -536,9 +537,9 @@ export const ManyTabs: Story = {
             <CardDescription>Professional services we offer.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Service descriptions and details would go here.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -549,9 +550,9 @@ export const ManyTabs: Story = {
             <CardDescription>Learn more about our company.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Company information and team details would be shown here.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -562,9 +563,9 @@ export const ManyTabs: Story = {
             <CardDescription>Latest news and articles.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Blog posts and articles would be listed here.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -575,9 +576,9 @@ export const ManyTabs: Story = {
             <CardDescription>Get in touch with us.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Contact information and forms would be available here.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -620,9 +621,9 @@ export const CustomStyling: Story = {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Custom styling applied to tabs with blue theme.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -635,9 +636,9 @@ export const CustomStyling: Story = {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Custom styling applied to tabs with green theme.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -650,9 +651,9 @@ export const CustomStyling: Story = {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="muted">
               Custom styling applied to tabs with purple theme.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -677,37 +678,37 @@ export const WithDisabledTab: Story = {
       <TabsContent value="enabled1" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               This tab is active and accessible. The second tab is disabled and
               cannot be activated.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="disabled" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               This content should not be accessible since the tab is disabled.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="enabled2" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               This tab is available and can be activated normally.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="enabled3" className="mt-4">
         <Card>
           <CardContent>
-            <p className="text-sm">
+            <Typography variant="small">
               This tab is ready for use and fully functional.
-            </p>
+            </Typography>
           </CardContent>
         </Card>
       </TabsContent>
@@ -776,7 +777,9 @@ export const VariantComparison: Story = {
   render: () => (
     <div className="w-full max-w-2xl space-y-8">
       <div>
-        <h3 className="mb-4 text-lg font-semibold">Default Variant</h3>
+        <Typography variant="h3" className="mb-4 text-lg">
+          Default Variant
+        </Typography>
         <Tabs defaultValue="tab1" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tab1">Profile</TabsTrigger>
@@ -817,7 +820,9 @@ export const VariantComparison: Story = {
       </div>
 
       <div>
-        <h3 className="mb-4 text-lg font-semibold">Underlined Variant</h3>
+        <Typography variant="h3" className="mb-4 text-lg">
+          Underlined Variant
+        </Typography>
         <Tabs defaultValue="tab1" variant="underlined" className="w-full">
           <TabsList>
             <TabsTrigger value="tab1">Profile</TabsTrigger>

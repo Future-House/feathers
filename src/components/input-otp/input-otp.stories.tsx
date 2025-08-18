@@ -9,6 +9,7 @@ import {
   InputOTPSlot,
   InputOTPSeparator,
 } from './input-otp';
+import { Typography } from '../typography';
 
 // Define proper types for InputOTP props
 type InputOTPProps = {
@@ -227,10 +228,12 @@ export const TwoFactorAuth: Story = {
   render: args => (
     <div className="flex flex-col items-center space-y-4 text-center">
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold">Two-Factor Authentication</h3>
-        <p className="text-muted-foreground text-sm">
+        <Typography variant="h3" className="font-semibold">
+          Two-Factor Authentication
+        </Typography>
+        <Typography variant="muted">
           Enter the 6-digit code from your authenticator app
-        </p>
+        </Typography>
       </div>
       <InputOTP {...args}>
         <InputOTPGroup>
@@ -258,10 +261,12 @@ export const PhoneVerification: Story = {
   render: ({ containerClassName, ...args }) => (
     <div className="space-y-4 text-center">
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold">Verify Phone Number</h3>
-        <p className="text-muted-foreground text-sm">
+        <Typography variant="h3" className="font-semibold">
+          Verify Phone Number
+        </Typography>
+        <Typography variant="muted">
           We sent a 4-digit code to +1 (555) 123-4567
-        </p>
+        </Typography>
       </div>
       <InputOTP
         containerClassName={`${containerClassName} justify-center`}
@@ -274,12 +279,12 @@ export const PhoneVerification: Story = {
           <InputOTPSlot index={3} />
         </InputOTPGroup>
       </InputOTP>
-      <p className="text-muted-foreground text-xs">
+      <Typography variant="muted" className="text-xs">
         Didn&apos;t receive the code?{' '}
         <Button variant="link" className="h-auto p-0 text-xs underline">
           Resend
         </Button>
-      </p>
+      </Typography>
     </div>
   ),
 };
@@ -292,10 +297,12 @@ export const EmailVerification: Story = {
   render: args => (
     <div className="space-y-4 text-center">
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold">Email Verification</h3>
-        <p className="text-muted-foreground text-sm">
+        <Typography variant="h3" className="font-semibold">
+          Email Verification
+        </Typography>
+        <Typography variant="muted">
           Enter the 8-character code sent to your email
-        </p>
+        </Typography>
       </div>
       <InputOTP {...args}>
         <InputOTPGroup>
@@ -354,10 +361,12 @@ const WithValidationComponent = () => {
   return (
     <div className="space-y-4 text-center">
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold">Enter Verification Code</h3>
-        <p className="text-muted-foreground text-sm">
+        <Typography variant="h3" className="font-semibold">
+          Enter Verification Code
+        </Typography>
+        <Typography variant="muted">
           Try entering &quot;123456&quot; for a valid code
-        </p>
+        </Typography>
       </div>
       <InputOTP
         maxLength={6}
@@ -378,12 +387,14 @@ const WithValidationComponent = () => {
         </InputOTPGroup>
       </InputOTP>
       {isValid === true && (
-        <p className="text-sm text-green-600">✓ Code verified successfully!</p>
+        <Typography variant="small" className="text-green-600">
+          ✓ Code verified successfully!
+        </Typography>
       )}
       {isValid === false && (
-        <p className="text-sm text-red-600">
+        <Typography variant="small" className="text-red-600">
           ✗ Invalid code. Please try again.
-        </p>
+        </Typography>
       )}
     </div>
   );
@@ -397,7 +408,9 @@ export const DifferentSizes: Story = {
   render: () => (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Small (3 digits)</h4>
+        <Typography variant="h4" className="font-medium">
+          Small (3 digits)
+        </Typography>
         <InputOTP maxLength={3}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -408,7 +421,9 @@ export const DifferentSizes: Story = {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Medium (6 digits)</h4>
+        <Typography variant="h4" className="font-medium">
+          Medium (6 digits)
+        </Typography>
         <InputOTP maxLength={6}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -422,7 +437,9 @@ export const DifferentSizes: Story = {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Large (8 digits)</h4>
+        <Typography variant="h4" className="font-medium">
+          Large (8 digits)
+        </Typography>
         <InputOTP maxLength={8}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -467,10 +484,12 @@ const LoginFlowComponent = () => {
       {step === 'phone' ? (
         <div className="space-y-4">
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold">Sign In</h3>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="h3" className="font-semibold">
+              Sign In
+            </Typography>
+            <Typography variant="muted">
               Enter your phone number to receive a verification code
-            </p>
+            </Typography>
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Phone Number</Label>
@@ -489,10 +508,12 @@ const LoginFlowComponent = () => {
       ) : (
         <div className="space-y-4">
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold">Enter Code</h3>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="h3" className="font-semibold">
+              Enter Code
+            </Typography>
+            <Typography variant="muted">
               We sent a 6-digit code to {phoneNumber}
-            </p>
+            </Typography>
           </div>
           <div className="flex justify-center">
             <InputOTP
@@ -522,12 +543,12 @@ const LoginFlowComponent = () => {
             >
               Back
             </Button>
-            <p className="text-muted-foreground text-center text-xs">
+            <Typography variant="muted" className="text-center text-xs">
               Didn&apos;t receive the code?{' '}
               <Button variant="link" className="h-auto p-0 text-xs underline">
                 Resend
               </Button>
-            </p>
+            </Typography>
           </div>
         </div>
       )}
@@ -546,7 +567,9 @@ export const CustomStyling: Story = {
   render: args => (
     <div className="space-y-4">
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Custom Border Colors</h4>
+        <Typography variant="h4" className="font-medium">
+          Custom Border Colors
+        </Typography>
         <InputOTP {...args}>
           <InputOTPGroup>
             <InputOTPSlot

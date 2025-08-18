@@ -12,7 +12,7 @@ function CustomTheme() {
   return (
     <div className="space-y-8">
       <div className="border-b pb-4">
-        <h1 className="text-3xl font-bold">Custom Theme</h1>
+        <h1 className="text-3xl">Custom Theme</h1>
         <p className="text-muted-foreground mt-2">
           Explore the Feathers preset colors and learn how to customize themes
         </p>

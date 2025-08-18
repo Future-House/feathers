@@ -10,9 +10,7 @@ function Content() {
   return (
     <div className="flex-1 space-y-6 p-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">
-          Welcome to Feathers
-        </h1>
+        <h1 className="text-3xl tracking-tight">Welcome to Feathers</h1>
         <p className="text-muted-foreground">
           A modern React component library built on top of <code>@shadcn</code>,
           using TypeScript, Tailwind CSS, and Radix UI primitives.

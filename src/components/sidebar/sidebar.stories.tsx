@@ -37,6 +37,7 @@ import {
   Folder,
   FileText,
 } from '../../icons';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/Sidebar',
@@ -483,7 +484,9 @@ function BasicSidebarExample() {
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="bg-border mx-2 h-4 w-px" />
-            <h1 className="text-lg font-semibold">Dashboard</h1>
+            <Typography variant="h3" className="text-lg">
+              Dashboard
+            </Typography>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -587,7 +590,9 @@ function CollapsibleSidebarExample() {
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="bg-border mx-2 h-4 w-px" />
-            <h1 className="text-lg font-semibold">Collapsible Dashboard</h1>
+            <Typography variant="h3" className="text-lg font-semibold">
+              Collapsible Dashboard
+            </Typography>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -752,7 +757,9 @@ function NestedMenuSidebarExample() {
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="bg-border mx-2 h-4 w-px" />
-            <h1 className="text-lg font-semibold">Nested Menu Example</h1>
+            <Typography variant="h3" className="text-lg font-semibold">
+              Nested Menu Example
+            </Typography>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
@@ -803,7 +810,9 @@ function LoadingSidebarExample() {
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="bg-border mx-2 h-4 w-px" />
-            <h1 className="text-lg font-semibold">Loading State</h1>
+            <Typography variant="h3" className="text-lg font-semibold">
+              Loading State
+            </Typography>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
@@ -885,7 +894,9 @@ function FloatingVariantExample() {
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="bg-border mx-2 h-4 w-px" />
-            <h1 className="text-lg font-semibold">Floating Sidebar</h1>
+            <Typography variant="h3" className="text-lg font-semibold">
+              Floating Sidebar
+            </Typography>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
@@ -968,7 +979,9 @@ function SearchableSidebarExample() {
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="bg-border mx-2 h-4 w-px" />
-            <h1 className="text-lg font-semibold">Searchable Sidebar</h1>
+            <Typography variant="h3" className="text-lg font-semibold">
+              Searchable Sidebar
+            </Typography>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />

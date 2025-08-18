@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '@/components/button';
+import { Typography } from '../typography';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -285,30 +286,30 @@ export const LongContent: Story = {
             platform.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <div className="space-y-4 text-sm">
-          <p>
+        <div className="space-y-4">
+          <Typography variant="small">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="small">
             Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
             cupidatat non proident, sunt in culpa qui officia deserunt mollit
             anim id est laborum.
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="small">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
             dicta sunt explicabo.
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="small">
             Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
             fugit, sed quia consequuntur magni dolores eos qui ratione
             voluptatem sequi nesciunt.
-          </p>
+          </Typography>
         </div>
         <AlertDialogFooter>
           <AlertDialogCancel>Decline</AlertDialogCancel>

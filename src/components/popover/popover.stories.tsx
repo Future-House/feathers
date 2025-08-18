@@ -25,6 +25,7 @@ import {
   MapPin,
   Bell,
 } from '@/icons';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/Popover',
@@ -230,10 +231,12 @@ function BasicPopoverComponent(args: React.ComponentProps<typeof Popover>) {
       <PopoverContent>
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="leading-none font-medium">Dimensions</h4>
-            <p className="text-muted-foreground text-sm">
+            <Typography variant="h4" className="leading-none font-medium">
+              Dimensions
+            </Typography>
+            <Typography variant="muted">
               Set the dimensions for the layer.
-            </p>
+            </Typography>
           </div>
           <div className="grid gap-2">
             <div className="grid grid-cols-3 items-center gap-4">
@@ -290,8 +293,10 @@ function UserProfilePopoverComponent(args) {
             <User className="h-6 w-6" />
           </div>
           <div className="flex-1 space-y-1">
-            <h4 className="text-sm font-semibold">John Doe</h4>
-            <p className="text-muted-foreground text-sm">Software Engineer</p>
+            <Typography variant="small" className="font-semibold">
+              John Doe
+            </Typography>
+            <Typography variant="muted">Software Engineer</Typography>
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Mail className="h-3 w-3" />
               john.doe@example.com
@@ -322,7 +327,9 @@ function NotificationPopoverComponent(args) {
       <PopoverContent className="w-96">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium">Notifications</h4>
+            <Typography variant="h4" className="font-medium">
+              Notifications
+            </Typography>
             <span className="bg-primary text-primary-foreground rounded-full px-2 py-1 text-xs">
               3
             </span>
@@ -333,11 +340,15 @@ function NotificationPopoverComponent(args) {
                 <Mail className="h-4 w-4 text-blue-600" />
               </div>
               <div className="flex-1 space-y-1">
-                <p className="text-sm font-medium">New message received</p>
-                <p className="text-muted-foreground text-xs">
+                <Typography variant="small" className="font-medium">
+                  New message received
+                </Typography>
+                <Typography variant="muted" className="text-xs">
                   You have a new message from Sarah
-                </p>
-                <p className="text-muted-foreground text-xs">2 minutes ago</p>
+                </Typography>
+                <Typography variant="muted" className="text-xs">
+                  2 minutes ago
+                </Typography>
               </div>
             </div>
             <div className="flex gap-3 rounded-lg border p-3">
@@ -345,11 +356,15 @@ function NotificationPopoverComponent(args) {
                 <User className="h-4 w-4 text-green-600" />
               </div>
               <div className="flex-1 space-y-1">
-                <p className="text-sm font-medium">Profile updated</p>
-                <p className="text-muted-foreground text-xs">
+                <Typography variant="small" className="font-medium">
+                  Profile updated
+                </Typography>
+                <Typography variant="muted" className="text-xs">
                   Your profile information has been updated
-                </p>
-                <p className="text-muted-foreground text-xs">1 hour ago</p>
+                </Typography>
+                <Typography variant="muted" className="text-xs">
+                  1 hour ago
+                </Typography>
               </div>
             </div>
             <div className="flex gap-3 rounded-lg border p-3">
@@ -357,11 +372,15 @@ function NotificationPopoverComponent(args) {
                 <SettingsIcon className="h-4 w-4 text-orange-600" />
               </div>
               <div className="flex-1 space-y-1">
-                <p className="text-sm font-medium">Settings changed</p>
-                <p className="text-muted-foreground text-xs">
+                <Typography variant="small" className="font-medium">
+                  Settings changed
+                </Typography>
+                <Typography variant="muted" className="text-xs">
                   Your notification preferences have been updated
-                </p>
-                <p className="text-muted-foreground text-xs">3 hours ago</p>
+                </Typography>
+                <Typography variant="muted" className="text-xs">
+                  3 hours ago
+                </Typography>
               </div>
             </div>
           </div>
@@ -387,10 +406,10 @@ function SettingsPopoverComponent(args) {
       <PopoverContent>
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="leading-none font-medium">Settings</h4>
-            <p className="text-muted-foreground text-sm">
-              Configure your preferences.
-            </p>
+            <Typography variant="h4" className="leading-none font-medium">
+              Settings
+            </Typography>
+            <Typography variant="muted">Configure your preferences.</Typography>
           </div>
           <div className="grid gap-3">
             <div className="flex items-center justify-between">
@@ -430,9 +449,9 @@ function SettingsPopoverComponent(args) {
 function WithAnchorComponent(args) {
   return (
     <div className="flex gap-4">
-      <div className="text-muted-foreground text-sm">
+      <Typography variant="muted">
         The popover will be anchored to this text element.
-      </div>
+      </Typography>
       <Popover {...args}>
         <PopoverAnchor asChild>
           <span className="bg-muted rounded px-2 py-1 text-sm">
@@ -443,10 +462,10 @@ function WithAnchorComponent(args) {
           <Button size="sm">Show popover</Button>
         </PopoverTrigger>
         <PopoverContent>
-          <p className="text-sm">
+          <Typography variant="small">
             This popover is anchored to the highlighted text above, not the
             trigger button.
-          </p>
+          </Typography>
         </PopoverContent>
       </Popover>
     </div>
@@ -481,11 +500,13 @@ export const CustomAlignment: Story = {
       </PopoverTrigger>
       <PopoverContent side="top" align="start" sideOffset={10}>
         <div className="grid gap-4">
-          <h4 className="leading-none font-medium">Custom Positioning</h4>
-          <p className="text-muted-foreground text-sm">
+          <Typography variant="h4" className="leading-none font-medium">
+            Custom Positioning
+          </Typography>
+          <Typography variant="muted">
             This popover is positioned at the top with start alignment and
             custom offset.
-          </p>
+          </Typography>
         </div>
       </PopoverContent>
     </Popover>

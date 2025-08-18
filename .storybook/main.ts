@@ -20,6 +20,7 @@ const config: StorybookConfig = {
     defaultName: 'Documentation',
   },
   viteFinal: async config => {
+    const path = await import('path');
     return {
       ...config,
       minify: false, // Don't minify in Storybook
@@ -27,8 +28,11 @@ const config: StorybookConfig = {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
-          '@': '/src',
-          '@/icons': '../src/icons',
+          '@/components': path.resolve(__dirname, '../src/components'),
+          '@/icons': path.resolve(__dirname, '../src/icons'),
+          '@/lib': path.resolve(__dirname, '../src/lib'),
+          '@/hooks': path.resolve(__dirname, '../src/hooks'),
+          '@': path.resolve(__dirname, '../src'),
         },
       },
     };

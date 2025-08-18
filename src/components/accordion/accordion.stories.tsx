@@ -7,6 +7,7 @@ import {
   AccordionContent,
 } from '../accordion';
 import { Button } from '../button';
+import { Typography } from '../typography';
 import { cn } from '../../lib/utils';
 
 const meta = {
@@ -314,13 +315,12 @@ export const WithRichContent: Story = {
           <AccordionTrigger>Key Features</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-3">
-              <h4 className="font-semibold">Performance</h4>
+              <Typography variant="h4">Performance</Typography>
               <ul className="list-disc space-y-1 pl-5 text-sm">
-                <li>Lightning-fast load times</li>
                 <li>Optimized for mobile devices</li>
                 <li>Server-side rendering support</li>
               </ul>
-              <h4 className="font-semibold">Accessibility</h4>
+              <Typography variant="h4">Accessibility</Typography>
               <ul className="list-disc space-y-1 pl-5 text-sm">
                 <li>WCAG 2.1 AA compliant</li>
                 <li>Screen reader compatible</li>
@@ -334,18 +334,16 @@ export const WithRichContent: Story = {
           <AccordionContent>
             <div className="space-y-4">
               <div className="rounded-lg border p-3">
-                <h4 className="font-semibold">Basic Plan</h4>
-                <p className="text-2xl font-bold">$9/month</p>
-                <p className="text-muted-foreground text-sm">
-                  Perfect for individuals
-                </p>
+                <Typography variant="h4">Basic Plan</Typography>
+                <Typography className="text-2xl font-bold">$9/month</Typography>
+                <Typography variant="muted">Perfect for individuals</Typography>
               </div>
               <div className="rounded-lg border p-3">
-                <h4 className="font-semibold">Pro Plan</h4>
-                <p className="text-2xl font-bold">$29/month</p>
-                <p className="text-muted-foreground text-sm">
-                  Ideal for small teams
-                </p>
+                <Typography variant="h4">Pro Plan</Typography>
+                <Typography className="text-2xl font-bold">
+                  $29/month
+                </Typography>
+                <Typography variant="muted">Ideal for small teams</Typography>
               </div>
             </div>
           </AccordionContent>
@@ -356,19 +354,27 @@ export const WithRichContent: Story = {
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded border p-3 text-center">
                 <div className="mx-auto mb-2 h-8 w-8 rounded bg-blue-100"></div>
-                <p className="text-sm font-medium">REST API</p>
+                <Typography variant="small" className="font-medium">
+                  REST API
+                </Typography>
               </div>
               <div className="rounded border p-3 text-center">
                 <div className="mx-auto mb-2 h-8 w-8 rounded bg-green-100"></div>
-                <p className="text-sm font-medium">GraphQL</p>
+                <Typography variant="small" className="font-medium">
+                  GraphQL
+                </Typography>
               </div>
               <div className="rounded border p-3 text-center">
                 <div className="mx-auto mb-2 h-8 w-8 rounded bg-purple-100"></div>
-                <p className="text-sm font-medium">Webhooks</p>
+                <Typography variant="small" className="font-medium">
+                  Webhooks
+                </Typography>
               </div>
               <div className="rounded border p-3 text-center">
                 <div className="mx-auto mb-2 h-8 w-8 rounded bg-orange-100"></div>
-                <p className="text-sm font-medium">SDK</p>
+                <Typography variant="small" className="font-medium">
+                  SDK
+                </Typography>
               </div>
             </div>
           </AccordionContent>
@@ -404,13 +410,13 @@ export const Controlled: Story = {
             Close All
           </Button>
         </div>
-        <p className="text-bg-foreground">
+        <Typography className="text-bg-foreground">
           The current <code>value</code> is: {value || 'none'}
-        </p>
-        <p className="text-muted-foreground text-sm">
+        </Typography>
+        <Typography variant="muted">
           Take control of which <code>AccordionItem</code> is open with the{' '}
           <code>value</code> and <code>onValueChange</code> props.
-        </p>
+        </Typography>
         <Accordion type="single" value={value} onValueChange={setValue}>
           <AccordionItem value="item-1">
             <AccordionTrigger>Controlled Item 1</AccordionTrigger>

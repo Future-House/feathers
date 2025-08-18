@@ -15,6 +15,7 @@ import { RadioGroup, RadioGroupItem } from '../radio-group/radio-group';
 import { Checkbox } from '../checkbox/checkbox';
 import { Separator } from '../separator/separator';
 import { Settings, Menu, Plus, Pencil, Trash2 } from '@/icons';
+import { Typography } from '../typography';
 import {
   Drawer,
   DrawerClose,
@@ -277,10 +278,10 @@ export const Default: Story = {
           </DrawerDescription>
         </DrawerHeader>
         <div className="p-4">
-          <p className="text-sm">
+          <Typography variant="small">
             This is the main content of the drawer. You can put any content
             here, including forms, images, or other components.
-          </p>
+          </Typography>
         </div>
         <DrawerFooter>
           <Button>Confirm</Button>
@@ -438,7 +439,9 @@ export const SettingsPanel: Story = {
         <div className="flex-1 p-4">
           <div className="space-y-6">
             <div className="space-y-3">
-              <h3 className="text-sm font-medium">Appearance</h3>
+              <Typography variant="small" className="font-medium">
+                Appearance
+              </Typography>
               <RadioGroup defaultValue="system" className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="light" id="light" />
@@ -462,7 +465,9 @@ export const SettingsPanel: Story = {
             </div>
             <Separator />
             <div className="space-y-3">
-              <h3 className="text-sm font-medium">Notifications</h3>
+              <Typography variant="small" className="font-medium">
+                Notifications
+              </Typography>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <Checkbox id="email" />
@@ -562,10 +567,10 @@ export const FromTop: Story = {
           </DrawerDescription>
         </DrawerHeader>
         <div className="p-4">
-          <p className="text-sm">
+          <Typography variant="small">
             This demonstrates a drawer that opens from the top. It can be useful
             for notifications or announcements that need immediate attention.
-          </p>
+          </Typography>
         </div>
         <DrawerFooter>
           <DrawerClose asChild>

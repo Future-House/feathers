@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
 import { Mail, Eye, EyeOff, Search as SearchIcon, User } from '@/icons';
 import { Input } from './input';
+import { Typography } from '../typography';
 
 const meta = {
   title: 'Components/Input',
@@ -437,7 +438,9 @@ export const Error: Story = {
       <div className="space-y-2">
         <label className="text-sm font-medium">Invalid Input</label>
         <Input placeholder="Invalid input" error />
-        <p className="text-destructive text-xs">This field is required</p>
+        <Typography variant="small" className="text-destructive">
+          This field is required
+        </Typography>
       </div>
     </div>
   ),
