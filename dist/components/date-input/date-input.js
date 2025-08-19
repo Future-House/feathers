@@ -1,4 +1,7 @@
+import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Calendar as CalendarIcon } from "../../icons";
@@ -27,7 +30,7 @@ function isValidDate(date) {
   return !isNaN(date.getTime());
 }
 function DateInput(t0) {
-  var $ = _c(53);
+  var $ = _c(54);
   var id = t0.id,
     label = t0.label,
     selected = t0.selected,
@@ -42,7 +45,8 @@ function DateInput(t0) {
     t4 = t0.side,
     t5 = t0.alignOffset,
     t6 = t0.sideOffset,
-    t7 = t0.captionLayout;
+    t7 = t0.captionLayout,
+    InputProps = t0.InputProps;
   var disabled = t1 === undefined ? false : t1;
   var placeholder = t2 === undefined ? "Select date" : t2;
   var align = t3 === undefined ? "end" : t3;
@@ -170,8 +174,8 @@ function DateInput(t0) {
     t16 = $[19];
   }
   var t17;
-  if ($[20] !== disabled || $[21] !== handleInputChange || $[22] !== inputId || $[23] !== placeholder || $[24] !== t16 || $[25] !== value) {
-    t17 = /*#__PURE__*/_jsx(Input, {
+  if ($[20] !== InputProps || $[21] !== disabled || $[22] !== handleInputChange || $[23] !== inputId || $[24] !== placeholder || $[25] !== t16 || $[26] !== value) {
+    t17 = /*#__PURE__*/_jsx(Input, _objectSpread(_objectSpread({}, InputProps), {}, {
       id: inputId,
       value: value,
       placeholder: placeholder,
@@ -179,28 +183,29 @@ function DateInput(t0) {
       onChange: handleInputChange,
       onKeyDown: handleKeyDown,
       disabled: disabled
-    });
-    $[20] = disabled;
-    $[21] = handleInputChange;
-    $[22] = inputId;
-    $[23] = placeholder;
-    $[24] = t16;
-    $[25] = value;
-    $[26] = t17;
+    }));
+    $[20] = InputProps;
+    $[21] = disabled;
+    $[22] = handleInputChange;
+    $[23] = inputId;
+    $[24] = placeholder;
+    $[25] = t16;
+    $[26] = value;
+    $[27] = t17;
   } else {
-    t17 = $[26];
+    t17 = $[27];
   }
   var t18;
-  if ($[27] === Symbol.for("react.memo_cache_sentinel")) {
+  if ($[28] === Symbol.for("react.memo_cache_sentinel")) {
     t18 = /*#__PURE__*/_jsx(CalendarIcon, {
       className: "size-3.5"
     });
-    $[27] = t18;
+    $[28] = t18;
   } else {
-    t18 = $[27];
+    t18 = $[28];
   }
   var t19;
-  if ($[28] !== disabled) {
+  if ($[29] !== disabled) {
     t19 = /*#__PURE__*/_jsx(PopoverTrigger, {
       asChild: true,
       children: /*#__PURE__*/_jsx(Button, {
@@ -212,13 +217,13 @@ function DateInput(t0) {
         children: t18
       })
     });
-    $[28] = disabled;
-    $[29] = t19;
+    $[29] = disabled;
+    $[30] = t19;
   } else {
-    t19 = $[29];
+    t19 = $[30];
   }
   var t20;
-  if ($[30] !== calendarClassName || $[31] !== captionLayout || $[32] !== date || $[33] !== handleCalendarSelect || $[34] !== month) {
+  if ($[31] !== calendarClassName || $[32] !== captionLayout || $[33] !== date || $[34] !== handleCalendarSelect || $[35] !== month) {
     t20 = /*#__PURE__*/_jsx(Calendar, {
       mode: "single",
       selected: date,
@@ -229,17 +234,17 @@ function DateInput(t0) {
       className: calendarClassName,
       autoFocus: true
     });
-    $[30] = calendarClassName;
-    $[31] = captionLayout;
-    $[32] = date;
-    $[33] = handleCalendarSelect;
-    $[34] = month;
-    $[35] = t20;
+    $[31] = calendarClassName;
+    $[32] = captionLayout;
+    $[33] = date;
+    $[34] = handleCalendarSelect;
+    $[35] = month;
+    $[36] = t20;
   } else {
-    t20 = $[35];
+    t20 = $[36];
   }
   var t21;
-  if ($[36] !== align || $[37] !== alignOffset || $[38] !== side || $[39] !== sideOffset || $[40] !== t20) {
+  if ($[37] !== align || $[38] !== alignOffset || $[39] !== side || $[40] !== sideOffset || $[41] !== t20) {
     t21 = /*#__PURE__*/_jsx(PopoverContent, {
       className: "w-auto overflow-hidden p-0",
       align: align,
@@ -248,53 +253,53 @@ function DateInput(t0) {
       sideOffset: sideOffset,
       children: t20
     });
-    $[36] = align;
-    $[37] = alignOffset;
-    $[38] = side;
-    $[39] = sideOffset;
-    $[40] = t20;
-    $[41] = t21;
+    $[37] = align;
+    $[38] = alignOffset;
+    $[39] = side;
+    $[40] = sideOffset;
+    $[41] = t20;
+    $[42] = t21;
   } else {
-    t21 = $[41];
+    t21 = $[42];
   }
   var t22;
-  if ($[42] !== open || $[43] !== t19 || $[44] !== t21) {
+  if ($[43] !== open || $[44] !== t19 || $[45] !== t21) {
     t22 = /*#__PURE__*/_jsxs(Popover, {
       open: open,
       onOpenChange: setOpen,
       children: [t19, t21]
     });
-    $[42] = open;
-    $[43] = t19;
-    $[44] = t21;
-    $[45] = t22;
+    $[43] = open;
+    $[44] = t19;
+    $[45] = t21;
+    $[46] = t22;
   } else {
-    t22 = $[45];
+    t22 = $[46];
   }
   var t23;
-  if ($[46] !== t17 || $[47] !== t22) {
+  if ($[47] !== t17 || $[48] !== t22) {
     t23 = /*#__PURE__*/_jsxs("div", {
       className: "relative flex gap-2",
       children: [t17, t22]
     });
-    $[46] = t17;
-    $[47] = t22;
-    $[48] = t23;
+    $[47] = t17;
+    $[48] = t22;
+    $[49] = t23;
   } else {
-    t23 = $[48];
+    t23 = $[49];
   }
   var t24;
-  if ($[49] !== t14 || $[50] !== t15 || $[51] !== t23) {
+  if ($[50] !== t14 || $[51] !== t15 || $[52] !== t23) {
     t24 = /*#__PURE__*/_jsxs("div", {
       className: t14,
       children: [t15, t23]
     });
-    $[49] = t14;
-    $[50] = t15;
-    $[51] = t23;
-    $[52] = t24;
+    $[50] = t14;
+    $[51] = t15;
+    $[52] = t23;
+    $[53] = t24;
   } else {
-    t24 = $[52];
+    t24 = $[53];
   }
   return t24;
 }

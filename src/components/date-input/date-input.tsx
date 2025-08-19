@@ -24,6 +24,16 @@ interface DateInputProps {
   alignOffset?: number;
   sideOffset?: number;
   captionLayout?: React.ComponentProps<typeof Calendar>['captionLayout'];
+  InputProps?: Omit<
+    React.ComponentProps<typeof Input>,
+    | 'id'
+    | 'value'
+    | 'placeholder'
+    | 'className'
+    | 'onChange'
+    | 'onKeyDown'
+    | 'disabled'
+  >;
 }
 
 function formatDate(
@@ -64,6 +74,7 @@ function DateInput({
   alignOffset = -8,
   sideOffset = 10,
   captionLayout = 'label',
+  InputProps,
 }: DateInputProps) {
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(selected);
@@ -113,6 +124,7 @@ function DateInput({
       )}
       <div className="relative flex gap-2">
         <Input
+          {...InputProps}
           id={inputId}
           value={value}
           placeholder={placeholder}

@@ -260,6 +260,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
                   value: newValues
                 });
               },
+              InputProps: {
+                "aria-label": "".concat(field_1.label, " Start date")
+              },
               placeholder: "Start date (mm/dd/yyyy)",
               className: "w-full"
             }), /*#__PURE__*/_jsx(DateInput, {
@@ -275,6 +278,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
                 updateCriteria(criterion_1.id, {
                   value: newValues_0
                 });
+              },
+              InputProps: {
+                "aria-label": "".concat(field_1.label, " End date")
               },
               placeholder: "End date (mm/dd/yyyy)",
               className: "w-full"
@@ -293,6 +299,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
               return updateCriteria(criterion_1.id, {
                 value: date_1 ? format(date_1, "yyyy-MM-dd") : ""
               });
+            },
+            InputProps: {
+              "aria-label": "".concat(field_1.label)
             },
             placeholder: "mm/dd/yyyy",
             className: "w-full"

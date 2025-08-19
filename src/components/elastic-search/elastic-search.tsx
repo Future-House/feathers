@@ -276,6 +276,9 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
                   newValues[0] = date ? format(date, 'yyyy-MM-dd') : '';
                   updateCriteria(criterion.id, { value: newValues });
                 }}
+                InputProps={{
+                  'aria-label': `${field.label} Start date`,
+                }}
                 placeholder="Start date (mm/dd/yyyy)"
                 className="w-full"
               />
@@ -293,6 +296,9 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
                   // Format date using date-fns to preserve local date
                   newValues[1] = date ? format(date, 'yyyy-MM-dd') : '';
                   updateCriteria(criterion.id, { value: newValues });
+                }}
+                InputProps={{
+                  'aria-label': `${field.label} End date`,
                 }}
                 placeholder="End date (mm/dd/yyyy)"
                 className="w-full"
@@ -322,6 +328,9 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
                   value: date ? format(date, 'yyyy-MM-dd') : '',
                 })
               }
+              InputProps={{
+                'aria-label': `${field.label}`,
+              }}
               placeholder="mm/dd/yyyy"
               className="w-full"
             />
