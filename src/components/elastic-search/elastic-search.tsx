@@ -1,9 +1,11 @@
 import { useState, useCallback } from 'react';
 import { validate as isValidUUID, v4 as uuidv4 } from 'uuid';
+import { format, isValid, parseISO } from 'date-fns';
 
 import { Plus, X, Search } from '@/icons';
 
 import { Button } from '@/components/button';
+import { DateInput } from '@/components/date-input';
 import { Input } from '@/components/input';
 import { Label } from '@/components/label';
 import {
@@ -242,50 +244,89 @@ export const ElasticSearch: FC<ElasticSearchProps> = ({
 
       if (field.type === 'date') {
         if (operator === SearchOperator.BETWEEN) {
+          // RANGE
           const values = Array.isArray(value) ? (value as string[]) : ['', ''];
+          // Parse dates safely using date-fns
+          const startDate =
+            values[0] && values[0] !== ''
+              ? isValid(parseISO(values[0]))
+                ? parseISO(values[0])
+                : undefined
+              : undefined;
+          const endDate =
+            values[1] && values[1] !== ''
+              ? isValid(parseISO(values[1]))
+                ? parseISO(values[1])
+                : undefined
+              : undefined;
           return (
             <div className="flex flex-1 space-x-2">
-              <Input
-                type="date"
-                value={String(values[0] || '')}
-                onChange={e => {
+              <DateInput
+                formatOptions={{
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                }}
+                selected={startDate}
+                onSelect={date => {
                   const newValues = Array.isArray(value)
                     ? [...(value as string[])]
                     : ['', ''];
-                  newValues[0] = e.target.value;
+                  // Format date using date-fns to preserve local date
+                  newValues[0] = date ? format(date, 'yyyy-MM-dd') : '';
                   updateCriteria(criterion.id, { value: newValues });
                 }}
-                onKeyDown={handleKeyDown}
-                aria-label={`${field.label} start date`}
+                placeholder="Start date (mm/dd/yyyy)"
+                className="w-full"
               />
-              <Input
-                type="date"
-                value={String(values[1] || '')}
-                onChange={e => {
+              <DateInput
+                formatOptions={{
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                }}
+                selected={endDate}
+                onSelect={date => {
                   const newValues = Array.isArray(value)
                     ? [...(value as string[])]
                     : ['', ''];
-                  newValues[1] = e.target.value;
+                  // Format date using date-fns to preserve local date
+                  newValues[1] = date ? format(date, 'yyyy-MM-dd') : '';
                   updateCriteria(criterion.id, { value: newValues });
                 }}
-                onKeyDown={handleKeyDown}
-                aria-label={`${field.label} end date`}
+                placeholder="End date (mm/dd/yyyy)"
+                className="w-full"
               />
             </div>
           );
+        } else {
+          // SINGLE date
+          const dateValue =
+            value && typeof value === 'string' && value !== ''
+              ? isValid(parseISO(value))
+                ? parseISO(value)
+                : undefined
+              : undefined;
+
+          return (
+            <DateInput
+              formatOptions={{
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+              }}
+              selected={dateValue}
+              onSelect={date =>
+                updateCriteria(criterion.id, {
+                  // Format date using date-fns to preserve local date
+                  value: date ? format(date, 'yyyy-MM-dd') : '',
+                })
+              }
+              placeholder="mm/dd/yyyy"
+              className="w-full"
+            />
+          );
         }
-        return (
-          <Input
-            type="date"
-            value={String(value || '')}
-            onChange={e =>
-              updateCriteria(criterion.id, { value: e.target.value })
-            }
-            onKeyDown={handleKeyDown}
-            aria-label={`${field.label} value`}
-            className="w-full"
-          />
-        );
       }
 
       if (field.type === 'number') {
