@@ -9,8 +9,10 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import { useState, useCallback } from 'react';
 import { validate as isValidUUID, v4 as uuidv4 } from 'uuid';
+import { format, isValid, parseISO } from 'date-fns';
 import { Plus, X, Search } from "../../icons";
 import { Button } from "../button";
+import { DateInput } from "../date-input";
 import { Input } from "../input";
 import { Label } from "../label";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../select";
@@ -240,47 +242,71 @@ export var ElasticSearch = function ElasticSearch(t0) {
       if (field_1.type === "date") {
         if (operator === SearchOperator.BETWEEN) {
           var values = Array.isArray(value_0) ? value_0 : ["", ""];
+          var startDate = values[0] && values[0] !== "" ? isValid(parseISO(values[0])) ? parseISO(values[0]) : undefined : undefined;
+          var endDate = values[1] && values[1] !== "" ? isValid(parseISO(values[1])) ? parseISO(values[1]) : undefined : undefined;
           return /*#__PURE__*/_jsxs("div", {
             className: "flex flex-1 space-x-2",
-            children: [/*#__PURE__*/_jsx(Input, {
-              type: "date",
-              value: String(values[0] || ""),
-              onChange: function onChange(e_0) {
+            children: [/*#__PURE__*/_jsx(DateInput, {
+              formatOptions: {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+              },
+              selected: startDate,
+              onSelect: function onSelect(date) {
                 var newValues = Array.isArray(value_0) ? _toConsumableArray(value_0) : ["", ""];
-                newValues[0] = e_0.target.value;
+                newValues[0] = date ? format(date, "yyyy-MM-dd") : "";
                 updateCriteria(criterion_1.id, {
                   value: newValues
                 });
               },
-              onKeyDown: handleKeyDown,
-              "aria-label": "".concat(field_1.label, " start date")
-            }), /*#__PURE__*/_jsx(Input, {
-              type: "date",
-              value: String(values[1] || ""),
-              onChange: function onChange(e_1) {
+              InputProps: {
+                "aria-label": "".concat(field_1.label, " Start date")
+              },
+              placeholder: "Start date (mm/dd/yyyy)",
+              className: "w-full"
+            }), /*#__PURE__*/_jsx(DateInput, {
+              formatOptions: {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+              },
+              selected: endDate,
+              onSelect: function onSelect(date_0) {
                 var newValues_0 = Array.isArray(value_0) ? _toConsumableArray(value_0) : ["", ""];
-                newValues_0[1] = e_1.target.value;
+                newValues_0[1] = date_0 ? format(date_0, "yyyy-MM-dd") : "";
                 updateCriteria(criterion_1.id, {
                   value: newValues_0
                 });
               },
-              onKeyDown: handleKeyDown,
-              "aria-label": "".concat(field_1.label, " end date")
+              InputProps: {
+                "aria-label": "".concat(field_1.label, " End date")
+              },
+              placeholder: "End date (mm/dd/yyyy)",
+              className: "w-full"
             })]
           });
+        } else {
+          var dateValue = value_0 && typeof value_0 === "string" && value_0 !== "" ? isValid(parseISO(value_0)) ? parseISO(value_0) : undefined : undefined;
+          return /*#__PURE__*/_jsx(DateInput, {
+            formatOptions: {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric"
+            },
+            selected: dateValue,
+            onSelect: function onSelect(date_1) {
+              return updateCriteria(criterion_1.id, {
+                value: date_1 ? format(date_1, "yyyy-MM-dd") : ""
+              });
+            },
+            InputProps: {
+              "aria-label": "".concat(field_1.label)
+            },
+            placeholder: "mm/dd/yyyy",
+            className: "w-full"
+          });
         }
-        return /*#__PURE__*/_jsx(Input, {
-          type: "date",
-          value: String(value_0 || ""),
-          onChange: function onChange(e_2) {
-            return updateCriteria(criterion_1.id, {
-              value: e_2.target.value
-            });
-          },
-          onKeyDown: handleKeyDown,
-          "aria-label": "".concat(field_1.label, " value"),
-          className: "w-full"
-        });
       }
       if (field_1.type === "number") {
         if (operator === SearchOperator.BETWEEN) {
@@ -290,9 +316,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
             children: [/*#__PURE__*/_jsx(Input, {
               type: "number",
               value: String(values_0[0] || ""),
-              onChange: function onChange(e_3) {
+              onChange: function onChange(e_0) {
                 var newValues_1 = Array.isArray(value_0) ? _toConsumableArray(value_0) : [0, 0];
-                newValues_1[0] = parseFloat(e_3.target.value) || 0;
+                newValues_1[0] = parseFloat(e_0.target.value) || 0;
                 updateCriteria(criterion_1.id, {
                   value: newValues_1
                 });
@@ -302,9 +328,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
             }), /*#__PURE__*/_jsx(Input, {
               type: "number",
               value: String(values_0[1] || ""),
-              onChange: function onChange(e_4) {
+              onChange: function onChange(e_1) {
                 var newValues_2 = Array.isArray(value_0) ? _toConsumableArray(value_0) : [0, 0];
-                newValues_2[1] = parseFloat(e_4.target.value) || 0;
+                newValues_2[1] = parseFloat(e_1.target.value) || 0;
                 updateCriteria(criterion_1.id, {
                   value: newValues_2
                 });
@@ -317,9 +343,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
         return /*#__PURE__*/_jsx(Input, {
           type: "number",
           value: String(value_0 || ""),
-          onChange: function onChange(e_5) {
+          onChange: function onChange(e_2) {
             return updateCriteria(criterion_1.id, {
-              value: parseFloat(e_5.target.value) || 0
+              value: parseFloat(e_2.target.value) || 0
             });
           },
           onKeyDown: handleKeyDown,
@@ -334,8 +360,8 @@ export var ElasticSearch = function ElasticSearch(t0) {
           return /*#__PURE__*/_jsx(Input, {
             type: "text",
             value: values_1,
-            onChange: function onChange(e_6) {
-              var newValues_3 = e_6.target.value.split(",").map(_temp7).filter(_temp8);
+            onChange: function onChange(e_3) {
+              var newValues_3 = e_3.target.value.split(",").map(_temp7).filter(_temp8);
               updateCriteria(criterion_1.id, {
                 value: newValues_3
               });
@@ -349,9 +375,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
         return /*#__PURE__*/_jsx(Input, {
           type: "text",
           value: String(value_0 || ""),
-          onChange: function onChange(e_7) {
+          onChange: function onChange(e_4) {
             return updateCriteria(criterion_1.id, {
-              value: e_7.target.value
+              value: e_4.target.value
             });
           },
           onKeyDown: handleKeyDown,
@@ -365,8 +391,8 @@ export var ElasticSearch = function ElasticSearch(t0) {
         return /*#__PURE__*/_jsx(Input, {
           type: "text",
           value: values_2,
-          onChange: function onChange(e_8) {
-            var newValues_4 = e_8.target.value.split(",").map(_temp9).filter(_temp0);
+          onChange: function onChange(e_5) {
+            var newValues_4 = e_5.target.value.split(",").map(_temp9).filter(_temp0);
             updateCriteria(criterion_1.id, {
               value: newValues_4
             });
@@ -380,9 +406,9 @@ export var ElasticSearch = function ElasticSearch(t0) {
       return /*#__PURE__*/_jsx(Input, {
         type: "text",
         value: String(value_0 || ""),
-        onChange: function onChange(e_9) {
+        onChange: function onChange(e_6) {
           return updateCriteria(criterion_1.id, {
-            value: e_9.target.value
+            value: e_6.target.value
           });
         },
         onKeyDown: handleKeyDown,

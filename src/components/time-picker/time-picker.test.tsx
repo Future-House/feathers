@@ -1,25 +1,29 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { TimePicker } from './time-picker';
 
 describe('TimePicker', () => {
   it('renders without crashing', () => {
-    render(<TimePicker />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker />);
+    const input = container.querySelector('input[type="time"]');
     expect(input).toBeInTheDocument();
     expect(input).toHaveAttribute('type', 'time');
   });
 
   it('applies default value', () => {
-    render(<TimePicker defaultValue="14:30" />);
-    const input = screen.getByRole('textbox') as HTMLInputElement;
+    const { container } = render(<TimePicker defaultValue="14:30" />);
+    const input = container.querySelector(
+      'input[type="time"]'
+    ) as HTMLInputElement;
     expect(input.value).toBe('14:30');
   });
 
   it('handles controlled value', () => {
-    const { rerender } = render(
+    const { rerender, container } = render(
       <TimePicker value="10:00" onChange={() => {}} />
     );
-    const input = screen.getByRole('textbox') as HTMLInputElement;
+    const input = container.querySelector(
+      'input[type="time"]'
+    ) as HTMLInputElement;
     expect(input.value).toBe('10:00');
 
     rerender(<TimePicker value="15:30" onChange={() => {}} />);
@@ -28,8 +32,10 @@ describe('TimePicker', () => {
 
   it('calls onChange when value changes', () => {
     const handleChange = jest.fn();
-    render(<TimePicker onChange={handleChange} />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker onChange={handleChange} />);
+    const input = container.querySelector(
+      'input[type="time"]'
+    ) as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: '16:45' } });
     expect(handleChange).toHaveBeenCalledTimes(1);
@@ -41,37 +47,37 @@ describe('TimePicker', () => {
   });
 
   it('shows seconds when showSeconds is true', () => {
-    render(<TimePicker showSeconds />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker showSeconds />);
+    const input = container.querySelector('input[type="time"]');
     expect(input).toHaveAttribute('step', '1');
   });
 
   it('hides seconds when showSeconds is false', () => {
-    render(<TimePicker showSeconds={false} />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker showSeconds={false} />);
+    const input = container.querySelector('input[type="time"]');
     expect(input).toHaveAttribute('step', '60');
   });
 
   it('applies disabled state', () => {
-    render(<TimePicker disabled />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker disabled />);
+    const input = container.querySelector('input[type="time"]');
     expect(input).toBeDisabled();
   });
 
   it('applies error state through className', () => {
-    render(<TimePicker error />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker error />);
+    const input = container.querySelector('input[type="time"]');
     expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
   it('applies custom className', () => {
-    render(<TimePicker className="custom-class" />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker className="custom-class" />);
+    const input = container.querySelector('input[type="time"]');
     expect(input).toHaveClass('custom-class');
   });
 
   it('forwards other HTML input attributes', () => {
-    render(
+    const { container } = render(
       <TimePicker
         id="test-time"
         name="time-input"
@@ -80,7 +86,7 @@ describe('TimePicker', () => {
         max="17:00"
       />
     );
-    const input = screen.getByRole('textbox');
+    const input = container.querySelector('input[type="time"]');
     expect(input).toHaveAttribute('id', 'test-time');
     expect(input).toHaveAttribute('name', 'time-input');
     expect(input).toHaveAttribute('required');
@@ -96,14 +102,20 @@ describe('TimePicker', () => {
   });
 
   it('handles time with seconds format', () => {
-    render(<TimePicker showSeconds defaultValue="14:30:45" />);
-    const input = screen.getByRole('textbox') as HTMLInputElement;
+    const { container } = render(
+      <TimePicker showSeconds defaultValue="14:30:45" />
+    );
+    const input = container.querySelector(
+      'input[type="time"]'
+    ) as HTMLInputElement;
     expect(input.value).toBe('14:30:45');
   });
 
   it('maintains focus on input when clicked', () => {
-    render(<TimePicker />);
-    const input = screen.getByRole('textbox');
+    const { container } = render(<TimePicker />);
+    const input = container.querySelector(
+      'input[type="time"]'
+    ) as HTMLInputElement;
 
     input.focus();
     expect(document.activeElement).toBe(input);
