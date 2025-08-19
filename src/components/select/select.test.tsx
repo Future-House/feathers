@@ -91,11 +91,11 @@ jest.mock('@radix-ui/react-select', () => ({
   Corner: () => <div data-testid="select-corner" />,
 }));
 
-// Mock lucide-react icons
-jest.mock('lucide-react', () => ({
-  CheckIcon: () => <div data-testid="check-icon" />,
-  ChevronDownIcon: () => <div data-testid="chevron-down-icon" />,
-  ChevronUpIcon: () => <div data-testid="chevron-up-icon" />,
+// Mock @/icons
+jest.mock('@/icons', () => ({
+  Check: () => <div data-testid="check-icon" />,
+  ChevronDown: () => <div data-testid="chevron-down-icon" />,
+  ChevronUp: () => <div data-testid="chevron-up-icon" />,
 }));
 
 describe('Select', () => {
