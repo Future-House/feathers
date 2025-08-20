@@ -10,6 +10,7 @@ export { AlertDialog, AlertDialogPortal, AlertDialogOverlay, AlertDialogTrigger,
 export { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from "./breadcrumb";
 export { Calendar, CalendarDayButton } from "./calendar";
 export { DateInput, formatDate, isValidDate } from "./date-input";
+export { DateTimePicker, formatDateTime } from "./date-time-picker";
 export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "./carousel";
 export { Checkbox } from "./checkbox";
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from "./collapsible";

@@ -58,6 +58,9 @@ export { Calendar, CalendarDayButton } from '@/components/calendar';
 
 export { DateInput, formatDate, isValidDate } from '@/components/date-input';
 export type { DateInputProps } from '@/components/date-input';
+
+export { DateTimePicker, formatDateTime } from '@/components/date-time-picker';
+export type { DateTimePickerProps } from '@/components/date-time-picker';
 export type { DateRange } from '@/components/calendar';
 
 export {

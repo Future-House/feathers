@@ -12,6 +12,8 @@ export { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbP
 export { Calendar, CalendarDayButton } from './calendar';
 export { DateInput, formatDate, isValidDate } from './date-input';
 export type { DateInputProps } from './date-input';
+export { DateTimePicker, formatDateTime } from './date-time-picker';
+export type { DateTimePickerProps } from './date-time-picker';
 export type { DateRange } from './calendar';
 export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, } from './carousel';
 export { Checkbox } from './checkbox';

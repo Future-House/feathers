@@ -1,0 +1,133 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as DateTimePickerStories from './date-time-picker.stories';
+
+<Meta of={DateTimePickerStories} />
+
+<DocLayout meta={DateTimePickerStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={DateTimePickerStories.Default} />
+
+## Component API
+
+### DateTimePicker
+
+<PropsTable argTypes={DateTimePickerStories.default.argTypes} />
+
+## Features
+
+- **Multiple Modes**: Support for date-only, time-only, or combined date-time selection
+- **Flexible Time Format**: 12-hour (with AM/PM) or 24-hour format
+- **Seconds Support**: Optional seconds selection
+- **Minute Steps**: Configurable minute intervals (e.g., 5, 10, 15 minutes)
+- **Fully Accessible**: Built on top of accessible Radix UI primitives
+- **Customizable**: Extensive props for formatting and styling
+- **Dark Mode**: Full dark mode support
+
+## Usage
+
+```tsx
+import { DateTimePicker } from '@future-house/feathers';
+
+function Example() {
+  const [date, setDate] = useState<Date | undefined>();
+
+  return (
+    <DateTimePicker
+      value={date}
+      onChange={setDate}
+      placeholder="Select date and time"
+    />
+  );
+}
+```
+
+## Examples
+
+### Date Only Mode
+
+Use `mode="date"` to show only the calendar for date selection.
+
+<Canvas of={DateTimePickerStories.DateOnly} />
+
+### Time Only Mode
+
+Use `mode="time"` to show only the time picker.
+
+<Canvas of={DateTimePickerStories.TimeOnly} />
+
+### With Seconds
+
+Enable seconds selection with the `showSeconds` prop.
+
+<Canvas of={DateTimePickerStories.WithSeconds} />
+
+### Minute Step Intervals
+
+Control the minute selection intervals with the `minuteStep` prop.
+
+<Canvas of={DateTimePickerStories.WithMinuteStep} />
+
+### Five Minute Intervals
+
+Show minutes in 5-minute increments for faster selection.
+
+<Canvas of={DateTimePickerStories.FiveMinuteIntervals} />
+
+### 24-Hour Format
+
+Use 24-hour format instead of 12-hour with AM/PM.
+
+<Canvas of={DateTimePickerStories.TwentyFourHourFormat} />
+
+### With Initial Value
+
+Render with a pre-selected date and time.
+
+<Canvas of={DateTimePickerStories.WithInitialValue} />
+
+### Disabled
+
+Disable the picker entirely.
+
+<Canvas of={DateTimePickerStories.Disabled} />
+
+### Custom Format
+
+Customize the display format using `formatOptions`.
+
+<Canvas of={DateTimePickerStories.CustomFormat} />
+
+### Controlled Component
+
+Use the component in controlled mode with state management.
+
+<Canvas of={DateTimePickerStories.Controlled} />
+
+### Multiple Instances
+
+Use multiple DateTimePickers for date range selection.
+
+<Canvas of={DateTimePickerStories.MultipleInstances} />
+
+## Accessibility
+
+The DateTimePicker component is built with accessibility in mind:
+
+- Full keyboard navigation support
+- ARIA labels and roles
+- Screen reader friendly
+- Focus management
+- Escape key to close popover
+
+## Best Practices
+
+1. **Provide Clear Labels**: Always provide a clear label or placeholder to indicate what the user should select
+2. **Use Appropriate Mode**: Choose the right mode (date, time, or datetime) based on your use case
+3. **Consider Time Zones**: Be aware of time zone considerations when working with dates
+4. **Validation**: Implement proper validation for date ranges or specific date requirements
+5. **Format Consistently**: Use consistent date/time formats throughout your application
+
+</DocLayout>

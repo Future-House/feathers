@@ -22,6 +22,7 @@ export * from '@/components/collapsible';
 export * from '@/components/combobox';
 export * from '@/components/command';
 export * from '@/components/date-input';
+export * from '@/components/date-time-picker';
 export * from '@/components/dialog';
 export * from '@/components/drawer';
 export * from '@/components/dropdown-menu';
