@@ -1,0 +1,94 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as AccordionStories from './accordion.stories';
+
+<Meta of={AccordionStories} />
+
+<DocLayout meta={AccordionStories.default}>
+
+## Default Example
+
+<Canvas of={AccordionStories.Default} />
+
+## Component API
+
+### Accordion
+
+<PropsTable argTypes={AccordionStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={AccordionStories.default.subcomponents} />
+
+## Examples
+
+### Multiple Selection
+
+Allow multiple accordion items to be open at the same time.
+
+<Canvas of={AccordionStories.Multiple} />
+
+### FAQ Example
+
+Common use case for frequently asked questions.
+
+<Canvas of={AccordionStories.FAQ} />
+
+### Rich Content
+
+Accordion with complex content including lists, buttons, and styled elements.
+
+<Canvas of={AccordionStories.WithRichContent} />
+
+### Controlled State
+
+Programmatically control which accordion items are open.
+
+<Canvas of={AccordionStories.Controlled} />
+
+### Custom Styling
+
+Customize the appearance with custom CSS classes.
+
+<Canvas of={AccordionStories.CustomStyling} />
+
+### Disabled Items
+
+Disable specific accordion items or the entire accordion.
+
+<Canvas of={AccordionStories.DisabledItems} />
+
+### RTL Support
+
+Right-to-left text direction support.
+
+<Canvas of={AccordionStories.RTLDirection} />
+
+### Horizontal Orientation
+
+Display accordion items horizontally like tabs.
+
+<Canvas of={AccordionStories.HorizontalOrientation} />
+
+## Accessibility
+
+The `Accordion` component follows the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) and includes:
+
+- Proper keyboard navigation with Tab, Enter, and Arrow keys
+- ARIA attributes for screen readers
+- Focus management between accordion items
+- Semantic HTML structure with proper heading hierarchy
+
+## Best Practices
+
+- Use descriptive titles that clearly indicate what content will be revealed
+- Keep accordion content concise and scannable
+- Consider using single mode for most use cases to avoid overwhelming users
+- Provide clear visual feedback for the current state (expanded/collapsed)
+- Use collapsible mode when appropriate to allow users to close all items
+- Consider the logical order of accordion items based on user priorities
+
+</DocLayout>

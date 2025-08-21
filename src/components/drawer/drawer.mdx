@@ -1,0 +1,85 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as DrawerStories from './drawer.stories';
+
+<Meta of={DrawerStories} />
+
+<DocLayout meta={DrawerStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={DrawerStories.Default} />
+
+## Component API
+
+### Drawer
+
+You may need to reference the official documentation for the [Vaul](https://vaul.emilkowal.ski/getting-started) to understand the full API and available options.
+
+<PropsTable argTypes={DrawerStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={DrawerStories.default.subcomponents} />
+
+## Examples
+
+### Mobile Menu
+
+A left-sliding drawer for mobile navigation menus.
+
+<Canvas of={DrawerStories.MobileMenu} />
+
+### Create New Item
+
+A bottom drawer with a form for creating new items.
+
+<Canvas of={DrawerStories.CreateNewItem} />
+
+### Settings Panel
+
+A right-sliding drawer for application settings.
+
+<Canvas of={DrawerStories.SettingsPanel} />
+
+### Action Sheet
+
+A bottom drawer presenting action options in a mobile-friendly layout.
+
+<Canvas of={DrawerStories.ActionSheet} />
+
+### From Top
+
+A drawer that slides down from the top of the screen.
+
+<Canvas of={DrawerStories.FromTop} />
+
+## Accessibility
+
+The `Drawer` component follows accessibility best practices and includes:
+
+- Focus trapping within the drawer when open
+- Escape key to close the drawer
+- Proper ARIA attributes for screen readers
+- Swipe gestures for mobile interaction
+- Focus return to the trigger element when closed
+- Backdrop interaction to close
+- Proper heading structure with DrawerTitle
+- Optional description support with DrawerDescription
+
+## Best Practices
+
+- Use bottom drawers for mobile-first experiences
+- Consider the drawer direction based on content and user expectations
+- Provide clear titles and descriptions for drawer content
+- Include appropriate action buttons in the footer
+- Use snap points for drawers with variable content heights
+- Test touch gestures on mobile devices
+- Ensure proper keyboard navigation
+- Consider performance impact of background scaling
+- Use drawers for secondary actions that don't require full page navigation
+
+</DocLayout>

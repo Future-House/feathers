@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["InputOTP","InputOTPGroup","InputOTPSlot","InputOTPSeparator"],"sources":["../../../src/components/input-otp/index.ts"],"sourcesContent":["export {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n  InputOTPSeparator,\n} from './input-otp';\n"],"mappings":"AAAA,SACEA,QAAQ,EACRC,aAAa,EACbC,YAAY,EACZC,iBAAiB","ignoreList":[]}

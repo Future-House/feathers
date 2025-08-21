@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["ScrollArea","ScrollBar"],"sources":["../../../src/components/scroll-area/index.ts"],"sourcesContent":["export { ScrollArea, ScrollBar } from './scroll-area';\n"],"mappings":"AAAA,SAASA,UAAU,EAAEC,SAAS","ignoreList":[]}

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["ResizablePanelGroup","ResizablePanel","ResizableHandle"],"sources":["../../../src/components/resizable/index.ts"],"sourcesContent":["export {\n  ResizablePanelGroup,\n  ResizablePanel,\n  ResizableHandle,\n} from './resizable';\n"],"mappings":"AAAA,SACEA,mBAAmB,EACnBC,cAAc,EACdC,eAAe","ignoreList":[]}

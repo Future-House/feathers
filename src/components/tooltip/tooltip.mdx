@@ -1,0 +1,91 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as TooltipStories from './tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+<DocLayout meta={TooltipStories.default}>
+
+## Default Example
+
+<Canvas of={TooltipStories.Default} />
+
+## Component API
+
+### Tooltip
+
+<PropsTable argTypes={TooltipStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={TooltipStories.default.subcomponents} />
+
+## Examples
+
+### Positioning
+
+Control tooltip placement around the trigger element.
+
+<Canvas of={TooltipStories.Positioning} />
+
+### Alignment
+
+Fine-tune tooltip alignment relative to the trigger.
+
+<Canvas of={TooltipStories.Alignment} />
+
+### With Offset
+
+Add custom spacing between tooltip and trigger.
+
+<Canvas of={TooltipStories.WithOffset} />
+
+### With Delay
+
+Control the delay before tooltip appears using TooltipProvider.
+
+<Canvas of={TooltipStories.WithDelay} />
+
+### Controlled Tooltip
+
+Programmatically control tooltip visibility.
+
+<Canvas of={TooltipStories.Controlled} />
+
+### Rich Content
+
+Tooltips can contain complex content beyond simple text.
+
+<Canvas of={TooltipStories.RichContent} />
+
+### Different Triggers
+
+Various elements that can trigger tooltip displays.
+
+<Canvas of={TooltipStories.DifferentTriggers} />
+
+## Accessibility
+
+The `Tooltip` component follows the [WAI-ARIA Tooltip Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) and includes:
+
+- Keyboard focus support with Escape key to close
+- Screen reader compatibility with proper ARIA attributes
+- Focus management that doesn't trap keyboard users
+- Support for both hover and focus interactions
+- Automatic collision detection and repositioning
+
+## Best Practices
+
+- Keep tooltip content concise and helpful
+- Use tooltips for supplementary information, not essential content
+- Ensure tooltips don't interfere with user interactions
+- Test with keyboard navigation and screen readers
+- Consider mobile users who cannot hover
+- Use appropriate delays to avoid overwhelming users
+- Position tooltips to avoid covering important content
+- Provide alternative ways to access tooltip information on touch devices
+
+</DocLayout>

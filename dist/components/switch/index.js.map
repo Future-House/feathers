@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Switch"],"sources":["../../../src/components/switch/index.ts"],"sourcesContent":["export { Switch } from './switch';\n"],"mappings":"AAAA,SAASA,MAAM","ignoreList":[]}

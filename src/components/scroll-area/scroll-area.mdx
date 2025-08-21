@@ -1,0 +1,85 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as ScrollAreaStories from './scroll-area.stories';
+
+<Meta of={ScrollAreaStories} />
+
+<DocLayout meta={ScrollAreaStories.default}>
+
+## Default Example
+
+<Canvas of={ScrollAreaStories.Basic} />
+
+## Component API
+
+### ScrollArea
+
+<PropsTable argTypes={ScrollAreaStories.default.argTypes} />
+
+<SubcomponentPropTable
+  subcomponents={ScrollAreaStories.default.subcomponents}
+/>
+
+## Examples
+
+### Horizontal Scroll
+
+Enable horizontal scrolling for wide content with custom scrollbar styling.
+
+<Canvas of={ScrollAreaStories.HorizontalScroll} />
+
+### Chat Messages
+
+Perfect for chat interfaces and message lists with consistent scrolling behavior.
+
+<Canvas of={ScrollAreaStories.ChatMessages} />
+
+### Tag List
+
+Display large lists of tags or badges in a constrained scrollable area.
+
+<Canvas of={ScrollAreaStories.TagList} />
+
+### Nested Scroll
+
+Create complex layouts with multiple nested scroll areas for rich content.
+
+<Canvas of={ScrollAreaStories.NestedScroll} />
+
+### Code Block
+
+Ideal for displaying code blocks and preformatted content with horizontal scrolling.
+
+<Canvas of={ScrollAreaStories.CodeBlock} />
+
+### With Scroll Type
+
+Control scrollbar visibility behavior with different scroll types.
+
+<Canvas of={ScrollAreaStories.WithScrollType} />
+
+## Accessibility
+
+The `ScrollArea` component maintains:
+
+- Native keyboard scrolling support (arrow keys, Page Up/Down)
+- Screen reader compatibility with proper scroll announcements
+- Focus management within scrollable content
+- Touch scrolling support on mobile devices
+- Preserved tab order for focusable elements
+
+## Best Practices
+
+- Use consistent scroll area styling throughout your application
+- Set appropriate heights for scroll containers
+- Consider the content type when choosing scroll types
+- Test scrolling behavior across different devices
+- Provide visual indicators when content is scrollable
+- Avoid nested scroll areas when possible for better user experience
+
+</DocLayout>

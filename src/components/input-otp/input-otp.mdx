@@ -1,0 +1,109 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as InputOTPStories from './input-otp.stories';
+
+<Meta of={InputOTPStories} />
+
+<DocLayout meta={InputOTPStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={InputOTPStories.Default} />
+
+## Component API
+
+### InputOTP
+
+You may need to reference the official documentation for the [input-otp docs](https://github.com/guilhermerodz/input-otp) to understand the full API and available options.
+
+<PropsTable argTypes={InputOTPStories.default.argTypes} />
+
+## Examples
+
+### With Separator
+
+An OTP input with visual separator between digit groups.
+
+<Canvas of={InputOTPStories.WithSeparator} />
+
+### Numeric Only
+
+An OTP input restricted to numeric characters only.
+
+<Canvas of={InputOTPStories.NumericOnly} />
+
+### Two-Factor Authentication
+
+A complete 2FA interface with OTP input and context.
+
+<Canvas of={InputOTPStories.TwoFactorAuth} />
+
+### Phone Verification
+
+A phone verification flow with 4-digit OTP input.
+
+<Canvas of={InputOTPStories.PhoneVerification} />
+
+### Email Verification
+
+An email verification with 8-character alphanumeric code.
+
+<Canvas of={InputOTPStories.EmailVerification} />
+
+### Disabled State
+
+An OTP input in disabled state with pre-filled value.
+
+<Canvas of={InputOTPStories.Disabled} />
+
+### With Validation
+
+An OTP input with real-time validation and feedback.
+
+<Canvas of={InputOTPStories.WithValidation} />
+
+### Different Sizes
+
+OTP inputs in various lengths for different use cases.
+
+<Canvas of={InputOTPStories.DifferentSizes} />
+
+### Login Flow
+
+A complete authentication flow with phone and OTP steps.
+
+<Canvas of={InputOTPStories.LoginFlow} />
+
+### Custom Styling
+
+An OTP input with custom border colors and styling.
+
+<Canvas of={InputOTPStories.CustomStyling} />
+
+## Accessibility
+
+The `InputOTP` component follows accessibility best practices and includes:
+
+- Keyboard navigation between input slots with Arrow keys
+- Screen reader support with proper ARIA labels
+- Focus management within the input group
+- Paste support for complete codes
+- Clear visual focus indicators
+- Proper labeling and instructions
+- Support for assistive technologies
+
+## Best Practices
+
+- Provide clear instructions about the expected code format
+- Use appropriate input lengths (4-8 digits typically)
+- Include visual separators for longer codes
+- Implement auto-advance between slots for better UX
+- Show validation feedback immediately
+- Support paste functionality for convenience
+- Use numeric input mode for numeric-only codes
+- Provide resend options with appropriate timing
+- Test with various input methods and assistive technologies
+- Consider auto-submission when code is complete
+- Implement proper error handling and retry mechanisms
+
+</DocLayout>

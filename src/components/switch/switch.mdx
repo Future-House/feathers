@@ -1,0 +1,89 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as SwitchStories from './switch.stories';
+
+<Meta of={SwitchStories} />
+
+<DocLayout meta={SwitchStories.default}>
+
+## Default Example
+
+<Canvas of={SwitchStories.Default} />
+
+## Component API
+
+### Switch
+
+<PropsTable argTypes={SwitchStories.default.argTypes} />
+
+## Examples
+
+### Checked by Default
+
+Switch component with default checked state.
+
+<Canvas of={SwitchStories.Checked} />
+
+### Disabled States
+
+Show disabled switches in both checked and unchecked states.
+
+<Canvas of={SwitchStories.Disabled} />
+
+### Controlled Switch
+
+Demonstrate programmatic control of the switch state.
+
+<Canvas of={SwitchStories.Controlled} />
+
+### Form Example
+
+Integration with form handling and state management.
+
+<Canvas of={SwitchStories.FormExample} />
+
+### Settings Panel
+
+Real-world example of switches in a settings interface.
+
+<Canvas of={SwitchStories.SettingsPanel} />
+
+### Custom Styling
+
+Apply custom colors and styling to switch components.
+
+<Canvas of={SwitchStories.CustomStyling} />
+
+### With Descriptions
+
+Switches with detailed descriptions for better context.
+
+<Canvas of={SwitchStories.WithDescriptions} />
+
+### Accessibility Showcase
+
+Demonstrate proper accessibility features and ARIA attributes.
+
+<Canvas of={SwitchStories.AccessibilityShowcase} />
+
+## Accessibility
+
+The `Switch` component follows the [WAI-ARIA Switch Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) and includes:
+
+- Keyboard navigation support with Space and Enter keys
+- Screen reader announcements for state changes
+- Proper ARIA attributes including `aria-checked` and `aria-labelledby`
+- Focus management and visual focus indicators
+- Support for `aria-describedby` for additional context
+
+## Best Practices
+
+- Always provide clear labels for switch components
+- Use switches for binary on/off states, not for selection between options
+- Group related switches logically in forms and settings
+- Provide immediate visual feedback for state changes
+- Test with keyboard navigation and screen readers
+- Use descriptive text to explain what the switch controls
+- Consider the impact of changes and whether confirmation is needed
+
+</DocLayout>

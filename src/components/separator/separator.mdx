@@ -1,0 +1,75 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as SeparatorStories from './separator.stories';
+
+<Meta of={SeparatorStories} />
+
+<DocLayout meta={SeparatorStories.default}>
+
+## Default Example
+
+<Canvas of={SeparatorStories.Default} />
+
+## Component API
+
+### Separator
+
+<PropsTable argTypes={SeparatorStories.default.argTypes} />
+
+## Examples
+
+### Vertical
+
+Use vertical separators in navigation menus or inline content.
+
+<Canvas of={SeparatorStories.Vertical} />
+
+### Custom Styling
+
+Apply custom colors, thickness, and border styles to separators.
+
+<Canvas of={SeparatorStories.CustomStyling} />
+
+### In Cards
+
+Organize content sections within card components using separators.
+
+<Canvas of={SeparatorStories.InCards} />
+
+### In Navigation
+
+Use separators in navigation breadcrumbs and menu items.
+
+<Canvas of={SeparatorStories.InNavigation} />
+
+### With Spacing
+
+Control spacing around separators using margin classes.
+
+<Canvas of={SeparatorStories.WithSpacing} />
+
+### Non Decorative
+
+Create semantic separators that have meaning for screen readers.
+
+<Canvas of={SeparatorStories.NonDecorative} />
+
+## Accessibility
+
+The `Separator` component follows accessibility guidelines:
+
+- Decorative separators are hidden from screen readers by default
+- Non-decorative separators are announced to assistive technologies
+- Proper ARIA attributes for semantic meaning
+- No keyboard interaction required (visual element only)
+
+## Best Practices
+
+- Use separators to create visual hierarchy and group related content
+- Choose appropriate orientation (horizontal vs vertical) for your layout
+- Consider spacing around separators for optimal visual balance
+- Use semantic separators when the division has meaning beyond visual design
+- Keep separator styling consistent throughout your application
+- Test with screen readers to ensure appropriate announcements
+
+</DocLayout>

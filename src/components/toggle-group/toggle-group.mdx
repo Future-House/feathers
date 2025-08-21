@@ -1,0 +1,99 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as ToggleGroupStories from './toggle-group.stories';
+
+<Meta of={ToggleGroupStories} />
+
+<DocLayout meta={ToggleGroupStories.default}>
+
+## Default Example
+
+<Canvas of={ToggleGroupStories.Default} />
+
+## Component API
+
+### ToggleGroup
+
+<PropsTable argTypes={ToggleGroupStories.default.argTypes} />
+
+<SubcomponentPropTable
+  subcomponents={ToggleGroupStories.default.subcomponents}
+/>
+
+## Examples
+
+### With Text
+
+Toggle group using text labels instead of icons.
+
+<Canvas of={ToggleGroupStories.WithText} />
+
+### Multiple Selection
+
+Allow multiple toggles to be pressed simultaneously.
+
+<Canvas of={ToggleGroupStories.Multiple} />
+
+### Variants
+
+Different visual styles for toggle groups.
+
+<Canvas of={ToggleGroupStories.Variants} />
+
+### Sizes
+
+Toggle groups in various sizes.
+
+<Canvas of={ToggleGroupStories.Sizes} />
+
+### Text Alignment
+
+Toggle group for text alignment controls.
+
+<Canvas of={ToggleGroupStories.TextAlignment} />
+
+### Text Formatting Toolbar
+
+Real-world example of a formatting toolbar with multiple toggle groups.
+
+<Canvas of={ToggleGroupStories.TextFormattingToolbar} />
+
+### Disabled States
+
+Show disabled toggle groups and individual disabled items.
+
+<Canvas of={ToggleGroupStories.Disabled} />
+
+### Social Interactions
+
+Toggle group for social media interaction buttons.
+
+<Canvas of={ToggleGroupStories.SocialInteractions} />
+
+## Accessibility
+
+The `ToggleGroup` component follows the [WAI-ARIA Toolbar Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/) and includes:
+
+- Keyboard navigation with arrow keys, Home, and End
+- Screen reader support with proper role announcements
+- Focus management within the group
+- Individual toggle accessibility with `aria-pressed` states
+- Support for both single and multiple selection modes
+
+## Best Practices
+
+- Use single selection for mutually exclusive options
+- Use multiple selection when users can choose several options
+- Provide clear visual feedback for selected states
+- Group related functionality together logically
+- Ensure adequate spacing between toggle items
+- Test with keyboard navigation and screen readers
+- Consider the orientation (horizontal/vertical) based on available space
+- Use meaningful icons and labels for better usability
+
+</DocLayout>

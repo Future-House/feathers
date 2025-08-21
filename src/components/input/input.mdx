@@ -1,0 +1,152 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as InputStories from './input.stories';
+
+<Meta of={InputStories} />
+
+<DocLayout meta={InputStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={InputStories.Default} />
+
+## Component API
+
+### Input
+
+<PropsTable argTypes={InputStories.default.argTypes} />
+
+## Examples
+
+### With Value
+
+An input with a pre-filled value.
+
+<Canvas of={InputStories.WithValue} />
+
+### Email Input
+
+An input specifically configured for email addresses.
+
+<Canvas of={InputStories.Email} />
+
+### Password Input
+
+An input for password entry with obscured text.
+
+<Canvas of={InputStories.Password} />
+
+### Number Input
+
+A numeric input with min, max, and step constraints.
+
+<Canvas of={InputStories.Number} />
+
+### Search Input
+
+A search-specific input with appropriate styling and behavior.
+
+<Canvas of={InputStories.Search} />
+
+### Disabled State
+
+An input in disabled state that cannot be interacted with.
+
+<Canvas of={InputStories.Disabled} />
+
+### Read Only
+
+A read-only input that displays data but cannot be edited.
+
+<Canvas of={InputStories.ReadOnly} />
+
+### Required Field
+
+An input marked as required for form validation.
+
+<Canvas of={InputStories.Required} />
+
+### With Max Length
+
+An input with a maximum character limit.
+
+<Canvas of={InputStories.WithMaxLength} />
+
+### File Input
+
+A file input for uploading documents or images.
+
+<Canvas of={InputStories.File} />
+
+### Date Input
+
+A date picker input for selecting dates.
+
+<Canvas of={InputStories.Date} />
+
+### Time Input
+
+A time picker input for selecting times.
+
+<Canvas of={InputStories.Time} />
+
+### Custom Styling
+
+An input with custom CSS classes for unique styling.
+
+<Canvas of={InputStories.WithCustomStyling} />
+
+### Form Example
+
+A complete form with multiple labeled inputs.
+
+<Canvas of={InputStories.FormExample} />
+
+### With Icons
+
+Inputs enhanced with icons for better visual context.
+
+<Canvas of={InputStories.WithIcons} />
+
+### Password Toggle
+
+A password input with show/hide toggle functionality.
+
+<Canvas of={InputStories.PasswordToggle} />
+
+### Error State
+
+<Canvas of={InputStories.Error} />
+
+### Sizing Variations
+
+Inputs in different sizes for various layout needs.
+
+<Canvas of={InputStories.SizingVariations} />
+
+## Accessibility
+
+The `Input` component follows standard HTML input accessibility practices and includes:
+
+- Proper labeling with `htmlFor` and `id` associations
+- Support for ARIA attributes like `aria-label` and `aria-describedby`
+- Keyboard navigation with Tab and Enter keys
+- Screen reader announcements for validation states
+- Focus management with visible focus indicators
+- Support for form validation attributes
+- Placeholder text that doesn't replace proper labeling
+
+## Best Practices
+
+- Always provide clear, descriptive labels for inputs
+- Use appropriate input types for better mobile keyboard experience
+- Implement proper form validation with helpful error messages
+- Consider placeholder text as supplementary, not primary guidance
+- Ensure sufficient color contrast for accessibility
+- Use icons thoughtfully to enhance usability without cluttering
+- Test with keyboard navigation and screen readers
+- Group related inputs logically in forms
+- Provide clear feedback for validation states
+- Consider input masking for formatted data like phone numbers
+
+</DocLayout>

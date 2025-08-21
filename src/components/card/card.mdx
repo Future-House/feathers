@@ -1,0 +1,66 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as CardStories from './card.stories';
+
+<Meta of={CardStories} />
+
+<DocLayout meta={CardStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={CardStories.Default} />
+
+## Component API
+
+### Card
+
+<PropsTable argTypes={CardStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={CardStories.default.subcomponents} />
+
+## Examples
+
+### Simple Card
+
+A card with form elements and actions.
+
+<Canvas of={CardStories.SimpleCard} />
+
+### Notification Card
+
+Card designed for displaying notifications with actions.
+
+<Canvas of={CardStories.NotificationCard} />
+
+### Without Footer
+
+Card without a footer section for simpler layouts.
+
+<Canvas of={CardStories.WithoutFooter} />
+
+## Accessibility
+
+The `Card` component follows accessibility best practices:
+
+- Uses semantic HTML structure for better screen reader support
+- Maintains proper heading hierarchy within card content
+- Supports keyboard navigation for interactive elements
+- Provides proper focus management for form elements
+- Ensures adequate contrast ratios for readability
+
+## Best Practices
+
+- Use clear and descriptive card titles
+- Maintain consistent card layouts throughout your application
+- Consider the visual hierarchy when organizing card content
+- Use appropriate spacing between card elements
+- Ensure cards work well on different screen sizes
+- Group related content logically within cards
+- Use cards to create clear content boundaries
+
+</DocLayout>

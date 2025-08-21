@@ -1,0 +1,55 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as ThemeToggleStories from './theme-toggle.stories';
+
+<Meta of={ThemeToggleStories} />
+
+<DocLayout meta={ThemeToggleStories.default} hideRadixUiUrl hideShadcnUrl>
+
+_The `ThemeToggle` pages are wrapped with their own nested theme, so there may be some bugs when using the toggle within the story container._
+
+## Overview
+
+The ThemeToggle component provides three different ways to switch between light and dark themes. Each variant offers a different user experience:
+
+- **Button**: Simple toggle between light and dark modes
+- **Switch**: Animated sliding toggle with theme icons on the thumb
+- **Dropdown**: Full theme selector with light, dark, and system options
+
+## Default Example
+
+<Canvas of={ThemeToggleStories.Default} />
+
+## Variants
+
+### Switch Variant
+
+A compact animated switch that displays the current theme icon on the sliding thumb with smooth fade transitions.
+
+<Canvas of={ThemeToggleStories.Switch} />
+
+### Dropdown Variant
+
+A dropdown menu that supports all three theme modes including the system preference option.
+
+<Canvas of={ThemeToggleStories.Dropdown} />
+
+## Variant Comparison
+
+<Canvas of={ThemeToggleStories.Comparison} />
+
+## Component API
+
+### ThemeToggle
+
+<PropsTable argTypes={ThemeToggleStories.default.argTypes} />
+
+## Examples
+
+### With Components
+
+Theme toggle shown with various components to demonstrate the color changes when switching between themes.
+
+<Canvas of={ThemeToggleStories.WithComponents} />
+
+</DocLayout>

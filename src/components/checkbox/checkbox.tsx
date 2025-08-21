@@ -1,0 +1,47 @@
+import * as React from 'react';
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { Check, Minus } from '@/icons';
+
+import { cn } from '@/lib/utils';
+
+interface CheckboxProps
+  extends React.ComponentProps<typeof CheckboxPrimitive.Root> {
+  error?: boolean;
+}
+
+// TODO: add indeterminate state support
+// example: https://www.shadcnui-blocks.com/components/checkbox
+function Checkbox({ className, error, ...props }: CheckboxProps) {
+  return (
+    <CheckboxPrimitive.Root
+      data-slot="checkbox"
+      data-state="indeterminate"
+      aria-invalid={error}
+      className={cn(
+        'peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
+        error &&
+          'ring-destructive/20 dark:ring-destructive/40 border-destructive',
+        className
+      )}
+      {...props}
+    >
+      <CheckboxPrimitive.Indicator
+        data-slot="checkbox-indicator"
+        className="flex items-center justify-center text-current transition-none"
+      >
+        {
+          // if defaultChecked | checked is indeterminate
+          // render minus icon
+        }
+        {props.defaultChecked === 'indeterminate' ||
+        props.checked === 'indeterminate' ? (
+          <Minus className="size-3.5" />
+        ) : (
+          <Check className="size-3.5" />
+        )}
+      </CheckboxPrimitive.Indicator>
+    </CheckboxPrimitive.Root>
+  );
+}
+
+export { Checkbox };

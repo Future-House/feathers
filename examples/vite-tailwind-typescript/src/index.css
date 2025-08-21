@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+@import '@future-house/feathers/index.css';
+
+@theme inline {
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+:root {
+  /* --radius: 1rem; */
+  --success: #1f7a1f;
+  --success-foreground: oklch(0.95 0 0);
+  --warning: #d77812;
+  --warning-foreground: oklch(0.95 0 0);
+}
+
+.dark {
+  /* --radius: 1rem; */
+  --success: #269c26;
+  --success-foreground: oklch(0.95 0 0);
+  --warning: #fa8c16;
+  --warning-foreground: oklch(0.95 0 0);
+}

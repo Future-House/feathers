@@ -1,0 +1,78 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as DropdownMenuStories from './dropdown-menu.stories';
+
+<Meta of={DropdownMenuStories} />
+
+<DocLayout meta={DropdownMenuStories.default}>
+
+## Default Example
+
+<Canvas of={DropdownMenuStories.Default} />
+
+## Component API
+
+### DropdownMenu
+
+<PropsTable argTypes={DropdownMenuStories.default.argTypes} />
+
+<SubcomponentPropTable
+  subcomponents={DropdownMenuStories.default.subcomponents}
+/>
+
+## Examples
+
+### With Checkbox Items
+
+A dropdown menu containing checkbox items for toggling preferences.
+
+<Canvas of={DropdownMenuStories.WithCheckboxItems} />
+
+### With Radio Group
+
+A dropdown menu with radio groups for selecting from mutually exclusive options.
+
+<Canvas of={DropdownMenuStories.WithRadioGroup} />
+
+### With Submenus
+
+A dropdown menu featuring nested submenus for organized actions.
+
+<Canvas of={DropdownMenuStories.WithSubmenus} />
+
+### With Groups
+
+A dropdown menu with logical grouping and separators for better organization.
+
+<Canvas of={DropdownMenuStories.WithGroups} />
+
+## Accessibility
+
+The `DropdownMenu` component follows the [WAI-ARIA Menu design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu/) and includes:
+
+- Full keyboard navigation with Arrow keys, Enter, and Escape
+- Screen reader support with proper ARIA roles and attributes
+- Focus management within the menu
+- Support for menu item shortcuts and accelerators
+- Proper handling of checkbox and radio item states
+- Submenu navigation and focus management
+- RTL (right-to-left) language support
+
+## Best Practices
+
+- Group related actions logically with separators
+- Use clear, action-oriented labels for menu items
+- Include keyboard shortcuts for frequently used actions
+- Place destructive actions at the bottom with visual distinction
+- Use submenus sparingly to avoid deep nesting
+- Provide icons to help users quickly identify actions
+- Consider menu positioning relative to trigger buttons
+- Test with keyboard navigation and screen readers
+- Ensure proper focus return when menu closes
+
+</DocLayout>

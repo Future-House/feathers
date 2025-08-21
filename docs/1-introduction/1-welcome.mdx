@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Badge } from '../../src/components/badge';
+import { Button } from '../../src/components/button';
+import { Typography } from '../../src/components/typography';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../../src/components/card';
+
+<Meta
+  title="Introduction/Welcome"
+  parameters={{ layout: 'fullscreen', docs: { page: null } }}
+/>
+
+# Welcome to Feathers
+
+A modern React component library built with TypeScript, Tailwind CSS, and Radix UI primitives.
+
+<Badge variant="outline">React 19</Badge>
+<Badge variant="outline">TypeScript</Badge>
+<Badge variant="outline">Tailwind CSS</Badge>
+<Badge variant="outline">Radix UI</Badge>
+
+## Features
+
+- Accessible by Default
+  - Built on Radix UI primitives, ensuring excellent accessibility and keyboard navigation out of the box.
+- Dark Mode Support
+  - Full dark mode support with theme switching capabilities built into every component.
+- TypeScript
+  - Written in TypeScript with comprehensive type definitions for excellent developer experience.
+- Customizable Styling
+  - Powered by Tailwind CSS with CSS variables for easy theming and customization.
+- Tree Shakable
+  - Import only what you need with support for both full and individual component imports.

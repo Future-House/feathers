@@ -1,0 +1,79 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as ResizableStories from './resizable.stories';
+
+<Meta of={ResizableStories} />
+
+<DocLayout meta={ResizableStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={ResizableStories.HorizontalLayout} />
+
+## Component API
+
+### ResizablePanelGroup
+
+You may need to reference the official documentation for the [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels#props).
+
+<PropsTable argTypes={ResizableStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={ResizableStories.default.subcomponents} />
+
+## Examples
+
+### Vertical Layout
+
+Create vertical split layouts with resizable panels for dashboard interfaces.
+
+<Canvas of={ResizableStories.VerticalLayout} />
+
+### With Handle
+
+Add visual grip handles to make resize areas more discoverable.
+
+<Canvas of={ResizableStories.WithHandle} />
+
+### Nested Layout
+
+Combine horizontal and vertical layouts for complex application interfaces.
+
+<Canvas of={ResizableStories.NestedLayout} />
+
+### Collapsible Panel
+
+Allow panels to collapse completely when resized to their minimum size.
+
+<Canvas of={ResizableStories.CollapsiblePanel} />
+
+### Min/Max Sizes
+
+Set constraints on panel sizing to maintain usable interface proportions.
+
+<Canvas of={ResizableStories.MinMaxSizes} />
+
+## Accessibility
+
+The `Resizable` components include:
+
+- Keyboard support with arrow keys for resize operations
+- Screen reader announcements for resize actions
+- Focus management for resize handles
+- ARIA attributes for handle identification
+- Proper tab order through resizable interfaces
+
+## Best Practices
+
+- Set appropriate minimum and maximum sizes for panels
+- Use visual handles to indicate resizable areas
+- Consider the content needs when setting default sizes
+- Test resize behavior at different viewport sizes
+- Provide smooth resize animations for better user experience
+- Save panel sizes in user preferences when appropriate
+
+</DocLayout>

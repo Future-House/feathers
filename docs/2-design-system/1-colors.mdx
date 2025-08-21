@@ -1,0 +1,391 @@
+import React from 'react';
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Badge } from '../../src/components/badge';
+import { Button } from '../../src/components/button';
+import { Toaster, toast } from '../../src/components/sonner';
+import { ThemeProvider } from '../../src/components/theme-provider';
+import { Copy } from '../../src/icons';
+import { TAILWIND_COLORS } from '../../.storybook/themes/tailwindColors.js';
+
+<Meta
+  title="Design System/Colors"
+  parameters={{ 
+    layout: 'fullscreen', 
+    docs: { page: null } ,
+  }}
+/>
+
+# Colors
+
+<p className="sb-unstyled">The Feathers design system uses a carefully crafted color palette built on CSS-variables to ensure consistent and accessible colors across light and dark themes.</p>
+
+## Design System Colors
+
+These are the semantic colors defined in our design system, automatically adapting between light and dark themes.
+
+### Core Semantic Colors
+
+<div className="space-y-8 my-8">
+  {[
+    {
+      category: "Background & Surface",
+      colors: [
+        { name: 'Background', class: 'bg-background', cssVar: '--background', desc: 'Primary background color' },
+        { name: 'Foreground', class: 'bg-foreground', cssVar: '--foreground', desc: 'Primary text color' },
+        { name: 'Card', class: 'bg-card', cssVar: '--card', desc: 'Card background color' },
+        { name: 'Card Foreground', class: 'bg-card-foreground', cssVar: '--card-foreground', desc: 'Card text color' },
+        { name: 'Popover', class: 'bg-popover', cssVar: '--popover', desc: 'Popover background color' },
+        { name: 'Popover Foreground', class: 'bg-popover-foreground', cssVar: '--popover-foreground', desc: 'Popover text color' },
+      ]
+    },
+    {
+      category: "Interactive Colors",
+      colors: [
+        { name: 'Primary', class: 'bg-primary', cssVar: '--primary', desc: 'Primary action color' },
+        { name: 'Primary Foreground', class: 'bg-primary-foreground', cssVar: '--primary-foreground', desc: 'Text on primary backgrounds' },
+        { name: 'Secondary', class: 'bg-secondary', cssVar: '--secondary', desc: 'Secondary action color' },
+        { name: 'Secondary Foreground', class: 'bg-secondary-foreground', cssVar: '--secondary-foreground', desc: 'Text on secondary backgrounds' },
+        { name: 'Destructive', class: 'bg-destructive', cssVar: '--destructive', desc: 'Destructive action color' },
+        { name: 'Destructive Foreground', class: 'bg-destructive-foreground', cssVar: '--destructive-foreground', desc: 'Text on destructive backgrounds' },
+      ]
+    },
+    {
+      category: "Status Colors",
+      colors: [
+        { name: 'Success', class: 'bg-success', cssVar: '--success', desc: 'Success state color' },
+        { name: 'Success Foreground', class: 'bg-success-foreground', cssVar: '--success-foreground', desc: 'Text on success backgrounds' },
+        { name: 'Warning', class: 'bg-warning', cssVar: '--warning', desc: 'Warning state color' },
+        { name: 'Warning Foreground', class: 'bg-warning-foreground', cssVar: '--warning-foreground', desc: 'Text on warning backgrounds' },
+        { name: 'Info', class: 'bg-info', cssVar: '--info', desc: 'Information state color' },
+        { name: 'Info Foreground', class: 'bg-info-foreground', cssVar: '--info-foreground', desc: 'Text on info backgrounds' },
+        { name: 'Error', class: 'bg-error', cssVar: '--error', desc: 'Error state color' },
+        { name: 'Error Foreground', class: 'bg-error-foreground', cssVar: '--error-foreground', desc: 'Text on error backgrounds' },
+      ]
+    },
+    {
+      category: "Neutral Colors",
+      colors: [
+        { name: 'Muted', class: 'bg-muted', cssVar: '--muted', desc: 'Muted background color' },
+        { name: 'Muted Foreground', class: 'bg-muted-foreground', cssVar: '--muted-foreground', desc: 'Muted text color' },
+        { name: 'Accent', class: 'bg-accent', cssVar: '--accent', desc: 'Accent background color' },
+        { name: 'Accent Foreground', class: 'bg-accent-foreground', cssVar: '--accent-foreground', desc: 'Text on accent backgrounds' },
+        { name: 'Border', class: 'bg-border', cssVar: '--border', desc: 'Default border color' },
+        { name: 'Input', class: 'bg-input', cssVar: '--input', desc: 'Input background color' },
+        { name: 'Ring', class: 'bg-ring', cssVar: '--ring', desc: 'Focus ring color' },
+      ]
+    }
+  ].map((section) => (
+    <div key={section.category} className="sb-unstyled mb-6">
+      <h3 className="sb-unstyled text-xl font-semibold mb-2">{section.category}</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {section.colors.map((color) => (
+          <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center space-x-3 mb-3">
+              <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
+              <div className="flex-1 min-w-0 pl-4">
+                <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+                <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between pt-3">
+              <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">var({color.cssVar})</code>
+              <Button 
+                size="sm" 
+                variant="ghost"
+                onClick={() => {
+                  navigator.clipboard.writeText(`var(${color.cssVar})`);
+                  toast.success(`Copied "var(${color.cssVar})" to clipboard`);
+                }}
+                className="h-8 w-8 p-0"
+              >
+                <Copy className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+### Chart Colors
+
+<div className="my-8">
+  <p className="sb-unstyled text-sm text-muted-foreground mb-4">A set of 5 colors designed for charts and data visualization</p>
+  <div className="border border-border rounded-lg overflow-hidden">
+    <div className="flex">
+        <div className={`flex-1 bg-chart-1 p-6 flex flex-col items-center justify-center text-white relative group cursor-pointer hover:shadow-lg transition-shadow`}>
+          <div className="text-center space-y-2">
+            <h4 className="sb-unstyled font-semibold text-lg">Chart 1</h4>
+            <code className="text-xs bg-muted px-2 py-1 rounded">var(--chart-1)</code>
+          </div>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button 
+              size="sm" 
+              variant="ghost"
+              onClick={() => {
+                navigator.clipboard.writeText(`var(--chart-1)`);
+                toast.success(`Copied "var(--chart-1)" to clipboard`);
+              }}
+              className="h-8 w-8 p-0 bg-black bg-opacity-30 hover:bg-black hover:bg-opacity-50 text-white"
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        <div className={`flex-1 bg-chart-2 p-6 flex flex-col items-center justify-center text-white relative group cursor-pointer hover:shadow-lg transition-shadow`}>
+          <div className="text-center space-y-2">
+            <h4 className="sb-unstyled font-semibold text-lg">Chart 2</h4>
+            <code className="text-xs bg-muted px-2 py-1 rounded">var(--chart-2)</code>
+          </div>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button 
+              size="sm" 
+              variant="ghost"
+              onClick={() => {
+                navigator.clipboard.writeText(`var(--chart-2)`);
+                toast.success(`Copied "var(--chart-2)" to clipboard`);
+              }}
+              className="h-8 w-8 p-0 bg-black bg-opacity-30 hover:bg-black hover:bg-opacity-50 text-white"
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        <div className={`flex-1 bg-chart-3 p-6 flex flex-col items-center justify-center text-white relative group cursor-pointer hover:shadow-lg transition-shadow`}>
+          <div className="text-center space-y-2">
+            <h4 className="sb-unstyled font-semibold text-lg">Chart 3</h4>
+            <code className="text-xs bg-muted px-2 py-1 rounded">var(--chart-3)</code>
+          </div>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button 
+              size="sm" 
+              variant="ghost"
+              onClick={() => {
+                navigator.clipboard.writeText(`var(--chart-3)`);
+                toast.success(`Copied "var(--chart-3)" to clipboard`);
+              }}
+              className="h-8 w-8 p-0 bg-black bg-opacity-30 hover:bg-black hover:bg-opacity-50 text-white"
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        <div className={`flex-1 bg-chart-4 p-6 flex flex-col items-center justify-center text-white relative group cursor-pointer hover:shadow-lg transition-shadow`}>
+          <div className="text-center space-y-2">
+            <h4 className="sb-unstyled font-semibold text-lg">Chart 4</h4>
+            <code className="text-xs bg-muted px-2 py-1 rounded">var(--chart-4)</code>
+          </div>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button 
+              size="sm" 
+              variant="ghost"
+              onClick={() => {
+                navigator.clipboard.writeText(`var(--chart-4)`);
+                toast.success(`Copied "var(--chart-4)" to clipboard`);
+              }}
+              className="h-8 w-8 p-0 bg-black bg-opacity-30 hover:bg-black hover:bg-opacity-50 text-white"
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        <div className={`flex-1 bg-chart-5 p-6 flex flex-col items-center justify-center text-white relative group cursor-pointer hover:shadow-lg transition-shadow`}>
+          <div className="text-center space-y-2">
+            <h4 className="sb-unstyled font-semibold text-lg">Chart 5</h4>
+            <code className="text-xs bg-muted px-2 py-1 rounded">var(--chart-5)</code>
+          </div>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button 
+              size="sm" 
+              variant="ghost"
+              onClick={() => {
+                navigator.clipboard.writeText(`var(--chart-5)`);
+                toast.success(`Copied "var(--chart-5)" to clipboard`);
+              }}
+              className="h-8 w-8 p-0 bg-black bg-opacity-30 hover:bg-black hover:bg-opacity-50 text-white"
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+### Sidebar Colors
+
+<div className="my-8">
+  <div className="border border-border rounded-lg p-4">
+    <div className="mb-4">
+      <h4 className="sb-unstyled font-medium text-lg">Sidebar Color System</h4>
+      <p className="sb-unstyled text-sm text-muted-foreground">Specialized colors for sidebar navigation components</p>
+    </div>
+    <div className="space-y-3">
+      {[
+        { name: 'Sidebar', class: 'bg-sidebar', cssVar: '--sidebar', desc: 'Sidebar background' },
+        { name: 'Sidebar Foreground', class: 'bg-sidebar-foreground', cssVar: '--sidebar-foreground', desc: 'Sidebar text' },
+        { name: 'Sidebar Primary', class: 'bg-sidebar-primary', cssVar: '--sidebar-primary', desc: 'Sidebar primary elements' },
+        { name: 'Sidebar Primary Foreground', class: 'bg-sidebar-primary-foreground', cssVar: '--sidebar-primary-foreground', desc: 'Text on sidebar primary' },
+        { name: 'Sidebar Accent', class: 'bg-sidebar-accent', cssVar: '--sidebar-accent', desc: 'Sidebar accent elements' },
+        { name: 'Sidebar Accent Foreground', class: 'bg-sidebar-accent-foreground', cssVar: '--sidebar-accent-foreground', desc: 'Text on sidebar accent' },
+        { name: 'Sidebar Border', class: 'bg-sidebar-border', cssVar: '--sidebar-border', desc: 'Sidebar borders' },
+        { name: 'Sidebar Ring', class: 'bg-sidebar-ring', cssVar: '--sidebar-ring', desc: 'Sidebar focus rings' },
+      ].map((color) => (
+        <div key={color.name} className="flex items-center space-x-4 p-3 hover:bg-muted/50 rounded">
+          <div className={`w-12 h-8 ${color.class} border border-border rounded`}></div>
+          <div className="flex-1 pl-4">
+            <div className="sb-unstyled font-medium">{color.name}</div>
+            <div className="sb-unstyled text-sm text-muted-foreground">{color.desc}</div>
+          </div>
+          <div className="flex space-x-2">
+            <code className="text-xs bg-muted px-2 py-1 rounded">var({color.cssVar})</code>
+
+            <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+                navigator.clipboard.writeText(`var(--color-${color.cssVar})`);
+                toast.success(`Copied "var(--color-${color.cssVar})" to clipboard`);
+              }}
+              className="h-6 w-6 p-0"
+            >
+            <Copy className="h-3 w-3" />
+          </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>
+
+## Expanded Color Palette
+
+<div className="my-8">
+  <p className="sb-unstyled text-muted-foreground mb-6">In addition to our semantic colors, Feathers includes access to [Tailwind's full color palette](https://tailwindcss.com/docs/colors) for additional flexibility.</p>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    {Object.entries(TAILWIND_COLORS).map(([colorName, colorValue]) => {
+      // This handles the standalone white color
+      if (typeof colorValue === 'string') {
+        return (
+          <div key={colorName} className="border border-border rounded-lg overflow-hidden">
+            <div className="p-4 bg-muted">
+              <h3 className="sb-unstyled text-lg font-semibold capitalize">{colorName}</h3>
+            </div>
+            <div className="flex items-center justify-center h-20 font-medium" style={{ backgroundColor: colorValue }}>
+              <span className={`sb-unstyled ${colorValue === '#ffffff' ? 'text-black' : 'text-white'}`}>{colorName}</span>
+            </div>
+            <div className="p-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="sb-unstyled text-sm font-medium">Class:</span>
+                <code className="text-xs bg-muted px-2 py-1 rounded">{colorName}</code>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="sb-unstyled text-sm font-medium">Hex:</span>
+                <code className="text-xs bg-muted px-2 py-1 rounded font-mono">{colorValue}</code>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div key={colorName} className="border border-border rounded-lg overflow-hidden">
+          <div className="p-4 bg-muted">
+            <h3 className="sb-unstyled text-lg font-semibold capitalize">{colorName}</h3>
+          </div>
+          <div className="space-y-0">
+            {Object.entries(colorValue).map(([shade, hex]) => {
+              // Determine if we should use light or dark text based on shade
+              const shadeNum = parseInt(shade);
+              const useWhiteText = shadeNum >= 500 || ['black', 'dark'].some(keyword => hex.toLowerCase().includes(keyword));
+              const textColor = useWhiteText ? 'text-white' : 'text-black';
+              const hoverBgColor = useWhiteText ? '!bg-white bg-opacity-50' : '!bg-black bg-opacity-80';
+              const hoverTextColor = useWhiteText ? '!text-black' : '!text-white'; // invert
+
+              return (
+                <div
+                  key={shade}
+                  className={`flex items-center justify-between px-4 py-3 ${textColor} font-medium relative group`}
+                  style={{ backgroundColor: hex }}
+                >
+                  <Badge
+                    variant="secondary"
+                    className="cursor-pointer hover:bg-opacity-80 transition-colors !text-sm"
+                    onClick={() => {
+                      navigator.clipboard.writeText(`${colorName}-${shade}`);
+                      toast.success(`Copied "${colorName}-${shade}" to clipboard`);
+                    }}
+                  >
+                    <code className="!bg-transparent dark:text-white !light:text-black">{colorName}-{shade}</code>
+                    <Copy className={`ml-1 h-3 w-3`} />
+                  </Badge>
+                  <div className={`opacity-0 group-hover:opacity-100 transition-opacity !border-none ${hoverBgColor} px-2 py-1 rounded text-xs flex items-center space-x-2`}>
+                    <code className={`sb-unstyled ${hoverTextColor} !bg-transparent !text-sm`}>{hex}</code>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    })}
+
+  </div>
+</div>
+
+## Usage Guidelines
+
+### Dark Mode Support
+
+When you need to override semantic colors with Tailwind colors, be sure to utilize the `dark:` utility class to ensure proper theme support:
+
+```tsx
+// ✅ Good - Supports both light and dark themes
+<div className="bg-blue-50 dark:bg-blue-900 text-blue-900 dark:text-blue-100">
+  <p>This content adapts to both themes</p>
+</div>
+
+// ✅ Good
+<Alert className="bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800">
+  <AlertTriangle className="text-yellow-600 dark:text-yellow-400" />
+  <AlertTitle className="text-yellow-800 dark:text-yellow-200">Warning</AlertTitle>
+  <AlertDescription className="text-yellow-700 dark:text-yellow-300">
+    This alert works in both themes
+  </AlertDescription>
+</Alert>
+
+// ❌ Avoid - Only works in light mode
+<div className="bg-blue-50 text-blue-900">
+  <p>This will be unreadable in dark mode</p>
+</div>
+
+// ❌ Avoid - Inconsistent with design system
+<div className="bg-blue-500 dark:bg-red-500">
+  <p>Don't use completely different colors for themes</p>
+</div>
+```
+
+### Best Practices
+
+<ul>
+  <li>Use lighter shades (50-200) for light mode backgrounds, darker shades (800-900) for dark mode</li>
+  <li>Use darker shades (700-900) for light mode text, lighter shades (100-300) for dark mode text</li>
+  <li>Maintain color family consistency across themes (e.g., `blue-50`/`blue-900`, not `blue-50`/`red-900`)</li>
+  <li>Test your overrides in both light and dark modes</li>
+  <li>Consider using semantic colors first before resorting to Tailwind color overrides</li>
+</ul>
+
+### Accessibility
+
+<p className="sb-unstyled">All colors are designed to meet WCAG accessibility guidelines:</p>
+
+<ul>
+  <li>Text colors provide sufficient contrast against their backgrounds</li>
+  <li>Interactive elements have clear focus states using the `ring` color</li>
+  <li>Dark mode variants maintain accessibility standards</li>
+</ul>
+
+<Toaster className="sb-unstyled"/>

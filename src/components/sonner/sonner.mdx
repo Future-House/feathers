@@ -1,0 +1,41 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as SonnerStories from './sonner.stories';
+
+<Meta of={SonnerStories} />
+
+<DocLayout meta={SonnerStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={SonnerStories.Default} />
+
+## Component API
+
+### Toaster
+
+You may need to reference the official documentation for [sonner](https://sonner.emilkowal.ski/getting-started) to understand the full API and available options.
+
+<PropsTable argTypes={SonnerStories.default.argTypes} />
+
+## Accessibility
+
+The `Toaster` component includes:
+
+- ARIA live regions for screen reader announcements
+- Keyboard navigation support with configurable hotkeys
+- Automatic focus management for actionable toasts
+- Proper semantic markup for different toast types
+- Respect for user preferences regarding motion and animations
+
+## Best Practices
+
+- Use appropriate toast types (success, error, warning, info) for different scenarios
+- Keep toast messages concise and actionable
+- Provide clear action buttons when user interaction is required
+- Consider the placement and duration based on content importance
+- Test with screen readers to ensure accessibility
+- Use the `richColors` option sparingly to avoid overwhelming users
+- Implement proper error boundaries around toast-triggering actions
+
+</DocLayout>

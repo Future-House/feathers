@@ -1,0 +1,267 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Badge } from './badge';
+import { CircleCheck, CircleAlert, X, Info } from '@/icons';
+import { Typography } from '../typography';
+
+const meta = {
+  title: 'Components/Badge',
+  component: Badge,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A badge component for displaying small bits of information, status indicators, or labels. Built with Tailwind CSS and class-variance-authority.',
+      },
+    },
+  },
+  tags: [],
+  argTypes: {
+    className: {
+      control: { type: 'text' },
+      description: 'CSS class name to apply to the accordion root',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: undefined },
+      },
+    },
+    variant: {
+      control: { type: 'select' },
+      options: ['default', 'secondary', 'destructive', 'outline'],
+      description: 'The visual style variant of the badge',
+      table: {
+        type: { summary: 'default | secondary | destructive | outline' },
+        defaultValue: { summary: 'default' },
+      },
+    },
+    color: {
+      control: { type: 'select' },
+      options: [
+        'success',
+        'warning',
+        'info',
+        'error',
+        'purple',
+        'fuchsia',
+        'teal',
+        'lime',
+        'orange',
+        'rose',
+      ],
+      description: 'The color theme of the badge',
+      table: {
+        type: {
+          summary:
+            '"success" | "warning" | "info" | "error" | "purple" | "fuchsia" | "teal" | "lime" | "orange" | "rose"',
+        },
+        defaultValue: { summary: undefined },
+      },
+    },
+    children: {
+      control: { type: 'text' },
+      description: 'The content to display inside the badge',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+  },
+} satisfies Meta<typeof Badge>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: 'Badge',
+  },
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-4">
+      <Badge variant="default">Default</Badge>
+      <Badge variant="secondary">Secondary</Badge>
+      <Badge variant="destructive">Error</Badge>
+      <Badge variant="outline">Outline</Badge>
+    </div>
+  ),
+};
+
+export const ColorVariants: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <>
+      <div className="flex flex-col flex-wrap gap-4">
+        <Badge>Default</Badge>
+        <Badge color="success">Success</Badge>
+        <Badge color="warning">Warning</Badge>
+        <Badge color="info">Info</Badge>
+        <Badge color="error">Error</Badge>
+      </div>
+      <div className="mt-8 flex flex-col flex-wrap gap-4">
+        <Badge color="purple">Purple</Badge>
+        <Badge color="fuchsia">Fuchsia</Badge>
+        <Badge color="teal">Teal</Badge>
+        <Badge color="lime">Lime</Badge>
+        <Badge color="orange">Orange</Badge>
+        <Badge color="rose">Rose</Badge>
+      </div>
+    </>
+  ),
+};
+
+export const WithIcons: Story = {
+  render: args => (
+    <div className="flex flex-wrap items-center gap-4">
+      <Badge color="success" {...args}>
+        <CircleCheck className="mr-1 h-3 w-3" />
+        Success
+      </Badge>
+      <Badge color="info" {...args}>
+        <Info className="mr-1 h-3 w-3" />
+        Info
+      </Badge>
+      <Badge color="error" {...args}>
+        <X className="mr-1 h-3 w-3" />
+        Error
+      </Badge>
+      <Badge color="warning" {...args}>
+        <CircleAlert className="mr-1 h-3 w-3" />
+        Warning
+      </Badge>
+    </div>
+  ),
+};
+
+export const StatusIndicators: Story = {
+  render: args => (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Server Status:</span>
+        <Badge color="success" {...args}>
+          Online
+        </Badge>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Build Status:</span>
+        <Badge color="error" {...args}>
+          Failed
+        </Badge>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Deployment:</span>
+        <Badge color="warning" {...args}>
+          Pending
+        </Badge>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Environment:</span>
+        <Badge color="info" {...args}>
+          Development
+        </Badge>
+      </div>
+    </div>
+  ),
+};
+
+export const CountBadges: Story = {
+  render: args => (
+    <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Notifications</span>
+        <Badge variant="default" {...args}>
+          3
+        </Badge>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Messages</span>
+        <Badge variant="secondary" {...args}>
+          12
+        </Badge>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Errors</span>
+        <Badge variant="destructive" {...args}>
+          5
+        </Badge>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-sm">Warnings</span>
+        <Badge variant="outline" {...args}>
+          2
+        </Badge>
+      </div>
+    </div>
+  ),
+};
+
+export const TagsExample: Story = {
+  render: args => (
+    <div className="flex items-start gap-4">
+      <div>
+        <Typography variant="h4" className="mb-2 font-medium">
+          Categories
+        </Typography>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="outline" {...args}>
+            React
+          </Badge>
+          <Badge variant="outline" {...args}>
+            TypeScript
+          </Badge>
+          <Badge variant="outline" {...args}>
+            Tailwind CSS
+          </Badge>
+          <Badge variant="outline" {...args}>
+            Next.js
+          </Badge>
+        </div>
+      </div>
+      <div>
+        <Typography variant="h4" className="mb-2 font-medium">
+          Skills
+        </Typography>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="secondary" {...args}>
+            Frontend
+          </Badge>
+          <Badge variant="secondary" {...args}>
+            Backend
+          </Badge>
+          <Badge variant="secondary" {...args}>
+            DevOps
+          </Badge>
+          <Badge variant="secondary" {...args}>
+            UI/UX
+          </Badge>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const CustomColors: Story = {
+  render: args => (
+    <div className="flex flex-wrap items-center gap-4">
+      <Badge className="border-blue-200 bg-blue-100 text-blue-800" {...args}>
+        Custom Blue
+      </Badge>
+      <Badge className="border-green-200 bg-green-100 text-green-800" {...args}>
+        Custom Green
+      </Badge>
+      <Badge
+        className="border-purple-200 bg-purple-100 text-purple-800"
+        {...args}
+      >
+        Custom Purple
+      </Badge>
+      <Badge
+        className="border-yellow-200 bg-yellow-100 text-yellow-800"
+        {...args}
+      >
+        Custom Yellow
+      </Badge>
+    </div>
+  ),
+};

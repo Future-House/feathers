@@ -1,0 +1,155 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+} from '../../../.storybook/components';
+import * as DateInputStories from './date-input.stories';
+
+<Meta of={DateInputStories} />
+
+<DocLayout meta={DateInputStories.default}>
+
+## Default Example
+
+<Canvas of={DateInputStories.Default} />
+
+## Component API
+
+### DateInput
+
+<PropsTable argTypes={DateInputStories.default.argTypes} />
+
+## Design Philosophy
+
+The DateInput component provides a flexible and intuitive way to input dates. It combines the best of both worlds - users can either type a date directly into the input field or select it from a calendar popover. This dual approach ensures maximum usability across different user preferences and use cases.
+
+Key features:
+
+- **Dual input methods**: Type directly or select from calendar
+- **Smart date parsing**: Accepts various date formats when typing
+- **Fully accessible**: Complete keyboard navigation support
+- **Customizable formatting**: Control how dates are displayed
+- **Calendar dropdown layouts**: Multiple calendar caption options
+- **Flexible positioning**: Control popover alignment and offsets
+- **Form-ready**: Includes label support and proper IDs
+- **Full dark mode support**
+
+## Examples
+
+### With Label
+
+Shows the DateInput with a label for better form integration.
+
+<Canvas of={DateInputStories.WithLabel} />
+
+### With Selected Date
+
+Pre-populate the DateInput with a selected date.
+
+<Canvas of={DateInputStories.WithSelectedDate} />
+
+### Disabled State
+
+The DateInput can be disabled to prevent user interaction.
+
+<Canvas of={DateInputStories.Disabled} />
+
+### Custom Date Format
+
+Use Intl.DateTimeFormatOptions to customize the date display format.
+
+<Canvas of={DateInputStories.CustomFormat} />
+
+### Short Date Format
+
+Display dates in a compact format.
+
+<Canvas of={DateInputStories.ShortFormat} />
+
+### Caption Layouts
+
+Different caption layout options for the calendar component.
+
+<Canvas of={DateInputStories.CaptionLayouts} />
+
+### Controlled Component
+
+Use DateInput as a controlled component with external state management.
+
+<Canvas of={DateInputStories.Controlled} />
+
+### Typeable Input
+
+Demonstrates the typing functionality where users can enter dates in various formats.
+
+<Canvas of={DateInputStories.TypeableInput} />
+
+### Multiple Inputs
+
+Example of using multiple DateInput components for date ranges.
+
+<Canvas of={DateInputStories.MultipleInputs} />
+
+## Usage Guidelines
+
+### When to Use
+
+- **Forms**: When collecting date information with flexibility for user input preferences
+- **Date ranges**: Use two DateInput components for start and end dates
+- **Filters**: For date-based filtering where users might paste dates
+- **Data entry**: When users need to quickly enter multiple dates
+
+### Input Formats
+
+The DateInput component accepts various date formats when typing:
+
+- `MM/DD/YYYY` (e.g., "03/15/2024")
+- `YYYY-MM-DD` (e.g., "2024-03-15")
+- `Month DD, YYYY` (e.g., "March 15, 2024")
+- `DD Month YYYY` (e.g., "15 March 2024")
+- And many other common formats
+
+### Best Practices
+
+1. **Clear Labels**: Always provide a clear label to indicate what date is being collected
+2. **Helpful Placeholders**: Use placeholders to show the expected format
+3. **Format Consistency**: Use consistent date formats throughout your application
+4. **Validation Feedback**: Provide clear feedback when invalid dates are entered
+5. **Keyboard Support**: Ensure users can navigate entirely via keyboard
+6. **Default Values**: Consider providing sensible defaults when appropriate
+
+### Accessibility
+
+The DateInput component is built with accessibility in mind:
+
+- Full keyboard navigation support (Arrow Down opens calendar)
+- Proper ARIA labels and roles
+- Screen reader friendly
+- Focus management when opening/closing the calendar
+- Clear visual focus indicators
+- Support for disabled states
+
+### Related Components
+
+- **Calendar**: The underlying calendar component used for date selection
+- **Input**: The text input component for typing dates
+- **Popover**: The popover component that contains the calendar
+- **Label**: The label component for form field labeling
+
+### Helper Functions
+
+The component exports two utility functions:
+
+- **formatDate**: Formats a Date object to a string using Intl.DateTimeFormat
+- **isValidDate**: Checks if a Date object is valid
+
+```javascript
+import { formatDate, isValidDate } from '@future-house/feathers/components/date-input';
+
+const date = new Date('2024-03-15');
+const formatted = formatDate(date); // "March 15, 2024"
+const isValid = isValidDate(date); // true
+```
+
+</DocLayout>

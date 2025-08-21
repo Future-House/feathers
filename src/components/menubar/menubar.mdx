@@ -1,0 +1,77 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as MenubarStories from './menubar.stories';
+
+<Meta of={MenubarStories} />
+
+<DocLayout meta={MenubarStories.default}>
+
+## Default Example
+
+<Canvas of={MenubarStories.Default} />
+
+## Component API
+
+### Menubar
+
+<PropsTable argTypes={MenubarStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={MenubarStories.default.subcomponents} />
+
+## Examples
+
+### With Checkboxes
+
+Menubar items can include checkbox items for toggleable options like view preferences.
+
+<Canvas of={MenubarStories.WithCheckboxes} />
+
+### With Radio Groups
+
+Use radio groups within menubars for mutually exclusive options like theme selection.
+
+<Canvas of={MenubarStories.WithRadioGroup} />
+
+### With Submenus
+
+Create nested menu structures with submenu items for complex navigation hierarchies.
+
+<Canvas of={MenubarStories.WithSubmenus} />
+
+### Application Menubar
+
+A complete example showing how to build a full application menubar with multiple sections and interactions.
+
+<Canvas of={MenubarStories.ApplicationMenubar} />
+
+### Minimal Menubar
+
+A simplified menubar with basic actions for minimal interfaces.
+
+<Canvas of={MenubarStories.MinimalMenubar} />
+
+## Accessibility
+
+The `Menubar` component follows the [WAI-ARIA Menubar Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) and includes:
+
+- Full keyboard navigation with arrow keys, Enter, and Escape
+- Proper ARIA attributes for screen readers
+- Focus management and tab order
+- Support for keyboard shortcuts display
+- Automatic role and state announcements
+
+## Best Practices
+
+- Use consistent keyboard shortcuts and display them in menu items
+- Group related functionality together using separators
+- Keep menu depth reasonable (avoid deeply nested submenus)
+- Provide clear, descriptive labels for all menu items
+- Use icons consistently to help with visual recognition
+- Consider the menu's position in your application layout
+
+</DocLayout>

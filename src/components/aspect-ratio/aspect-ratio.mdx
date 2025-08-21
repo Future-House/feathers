@@ -1,0 +1,96 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as AspectRatioStories from './aspect-ratio.stories';
+
+<Meta of={AspectRatioStories} />
+
+<DocLayout meta={AspectRatioStories.default}>
+
+## Default Example
+
+<Canvas of={AspectRatioStories.Default} />
+
+## Component API
+
+### AspectRatio
+
+<PropsTable argTypes={AspectRatioStories.default.argTypes} />
+
+<SubcomponentPropTable
+  subcomponents={AspectRatioStories.default.subcomponents}
+/>
+
+## Examples
+
+### Square Aspect Ratio
+
+Perfect 1:1 aspect ratio for profile images and icons.
+
+<Canvas of={AspectRatioStories.Square} />
+
+### Portrait Aspect Ratio
+
+3:4 aspect ratio commonly used for portrait photos.
+
+<Canvas of={AspectRatioStories.Portrait} />
+
+### Widescreen Aspect Ratio
+
+21:9 ultrawide aspect ratio for cinematic content.
+
+<Canvas of={AspectRatioStories.Widescreen} />
+
+### With Image
+
+Displaying images with consistent aspect ratios.
+
+<Canvas of={AspectRatioStories.WithImage} />
+
+### With Video
+
+Embedding videos with proper aspect ratios.
+
+<Canvas of={AspectRatioStories.WithVideo} />
+
+### With Card
+
+Aspect ratio used within a card component.
+
+<Canvas of={AspectRatioStories.WithCard} />
+
+### Custom Ratios
+
+Examples of popular aspect ratios for different platforms.
+
+<Canvas of={AspectRatioStories.CustomRatios} />
+
+### As Child
+
+Using the asChild prop to merge with other components.
+
+<Canvas of={AspectRatioStories.AsChildExample} />
+
+## Accessibility
+
+The `AspectRatio` component:
+
+- Maintains semantic HTML structure
+- Preserves accessibility attributes when using `asChild`
+- Ensures proper focus management for interactive content
+- Works with screen readers and keyboard navigation
+
+## Best Practices
+
+- Use consistent aspect ratios across your application for visual harmony
+- Choose appropriate aspect ratios based on content type (16:9 for videos, 1:1 for avatars)
+- Consider responsive design when choosing aspect ratios
+- Use the `asChild` prop when you need to maintain the aspect ratio of interactive elements
+- Test on different screen sizes to ensure content remains accessible
+- Provide alternative text for images within aspect ratio containers
+
+</DocLayout>

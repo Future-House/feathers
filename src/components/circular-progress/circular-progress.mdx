@@ -1,0 +1,59 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+} from '../../../.storybook/components';
+import * as CircularProgressStories from './circular-progress.stories';
+
+<Meta of={CircularProgressStories} />
+
+<DocLayout meta={CircularProgressStories.default} hideRadixUiUrl hideShadcnUrl>
+
+## Default Example
+
+<Canvas of={CircularProgressStories.Default} />
+
+## Component API
+
+<PropsTable argTypes={CircularProgressStories.default.argTypes} />
+
+## Examples
+
+### Sizes
+
+The circular progress comes in three different sizes to fit your design needs.
+
+<Canvas of={CircularProgressStories.Sizes} />
+
+### Progress Values
+
+Demonstrating different completion percentages from 0% to 100%.
+
+<Canvas of={CircularProgressStories.ProgressValues} />
+
+### With Children
+
+Display custom content in the center of the circular progress indicator.
+
+<Canvas of={CircularProgressStories.WithChildren} />
+
+## Accessibility
+
+The CircularProgress component includes proper accessibility features:
+
+- Uses `role="progressbar"` for screen reader compatibility
+- Includes `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes
+- The `aria-valuenow` attribute reflects the current progress value (omitted in indeterminate mode)
+- Follows ARIA guidelines for progress indicators
+
+## Best Practices
+
+- Use **indeterminate mode** (default) for operations where duration is unknown
+- Use **determinate mode** when you can calculate progress percentage (0-100%)
+- Pair with descriptive text or children content when possible
+- Consider the context - smaller sizes for inline elements, larger for prominent loading states
+- Use children to display custom content like percentages, status text, or icons
+- The component uses a fixed 6px thickness and primary color for consistency
+
+</DocLayout>

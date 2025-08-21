@@ -1,0 +1,99 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as CalendarStories from './calendar.stories';
+
+<Meta of={CalendarStories} />
+
+<DocLayout meta={CalendarStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={CalendarStories.Default} />
+
+## Component API
+
+### Calendar
+
+You may need to reference the official documentation for the [react-day-picker](https://daypicker.dev/) to understand the full API and available options.
+
+<PropsTable argTypes={CalendarStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={CalendarStories.default.subcomponents} />
+
+## Examples
+
+### Without Outside Days
+
+Calendar without showing days from adjacent months.
+
+<Canvas of={CalendarStories.WithoutOutsideDays} />
+
+### Multiple Months
+
+Display multiple months side by side.
+
+<Canvas of={CalendarStories.MultipleMonths} />
+
+### With Dropdowns
+
+Calendar with dropdown selectors for month and year navigation.
+
+<Canvas of={CalendarStories.WithDropdowns} />
+
+### Range Selection
+
+Select date ranges with start and end dates.
+
+<Canvas of={CalendarStories.RangeSelection} />
+
+### Multiple Selection
+
+Select multiple individual dates.
+
+<Canvas of={CalendarStories.MultipleSelection} />
+
+### With Disabled Dates
+
+Calendar with certain dates disabled based on business logic.
+
+<Canvas of={CalendarStories.WithDisabledDates} />
+
+### Preselected Date
+
+Calendar with a date already selected on initialization.
+
+<Canvas of={CalendarStories.PreselectedDate} />
+
+### Minimal Styling
+
+Calendar with minimal styling within a card container.
+
+<Canvas of={CalendarStories.MinimalStyling} />
+
+## Accessibility
+
+The `Calendar` component follows accessibility best practices:
+
+- Supports keyboard navigation with arrow keys, Tab, Enter, and Space
+- Provides proper ARIA labels and descriptions for screen readers
+- Maintains focus management throughout date selection
+- Uses semantic HTML structure for better accessibility
+- Supports screen reader announcements for date changes
+- Includes proper role attributes for calendar functionality
+
+## Best Practices
+
+- Use appropriate selection modes based on your use case
+- Provide clear visual feedback for selected dates
+- Consider disabling invalid dates based on business logic
+- Use consistent date formatting throughout your application
+- Test with keyboard navigation to ensure accessibility
+- Provide clear instructions for date selection when needed
+- Consider mobile responsiveness for touch interactions
+
+</DocLayout>

@@ -1,0 +1,51 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocLayout, Canvas, PropsTable } from '../../../.storybook/components';
+import * as ThemeProviderStories from './theme-provider.stories';
+
+<Meta of={ThemeProviderStories} />
+
+<DocLayout meta={ThemeProviderStories.default}>
+
+## Default Example
+
+<Canvas of={ThemeProviderStories.Default} />
+
+## Component API
+
+### ThemeProvider
+
+<PropsTable argTypes={ThemeProviderStories.default.argTypes} />
+
+## Examples
+
+### Light Theme Default
+
+Theme provider with light theme as the default setting.
+
+<Canvas of={ThemeProviderStories.LightTheme} />
+
+### Dark Theme Default
+
+Theme provider with dark theme as the default setting.
+
+<Canvas of={ThemeProviderStories.DarkTheme} />
+
+## Accessibility
+
+The `ThemeProvider` component follows accessibility best practices:
+
+- Respects user's system preference when using "system" theme
+- Provides smooth transitions between theme changes
+- Maintains color contrast ratios according to WCAG guidelines
+- Preserves focus states and keyboard navigation across theme changes
+
+## Best Practices
+
+- Wrap your application root with `ThemeProvider` to ensure all components have access to theme context
+- Use "system" as the default theme to respect user preferences
+- Store theme preference in localStorage to persist across sessions
+- Use the `useTheme` hook to access and modify theme state in child components
+- Test your application in both light and dark themes to ensure proper contrast and readability
+- Consider providing a theme toggle component for users to manually switch themes
+
+</DocLayout>

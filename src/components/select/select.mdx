@@ -1,0 +1,83 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as SelectStories from './select.stories';
+
+<Meta of={SelectStories} />
+
+<DocLayout meta={SelectStories.default}>
+
+## Default Example
+
+<Canvas of={SelectStories.Default} />
+
+## Component API
+
+### Select
+
+<PropsTable argTypes={SelectStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={SelectStories.default.subcomponents} />
+
+## Examples
+
+### With Groups
+
+Organize options into logical groups with labels and separators.
+
+<Canvas of={SelectStories.WithGroups} />
+
+### With Many Options
+
+Handle large lists of options with built-in scrolling and search capabilities.
+
+<Canvas of={SelectStories.WithManyOptions} />
+
+### Disabled
+
+Show how selects behave when disabled entirely.
+
+<Canvas of={SelectStories.Disabled} />
+
+### With Disabled Items
+
+Individual select items can be disabled while keeping others interactive.
+
+<Canvas of={SelectStories.WithDisabledItems} />
+
+### Controlled
+
+Manage the select value with React state for form integration.
+
+<Canvas of={SelectStories.Controlled} />
+
+### RTL
+
+Support for right-to-left languages and reading directions.
+
+<Canvas of={SelectStories.RTL} />
+
+## Accessibility
+
+The `Select` component follows the [WAI-ARIA Listbox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) and includes:
+
+- Full keyboard navigation with arrow keys, Enter, and Escape
+- Screen reader support with proper ARIA attributes
+- Focus management when opening and closing
+- Type-ahead functionality for quick option selection
+- Group and option announcements for screen readers
+
+## Best Practices
+
+- Provide clear, descriptive placeholder text
+- Use logical grouping for long option lists
+- Keep option labels concise but descriptive
+- Use disabled states to communicate unavailable options
+- Test with keyboard navigation and screen readers
+- Consider using search functionality for very long lists
+
+</DocLayout>

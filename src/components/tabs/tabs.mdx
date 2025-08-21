@@ -1,0 +1,96 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as TabsStories from './tabs.stories';
+
+<Meta of={TabsStories} />
+
+<DocLayout meta={TabsStories.default}>
+
+## Default Example
+
+<Canvas of={TabsStories.Default} />
+
+## Component API
+
+### Tabs
+
+<PropsTable argTypes={TabsStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={TabsStories.default.subcomponents} />
+
+## Examples
+
+### Variant Comparison
+
+Compare the default and underlined variants side by side.
+
+<Canvas of={TabsStories.VariantComparison} />
+
+### Underlined Variant
+
+Modern underlined tabs with bottom border indicator, commonly used for navigation-style tabs.
+
+<Canvas of={TabsStories.UnderlinedVariant} />
+
+### Controlled Tabs
+
+Demonstrate programmatic control of the active tab.
+
+<Canvas of={TabsStories.Controlled} />
+
+### Vertical Orientation
+
+Display tabs vertically for sidebar-style navigation.
+
+<Canvas of={TabsStories.VerticalOrientation} />
+
+### Manual Activation
+
+Tabs that require explicit activation (click) rather than automatic focus activation.
+
+<Canvas of={TabsStories.ManualActivation} />
+
+### Many Tabs
+
+Handle layouts with multiple tab options.
+
+<Canvas of={TabsStories.ManyTabs} />
+
+### Custom Styling
+
+Apply custom themes and styling to tabs.
+
+<Canvas of={TabsStories.CustomStyling} />
+
+### With Disabled Tab
+
+Show how disabled tabs behave and appear.
+
+<Canvas of={TabsStories.WithDisabledTab} />
+
+## Accessibility
+
+The `Tabs` component follows the [WAI-ARIA Tabs Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and includes:
+
+- Keyboard navigation with arrow keys, Home, and End
+- Screen reader support with proper ARIA attributes
+- Focus management between tab triggers and content
+- Support for both automatic and manual activation modes
+- Proper semantic structure with tab roles
+
+## Best Practices
+
+- Use clear, descriptive labels for tab triggers
+- Keep tab content organized and scannable
+- Consider using manual activation for tabs with expensive content
+- Ensure tab content is accessible via keyboard navigation
+- Test with screen readers to verify proper announcements
+- Use vertical orientation when space is limited horizontally
+- Avoid too many tabs in a single group for better usability
+
+</DocLayout>

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Tabs","TabsList","TabsTrigger","TabsContent"],"sources":["../../../src/components/tabs/index.ts"],"sourcesContent":["export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';\n"],"mappings":"AAAA,SAASA,IAAI,EAAEC,QAAQ,EAAEC,WAAW,EAAEC,WAAW","ignoreList":[]}

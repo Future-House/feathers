@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Avatar","AvatarImage","AvatarFallback"],"sources":["../../../src/components/avatar/index.ts"],"sourcesContent":["export { Avatar, AvatarImage, AvatarFallback } from './avatar';\n"],"mappings":"AAAA,SAASA,MAAM,EAAEC,WAAW,EAAEC,cAAc","ignoreList":[]}

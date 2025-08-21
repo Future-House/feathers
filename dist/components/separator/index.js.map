@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Separator"],"sources":["../../../src/components/separator/index.ts"],"sourcesContent":["export { Separator } from './separator';\n"],"mappings":"AAAA,SAASA,SAAS","ignoreList":[]}

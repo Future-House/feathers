@@ -1,0 +1,86 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={BreadcrumbStories} />
+
+<DocLayout meta={BreadcrumbStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={BreadcrumbStories.Default} />
+
+## Component API
+
+### Breadcrumb
+
+<PropsTable argTypes={BreadcrumbStories.default.argTypes} />
+
+<SubcomponentPropTable
+  subcomponents={BreadcrumbStories.default.subcomponents}
+/>
+
+## Examples
+
+### Custom Separator
+
+Using custom separators instead of the default chevron.
+
+<Canvas of={BreadcrumbStories.WithCustomSeparator} />
+
+### With Ellipsis
+
+Truncating long paths with ellipsis for better space management.
+
+<Canvas of={BreadcrumbStories.WithEllipsis} />
+
+### Long Path
+
+Breadcrumb with multiple levels showing deep navigation.
+
+<Canvas of={BreadcrumbStories.LongPath} />
+
+### As Child Link
+
+Using the asChild prop to integrate with routing libraries.
+
+<Canvas of={BreadcrumbStories.AsChildLink} />
+
+### Custom Styling
+
+Breadcrumb with custom styling and colors.
+
+<Canvas of={BreadcrumbStories.CustomStyling} />
+
+### Responsive
+
+Responsive breadcrumb that hides items on smaller screens.
+
+<Canvas of={BreadcrumbStories.Responsive} />
+
+## Accessibility
+
+The `Breadcrumb` component follows accessibility best practices:
+
+- Uses semantic `nav` element with proper ARIA labels
+- Maintains proper link hierarchy for screen readers
+- Supports keyboard navigation with Tab and Enter keys
+- Provides clear visual distinction between links and current page
+- Uses proper ARIA attributes for navigation context
+
+## Best Practices
+
+- Keep breadcrumb labels concise and descriptive
+- Use consistent navigation patterns throughout your application
+- Consider truncating very long paths with ellipsis
+- Ensure the current page is clearly identified and not clickable
+- Test with screen readers to verify navigation clarity
+- Use semantic HTML structure for better accessibility
+- Consider mobile responsiveness when designing breadcrumbs
+
+</DocLayout>

@@ -1,0 +1,77 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as SheetStories from './sheet.stories';
+
+<Meta of={SheetStories} />
+
+<DocLayout meta={SheetStories.default} customRadixUiUrl="dialog">
+
+## Default Example
+
+<Canvas of={SheetStories.Default} />
+
+## Component API
+
+### Sheet
+
+<PropsTable argTypes={SheetStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={SheetStories.default.subcomponents} />
+
+## Examples
+
+### From Left
+
+Sheet that slides in from the left side, commonly used for navigation menus.
+
+<Canvas of={SheetStories.FromLeft} />
+
+### From Top
+
+Sheet that slides in from the top, useful for notifications or quick actions.
+
+<Canvas of={SheetStories.FromTop} />
+
+### From Bottom
+
+Sheet that slides in from the bottom, perfect for mobile-style action sheets.
+
+<Canvas of={SheetStories.FromBottom} />
+
+### Controlled
+
+Manage the sheet open state with React state for programmatic control.
+
+<Canvas of={SheetStories.Controlled} />
+
+### Non Modal
+
+A non-modal sheet that allows interaction with elements behind it.
+
+<Canvas of={SheetStories.NonModal} />
+
+## Accessibility
+
+The `Sheet` component follows the [WAI-ARIA Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) and includes:
+
+- Focus management with focus trap when modal
+- Escape key handling to close the sheet
+- Screen reader announcements for open/close states
+- Proper ARIA attributes for accessibility
+- Background click handling for modal sheets
+
+## Best Practices
+
+- Use appropriate slide directions based on content type and user expectations
+- Keep sheet content focused and task-oriented
+- Provide clear close mechanisms (X button, escape key, outside click)
+- Consider mobile users and touch interactions
+- Use proper heading hierarchy within sheet content
+- Test with keyboard navigation and screen readers for full accessibility
+
+</DocLayout>

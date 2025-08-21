@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["../src/components/*"],
+      "@/icons": ["../src/icons/index.ts"],
+      "@/icons/*": ["../src/icons/*"],
+      "@/lib/*": ["../src/lib/*"],
+      "@/hooks/*": ["../src/hooks/*"],
+      "@/*": ["../src/*"]
+    },
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "types": ["@testing-library/jest-dom"]
+  },
+  "include": [
+    "../src/**/*.stories.tsx",
+    "../src/**/*.stories.ts",
+    "../src/**/*.tsx",
+    "../src/**/*.ts",
+    "../docs/**/*.stories.tsx",
+    "../docs/**/*.stories.ts"
+  ],
+  "exclude": ["../node_modules", "../dist"]
+}

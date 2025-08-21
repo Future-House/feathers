@@ -1,0 +1,77 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as AvatarStories from './avatar.stories';
+
+<Meta of={AvatarStories} />
+
+<DocLayout meta={AvatarStories.default}>
+
+## Default Example
+
+<Canvas of={AvatarStories.Default} />
+
+## Component API
+
+### Avatar
+
+<PropsTable argTypes={AvatarStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={AvatarStories.default.subcomponents} />
+
+## Examples
+
+### With Fallback
+
+Avatar with fallback text when image fails to load.
+
+<Canvas of={AvatarStories.WithFallback} />
+
+### Fallback Only
+
+Avatar displaying only fallback text without an image.
+
+<Canvas of={AvatarStories.FallbackOnly} />
+
+### Different Sizes
+
+Avatars in various sizes for different use cases.
+
+<Canvas of={AvatarStories.Sizes} />
+
+### Custom Styling
+
+Avatars with custom styling including borders and gradient backgrounds.
+
+<Canvas of={AvatarStories.CustomStyling} />
+
+### Avatar Group
+
+Multiple avatars grouped together with overlapping layout.
+
+<Canvas of={AvatarStories.Group} />
+
+## Accessibility
+
+The `Avatar` component:
+
+- Provides proper alt text for images via the `AvatarImage` component
+- Uses semantic HTML structure for screen readers
+- Maintains focus management for interactive avatars
+- Supports keyboard navigation when used in interactive contexts
+
+## Best Practices
+
+- Always provide meaningful fallback text that represents the user
+- Use consistent sizing across your application
+- Consider loading states and error handling for avatar images
+- Use appropriate image formats and sizes for performance
+- Provide alt text for avatar images to improve accessibility
+- Consider using initials or user names as fallback text
+- Test with various screen sizes and user scenarios
+
+</DocLayout>

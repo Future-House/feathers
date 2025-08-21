@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["Collapsible","CollapsibleTrigger","CollapsibleContent"],"sources":["../../../src/components/collapsible/index.ts"],"sourcesContent":["export {\n  Collapsible,\n  CollapsibleTrigger,\n  CollapsibleContent,\n} from './collapsible';\n"],"mappings":"AAAA,SACEA,WAAW,EACXC,kBAAkB,EAClBC,kBAAkB","ignoreList":[]}
