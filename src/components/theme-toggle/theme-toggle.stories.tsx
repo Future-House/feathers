@@ -181,6 +181,16 @@ export const AsChild: Story = {
               <ButtonComponent variant="destructive" size="icon" />
             </ThemeToggle>
           </div>
+
+          {/* Custom button trigger */}
+          <div className="flex items-center gap-4">
+            <span className="text-sm">Dropdown asChild:</span>
+            <ThemeToggle variant="dropdown" asChild>
+              <ButtonComponent variant="secondary">
+                Theme Settings
+              </ButtonComponent>
+            </ThemeToggle>
+          </div>
         </div>
       </div>
     </div>
@@ -217,6 +227,13 @@ export const InSidebar: Story = {
                   <SidebarMenuItem>
                     <ThemeToggle asChild>
                       <SidebarMenuButton />
+                    </ThemeToggle>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <ThemeToggle variant="dropdown" asChild>
+                      <SidebarMenuButton>
+                        <span>Theme (Dropdown)</span>
+                      </SidebarMenuButton>
                     </ThemeToggle>
                   </SidebarMenuItem>
                   <SidebarMenuItem>

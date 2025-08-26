@@ -305,6 +305,64 @@ describe('ThemeToggle', () => {
   });
 
   describe('Dropdown variant', () => {
+    it('supports asChild prop for custom trigger', async () => {
+      const user = userEvent.setup();
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle variant="dropdown" asChild>
+            <button className="custom-dropdown-trigger">Custom Trigger</button>
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const trigger = screen.getByRole('button', {
+        name: /open theme selector/i,
+      });
+      expect(trigger).toHaveClass('custom-dropdown-trigger');
+
+      // Should still show the theme icon
+      expect(trigger.querySelector('svg')).toBeInTheDocument();
+
+      // Should open dropdown when clicked
+      await user.click(trigger);
+      expect(screen.getByText('Light')).toBeInTheDocument();
+      expect(screen.getByText('Dark')).toBeInTheDocument();
+      expect(screen.getByText('System')).toBeInTheDocument();
+    });
+
+    it('works with custom component as dropdown trigger', async () => {
+      const CustomTrigger = React.forwardRef<
+        HTMLButtonElement,
+        React.ComponentProps<'button'>
+      >((props, ref) => (
+        <button ref={ref} {...props} className="fancy-trigger" />
+      ));
+      CustomTrigger.displayName = 'CustomTrigger';
+
+      const user = userEvent.setup();
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle variant="dropdown" asChild>
+            <CustomTrigger />
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const trigger = screen.getByRole('button', {
+        name: /open theme selector/i,
+      });
+      expect(trigger).toHaveClass('fancy-trigger');
+      expect(trigger.querySelector('svg')).toBeInTheDocument();
+
+      await user.click(trigger);
+      const darkOption = screen.getByText('Dark');
+      await user.click(darkOption);
+
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'feathers-ui-theme',
+        'dark'
+      );
+    });
     it('renders as dropdown when variant is dropdown', () => {
       renderWithProvider('light', 'dropdown');
 

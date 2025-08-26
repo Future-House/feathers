@@ -36,7 +36,9 @@ type DropdownVariantProps = BaseThemeToggleProps & {
     typeof DropdownMenuPrimitive.Content
   >;
   buttonProps?: Omit<ButtonProps, 'onClick' | 'children'>;
-} & React.ComponentProps<typeof DropdownMenu>;
+  asChild?: boolean;
+  children?: React.ReactNode;
+} & Omit<React.ComponentProps<typeof DropdownMenu>, 'children'>;
 
 export type ThemeToggleProps =
   | ButtonVariantProps
@@ -140,20 +142,40 @@ export function ThemeToggle(props: ThemeToggleProps) {
       variant: _variant,
       DropdownMenuContentProps = {},
       buttonProps = {},
+      asChild = false,
+      children,
       ...dropdownProps
     } = props as DropdownVariantProps;
+
+    const iconContent = (
+      <>
+        {getIcon()}
+        <span className="sr-only">Open theme selector</span>
+      </>
+    );
+
     return (
       <DropdownMenu {...dropdownProps}>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            className="h-9 w-9"
-            {...buttonProps}
-          >
-            {getIcon()}
-            <span className="sr-only">Open theme selector</span>
-          </Button>
+          {asChild && React.isValidElement(children) ? (
+            React.cloneElement(children, {
+              children: (
+                <>
+                  {iconContent}
+                  {(children as React.ReactElement<any>).props.children}
+                </>
+              ),
+            } as Partial<unknown>)
+          ) : (
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-9 w-9"
+              {...buttonProps}
+            >
+              {iconContent}
+            </Button>
+          )}
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" {...DropdownMenuContentProps}>
           <DropdownMenuRadioGroup
