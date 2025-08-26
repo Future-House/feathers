@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ButtonProps } from '../button/button';
 import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
@@ -6,7 +7,8 @@ type BaseThemeToggleProps = {
 };
 type ButtonVariantProps = BaseThemeToggleProps & {
     variant?: 'button';
-} & Omit<ButtonProps, 'onClick' | 'children'>;
+    asChild?: boolean;
+} & Omit<ButtonProps, 'onClick' | 'children' | 'asChild'>;
 type SwitchVariantProps = BaseThemeToggleProps & {
     variant: 'switch';
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'type' | 'role' | 'aria-checked'>;

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Moon, Sun, Laptop } from '../../icons';
 import { Button, ButtonProps } from '../button/button';
 import { useTheme } from '../theme-provider/theme-provider';
@@ -9,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '../dropdown-menu/dropdown-menu';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { Slot } from '@radix-ui/react-slot';
 
 // TODO: add support for classname combination
 
@@ -18,7 +20,8 @@ type BaseThemeToggleProps = {
 
 type ButtonVariantProps = BaseThemeToggleProps & {
   variant?: 'button';
-} & Omit<ButtonProps, 'onClick' | 'children'>;
+  asChild?: boolean;
+} & Omit<ButtonProps, 'onClick' | 'children' | 'asChild'>;
 
 type SwitchVariantProps = BaseThemeToggleProps & {
   variant: 'switch';
@@ -41,8 +44,8 @@ export type ThemeToggleProps =
   | DropdownVariantProps;
 
 export function ThemeToggle(props: ThemeToggleProps) {
-  const { variant = 'button' } = props;
   const { theme, setTheme } = useTheme();
+  const variant = props.variant || 'button';
 
   const toggleTheme = () => {
     if (variant === 'switch' || variant === 'button') {
@@ -93,7 +96,7 @@ export function ThemeToggle(props: ThemeToggleProps) {
   };
 
   if (variant === 'switch') {
-    const { variant: _, ...switchProps } = props as SwitchVariantProps;
+    const { variant: _variant, ...switchProps } = props as SwitchVariantProps;
     const isDark = theme === 'dark';
     return (
       <div className="relative inline-flex">
@@ -134,7 +137,7 @@ export function ThemeToggle(props: ThemeToggleProps) {
 
   if (variant === 'dropdown') {
     const {
-      variant: _,
+      variant: _variant,
       DropdownMenuContentProps = {},
       buttonProps = {},
       ...dropdownProps
@@ -177,7 +180,32 @@ export function ThemeToggle(props: ThemeToggleProps) {
     );
   }
 
-  const { variant: _, ...buttonProps } = props as ButtonVariantProps;
+  const {
+    variant: _variant,
+    asChild = false,
+    children,
+    ...buttonProps
+  } = props as ButtonVariantProps & { children?: React.ReactNode };
+
+  const themeToggleContent = (
+    <>
+      {getIcon()}
+      <span className="sr-only">Toggle theme</span>
+    </>
+  );
+
+  if (asChild) {
+    return (
+      <Slot {...buttonProps} onClick={toggleTheme} title={getTitle()}>
+        {React.isValidElement(children)
+          ? React.cloneElement(children, {
+              children: themeToggleContent,
+            } as Partial<unknown>)
+          : children}
+      </Slot>
+    );
+  }
+
   return (
     <Button
       variant="outline"
@@ -187,8 +215,7 @@ export function ThemeToggle(props: ThemeToggleProps) {
       onClick={toggleTheme}
       title={getTitle()}
     >
-      {getIcon()}
-      <span className="sr-only">Toggle theme</span>
+      {themeToggleContent}
     </Button>
   );
 }
