@@ -2,6 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemeToggle } from '../theme-toggle';
 import { ThemeProvider } from '../theme-provider';
 import { Button as ButtonComponent } from '../button';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+} from '../sidebar';
 
 const meta: Meta<typeof ThemeToggle> = {
   title: 'Components/ThemeToggle',
@@ -32,6 +42,14 @@ const meta: Meta<typeof ThemeToggle> = {
       table: {
         type: { summary: '"button" | "switch" | "dropdown"' },
         defaultValue: { summary: '"button"' },
+      },
+    },
+    asChild: {
+      control: 'boolean',
+      description: 'Render as a child component using Radix UI Slot',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
   },
@@ -133,6 +151,119 @@ export const Comparison: Story = {
       </div>
     </div>
   ),
+};
+
+export const AsChild: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <div className="bg-card rounded-lg border p-4">
+        <h3 className="text-card-foreground mb-4 text-lg font-semibold">
+          Using asChild prop
+        </h3>
+        <p className="text-muted-foreground mb-4 text-sm">
+          The theme toggle can be rendered as any button component using the
+          asChild prop.
+        </p>
+
+        <div className="space-y-4">
+          {/* Custom button with different variant */}
+          <div className="flex items-center gap-4">
+            <span className="text-sm">As custom Button:</span>
+            <ThemeToggle asChild>
+              <ButtonComponent variant="secondary" size="icon" />
+            </ThemeToggle>
+          </div>
+
+          {/* As a destructive button */}
+          <div className="flex items-center gap-4">
+            <span className="text-sm">As destructive Button:</span>
+            <ThemeToggle asChild>
+              <ButtonComponent variant="destructive" size="icon" />
+            </ThemeToggle>
+          </div>
+
+          {/* Custom button trigger */}
+          <div className="flex items-center gap-4">
+            <span className="text-sm">Dropdown asChild:</span>
+            <ThemeToggle variant="dropdown" asChild>
+              <ButtonComponent variant="secondary">
+                Theme Settings
+              </ButtonComponent>
+            </ThemeToggle>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates using the asChild prop to render the theme toggle as different button components while maintaining all theme toggle functionality.',
+      },
+    },
+  },
+};
+
+export const InSidebar: Story = {
+  render: () => (
+    <div className="h-[400px] w-full max-w-xs">
+      <SidebarProvider defaultOpen={true}>
+        <Sidebar>
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton>
+                      <span>Dashboard</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton>
+                      <span>Settings</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <ThemeToggle asChild>
+                      <SidebarMenuButton />
+                    </ThemeToggle>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <ThemeToggle variant="dropdown" asChild>
+                      <SidebarMenuButton>
+                        <span>Theme (Dropdown)</span>
+                      </SidebarMenuButton>
+                    </ThemeToggle>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton>
+                      <span>Help</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+        </Sidebar>
+        <div className="flex-1 p-4">
+          <h3 className="mb-2 font-semibold">Sidebar Integration</h3>
+          <p className="text-muted-foreground text-sm">
+            The theme toggle is rendered as a SidebarMenuButton component,
+            seamlessly integrating with the sidebar navigation.
+          </p>
+        </div>
+      </SidebarProvider>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Shows the theme toggle integrated into a sidebar navigation using the asChild prop with SidebarMenuButton.',
+      },
+    },
+  },
 };
 
 export const WithComponents: Story = {

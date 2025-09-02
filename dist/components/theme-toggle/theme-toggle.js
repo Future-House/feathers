@@ -1,28 +1,29 @@
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
 var _excluded = ["variant"],
-  _excluded2 = ["variant", "DropdownMenuContentProps", "buttonProps"],
-  _excluded3 = ["variant"];
+  _excluded2 = ["variant", "DropdownMenuContentProps", "buttonProps", "asChild", "children"],
+  _excluded3 = ["variant", "asChild", "children"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
+import * as React from 'react';
 import { Moon, Sun, Laptop } from "../../icons";
 import { Button } from "../button/button";
 import { useTheme } from "../theme-provider/theme-provider";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "../dropdown-menu/dropdown-menu";
+import { Slot } from '@radix-ui/react-slot';
 
 // TODO: add support for classname combination
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 export function ThemeToggle(props) {
-  var $ = _c(69);
-  var t0 = props.variant;
-  var variant = t0 === undefined ? "button" : t0;
+  var $ = _c(89);
   var _useTheme = useTheme(),
     theme = _useTheme.theme,
     setTheme = _useTheme.setTheme;
-  var t1;
+  var variant = props.variant || "button";
+  var t0;
   if ($[0] !== setTheme || $[1] !== theme || $[2] !== variant) {
-    t1 = function t1() {
+    t0 = function t0() {
       if (variant === "switch" || variant === "button") {
         if (theme === "light" || theme === "system") {
           setTheme("dark");
@@ -44,14 +45,14 @@ export function ThemeToggle(props) {
     $[0] = setTheme;
     $[1] = theme;
     $[2] = variant;
-    $[3] = t1;
+    $[3] = t0;
   } else {
-    t1 = $[3];
+    t0 = $[3];
   }
-  var toggleTheme = t1;
-  var t2;
+  var toggleTheme = t0;
+  var t1;
   if ($[4] !== theme) {
-    t2 = function t2() {
+    t1 = function t1() {
       if (theme === "light") {
         return /*#__PURE__*/_jsx(Sun, {
           className: "h-4 w-4"
@@ -69,14 +70,14 @@ export function ThemeToggle(props) {
       }
     };
     $[4] = theme;
-    $[5] = t2;
+    $[5] = t1;
   } else {
-    t2 = $[5];
+    t1 = $[5];
   }
-  var getIcon = t2;
-  var t3;
+  var getIcon = t1;
+  var t2;
   if ($[6] !== theme || $[7] !== variant) {
-    t3 = function t3() {
+    t2 = function t2() {
       if (variant === "switch" || variant === "button") {
         return theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
       } else {
@@ -93,16 +94,16 @@ export function ThemeToggle(props) {
     };
     $[6] = theme;
     $[7] = variant;
-    $[8] = t3;
+    $[8] = t2;
   } else {
-    t3 = $[8];
+    t2 = $[8];
   }
-  var getTitle = t3;
+  var getTitle = t2;
   if (variant === "switch") {
     var _t = props;
     var switchProps;
     if ($[9] !== _t) {
-      var _ = _t.variant,
+      var _variant = _t.variant,
         _t2 = _objectWithoutProperties(_t, _excluded);
       switchProps = _t2;
       $[9] = _t;
@@ -124,44 +125,44 @@ export function ThemeToggle(props) {
     } else {
       _t6 = $[12];
     }
-    var t9 = "text-foreground absolute inset-0 h-3 w-3 transition-opacity duration-300 ".concat(isDark ? "opacity-100" : "opacity-0");
-    var t10;
-    if ($[13] !== t9) {
-      t10 = /*#__PURE__*/_jsx(Moon, {
-        className: t9
+    var _t7 = "text-foreground absolute inset-0 h-3 w-3 transition-opacity duration-300 ".concat(isDark ? "opacity-100" : "opacity-0");
+    var _t8;
+    if ($[13] !== _t7) {
+      _t8 = /*#__PURE__*/_jsx(Moon, {
+        className: _t7
       });
-      $[13] = t9;
-      $[14] = t10;
+      $[13] = _t7;
+      $[14] = _t8;
     } else {
-      t10 = $[14];
+      _t8 = $[14];
+    }
+    var t10;
+    if ($[15] !== _t6 || $[16] !== _t8) {
+      t10 = /*#__PURE__*/_jsxs("div", {
+        className: "relative h-3 w-3",
+        children: [_t6, _t8]
+      });
+      $[15] = _t6;
+      $[16] = _t8;
+      $[17] = t10;
+    } else {
+      t10 = $[17];
     }
     var t11;
-    if ($[15] !== t10 || $[16] !== _t6) {
-      t11 = /*#__PURE__*/_jsxs("div", {
-        className: "relative h-3 w-3",
-        children: [_t6, t10]
+    if ($[18] !== t10 || $[19] !== _t4) {
+      t11 = /*#__PURE__*/_jsx("div", {
+        className: _t4,
+        children: t10
       });
-      $[15] = t10;
-      $[16] = _t6;
-      $[17] = t11;
+      $[18] = t10;
+      $[19] = _t4;
+      $[20] = t11;
     } else {
-      t11 = $[17];
+      t11 = $[20];
     }
     var t12;
-    if ($[18] !== t11 || $[19] !== _t4) {
-      t12 = /*#__PURE__*/_jsx("div", {
-        className: _t4,
-        children: t11
-      });
-      $[18] = t11;
-      $[19] = _t4;
-      $[20] = t12;
-    } else {
-      t12 = $[20];
-    }
-    var t13;
-    if ($[21] !== isDark || $[22] !== switchProps || $[23] !== t12 || $[24] !== _t3 || $[25] !== toggleTheme) {
-      t13 = /*#__PURE__*/_jsx("button", _objectSpread(_objectSpread({
+    if ($[21] !== isDark || $[22] !== switchProps || $[23] !== t11 || $[24] !== _t3 || $[25] !== toggleTheme) {
+      t12 = /*#__PURE__*/_jsx("button", _objectSpread(_objectSpread({
         type: "button",
         role: "switch",
         "aria-checked": isDark,
@@ -169,252 +170,340 @@ export function ThemeToggle(props) {
         title: _t3,
         className: "group bg-muted focus:ring-ring focus:ring-offset-background relative inline-flex h-[26px] w-[50px] items-center rounded-full transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
       }, switchProps), {}, {
-        children: t12
+        children: t11
       }));
       $[21] = isDark;
       $[22] = switchProps;
-      $[23] = t12;
+      $[23] = t11;
       $[24] = _t3;
       $[25] = toggleTheme;
-      $[26] = t13;
+      $[26] = t12;
     } else {
-      t13 = $[26];
+      t12 = $[26];
     }
-    var t14;
+    var t13;
     if ($[27] === Symbol.for("react.memo_cache_sentinel")) {
-      t14 = /*#__PURE__*/_jsx("span", {
+      t13 = /*#__PURE__*/_jsx("span", {
         className: "sr-only",
         children: "Toggle between light and dark theme"
       });
-      $[27] = t14;
+      $[27] = t13;
     } else {
-      t14 = $[27];
+      t13 = $[27];
     }
-    var t15;
-    if ($[28] !== t13) {
-      t15 = /*#__PURE__*/_jsxs("div", {
+    var t14;
+    if ($[28] !== t12) {
+      t14 = /*#__PURE__*/_jsxs("div", {
         className: "relative inline-flex",
-        children: [t13, t14]
+        children: [t12, t13]
       });
-      $[28] = t13;
-      $[29] = t15;
+      $[28] = t12;
+      $[29] = t14;
     } else {
-      t15 = $[29];
+      t14 = $[29];
     }
-    return t15;
+    return t14;
   }
   if (variant === "dropdown") {
-    var _t7 = props;
+    var _t9 = props;
+    var children;
     var dropdownProps;
-    var _t8;
-    var _t9;
-    if ($[30] !== _t7) {
-      var __0 = _t7.variant,
-        _t0 = _t7.DropdownMenuContentProps,
-        _t1 = _t7.buttonProps,
-        _t10 = _objectWithoutProperties(_t7, _excluded2);
-      _t8 = _t0;
-      _t9 = _t1;
-      dropdownProps = _t10;
-      $[30] = _t7;
-      $[31] = dropdownProps;
-      $[32] = _t8;
-      $[33] = _t9;
+    var _t0;
+    var _t1;
+    var _t10;
+    if ($[30] !== _t9) {
+      var _variant_0 = _t9.variant,
+        _t11 = _t9.DropdownMenuContentProps,
+        _t12 = _t9.buttonProps,
+        _t13 = _t9.asChild,
+        _t14 = _t9.children,
+        _t15 = _objectWithoutProperties(_t9, _excluded2);
+      _t0 = _t11;
+      _t1 = _t12;
+      _t10 = _t13;
+      children = _t14;
+      dropdownProps = _t15;
+      $[30] = _t9;
+      $[31] = children;
+      $[32] = dropdownProps;
+      $[33] = _t0;
+      $[34] = _t1;
+      $[35] = _t10;
     } else {
-      dropdownProps = $[31];
-      _t8 = $[32];
-      _t9 = $[33];
+      children = $[31];
+      dropdownProps = $[32];
+      _t0 = $[33];
+      _t1 = $[34];
+      _t10 = $[35];
     }
-    var _t11;
-    if ($[34] !== _t8) {
-      _t11 = _t8 === undefined ? {} : _t8;
-      $[34] = _t8;
-      $[35] = _t11;
+    var _t16;
+    if ($[36] !== _t0) {
+      _t16 = _t0 === undefined ? {} : _t0;
+      $[36] = _t0;
+      $[37] = _t16;
     } else {
-      _t11 = $[35];
+      _t16 = $[37];
     }
-    var DropdownMenuContentProps = _t11;
-    var _t12;
-    if ($[36] !== _t9) {
-      _t12 = _t9 === undefined ? {} : _t9;
-      $[36] = _t9;
-      $[37] = _t12;
+    var DropdownMenuContentProps = _t16;
+    var _t17;
+    if ($[38] !== _t1) {
+      _t17 = _t1 === undefined ? {} : _t1;
+      $[38] = _t1;
+      $[39] = _t17;
     } else {
-      _t12 = $[37];
+      _t17 = $[39];
     }
-    var buttonProps = _t12;
-    var _t13;
-    if ($[38] !== getIcon) {
-      _t13 = getIcon();
-      $[38] = getIcon;
-      $[39] = _t13;
+    var buttonProps = _t17;
+    var asChild = _t10 === undefined ? false : _t10;
+    var _t18;
+    if ($[40] !== getIcon) {
+      _t18 = getIcon();
+      $[40] = getIcon;
+      $[41] = _t18;
     } else {
-      _t13 = $[39];
+      _t18 = $[41];
     }
-    var _t14;
-    if ($[40] === Symbol.for("react.memo_cache_sentinel")) {
-      _t14 = /*#__PURE__*/_jsx("span", {
+    var _t19;
+    if ($[42] === Symbol.for("react.memo_cache_sentinel")) {
+      _t19 = /*#__PURE__*/_jsx("span", {
         className: "sr-only",
         children: "Open theme selector"
       });
-      $[40] = _t14;
+      $[42] = _t19;
     } else {
-      _t14 = $[40];
+      _t19 = $[42];
     }
-    var _t15;
-    if ($[41] !== buttonProps || $[42] !== _t13) {
-      _t15 = /*#__PURE__*/_jsx(DropdownMenuTrigger, {
-        asChild: true,
-        children: /*#__PURE__*/_jsxs(Button, _objectSpread(_objectSpread({
-          variant: "outline",
-          size: "icon",
-          className: "h-9 w-9"
-        }, buttonProps), {}, {
-          children: [_t13, _t14]
-        }))
+    var _t20;
+    if ($[43] !== _t18) {
+      _t20 = /*#__PURE__*/_jsxs(_Fragment, {
+        children: [_t18, _t19]
       });
-      $[41] = buttonProps;
-      $[42] = _t13;
-      $[43] = _t15;
+      $[43] = _t18;
+      $[44] = _t20;
     } else {
-      _t15 = $[43];
+      _t20 = $[44];
     }
-    var _t16;
-    if ($[44] !== setTheme) {
-      _t16 = function _t16(value) {
+    var iconContent = _t20;
+    var _t21;
+    if ($[45] !== asChild || $[46] !== buttonProps || $[47] !== children || $[48] !== iconContent) {
+      _t21 = asChild && /*#__PURE__*/React.isValidElement(children) ? /*#__PURE__*/React.cloneElement(children, {
+        children: /*#__PURE__*/_jsxs(_Fragment, {
+          children: [iconContent, children.props.children]
+        })
+      }) : /*#__PURE__*/_jsx(Button, _objectSpread(_objectSpread({
+        variant: "outline",
+        size: "icon",
+        className: "h-9 w-9"
+      }, buttonProps), {}, {
+        children: iconContent
+      }));
+      $[45] = asChild;
+      $[46] = buttonProps;
+      $[47] = children;
+      $[48] = iconContent;
+      $[49] = _t21;
+    } else {
+      _t21 = $[49];
+    }
+    var _t22;
+    if ($[50] !== _t21) {
+      _t22 = /*#__PURE__*/_jsx(DropdownMenuTrigger, {
+        asChild: true,
+        children: _t21
+      });
+      $[50] = _t21;
+      $[51] = _t22;
+    } else {
+      _t22 = $[51];
+    }
+    var _t23;
+    if ($[52] !== setTheme) {
+      _t23 = function _t23(value) {
         return setTheme(value);
       };
-      $[44] = setTheme;
-      $[45] = _t16;
+      $[52] = setTheme;
+      $[53] = _t23;
     } else {
-      _t16 = $[45];
+      _t23 = $[53];
     }
-    var _t17;
-    if ($[46] === Symbol.for("react.memo_cache_sentinel")) {
-      _t17 = /*#__PURE__*/_jsxs(DropdownMenuRadioItem, {
+    var t15;
+    if ($[54] === Symbol.for("react.memo_cache_sentinel")) {
+      t15 = /*#__PURE__*/_jsxs(DropdownMenuRadioItem, {
         value: "light",
         children: [/*#__PURE__*/_jsx(Sun, {
           className: "mr-2 h-4 w-4"
         }), "Light"]
       });
-      $[46] = _t17;
+      $[54] = t15;
     } else {
-      _t17 = $[46];
+      t15 = $[54];
     }
-    var _t18;
-    if ($[47] === Symbol.for("react.memo_cache_sentinel")) {
-      _t18 = /*#__PURE__*/_jsxs(DropdownMenuRadioItem, {
+    var t16;
+    if ($[55] === Symbol.for("react.memo_cache_sentinel")) {
+      t16 = /*#__PURE__*/_jsxs(DropdownMenuRadioItem, {
         value: "dark",
         children: [/*#__PURE__*/_jsx(Moon, {
           className: "mr-2 h-4 w-4"
         }), "Dark"]
       });
-      $[47] = _t18;
+      $[55] = t16;
     } else {
-      _t18 = $[47];
+      t16 = $[55];
     }
-    var _t19;
-    if ($[48] === Symbol.for("react.memo_cache_sentinel")) {
-      _t19 = /*#__PURE__*/_jsxs(DropdownMenuRadioItem, {
+    var t17;
+    if ($[56] === Symbol.for("react.memo_cache_sentinel")) {
+      t17 = /*#__PURE__*/_jsxs(DropdownMenuRadioItem, {
         value: "system",
         children: [/*#__PURE__*/_jsx(Laptop, {
           className: "mr-2 h-4 w-4"
         }), "System"]
       });
-      $[48] = _t19;
+      $[56] = t17;
     } else {
-      _t19 = $[48];
-    }
-    var t16;
-    if ($[49] !== _t16 || $[50] !== theme) {
-      t16 = /*#__PURE__*/_jsxs(DropdownMenuRadioGroup, {
-        value: theme,
-        onValueChange: _t16,
-        children: [_t17, _t18, _t19]
-      });
-      $[49] = _t16;
-      $[50] = theme;
-      $[51] = t16;
-    } else {
-      t16 = $[51];
-    }
-    var t17;
-    if ($[52] !== DropdownMenuContentProps || $[53] !== t16) {
-      t17 = /*#__PURE__*/_jsx(DropdownMenuContent, _objectSpread(_objectSpread({
-        align: "end"
-      }, DropdownMenuContentProps), {}, {
-        children: t16
-      }));
-      $[52] = DropdownMenuContentProps;
-      $[53] = t16;
-      $[54] = t17;
-    } else {
-      t17 = $[54];
+      t17 = $[56];
     }
     var t18;
-    if ($[55] !== dropdownProps || $[56] !== _t15 || $[57] !== t17) {
-      t18 = /*#__PURE__*/_jsxs(DropdownMenu, _objectSpread(_objectSpread({}, dropdownProps), {}, {
-        children: [_t15, t17]
-      }));
-      $[55] = dropdownProps;
-      $[56] = _t15;
-      $[57] = t17;
-      $[58] = t18;
+    if ($[57] !== _t23 || $[58] !== theme) {
+      t18 = /*#__PURE__*/_jsxs(DropdownMenuRadioGroup, {
+        value: theme,
+        onValueChange: _t23,
+        children: [t15, t16, t17]
+      });
+      $[57] = _t23;
+      $[58] = theme;
+      $[59] = t18;
     } else {
-      t18 = $[58];
+      t18 = $[59];
     }
-    return t18;
+    var t19;
+    if ($[60] !== DropdownMenuContentProps || $[61] !== t18) {
+      t19 = /*#__PURE__*/_jsx(DropdownMenuContent, _objectSpread(_objectSpread({
+        align: "end"
+      }, DropdownMenuContentProps), {}, {
+        children: t18
+      }));
+      $[60] = DropdownMenuContentProps;
+      $[61] = t18;
+      $[62] = t19;
+    } else {
+      t19 = $[62];
+    }
+    var t20;
+    if ($[63] !== dropdownProps || $[64] !== _t22 || $[65] !== t19) {
+      t20 = /*#__PURE__*/_jsxs(DropdownMenu, _objectSpread(_objectSpread({}, dropdownProps), {}, {
+        children: [_t22, t19]
+      }));
+      $[63] = dropdownProps;
+      $[64] = _t22;
+      $[65] = t19;
+      $[66] = t20;
+    } else {
+      t20 = $[66];
+    }
+    return t20;
   }
-  var t4 = props;
+  var t3 = props;
   var buttonProps_0;
-  if ($[59] !== t4) {
-    var __1 = t4.variant,
-      _t20 = _objectWithoutProperties(t4, _excluded3);
-    buttonProps_0 = _t20;
-    $[59] = t4;
-    $[60] = buttonProps_0;
+  var children_0;
+  var t4;
+  if ($[67] !== t3) {
+    var _variant_1 = t3.variant,
+      _t24 = t3.asChild,
+      _t25 = t3.children,
+      _t26 = _objectWithoutProperties(t3, _excluded3);
+    t4 = _t24;
+    children_0 = _t25;
+    buttonProps_0 = _t26;
+    $[67] = t3;
+    $[68] = buttonProps_0;
+    $[69] = children_0;
+    $[70] = t4;
   } else {
-    buttonProps_0 = $[60];
+    buttonProps_0 = $[68];
+    children_0 = $[69];
+    t4 = $[70];
   }
-  var t5 = getTitle();
+  var asChild_0 = t4 === undefined ? false : t4;
+  var t5;
+  if ($[71] !== getIcon) {
+    t5 = getIcon();
+    $[71] = getIcon;
+    $[72] = t5;
+  } else {
+    t5 = $[72];
+  }
   var t6;
-  if ($[61] !== getIcon) {
-    t6 = getIcon();
-    $[61] = getIcon;
-    $[62] = t6;
-  } else {
-    t6 = $[62];
-  }
-  var t7;
-  if ($[63] === Symbol.for("react.memo_cache_sentinel")) {
-    t7 = /*#__PURE__*/_jsx("span", {
+  if ($[73] === Symbol.for("react.memo_cache_sentinel")) {
+    t6 = /*#__PURE__*/_jsx("span", {
       className: "sr-only",
       children: "Toggle theme"
     });
-    $[63] = t7;
+    $[73] = t6;
   } else {
-    t7 = $[63];
+    t6 = $[73];
   }
-  var t8;
-  if ($[64] !== buttonProps_0 || $[65] !== t5 || $[66] !== t6 || $[67] !== toggleTheme) {
-    t8 = /*#__PURE__*/_jsxs(Button, _objectSpread(_objectSpread({
+  var t7;
+  if ($[74] !== t5) {
+    t7 = /*#__PURE__*/_jsxs(_Fragment, {
+      children: [t5, t6]
+    });
+    $[74] = t5;
+    $[75] = t7;
+  } else {
+    t7 = $[75];
+  }
+  var themeToggleContent = t7;
+  if (asChild_0) {
+    var _t27 = getTitle();
+    var _t28;
+    if ($[76] !== children_0 || $[77] !== themeToggleContent) {
+      _t28 = /*#__PURE__*/React.isValidElement(children_0) ? /*#__PURE__*/React.cloneElement(children_0, {
+        children: themeToggleContent
+      }) : children_0;
+      $[76] = children_0;
+      $[77] = themeToggleContent;
+      $[78] = _t28;
+    } else {
+      _t28 = $[78];
+    }
+    var _t29;
+    if ($[79] !== buttonProps_0 || $[80] !== _t27 || $[81] !== _t28 || $[82] !== toggleTheme) {
+      _t29 = /*#__PURE__*/_jsx(Slot, _objectSpread(_objectSpread({}, buttonProps_0), {}, {
+        onClick: toggleTheme,
+        title: _t27,
+        children: _t28
+      }));
+      $[79] = buttonProps_0;
+      $[80] = _t27;
+      $[81] = _t28;
+      $[82] = toggleTheme;
+      $[83] = _t29;
+    } else {
+      _t29 = $[83];
+    }
+    return _t29;
+  }
+  var t8 = getTitle();
+  var t9;
+  if ($[84] !== buttonProps_0 || $[85] !== t8 || $[86] !== themeToggleContent || $[87] !== toggleTheme) {
+    t9 = /*#__PURE__*/_jsx(Button, _objectSpread(_objectSpread({
       variant: "outline",
       size: "icon",
       className: "h-9 w-9"
     }, buttonProps_0), {}, {
       onClick: toggleTheme,
-      title: t5,
-      children: [t6, t7]
+      title: t8,
+      children: themeToggleContent
     }));
-    $[64] = buttonProps_0;
-    $[65] = t5;
-    $[66] = t6;
-    $[67] = toggleTheme;
-    $[68] = t8;
+    $[84] = buttonProps_0;
+    $[85] = t8;
+    $[86] = themeToggleContent;
+    $[87] = toggleTheme;
+    $[88] = t9;
   } else {
-    t8 = $[68];
+    t9 = $[88];
   }
-  return t8;
+  return t9;
 }
 
 //# sourceMappingURL=theme-toggle.js.map
