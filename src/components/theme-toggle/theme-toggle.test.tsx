@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeToggle } from './theme-toggle';
@@ -242,7 +243,126 @@ describe('ThemeToggle', () => {
     });
   });
 
+  describe('asChild prop', () => {
+    it('renders as Slot when asChild is true', () => {
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle asChild>
+            <button className="custom-button">Custom Button</button>
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const button = screen.getByRole('button');
+      expect(button).toHaveClass('custom-button');
+      // Should still have theme toggle functionality
+      expect(button).toHaveAttribute('title', 'Switch to dark mode');
+      // Should contain the theme icon
+      expect(button.querySelector('svg')).toBeInTheDocument();
+    });
+
+    it('maintains theme toggle functionality when asChild is true', () => {
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle asChild>
+            <button>Custom Button</button>
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const button = screen.getByRole('button');
+
+      // Click to toggle theme
+      fireEvent.click(button);
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'feathers-ui-theme',
+        'dark'
+      );
+    });
+
+    it('works with custom components like SidebarMenuButton', () => {
+      // Mock a custom component that would work like SidebarMenuButton
+      const CustomMenuButton = React.forwardRef<
+        HTMLButtonElement,
+        React.ComponentProps<'button'>
+      >((props, ref) => (
+        <button ref={ref} {...props} className="sidebar-menu-button" />
+      ));
+      CustomMenuButton.displayName = 'CustomMenuButton';
+
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle asChild>
+            <CustomMenuButton />
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const button = screen.getByRole('button');
+      expect(button).toHaveClass('sidebar-menu-button');
+      expect(button.querySelector('svg')).toBeInTheDocument();
+    });
+  });
+
   describe('Dropdown variant', () => {
+    it('supports asChild prop for custom trigger', async () => {
+      const user = userEvent.setup();
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle variant="dropdown" asChild>
+            <button className="custom-dropdown-trigger">Custom Trigger</button>
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const trigger = screen.getByRole('button', {
+        name: /open theme selector/i,
+      });
+      expect(trigger).toHaveClass('custom-dropdown-trigger');
+
+      // Should still show the theme icon
+      expect(trigger.querySelector('svg')).toBeInTheDocument();
+
+      // Should open dropdown when clicked
+      await user.click(trigger);
+      expect(screen.getByText('Light')).toBeInTheDocument();
+      expect(screen.getByText('Dark')).toBeInTheDocument();
+      expect(screen.getByText('System')).toBeInTheDocument();
+    });
+
+    it('works with custom component as dropdown trigger', async () => {
+      const CustomTrigger = React.forwardRef<
+        HTMLButtonElement,
+        React.ComponentProps<'button'>
+      >((props, ref) => (
+        <button ref={ref} {...props} className="fancy-trigger" />
+      ));
+      CustomTrigger.displayName = 'CustomTrigger';
+
+      const user = userEvent.setup();
+      render(
+        <ThemeProvider defaultTheme="light">
+          <ThemeToggle variant="dropdown" asChild>
+            <CustomTrigger />
+          </ThemeToggle>
+        </ThemeProvider>
+      );
+
+      const trigger = screen.getByRole('button', {
+        name: /open theme selector/i,
+      });
+      expect(trigger).toHaveClass('fancy-trigger');
+      expect(trigger.querySelector('svg')).toBeInTheDocument();
+
+      await user.click(trigger);
+      const darkOption = screen.getByText('Dark');
+      await user.click(darkOption);
+
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'feathers-ui-theme',
+        'dark'
+      );
+    });
     it('renders as dropdown when variant is dropdown', () => {
       renderWithProvider('light', 'dropdown');
 

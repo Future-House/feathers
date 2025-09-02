@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ButtonProps } from '../button/button';
 import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
@@ -6,7 +7,8 @@ type BaseThemeToggleProps = {
 };
 type ButtonVariantProps = BaseThemeToggleProps & {
     variant?: 'button';
-} & Omit<ButtonProps, 'onClick' | 'children'>;
+    asChild?: boolean;
+} & Omit<ButtonProps, 'onClick' | 'children' | 'asChild'>;
 type SwitchVariantProps = BaseThemeToggleProps & {
     variant: 'switch';
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'type' | 'role' | 'aria-checked'>;
@@ -14,7 +16,9 @@ type DropdownVariantProps = BaseThemeToggleProps & {
     variant: 'dropdown';
     DropdownMenuContentProps?: React.ComponentProps<typeof DropdownMenuPrimitive.Content>;
     buttonProps?: Omit<ButtonProps, 'onClick' | 'children'>;
-} & React.ComponentProps<typeof DropdownMenu>;
+    asChild?: boolean;
+    children?: React.ReactNode;
+} & Omit<React.ComponentProps<typeof DropdownMenu>, 'children'>;
 export type ThemeToggleProps = ButtonVariantProps | SwitchVariantProps | DropdownVariantProps;
 export declare function ThemeToggle(props: ThemeToggleProps): import("react/jsx-runtime").JSX.Element;
 export {};
