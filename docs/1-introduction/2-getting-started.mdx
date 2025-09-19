@@ -14,17 +14,20 @@ _Quick start guide to get up and running with Feathers component library in your
 
 ## Installation
 
-Install Feathers using your preferred package manager:
+Follow these steps to integrate Feathers into your React project with Tailwind CSS.
+
+### 1. Install Feathers
 
 <Tabs defaultValue="npm" className="my-6">
   <TabsList>
     <TabsTrigger value="npm">npm</TabsTrigger>
     <TabsTrigger value="yarn">yarn</TabsTrigger>
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
   </TabsList>
   <TabsContent value="npm">
     ```bash
-    npm install @future-house/feathers
+    npm install @future-house/feathers --save
     ```
   </TabsContent>
   <TabsContent value="yarn">
@@ -37,51 +40,297 @@ Install Feathers using your preferred package manager:
     pnpm add @future-house/feathers
     ```
   </TabsContent>
+  <TabsContent value="bun">
+    ```bash
+    bun add @future-house/feathers
+    ```
+  </TabsContent>
 </Tabs>
 
-## Setup
+> If you want to use feathers prebuilt theme, without customizing it, please import feathers styles in your CSS file and skip to the 6th step `@import "../node_modules/@future-house/feathers/index.css";`
 
-### 1. Install Tailwind CSS
+### 2. Install Tailwind CSS
 
-Feathers is built with Tailwind CSS. If you don't have Tailwind CSS set up in your project, follow the [Tailwind CSS installation guide](https://tailwindcss.com/docs/installation).
+If you don't have Tailwind CSS set up in your project, install it:
 
-### 2. Configure Tailwind CSS
-
-Add Feathers to your `tailwind.config.js`:
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@future-house/feathers/**/*.{js,jsx,ts,tsx}',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
+```bash
+npm install tailwindcss @tailwindcss/postcss autoprefixer
 ```
 
-### 3. Import Styles
+### 3. Import Tailwind in your CSS
 
-Import the Feathers stylesheet that includes Tailwind CSS and all theme variables:
+Add the `@import “tailwindcss”;` import to your main CSS file.
+
+```javascript
+@import "tailwindcss";
+```
+
+### 4. Add Feathers to your CSS as a source to be used by Tailwind
+
+After installing Tailwind CSS, you need to inject feathers styles into your project.
+
+- Open or create your main CSS file. This file is typically located at `src/index.css` or `src/styles.css`.
+- Add the `@future-house/feathers` as a source to be used by Tailwind at the top of your CSS file:
 
 ```css
+@source '../node_modules/@future-house/feathers';
+```
+
+5. Configure Feathers tokens for Tailwind
+
+```css
+/* Custom variant for dark mode */
+@custom-variant dark (&:is(.dark *));
+
+/* Tailwind utility variables */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Light theme tokens */
+:root {
+  --radius: 0.375rem;
+  --font-family-sans: 'Rubik', sans-serif;
+  --font-family-mono: 'Space Mono', monospace;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.55 0.177 145.653);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.75 0.147 85.366);
+  --warning-foreground: oklch(0.145 0 0);
+  --info: oklch(0.55 0.183 252.418);
+  --info-foreground: oklch(1 0 0);
+  --error: oklch(0.637 0.237 25.331);
+  --error-foreground: oklch(1 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* Dark mode tokens */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.65 0.17 145.653);
+  --success-foreground: oklch(0.145 0 0);
+  --warning: oklch(0.8 0.15 85.366);
+  --warning-foreground: oklch(0.145 0 0);
+  --info: oklch(0.65 0.18 252.418);
+  --info-foreground: oklch(0.145 0 0);
+  --error: oklch(0.7 0.22 25.331);
+  --error-foreground: oklch(0.145 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Base layer */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Component styles layer */
+@layer components {
+  @keyframes circular-progress-circulate {
+    0% {
+      transform: rotate(-90deg);
+    }
+
+    100% {
+      transform: rotate(270deg);
+    }
+  }
+
+  .circular-progress-indeterminate {
+    animation: circular-progress-circulate 0.8s linear infinite;
+    transform-origin: center;
+  }
+
+  .Editor-code {
+    background-color: oklch(var(--muted));
+    color: oklch(var(--foreground));
+    font-family: var(--font-family-mono);
+    display: block;
+    padding: 0.75rem 0.75rem 0.75rem 3.25rem;
+    line-height: 1.6;
+    font-size: 13px;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    position: relative;
+    tab-size: 2;
+    border: 1px solid oklch(var(--border));
+    border-top-left-radius: calc(var(--radius) - 2px);
+    border-bottom-left-radius: calc(var(--radius) - 2px);
+  }
+
+  .Editor-code:before {
+    content: attr(data-gutter);
+    position: absolute;
+    background-color: var(--input);
+    border-right: 1px solid oklch(var(--border));
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0.75rem 0.5rem;
+    color: oklch(var(--muted-foreground));
+    white-space: pre-wrap;
+    text-align: right;
+    min-width: 2.5rem;
+    font-size: 13px;
+    line-height: 1.6;
+    border-top-left-radius: calc(var(--radius) - 2px);
+    border-bottom-left-radius: calc(var(--radius) - 2px);
+  }
+
+  /* Dark mode specific adjustments */
+  .dark .Editor-code {
+    background-color: var(--card);
+    border-color: oklch(var(--border));
+  }
+
+  .dark .Editor-code:before {
+    background-color: var(--muted);
+    border-right-color: oklch(var(--border));
+  }
+}
+
+```
+
+Import the Feathers stylesheet in your main CSS file. This includes all Tailwind CSS directives and theme variables:
+
+```css
+/* In your main CSS file (e.g., index.css or app.css) */
 @import '@future-house/feathers/index.css';
 ```
 
-Or if you prefer to import from the lib folder:
+### 6. Initialize Theme Provider
 
-```css
-@import '@future-house/feathers/lib/styles/index.css';
+Wrap your application with the ThemeProvider to enable theming and dark mode support:
+
+```jsx
+import { ThemeProvider } from '@future-house/feathers';
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="feathers-theme">
+      <div className="bg-background text-foreground min-h-screen">
+        {/* Your app content */}
+      </div>
+    </ThemeProvider>
+  );
+}
+
+export default App;
 ```
 
-## Basic Usage
+### 7. Use Components
 
-### Importing Components
-
-Feathers supports multiple import patterns for flexibility:
+Import and use Feathers components in your application:
 
 <Tabs defaultValue="named" className="my-6">
   <TabsList>
@@ -103,9 +352,7 @@ Import from specific component paths
   </TabsContent>
 </Tabs>
 
-### Your First Component
-
-Here's a simple example using the Button component:
+Here's a simple example:
 
 ```jsx
 import React from 'react';
@@ -122,29 +369,9 @@ function App() {
 export default App;
 ```
 
-## Theme Setup
+### 7. Optional: Add Theme Toggle
 
-### Dark Mode Support
-
-Feathers includes built-in dark mode support. Wrap your app with the ThemeProvider:
-
-```jsx
-import { ThemeProvider } from '@future-house/feathers';
-
-function App() {
-  return (
-    <ThemeProvider defaultTheme="system" storageKey="my-app-theme">
-      <div className="bg-background text-foreground min-h-screen">
-        {/* Your app content */}
-      </div>
-    </ThemeProvider>
-  );
-}
-```
-
-### Theme Toggle
-
-Add a theme toggle button to let users switch between light and dark modes:
+Add a theme toggle to let users switch between light and dark modes:
 
 ```jsx
 import { ThemeToggle } from '@future-house/feathers';
