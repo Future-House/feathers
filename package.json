@@ -15,7 +15,6 @@
     },
     "./index.css": "./dist/index.css",
     "./lib/styles/index.css": "./dist/lib/styles/index.css",
-    "./default.css": "./dist/lib/styles/default.css",
     "./components": {
       "types": "./dist/components/index.d.ts",
       "default": "./dist/components/index.js"

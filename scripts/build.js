@@ -368,15 +368,7 @@ execSync('rm -rf temp-types');
 console.log('🎨 Processing CSS...');
 fs.mkdirSync('dist/lib/styles', { recursive: true });
 
-// Build default.css (theme only)
-execSync(
-  'npx @tailwindcss/cli -i src/lib/styles/default.css -o dist/lib/styles/default.css',
-  {
-    stdio: 'inherit',
-  }
-);
-
-// Build index.css (includes tailwind + default.css)
+// Build index.css
 execSync(
   'npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/lib/styles/index.css',
   {
