@@ -19,35 +19,39 @@ function CustomTheme() {
       </div>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">New Colors</h2>
+        <h2 className="text-2xl font-semibold">Custom App Colors</h2>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm">Success</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Button className="bg-success hover:bg-success/80 w-full">
-                success
+              <Button className="bg-brand/50 hover:bg-brand/40 dark:bg-brand/80 dark:hover:bg-brand/70 w-full">
+                Brand
               </Button>
-              <Badge variant="outline" className="border-success text-success">
-                Success
+              <Badge variant="outline" className="border-brand text-brand">
+                Brand
               </Badge>
             </CardContent>
           </Card>
+        </div>
+      </section>
 
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm">Warning</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <Button className="bg-warning hover:bg-warning/80 w-full">
-                warning
-              </Button>
-              <Badge variant="outline" className="border-warning text-warning">
-                Warning
-              </Badge>
-            </CardContent>
-          </Card>
+      <section className="space-y-4">
+        <div className="dark:bg-background flex h-[calc(100vh-2rem)] flex-col overflow-hidden lg:flex-row">
+          <div className="flex h-full flex-1 flex-col lg:w-1/2 lg:flex-none">
+            <span>xl - lime</span>
+            <span>md - violet</span>
+            <span>default - amber</span>
+            <div className="size-8 bg-amber-400 md:bg-violet-600 xl:bg-lime-500"></div>
+          </div>
+          <div className="flex-1 border-l-2 bg-neutral-200 p-6 lg:sticky lg:top-0 lg:h-[calc(100vh-2rem)] lg:w-1/2 lg:overflow-y-auto dark:bg-neutral-900">
+            Testing some flex classes
+            <br/>
+            lg - row
+            <br/>
+            default - col
+          </div>
         </div>
       </section>
 
