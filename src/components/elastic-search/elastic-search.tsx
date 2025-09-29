@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { validate as isValidUUID, v4 as uuidv4 } from 'uuid';
 import { format, isValid, parseISO } from 'date-fns';
 
-import { Plus, X, Search } from '@/icons';
+import { Add as Plus, Close as X, Search } from '@/icons';
 
 import { Button } from '@/components/button';
 import { DateInput } from '@/components/date-input';

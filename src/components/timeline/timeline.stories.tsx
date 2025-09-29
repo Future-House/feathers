@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Check, Clock, CircleAlert } from '@/icons';
+import {
+  Checkmark as Check,
+  Time as Clock,
+  WarningAlt as CircleAlert,
+} from '@/icons';
 import { Timeline, TimelineItem, TimelineHeading } from './timeline';
 import { Typography } from '../typography';
 

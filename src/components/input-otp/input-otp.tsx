@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { OTPInput, OTPInputContext } from 'input-otp';
-import { Minus } from '@/icons';
+import { Subtract as Minus } from '@/icons';
 
 import { cn } from '@/lib/utils';
 

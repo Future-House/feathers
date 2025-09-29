@@ -14,7 +14,7 @@ import {
   InputOTPSeparator,
   Label,
 } from '@future-house/feathers';
-import { Eye, EyeOff, Mail, Search } from '@future-house/feathers/icons';
+import { View, ViewOff, Email, Search } from '@future-house/feathers/icons';
 
 export default function InputExample() {
   const [formData, setFormData] = useState({
@@ -116,7 +116,7 @@ export default function InputExample() {
               <div>
                 <label className="text-sm font-medium">Email with Icon</label>
                 <div className="relative">
-                  <Mail className="text-muted-foreground absolute top-3 left-3 h-4 w-4" />
+                  <Email className="text-muted-foreground absolute top-3 left-3 h-4 w-4" />
                   <Input
                     type="email"
                     placeholder="your@email.com"
@@ -147,9 +147,9 @@ export default function InputExample() {
                     className="text-muted-foreground hover:text-foreground absolute top-3 right-3 h-4 w-4"
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
+                      <ViewOff className="h-4 w-4" />
                     ) : (
-                      <Eye className="h-4 w-4" />
+                      <View className="h-4 w-4" />
                     )}
                   </button>
                 </div>

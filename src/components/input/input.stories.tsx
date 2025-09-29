@@ -1,7 +1,13 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
-import { Mail, Eye, EyeOff, Search as SearchIcon, User } from '@/icons';
+import {
+  Email as Mail,
+  View as Eye,
+  ViewOff as EyeOff,
+  Search as SearchIcon,
+  User,
+} from '@/icons';
 import { Input } from './input';
 import { Typography } from '../typography';
 

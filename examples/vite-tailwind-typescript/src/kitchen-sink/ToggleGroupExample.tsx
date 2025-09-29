@@ -7,7 +7,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from '@future-house/feathers';
-import { Mail, User, Settings } from '@future-house/feathers/icons';
+import { Email, User, Settings } from '@future-house/feathers/icons';
 
 export default function ToggleGroupExample() {
   return (
@@ -44,7 +44,7 @@ export default function ToggleGroupExample() {
                 <p className="mb-2 text-sm font-medium">With Icons</p>
                 <ToggleGroup type="single" variant="outline">
                   <ToggleGroupItem value="mail" aria-label="Mail">
-                    <Mail />
+                    <Email/>
                   </ToggleGroupItem>
                   <ToggleGroupItem value="user" aria-label="User">
                     <User />
@@ -86,7 +86,7 @@ export default function ToggleGroupExample() {
                     value="mail"
                     aria-label="Email notifications"
                   >
-                    <Mail />
+                    <Email/>
                     Email
                   </ToggleGroupItem>
                   <ToggleGroupItem value="user" aria-label="User profile">

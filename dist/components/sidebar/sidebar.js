@@ -30,7 +30,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
-import { PanelLeft as PanelLeftIcon } from "../../icons";
+import { SidePanelOpen as PanelLeftIcon } from "../../icons";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { cn } from "../../lib/utils";
 import { Button } from "../button";

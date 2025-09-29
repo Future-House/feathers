@@ -105,5 +105,5 @@ Built with:
 - **Radix UI** - Accessible, unstyled UI primitives
 - **Tailwind CSS** - Utility-first styling
 - **shadcn/ui** - Component patterns and styling
-- **Lucide React** - Icon library
+- **Carbon Icons** - Icon library
 - **TypeScript** - Full type safety

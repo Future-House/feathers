@@ -9,7 +9,7 @@ This guide provides essential information for developers working on the Feathers
 ```
 src/
    components/      # shadcn/ui components
-   icons/           # icons (pass-through of lucide)
+   icons/           # icons (pass-through of carbon)
    lib/             # Utility functions
    index.ts         # Main entry point
 ```

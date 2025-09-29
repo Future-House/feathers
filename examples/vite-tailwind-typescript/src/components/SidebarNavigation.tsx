@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { House, Package2, Palette } from '@future-house/feathers/icons';
+import { Home, Package, ColorPalette } from '@future-house/feathers/icons';
 import {
   Sidebar,
   SidebarContent,
@@ -33,7 +33,7 @@ function SidebarNavigation() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link to="/">
-                    <House className="h-4 w-4" />
+                    <Home className="h-4 w-4" />
                     <span>Home</span>
                   </Link>
                 </SidebarMenuButton>
@@ -41,7 +41,7 @@ function SidebarNavigation() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link to="/kitchen-sink">
-                    <Package2 className="h-4 w-4" />
+                    <Package className="h-4 w-4" />
                     <span>Kitchen Sink</span>
                   </Link>
                 </SidebarMenuButton>
@@ -49,7 +49,7 @@ function SidebarNavigation() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link to="/custom-theme">
-                    <Palette className="h-4 w-4" />
+                    <ColorPalette className="h-4 w-4" />
                     <span>Custom Theme</span>
                   </Link>
                 </SidebarMenuButton>

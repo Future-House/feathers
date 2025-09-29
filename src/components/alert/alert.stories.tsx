@@ -3,10 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Alert, AlertTitle, AlertDescription } from '../alert';
 import {
   Terminal,
-  CircleAlert,
-  CircleCheck,
-  Info,
-  TriangleAlert,
+  WarningAlt,
+  CheckmarkFilled,
+  Information,
 } from '../../icons';
 
 const meta = {
@@ -157,7 +156,7 @@ export const TitleOnly: Story = {
   },
   render: args => (
     <Alert {...args}>
-      <Info />
+      <Information />
       <AlertTitle>Simple notification</AlertTitle>
     </Alert>
   ),
@@ -169,7 +168,7 @@ export const DescriptionOnly: Story = {
   },
   render: args => (
     <Alert {...args}>
-      <CircleCheck />
+      <CheckmarkFilled />
       <AlertDescription>
         Operation completed successfully without any issues.
       </AlertDescription>
@@ -209,7 +208,7 @@ export const CustomStyling: Story = {
   },
   render: args => (
     <Alert {...args} className="border-blue-200 bg-blue-50">
-      <Info className="text-blue-600" />
+      <Information className="text-blue-600" />
       <AlertTitle className="text-blue-800">Custom Styled Alert</AlertTitle>
       <AlertDescription className="text-blue-700">
         This alert demonstrates custom styling with blue colors while
@@ -231,26 +230,26 @@ export const ColorVariants: Story = {
         <AlertDescription>This is a default alert message.</AlertDescription>
       </Alert>
       <Alert color="success">
-        <CircleCheck />
+        <CheckmarkFilled />
         <AlertTitle>Success</AlertTitle>
         <AlertDescription>
           This is a success message confirming an action.
         </AlertDescription>
       </Alert>
       <Alert color="warning">
-        <TriangleAlert />
+        <WarningAlt />
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>
           This is a warning message that requires attention.
         </AlertDescription>
       </Alert>
       <Alert color="info">
-        <Info />
+        <Information />
         <AlertTitle>Information</AlertTitle>
         <AlertDescription>This is an informational message.</AlertDescription>
       </Alert>
       <Alert color="error">
-        <CircleAlert />
+        <WarningAlt />
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>
           This is an error message indicating a problem.

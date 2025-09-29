@@ -222,24 +222,22 @@ describe('ThemeToggle', () => {
       renderWithProvider('light', 'switch');
 
       const container = screen.getByRole('switch').closest('div');
-      const sunIcon = container?.querySelector('.lucide-sun');
-      const moonIcon = container?.querySelector('.lucide-moon');
+      const icons = container?.querySelectorAll('svg');
 
-      // In light mode, sun should be visible (opacity-100) and moon hidden (opacity-0)
-      expect(sunIcon).toHaveClass('opacity-100');
-      expect(moonIcon).toHaveClass('opacity-0');
+      // In light mode, one icon should be visible (opacity-100) and one hidden (opacity-0)
+      expect(icons?.[0]).toHaveClass('opacity-100');
+      expect(icons?.[1]).toHaveClass('opacity-0');
     });
 
     it('shows fade transition classes on icons', () => {
       renderWithProvider('light', 'switch');
 
       const container = screen.getByRole('switch').closest('div');
-      const sunIcon = container?.querySelector('.lucide-sun');
-      const moonIcon = container?.querySelector('.lucide-moon');
+      const icons = container?.querySelectorAll('svg');
 
       // Both icons should have transition-opacity duration-300
-      expect(sunIcon).toHaveClass('transition-opacity', 'duration-300');
-      expect(moonIcon).toHaveClass('transition-opacity', 'duration-300');
+      expect(icons?.[0]).toHaveClass('transition-opacity', 'duration-300');
+      expect(icons?.[1]).toHaveClass('transition-opacity', 'duration-300');
     });
   });
 

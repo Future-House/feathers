@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Check } from '@/icons';
+import { Checkmark as Check } from '@/icons';
 import { Timeline, TimelineItem, TimelineHeading } from './timeline';
 
 describe('Timeline', () => {

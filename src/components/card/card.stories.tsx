@@ -10,7 +10,7 @@ import {
 } from './card';
 import { Button } from '../button/button';
 import { Typography } from '../typography';
-import { Bell, Check } from '@/icons';
+import { Notification as Bell, Checkmark as Check } from '@/icons';
 
 const meta = {
   title: 'Components/Card',

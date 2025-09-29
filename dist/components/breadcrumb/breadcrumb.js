@@ -13,7 +13,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { ChevronRight, Ellipsis } from "../../icons";
+import { ChevronRight, OverflowMenuHorizontal as Ellipsis } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function Breadcrumb(t0) {

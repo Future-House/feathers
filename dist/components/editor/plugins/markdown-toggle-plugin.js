@@ -5,7 +5,7 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { $convertFromMarkdownString, $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown';
 import { $createCodeNode, $isCodeNode } from '@lexical/code';
 import { $getRoot, $createTextNode } from 'lexical';
-import { FileText } from "../../../icons";
+import { Document as FileText } from "../../../icons";
 import { cn } from "../../../lib/utils";
 import { Button } from "../../button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../../tooltip";

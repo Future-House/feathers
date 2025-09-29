@@ -10,7 +10,7 @@ import { c as _c } from "react/compiler-runtime";
 import { useState, useCallback } from 'react';
 import { validate as isValidUUID, v4 as uuidv4 } from 'uuid';
 import { format, isValid, parseISO } from 'date-fns';
-import { Plus, X, Search } from "../../icons";
+import { Add as Plus, Close as X, Search } from "../../icons";
 import { Button } from "../button";
 import { DateInput } from "../date-input";
 import { Input } from "../input";

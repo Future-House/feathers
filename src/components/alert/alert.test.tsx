@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Alert, AlertTitle, AlertDescription } from './alert';
-import { Terminal, CircleAlert } from '@/icons';
+import { Terminal, WarningAlt as CircleAlert } from '@/icons';
 
 describe('Alert', () => {
   describe('Alert component', () => {

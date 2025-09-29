@@ -3,12 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/button';
 import { Checkbox } from '../checkbox/checkbox';
 import {
-  Mail,
+  Email,
   User,
   Settings,
-  Info,
-  TriangleAlert,
-  CircleCheck,
+  Information,
+  WarningAlt,
+  CheckmarkFilled,
 } from '@/icons';
 import { Typography } from '../typography';
 import {
@@ -287,7 +287,7 @@ export const ConfirmationDialog: Story = {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <TriangleAlert className="text-destructive h-5 w-5" />
+            <WarningAlt className="text-destructive h-5 w-5" />
             Are you absolutely sure?
           </DialogTitle>
           <DialogDescription>
@@ -326,7 +326,7 @@ export const NewsletterSignup: Story = {
     <Dialog {...args}>
       <DialogTrigger asChild>
         <Button>
-          <Mail className="mr-2 h-4 w-4" />
+          <Email className="mr-2 h-4 w-4" />
           Subscribe to Newsletter
         </Button>
       </DialogTrigger>
@@ -386,7 +386,7 @@ export const SuccessMessage: Story = {
       <DialogContent className="max-w-md">
         <DialogHeader className="text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
-            <CircleCheck className="h-6 w-6 text-green-600 dark:text-green-400" />
+            <CheckmarkFilled className="h-6 w-6 text-green-600 dark:text-green-400" />
           </div>
           <DialogTitle>Success!</DialogTitle>
           <DialogDescription>
@@ -547,7 +547,7 @@ export const WithoutCloseButton: Story = {
         <div className="py-4">
           <div className="rounded-md bg-blue-50 p-4 dark:bg-blue-950">
             <div className="flex items-center gap-2">
-              <Info className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+              <Information className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               <Typography
                 variant="small"
                 className="text-blue-800 dark:text-blue-200"

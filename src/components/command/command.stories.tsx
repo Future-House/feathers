@@ -15,12 +15,11 @@ import { Button } from '../button';
 import {
   Calculator,
   Calendar,
-  CreditCard,
+  Purchase,
   Settings,
-  Smile,
+  FaceSatisfied,
   User,
-  File,
-  FileText,
+  Document,
   Folder,
   Search,
   Terminal,
@@ -222,7 +221,7 @@ function BasicCommandExample() {
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <Smile className="mr-2 h-4 w-4" />
+            <FaceSatisfied className="mr-2 h-4 w-4" />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem>
@@ -238,7 +237,7 @@ function BasicCommandExample() {
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <CreditCard className="mr-2 h-4 w-4" />
+            <Purchase className="mr-2 h-4 w-4" />
             <span>Billing</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
@@ -270,7 +269,7 @@ function CommandDialogExample() {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
             <CommandItem onSelect={() => setOpen(false)}>
-              <File className="mr-2 h-4 w-4" />
+              <Document className="mr-2 h-4 w-4" />
               <span>Files</span>
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
@@ -285,7 +284,7 @@ function CommandDialogExample() {
           <CommandSeparator />
           <CommandGroup heading="Actions">
             <CommandItem onSelect={() => setOpen(false)}>
-              <FileText className="mr-2 h-4 w-4" />
+              <Document className="mr-2 h-4 w-4" />
               <span>Create New File</span>
               <CommandShortcut>⌘N</CommandShortcut>
             </CommandItem>
@@ -306,11 +305,11 @@ function SearchableCommandExample() {
 
   const items = [
     { label: 'Profile Settings', icon: User, shortcut: '⌘P' },
-    { label: 'Billing Information', icon: CreditCard, shortcut: '⌘B' },
+    { label: 'Billing Information', icon: Purchase, shortcut: '⌘B' },
     { label: 'Account Settings', icon: Settings, shortcut: '⌘S' },
     { label: 'Calendar View', icon: Calendar, shortcut: '⌘C' },
     { label: 'Calculator Tool', icon: Calculator, shortcut: '⌘T' },
-    { label: 'File Manager', icon: File, shortcut: '⌘F' },
+    { label: 'File Manager', icon: Document, shortcut: '⌘F' },
     { label: 'Search Files', icon: Search, shortcut: '⌘⇧F' },
   ];
 
@@ -358,15 +357,15 @@ function GroupedCommandExample() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Files">
           <CommandItem>
-            <FileText className="mr-2 h-4 w-4" />
+            <Document className="mr-2 h-4 w-4" />
             <span>README.md</span>
           </CommandItem>
           <CommandItem>
-            <FileText className="mr-2 h-4 w-4" />
+            <Document className="mr-2 h-4 w-4" />
             <span>package.json</span>
           </CommandItem>
           <CommandItem>
-            <FileText className="mr-2 h-4 w-4" />
+            <Document className="mr-2 h-4 w-4" />
             <span>tsconfig.json</span>
           </CommandItem>
         </CommandGroup>
@@ -393,7 +392,7 @@ function GroupedCommandExample() {
             <CommandShortcut>⌘⇧F</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <FileText className="mr-2 h-4 w-4" />
+            <Document className="mr-2 h-4 w-4" />
             <span>Create new file</span>
             <CommandShortcut>⌘N</CommandShortcut>
           </CommandItem>

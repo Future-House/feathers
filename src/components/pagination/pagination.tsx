@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
-  Ellipsis as MoreHorizontalIcon,
+  OverflowMenuHorizontal as MoreHorizontalIcon,
 } from '@/icons';
 
 import { cn } from '@/lib/utils';

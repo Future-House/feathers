@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
 import {
-  Check as CheckIcon,
+  Checkmark as CheckIcon,
   ChevronRight as ChevronRightIcon,
-  Circle as CircleIcon,
+  RadioButton as CircleIcon,
 } from '@/icons';
 
 import { cn } from '@/lib/utils';

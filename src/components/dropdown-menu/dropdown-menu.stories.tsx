@@ -4,20 +4,20 @@ import { Button } from '../button/button';
 import {
   User,
   Settings,
-  Plus,
-  Users,
-  CreditCard,
+  Add,
+  UserMultiple,
+  Purchase,
   Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  CirclePlus,
-  UserPlus,
-  Github,
+  Help,
+  Logout,
+  Email,
+  Chat,
+  AddAlt,
+  UserFollow,
+  LogoGithub,
   Cloud,
-  Pencil,
-  Trash2,
+  Edit,
+  TrashCan,
 } from '@/icons';
 import {
   DropdownMenu,
@@ -256,7 +256,7 @@ export const Default: Story = {
           <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <CreditCard className="mr-2 h-4 w-4" />
+          <Purchase className="mr-2 h-4 w-4" />
           <span>Billing</span>
           <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -272,26 +272,26 @@ export const Default: Story = {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Users className="mr-2 h-4 w-4" />
+          <UserMultiple className="mr-2 h-4 w-4" />
           <span>Team</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <UserPlus className="mr-2 h-4 w-4" />
+          <UserFollow className="mr-2 h-4 w-4" />
           <span>Invite users</span>
           <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Plus className="mr-2 h-4 w-4" />
+          <Add className="mr-2 h-4 w-4" />
           <span>New Team</span>
           <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Github className="mr-2 h-4 w-4" />
+          <LogoGithub className="mr-2 h-4 w-4" />
           <span>GitHub</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <LifeBuoy className="mr-2 h-4 w-4" />
+          <Help className="mr-2 h-4 w-4" />
           <span>Support</span>
         </DropdownMenuItem>
         <DropdownMenuItem disabled>
@@ -300,7 +300,7 @@ export const Default: Story = {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
+          <Logout className="mr-2 h-4 w-4" />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -402,38 +402,38 @@ export const WithSubmenus: Story = {
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Pencil className="mr-2 h-4 w-4" />
+          <Edit className="mr-2 h-4 w-4" />
           <span>Pencil</span>
           <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <UserPlus className="mr-2 h-4 w-4" />
+          <UserFollow className="mr-2 h-4 w-4" />
           <span>Share</span>
         </DropdownMenuItem>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <UserPlus className="mr-2 h-4 w-4" />
+            <UserFollow className="mr-2 h-4 w-4" />
             <span>Invite users</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             <DropdownMenuItem>
-              <Mail className="mr-2 h-4 w-4" />
+              <Email className="mr-2 h-4 w-4" />
               <span>Email</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <MessageSquare className="mr-2 h-4 w-4" />
+              <Chat className="mr-2 h-4 w-4" />
               <span>Message</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <CirclePlus className="mr-2 h-4 w-4" />
+              <AddAlt className="mr-2 h-4 w-4" />
               <span>More...</span>
             </DropdownMenuItem>
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <Trash2 className="mr-2 h-4 w-4" />
+          <TrashCan className="mr-2 h-4 w-4" />
           <span>Delete</span>
           <DropdownMenuShortcut>⌫</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -460,7 +460,7 @@ export const WithGroups: Story = {
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
+            <Purchase className="mr-2 h-4 w-4" />
             <span>Billing</span>
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -474,16 +474,16 @@ export const WithGroups: Story = {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Team</DropdownMenuLabel>
           <DropdownMenuItem>
-            <Users className="mr-2 h-4 w-4" />
+            <UserMultiple className="mr-2 h-4 w-4" />
             <span>Team</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <UserPlus className="mr-2 h-4 w-4" />
+            <UserFollow className="mr-2 h-4 w-4" />
             <span>Invite users</span>
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Plus className="mr-2 h-4 w-4" />
+            <Add className="mr-2 h-4 w-4" />
             <span>New Team</span>
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -492,11 +492,11 @@ export const WithGroups: Story = {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Support</DropdownMenuLabel>
           <DropdownMenuItem>
-            <Github className="mr-2 h-4 w-4" />
+            <LogoGithub className="mr-2 h-4 w-4" />
             <span>GitHub</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <LifeBuoy className="mr-2 h-4 w-4" />
+            <Help className="mr-2 h-4 w-4" />
             <span>Support</span>
           </DropdownMenuItem>
           <DropdownMenuItem disabled>
@@ -506,7 +506,7 @@ export const WithGroups: Story = {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
+          <Logout className="mr-2 h-4 w-4" />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

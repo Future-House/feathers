@@ -23,89 +23,236 @@ import { TAILWIND_COLORS } from '../../.storybook/themes/tailwindColors.js';
 
 These are the semantic colors defined in our design system, automatically adapting between light and dark themes.
 
-### Core Semantic Colors
+### Background & Surface
 
-<div className="space-y-8 my-8">
-  {[
-    {
-      category: "Background & Surface",
-      colors: [
-        { name: 'Background', class: 'bg-background', cssVar: '--background', desc: 'Primary background color' },
-        { name: 'Foreground', class: 'bg-foreground', cssVar: '--foreground', desc: 'Primary text color' },
-        { name: 'Card', class: 'bg-card', cssVar: '--card', desc: 'Card background color' },
-        { name: 'Card Foreground', class: 'bg-card-foreground', cssVar: '--card-foreground', desc: 'Card text color' },
-        { name: 'Popover', class: 'bg-popover', cssVar: '--popover', desc: 'Popover background color' },
-        { name: 'Popover Foreground', class: 'bg-popover-foreground', cssVar: '--popover-foreground', desc: 'Popover text color' },
-      ]
-    },
-    {
-      category: "Interactive Colors",
-      colors: [
-        { name: 'Primary', class: 'bg-primary', cssVar: '--primary', desc: 'Primary action color' },
-        { name: 'Primary Foreground', class: 'bg-primary-foreground', cssVar: '--primary-foreground', desc: 'Text on primary backgrounds' },
-        { name: 'Secondary', class: 'bg-secondary', cssVar: '--secondary', desc: 'Secondary action color' },
-        { name: 'Secondary Foreground', class: 'bg-secondary-foreground', cssVar: '--secondary-foreground', desc: 'Text on secondary backgrounds' },
-        { name: 'Destructive', class: 'bg-destructive', cssVar: '--destructive', desc: 'Destructive action color' },
-        { name: 'Destructive Foreground', class: 'bg-destructive-foreground', cssVar: '--destructive-foreground', desc: 'Text on destructive backgrounds' },
-      ]
-    },
-    {
-      category: "Status Colors",
-      colors: [
-        { name: 'Success', class: 'bg-success', cssVar: '--success', desc: 'Success state color' },
-        { name: 'Success Foreground', class: 'bg-success-foreground', cssVar: '--success-foreground', desc: 'Text on success backgrounds' },
-        { name: 'Warning', class: 'bg-warning', cssVar: '--warning', desc: 'Warning state color' },
-        { name: 'Warning Foreground', class: 'bg-warning-foreground', cssVar: '--warning-foreground', desc: 'Text on warning backgrounds' },
-        { name: 'Info', class: 'bg-info', cssVar: '--info', desc: 'Information state color' },
-        { name: 'Info Foreground', class: 'bg-info-foreground', cssVar: '--info-foreground', desc: 'Text on info backgrounds' },
-        { name: 'Error', class: 'bg-error', cssVar: '--error', desc: 'Error state color' },
-        { name: 'Error Foreground', class: 'bg-error-foreground', cssVar: '--error-foreground', desc: 'Text on error backgrounds' },
-      ]
-    },
-    {
-      category: "Neutral Colors",
-      colors: [
-        { name: 'Muted', class: 'bg-muted', cssVar: '--muted', desc: 'Muted background color' },
-        { name: 'Muted Foreground', class: 'bg-muted-foreground', cssVar: '--muted-foreground', desc: 'Muted text color' },
-        { name: 'Accent', class: 'bg-accent', cssVar: '--accent', desc: 'Accent background color' },
-        { name: 'Accent Foreground', class: 'bg-accent-foreground', cssVar: '--accent-foreground', desc: 'Text on accent backgrounds' },
-        { name: 'Border', class: 'bg-border', cssVar: '--border', desc: 'Default border color' },
-        { name: 'Input', class: 'bg-input', cssVar: '--input', desc: 'Input background color' },
-        { name: 'Ring', class: 'bg-ring', cssVar: '--ring', desc: 'Focus ring color' },
-      ]
-    }
-  ].map((section) => (
-    <div key={section.category} className="sb-unstyled mb-6">
-      <h3 className="sb-unstyled text-xl font-semibold mb-2">{section.category}</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {section.colors.map((color) => (
-          <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
-            <div className="flex items-center space-x-3 mb-3">
-              <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
-              <div className="flex-1 min-w-0 pl-4">
-                <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
-                <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-between pt-3">
-              <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">var({color.cssVar})</code>
-              <Button 
-                size="sm" 
-                variant="ghost"
-                onClick={() => {
-                  navigator.clipboard.writeText(`var(${color.cssVar})`);
-                  toast.success(`Copied "var(${color.cssVar})" to clipboard`);
-                }}
-                className="h-8 w-8 p-0"
-              >
-                <Copy className="h-4 w-4" />
-              </Button>
-            </div>
+<div className="my-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {[
+      { name: 'Background', class: 'bg-background', cssVar: '--background', desc: 'Primary background color' },
+      { name: 'Foreground', class: 'bg-foreground', cssVar: '--foreground', desc: 'Primary text color' },
+      { name: 'Card', class: 'bg-card', cssVar: '--card', desc: 'Card background color' },
+      { name: 'Card Foreground', class: 'bg-card-foreground', cssVar: '--card-foreground', desc: 'Card text color' },
+      { name: 'Popover', class: 'bg-popover', cssVar: '--popover', desc: 'Popover background color' },
+      { name: 'Popover Foreground', class: 'bg-popover-foreground', cssVar: '--popover-foreground', desc: 'Popover text color' },
+      { name: 'Accent', class: 'bg-accent', cssVar: '--accent', desc: 'Brand accent color' },
+      { name: 'Accent Foreground', class: 'bg-accent-foreground', cssVar: '--accent-foreground', desc: 'Text on accent backgrounds' },
+    ].map((color) => (
+      <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
+          <div className="flex-1 min-w-0 pl-4">
+            <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+            <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
           </div>
-        ))}
+        </div>
+        <div className="flex items-center justify-between pt-3">
+          <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">var({color.cssVar})</code>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(`var(${color.cssVar})`);
+              toast.success(`Copied "var(${color.cssVar})" to clipboard`);
+            }}
+            className="h-8 w-8 p-0"
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
-    </div>
-  ))}
+    ))}
+  </div>
+</div>
+
+### Brand Colors
+
+<div className="my-8">
+  <p className="sb-unstyled text-sm text-muted-foreground mb-4">Brand identity color</p>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {[
+      { name: 'Brand', class: 'bg-brand', cssVar: '--brand', hex: '#FFCD00', desc: 'Primary brand color' },
+      { name: 'Brand Foreground', class: 'bg-brand-foreground', cssVar: '--brand-foreground', desc: 'Text on brand backgrounds' },
+    ].map((color) => (
+      <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
+          <div className="flex-1 min-w-0 pl-4">
+            <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+            <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-3">
+          <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">{color.hex || `var(${color.cssVar})`}</code>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(color.hex || `var(${color.cssVar})`);
+              toast.success(`Copied "${color.hex || `var(${color.cssVar})`}" to clipboard`);
+            }}
+            className="h-8 w-8 p-0"
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+### Code Syntax Colors
+
+<div className="my-8">
+  <p className="sb-unstyled text-sm text-muted-foreground mb-4">Custom colors for code syntax highlighting</p>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {[
+      { name: 'Code Green', cssVar: '--code-green', hex: '#679354', desc: 'Strings and comments' },
+      { name: 'Code Blue', cssVar: '--code-blue', hex: '#569cd6', desc: 'Keywords and functions' },
+      { name: 'Code Red', cssVar: '--code-red', hex: '#ce9178', desc: 'Numbers and constants' },
+    ].map((color) => (
+      <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className="w-12 h-12 border border-border rounded-lg shadow-sm" style={{ backgroundColor: color.hex }}></div>
+          <div className="flex-1 min-w-0 pl-4">
+            <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+            <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-3">
+          <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">{color.hex}</code>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(`var(${color.cssVar})`);
+              toast.success(`Copied "var(${color.cssVar})" to clipboard`);
+            }}
+            className="h-8 w-8 p-0"
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+### Interactive Colors
+
+<div className="my-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {[
+      { name: 'Primary', class: 'bg-primary', cssVar: '--primary', desc: 'Primary action color' },
+      { name: 'Primary Foreground', class: 'bg-primary-foreground', cssVar: '--primary-foreground', desc: 'Text on primary backgrounds' },
+      { name: 'Secondary', class: 'bg-secondary', cssVar: '--secondary', desc: 'Secondary action color' },
+      { name: 'Secondary Foreground', class: 'bg-secondary-foreground', cssVar: '--secondary-foreground', desc: 'Text on secondary backgrounds' },
+      { name: 'Destructive', class: 'bg-destructive', cssVar: '--destructive', desc: 'Destructive action color' },
+      { name: 'Destructive Foreground', class: 'bg-destructive-foreground', cssVar: '--destructive-foreground', desc: 'Text on destructive backgrounds' },
+    ].map((color) => (
+      <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
+          <div className="flex-1 min-w-0 pl-4">
+            <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+            <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-3">
+          <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">var({color.cssVar})</code>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(`var(${color.cssVar})`);
+              toast.success(`Copied "var(${color.cssVar})" to clipboard`);
+            }}
+            className="h-8 w-8 p-0"
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+### Status Colors
+
+<div className="my-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {[
+      { name: 'Success', class: 'bg-success', cssVar: '--success', desc: 'Success state color' },
+      { name: 'Success Foreground', class: 'bg-success-foreground', cssVar: '--success-foreground', desc: 'Text on success backgrounds' },
+      { name: 'Warning', class: 'bg-warning', cssVar: '--warning', desc: 'Warning state color' },
+      { name: 'Warning Foreground', class: 'bg-warning-foreground', cssVar: '--warning-foreground', desc: 'Text on warning backgrounds' },
+      { name: 'Info', class: 'bg-info', cssVar: '--info', desc: 'Information state color' },
+      { name: 'Info Foreground', class: 'bg-info-foreground', cssVar: '--info-foreground', desc: 'Text on info backgrounds' },
+      { name: 'Error', class: 'bg-error', cssVar: '--error', desc: 'Error state color' },
+      { name: 'Error Foreground', class: 'bg-error-foreground', cssVar: '--error-foreground', desc: 'Text on error backgrounds' },
+    ].map((color) => (
+      <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
+          <div className="flex-1 min-w-0 pl-4">
+            <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+            <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-3">
+          <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">var({color.cssVar})</code>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(`var(${color.cssVar})`);
+              toast.success(`Copied "var(${color.cssVar})" to clipboard`);
+            }}
+            className="h-8 w-8 p-0"
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+### Neutral Colors
+
+<div className="my-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {[
+      { name: 'Muted', class: 'bg-muted', cssVar: '--muted', desc: 'Muted background color' },
+      { name: 'Muted Foreground', class: 'bg-muted-foreground', cssVar: '--muted-foreground', desc: 'Muted text color' },
+      { name: 'Border', class: 'bg-border', cssVar: '--border', desc: 'Default border color' },
+      { name: 'Input', class: 'bg-input', cssVar: '--input', desc: 'Input background color' },
+      { name: 'Ring', class: 'bg-ring', cssVar: '--ring', desc: 'Focus ring color' },
+    ].map((color) => (
+      <div key={color.name} className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className={`w-12 h-12 ${color.class} border border-border rounded-lg shadow-sm`}></div>
+          <div className="flex-1 min-w-0 pl-4">
+            <h4 className="sb-unstyled font-medium text-sm truncate">{color.name}</h4>
+            <p className="sb-unstyled text-xs text-muted-foreground">{color.desc}</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-3">
+          <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">var({color.cssVar})</code>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(`var(${color.cssVar})`);
+              toast.success(`Copied "var(${color.cssVar})" to clipboard`);
+            }}
+            className="h-8 w-8 p-0"
+          >
+            <Copy className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    ))}
+  </div>
 </div>
 
 ### Chart Colors
@@ -260,10 +407,9 @@ These are the semantic colors defined in our design system, automatically adapti
   </div>
 </div>
 
-## Expanded Color Palette
+## Color Palette
 
 <div className="my-8">
-  <p className="sb-unstyled text-muted-foreground mb-6">In addition to our semantic colors, Feathers includes access to [Tailwind's full color palette](https://tailwindcss.com/docs/colors) for additional flexibility.</p>
   
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     {Object.entries(TAILWIND_COLORS).map(([colorName, colorValue]) => {

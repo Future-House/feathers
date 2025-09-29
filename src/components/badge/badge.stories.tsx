@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './badge';
-import { CircleCheck, CircleAlert, X, Info } from '@/icons';
+import {
+  CheckmarkFilled as CircleCheck,
+  WarningAlt as CircleAlert,
+  Close as X,
+  Information as Info,
+} from '@/icons';
 import { Typography } from '../typography';
 
 const meta = {

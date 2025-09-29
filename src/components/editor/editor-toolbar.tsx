@@ -32,22 +32,22 @@ import {
 } from '@lexical/list';
 import { INDENT_CONTENT_COMMAND, OUTDENT_CONTENT_COMMAND } from 'lexical';
 import {
-  Bold,
-  Italic,
-  Underline,
+  TextBold as Bold,
+  TextItalic as Italic,
+  TextUnderline as Underline,
   Code,
   Link,
   Undo,
   Redo,
   ChevronDown,
-  Strikethrough,
-  RemoveFormatting,
-  IndentIncrease,
-  IndentDecrease,
-  X,
-  Check,
+  TextStrikethrough as Strikethrough,
+  TextClearFormat as RemoveFormatting,
+  TextIndentMore as IndentIncrease,
+  TextIndentLess as IndentDecrease,
+  Close as X,
+  Checkmark as Check,
   List,
-  ListOrdered,
+  ListNumbered as ListOrdered,
 } from '../../icons';
 
 import { cn } from '@/lib/utils';

@@ -9,14 +9,14 @@ import {
 } from './navigation-menu';
 import {
   Calendar,
-  Database,
-  FileText,
+  DataBase as Database,
+  Document as FileText,
   Laptop,
-  Users,
+  UserMultiple as Users,
   Settings,
-  LayoutDashboard,
+  Dashboard as LayoutDashboard,
   Code,
-  Mail,
+  Email as Mail,
 } from '@/icons';
 
 const meta: Meta<typeof NavigationMenu> = {

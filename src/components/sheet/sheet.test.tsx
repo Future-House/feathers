@@ -67,9 +67,9 @@ jest.mock('@radix-ui/react-dialog', () => ({
   ),
 }));
 
-// Mock lucide-react icons
+// Mock Carbon icons
 jest.mock('@/icons', () => ({
-  X: () => <div data-testid="x-icon" />,
+  Close: () => <div data-testid="x-icon" />,
 }));
 
 describe('Sheet', () => {

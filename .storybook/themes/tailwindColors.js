@@ -1,4 +1,3 @@
-/* Default tailwind colors */
 export const TAILWIND_COLORS = {
   white: '#ffffff',
   slate: {
@@ -15,17 +14,17 @@ export const TAILWIND_COLORS = {
     950: '#020617',
   },
   gray: {
-    50: '#f9fafb',
-    100: '#f3f4f6',
-    200: '#e5e7eb',
-    300: '#d1d5db',
-    400: '#9ca3af',
-    500: '#6b7280',
-    600: '#4b5563',
-    700: '#374151',
-    800: '#1f2937',
-    900: '#111827',
-    950: '#030712',
+    50: '#fdfdfd',
+    100: '#f9f9f9',
+    200: '#f1f1f1',
+    300: '#dcdcdd',
+    400: '#bababe',
+    500: '#7c7c80',
+    600: '#49494d',
+    700: '#28282c',
+    800: '#212024',
+    900: '#16161a',
+    950: '#000004',
   },
   zinc: {
     50: '#fafafa',

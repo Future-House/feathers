@@ -25,17 +25,16 @@ import {
   SidebarTrigger,
 } from './sidebar';
 import {
-  House,
-  Inbox,
+  Home,
+  Email,
   Calendar,
   Search,
   Settings,
   User,
-  Plus,
-  Ellipsis,
-  File,
+  Add,
+  OverflowMenuHorizontal,
+  Document,
   Folder,
-  FileText,
 } from '../../icons';
 import { Typography } from '../typography';
 
@@ -411,7 +410,7 @@ function BasicSidebarExample() {
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <House className="size-4" />
+                  <Home className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-semibold">Acme Inc</span>
@@ -427,7 +426,7 @@ function BasicSidebarExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild isActive>
                     <a href="#">
-                      <House />
+                      <Home />
                       <span>Home</span>
                     </a>
                   </SidebarMenuButton>
@@ -435,7 +434,7 @@ function BasicSidebarExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <Inbox />
+                      <Email />
                       <span>Inbox</span>
                     </a>
                   </SidebarMenuButton>
@@ -514,7 +513,7 @@ function CollapsibleSidebarExample() {
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
                     <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                      <House className="size-4" />
+                      <Home className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">Acme Inc</span>
@@ -532,7 +531,7 @@ function CollapsibleSidebarExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton tooltip="Home" asChild>
                     <a href="#">
-                      <House />
+                      <Home />
                       <span>Home</span>
                     </a>
                   </SidebarMenuButton>
@@ -540,7 +539,7 @@ function CollapsibleSidebarExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton tooltip="Inbox" asChild isActive>
                     <a href="#">
-                      <Inbox />
+                      <Email />
                       <span>Inbox</span>
                       <SidebarMenuBadge>24</SidebarMenuBadge>
                     </a>
@@ -620,7 +619,7 @@ function NestedMenuSidebarExample() {
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
                     <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                      <File className="size-4" />
+                      <Document className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
@@ -637,7 +636,7 @@ function NestedMenuSidebarExample() {
             <SidebarGroup>
               <SidebarGroupLabel>Projects</SidebarGroupLabel>
               <SidebarGroupAction>
-                <Plus />
+                <Add />
                 <span className="sr-only">Add Project</span>
               </SidebarGroupAction>
               <SidebarGroupContent>
@@ -653,7 +652,7 @@ function NestedMenuSidebarExample() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <a href="#">
-                            <FileText />
+                            <Document />
                             <span>Components</span>
                           </a>
                         </SidebarMenuSubButton>
@@ -661,7 +660,7 @@ function NestedMenuSidebarExample() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <a href="#">
-                            <FileText />
+                            <Document />
                             <span>Documentation</span>
                           </a>
                         </SidebarMenuSubButton>
@@ -669,7 +668,7 @@ function NestedMenuSidebarExample() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <a href="#">
-                            <FileText />
+                            <Document />
                             <span>Guidelines</span>
                           </a>
                         </SidebarMenuSubButton>
@@ -684,14 +683,14 @@ function NestedMenuSidebarExample() {
                       </a>
                     </SidebarMenuButton>
                     <SidebarMenuAction showOnHover>
-                      <Ellipsis />
+                      <OverflowMenuHorizontal />
                       <span className="sr-only">More</span>
                     </SidebarMenuAction>
                     <SidebarMenuSub>
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <a href="#">
-                            <FileText />
+                            <Document />
                             <span>Homepage</span>
                           </a>
                         </SidebarMenuSubButton>
@@ -699,7 +698,7 @@ function NestedMenuSidebarExample() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <a href="#">
-                            <FileText />
+                            <Document />
                             <span>About Page</span>
                           </a>
                         </SidebarMenuSubButton>
@@ -835,7 +834,7 @@ function FloatingVariantExample() {
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
                     <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                      <House className="size-4" />
+                      <Home className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">Floating</span>
@@ -853,7 +852,7 @@ function FloatingVariantExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <House />
+                      <Home />
                       <span>Home</span>
                     </a>
                   </SidebarMenuButton>
@@ -861,7 +860,7 @@ function FloatingVariantExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <Inbox />
+                      <Email />
                       <span>Inbox</span>
                     </a>
                   </SidebarMenuButton>
@@ -938,7 +937,7 @@ function SearchableSidebarExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <House />
+                      <Home />
                       <span>Dashboard</span>
                     </a>
                   </SidebarMenuButton>
@@ -946,7 +945,7 @@ function SearchableSidebarExample() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <File />
+                      <Document />
                       <span>Documents</span>
                     </a>
                   </SidebarMenuButton>

@@ -10,7 +10,7 @@ import * as React from 'react';
 import { Button } from "../button/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip/tooltip";
 import { cn } from "../../lib/utils";
-import { Upload, X, FileText, Image, FileX, Send, Paperclip } from "../../icons";
+import { Upload, Close as X, Document as FileText, Image, DocumentBlank as FileX, SendAlt as Send, Attachment as Paperclip } from "../../icons";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function FileUploadChat(t0) {
   var $ = _c(76);

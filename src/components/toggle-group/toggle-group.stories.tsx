@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ToggleGroup, ToggleGroupItem } from './toggle-group';
 import {
-  Bold,
-  Italic,
-  Underline,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
+  TextBold,
+  TextItalic,
+  TextUnderline,
+  TextAlignLeft,
+  TextAlignCenter,
+  TextAlignRight,
   Star,
-  Heart,
-  MessageSquare,
+  Favorite,
+  Chat,
 } from '../../icons';
 
 const meta = {
@@ -195,13 +195,13 @@ export const Default: Story = {
   render: args => (
     <ToggleGroup {...args}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
-        <Bold />
+        <TextBold />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Toggle italic">
-        <Italic />
+        <TextItalic />
       </ToggleGroupItem>
       <ToggleGroupItem value="underline" aria-label="Toggle underline">
-        <Underline />
+        <TextUnderline />
       </ToggleGroupItem>
     </ToggleGroup>
   ),
@@ -227,13 +227,13 @@ export const Multiple: Story = {
   render: args => (
     <ToggleGroup {...args}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
-        <Bold />
+        <TextBold />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Toggle italic">
-        <Italic />
+        <TextItalic />
       </ToggleGroupItem>
       <ToggleGroupItem value="underline" aria-label="Toggle underline">
-        <Underline />
+        <TextUnderline />
       </ToggleGroupItem>
     </ToggleGroup>
   ),
@@ -252,13 +252,13 @@ export const Variants: Story = {
         <p className="mb-2 text-sm font-medium">Default</p>
         <ToggleGroup type="single" variant="default">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -266,13 +266,13 @@ export const Variants: Story = {
         <p className="mb-2 text-sm font-medium">Outline</p>
         <ToggleGroup type="single" variant="outline">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -293,13 +293,13 @@ export const Sizes: Story = {
         <p className="mb-2 text-sm font-medium">Small</p>
         <ToggleGroup type="single" size="sm" defaultValue="bold">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -307,13 +307,13 @@ export const Sizes: Story = {
         <p className="mb-2 text-sm font-medium">Default</p>
         <ToggleGroup type="single" size="default" defaultValue="bold">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -321,13 +321,13 @@ export const Sizes: Story = {
         <p className="mb-2 text-sm font-medium">Large</p>
         <ToggleGroup type="single" size="lg" defaultValue="bold">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -344,13 +344,13 @@ export const TextAlignment: Story = {
   render: args => (
     <ToggleGroup {...args}>
       <ToggleGroupItem value="left" aria-label="Align left">
-        <AlignLeft />
+        <TextAlignLeft />
       </ToggleGroupItem>
       <ToggleGroupItem value="center" aria-label="Align center">
-        <AlignCenter />
+        <TextAlignCenter />
       </ToggleGroupItem>
       <ToggleGroupItem value="right" aria-label="Align right">
-        <AlignRight />
+        <TextAlignRight />
       </ToggleGroupItem>
     </ToggleGroup>
   ),
@@ -365,13 +365,13 @@ export const Vertical: Story = {
   render: args => (
     <ToggleGroup {...args} className="flex flex-col">
       <ToggleGroupItem value="top" aria-label="Align top">
-        <AlignLeft />
+        <TextAlignLeft />
       </ToggleGroupItem>
       <ToggleGroupItem value="center" aria-label="Align center">
-        <AlignCenter />
+        <TextAlignCenter />
       </ToggleGroupItem>
       <ToggleGroupItem value="bottom" aria-label="Align bottom">
-        <AlignRight />
+        <TextAlignRight />
       </ToggleGroupItem>
     </ToggleGroup>
   ),
@@ -388,25 +388,25 @@ export const TextFormattingToolbar: Story = {
     <div className="flex items-center gap-4">
       <ToggleGroup type="multiple" variant="outline">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
-          <Bold />
+          <TextBold />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
-          <Italic />
+          <TextItalic />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
-          <Underline />
+          <TextUnderline />
         </ToggleGroupItem>
       </ToggleGroup>
       <div className="h-6 w-px bg-gray-300" />
       <ToggleGroup type="single" variant="outline" defaultValue="left">
         <ToggleGroupItem value="left" aria-label="Align left">
-          <AlignLeft />
+          <TextAlignLeft />
         </ToggleGroupItem>
         <ToggleGroupItem value="center" aria-label="Align center">
-          <AlignCenter />
+          <TextAlignCenter />
         </ToggleGroupItem>
         <ToggleGroupItem value="right" aria-label="Align right">
-          <AlignRight />
+          <TextAlignRight />
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
@@ -428,13 +428,13 @@ export const Disabled: Story = {
         </p>
         <ToggleGroup type="single" disabled>
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -442,13 +442,13 @@ export const Disabled: Story = {
         <p className="mb-2 text-sm font-medium">Individual Items Disabled</p>
         <ToggleGroup type="single">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
-            <Bold />
+            <TextBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" disabled aria-label="Toggle italic">
-            <Italic />
+            <TextItalic />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Toggle underline">
-            <Underline />
+            <TextUnderline />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
@@ -460,11 +460,11 @@ export const SocialInteractions: Story = {
   render: () => (
     <ToggleGroup type="multiple" variant="outline">
       <ToggleGroupItem value="like" aria-label="Like">
-        <Heart />
+        <Favorite />
         Like
       </ToggleGroupItem>
       <ToggleGroupItem value="comment" aria-label="Comment">
-        <MessageSquare />
+        <Chat />
         Comment
       </ToggleGroupItem>
       <ToggleGroupItem value="star" aria-label="Star">

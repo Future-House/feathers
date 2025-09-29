@@ -6,7 +6,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { Check, Minus } from "../../icons";
+import { Checkmark as Check, Subtract as Minus } from "../../icons";
 import { cn } from "../../lib/utils";
 import { jsx as _jsx } from "react/jsx-runtime";
 // TODO: add indeterminate state support

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Toggle } from './toggle';
 import {
-  Bold,
-  Italic,
-  Underline,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
+  TextBold,
+  TextItalic,
+  TextUnderline,
+  TextAlignLeft,
+  TextAlignCenter,
+  TextAlignRight,
 } from '../../icons';
 
 const meta = {
@@ -93,7 +93,7 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   args: {
-    children: <Bold />,
+    children: <TextBold />,
     'aria-label': 'Toggle bold',
   },
 };
@@ -102,10 +102,10 @@ export const Variants: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Toggle variant="default">
-        <Bold />
+        <TextBold />
       </Toggle>
       <Toggle variant="outline">
-        <Italic />
+        <TextItalic />
       </Toggle>
     </div>
   ),
@@ -115,13 +115,13 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Toggle size="sm">
-        <Bold />
+        <TextBold />
       </Toggle>
       <Toggle size="default">
-        <Italic />
+        <TextItalic />
       </Toggle>
       <Toggle size="lg">
-        <Underline />
+        <TextUnderline />
       </Toggle>
     </div>
   ),
@@ -131,13 +131,13 @@ export const TextFormatting: Story = {
   render: () => (
     <div className="flex items-center gap-1">
       <Toggle variant="outline" aria-label="Toggle bold">
-        <Bold />
+        <TextBold />
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle italic">
-        <Italic />
+        <TextItalic />
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle underline">
-        <Underline />
+        <TextUnderline />
       </Toggle>
     </div>
   ),
@@ -147,13 +147,13 @@ export const TextAlignment: Story = {
   render: () => (
     <div className="flex items-center gap-1">
       <Toggle variant="outline" aria-label="Align left">
-        <AlignLeft />
+        <TextAlignLeft />
       </Toggle>
       <Toggle variant="outline" aria-label="Align center">
-        <AlignCenter />
+        <TextAlignCenter />
       </Toggle>
       <Toggle variant="outline" aria-label="Align right">
-        <AlignRight />
+        <TextAlignRight />
       </Toggle>
     </div>
   ),
@@ -163,15 +163,15 @@ export const WithText: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Toggle variant="outline">
-        <Bold />
+        <TextBold />
         Bold
       </Toggle>
       <Toggle variant="outline">
-        <Italic />
+        <TextItalic />
         Italic
       </Toggle>
       <Toggle variant="outline">
-        <Underline />
+        <TextUnderline />
         Underline
       </Toggle>
     </div>

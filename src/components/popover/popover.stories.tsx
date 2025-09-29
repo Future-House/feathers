@@ -20,10 +20,10 @@ import {
 import {
   Settings as SettingsIcon,
   User,
-  Mail,
+  Email as Mail,
   Phone,
-  MapPin,
-  Bell,
+  Location as MapPin,
+  Notification as Bell,
 } from '@/icons';
 import { Typography } from '../typography';
 

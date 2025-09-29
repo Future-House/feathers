@@ -62,7 +62,7 @@ Run tests with: `npm test`
 - **React 19** with TypeScript
 - **Radix UI** primitives for accessibility
 - **Tailwind CSS** for styling
-- **Lucide React** for icons
+- **Carbon Icons** for icons
 - **Storybook** for documentation
 - **Jest** for testing
 - **Babel** for compilation

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
-import { X as XIcon } from '@/icons';
+import { Close as XIcon } from '@/icons';
 
 import { cn } from '@/lib/utils';
 

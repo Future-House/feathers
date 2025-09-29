@@ -12,7 +12,7 @@ import { $createCodeNode } from '@lexical/code';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
 import { INSERT_ORDERED_LIST_COMMAND, INSERT_UNORDERED_LIST_COMMAND, $isListNode } from '@lexical/list';
 import { INDENT_CONTENT_COMMAND, OUTDENT_CONTENT_COMMAND } from 'lexical';
-import { Bold, Italic, Underline, Code, Link, Undo, Redo, ChevronDown, Strikethrough, RemoveFormatting, IndentIncrease, IndentDecrease, X, Check, List, ListOrdered } from "../../icons";
+import { TextBold as Bold, TextItalic as Italic, TextUnderline as Underline, Code, Link, Undo, Redo, ChevronDown, TextStrikethrough as Strikethrough, TextClearFormat as RemoveFormatting, TextIndentMore as IndentIncrease, TextIndentLess as IndentDecrease, Close as X, Checkmark as Check, List, ListNumbered as ListOrdered } from "../../icons";
 import { cn } from "../../lib/utils";
 import { Toggle } from "../toggle";
 import { Button } from "../button";

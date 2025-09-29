@@ -93,7 +93,7 @@ jest.mock('@radix-ui/react-select', () => ({
 
 // Mock @/icons
 jest.mock('@/icons', () => ({
-  Check: () => <div data-testid="check-icon" />,
+  Checkmark: () => <div data-testid="check-icon" />,
   ChevronDown: () => <div data-testid="chevron-down-icon" />,
   ChevronUp: () => <div data-testid="chevron-up-icon" />,
 }));

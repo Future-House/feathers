@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './button';
-import { Mail } from '../../icons';
+import { Email } from '../../icons';
 
 const meta = {
   title: 'Components/Button',
@@ -115,7 +115,7 @@ export const Sizes: Story = {
       <Button size="default">Default</Button>
       <Button size="lg">Large</Button>
       <Button size="icon">
-        <Mail />
+        <Email />
       </Button>
     </div>
   ),
@@ -134,7 +134,7 @@ export const FullWidth: Story = {
         Large
       </Button>
       <Button fullWidth size="icon">
-        <Mail />
+        <Email />
       </Button>
     </div>
   ),
@@ -144,12 +144,12 @@ export const WithIcon: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Button>
-        <Mail />
+        <Email />
         Login with Email
       </Button>
       <Button variant="outline">
         Continue
-        <Mail />
+        <Email />
       </Button>
     </div>
   ),

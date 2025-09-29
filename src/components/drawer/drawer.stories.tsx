@@ -14,7 +14,13 @@ import {
 import { RadioGroup, RadioGroupItem } from '../radio-group/radio-group';
 import { Checkbox } from '../checkbox/checkbox';
 import { Separator } from '../separator/separator';
-import { Settings, Menu, Plus, Pencil, Trash2 } from '@/icons';
+import {
+  Settings,
+  Menu,
+  Add as Plus,
+  Edit as Pencil,
+  TrashCan as Trash2,
+} from '@/icons';
 import { Typography } from '../typography';
 import {
   Drawer,

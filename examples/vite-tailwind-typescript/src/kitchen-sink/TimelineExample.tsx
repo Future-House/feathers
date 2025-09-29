@@ -9,7 +9,7 @@ import {
   TimelineContent,
   Typography,
 } from '@future-house/feathers';
-import { CircleCheck, Clock, CircleAlert } from '@future-house/feathers/icons';
+import { CheckmarkFilled, Time, WarningAlt } from '@future-house/feathers/icons';
 
 export default function TimelineExample() {
   return (
@@ -23,7 +23,7 @@ export default function TimelineExample() {
             </h4>
             <Timeline>
               <TimelineItem
-                iconElement={<CircleCheck className="h-3 w-3 text-green-500" />}
+                iconElement={<CheckmarkFilledclassName="h-3 w-3 text-green-500" />}
               >
                 <TimelineHeading>Project Kickoff</TimelineHeading>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -33,7 +33,7 @@ export default function TimelineExample() {
               </TimelineItem>
 
               <TimelineItem
-                iconElement={<Clock className="h-3 w-3 text-blue-500" />}
+                iconElement={<TimeclassName="h-3 w-3 text-blue-500" />}
               >
                 <TimelineHeading>Development Phase</TimelineHeading>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -44,7 +44,7 @@ export default function TimelineExample() {
 
               <TimelineItem
                 iconElement={
-                  <CircleAlert className="h-3 w-3 text-yellow-500" />
+                  <WarningAltclassName="h-3 w-3 text-yellow-500" />
                 }
               >
                 <TimelineHeading>Testing & Review</TimelineHeading>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge } from '../../src/components/badge/badge';
-import { ExternalLink } from 'lucide-react';
+import { Launch } from '@carbon/icons-react';
 import { cn } from '../../src/lib/utils';
 import { getComponentTitle, getComponentDescription } from './utils';
 import { Unstyled } from '@storybook/addon-docs/blocks';
@@ -114,7 +114,7 @@ export function DocLayout({
               >
                 <ShadcnLogo className="h-3 w-3" />
                 shadcn/{kebabCase}
-                <ExternalLink className="h-3 w-3" />
+                <Launch className="h-3 w-3" />
               </a>
             </Badge>
           )}
@@ -128,7 +128,7 @@ export function DocLayout({
               >
                 <RadixLogo className="h-3 w-3" />
                 radix-ui/{customRadixUiUrl || kebabCase}
-                <ExternalLink className="h-3 w-3" />
+                <Launch className="h-3 w-3" />
               </a>
             </Badge>
           )}

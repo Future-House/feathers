@@ -7,7 +7,15 @@ import {
   TooltipTrigger,
 } from '../tooltip/tooltip';
 import { cn } from '@/lib/utils';
-import { Upload, X, FileText, Image, FileX, Send, Paperclip } from '@/icons';
+import {
+  Upload,
+  Close as X,
+  Document as FileText,
+  Image,
+  DocumentBlank as FileX,
+  SendAlt as Send,
+  Attachment as Paperclip,
+} from '@/icons';
 
 export interface UploadedFile {
   id: string;

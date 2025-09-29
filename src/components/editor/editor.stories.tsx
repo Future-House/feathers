@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { EditorState } from 'lexical';
-import { Play, FileText, Database } from '../../icons';
+import { Play, Document, DataBase } from '../../icons';
 
 import { Editor } from './editor';
 import type { SlashCommand } from './editor';
@@ -141,7 +141,7 @@ export const WithSlashCommands: Story = {
       {
         key: 'table',
         label: 'Insert Table',
-        icon: <Database className="size-4" />,
+        icon: <DataBase className="size-4" />,
         description: 'Insert a table into the document',
         onSelect: () => {
           alert('Table inserted!');
@@ -150,7 +150,7 @@ export const WithSlashCommands: Story = {
       {
         key: 'image',
         label: 'Insert Image',
-        icon: <FileText className="size-4" />,
+        icon: <Document className="size-4" />,
         description: 'Insert an image into the document',
         onSelect: () => {
           alert('Image dialog opened!');
@@ -473,7 +473,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'heading1',
       label: 'Heading 1',
-      icon: <FileText className="size-4" />,
+      icon: <Document className="size-4" />,
       description: 'Insert a large heading',
       onSelect: () => {
         // In a real implementation, this would insert a heading
@@ -483,7 +483,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'heading2',
       label: 'Heading 2',
-      icon: <FileText className="size-4" />,
+      icon: <Document className="size-4" />,
       description: 'Insert a medium heading',
       onSelect: () => {
         alert('Heading 2 inserted!');
@@ -492,7 +492,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'heading3',
       label: 'Heading 3',
-      icon: <FileText className="size-4" />,
+      icon: <Document className="size-4" />,
       description: 'Insert a small heading',
       onSelect: () => {
         alert('Heading 3 inserted!');
@@ -501,7 +501,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'bullet-list',
       label: 'Bullet List',
-      icon: <Database className="size-4" />,
+      icon: <DataBase className="size-4" />,
       description: 'Create a bulleted list',
       onSelect: () => {
         alert('Bullet list created!');
@@ -510,7 +510,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'numbered-list',
       label: 'Numbered List',
-      icon: <Database className="size-4" />,
+      icon: <DataBase className="size-4" />,
       description: 'Create a numbered list',
       onSelect: () => {
         alert('Numbered list created!');
@@ -519,7 +519,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'quote',
       label: 'Quote',
-      icon: <FileText className="size-4" />,
+      icon: <Document className="size-4" />,
       description: 'Insert a blockquote',
       onSelect: () => {
         alert('Blockquote inserted!');
@@ -537,7 +537,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'divider',
       label: 'Divider',
-      icon: <Database className="size-4" />,
+      icon: <DataBase className="size-4" />,
       description: 'Insert a horizontal divider',
       onSelect: () => {
         alert('Divider inserted!');
@@ -546,7 +546,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'table',
       label: 'Table',
-      icon: <Database className="size-4" />,
+      icon: <DataBase className="size-4" />,
       description: 'Insert a table',
       onSelect: () => {
         alert('Table inserted!');
@@ -555,7 +555,7 @@ const AdvancedSlashCommandsEditor = () => {
     {
       key: 'image',
       label: 'Image',
-      icon: <FileText className="size-4" />,
+      icon: <Document className="size-4" />,
       description: 'Upload and insert an image',
       onSelect: () => {
         alert('Image upload dialog opened!');

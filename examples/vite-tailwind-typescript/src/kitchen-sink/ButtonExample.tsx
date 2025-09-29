@@ -7,7 +7,7 @@ import {
   CardDescription,
   Button,
 } from '@future-house/feathers';
-import { Mail } from '@future-house/feathers/icons';
+import { Email } from '@future-house/feathers/icons';
 
 export default function ButtonExample() {
   const [count, setCount] = useState(0);
@@ -36,12 +36,12 @@ export default function ButtonExample() {
           <Button size="default">Default</Button>
           <Button size="lg">Large</Button>
           <Button>
-            <Mail />
+            <Email/>
             With Icon
           </Button>
           <Button variant="outline">
             With Icon
-            <Mail />
+            <Email/>
           </Button>
         </div>
       </CardContent>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Check, ChevronsUpDown } from '@/icons';
+import { Checkmark as Check, ChevronSort as ChevronsUpDown } from '@/icons';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/button';
