@@ -6871,6 +6871,7 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-family: 'IBM Plex Serif', Georgia, serif;
   }
   h1 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -6920,9 +6921,7 @@
     line-height: 13px;
   }
   p {
-    font-family: 'IBM Plex Serif', Georgia, serif;
     font-size: 14px;
-    font-weight: 500;
     line-height: 21px;
   }
   p.large {
