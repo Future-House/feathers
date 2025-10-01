@@ -6,7 +6,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
+@theme {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -14,17 +14,17 @@
   --font-sans: var(--font-family-sans);
   --font-mono: var(--font-family-mono);
 
-  --gray-50: #fdfdfd;
-  --gray-100: #f9f9f9;
-  --gray-200: #f1f1f1;
-  --gray-300: #dcdcdd;
-  --gray-400: #bababe;
-  --gray-500: #7c7c80;
-  --gray-600: #49494d;
-  --gray-700: #28282c;
-  --gray-800: #212024;
-  --gray-900: #16161a;
-  --gray-950: #000004;
+  --color-gray-50: oklch(0.992 0.001 286.38);
+  --color-gray-100: oklch(0.977 0.001 286.38);
+  --color-gray-200: oklch(0.949 0.001 286.38);
+  --color-gray-300: oklch(0.871 0.003 286.38);
+  --color-gray-400: oklch(0.749 0.005 286.38);
+  --color-gray-500: oklch(0.527 0.008 286.38);
+  --color-gray-600: oklch(0.332 0.008 286.38);
+  --color-gray-700: oklch(0.199 0.009 286.38);
+  --color-gray-800: oklch(0.161 0.009 286.38);
+  --color-gray-900: oklch(0.119 0.009 286.38);
+  --color-gray-950: oklch(0.025 0.009 286.38);
 
   --code-green: #679354;
   --code-blue: #569cd6;

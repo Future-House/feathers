@@ -1,8 +1,44 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
+import { execSync, spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+
+// Helper to run babel in parallel
+function runBabelAsync(inputFile, outputFile) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(
+      'npx',
+      [
+        'babel',
+        inputFile,
+        '--config-file',
+        './babel.config.json',
+        '--out-file',
+        outputFile,
+        '--extensions',
+        '.ts,.tsx',
+        '--source-maps',
+        '--no-babelrc',
+      ],
+      { stdio: 'pipe' }
+    );
+
+    let stderr = '';
+    child.stderr.on('data', data => {
+      stderr += data.toString();
+    });
+
+    child.on('close', code => {
+      if (code !== 0) {
+        console.error(`Failed to build ${inputFile}: ${stderr}`);
+        reject(new Error(`Build failed for ${inputFile}`));
+      } else {
+        resolve();
+      }
+    });
+  });
+}
 
 // Clean dist directory
 console.log('🧹 Cleaning dist directory...');
@@ -71,6 +107,9 @@ items.forEach(item => {
 
 console.log('📦 Building individual components...');
 fs.mkdirSync('dist/components', { recursive: true });
+
+// Collect all build commands first
+const buildCommands = [];
 componentFiles.forEach(component => {
   const paths = componentPaths[component];
 
@@ -79,7 +118,7 @@ componentFiles.forEach(component => {
 
   // Build all .ts/.tsx files in the component directory and subdirectories
   paths.tsFiles.forEach(fileInfo => {
-    const { fullPath, dirPath, fileName, extension } = fileInfo;
+    const { fullPath, dirPath, fileName } = fileInfo;
 
     // Create subdirectory structure in dist if needed
     const outputDir = `dist/components/${component}${dirPath ? `/${dirPath}` : ''}`;
@@ -88,44 +127,46 @@ componentFiles.forEach(component => {
     // Generate output file path
     const outputFile = `${outputDir}/${fileName}.js`;
 
-    console.log(`  Building: ${fullPath} -> ${outputFile}`);
-    execSync(
-      `npx babel "${fullPath}" --config-file ./babel.config.json --out-file "${outputFile}" --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-      { stdio: 'inherit' }
-    );
+    buildCommands.push({
+      input: fullPath,
+      output: outputFile,
+    });
   });
 
   // Build the index file if it exists
   if (fs.existsSync(paths.index)) {
     const indexOutputFile = `dist/components/${component}/index.js`;
-    console.log(`  Building index: ${paths.index} -> ${indexOutputFile}`);
-    execSync(
-      `npx babel "${paths.index}" --config-file ./babel.config.json --out-file "${indexOutputFile}" --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-      { stdio: 'inherit' }
-    );
+    buildCommands.push({
+      input: paths.index,
+      output: indexOutputFile,
+    });
   }
 });
 
-// Build the main components index
-console.log('📦 Building components index...');
+// Execute all component builds in parallel
+console.log(`  Building ${buildCommands.length} files in parallel...`);
+await Promise.all(
+  buildCommands.map(({ input, output }) => runBabelAsync(input, output))
+);
+console.log(`  ✓ Built ${buildCommands.length} files`);
+
+// Build remaining files in parallel
+console.log('📦 Building remaining modules...');
+const remainingBuilds = [];
+
+// Components index
 if (fs.existsSync('src/components/index.ts')) {
-  execSync(
-    `npx babel src/components/index.ts --config-file ./babel.config.json --out-file dist/components/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-    { stdio: 'inherit' }
+  remainingBuilds.push(
+    runBabelAsync('src/components/index.ts', 'dist/components/index.js')
   );
 }
 
-console.log('📦 Building lib utilities...');
+// Lib utilities
 fs.mkdirSync('dist/lib', { recursive: true });
-execSync(
-  `npx babel src/lib/utils.ts --config-file ./babel.config.json --out-file dist/lib/utils.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-  { stdio: 'inherit' }
-);
+remainingBuilds.push(runBabelAsync('src/lib/utils.ts', 'dist/lib/utils.js'));
 
-console.log('📦 Building hooks...');
+// Hooks
 fs.mkdirSync('dist/hooks', { recursive: true });
-
-// Build individual hook files
 const hooksDir = 'src/hooks';
 if (fs.existsSync(hooksDir)) {
   const hookFiles = fs
@@ -138,33 +179,29 @@ if (fs.existsSync(hooksDir)) {
 
   hookFiles.forEach(hookFile => {
     const baseName = hookFile.replace('.ts', '');
-    execSync(
-      `npx babel src/hooks/${hookFile} --config-file ./babel.config.json --out-file dist/hooks/${baseName}.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-      { stdio: 'inherit' }
+    remainingBuilds.push(
+      runBabelAsync(`src/hooks/${hookFile}`, `dist/hooks/${baseName}.js`)
     );
   });
 
-  // Build hooks index
   if (fs.existsSync('src/hooks/index.ts')) {
-    execSync(
-      `npx babel src/hooks/index.ts --config-file ./babel.config.json --out-file dist/hooks/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-      { stdio: 'inherit' }
+    remainingBuilds.push(
+      runBabelAsync('src/hooks/index.ts', 'dist/hooks/index.js')
     );
   }
 }
 
-console.log('📦 Building icons...');
+// Icons
 fs.mkdirSync('dist/icons', { recursive: true });
-execSync(
-  `npx babel src/icons/index.ts --config-file ./babel.config.json --out-file dist/icons/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-  { stdio: 'inherit' }
+remainingBuilds.push(
+  runBabelAsync('src/icons/index.ts', 'dist/icons/index.js')
 );
 
-console.log('📦 Building ESM bundle...');
-execSync(
-  `npx babel src/index.ts --config-file ./babel.config.json --out-file dist/index.js --extensions ".ts,.tsx" --source-maps --no-babelrc`,
-  { stdio: 'inherit' }
-);
+// Main index
+remainingBuilds.push(runBabelAsync('src/index.ts', 'dist/index.js'));
+
+await Promise.all(remainingBuilds);
+console.log(`  ✓ Built ${remainingBuilds.length} additional files`);
 
 console.log('📝 Generating TypeScript declarations...');
 
