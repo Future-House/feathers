@@ -14,7 +14,9 @@
       "default": "./dist/index.js"
     },
     "./index.css": "./dist/index.css",
+    "./styles.css": "./dist/styles.css",
     "./lib/styles/index.css": "./dist/lib/styles/index.css",
+    "./lib/styles/styles.css": "./dist/lib/styles/styles.css",
     "./components": {
       "types": "./dist/components/index.d.ts",
       "default": "./dist/components/index.js"

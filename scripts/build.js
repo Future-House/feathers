@@ -415,9 +415,17 @@ execSync('rm -rf temp-types');
 console.log('🎨 Processing CSS...');
 fs.mkdirSync('dist/lib/styles', { recursive: true });
 
-// Build index.css
+// Build index.css (full CSS with Tailwind)
 execSync(
   'npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/lib/styles/index.css',
+  {
+    stdio: 'inherit',
+  }
+);
+
+// Build styles.css (styles only, no Tailwind - for consumers already using Tailwind)
+execSync(
+  'npx @tailwindcss/cli -i src/lib/styles/styles.css -o dist/lib/styles/styles.css',
   {
     stdio: 'inherit',
   }
@@ -427,5 +435,13 @@ execSync(
 execSync('npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/index.css', {
   stdio: 'inherit',
 });
+
+// Copy styles.css to root
+execSync(
+  'npx @tailwindcss/cli -i src/lib/styles/styles.css -o dist/styles.css',
+  {
+    stdio: 'inherit',
+  }
+);
 
 console.log('✅ Build complete!');
