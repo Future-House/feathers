@@ -143,12 +143,22 @@ componentFiles.forEach(component => {
   }
 });
 
-// Execute all component builds in parallel
-console.log(`  Building ${buildCommands.length} files in parallel...`);
-await Promise.all(
-  buildCommands.map(({ input, output }) => runBabelAsync(input, output))
+// Execute all component builds in batches to avoid overwhelming CI
+const BATCH_SIZE = parseInt(process.env.BUILD_CONCURRENCY || '20', 10);
+console.log(
+  `  Building ${buildCommands.length} files (${BATCH_SIZE} at a time)...`
 );
-console.log(`  ✓ Built ${buildCommands.length} files`);
+
+for (let i = 0; i < buildCommands.length; i += BATCH_SIZE) {
+  const batch = buildCommands.slice(i, i + BATCH_SIZE);
+  await Promise.all(
+    batch.map(({ input, output }) => runBabelAsync(input, output))
+  );
+  console.log(
+    `  ✓ Built ${Math.min(i + BATCH_SIZE, buildCommands.length)}/${buildCommands.length} files`
+  );
+}
+console.log(`  ✓ All ${buildCommands.length} files built`);
 
 // Build remaining files in parallel
 console.log('📦 Building remaining modules...');
