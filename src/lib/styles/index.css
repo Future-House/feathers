@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Scan feathers components for Tailwind class usage */
+@source '../../components/**/*.{ts,tsx}';
+
 /* explicitly do not include the examples source code */
 @source not '../../../examples';
 
