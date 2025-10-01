@@ -412,20 +412,5 @@ try {
 // Clean up temp directory
 execSync('rm -rf temp-types');
 
-console.log('🎨 Processing CSS...');
-fs.mkdirSync('dist/lib/styles', { recursive: true });
-
-// Build index.css
-execSync(
-  'npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/lib/styles/index.css',
-  {
-    stdio: 'inherit',
-  }
-);
-
-// Also copy index.css to root for backward compatibility
-execSync('npx @tailwindcss/cli -i src/lib/styles/index.css -o dist/index.css', {
-  stdio: 'inherit',
-});
-
+// CSS is exported as raw source (src/lib/styles/index.css) and processed by consuming apps
 console.log('✅ Build complete!');

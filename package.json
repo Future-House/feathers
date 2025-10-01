@@ -13,8 +13,7 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./index.css": "./dist/index.css",
-    "./lib/styles/index.css": "./dist/lib/styles/index.css",
+    "./index.css": "./src/lib/styles/index.css",
     "./components": {
       "types": "./dist/components/index.d.ts",
       "default": "./dist/components/index.js"
@@ -30,7 +29,8 @@
     "./icons": {
       "types": "./dist/icons/index.d.ts",
       "default": "./dist/icons/index.js"
-    }
+    },
+    "./src": "./src/**/*"
   },
   "keywords": [
     "react",
@@ -41,7 +41,8 @@
   "author": "",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build-storybook": "storybook build",
