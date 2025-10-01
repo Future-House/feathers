@@ -6,7 +6,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
+@theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -14,17 +14,17 @@
   --font-sans: var(--font-family-sans);
   --font-mono: var(--font-family-mono);
 
-  --color-gray-50: oklch(0.992 0.001 286.38);
-  --color-gray-100: oklch(0.977 0.001 286.38);
-  --color-gray-200: oklch(0.949 0.001 286.38);
-  --color-gray-300: oklch(0.871 0.003 286.38);
-  --color-gray-400: oklch(0.749 0.005 286.38);
-  --color-gray-500: oklch(0.527 0.008 286.38);
-  --color-gray-600: oklch(0.332 0.008 286.38);
-  --color-gray-700: oklch(0.199 0.009 286.38);
-  --color-gray-800: oklch(0.161 0.009 286.38);
-  --color-gray-900: oklch(0.119 0.009 286.38);
-  --color-gray-950: oklch(0.025 0.009 286.38);
+  --color-gray-50: oklch(0.994 0 0);
+  --color-gray-100: oklch(0.9821 0 0);
+  --color-gray-200: oklch(0.9581 0 0);
+  --color-gray-300: oklch(0.8948 0.0014 286.37);
+  --color-gray-400: oklch(0.7901 0.0056 286.27);
+  --color-gray-500: oklch(0.5876 0.006 286.21);
+  --color-gray-600: oklch(0.4068 0.0066 286.1);
+  --color-gray-700: oklch(0.2785 0.0073 285.92);
+  --color-gray-800: oklch(0.2463 0.0076 297.27);
+  --color-gray-900: oklch(0.202 0.0079 285.67);
+  --color-gray-950: oklch(0.0482 0.0334 264.05);
 
   --code-green: #679354;
   --code-blue: #569cd6;
