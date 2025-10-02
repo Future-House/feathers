@@ -30,6 +30,7 @@ export * from './components/menubar';
 export * from './components/navigation-menu';
 export * from './components/pagination';
 export * from './components/popover';
+export * from './components/progress';
 export * from './components/radio-group';
 export * from './components/resizable';
 export * from './components/scroll-area';
