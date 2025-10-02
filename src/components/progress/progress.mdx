@@ -1,0 +1,61 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as ProgressStories from './progress.stories';
+
+<Meta of={ProgressStories} />
+
+<DocLayout meta={ProgressStories.default}>
+
+## Default Example
+
+<Canvas of={ProgressStories.Default} />
+
+## Component API
+
+### Progress
+
+<PropsTable argTypes={ProgressStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={ProgressStories.default.subcomponents} />
+
+## Design Philosophy
+
+The Progress component provides a simple and elegant way to display completion status. Built on Radix UI primitives, it ensures accessibility while maintaining a clean, modern appearance with smooth transitions.
+
+## Examples
+
+### Different Values
+
+Progress bars showing various completion percentages from 0% to 100%.
+
+<Canvas of={ProgressStories.Values} />
+
+### Custom Styling
+
+Progress bars with different heights to suit various UI needs.
+
+<Canvas of={ProgressStories.CustomStyling} />
+
+## Accessibility
+
+The `Progress` component follows accessibility best practices:
+
+- Uses semantic progressbar role with proper ARIA attributes
+- Provides `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` for screen readers
+- Maintains visual clarity with proper contrast ratios
+- Supports customization without breaking accessibility features
+
+## Best Practices
+
+- Use progress bars for tasks with a known completion percentage
+- Provide contextual text labels to describe what the progress represents
+- Consider using appropriate heights based on the importance and visibility needs
+- The component works seamlessly in both light and dark modes
+- For indeterminate progress (unknown duration), consider using a loading spinner instead
+
+</DocLayout>
