@@ -16,9 +16,10 @@ const meta = {
   argTypes: {
     value: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
-      description: 'The progress value (0-100)',
+      description:
+        'The progress value (0-100). Set to null or undefined for indeterminate state.',
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number | null | undefined' },
         defaultValue: { summary: '0' },
       },
     },
@@ -59,6 +60,29 @@ export const CustomStyling: Story = {
       <Progress value={60} className="h-2" />
       <Progress value={60} className="h-6" />
       <Progress value={60} className="h-8" />
+    </div>
+  ),
+};
+
+export const Indeterminate: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">
+          Loading (indeterminate state)
+        </p>
+        <Progress value={null} />
+      </div>
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">
+          Custom height - indeterminate
+        </p>
+        <Progress value={undefined} className="h-2" />
+      </div>
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">Larger indeterminate</p>
+        <Progress value={null} className="h-6" />
+      </div>
     </div>
   ),
 };

@@ -259,6 +259,16 @@
     transform-origin: center;
   }
 
+  @keyframes progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
   .Editor-code {
     background-color: oklch(var(--muted));
     color: oklch(var(--foreground));
