@@ -85,6 +85,26 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* figma token utilities */
+  --color-brand-page-bg: var(--brand-page-bg);
+  --color-brand-component-bg: var(--brand-component-bg);
+  --color-brand-component-secondary-bg: var(--brand-component-secondary-bg);
+  --color-brand-component-tertiary-bg: var(--brand-component-tertiary-bg);
+  --color-brand-text-primary: var(--brand-text-primary);
+  --color-brand-text-secondary: var(--brand-text-secondary);
+  --color-brand-regular-contrast-border: var(--brand-regular-contrast-border);
+  --color-brand-light-contrast: var(--brand-light-contrast);
+  --color-brand-inverted-text-primary: var(--brand-inverted-text-primary);
+  --color-page-bg: var(--page-bg);
+  --color-component-bg: var(--component-bg);
+  --color-component-secondary-bg: var(--component-secondary-bg);
+  --color-component-tertiary-bg: var(--component-tertiary-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-regular-contrast-border: var(--regular-contrast-border);
+  --color-contrast-light: var(--contrast-light);
+  --color-inverted-text: var(--inverted-text);
 }
 
 :root {
