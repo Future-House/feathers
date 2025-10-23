@@ -1,5 +1,3 @@
-import './highlight.css';
-
 export { Highlight } from './highlight';
 export type {
   HighlightProps,
