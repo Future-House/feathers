@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { highlightVariants } from './highlight-variants';
 
 export type HighlightVariant =
   | 1
@@ -48,14 +49,13 @@ export interface HighlightProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 const Highlight = React.forwardRef<HTMLSpanElement, HighlightProps>(
   ({ children, variant = 1, className, style, ...props }, ref) => {
-    // SVG variants should be served from /highlights/ in your public folder
-    // Copy from node_modules/@future-house/feathers/src/components/highlight/variants/
-    const variantPath = `/highlights/${variant}.svg`;
+    // Use inline base64-encoded SVG data URI - no external files needed!
+    const variantDataUri = highlightVariants[variant];
 
     const inlineStyle: React.CSSProperties = {
       ...style,
       // @ts-expect-error CSS custom properties
-      '--highlight-variant': `url(${variantPath})`,
+      '--highlight-variant': `url(${variantDataUri})`,
     };
 
     return (

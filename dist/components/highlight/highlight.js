@@ -6,6 +6,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { cn } from "../../lib/utils";
+import { highlightVariants } from "./highlight-variants";
 import { jsx as _jsx } from "react/jsx-runtime";
 var Highlight = /*#__PURE__*/React.forwardRef(function (t0, ref) {
   var $ = _c(17);
@@ -36,8 +37,8 @@ var Highlight = /*#__PURE__*/React.forwardRef(function (t0, ref) {
     t1 = $[5];
   }
   var variant = t1 === undefined ? 1 : t1;
-  var variantPath = "/highlights/".concat(variant, ".svg");
-  var t2 = "url(".concat(variantPath, ")");
+  var variantDataUri = highlightVariants[variant];
+  var t2 = "url(".concat(variantDataUri, ")");
   var t3;
   if ($[6] !== style || $[7] !== t2) {
     t3 = _objectSpread(_objectSpread({}, style), {}, {
