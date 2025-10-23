@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Typography } from './typography';
+import { Highlight } from '../highlight';
 
 const meta = {
   title: 'Components/Typography',
@@ -180,6 +181,113 @@ export const Lists: Story = {
           example
         </li>
       </Typography>
+    </div>
+  ),
+};
+
+export const WithHighlights: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <div className="space-y-4">
+        <Typography variant="h2">
+          <Highlight variant={7} spread="lg" className="after:bg-yellow-300">
+            Highlighted Heading
+          </Highlight>
+        </Typography>
+        <Typography variant="lead">
+          This lead paragraph demonstrates how{' '}
+          <Highlight variant={1} spread="sm" className="after:bg-blue-300">
+            highlights can be used
+          </Highlight>{' '}
+          to emphasize important words or phrases within your typography.
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3">Different Colors</Typography>
+        <Typography variant="p">
+          You can use{' '}
+          <Highlight variant={2} spread="md" className="after:bg-green-300">
+            green highlights
+          </Highlight>{' '}
+          for positive messages,{' '}
+          <Highlight variant={3} spread="md" className="after:bg-orange-300">
+            orange highlights
+          </Highlight>{' '}
+          for cautionary text, and{' '}
+          <Highlight variant={4} spread="md" className="after:bg-red-300">
+            red highlights
+          </Highlight>{' '}
+          for critical information.
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3">Multiple Variants</Typography>
+        <Typography variant="p">
+          Different{' '}
+          <Highlight variant={1} spread="sm" className="after:bg-yellow-300">
+            highlight styles
+          </Highlight>{' '}
+          can be used for{' '}
+          <Highlight variant={5} spread="md" className="after:bg-pink-300">
+            visual variety
+          </Highlight>
+          . Each{' '}
+          <Highlight variant={10} spread="md" className="after:bg-blue-300">
+            variant has
+          </Highlight>{' '}
+          a unique{' '}
+          <Highlight variant={15} spread="lg" className="after:bg-purple-300">
+            artistic shape
+          </Highlight>
+          .
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3">In Blockquotes</Typography>
+        <Typography variant="blockquote">
+          &ldquo;Typography is more than just choosing fonts.{' '}
+          <Highlight variant={7} spread="md" className="after:bg-yellow-300">
+            It&apos;s about creating hierarchy
+          </Highlight>{' '}
+          and ensuring readability across all devices.&rdquo;
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3">With Code</Typography>
+        <Typography variant="p">
+          You can even highlight{' '}
+          <Typography variant="code" asChild>
+            <span>
+              <Highlight variant={1} spread="sm" className="after:bg-green-300">
+                code snippets
+              </Highlight>
+            </span>
+          </Typography>{' '}
+          to draw attention to specific parts of your technical content.
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3">With Gradients</Typography>
+        <Typography variant="large">
+          Highlights support{' '}
+          <Highlight
+            variant={12}
+            spread="md"
+            className="after:bg-gradient-to-r after:from-yellow-300 after:to-pink-500"
+          >
+            gradient backgrounds
+          </Highlight>{' '}
+          using Tailwind&apos;s gradient utilities for creative effects.
+        </Typography>
+      </div>
     </div>
   ),
 };

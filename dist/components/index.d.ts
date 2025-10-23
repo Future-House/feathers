@@ -23,6 +23,8 @@ export { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, Dr
 export { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, } from './dropdown-menu';
 export { FileUploadChat } from './file-upload-chat';
 export type { FileUploadChatProps, UploadedFile, } from './file-upload-chat';
+export { Highlight } from './highlight';
+export type { HighlightProps, HighlightVariant, HighlightSpread, } from './highlight';
 export { HoverCard, HoverCardTrigger, HoverCardContent, } from './hover-card';
 export { Input } from './input';
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator, } from './input-otp';

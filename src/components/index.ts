@@ -130,6 +130,13 @@ export type {
   UploadedFile,
 } from '@/components/file-upload-chat';
 
+export { Highlight } from '@/components/highlight';
+export type {
+  HighlightProps,
+  HighlightVariant,
+  HighlightSpread,
+} from '@/components/highlight';
+
 export {
   HoverCard,
   HoverCardTrigger,
