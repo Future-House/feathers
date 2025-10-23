@@ -415,10 +415,7 @@
   .highlight::after {
     content: '';
     position: absolute;
-    top: var(--highlight-spread-top, 0);
-    bottom: var(--highlight-spread-bottom, 0);
-    left: var(--highlight-spread-left, 0);
-    right: var(--highlight-spread-right, 0);
+    inset: -0.5rem;
     z-index: -1;
     mask-image: var(--highlight-variant);
     -webkit-mask-image: var(--highlight-variant);

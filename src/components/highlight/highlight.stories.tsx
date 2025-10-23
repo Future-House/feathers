@@ -14,27 +14,11 @@ const meta = {
       options: [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
       ],
-      description: 'The highlight variant (1-20)',
-    },
-    spread: {
-      control: { type: 'select' },
-      options: ['none', 'sm', 'md', 'lg', 'xl'],
-      description: 'The spread/padding around the text',
-    },
-    spreadX: {
-      control: { type: 'select' },
-      options: ['none', 'sm', 'md', 'lg', 'xl'],
-      description: 'Horizontal spread/padding',
-    },
-    spreadY: {
-      control: { type: 'select' },
-      options: ['none', 'sm', 'md', 'lg', 'xl'],
-      description: 'Vertical spread/padding',
+      description: 'The highlight variant (1-20) - different SVG shapes',
     },
     className: {
       control: 'text',
-      description:
-        'Use Tailwind utilities like "after:bg-red-500" to style the highlight',
+      description: 'Use Tailwind utilities to style the highlight',
     },
   },
 } satisfies Meta<typeof Highlight>;
@@ -46,36 +30,35 @@ export const Default: Story = {
   args: {
     children: 'Highlighted text',
     variant: 1,
-    spread: 'md',
-    className: 'after:bg-yellow-300',
+    className: 'after:bg-yellow-300 after:-inset-2',
   },
 };
 
-export const WithTailwindColors: Story = {
+export const WithColors: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="text-2xl">
-        <Highlight variant={1} spread="md" className="after:bg-red-500">
+        <Highlight variant={1} className="after:-inset-2 after:bg-red-500">
           Red highlight
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={2} spread="md" className="after:bg-blue-500">
+        <Highlight variant={2} className="after:-inset-2 after:bg-blue-500">
           Blue highlight
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={3} spread="md" className="after:bg-green-500">
+        <Highlight variant={3} className="after:-inset-2 after:bg-green-500">
           Green highlight
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={4} spread="md" className="after:bg-purple-500">
+        <Highlight variant={4} className="after:-inset-2 after:bg-purple-500">
           Purple highlight
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={5} spread="md" className="after:bg-pink-500">
+        <Highlight variant={5} className="after:-inset-2 after:bg-pink-500">
           Pink highlight
         </Highlight>
       </div>
@@ -86,36 +69,16 @@ export const WithTailwindColors: Story = {
 export const DifferentVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <div className="text-2xl">
-        <Highlight variant={1} spread="md" className="after:bg-yellow-300">
-          Variant 1
-        </Highlight>
-      </div>
-      <div className="text-2xl">
-        <Highlight variant={2} spread="md" className="after:bg-yellow-300">
-          Variant 2
-        </Highlight>
-      </div>
-      <div className="text-2xl">
-        <Highlight variant={3} spread="md" className="after:bg-yellow-300">
-          Variant 3
-        </Highlight>
-      </div>
-      <div className="text-2xl">
-        <Highlight variant={7} spread="md" className="after:bg-yellow-300">
-          Variant 7
-        </Highlight>
-      </div>
-      <div className="text-2xl">
-        <Highlight variant={10} spread="md" className="after:bg-yellow-300">
-          Variant 10
-        </Highlight>
-      </div>
-      <div className="text-2xl">
-        <Highlight variant={15} spread="md" className="after:bg-yellow-300">
-          Variant 15
-        </Highlight>
-      </div>
+      {[1, 2, 3, 7, 10, 15].map(v => (
+        <div key={v} className="text-2xl">
+          <Highlight
+            variant={v as HighlightVariant}
+            className="after:-inset-2 after:bg-yellow-300"
+          >
+            Variant {v}
+          </Highlight>
+        </div>
+      ))}
     </div>
   ),
 };
@@ -127,8 +90,7 @@ export const AllVariants: Story = {
         <div key={variant} className="text-2xl">
           <Highlight
             variant={variant as HighlightVariant}
-            spread="md"
-            className="after:bg-yellow-300"
+            className="after:-inset-2 after:bg-yellow-300"
           >
             Variant {variant}
           </Highlight>
@@ -142,43 +104,41 @@ export const DifferentSpreads: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <div className="text-2xl">
-        <Highlight variant={1} spread="none" className="after:bg-yellow-300">
+        <Highlight variant={1} className="after:bg-yellow-300">
           No spread
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={1} spread="sm" className="after:bg-yellow-300">
-          Small spread
+        <Highlight variant={1} className="after:-inset-1 after:bg-yellow-300">
+          Small spread (-inset-1)
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={1} spread="md" className="after:bg-yellow-300">
-          Medium spread
+        <Highlight variant={1} className="after:-inset-2 after:bg-yellow-300">
+          Medium spread (-inset-2)
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={1} spread="lg" className="after:bg-yellow-300">
-          Large spread
+        <Highlight variant={1} className="after:-inset-3 after:bg-yellow-300">
+          Large spread (-inset-3)
         </Highlight>
       </div>
       <div className="text-2xl">
-        <Highlight variant={1} spread="xl" className="after:bg-yellow-300">
-          Extra large spread
+        <Highlight variant={1} className="after:-inset-4 after:bg-yellow-300">
+          Extra large spread (-inset-4)
         </Highlight>
       </div>
     </div>
   ),
 };
 
-export const AxisSpecificSpread: Story = {
+export const CustomSpacing: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <div className="text-2xl">
         <Highlight
           variant={1}
-          spreadX="xl"
-          spreadY="sm"
-          className="after:bg-yellow-300"
+          className="after:-inset-x-4 after:-inset-y-1 after:bg-yellow-300"
         >
           Wide horizontal, narrow vertical
         </Highlight>
@@ -186,38 +146,17 @@ export const AxisSpecificSpread: Story = {
       <div className="text-2xl">
         <Highlight
           variant={1}
-          spreadX="sm"
-          spreadY="xl"
-          className="after:bg-yellow-300"
+          className="after:right-0 after:-left-4 after:bg-yellow-300"
         >
-          Narrow horizontal, tall vertical
-        </Highlight>
-      </div>
-    </div>
-  ),
-};
-
-export const IndividualEdgeSpread: Story = {
-  render: () => (
-    <div className="flex flex-col gap-6">
-      <div className="text-2xl">
-        <Highlight
-          variant={1}
-          spreadLeft="xl"
-          spreadRight="none"
-          className="after:bg-yellow-300"
-        >
-          Left spread only
+          Left spacing only
         </Highlight>
       </div>
       <div className="text-2xl">
         <Highlight
           variant={1}
-          spreadTop="xl"
-          spreadBottom="none"
-          className="after:bg-yellow-300"
+          className="after:-top-3 after:bottom-0 after:bg-yellow-300"
         >
-          Top spread only
+          Top spacing only
         </Highlight>
       </div>
     </div>
@@ -228,15 +167,15 @@ export const InSentence: Story = {
   render: () => (
     <p className="max-w-2xl text-lg leading-relaxed">
       This is a sentence with{' '}
-      <Highlight variant={1} spread="sm" className="after:bg-yellow-300">
+      <Highlight variant={1} className="after:-inset-1 after:bg-yellow-300">
         highlighted words
       </Highlight>{' '}
       in the middle. You can use{' '}
-      <Highlight variant={3} spread="md" className="after:bg-green-300">
+      <Highlight variant={3} className="after:-inset-2 after:bg-green-300">
         different variants
       </Highlight>{' '}
       and{' '}
-      <Highlight variant={7} spread="md" className="after:bg-pink-300">
+      <Highlight variant={7} className="after:-inset-2 after:bg-pink-300">
         different colors
       </Highlight>{' '}
       to emphasize different parts of your text.
@@ -244,14 +183,13 @@ export const InSentence: Story = {
   ),
 };
 
-export const WithTailwindUtilities: Story = {
+export const WithEffects: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <div className="text-2xl">
         <Highlight
           variant={5}
-          spread="md"
-          className="after:-translate-x-4 after:translate-y-2 after:rotate-12 after:bg-yellow-300"
+          className="after:-inset-2 after:-translate-x-4 after:translate-y-2 after:rotate-12 after:bg-yellow-300"
         >
           Rotated and translated
         </Highlight>
@@ -259,8 +197,7 @@ export const WithTailwindUtilities: Story = {
       <div className="text-2xl">
         <Highlight
           variant={12}
-          spread="md"
-          className="after:bg-yellow-300 after:opacity-50"
+          className="after:-inset-2 after:bg-yellow-300 after:opacity-50"
         >
           Semi-transparent
         </Highlight>
@@ -268,10 +205,17 @@ export const WithTailwindUtilities: Story = {
       <div className="text-2xl">
         <Highlight
           variant={7}
-          spread="md"
-          className="after:bg-gradient-to-r after:from-yellow-300 after:to-pink-500"
+          className="after:-inset-2 after:bg-gradient-to-r after:from-yellow-300 after:to-pink-500"
         >
           Gradient highlight
+        </Highlight>
+      </div>
+      <div className="text-2xl">
+        <Highlight
+          variant={3}
+          className="after:-inset-2 after:bg-blue-500 after:blur-sm"
+        >
+          Blurred effect
         </Highlight>
       </div>
     </div>
@@ -282,17 +226,17 @@ export const LargeText: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <h1 className="text-5xl font-bold">
-        <Highlight variant={7} spread="lg" className="after:bg-yellow-300">
+        <Highlight variant={7} className="after:-inset-3 after:bg-yellow-300">
           Large Heading
         </Highlight>
       </h1>
       <h2 className="text-3xl font-semibold">
-        <Highlight variant={3} spread="md" className="after:bg-blue-300">
+        <Highlight variant={3} className="after:-inset-2 after:bg-blue-300">
           Medium Heading
         </Highlight>
       </h2>
       <p className="text-base">
-        <Highlight variant={1} spread="sm" className="after:bg-green-300">
+        <Highlight variant={1} className="after:-inset-1 after:bg-green-300">
           Regular text
         </Highlight>
       </p>

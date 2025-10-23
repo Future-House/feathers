@@ -1,11 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {
-  Highlight,
-  type HighlightVariant,
-  type HighlightSpread,
-} from './highlight';
+import { Highlight, type HighlightVariant } from './highlight';
 
 describe('Highlight', () => {
   it('renders children correctly', () => {
@@ -26,73 +22,12 @@ describe('Highlight', () => {
     expect(style).toContain('5.svg');
   });
 
-  it('applies spread correctly', () => {
-    const { container } = render(<Highlight spread="md">Test</Highlight>);
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('--highlight-spread-top: -8px');
-    expect(style).toContain('--highlight-spread-bottom: -8px');
-    expect(style).toContain('--highlight-spread-left: -8px');
-    expect(style).toContain('--highlight-spread-right: -8px');
-  });
-
-  it('applies spreadX and spreadY correctly', () => {
+  it('applies Tailwind inset utilities via className', () => {
     const { container } = render(
-      <Highlight spreadX="lg" spreadY="sm">
-        Test
-      </Highlight>
+      <Highlight className="after:-inset-2">Test</Highlight>
     );
     const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('--highlight-spread-left: -12px');
-    expect(style).toContain('--highlight-spread-right: -12px');
-    expect(style).toContain('--highlight-spread-top: -4px');
-    expect(style).toContain('--highlight-spread-bottom: -4px');
-  });
-
-  it('applies individual edge spreads correctly', () => {
-    const { container } = render(
-      <Highlight
-        spreadTop="xl"
-        spreadBottom="sm"
-        spreadLeft="md"
-        spreadRight="lg"
-      >
-        Test
-      </Highlight>
-    );
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('--highlight-spread-top: -16px');
-    expect(style).toContain('--highlight-spread-bottom: -4px');
-    expect(style).toContain('--highlight-spread-left: -8px');
-    expect(style).toContain('--highlight-spread-right: -12px');
-  });
-
-  it('prioritizes individual spread over axis spread', () => {
-    const { container } = render(
-      <Highlight spreadX="md" spreadLeft="xl">
-        Test
-      </Highlight>
-    );
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('--highlight-spread-left: -16px');
-    expect(style).toContain('--highlight-spread-right: -8px');
-  });
-
-  it('prioritizes axis spread over general spread', () => {
-    const { container } = render(
-      <Highlight spread="sm" spreadX="lg">
-        Test
-      </Highlight>
-    );
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('--highlight-spread-left: -12px');
-    expect(style).toContain('--highlight-spread-right: -12px');
-    expect(style).toContain('--highlight-spread-top: -4px');
-    expect(style).toContain('--highlight-spread-bottom: -4px');
+    expect(highlight).toHaveClass('after:-inset-2');
   });
 
   it('applies custom className', () => {
@@ -147,23 +82,6 @@ describe('Highlight', () => {
       const style = highlight?.getAttribute('style');
       expect(style).toContain(`${i}.svg`);
     }
-  });
-
-  it('supports all spread sizes', () => {
-    const spreads: Array<[HighlightSpread, string]> = [
-      ['none', '0'],
-      ['sm', '-4px'],
-      ['md', '-8px'],
-      ['lg', '-12px'],
-      ['xl', '-16px'],
-    ];
-
-    spreads.forEach(([spread, expected]) => {
-      const { container } = render(<Highlight spread={spread}>Test</Highlight>);
-      const highlight = container.querySelector('.highlight');
-      const style = highlight?.getAttribute('style');
-      expect(style).toContain(`--highlight-spread-top: ${expected}`);
-    });
   });
 
   it('renders as a span element', () => {

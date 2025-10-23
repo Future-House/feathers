@@ -193,13 +193,13 @@ export const WithHighlights: Story = {
     <div className="space-y-8">
       <div className="space-y-4">
         <Typography variant="h2">
-          <Highlight variant={7} spread="lg" className="after:bg-yellow-300">
+          <Highlight variant={7} className="after:-inset-3 after:bg-yellow-300">
             Highlighted Heading
           </Highlight>
         </Typography>
         <Typography variant="lead">
           This lead paragraph demonstrates how{' '}
-          <Highlight variant={1} spread="sm" className="after:bg-blue-300">
+          <Highlight variant={1} className="after:-inset-1 after:bg-blue-300">
             highlights can be used
           </Highlight>{' '}
           to emphasize important words or phrases within your typography.
@@ -210,15 +210,15 @@ export const WithHighlights: Story = {
         <Typography variant="h3">Different Colors</Typography>
         <Typography variant="p">
           You can use{' '}
-          <Highlight variant={2} spread="md" className="after:bg-green-300">
+          <Highlight variant={2} className="after:-inset-2 after:bg-green-300">
             green highlights
           </Highlight>{' '}
           for positive messages,{' '}
-          <Highlight variant={3} spread="md" className="after:bg-orange-300">
+          <Highlight variant={3} className="after:-inset-2 after:bg-orange-300">
             orange highlights
           </Highlight>{' '}
           for cautionary text, and{' '}
-          <Highlight variant={4} spread="md" className="after:bg-red-300">
+          <Highlight variant={4} className="after:-inset-2 after:bg-red-300">
             red highlights
           </Highlight>{' '}
           for critical information.
@@ -229,19 +229,22 @@ export const WithHighlights: Story = {
         <Typography variant="h3">Multiple Variants</Typography>
         <Typography variant="p">
           Different{' '}
-          <Highlight variant={1} spread="sm" className="after:bg-yellow-300">
+          <Highlight variant={1} className="after:-inset-1 after:bg-yellow-300">
             highlight styles
           </Highlight>{' '}
           can be used for{' '}
-          <Highlight variant={5} spread="md" className="after:bg-pink-300">
+          <Highlight variant={5} className="after:-inset-2 after:bg-pink-300">
             visual variety
           </Highlight>
           . Each{' '}
-          <Highlight variant={10} spread="md" className="after:bg-blue-300">
+          <Highlight variant={10} className="after:-inset-2 after:bg-blue-300">
             variant has
           </Highlight>{' '}
           a unique{' '}
-          <Highlight variant={15} spread="lg" className="after:bg-purple-300">
+          <Highlight
+            variant={15}
+            className="after:-inset-3 after:bg-purple-300"
+          >
             artistic shape
           </Highlight>
           .
@@ -252,7 +255,7 @@ export const WithHighlights: Story = {
         <Typography variant="h3">In Blockquotes</Typography>
         <Typography variant="blockquote">
           &ldquo;Typography is more than just choosing fonts.{' '}
-          <Highlight variant={7} spread="md" className="after:bg-yellow-300">
+          <Highlight variant={7} className="after:-inset-2 after:bg-yellow-300">
             It&apos;s about creating hierarchy
           </Highlight>{' '}
           and ensuring readability across all devices.&rdquo;
@@ -265,7 +268,10 @@ export const WithHighlights: Story = {
           You can even highlight{' '}
           <Typography variant="code" asChild>
             <span>
-              <Highlight variant={1} spread="sm" className="after:bg-green-300">
+              <Highlight
+                variant={1}
+                className="after:-inset-1 after:bg-green-300"
+              >
                 code snippets
               </Highlight>
             </span>
@@ -280,8 +286,7 @@ export const WithHighlights: Story = {
           Highlights support{' '}
           <Highlight
             variant={12}
-            spread="md"
-            className="after:bg-gradient-to-r after:from-yellow-300 after:to-pink-500"
+            className="after:-inset-2 after:bg-gradient-to-r after:from-yellow-300 after:to-pink-500"
           >
             gradient backgrounds
           </Highlight>{' '}

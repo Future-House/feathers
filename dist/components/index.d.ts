@@ -24,7 +24,7 @@ export { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 export { FileUploadChat } from './file-upload-chat';
 export type { FileUploadChatProps, UploadedFile, } from './file-upload-chat';
 export { Highlight } from './highlight';
-export type { HighlightProps, HighlightVariant, HighlightSpread, } from './highlight';
+export type { HighlightProps, HighlightVariant } from './highlight';
 export { HoverCard, HoverCardTrigger, HoverCardContent, } from './hover-card';
 export { Input } from './input';
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator, } from './input-otp';
