@@ -13,7 +13,7 @@ describe('Highlight', () => {
     expect(screen.getByText('Test text')).toBeInTheDocument();
   });
 
-  it('applies default variant and color', () => {
+  it('applies default variant', () => {
     const { container } = render(<Highlight>Test</Highlight>);
     const highlight = container.querySelector('.highlight');
     expect(highlight).toBeInTheDocument();
@@ -24,29 +24,6 @@ describe('Highlight', () => {
     const highlight = container.querySelector('.highlight');
     const style = highlight?.getAttribute('style');
     expect(style).toContain('5.svg');
-  });
-
-  it('renders with custom color', () => {
-    const { container } = render(<Highlight color="success">Test</Highlight>);
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('--highlight-color');
-  });
-
-  it('renders with hex color', () => {
-    const { container } = render(<Highlight color="#ff6b6b">Test</Highlight>);
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('#ff6b6b');
-  });
-
-  it('renders with oklch color', () => {
-    const { container } = render(
-      <Highlight color="oklch(0.75 0.2 150)">Test</Highlight>
-    );
-    const highlight = container.querySelector('.highlight');
-    const style = highlight?.getAttribute('style');
-    expect(style).toContain('oklch(0.75 0.2 150)');
   });
 
   it('applies spread correctly', () => {
@@ -124,6 +101,15 @@ describe('Highlight', () => {
     );
     const highlight = container.querySelector('.highlight');
     expect(highlight).toHaveClass('custom-class');
+    expect(highlight).toHaveClass('highlight');
+  });
+
+  it('applies Tailwind utility classes via className', () => {
+    const { container } = render(
+      <Highlight className="after:bg-red-500">Test</Highlight>
+    );
+    const highlight = container.querySelector('.highlight');
+    expect(highlight).toHaveClass('after:bg-red-500');
   });
 
   it('forwards ref correctly', () => {
@@ -186,25 +172,24 @@ describe('Highlight', () => {
     expect(highlight).toBeInTheDocument();
   });
 
-  it('handles semantic color names correctly', () => {
-    const semanticColors = [
-      'primary',
-      'secondary',
-      'destructive',
-      'success',
-      'warning',
-      'info',
-      'error',
-      'accent',
-      'muted',
-      'brand',
-    ];
+  it('combines multiple className utilities', () => {
+    const { container } = render(
+      <Highlight className="after:bg-blue-500 after:opacity-50">Test</Highlight>
+    );
+    const highlight = container.querySelector('.highlight');
+    expect(highlight).toHaveClass('after:bg-blue-500');
+    expect(highlight).toHaveClass('after:opacity-50');
+  });
 
-    semanticColors.forEach(color => {
-      const { container } = render(<Highlight color={color}>Test</Highlight>);
-      const highlight = container.querySelector('.highlight');
-      const style = highlight?.getAttribute('style');
-      expect(style).toContain(`var(--color-${color})`);
-    });
+  it('supports gradient backgrounds via className', () => {
+    const { container } = render(
+      <Highlight className="after:bg-gradient-to-r after:from-yellow-300 after:to-pink-500">
+        Test
+      </Highlight>
+    );
+    const highlight = container.querySelector('.highlight');
+    expect(highlight).toHaveClass('after:bg-gradient-to-r');
+    expect(highlight).toHaveClass('after:from-yellow-300');
+    expect(highlight).toHaveClass('after:to-pink-500');
   });
 });
