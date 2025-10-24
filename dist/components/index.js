@@ -18,7 +18,6 @@ export { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 export { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger } from "./drawer";
 export { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "./dropdown-menu";
 export { FileUploadChat } from "./file-upload-chat";
-export { Highlight } from "./highlight";
 export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hover-card";
 export { Input } from "./input";
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from "./input-otp";
