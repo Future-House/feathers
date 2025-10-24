@@ -6,43 +6,31 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { cva } from 'class-variance-authority';
 import { cn } from "../../lib/utils";
 import { jsx as _jsx } from "react/jsx-runtime";
-var typographyVariants = cva('text-foreground', {
-  variants: {
-    variant: {
-      h1: 'scroll-m-20 text-4xl lg:text-5xl',
-      h2: 'scroll-m-20 text-3xl',
-      h3: 'scroll-m-20 text-2xl',
-      h4: 'scroll-m-20 text-xl',
-      p: 'leading-[1.5]',
-      lead: 'text-xl text-muted-foreground',
-      large: 'text-lg',
-      small: 'text-sm leading-none',
-      muted: 'text-sm text-muted-foreground',
-      blockquote: 'mt-6 border-l-4 pl-6 italic',
-      code: 'relative rounded bg-muted p-[0.2rem] font-mono text-sm',
-      list: 'my-6 ml-6 list-disc [&>li]:mt-2'
-    }
-  },
-  defaultVariants: {
-    variant: 'p'
-  }
-});
 var variantElementMap = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
   h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
   p: 'p',
   lead: 'p',
-  large: 'div',
-  small: 'small',
+  large: 'p',
+  small: 'p',
   muted: 'p',
-  blockquote: 'blockquote',
+  label: 'label',
   code: 'code',
-  list: 'ul'
+  blockquote: 'blockquote',
+  list: 'ul',
+  orderedList: 'ol'
+};
+var variantClassMap = {
+  lead: 'large',
+  large: 'large',
+  small: 'small',
+  muted: 'text-muted-foreground'
 };
 function Typography(t0) {
   var $ = _c(12);
@@ -71,14 +59,12 @@ function Typography(t0) {
   var variant = t1 === undefined ? "p" : t1;
   var asChild = t2 === undefined ? false : t2;
   var Comp = asChild ? Slot : variantElementMap[variant || "p"];
+  var variantClass = variant ? variantClassMap[variant] : undefined;
   var t3;
-  if ($[5] !== className || $[6] !== variant) {
-    t3 = cn(typographyVariants({
-      variant: variant,
-      className: className
-    }));
+  if ($[5] !== className || $[6] !== variantClass) {
+    t3 = cn(variantClass, className);
     $[5] = className;
-    $[6] = variant;
+    $[6] = variantClass;
     $[7] = t3;
   } else {
     t3 = $[7];
@@ -98,6 +84,6 @@ function Typography(t0) {
   }
   return t5;
 }
-export { Typography, typographyVariants };
+export { Typography };
 
 //# sourceMappingURL=typography.js.map

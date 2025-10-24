@@ -53,8 +53,8 @@ export { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent, } from './too
 export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, useSidebar, } from './sidebar';
 export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator, } from './command';
 export { Combobox, type ComboboxOption, type ComboboxProps, } from './combobox';
-export { Typography, typographyVariants } from './typography';
-export type { TypographyProps } from './typography';
+export { Typography } from './typography';
+export type { TypographyProps, TypographyVariant, } from './typography';
 export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineTrigger, TimelineContent, } from './timeline';
 export { Editor, editorVariants, EditorToolbar } from './editor';
 export type { EditorProps, SlashCommand } from './editor';

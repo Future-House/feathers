@@ -1,3 +1,3 @@
-export { Typography, typographyVariants } from './typography';
-export type { TypographyProps } from './typography';
+export { Typography } from './typography';
+export type { TypographyProps, TypographyVariant } from './typography';
 //# sourceMappingURL=index.d.ts.map

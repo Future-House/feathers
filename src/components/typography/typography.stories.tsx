@@ -21,20 +21,24 @@ const meta = {
         'h2',
         'h3',
         'h4',
+        'h5',
+        'h6',
         'p',
         'lead',
         'large',
         'small',
         'muted',
+        'label',
         'blockquote',
         'code',
         'list',
+        'orderedList',
       ],
       description: 'The typography variant to render',
       table: {
         type: {
           summary:
-            'h1 | h2 | h3 | h4 | p | lead | large | small | muted | blockquote | code | list',
+            'h1 | h2 | h3 | h4 | h5 | h6 | p | lead | large | small | muted | label | blockquote | code | list | orderedList',
         },
         defaultValue: { summary: 'p' },
         // disable: true,
@@ -71,6 +75,9 @@ export const AllVariants: Story = {
       <Typography variant="h2">Heading 2</Typography>
       <Typography variant="h3">Heading 3</Typography>
       <Typography variant="h4">Heading 4</Typography>
+      <Typography variant="h5">Heading 5</Typography>
+      <Typography variant="h6">Heading 6</Typography>
+      <Typography variant="label">Label Text</Typography>
       <Typography variant="p">
         This is a paragraph of text that demonstrates the paragraph variant. It
         has proper line height and spacing for optimal readability.
@@ -103,6 +110,11 @@ export const AllVariants: Story = {
         <li>List item one</li>
         <li>List item two</li>
         <li>List item three</li>
+      </Typography>
+      <Typography variant="orderedList">
+        <li>Ordered list item one</li>
+        <li>Ordered list item two</li>
+        <li>Ordered list item three</li>
       </Typography>
     </div>
   ),

@@ -1,11 +1,27 @@
 import * as React from 'react';
-import { type VariantProps } from 'class-variance-authority';
-declare const typographyVariants: (props?: ({
-    variant?: "blockquote" | "code" | "h1" | "h2" | "h3" | "h4" | "p" | "small" | "list" | "large" | "lead" | "muted" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
-export type TypographyProps = React.ComponentPropsWithoutRef<'div'> & VariantProps<typeof typographyVariants> & {
+declare const variantElementMap: {
+    readonly h1: "h1";
+    readonly h2: "h2";
+    readonly h3: "h3";
+    readonly h4: "h4";
+    readonly h5: "h5";
+    readonly h6: "h6";
+    readonly p: "p";
+    readonly lead: "p";
+    readonly large: "p";
+    readonly small: "p";
+    readonly muted: "p";
+    readonly label: "label";
+    readonly code: "code";
+    readonly blockquote: "blockquote";
+    readonly list: "ul";
+    readonly orderedList: "ol";
+};
+export type TypographyVariant = keyof typeof variantElementMap;
+export type TypographyProps = React.ComponentPropsWithoutRef<'div'> & {
+    variant?: TypographyVariant;
     asChild?: boolean;
 };
 declare function Typography({ className, variant, asChild, ...props }: TypographyProps): import("react/jsx-runtime").JSX.Element;
-export { Typography, typographyVariants };
+export { Typography };
 //# sourceMappingURL=typography.d.ts.map

@@ -48,7 +48,7 @@ export { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "./tool
 export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, useSidebar } from "./sidebar";
 export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator } from "./command";
 export { Combobox } from "./combobox";
-export { Typography, typographyVariants } from "./typography";
+export { Typography } from "./typography";
 export { Timeline, TimelineItem, TimelineHeading, TimelineAccordion, TimelineTrigger, TimelineContent } from "./timeline";
 export { Editor, editorVariants, EditorToolbar } from "./editor";
 export { ElasticSearch, SearchQueryBuilder } from "./elastic-search";

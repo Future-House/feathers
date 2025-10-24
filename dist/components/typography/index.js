@@ -1,3 +1,3 @@
-export { Typography, typographyVariants } from "./typography";
+export { Typography } from "./typography";
 
 //# sourceMappingURL=index.js.map

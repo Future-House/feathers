@@ -316,8 +316,11 @@ export {
   type ComboboxProps,
 } from '@/components/combobox';
 
-export { Typography, typographyVariants } from '@/components/typography';
-export type { TypographyProps } from '@/components/typography';
+export { Typography } from '@/components/typography';
+export type {
+  TypographyProps,
+  TypographyVariant,
+} from '@/components/typography';
 
 export {
   Timeline,

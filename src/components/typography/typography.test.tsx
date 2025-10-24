@@ -28,6 +28,12 @@ describe('Typography', () => {
     rerender(<Typography variant="h4">Heading 4</Typography>);
     expect(screen.getByText('Heading 4').tagName).toBe('H4');
 
+    rerender(<Typography variant="h5">Heading 5</Typography>);
+    expect(screen.getByText('Heading 5').tagName).toBe('H5');
+
+    rerender(<Typography variant="h6">Heading 6</Typography>);
+    expect(screen.getByText('Heading 6').tagName).toBe('H6');
+
     rerender(<Typography variant="p">Paragraph</Typography>);
     expect(screen.getByText('Paragraph').tagName).toBe('P');
 
@@ -35,13 +41,16 @@ describe('Typography', () => {
     expect(screen.getByText('Lead text').tagName).toBe('P');
 
     rerender(<Typography variant="large">Large text</Typography>);
-    expect(screen.getByText('Large text').tagName).toBe('DIV');
+    expect(screen.getByText('Large text').tagName).toBe('P');
 
     rerender(<Typography variant="small">Small text</Typography>);
-    expect(screen.getByText('Small text').tagName).toBe('SMALL');
+    expect(screen.getByText('Small text').tagName).toBe('P');
 
     rerender(<Typography variant="muted">Muted text</Typography>);
     expect(screen.getByText('Muted text').tagName).toBe('P');
+
+    rerender(<Typography variant="label">Label text</Typography>);
+    expect(screen.getByText('Label text').tagName).toBe('LABEL');
 
     rerender(<Typography variant="blockquote">Quote text</Typography>);
     expect(screen.getByText('Quote text').tagName).toBe('BLOCKQUOTE');
@@ -51,55 +60,37 @@ describe('Typography', () => {
 
     rerender(<Typography variant="list">List text</Typography>);
     expect(screen.getByText('List text').tagName).toBe('UL');
+
+    rerender(<Typography variant="orderedList">Ordered list</Typography>);
+    expect(screen.getByText('Ordered list').tagName).toBe('OL');
   });
 
   it('applies variant classes correctly', () => {
     const { rerender } = render(
-      <Typography variant="h1">Heading 1</Typography>
+      <Typography variant="lead">Lead text</Typography>
     );
-    expect(screen.getByText('Heading 1')).toHaveClass(
-      'scroll-m-20',
-      'text-4xl',
-      'lg:text-5xl'
-    );
+    expect(screen.getByText('Lead text')).toHaveClass('large');
 
-    rerender(<Typography variant="h2">Heading 2</Typography>);
-    expect(screen.getByText('Heading 2')).toHaveClass(
-      'scroll-m-20',
-      'text-3xl'
-    );
+    rerender(<Typography variant="large">Large text</Typography>);
+    expect(screen.getByText('Large text')).toHaveClass('large');
 
-    rerender(<Typography variant="lead">Lead text</Typography>);
-    expect(screen.getByText('Lead text')).toHaveClass(
-      'text-xl',
-      'text-muted-foreground'
-    );
+    rerender(<Typography variant="small">Small text</Typography>);
+    expect(screen.getByText('Small text')).toHaveClass('small');
 
     rerender(<Typography variant="muted">Muted text</Typography>);
-    expect(screen.getByText('Muted text')).toHaveClass(
-      'text-sm',
-      'text-muted-foreground'
-    );
-
-    rerender(<Typography variant="code">Code text</Typography>);
-    expect(screen.getByText('Code text')).toHaveClass(
-      'relative',
-      'rounded',
-      'bg-muted',
-      'font-mono',
-      'text-sm'
-    );
+    expect(screen.getByText('Muted text')).toHaveClass('text-muted-foreground');
   });
 
-  it('applies base classes to all variants', () => {
+  it('does not apply extra classes to base variants', () => {
     const { rerender } = render(<Typography variant="h1">Heading</Typography>);
-    expect(screen.getByText('Heading')).toHaveClass('text-foreground');
+    // h1 should not have any additional classes, just base CSS styles
+    expect(screen.getByText('Heading').className).toBe('');
 
     rerender(<Typography variant="p">Paragraph</Typography>);
-    expect(screen.getByText('Paragraph')).toHaveClass('text-foreground');
+    expect(screen.getByText('Paragraph').className).toBe('');
 
     rerender(<Typography variant="code">Code</Typography>);
-    expect(screen.getByText('Code')).toHaveClass('text-foreground');
+    expect(screen.getByText('Code').className).toBe('');
   });
 
   it('renders as child component when asChild is true', () => {
@@ -111,12 +102,8 @@ describe('Typography', () => {
 
     const element = screen.getByText('Custom element');
     expect(element.tagName).toBe('SPAN');
-    expect(element).toHaveClass(
-      'text-foreground',
-      'scroll-m-20',
-      'text-4xl',
-      'lg:text-5xl'
-    );
+    // asChild should not apply any additional classes
+    expect(element.className).toBe('');
   });
 
   it('accepts custom className', () => {
@@ -166,9 +153,8 @@ describe('Typography', () => {
       </Typography>
     );
 
-    const paragraph = screen.getByRole('paragraph');
-    expect(paragraph).toBeInTheDocument();
+    expect(screen.getByText(/This is a paragraph with/)).toBeInTheDocument();
     expect(screen.getByText('inline code')).toBeInTheDocument();
-    expect(screen.getByText('inline code')).toHaveClass('font-mono');
+    expect(screen.getByText('inline code').tagName).toBe('SPAN');
   });
 });

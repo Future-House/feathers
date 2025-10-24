@@ -1,50 +1,41 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
-
-const typographyVariants = cva('text-foreground', {
-  variants: {
-    variant: {
-      h1: 'scroll-m-20 text-4xl lg:text-5xl',
-      h2: 'scroll-m-20 text-3xl',
-      h3: 'scroll-m-20 text-2xl',
-      h4: 'scroll-m-20 text-xl',
-      p: 'leading-[1.5]',
-      lead: 'text-xl text-muted-foreground',
-      large: 'text-lg',
-      small: 'text-sm leading-none',
-      muted: 'text-sm text-muted-foreground',
-      blockquote: 'mt-6 border-l-4 pl-6 italic',
-      code: 'relative rounded bg-muted p-[0.2rem] font-mono text-sm',
-      list: 'my-6 ml-6 list-disc [&>li]:mt-2',
-    },
-  },
-  defaultVariants: {
-    variant: 'p',
-  },
-});
 
 const variantElementMap = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
   h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
   p: 'p',
   lead: 'p',
-  large: 'div',
-  small: 'small',
+  large: 'p',
+  small: 'p',
   muted: 'p',
-  blockquote: 'blockquote',
+  label: 'label',
   code: 'code',
+  blockquote: 'blockquote',
   list: 'ul',
+  orderedList: 'ol',
 } as const;
 
-export type TypographyProps = React.ComponentPropsWithoutRef<'div'> &
-  VariantProps<typeof typographyVariants> & {
-    asChild?: boolean;
+const variantClassMap: Partial<Record<keyof typeof variantElementMap, string>> =
+  {
+    lead: 'large',
+    large: 'large',
+    small: 'small',
+    muted: 'text-muted-foreground',
   };
+
+export type TypographyVariant = keyof typeof variantElementMap;
+
+export type TypographyProps = React.ComponentPropsWithoutRef<'div'> & {
+  variant?: TypographyVariant;
+  asChild?: boolean;
+};
 
 function Typography({
   className,
@@ -53,13 +44,9 @@ function Typography({
   ...props
 }: TypographyProps) {
   const Comp = asChild ? Slot : variantElementMap[variant || 'p'];
+  const variantClass = variant ? variantClassMap[variant] : undefined;
 
-  return (
-    <Comp
-      className={cn(typographyVariants({ variant, className }))}
-      {...(props as any)}
-    />
-  );
+  return <Comp className={cn(variantClass, className)} {...(props as any)} />;
 }
 
-export { Typography, typographyVariants };
+export { Typography };
