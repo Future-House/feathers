@@ -14,9 +14,9 @@ import {
 } from '@future-house/feathers';
 import {
   Calendar as CalendarIcon,
-  Clock,
-  Info,
-  MapPin,
+  Time,
+  Information,
+  Location,
   Settings,
 } from '@future-house/feathers/icons';
 
@@ -87,7 +87,7 @@ export default function HoverCardExample() {
                       latest updates.
                     </p>
                     <div className="flex items-center pt-2">
-                      <Clock className="mr-2 h-4 w-4 opacity-70" />
+                      <Time className="mr-2 h-4 w-4 opacity-70" />
                       <span className="text-muted-foreground text-xs">
                         Updated 2 hours ago
                       </span>
@@ -180,7 +180,7 @@ export default function HoverCardExample() {
                           </span>
                         </div>
                         <div className="flex items-center">
-                          <MapPin className="mr-2 h-4 w-4 opacity-70" />
+                          <Location className="mr-2 h-4 w-4 opacity-70" />
                           <span className="text-muted-foreground text-xs">
                             United Kingdom
                           </span>
@@ -218,7 +218,7 @@ export default function HoverCardExample() {
                           </span>
                         </div>
                         <div className="flex items-center">
-                          <MapPin className="mr-2 h-4 w-4 opacity-70" />
+                          <Location className="mr-2 h-4 w-4 opacity-70" />
                           <span className="text-muted-foreground text-xs">
                             San Francisco, CA
                           </span>
@@ -243,7 +243,7 @@ export default function HoverCardExample() {
                 <HoverCard>
                   <HoverCardTrigger asChild>
                     <Button variant="ghost" size="sm">
-                      <Info className="mr-2 h-4 w-4" />
+                      <Information className="mr-2 h-4 w-4" />
                       API Rate Limits
                     </Button>
                   </HoverCardTrigger>

@@ -23,7 +23,7 @@ export default function TimelineExample() {
             </h4>
             <Timeline>
               <TimelineItem
-                iconElement={<CheckmarkFilledclassName="h-3 w-3 text-green-500" />}
+                iconElement={<CheckmarkFilled className="h-3 w-3 text-green-500" />}
               >
                 <TimelineHeading>Project Kickoff</TimelineHeading>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -33,7 +33,7 @@ export default function TimelineExample() {
               </TimelineItem>
 
               <TimelineItem
-                iconElement={<TimeclassName="h-3 w-3 text-blue-500" />}
+                iconElement={<Time className="h-3 w-3 text-blue-500" />}
               >
                 <TimelineHeading>Development Phase</TimelineHeading>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -44,7 +44,7 @@ export default function TimelineExample() {
 
               <TimelineItem
                 iconElement={
-                  <WarningAltclassName="h-3 w-3 text-yellow-500" />
+                  <WarningAlt className="h-3 w-3 text-yellow-500" />
                 }
               >
                 <TimelineHeading>Testing & Review</TimelineHeading>

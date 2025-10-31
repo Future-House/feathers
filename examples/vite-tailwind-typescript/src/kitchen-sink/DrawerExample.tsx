@@ -18,9 +18,9 @@ import {
 import {
   Menu,
   Settings,
-  Plus,
-  Pencil,
-  Trash2,
+  Add,
+  Edit,
+  TrashCan,
 } from '@future-house/feathers/icons';
 
 export default function DrawerExample() {
@@ -203,7 +203,7 @@ export default function DrawerExample() {
           <Drawer>
             <DrawerTrigger asChild>
               <Button>
-                <Plus className="mr-2 h-4 w-4" />
+                <Add className="mr-2 h-4 w-4" />
                 Create Item
               </Button>
             </DrawerTrigger>
@@ -266,15 +266,15 @@ export default function DrawerExample() {
               <div className="p-4">
                 <div className="space-y-2">
                   <button className="hover:bg-accent flex w-full items-center rounded px-3 py-2 text-left">
-                    <Pencil className="mr-3 h-4 w-4" />
-                    <span>Edit Item</span>
+                    <Edit className="mr-3 h-4 w-4" />
+                    <span>TrashCan Item</span>
                   </button>
                   <button className="hover:bg-accent flex w-full items-center rounded px-3 py-2 text-left">
-                    <Plus className="mr-3 h-4 w-4" />
+                    <Add className="mr-3 h-4 w-4" />
                     <span>Duplicate</span>
                   </button>
                   <button className="text-destructive hover:bg-destructive/10 flex w-full items-center rounded px-3 py-2 text-left">
-                    <Trash2 className="mr-3 h-4 w-4" />
+                    <TrashCan className="mr-3 h-4 w-4" />
                     <span>Delete</span>
                   </button>
                 </div>

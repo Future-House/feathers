@@ -19,18 +19,18 @@ import {
 import {
   Calculator,
   Calendar,
-  CreditCard,
+  Wallet,
   Settings,
-  Smile,
+  FaceSatisfied,
   User,
-  File,
-  FileText,
+  Document,
+  DocumentWordProcessor,
   Folder,
   Search,
   Terminal,
-  Mail,
-  MessageSquare,
-  CirclePlus,
+  Email,
+  Chat,
+  AddFilled,
 } from '@future-house/feathers/icons';
 
 export default function CommandExample() {
@@ -60,7 +60,7 @@ export default function CommandExample() {
                   <span>Calendar</span>
                 </CommandItem>
                 <CommandItem>
-                  <Smile className="mr-2 h-4 w-4" />
+                  <FaceSatisfied className="mr-2 h-4 w-4" />
                   <span>Search Emoji</span>
                 </CommandItem>
                 <CommandItem>
@@ -76,7 +76,7 @@ export default function CommandExample() {
                   <CommandShortcut>⌘P</CommandShortcut>
                 </CommandItem>
                 <CommandItem>
-                  <CreditCard className="mr-2 h-4 w-4" />
+                  <Wallet className="mr-2 h-4 w-4" />
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
                 </CommandItem>
@@ -104,7 +104,7 @@ export default function CommandExample() {
                 <CommandEmpty>No results found.</CommandEmpty>
                 <CommandGroup heading="Navigation">
                   <CommandItem onSelect={() => setOpen(false)}>
-                    <File className="mr-2 h-4 w-4" />
+                    <Document className="mr-2 h-4 w-4" />
                     <span>Files</span>
                   </CommandItem>
                   <CommandItem onSelect={() => setOpen(false)}>
@@ -119,7 +119,7 @@ export default function CommandExample() {
                 <CommandSeparator />
                 <CommandGroup heading="Actions">
                   <CommandItem onSelect={() => setOpen(false)}>
-                    <FileText className="mr-2 h-4 w-4" />
+                    <DocumentWordProcessor className="mr-2 h-4 w-4" />
                     <span>Create New File</span>
                     <CommandShortcut>⌘N</CommandShortcut>
                   </CommandItem>
@@ -129,7 +129,7 @@ export default function CommandExample() {
                     <CommandShortcut>⌃`</CommandShortcut>
                   </CommandItem>
                   <CommandItem onSelect={() => setOpen(false)}>
-                    <Mail className="mr-2 h-4 w-4" />
+                    <Email className="mr-2 h-4 w-4" />
                     <span>Send Email</span>
                     <CommandShortcut>⌘E</CommandShortcut>
                   </CommandItem>
@@ -148,15 +148,15 @@ export default function CommandExample() {
               <CommandEmpty>No results found.</CommandEmpty>
               <CommandGroup heading="Files">
                 <CommandItem>
-                  <FileText className="mr-2 h-4 w-4" />
+                  <DocumentWordProcessor className="mr-2 h-4 w-4" />
                   <span>README.md</span>
                 </CommandItem>
                 <CommandItem>
-                  <FileText className="mr-2 h-4 w-4" />
+                  <DocumentWordProcessor className="mr-2 h-4 w-4" />
                   <span>package.json</span>
                 </CommandItem>
                 <CommandItem>
-                  <FileText className="mr-2 h-4 w-4" />
+                  <DocumentWordProcessor className="mr-2 h-4 w-4" />
                   <span>tsconfig.json</span>
                 </CommandItem>
               </CommandGroup>
@@ -183,12 +183,12 @@ export default function CommandExample() {
                   <CommandShortcut>⌘⇧F</CommandShortcut>
                 </CommandItem>
                 <CommandItem>
-                  <CirclePlus className="mr-2 h-4 w-4" />
+                  <AddFilled className="mr-2 h-4 w-4" />
                   <span>Create new file</span>
                   <CommandShortcut>⌘N</CommandShortcut>
                 </CommandItem>
                 <CommandItem>
-                  <MessageSquare className="mr-2 h-4 w-4" />
+                  <Chat className="mr-2 h-4 w-4" />
                   <span>Open chat</span>
                   <CommandShortcut>⌘K</CommandShortcut>
                 </CommandItem>

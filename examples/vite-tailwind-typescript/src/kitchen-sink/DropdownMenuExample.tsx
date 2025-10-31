@@ -23,22 +23,22 @@ import {
 } from '@future-house/feathers';
 import {
   User,
-  CreditCard,
+  Wallet,
   Settings,
   Keyboard,
-  LogOut,
+  Logout,
   Cloud,
-  Pencil,
-  UserPlus,
-  Mail,
-  MessageSquare,
-  CirclePlus,
-  Trash2,
-  Minus,
-  Users,
-  Github,
-  LifeBuoy,
-  Plus,
+  Edit,
+  UserFollow,
+  Email,
+  Chat,
+  AddFilled,
+  TrashCan,
+  Subtract,
+  UserMultiple,
+  LogoGithub,
+  Help,
+  Add,
 } from '@future-house/feathers/icons';
 
 export default function DropdownMenuExample() {
@@ -81,7 +81,7 @@ export default function DropdownMenuExample() {
                 <DropdownMenuItem
                   onSelect={() => setDropdownAction('Billing opened')}
                 >
-                  <CreditCard className="mr-2 h-4 w-4" />
+                  <Wallet className="mr-2 h-4 w-4" />
                   <span>Billing</span>
                   <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
                 </DropdownMenuItem>
@@ -101,7 +101,7 @@ export default function DropdownMenuExample() {
                 <DropdownMenuItem
                   onSelect={() => setDropdownAction('Logged out')}
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
+                  <Logout className="mr-2 h-4 w-4" />
                   <span>Log out</span>
                   <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>
@@ -204,35 +204,35 @@ export default function DropdownMenuExample() {
                 <DropdownMenuItem
                   onSelect={() => setDropdownAction('Item edited')}
                 >
-                  <Pencil className="mr-2 h-4 w-4" />
+                  <Edit className="mr-2 h-4 w-4" />
                   <span>Edit</span>
                   <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <UserPlus className="mr-2 h-4 w-4" />
+                  <UserFollow className="mr-2 h-4 w-4" />
                   <span>Share</span>
                 </DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>
-                    <UserPlus className="mr-2 h-4 w-4" />
+                    <UserFollow className="mr-2 h-4 w-4" />
                     <span>Invite users</span>
                   </DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <DropdownMenuItem
                       onSelect={() => setDropdownAction('Email invite sent')}
                     >
-                      <Mail className="mr-2 h-4 w-4" />
+                      <Email className="mr-2 h-4 w-4" />
                       <span>Email</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onSelect={() => setDropdownAction('Message invite sent')}
                     >
-                      <MessageSquare className="mr-2 h-4 w-4" />
+                      <Chat className="mr-2 h-4 w-4" />
                       <span>Message</span>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
-                      <CirclePlus className="mr-2 h-4 w-4" />
+                      <AddFilled className="mr-2 h-4 w-4" />
                       <span>More...</span>
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
@@ -242,7 +242,7 @@ export default function DropdownMenuExample() {
                   variant="destructive"
                   onSelect={() => setDropdownAction('Item deleted')}
                 >
-                  <Trash2 className="mr-2 h-4 w-4" />
+                  <TrashCan className="mr-2 h-4 w-4" />
                   <span>Delete</span>
                   <DropdownMenuShortcut>⌫</DropdownMenuShortcut>
                 </DropdownMenuItem>
@@ -259,7 +259,7 @@ export default function DropdownMenuExample() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="h-8 w-8 p-0">
                     <span className="sr-only">Open menu</span>
-                    <Minus className="h-4 w-4" />
+                    <Subtract className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -308,7 +308,7 @@ export default function DropdownMenuExample() {
                     <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <CreditCard className="mr-2 h-4 w-4" />
+                    <Wallet className="mr-2 h-4 w-4" />
                     <span>Billing</span>
                     <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
                   </DropdownMenuItem>
@@ -322,16 +322,16 @@ export default function DropdownMenuExample() {
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Team</DropdownMenuLabel>
                   <DropdownMenuItem>
-                    <Users className="mr-2 h-4 w-4" />
+                    <UserMultiple className="mr-2 h-4 w-4" />
                     <span>Team</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <UserPlus className="mr-2 h-4 w-4" />
+                    <UserFollow className="mr-2 h-4 w-4" />
                     <span>Invite users</span>
                     <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Plus className="mr-2 h-4 w-4" />
+                    <Add className="mr-2 h-4 w-4" />
                     <span>New Team</span>
                     <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
                   </DropdownMenuItem>
@@ -340,11 +340,11 @@ export default function DropdownMenuExample() {
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Support</DropdownMenuLabel>
                   <DropdownMenuItem>
-                    <Github className="mr-2 h-4 w-4" />
+                    <LogoGithub className="mr-2 h-4 w-4" />
                     <span>GitHub</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <LifeBuoy className="mr-2 h-4 w-4" />
+                    <Help className="mr-2 h-4 w-4" />
                     <span>Support</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem disabled>
@@ -356,7 +356,7 @@ export default function DropdownMenuExample() {
                 <DropdownMenuItem
                   onSelect={() => setDropdownAction('Logged out')}
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
+                  <Logout className="mr-2 h-4 w-4" />
                   <span>Log out</span>
                   <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>

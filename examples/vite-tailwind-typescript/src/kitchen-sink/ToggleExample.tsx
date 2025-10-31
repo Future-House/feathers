@@ -7,10 +7,10 @@ import {
   Toggle,
 } from '@future-house/feathers';
 import {
-  Bell,
-  Eye,
-  ListFilter,
-  Mail,
+  Notification,
+  View,
+  Filter,
+  Email,
   Search,
   Settings,
   User,
@@ -40,13 +40,13 @@ export default function ToggleExample() {
               <div>
                 <p className="mb-2 text-sm font-medium">With Icon</p>
                 <Toggle aria-label="Toggle bold">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">Icon with Text</p>
                 <Toggle aria-label="Toggle notifications">
-                  <Bell />
+                  <Notification />
                   Notifications
                 </Toggle>
               </div>
@@ -62,10 +62,10 @@ export default function ToggleExample() {
                 <p className="mb-2 text-sm font-medium">Default Variant</p>
                 <div className="flex items-center gap-2">
                   <Toggle variant="default" aria-label="Bold">
-                    <Bell />
+                    <Notification />
                   </Toggle>
                   <Toggle variant="default" defaultPressed aria-label="Italic">
-                    <Mail />
+                    <Email />
                   </Toggle>
                 </div>
               </div>
@@ -73,10 +73,10 @@ export default function ToggleExample() {
                 <p className="mb-2 text-sm font-medium">Outline Variant</p>
                 <div className="flex items-center gap-2">
                   <Toggle variant="outline" aria-label="Bold">
-                    <Bell />
+                    <Notification />
                   </Toggle>
                   <Toggle variant="outline" defaultPressed aria-label="Italic">
-                    <Mail />
+                    <Email />
                   </Toggle>
                 </div>
               </div>
@@ -89,19 +89,19 @@ export default function ToggleExample() {
               <div>
                 <p className="mb-2 text-sm font-medium">Small</p>
                 <Toggle size="sm" aria-label="Small toggle">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">Default</p>
                 <Toggle size="default" aria-label="Default toggle">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">Large</p>
                 <Toggle size="lg" aria-label="Large toggle">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
             </div>
@@ -113,13 +113,13 @@ export default function ToggleExample() {
               <div>
                 <p className="mb-2 text-sm font-medium">Normal</p>
                 <Toggle aria-label="Normal toggle">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">Pressed</p>
                 <Toggle defaultPressed aria-label="Pressed toggle">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
               <div>
@@ -127,7 +127,7 @@ export default function ToggleExample() {
                   Disabled
                 </p>
                 <Toggle disabled aria-label="Disabled toggle">
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
               <div>
@@ -139,7 +139,7 @@ export default function ToggleExample() {
                   defaultPressed
                   aria-label="Disabled pressed toggle"
                 >
-                  <Bell />
+                  <Notification />
                 </Toggle>
               </div>
             </div>
@@ -152,10 +152,10 @@ export default function ToggleExample() {
           </h3>
           <div className="flex items-center gap-1 rounded-md border p-2">
             <Toggle variant="outline" aria-label="Toggle bold">
-              <Bell />
+              <Notification />
             </Toggle>
             <Toggle variant="outline" aria-label="Toggle italic">
-              <Mail />
+              <Email />
             </Toggle>
             <Toggle variant="outline" aria-label="Toggle underline">
               <User />
@@ -168,7 +168,7 @@ export default function ToggleExample() {
               <Search />
             </Toggle>
             <Toggle variant="outline" aria-label="Align right">
-              <ListFilter />
+              <Filter />
             </Toggle>
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function ToggleExample() {
                 <p className="text-xs text-gray-500">Receive email updates</p>
               </div>
               <Toggle defaultPressed aria-label="Toggle email notifications">
-                <Mail />
+                <Email />
               </Toggle>
             </div>
             <div className="flex items-center justify-between">
@@ -195,7 +195,7 @@ export default function ToggleExample() {
                 </p>
               </div>
               <Toggle aria-label="Toggle push notifications">
-                <Bell />
+                <Notification />
               </Toggle>
             </div>
             <div className="flex items-center justify-between">
@@ -204,7 +204,7 @@ export default function ToggleExample() {
                 <p className="text-xs text-gray-500">Enable dark theme</p>
               </div>
               <Toggle aria-label="Toggle dark mode">
-                <Eye />
+                <View />
               </Toggle>
             </div>
           </div>
