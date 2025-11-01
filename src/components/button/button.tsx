@@ -12,6 +12,8 @@ const buttonVariants = cva(
       variant: {
         default:
           'bg-primary/10 text-primary hover:bg-primary/15 active:bg-primary/20 dark:bg-primary/15 dark:hover:bg-primary/20 dark:active:bg-primary/25',
+        secondary:
+          'bg-secondary/60 text-secondary-foreground hover:bg-secondary/70 active:bg-secondary/80 dark:bg-secondary/40 dark:hover:bg-secondary/50 dark:active:bg-secondary/60',
         destructive:
           'bg-destructive/10 text-destructive hover:bg-destructive/15 active:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/15 dark:hover:bg-destructive/20 dark:active:bg-destructive/25',
         success:
@@ -23,8 +25,8 @@ const buttonVariants = cva(
           'bg-error/10 text-error hover:bg-error/15 active:bg-error/20 focus-visible:ring-error/20 dark:focus-visible:ring-error/40 dark:bg-error/15 dark:hover:bg-error/20 dark:active:bg-error/25',
         outline:
           'border border-input bg-transparent text-foreground hover:bg-accent/10 active:bg-accent/15 dark:border-input dark:hover:bg-accent/10 dark:active:bg-accent/15',
-        secondary:
-          'bg-secondary/60 text-secondary-foreground hover:bg-secondary/70 active:bg-secondary/80 dark:bg-secondary/40 dark:hover:bg-secondary/50 dark:active:bg-secondary/60',
+        brand:
+          'bg-brand text-primary hover:bg-brand/70 active:bg-brand/80 dark:bg-brand dark:text-secondary dark:hover:bg-brand/70 dark:active:bg-brand/80',
         ghost:
           'text-foreground hover:bg-accent/10 hover:text-accent-foreground active:bg-accent/15 dark:hover:bg-accent/10 dark:active:bg-accent/15',
         link: 'text-primary underline-offset-4 hover:underline',
