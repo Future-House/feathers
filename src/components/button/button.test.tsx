@@ -14,7 +14,12 @@ describe('Button', () => {
   it('applies default variant and size classes', () => {
     render(<Button>Default Button</Button>);
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bg-primary/10', 'text-primary', 'h-9', 'px-4');
+    expect(button).toHaveClass(
+      'bg-primary',
+      'text-primary-foreground',
+      'h-9',
+      'px-4'
+    );
   });
 
   it('applies variant classes correctly', () => {
@@ -22,35 +27,44 @@ describe('Button', () => {
       <Button variant="destructive">Destructive</Button>
     );
     expect(screen.getByRole('button')).toHaveClass(
-      'bg-destructive/10',
-      'text-destructive'
+      'bg-destructive',
+      'text-destructive-foreground'
     );
 
     rerender(<Button variant="outline">Outline</Button>);
     expect(screen.getByRole('button')).toHaveClass('border', 'bg-transparent');
 
     rerender(<Button variant="ghost">Ghost</Button>);
-    expect(screen.getByRole('button')).toHaveClass('hover:bg-accent/10');
+    expect(screen.getByRole('button')).toHaveClass('hover:bg-accent');
   });
 
   it('applies new variant color classes correctly', () => {
     const { rerender } = render(<Button variant="success">Success</Button>);
     expect(screen.getByRole('button')).toHaveClass(
-      'bg-success/10',
-      'text-success'
+      'bg-success',
+      'text-success-foreground'
     );
 
     rerender(<Button variant="warning">Warning</Button>);
     expect(screen.getByRole('button')).toHaveClass(
-      'bg-warning/10',
-      'text-warning'
+      'bg-warning',
+      'text-warning-foreground'
     );
 
     rerender(<Button variant="info">Info</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-info/10', 'text-info');
+    expect(screen.getByRole('button')).toHaveClass(
+      'bg-info',
+      'text-info-foreground'
+    );
 
     rerender(<Button variant="error">Error</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-error/10', 'text-error');
+    expect(screen.getByRole('button')).toHaveClass(
+      'bg-error',
+      'text-error-foreground'
+    );
+
+    rerender(<Button variant="brand">Brand</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-brand', 'text-primary');
   });
 
   it('applies size classes correctly', () => {

@@ -12,12 +12,12 @@ import {
   PopoverTrigger,
 } from '@future-house/feathers';
 import {
-  Bell,
-  ListFilter,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Ellipsis,
+  Notification,
+  Filter,
+  Logout,
+  Email,
+  Chat,
+  OverflowMenuVertical,
   Settings,
   User,
 } from '@future-house/feathers/icons';
@@ -85,7 +85,7 @@ export default function PopoverExample() {
               <Button variant="ghost" className="flex items-center gap-2">
                 <User className="h-4 w-4" />
                 John Doe
-                <Ellipsis className="h-4 w-4" />
+                <OverflowMenuVertical className="h-4 w-4" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-56">
@@ -123,7 +123,7 @@ export default function PopoverExample() {
                     size="sm"
                     className="w-full justify-start"
                   >
-                    <MessageSquare className="mr-2 h-4 w-4" />
+                    <Chat className="mr-2 h-4 w-4" />
                     Messages
                   </Button>
                   <div className="border-t pt-1">
@@ -132,7 +132,7 @@ export default function PopoverExample() {
                       size="sm"
                       className="w-full justify-start text-red-600 hover:text-red-600"
                     >
-                      <LogOut className="mr-2 h-4 w-4" />
+                      <Logout className="mr-2 h-4 w-4" />
                       Sign Out
                     </Button>
                   </div>
@@ -149,7 +149,7 @@ export default function PopoverExample() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" size="icon" className="relative">
-                <Bell className="h-4 w-4" />
+                <Notification className="h-4 w-4" />
                 <span className="absolute -top-1 -right-1 flex h-3 w-3 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                   3
                 </span>
@@ -166,7 +166,7 @@ export default function PopoverExample() {
                 <div className="space-y-3">
                   <div className="flex gap-3 rounded-lg border p-3">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-                      <Mail className="h-4 w-4 text-blue-600" />
+                      <Email className="h-4 w-4 text-blue-600" />
                     </div>
                     <div className="flex-1 space-y-1">
                       <p className="text-sm font-medium">New message</p>
@@ -208,7 +208,7 @@ export default function PopoverExample() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="gap-2">
-                <ListFilter className="h-4 w-4" />
+                <Filter className="h-4 w-4" />
                 Filter Options
               </Button>
             </PopoverTrigger>

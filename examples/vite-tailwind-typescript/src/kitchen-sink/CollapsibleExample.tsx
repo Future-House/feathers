@@ -12,7 +12,7 @@ import {
 } from '@future-house/feathers';
 import {
   ChevronDown,
-  Users,
+  User,
   Settings,
   Calendar as CalendarIcon,
 } from '@future-house/feathers/icons';
@@ -66,7 +66,7 @@ export default function CollapsibleExample() {
               <CollapsibleTrigger asChild>
                 <Button variant="outline" className="w-full justify-between">
                   <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4" />
+                    <User className="h-4 w-4" />
                     Profile Information
                   </div>
                   <ChevronDown className="h-4 w-4" />
@@ -158,7 +158,7 @@ export default function CollapsibleExample() {
             <Collapsible className="space-y-2">
               <CollapsibleTrigger asChild>
                 <Button variant="ghost" className="w-full justify-start">
-                  <Users className="mr-2 h-4 w-4" />
+                  <User className="mr-2 h-4 w-4" />
                   Team Management
                   <ChevronDown className="ml-auto h-4 w-4" />
                 </Button>

@@ -11,10 +11,10 @@ import {
   NavigationMenuTrigger,
 } from '@future-house/feathers';
 import {
-  House,
-  FileText,
+  Home,
+  DocumentBlank,
   ShoppingCart,
-  CircleQuestionMark,
+  Help,
 } from '@future-house/feathers/icons';
 
 export default function NavigationMenuExample() {
@@ -40,7 +40,7 @@ export default function NavigationMenuExample() {
                           className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
                           href="/"
                         >
-                          <House className="h-6 w-6" />
+                          <Home className="h-6 w-6" />
                           <div className="mt-4 mb-2 text-lg font-medium">
                             Welcome
                           </div>
@@ -157,7 +157,7 @@ export default function NavigationMenuExample() {
                   href="/docs"
                   className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
-                  <FileText className="mr-2 h-4 w-4" />
+                  <DocumentBlank className="mr-2 h-4 w-4" />
                   Documentation
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -264,7 +264,7 @@ export default function NavigationMenuExample() {
                   href="/support"
                   className="group bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
-                  <CircleQuestionMark className="mr-2 h-4 w-4" />
+                  <Help className="mr-2 h-4 w-4" />
                   Support
                 </NavigationMenuLink>
               </NavigationMenuItem>

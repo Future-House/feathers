@@ -43,7 +43,7 @@ export default function AlertExample() {
 
           {/* Info Alert */}
           <Alert>
-            <InformationclassName="text-blue-600" />
+            <Information className="text-blue-600" />
             <AlertTitle>New Feature Available</AlertTitle>
             <AlertDescription>
               Dark mode is now available in your settings. Toggle between light

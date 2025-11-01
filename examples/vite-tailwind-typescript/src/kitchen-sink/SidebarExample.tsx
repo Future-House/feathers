@@ -30,24 +30,23 @@ import {
   ThemeToggle,
 } from '@future-house/feathers';
 import {
-  House,
-  Package2,
+  Home,
+  Package,
   Settings,
-  Users,
-  FileText,
+  UserMultiple,
   ChevronRight,
-  Plus,
-  UserRound,
-  Command,
-  Ellipsis,
-  Bell,
+  Add,
+  UserAvatar,
+  Terminal,
+  OverflowMenuVertical,
+  Notification,
   Calendar,
   Search,
-  Mail,
+  Email,
   Folder,
-  File,
+  Document,
   Archive,
-  Trash2,
+  TrashCan,
 } from '@future-house/feathers/icons';
 
 function DemoSidebar() {
@@ -63,13 +62,13 @@ function DemoSidebar() {
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 >
                   <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                    <Command className="size-4" />
+                    <Terminal className="size-4" />
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">Feathers Inc</span>
                     <span className="truncate text-xs">Enterprise</span>
                   </div>
-                  <Ellipsis className="ml-auto" />
+                  <OverflowMenuVertical className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -80,13 +79,13 @@ function DemoSidebar() {
               >
                 <DropdownMenuItem className="gap-2 p-2">
                   <div className="flex size-6 items-center justify-center rounded-sm border">
-                    <Command className="size-4 shrink-0" />
+                    <Terminal className="size-4 shrink-0" />
                   </div>
                   Feathers Inc
                 </DropdownMenuItem>
                 <DropdownMenuItem className="gap-2 p-2">
                   <div className="flex size-6 items-center justify-center rounded-sm border">
-                    <Plus className="size-4 shrink-0" />
+                    <Add className="size-4 shrink-0" />
                   </div>
                   Add Team
                 </DropdownMenuItem>
@@ -102,20 +101,20 @@ function DemoSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="House">
-                <House />
+                <Home />
                 <span>House</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Users">
-                <Users />
+                <UserMultiple />
                 <span>Users</span>
                 <Badge className="ml-auto">12</Badge>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Messages">
-                <Mail />
+                <Email />
                 <span>Messages</span>
                 <Badge variant="destructive" className="ml-auto">
                   3
@@ -132,7 +131,7 @@ function DemoSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Design System">
                   <a href="#">
-                    <Package2 />
+                    <Package />
                     <span>Design System</span>
                   </a>
                 </SidebarMenuButton>
@@ -150,7 +149,7 @@ function DemoSidebar() {
                     <SidebarMenuSubItem>
                       <SidebarMenuSubButton asChild>
                         <a href="#">
-                          <FileText />
+                          <Document />
                           <span>Documentation</span>
                         </a>
                       </SidebarMenuSubButton>
@@ -158,7 +157,7 @@ function DemoSidebar() {
                     <SidebarMenuSubItem>
                       <SidebarMenuSubButton asChild>
                         <a href="#">
-                          <Package2 />
+                          <Package />
                           <span>Components</span>
                         </a>
                       </SidebarMenuSubButton>
@@ -198,7 +197,7 @@ function DemoSidebar() {
                     <SidebarMenuSubItem>
                       <SidebarMenuSubButton asChild>
                         <a href="#">
-                          <File />
+                          <Document />
                           <span>Landing Page</span>
                         </a>
                       </SidebarMenuSubButton>
@@ -206,7 +205,7 @@ function DemoSidebar() {
                     <SidebarMenuSubItem>
                       <SidebarMenuSubButton asChild>
                         <a href="#">
-                          <File />
+                          <Document />
                           <span>Pricing</span>
                         </a>
                       </SidebarMenuSubButton>
@@ -235,7 +234,7 @@ function DemoSidebar() {
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton>
-                <Bell />
+                <Notification />
                 <span>Notifications</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -252,12 +251,12 @@ function DemoSidebar() {
                   size="lg"
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 >
-                  <UserRound />
+                  <UserAvatar />
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">John Doe</span>
                     <span className="truncate text-xs">john@example.com</span>
                   </div>
-                  <Ellipsis className="ml-auto size-4" />
+                  <OverflowMenuVertical className="ml-auto size-4" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -275,7 +274,7 @@ function DemoSidebar() {
                   Billing
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Trash2 />
+                  <TrashCan />
                   Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>

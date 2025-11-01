@@ -158,7 +158,7 @@ export default function DialogExample() {
           <Dialog>
             <DialogTrigger asChild>
               <Button>
-                <EmailclassName="mr-2 h-4 w-4" />
+                <Email className="mr-2 h-4 w-4" />
                 Contact Form
               </Button>
             </DialogTrigger>
@@ -220,7 +220,7 @@ export default function DialogExample() {
               <div className="py-4">
                 <div className="rounded-md bg-blue-50 p-4 dark:bg-blue-950">
                   <div className="flex items-center gap-2">
-                    <InformationclassName="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                    <Information className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <p className="text-sm text-blue-800 dark:text-blue-200">
                       You must select one of the options below to proceed.
                     </p>
