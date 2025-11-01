@@ -9,7 +9,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* tailwind theme vars/classes */
 @theme {
+  
+  /* overrides */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -29,6 +32,10 @@
   --color-gray-900: oklch(0.202 0.0079 285.67);
   --color-gray-950: oklch(0.0482 0.0334 264.05);
 
+
+  /* custom vars */
+  --brand: oklch(0.8672 0.177256 90.8474);
+
   --color-brand-gray-50: oklch(0.9491 0 0);
   --color-brand-gray-100: oklch(0.9249 0 0);
   --color-brand-gray-200: oklch(0.8975 0 0);
@@ -41,18 +48,18 @@
   --color-brand-gray-900: oklch(0.2024 0.014 278.68);
   --color-brand-gray-950: oklch(0.1543 0 0);
 
-  --brand: oklch(0.8672 0.177256 90.8474);
-
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  
+  /* shadcn vars */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
+  --color-primary: var(--brand);
   --color-primary-foreground: var(--primary-foreground);
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -107,12 +114,14 @@
   --color-inverted-text: var(--inverted-text);
 }
 
+/* light theme vars */
 :root {
   --radius: 0.375rem;
   --font-family-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-family-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --background: var(--color-brand-gray-300);
   --foreground: var(--color-brand-gray-800);
+
   --component-background: var(--color-brand-gray-200);
   --component-background-secondary: var(--color-brand-gray-100);
   --component-background-tertiary: var(--color-brand-gray-500);
@@ -139,6 +148,7 @@
   --contrast-light: var(--light-contrast);
   --inverted-text: var(--inverted-text-primary);
 
+  /* shadcn vars */
   --card: var(--component-background);
   --card-foreground: var(--foreground);
   --popover: var(--component-background);
@@ -170,22 +180,26 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Custom vars */
   --code-green: oklch(0.6461 0.1042 156.82);
   --code-blue: oklch(0.6713 0.1118 245.54);
   --code-red: oklch(0.7252 0.1013 43.19);
   --hard-red: oklch(0.6603 0.1208 20.85);
 }
 
+/* dark theme vars */
 .dark {
   --background: var(--color-brand-gray-900);
   --foreground: var(--color-brand-gray-50);
+
+  /* figma token aliases */
   --component-background: var(--color-brand-gray-800);
   --component-background-secondary: var(--color-brand-gray-700);
   --component-background-tertiary: var(--color-brand-gray-400);
   --light-contrast: var(--color-gray-900);
   --inverted-text-primary: var(--color-gray-800);
 
-  /* figma token aliases */
   --brand-page-bg: var(--background);
   --brand-component-bg: var(--component-background);
   --brand-component-secondary-bg: var(--component-background-secondary);
@@ -205,6 +219,7 @@
   --contrast-light: var(--light-contrast);
   --inverted-text: var(--inverted-text-primary);
 
+  /* shadcn vars */
   --card: var(--component-background);
   --card-foreground: var(--foreground);
   --popover: var(--component-background);
@@ -236,6 +251,8 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+
+  /* Custom vars */
   --code-blue: oklch(0.6713 0.1118 245.54);
   --code-red: oklch(0.7252 0.1013 43.19);
   --code-green: oklch(0.743 0.1171 157.13);
@@ -252,6 +269,7 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
+  /* Typography based styles */
   h1 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -355,6 +373,7 @@
   ol > li {
     margin-top: 0.5rem;
   }
+  /* End Typography based styles */
 }
 
 @layer components {
