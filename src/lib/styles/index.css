@@ -78,10 +78,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* figma token utilities */
-  --color-page-bg: var(--page-bg);
-  --color-component-bg: var(--component-bg);
-  --color-component-secondary-bg: var(--component-bg-secondary);
-  --color-component-tertiary-bg: var(--component-bg-tertiary);
+  --color-page: var(--page-bg);
+  --color-component: var(--component-bg);
+  --color-component-secondary: var(--component-bg-secondary);
+  --color-component-tertiary: var(--component-bg-tertiary);
 
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
