@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from '../button';
 declare function Pagination({ className, ...props }: React.ComponentProps<'nav'>): import("react/jsx-runtime").JSX.Element;
 declare function PaginationContent({ className, ...props }: React.ComponentProps<'ul'>): import("react/jsx-runtime").JSX.Element;
-declare function PaginationItem({ ...props }: React.ComponentProps<'li'>): import("react/jsx-runtime").JSX.Element;
+declare function PaginationItem({ className, ...props }: React.ComponentProps<'li'>): import("react/jsx-runtime").JSX.Element;
 type PaginationLinkProps = {
     isActive?: boolean;
     size?: React.ComponentProps<typeof Button>['size'];

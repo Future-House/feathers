@@ -1,13 +1,12 @@
-import _objectDestructuringEmpty from "@babel/runtime/helpers/esm/objectDestructuringEmpty";
-import _extends from "@babel/runtime/helpers/esm/extends";
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
 var _excluded = ["className"],
   _excluded2 = ["className"],
-  _excluded3 = ["className", "isActive", "size"],
-  _excluded4 = ["className"],
+  _excluded3 = ["className"],
+  _excluded4 = ["className", "isActive", "size"],
   _excluded5 = ["className"],
-  _excluded6 = ["className"];
+  _excluded6 = ["className"],
+  _excluded7 = ["className"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import { c as _c } from "react/compiler-runtime";
@@ -95,29 +94,42 @@ function PaginationContent(t0) {
   return t2;
 }
 function PaginationItem(t0) {
-  var $ = _c(4);
+  var $ = _c(8);
+  var className;
   var props;
   if ($[0] !== t0) {
     var _t3 = t0;
-    _objectDestructuringEmpty(_t3);
-    props = _extends({}, (_objectDestructuringEmpty(_t3), _t3));
+    className = _t3.className;
+    props = _objectWithoutProperties(_t3, _excluded3);
     _t3;
     $[0] = t0;
-    $[1] = props;
+    $[1] = className;
+    $[2] = props;
   } else {
-    props = $[1];
+    className = $[1];
+    props = $[2];
   }
   var t1;
-  if ($[2] !== props) {
-    t1 = /*#__PURE__*/_jsx("li", _objectSpread({
-      "data-slot": "pagination-item"
-    }, props));
-    $[2] = props;
-    $[3] = t1;
+  if ($[3] !== className) {
+    t1 = cn("list-none", className);
+    $[3] = className;
+    $[4] = t1;
   } else {
-    t1 = $[3];
+    t1 = $[4];
   }
-  return t1;
+  var t2;
+  if ($[5] !== props || $[6] !== t1) {
+    t2 = /*#__PURE__*/_jsx("li", _objectSpread({
+      "data-slot": "pagination-item",
+      className: t1
+    }, props));
+    $[5] = props;
+    $[6] = t1;
+    $[7] = t2;
+  } else {
+    t2 = $[7];
+  }
+  return t2;
 }
 function PaginationLink(t0) {
   var $ = _c(14);
@@ -130,7 +142,7 @@ function PaginationLink(t0) {
     className = _t4.className;
     isActive = _t4.isActive;
     t1 = _t4.size;
-    props = _objectWithoutProperties(_t4, _excluded3);
+    props = _objectWithoutProperties(_t4, _excluded4);
     _t4;
     $[0] = t0;
     $[1] = className;
@@ -184,7 +196,7 @@ function PaginationPrevious(t0) {
   if ($[0] !== t0) {
     var _t5 = t0;
     className = _t5.className;
-    props = _objectWithoutProperties(_t5, _excluded4);
+    props = _objectWithoutProperties(_t5, _excluded5);
     _t5;
     $[0] = t0;
     $[1] = className;
@@ -239,7 +251,7 @@ function PaginationNext(t0) {
   if ($[0] !== t0) {
     var _t6 = t0;
     className = _t6.className;
-    props = _objectWithoutProperties(_t6, _excluded5);
+    props = _objectWithoutProperties(_t6, _excluded6);
     _t6;
     $[0] = t0;
     $[1] = className;
@@ -294,7 +306,7 @@ function PaginationEllipsis(t0) {
   if ($[0] !== t0) {
     var _t7 = t0;
     className = _t7.className;
-    props = _objectWithoutProperties(_t7, _excluded6);
+    props = _objectWithoutProperties(_t7, _excluded7);
     _t7;
     $[0] = t0;
     $[1] = className;

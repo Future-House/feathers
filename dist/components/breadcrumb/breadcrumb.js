@@ -98,7 +98,7 @@ function BreadcrumbItem(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("inline-flex items-center gap-1.5", className);
+    t1 = cn("inline-flex list-none items-center gap-1.5", className);
     $[3] = className;
     $[4] = t1;
   } else {
@@ -225,7 +225,7 @@ function BreadcrumbSeparator(t0) {
   }
   var t1;
   if ($[4] !== className) {
-    t1 = cn("[&>svg]:size-3.5", className);
+    t1 = cn("list-none [&>svg]:size-3.5", className);
     $[4] = className;
     $[5] = t1;
   } else {
