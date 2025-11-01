@@ -78,24 +78,19 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* figma token utilities */
-  --color-brand-page-bg: var(--brand-page-bg);
-  --color-brand-component-bg: var(--brand-component-bg);
-  --color-brand-component-secondary-bg: var(--brand-component-secondary-bg);
-  --color-brand-component-tertiary-bg: var(--brand-component-tertiary-bg);
-  --color-brand-text-primary: var(--brand-text-primary);
-  --color-brand-text-secondary: var(--brand-text-secondary);
-  --color-brand-regular-contrast-border: var(--brand-regular-contrast-border);
-  --color-brand-light-contrast: var(--brand-light-contrast);
-  --color-brand-inverted-text-primary: var(--brand-inverted-text-primary);
   --color-page-bg: var(--page-bg);
   --color-component-bg: var(--component-bg);
-  --color-component-secondary-bg: var(--component-secondary-bg);
-  --color-component-tertiary-bg: var(--component-tertiary-bg);
+  --color-component-secondary-bg: var(--component-bg-secondary);
+  --color-component-tertiary-bg: var(--component-bg-tertiary);
+
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+
   --color-regular-contrast-border: var(--regular-contrast-border);
-  --color-contrast-light: var(--contrast-light);
-  --color-inverted-text: var(--inverted-text);
+
+  --color-contrast-light: var(--light-contrast);
+  --color-shadow: var(--shadow);
+  --color-inverted-text-primary: var(--inverted-text-primary);
 }
 
 /* light theme vars */
@@ -115,31 +110,20 @@
   --code-red: oklch(0.7252 0.1013 43.19);
   --hard-red: oklch(0.6603 0.1208 20.85);
 
-  --component-background: var(--color-gray-200);
-  --component-background-secondary: var(--color-gray-100);
-  --component-background-tertiary: var(--color-gray-500);
-  --light-contrast: var(--color-gray-400);
-  --inverted-text-primary: var(--color-gray-50);
-
   /* figma token aliases */
-  --brand-page-bg: var(--background);
-  --brand-component-bg: var(--component-background);
-  --brand-component-secondary-bg: var(--component-background-secondary);
-  --brand-component-tertiary-bg: var(--component-background-tertiary);
-  --brand-text-primary: var(--foreground);
-  --brand-text-secondary: var(--muted-foreground);
-  --brand-regular-contrast-border: var(--border);
-  --brand-light-contrast: var(--light-contrast);
-  --brand-inverted-text-primary: var(--inverted-text-primary);
-  --page-bg: var(--background);
-  --component-bg: var(--component-background);
-  --component-secondary-bg: var(--component-background-secondary);
-  --component-tertiary-bg: var(--component-background-tertiary);
-  --text-primary: var(--foreground);
-  --text-secondary: var(--muted-foreground);
-  --regular-contrast-border: var(--border);
-  --contrast-light: var(--light-contrast);
-  --inverted-text: var(--inverted-text-primary);
+  --page-bg: var(--background); /* gray-300 */
+  --component-bg: var(--color-gray-200);
+  --component-bg-secondary: var(--color-gray-100);
+  --component-bg-tertiary: var(--color-gray-500);
+
+  --text-primary: var(--color-gray-700);
+  --text-secondary: var(--color-gray-500);
+
+  --regular-contrast-border: var(--border); /* gray-500 */
+
+  --light-contrast: var(--color-gray-400);
+  --shadow: var(--color-gray-400);
+  --inverted-text-primary: var(--color-gray-50);
 
   /* shadcn vars */
   --card: var(--component-background);
@@ -176,40 +160,29 @@
 
 /* dark theme vars */
 .dark {
-  /* figma token aliases */
-  --component-background: var(--color-gray-800);
-  --component-background-secondary: var(--color-gray-700);
-  --component-background-tertiary: var(--color-gray-400);
-  --light-contrast: var(--color-gray-900);
-  --inverted-text-primary: var(--color-gray-800);
-
   /* Custom vars */
   --code-blue: oklch(0.6713 0.1118 245.54);
   --code-red: oklch(0.7252 0.1013 43.19);
   --code-green: oklch(0.743 0.1171 157.13);
   --hard-red: oklch(0.6691 0.1633 22.52);
 
-  --brand-page-bg: var(--background);
-  --brand-component-bg: var(--component-background);
-  --brand-component-secondary-bg: var(--component-background-secondary);
-  --brand-component-tertiary-bg: var(--component-background-tertiary);
-  --brand-text-primary: var(--foreground);
-  --brand-text-secondary: var(--muted-foreground);
-  --brand-regular-contrast-border: var(--border);
-  --brand-light-contrast: var(--light-contrast);
-  --brand-inverted-text-primary: var(--inverted-text-primary);
-  --page-bg: var(--background);
-  --component-bg: var(--component-background);
-  --component-secondary-bg: var(--component-background-secondary);
-  --component-tertiary-bg: var(--component-background-tertiary);
-  --text-primary: var(--foreground);
-  --text-secondary: var(--muted-foreground);
-  --regular-contrast-border: var(--border);
-  --contrast-light: var(--light-contrast);
-  --inverted-text: var(--inverted-text-primary);
+  /* figma token aliases */
+  --page-bg: var(--background); /* gray-950 */
+  --component-bg: var(--color-gray-900);
+  --component-bg-secondary: var(--color-gray-700);
+  --component-bg-tertiary: var(--color-gray-400);
+
+  --text-primary: var(--color-gray-50);
+  --text-secondary: var(--color-gray-400);
+
+  --regular-contrast-border: var(--border); /* gray-500 */
+
+  --light-contrast: var(--color-gray-400);
+  --shadow: var(--color-gray-600);
+  --inverted-text-primary: var(--color-gray-800);
 
   /* shadcn vars */
-  --background: var(--color-gray-900);
+  --background: var(--color-gray-950);
   --foreground: var(--color-gray-50);
   --card: var(--component-background);
   --card-foreground: var(--foreground);
