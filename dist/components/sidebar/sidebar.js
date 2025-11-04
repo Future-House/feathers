@@ -612,7 +612,7 @@ function SidebarHeader(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("flex flex-col gap-2 p-2", className);
+    t1 = cn("flex flex-col gap-2 p-2 pt-5", className);
     $[3] = className;
     $[4] = t1;
   } else {
@@ -938,7 +938,7 @@ function SidebarMenu(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("flex w-full min-w-0 flex-col gap-5", className);
+    t1 = cn("flex w-full min-w-0 flex-col gap-4", className);
     $[3] = className;
     $[4] = t1;
   } else {
