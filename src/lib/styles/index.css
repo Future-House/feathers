@@ -440,8 +440,8 @@
   }
 
   /* Sidebar menu last item button margin */
-  [data-sidebar="menu"] > [data-sidebar="menu-item"]:last-child > button,
+  [data-sidebar="menu"] > [data-sidebar="menu-item"]:last-child > button[data-slot="button"],
   [data-sidebar="menu"] > [data-sidebar="menu-item"]:last-child > a {
-    margin-left: 8px;
+    margin-left: 8px !important;
   }
 }
