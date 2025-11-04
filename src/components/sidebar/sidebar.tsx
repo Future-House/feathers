@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, VariantProps } from 'class-variance-authority';
-import {
-  SidePanelOpen as PanelLeftOpenIcon,
-  SidePanelClose as PanelLeftCloseIcon,
-} from '@/icons';
+import { SidePanelClose as PanelLeftCloseIcon } from '@/icons';
 
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
@@ -172,7 +169,7 @@ function Sidebar({
   variant?: 'sidebar' | 'floating' | 'inset';
   collapsible?: 'offcanvas' | 'icon' | 'none';
 }) {
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+  const { isMobile, state, openMobile, setOpenMobile, setOpen } = useSidebar();
 
   if (collapsible === 'none') {
     return (
@@ -254,6 +251,28 @@ function Sidebar({
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
           className="flex h-full w-full flex-col group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+          onClick={event => {
+            // Only expand if collapsed and clicked element is not a button, link, or interactive element
+            if (state === 'collapsed') {
+              const target = event.target as HTMLElement;
+              // Check if the click target or its parent is a button, link, or has interactive attributes
+              const isInteractiveElement =
+                target.closest('button') ||
+                target.closest('a') ||
+                target.closest('[role="button"]') ||
+                target.closest('[data-sidebar="trigger"]') ||
+                target.closest('[data-sidebar="menu-button"]') ||
+                target.closest('[data-sidebar="menu-action"]') ||
+                target.closest('[data-sidebar="group-action"]') ||
+                target.tagName === 'BUTTON' ||
+                target.tagName === 'A' ||
+                target.getAttribute('role') === 'button';
+
+              if (!isInteractiveElement) {
+                setOpen(true);
+              }
+            }
+          }}
         >
           {children}
         </div>
@@ -269,6 +288,11 @@ function SidebarTrigger({
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, state } = useSidebar();
 
+  // Only show trigger when expanded (hide expand button when collapsed)
+  if (state === 'collapsed') {
+    return null;
+  }
+
   return (
     <Button
       data-sidebar="trigger"
@@ -282,7 +306,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      {state === 'expanded' ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
+      <PanelLeftCloseIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
