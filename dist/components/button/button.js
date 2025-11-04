@@ -16,7 +16,7 @@ var buttonVariants = cva("inline-flex items-center justify-center gap-2 whitespa
       default: 'bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80 dark:bg-primary dark:hover:bg-primary/90 dark:active:bg-primary/80',
       secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/90 active:bg-secondary/80 dark:bg-secondary dark:hover:bg-secondary/90 dark:active:bg-secondary/80',
       destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive dark:hover:bg-destructive/90 dark:active:bg-destructive/80',
-      outline: 'border border-input bg-transparent text-text-secondary hover:bg-accent hover:text-accent-foreground active:bg-accent/80 dark:border-input dark:hover:bg-accent dark:active:bg-accent/80',
+      outline: 'border border-text-text-secondary bg-transparent text-text-secondary hover:bg-accent hover:text-text-primary active:bg-accent/80 dark:border-text-text-secondary dark:hover:bg-accent dark:active:bg-accent/80',
       ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground active:bg-accent/80 dark:hover:bg-accent dark:active:bg-accent/80',
       link: 'text-primary underline-offset-4 hover:underline',
       success: 'bg-success text-success-foreground hover:bg-success/90 active:bg-success/80 focus-visible:ring-success/20 dark:focus-visible:ring-success/40 dark:bg-success dark:hover:bg-success/90 dark:active:bg-success/80',
