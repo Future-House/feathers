@@ -308,7 +308,8 @@
     line-height: 16px;
   }
 
-  label.small {
+  label.small,
+  .small {
     font-size: 10px;
     font-weight: 700;
     line-height: 13px;
