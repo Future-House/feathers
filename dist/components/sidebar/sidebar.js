@@ -150,7 +150,7 @@ function SidebarProvider(_ref) {
   });
 }
 function Sidebar(t0) {
-  var $ = _c(46);
+  var $ = _c(47);
   var children;
   var className;
   var props;
@@ -319,34 +319,44 @@ function Sidebar(t0) {
     t10 = $[32];
   }
   var t11;
-  if ($[33] !== children) {
+  if ($[33] === Symbol.for("react.memo_cache_sentinel")) {
     t11 = /*#__PURE__*/_jsx("div", {
+      className: "bg-red-500",
+      children: "Test"
+    });
+    $[33] = t11;
+  } else {
+    t11 = $[33];
+  }
+  var t12;
+  if ($[34] !== children) {
+    t12 = /*#__PURE__*/_jsxs("div", {
       "data-sidebar": "sidebar",
       "data-slot": "sidebar-inner",
       className: "bg-sidebar flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
-      children: children
+      children: [children, t11]
     });
-    $[33] = children;
-    $[34] = t11;
+    $[34] = children;
+    $[35] = t12;
   } else {
-    t11 = $[34];
-  }
-  var t12;
-  if ($[35] !== t10 || $[36] !== t11) {
-    t12 = /*#__PURE__*/_jsx("div", {
-      "data-slot": "sidebar-container",
-      className: t10,
-      children: t11
-    });
-    $[35] = t10;
-    $[36] = t11;
-    $[37] = t12;
-  } else {
-    t12 = $[37];
+    t12 = $[35];
   }
   var t13;
-  if ($[38] !== props || $[39] !== side || $[40] !== state || $[41] !== t12 || $[42] !== t4 || $[43] !== t7 || $[44] !== variant) {
-    t13 = /*#__PURE__*/_jsxs("div", _objectSpread(_objectSpread({
+  if ($[36] !== t10 || $[37] !== t12) {
+    t13 = /*#__PURE__*/_jsx("div", {
+      "data-slot": "sidebar-container",
+      className: t10,
+      children: t12
+    });
+    $[36] = t10;
+    $[37] = t12;
+    $[38] = t13;
+  } else {
+    t13 = $[38];
+  }
+  var t14;
+  if ($[39] !== props || $[40] !== side || $[41] !== state || $[42] !== t13 || $[43] !== t4 || $[44] !== t7 || $[45] !== variant) {
+    t14 = /*#__PURE__*/_jsxs("div", _objectSpread(_objectSpread({
       className: "group peer text-sidebar-foreground hidden md:block",
       "data-state": state,
       "data-collapsible": t4,
@@ -354,20 +364,20 @@ function Sidebar(t0) {
       "data-side": side,
       "data-slot": "sidebar"
     }, props), {}, {
-      children: ["01", t7, t12]
+      children: [t7, t13]
     }));
-    $[38] = props;
-    $[39] = side;
-    $[40] = state;
-    $[41] = t12;
-    $[42] = t4;
-    $[43] = t7;
-    $[44] = variant;
-    $[45] = t13;
+    $[39] = props;
+    $[40] = side;
+    $[41] = state;
+    $[42] = t13;
+    $[43] = t4;
+    $[44] = t7;
+    $[45] = variant;
+    $[46] = t14;
   } else {
-    t13 = $[45];
+    t14 = $[46];
   }
-  return t13;
+  return t14;
 }
 function SidebarTrigger(t0) {
   var $ = _c(17);
