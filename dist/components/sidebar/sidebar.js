@@ -594,7 +594,7 @@ function SidebarHeader(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("flex flex-col gap-2 p-2", className);
+    t1 = cn("flex flex-col gap-2 px-3 py-2", className);
     $[3] = className;
     $[4] = t1;
   } else {
@@ -633,7 +633,7 @@ function SidebarFooter(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("flex flex-col gap-2 p-2", className);
+    t1 = cn("flex flex-col gap-2 px-3 py-2", className);
     $[3] = className;
     $[4] = t1;
   } else {
@@ -750,7 +750,7 @@ function SidebarGroup(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("relative flex w-full min-w-0 flex-col p-2", className);
+    t1 = cn("relative flex w-full min-w-0 flex-col px-3 py-2", className);
     $[3] = className;
     $[4] = t1;
   } else {

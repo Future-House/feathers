@@ -409,8 +409,8 @@ function BasicSidebarExample() {
           <SidebarHeader>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-9 items-center justify-center rounded-lg">
-                  <Home className="size-[18px]" />
+                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <Home className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-semibold">Acme Inc</span>
@@ -512,8 +512,8 @@ function CollapsibleSidebarExample() {
               <SidebarMenuItem>
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
-                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-9 items-center justify-center rounded-lg">
-                      <Home className="size-[18px]" />
+                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                      <Home className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">Acme Inc</span>
@@ -618,8 +618,8 @@ function NestedMenuSidebarExample() {
               <SidebarMenuItem>
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
-                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-9 items-center justify-center rounded-lg">
-                      <Document className="size-[18px]" />
+                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                      <Document className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
@@ -833,8 +833,8 @@ function FloatingVariantExample() {
               <SidebarMenuItem>
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
-                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-9 items-center justify-center rounded-lg">
-                      <Home className="size-[18px]" />
+                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                      <Home className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">Floating</span>
@@ -917,8 +917,8 @@ function SearchableSidebarExample() {
               <SidebarMenuItem>
                 <SidebarMenuButton size="lg" asChild>
                   <a href="#">
-                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-9 items-center justify-center rounded-lg">
-                      <Search className="size-[18px]" />
+                    <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                      <Search className="size-4" />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">Search App</span>

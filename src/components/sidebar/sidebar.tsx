@@ -179,7 +179,7 @@ function Sidebar({
       <div
         data-slot="sidebar"
         className={cn(
-          'bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col',
+          'bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col px-4',
           className
         )}
         {...props}
@@ -208,7 +208,7 @@ function Sidebar({
             <SheetTitle>Sidebar</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
-          <div className="flex h-full w-full flex-col">{children}</div>
+          <div className="flex h-full w-full flex-col px-4">{children}</div>
         </SheetContent>
       </Sheet>
     );
@@ -253,7 +253,7 @@ function Sidebar({
         <div
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
-          className="flex h-full w-full flex-col group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+          className="flex h-full w-full flex-col px-4 group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
         >
           {children}
         </div>
@@ -346,7 +346,7 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="sidebar-header"
       data-sidebar="header"
-      className={cn('flex flex-col gap-2 px-3 py-2', className)}
+      className={cn('flex flex-col gap-2 p-2', className)}
       {...props}
     />
   );
@@ -357,7 +357,7 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="sidebar-footer"
       data-sidebar="footer"
-      className={cn('flex flex-col gap-2 px-3 py-2', className)}
+      className={cn('flex flex-col gap-2 p-2', className)}
       {...props}
     />
   );
@@ -396,10 +396,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="sidebar-group"
       data-sidebar="group"
-      className={cn(
-        'relative flex w-full min-w-0 flex-col px-3 py-2',
-        className
-      )}
+      className={cn('relative flex w-full min-w-0 flex-col p-2', className)}
       {...props}
     />
   );
