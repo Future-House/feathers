@@ -250,7 +250,7 @@ function Sidebar({
         <div
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
-          className="flex h-full w-full flex-col group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+          className="flex h-full w-full flex-col group-data-[state=collapsed]:cursor-e-resize group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
           onClick={event => {
             // Only expand if collapsed and clicked element is not a button, link, or interactive element
             if (state === 'collapsed') {
