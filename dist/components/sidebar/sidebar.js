@@ -354,7 +354,7 @@ function Sidebar(t0) {
       "data-side": side,
       "data-slot": "sidebar"
     }, props), {}, {
-      children: [t7, t12]
+      children: ["01", t7, t12]
     }));
     $[38] = props;
     $[39] = side;

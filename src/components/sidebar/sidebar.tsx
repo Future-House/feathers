@@ -224,6 +224,7 @@ function Sidebar({
       data-slot="sidebar"
       {...props}
     >
+      01
       {/* This is what handles the sidebar gap on desktop */}
       <div
         data-slot="sidebar-gap"
