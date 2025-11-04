@@ -224,7 +224,6 @@ function Sidebar({
       data-slot="sidebar"
       {...props}
     >
-      01
       {/* This is what handles the sidebar gap on desktop */}
       <div
         data-slot="sidebar-gap"
@@ -257,6 +256,7 @@ function Sidebar({
           className="bg-sidebar flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
         >
           {children}
+          <div className="bg-red-500">Test</div>
         </div>
       </div>
     </div>
