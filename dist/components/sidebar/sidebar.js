@@ -30,7 +30,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
-import { SidePanelOpen as PanelLeftOpenIcon, SidePanelClose as PanelLeftCloseIcon } from "../../icons";
+import { SidePanelClose as PanelLeftCloseIcon } from "../../icons";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { cn } from "../../lib/utils";
 import { Button } from "../button";
@@ -150,7 +150,7 @@ function SidebarProvider(_ref) {
   });
 }
 function Sidebar(t0) {
-  var $ = _c(46);
+  var $ = _c(50);
   var children;
   var className;
   var props;
@@ -188,7 +188,8 @@ function Sidebar(t0) {
     isMobile = _useSidebar.isMobile,
     state = _useSidebar.state,
     openMobile = _useSidebar.openMobile,
-    setOpenMobile = _useSidebar.setOpenMobile;
+    setOpenMobile = _useSidebar.setOpenMobile,
+    setOpen = _useSidebar.setOpen;
   if (collapsible === "none") {
     var _t2;
     if ($[7] !== className) {
@@ -319,34 +320,53 @@ function Sidebar(t0) {
     t10 = $[32];
   }
   var t11;
-  if ($[33] !== children) {
-    t11 = /*#__PURE__*/_jsx("div", {
+  if ($[33] !== setOpen || $[34] !== state) {
+    t11 = function t11(event) {
+      if (state === "collapsed") {
+        var target = event.target;
+        var isInteractiveElement = target.closest("button") || target.closest("a") || target.closest("[role=\"button\"]") || target.closest("[data-sidebar=\"trigger\"]") || target.closest("[data-sidebar=\"menu-button\"]") || target.closest("[data-sidebar=\"menu-action\"]") || target.closest("[data-sidebar=\"group-action\"]") || target.tagName === "BUTTON" || target.tagName === "A" || target.getAttribute("role") === "button";
+        if (!isInteractiveElement) {
+          setOpen(true);
+        }
+      }
+    };
+    $[33] = setOpen;
+    $[34] = state;
+    $[35] = t11;
+  } else {
+    t11 = $[35];
+  }
+  var t12;
+  if ($[36] !== children || $[37] !== t11) {
+    t12 = /*#__PURE__*/_jsx("div", {
       "data-sidebar": "sidebar",
       "data-slot": "sidebar-inner",
       className: "flex h-full w-full flex-col group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
+      onClick: t11,
       children: children
     });
-    $[33] = children;
-    $[34] = t11;
+    $[36] = children;
+    $[37] = t11;
+    $[38] = t12;
   } else {
-    t11 = $[34];
-  }
-  var t12;
-  if ($[35] !== t10 || $[36] !== t11) {
-    t12 = /*#__PURE__*/_jsx("div", {
-      "data-slot": "sidebar-container",
-      className: t10,
-      children: t11
-    });
-    $[35] = t10;
-    $[36] = t11;
-    $[37] = t12;
-  } else {
-    t12 = $[37];
+    t12 = $[38];
   }
   var t13;
-  if ($[38] !== props || $[39] !== side || $[40] !== state || $[41] !== t12 || $[42] !== t4 || $[43] !== t7 || $[44] !== variant) {
-    t13 = /*#__PURE__*/_jsxs("div", _objectSpread(_objectSpread({
+  if ($[39] !== t10 || $[40] !== t12) {
+    t13 = /*#__PURE__*/_jsx("div", {
+      "data-slot": "sidebar-container",
+      className: t10,
+      children: t12
+    });
+    $[39] = t10;
+    $[40] = t12;
+    $[41] = t13;
+  } else {
+    t13 = $[41];
+  }
+  var t14;
+  if ($[42] !== props || $[43] !== side || $[44] !== state || $[45] !== t13 || $[46] !== t4 || $[47] !== t7 || $[48] !== variant) {
+    t14 = /*#__PURE__*/_jsxs("div", _objectSpread(_objectSpread({
       className: "group peer text-sidebar-foreground hidden md:block",
       "data-state": state,
       "data-collapsible": t4,
@@ -354,23 +374,23 @@ function Sidebar(t0) {
       "data-side": side,
       "data-slot": "sidebar"
     }, props), {}, {
-      children: [t7, t12]
+      children: [t7, t13]
     }));
-    $[38] = props;
-    $[39] = side;
-    $[40] = state;
-    $[41] = t12;
-    $[42] = t4;
-    $[43] = t7;
-    $[44] = variant;
+    $[42] = props;
+    $[43] = side;
+    $[44] = state;
     $[45] = t13;
+    $[46] = t4;
+    $[47] = t7;
+    $[48] = variant;
+    $[49] = t14;
   } else {
-    t13 = $[45];
+    t14 = $[49];
   }
-  return t13;
+  return t14;
 }
 function SidebarTrigger(t0) {
-  var $ = _c(17);
+  var $ = _c(15);
   var className;
   var onClick;
   var props;
@@ -392,6 +412,9 @@ function SidebarTrigger(t0) {
   var _useSidebar2 = useSidebar(),
     toggleSidebar = _useSidebar2.toggleSidebar,
     state = _useSidebar2.state;
+  if (state === "collapsed") {
+    return null;
+  }
   var t1;
   if ($[4] !== className) {
     t1 = cn("size-7", className);
@@ -414,25 +437,21 @@ function SidebarTrigger(t0) {
     t2 = $[8];
   }
   var t3;
-  if ($[9] !== state) {
-    t3 = state === "expanded" ? /*#__PURE__*/_jsx(PanelLeftCloseIcon, {}) : /*#__PURE__*/_jsx(PanelLeftOpenIcon, {});
-    $[9] = state;
-    $[10] = t3;
-  } else {
-    t3 = $[10];
-  }
   var t4;
-  if ($[11] === Symbol.for("react.memo_cache_sentinel")) {
+  if ($[9] === Symbol.for("react.memo_cache_sentinel")) {
+    t3 = /*#__PURE__*/_jsx(PanelLeftCloseIcon, {});
     t4 = /*#__PURE__*/_jsx("span", {
       className: "sr-only",
       children: "Toggle Sidebar"
     });
-    $[11] = t4;
+    $[9] = t3;
+    $[10] = t4;
   } else {
-    t4 = $[11];
+    t3 = $[9];
+    t4 = $[10];
   }
   var t5;
-  if ($[12] !== props || $[13] !== t1 || $[14] !== t2 || $[15] !== t3) {
+  if ($[11] !== props || $[12] !== t1 || $[13] !== t2) {
     t5 = /*#__PURE__*/_jsxs(Button, _objectSpread(_objectSpread({
       "data-sidebar": "trigger",
       "data-slot": "sidebar-trigger",
@@ -443,13 +462,12 @@ function SidebarTrigger(t0) {
     }, props), {}, {
       children: [t3, t4]
     }));
-    $[12] = props;
-    $[13] = t1;
-    $[14] = t2;
-    $[15] = t3;
-    $[16] = t5;
+    $[11] = props;
+    $[12] = t1;
+    $[13] = t2;
+    $[14] = t5;
   } else {
-    t5 = $[16];
+    t5 = $[14];
   }
   return t5;
 }

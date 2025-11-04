@@ -24,7 +24,7 @@ declare function Sidebar({ side, variant, collapsible, className, children, ...p
     variant?: 'sidebar' | 'floating' | 'inset';
     collapsible?: 'offcanvas' | 'icon' | 'none';
 }): import("react/jsx-runtime").JSX.Element;
-declare function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<typeof Button>): import("react/jsx-runtime").JSX.Element;
+declare function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<typeof Button>): import("react/jsx-runtime").JSX.Element | null;
 declare function SidebarRail({ className, ...props }: React.ComponentProps<'button'>): import("react/jsx-runtime").JSX.Element;
 declare function SidebarInset({ className, ...props }: React.ComponentProps<'main'>): import("react/jsx-runtime").JSX.Element;
 declare function SidebarInput({ className, ...props }: React.ComponentProps<typeof Input>): import("react/jsx-runtime").JSX.Element;
