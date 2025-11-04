@@ -438,4 +438,10 @@
     background-color: var(--muted);
     border-right-color: oklch(var(--border));
   }
+
+  /* Sidebar menu last item button margin */
+  [data-sidebar="menu"] > [data-sidebar="menu-item"]:last-child > button,
+  [data-sidebar="menu"] > [data-sidebar="menu-item"]:last-child > a {
+    margin-left: 8px;
+  }
 }
