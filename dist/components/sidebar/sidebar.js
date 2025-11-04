@@ -938,7 +938,7 @@ function SidebarMenu(t0) {
   }
   var t1;
   if ($[3] !== className) {
-    t1 = cn("flex w-full min-w-0 flex-col gap-1", className);
+    t1 = cn("flex w-full min-w-0 flex-col gap-5", className);
     $[3] = className;
     $[4] = t1;
   } else {
