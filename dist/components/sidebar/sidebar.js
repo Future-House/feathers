@@ -341,7 +341,7 @@ function Sidebar(t0) {
     t12 = /*#__PURE__*/_jsx("div", {
       "data-sidebar": "sidebar",
       "data-slot": "sidebar-inner",
-      className: "flex h-full w-full flex-col group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
+      className: "flex h-full w-full flex-col group-data-[state=collapsed]:cursor-e-resize group-data-[state=expanded]:bg-[var(--component-bg-secondary)] group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
       onClick: t11,
       children: children
     });
