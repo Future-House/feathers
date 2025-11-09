@@ -19,17 +19,17 @@
   --font-sans: var(--font-family-sans);
   --font-mono: var(--font-family-mono);
 
-  --color-gray-50: oklch(0.9491 0 0);
-  --color-gray-100: oklch(0.9249 0 0);
-  --color-gray-200: oklch(0.8792 0 0);
-  --color-gray-300: oklch(0.8607 0 0);
-  --color-gray-400: oklch(0.8297 0 0);
-  --color-gray-500: oklch(0.4809 0.0193 278.14);
-  --color-gray-600: oklch(0.2869 0.0128 279.12);
-  --color-gray-700: oklch(0.2581 0.0132 279.01);
-  --color-gray-800: oklch(0.2328 0.0176 275.14);
-  --color-gray-900: oklch(0.2328 0.0135 278.88);
-  --color-gray-950: oklch(0.2024 0.014 278.68);
+  --color-gray-50: oklch(0.9491 0 0); /* #eeeeee */
+  --color-gray-100: oklch(0.9249 0 0); /* #e6e6e6 */
+  --color-gray-200: oklch(0.8792 0 0); /* #d7d7d7 */
+  --color-gray-300: oklch(0.8607 0 0); /* #d1d1d1 */
+  --color-gray-400: oklch(0.8297 0 0); /* #c7c7c7 */
+  --color-gray-500: oklch(0.4809 0.0193 278.14); /* #5b5d69 */
+  --color-gray-600: oklch(0.2869 0.0128 279.12); /* #292a31 */
+  --color-gray-700: oklch(0.2581 0.0132 279.01); /* #22232a */
+  --color-gray-800: oklch(0.2328 0.0176 275.14); /* #1b1d26 */
+  --color-gray-900: oklch(0.2242 0.0137 278.83); /* #1a1b22 */
+  --color-gray-950: oklch(0.2024 0.014 278.68); /* #15161d */
 
   /* custom vars */
   --color-brand: var(--brand);
