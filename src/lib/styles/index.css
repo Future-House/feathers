@@ -91,6 +91,11 @@
   --color-contrast-light: var(--light-contrast);
   --color-shadow: var(--shadow);
   --color-inverted-text-primary: var(--inverted-text-primary);
+
+  --color-code-green: var(--code-green);
+  --color-code-blue: var(--code-blue);
+  --color-code-red: var(--code-red);
+  --color-hard-red: var(--hard-red);
 }
 
 /* light theme vars */
