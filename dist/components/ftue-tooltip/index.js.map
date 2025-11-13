@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["FtueTooltip"],"sources":["../../../src/components/ftue-tooltip/index.ts"],"sourcesContent":["export { FtueTooltip } from './ftue-tooltip';\nexport type { FtueTooltipProps } from './ftue-tooltip';\n"],"mappings":"AAAA,SAASA,WAAW","ignoreList":[]}
