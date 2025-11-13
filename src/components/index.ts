@@ -271,6 +271,9 @@ export {
   TooltipContent,
 } from '@/components/tooltip';
 
+export { FtueTooltip } from '@/components/ftue-tooltip';
+export type { FtueTooltipProps } from '@/components/ftue-tooltip';
+
 export {
   Sidebar,
   SidebarContent,
