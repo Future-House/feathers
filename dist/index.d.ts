@@ -22,6 +22,7 @@ export * from './components/dialog';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
 export * from './components/file-upload-chat';
+export * from './components/ftue-tooltip';
 export * from './components/hover-card';
 export * from './components/input';
 export * from './components/input-otp';
