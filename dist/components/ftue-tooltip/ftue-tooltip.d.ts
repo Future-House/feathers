@@ -1,7 +1,7 @@
 import * as React from 'react';
 export interface FtueTooltipProps extends React.ComponentProps<'div'> {
     /**
-     * The headline text to display at the top of the tooltip with brand yellow highlight
+     * The headline text to display at the top of the tooltip
      */
     headline?: React.ReactNode;
     /**

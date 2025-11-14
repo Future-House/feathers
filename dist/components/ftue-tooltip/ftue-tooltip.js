@@ -95,7 +95,7 @@ function FtueTooltip(t0) {
   if ($[16] !== headline) {
     t7 = headline && /*#__PURE__*/_jsx("div", {
       "data-slot": "ftue-tooltip-headline",
-      className: "bg-brand inline-block py-1 text-sm font-bold text-black",
+      className: "inline-block py-1 text-sm font-bold text-black",
       children: headline
     });
     $[16] = headline;

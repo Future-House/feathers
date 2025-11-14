@@ -52,6 +52,8 @@ export { TimePicker } from './time-picker';
 export { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent, } from './tooltip';
 export { FtueTooltip } from './ftue-tooltip';
 export type { FtueTooltipProps } from './ftue-tooltip';
+export { FtueModal } from './ftue-modal';
+export type { FtueModalProps } from './ftue-modal';
 export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, useSidebar, } from './sidebar';
 export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator, } from './command';
 export { Combobox, type ComboboxOption, type ComboboxProps, } from './combobox';
