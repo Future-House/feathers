@@ -134,12 +134,7 @@ describe('FtueTooltip', () => {
       </FtueTooltip>
     );
     const headline = screen.getByText('Test Headline');
-    expect(headline).toHaveClass(
-      'text-sm',
-      'font-bold',
-      'text-black',
-      'bg-brand'
-    );
+    expect(headline).toHaveClass('text-sm', 'font-bold', 'text-black');
   });
 
   it('has correct positioning classes', () => {

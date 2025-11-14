@@ -5,7 +5,7 @@ import { ArrowRight } from '@/icons';
 
 export interface FtueTooltipProps extends React.ComponentProps<'div'> {
   /**
-   * The headline text to display at the top of the tooltip with brand yellow highlight
+   * The headline text to display at the top of the tooltip
    */
   headline?: React.ReactNode;
   /**
@@ -77,7 +77,7 @@ function FtueTooltip({
         {headline && (
           <div
             data-slot="ftue-tooltip-headline"
-            className="bg-brand inline-block py-1 text-sm font-bold text-black"
+            className="inline-block py-1 text-sm font-bold text-black"
           >
             {headline}
           </div>

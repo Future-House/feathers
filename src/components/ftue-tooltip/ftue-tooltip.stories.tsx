@@ -27,8 +27,7 @@ const meta = {
     },
     headline: {
       control: { type: 'text' },
-      description:
-        'The headline text to display at the top with brand yellow highlight',
+      description: 'The headline text to display at the top of the tooltip',
       table: {
         type: { summary: 'ReactNode' },
         defaultValue: { summary: undefined },
