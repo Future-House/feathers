@@ -126,9 +126,9 @@
 
   --regular-contrast-border: var(--border); /* gray-500 */
 
-  --ftue-modal-bg: #E6E6E6;
-  --ftue-modal-border: #BABABE;
-  --ftue-modal-preferences-bg: #D7D7D7;
+  --ftue-modal-bg: #e6e6e6;
+  --ftue-modal-border: #bababe;
+  --ftue-modal-preferences-bg: #d7d7d7;
   --ftue-modal-body-text: var(--text-primary);
 
   --light-contrast: var(--color-gray-400);
@@ -200,10 +200,10 @@
 
   --regular-contrast-border: var(--border); /* gray-500 */
 
-  --ftue-modal-bg: #22232A;
-  --ftue-modal-border: #49494D;
-  --ftue-modal-preferences-bg: #1A1B22;
-  --ftue-modal-body-text: #C7C7C7;
+  --ftue-modal-bg: #22232a;
+  --ftue-modal-border: #49494d;
+  --ftue-modal-preferences-bg: #1a1b22;
+  --ftue-modal-body-text: #c7c7c7;
 
   --light-contrast: var(--color-gray-400);
   --shadow: var(--color-gray-600);
