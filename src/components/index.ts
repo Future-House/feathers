@@ -274,6 +274,9 @@ export {
 export { FtueTooltip } from '@/components/ftue-tooltip';
 export type { FtueTooltipProps } from '@/components/ftue-tooltip';
 
+export { FtueModal } from '@/components/ftue-modal';
+export type { FtueModalProps } from '@/components/ftue-modal';
+
 export {
   Sidebar,
   SidebarContent,

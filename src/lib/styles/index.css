@@ -88,6 +88,11 @@
 
   --color-regular-contrast-border: var(--regular-contrast-border);
 
+  --color-ftue-modal-bg: var(--ftue-modal-bg);
+  --color-ftue-modal-border: var(--ftue-modal-border);
+  --color-ftue-modal-preferences-bg: var(--ftue-modal-preferences-bg);
+  --color-ftue-modal-body-text: var(--ftue-modal-body-text);
+
   --color-contrast-light: var(--light-contrast);
   --color-shadow: var(--shadow);
   --color-inverted-text-primary: var(--inverted-text-primary);
@@ -120,6 +125,11 @@
   --text-secondary: var(--color-gray-500);
 
   --regular-contrast-border: var(--border); /* gray-500 */
+
+  --ftue-modal-bg: #E6E6E6;
+  --ftue-modal-border: #BABABE;
+  --ftue-modal-preferences-bg: #D7D7D7;
+  --ftue-modal-body-text: var(--text-primary);
 
   --light-contrast: var(--color-gray-400);
   --shadow: var(--color-gray-400);
@@ -189,6 +199,11 @@
   --text-secondary: var(--color-gray-400);
 
   --regular-contrast-border: var(--border); /* gray-500 */
+
+  --ftue-modal-bg: #22232A;
+  --ftue-modal-border: #49494D;
+  --ftue-modal-preferences-bg: #1A1B22;
+  --ftue-modal-body-text: #C7C7C7;
 
   --light-contrast: var(--color-gray-400);
   --shadow: var(--color-gray-600);
@@ -436,5 +451,10 @@
   .dark .Editor-code:before {
     background-color: var(--muted);
     border-right-color: oklch(var(--border));
+  }
+
+  /* FTUE Modal border override */
+  [data-slot='ftue-modal-content'] {
+    border-color: var(--ftue-modal-border) !important;
   }
 }
