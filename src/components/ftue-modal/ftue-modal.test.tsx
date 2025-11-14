@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
@@ -109,16 +108,7 @@ describe('FtueModal', () => {
     expect(body).toHaveClass('font-mono', 'text-white');
   });
 
-  it('forwards ref correctly', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    render(
-      <FtueModal ref={ref} defaultOpen={true}>
-        <p>Test content</p>
-      </FtueModal>
-    );
-
-    // The ref is on the root DialogPrimitive.Root which renders as a fragment
-    // So we check the modal content instead
+  it('renders modal content correctly', () => {
     const { container } = render(
       <FtueModal defaultOpen={true}>
         <p>Test content</p>
