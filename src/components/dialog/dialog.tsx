@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Close as XIcon } from '@/icons';
-
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 function Dialog({
@@ -101,14 +101,53 @@ function DialogFooter({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
+const dialogTitleVariants = cva('text-lg leading-none font-semibold', {
+  variants: {
+    variant: {
+      default: 'text-lg leading-none font-semibold',
+      decorated: 'border-l-4 pl-3',
+    },
+    color: {
+      default: 'text-lg leading-none font-semibold',
+      error: 'border-l-4 pl-3',
+    },
+  },
+  compoundVariants: [
+    {
+      variant: 'decorated',
+      color: 'default',
+      className: '',
+    },
+    {
+      variant: 'decorated',
+      color: 'error',
+      className: 'border-error',
+    },
+  ],
+  defaultVariants: {
+    variant: 'default',
+    color: 'default',
+  },
+});
+
+export type DialogTitleProps = React.ComponentProps<
+  typeof DialogPrimitive.Title
+> &
+  VariantProps<typeof dialogTitleVariants> & {
+    color?: 'default' | 'error';
+    variant?: 'default' | 'decorated';
+  };
+
 function DialogTitle({
   className,
+  variant,
+  color,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Title>) {
+}: DialogTitleProps) {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn('text-lg leading-none font-semibold', className)}
+      className={cn(dialogTitleVariants({ variant, color, className }))}
       {...props}
     />
   );

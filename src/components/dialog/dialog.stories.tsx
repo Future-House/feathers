@@ -144,6 +144,28 @@ const meta = {
             'Change the default rendered element for the one passed as a child, merging their props and behavior',
           defaultValue: 'false',
         },
+        variant: {
+          control: { type: 'select' },
+          options: ['default', 'decorated'],
+          description:
+            'The visual style variant of the title. "decorated" adds a left border accent.',
+          defaultValue: 'default',
+          table: {
+            type: { summary: "'default' | 'decorated'" },
+            defaultValue: { summary: "'default'" },
+          },
+        },
+        color: {
+          control: { type: 'select' },
+          options: ['default', 'error'],
+          description:
+            'The color scheme of the title. Works in conjunction with variant - "error" adds red border when variant is "decorated".',
+          defaultValue: 'default',
+          table: {
+            type: { summary: "'default' | 'error'" },
+            defaultValue: { summary: "'default'" },
+          },
+        },
       },
     },
     DialogDescription: {
@@ -569,5 +591,99 @@ export const WithoutCloseButton: Story = {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  ),
+};
+
+export const TitleVariants: Story = {
+  args: {
+    defaultOpen: false,
+  },
+  render: args => (
+    <div className="flex flex-wrap gap-4">
+      <Dialog {...args}>
+        <DialogTrigger asChild>
+          <Button variant="outline">Default Title</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle variant="default" color="default">
+              Default Title Style
+            </DialogTitle>
+            <DialogDescription>
+              This is the default title style without any decoration.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            <Typography variant="small">
+              The default variant displays a simple, clean title without any
+              additional styling or decoration.
+            </Typography>
+          </div>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button>Close</Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog {...args}>
+        <DialogTrigger asChild>
+          <Button variant="outline">Decorated Title</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle variant="decorated" color="default">
+              Decorated Title Style
+            </DialogTitle>
+            <DialogDescription>
+              This title has a decorative left border accent.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            <Typography variant="small">
+              The decorated variant adds a left border to emphasize the title
+              and add visual hierarchy.
+            </Typography>
+          </div>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button>Close</Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog {...args}>
+        <DialogTrigger asChild>
+          <Button variant="destructive">Error Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle variant="decorated" color="error">
+              Error: Action Failed
+            </DialogTitle>
+            <DialogDescription>
+              This title uses the error color variant with a red border accent.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            <div className="bg-destructive/10 rounded-md p-4">
+              <Typography variant="small" className="text-destructive">
+                The decorated variant with error color adds a red left border to
+                indicate critical information or errors. This combination is
+                useful for warning dialogs and error messages.
+              </Typography>
+            </div>
+          </div>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DialogClose>
+            <Button variant="destructive">Acknowledge</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
   ),
 };

@@ -105,12 +105,12 @@ export function DocLayout({
         <p className="!text-muted-foreground text-lg">{finalDescription}</p>
         <div className="flex flex-wrap gap-2">
           {!hideShadcnUrl && (
-            <Badge asChild color="info">
+            <Badge asChild variant="secondary">
               <a
                 href={defaultShadcnUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 no-underline hover:no-underline"
+                className="text-secondary-foreground! inline-flex items-center gap-1.5 no-underline hover:no-underline"
               >
                 <ShadcnLogo className="h-3 w-3" />
                 shadcn/{kebabCase}
@@ -119,12 +119,12 @@ export function DocLayout({
             </Badge>
           )}
           {!hideRadixUiUrl && (
-            <Badge asChild color="info">
+            <Badge asChild variant="secondary">
               <a
                 href={defaultRadixUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 no-underline hover:no-underline"
+                className="text-secondary-foreground! inline-flex items-center gap-1.5 no-underline hover:no-underline"
               >
                 <RadixLogo className="h-3 w-3" />
                 radix-ui/{customRadixUiUrl || kebabCase}
