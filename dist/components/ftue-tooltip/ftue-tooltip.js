@@ -178,7 +178,8 @@ function FtueTooltip(t0) {
   var t13;
   if ($[27] === Symbol.for("react.memo_cache_sentinel")) {
     t13 = {
-      fontSize: "12px"
+      fontSize: "12px",
+      lineHeight: "24px"
     };
     $[27] = t13;
   } else {
@@ -187,7 +188,7 @@ function FtueTooltip(t0) {
   var t14;
   if ($[28] !== children) {
     t14 = /*#__PURE__*/_jsx("div", {
-      className: "mb-2 font-mono text-xs [&_p]:!text-[12px] [&>*]:!text-[12px]",
+      className: "mb-2 font-mono text-xs [&_p]:!text-[12px] [&_p]:!leading-[24px] [&>*]:!text-[12px] [&>*]:!leading-[24px]",
       style: t13,
       children: children
     });
