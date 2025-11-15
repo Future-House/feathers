@@ -119,8 +119,8 @@ function FtueTooltip({
           </div>
         )}
         <div
-          className="mb-2 font-mono text-xs [&_p]:!text-[12px] [&>*]:!text-[12px]"
-          style={{ fontSize: '12px' }}
+          className="mb-2 font-mono text-xs [&_p]:!text-[12px] [&_p]:!leading-[24px] [&>*]:!text-[12px] [&>*]:!leading-[24px]"
+          style={{ fontSize: '12px', lineHeight: '24px' }}
         >
           {children}
         </div>
