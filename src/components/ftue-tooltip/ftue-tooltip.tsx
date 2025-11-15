@@ -113,7 +113,7 @@ function FtueTooltip({
         {headline && (
           <div
             data-slot="ftue-tooltip-headline"
-            className="mb-1 inline-block text-sm font-bold text-black"
+            className="mb-2 inline-block text-sm font-bold text-black"
           >
             {headline}
           </div>
