@@ -67,6 +67,16 @@ const meta = {
         type: { summary: 'ReactNode' },
       },
     },
+    arrowPosition: {
+      control: { type: 'select' },
+      options: ['top', 'left', 'right'],
+      description:
+        'Position of the triangle arrow. Useful for mobile layouts where tooltips on the side of the screen get cut off.',
+      table: {
+        type: { summary: "'top' | 'left' | 'right'" },
+        defaultValue: { summary: "'top'" },
+      },
+    },
   },
 } satisfies Meta<typeof FtueTooltip>;
 
@@ -223,5 +233,53 @@ export const WithLeftButton: Story = {
         Skip
       </Button>
     ),
+  },
+};
+
+export const ArrowLeft: Story = {
+  render: args => (
+    <div className="relative h-96 w-full">
+      <div className="absolute top-20 right-4">
+        <FtueTooltip
+          {...args}
+          className="top-1/2 right-full mr-2 -translate-y-1/2"
+        >
+          <Typography variant="p" className="text-sm text-black">
+            This tooltip has the arrow on the left side, pointing right. Useful
+            for mobile layouts where tooltips on the right edge of the screen
+            would get cut off.
+          </Typography>
+        </FtueTooltip>
+      </div>
+    </div>
+  ),
+  args: {
+    headline: 'Mobile Layout (1/3)',
+    arrowPosition: 'left',
+    onNext: () => console.log('Next clicked'),
+  },
+};
+
+export const ArrowRight: Story = {
+  render: args => (
+    <div className="relative h-96 w-full">
+      <div className="absolute top-20 left-4">
+        <FtueTooltip
+          {...args}
+          className="top-1/2 left-full ml-2 -translate-y-1/2"
+        >
+          <Typography variant="p" className="text-sm text-black">
+            This tooltip has the arrow on the right side, pointing left. Useful
+            for mobile layouts where tooltips on the left edge of the screen
+            would get cut off.
+          </Typography>
+        </FtueTooltip>
+      </div>
+    </div>
+  ),
+  args: {
+    headline: 'Mobile Layout (1/3)',
+    arrowPosition: 'right',
+    onNext: () => console.log('Next clicked'),
   },
 };

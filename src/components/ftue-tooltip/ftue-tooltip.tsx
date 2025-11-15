@@ -24,6 +24,10 @@ export interface FtueTooltipProps extends React.ComponentProps<'div'> {
    * Optional button to display on the left side of the same row as the next arrow
    */
   leftButton?: React.ReactNode;
+  /**
+   * Position of the triangle arrow. 'top' points upward (default), 'left' points left, 'right' points right.
+   */
+  arrowPosition?: 'top' | 'left' | 'right';
 }
 
 function FtueTooltip({
@@ -33,6 +37,7 @@ function FtueTooltip({
   onNext,
   isLast = false,
   leftButton,
+  arrowPosition = 'top',
   ...props
 }: FtueTooltipProps) {
   const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -52,6 +57,40 @@ function FtueTooltip({
   const showArrow = onNext && !isLast;
   const showButtonRow = showArrow || leftButton;
 
+  // Triangle positioning and styling based on arrowPosition
+  const getArrowClasses = () => {
+    switch (arrowPosition) {
+      case 'left':
+        return 'absolute -left-2 top-1/2 -translate-y-1/2';
+      case 'right':
+        return 'absolute -right-2 top-1/2 -translate-y-1/2';
+      case 'top':
+      default:
+        return 'absolute -top-2 left-1/2 -translate-x-1/2';
+    }
+  };
+
+  const getArrowShape = () => {
+    switch (arrowPosition) {
+      case 'left':
+        // Triangle pointing left (outward from tooltip)
+        return (
+          <div className="h-0 w-0 border-y-[8px] border-r-[8px] border-y-transparent border-r-white" />
+        );
+      case 'right':
+        // Triangle pointing right (outward from tooltip)
+        return (
+          <div className="h-0 w-0 border-y-[8px] border-l-[8px] border-y-transparent border-l-white" />
+        );
+      case 'top':
+      default:
+        // Triangle pointing upward
+        return (
+          <div className="h-0 w-0 border-x-[8px] border-b-[8px] border-x-transparent border-b-white" />
+        );
+    }
+  };
+
   return (
     <div
       data-slot="ftue-tooltip"
@@ -61,28 +100,30 @@ function FtueTooltip({
       )}
       {...props}
     >
-      {/* Triangle pointing upward */}
-      <div
-        data-slot="ftue-tooltip-arrow"
-        className="absolute -top-2 left-1/2 -translate-x-1/2"
-      >
-        <div className="h-0 w-0 border-x-[8px] border-b-[8px] border-x-transparent border-b-white" />
+      {/* Triangle arrow */}
+      <div data-slot="ftue-tooltip-arrow" className={getArrowClasses()}>
+        {getArrowShape()}
       </div>
 
       {/* Content */}
       <div
-        className={cn('relative space-y-2', showArrow && 'cursor-pointer')}
+        className={cn('relative', showArrow && 'cursor-pointer')}
         onClick={handleContentClick}
       >
         {headline && (
           <div
             data-slot="ftue-tooltip-headline"
-            className="inline-block py-1 text-sm font-bold text-black"
+            className="mb-1 inline-block text-sm font-bold text-black"
           >
             {headline}
           </div>
         )}
-        <div>{children}</div>
+        <div
+          className="mb-2 font-mono text-xs [&_p]:!text-[12px] [&>*]:!text-[12px]"
+          style={{ fontSize: '12px' }}
+        >
+          {children}
+        </div>
 
         {/* Button row with optional left button and next arrow */}
         {showButtonRow && (
