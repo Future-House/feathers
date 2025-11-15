@@ -20,7 +20,11 @@ export interface FtueTooltipProps extends React.ComponentProps<'div'> {
      * Optional button to display on the left side of the same row as the next arrow
      */
     leftButton?: React.ReactNode;
+    /**
+     * Position of the triangle arrow. 'top' points upward (default), 'left' points left, 'right' points right.
+     */
+    arrowPosition?: 'top' | 'left' | 'right';
 }
-declare function FtueTooltip({ className, headline, children, onNext, isLast, leftButton, ...props }: FtueTooltipProps): import("react/jsx-runtime").JSX.Element;
+declare function FtueTooltip({ className, headline, children, onNext, isLast, leftButton, arrowPosition, ...props }: FtueTooltipProps): import("react/jsx-runtime").JSX.Element;
 export { FtueTooltip };
 //# sourceMappingURL=ftue-tooltip.d.ts.map
