@@ -45,6 +45,8 @@ export { ThemeProvider, useTheme } from "./theme-provider";
 export { ThemeToggle } from "./theme-toggle";
 export { TimePicker } from "./time-picker";
 export { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "./tooltip";
+export { FtueTooltip } from "./ftue-tooltip";
+export { FtueModal } from "./ftue-modal";
 export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, useSidebar } from "./sidebar";
 export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator } from "./command";
 export { Combobox } from "./combobox";

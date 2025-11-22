@@ -1,0 +1,121 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as FtueModalStories from './ftue-modal.stories';
+
+<Meta of={FtueModalStories} />
+
+<DocLayout meta={FtueModalStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={FtueModalStories.Default} />
+
+## Component API
+
+### FtueModal
+
+<PropsTable argTypes={FtueModalStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={FtueModalStories.default.subcomponents} />
+
+## Examples
+
+### With Logo
+
+Display a modal with a logo at the top.
+
+<Canvas of={FtueModalStories.WithLogo} />
+
+### With Close Button
+
+A modal with a close button in the top right corner.
+
+<Canvas of={FtueModalStories.WithCloseButton} />
+
+### Without Action Button
+
+A modal without an action button at the bottom.
+
+<Canvas of={FtueModalStories.WithoutActionButton} />
+
+## Usage
+
+The FTUE Modal component is designed for first-time user experience flows. It provides:
+
+- **Dark background**: Uses `bg-component-bg-secondary` for a dark modal appearance
+- **White text**: Content is displayed in white for contrast
+- **Optional logo**: Display a logo at the top of the modal
+- **Optional title**: Large, bold white title text
+- **Optional action button**: Button at the bottom for primary actions
+- **Optional close button**: Close button in the top right corner
+
+### Basic Usage
+
+```tsx
+import { FtueModal } from '@/components/ftue-modal';
+import { Button } from '@/components/button';
+
+<FtueModal
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  title="Welcome to Edison!"
+  actionButton={
+    <Button
+      variant="default"
+      className="bg-gray-800 text-white hover:bg-gray-700"
+      onClick={handleGetStarted}
+    >
+      Get Started
+    </Button>
+  }
+>
+  <p className="text-sm text-white">
+    All users get 10 free monthly credits for standard agents like
+    Literature Agent and Analysis Agent.
+  </p>
+</FtueModal>
+```
+
+### With Logo
+
+```tsx
+<FtueModal
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  logo={
+    <div className="flex h-12 w-12 items-center justify-center rounded bg-white">
+      <span className="text-2xl">⚛</span>
+    </div>
+  }
+  title="Welcome to Edison!"
+  actionButton={<Button>Get Started</Button>}
+>
+  <p className="text-sm text-white">Welcome message content</p>
+</FtueModal>
+```
+
+## Accessibility
+
+The `FtueModal` component:
+
+- Uses Radix UI Dialog primitives for accessibility
+- Provides proper ARIA attributes for screen readers
+- Supports keyboard navigation (Escape to close)
+- Focus management when opening and closing
+- Proper semantic HTML structure
+
+## Best Practices
+
+- Use clear, concise titles
+- Keep content brief and actionable
+- Provide a clear call-to-action button
+- Consider using a logo for brand recognition
+- Test with keyboard navigation and screen readers
+- Ensure sufficient contrast for readability
+
+</DocLayout>
