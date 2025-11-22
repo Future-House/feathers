@@ -12,7 +12,6 @@
   CSS variables are not available
   Server restart is required to see changes
 -->
-<!-- TODO: add custom loading -->
 <style>
   /* Custom animations */
   @keyframes fadeIn {
@@ -50,55 +49,12 @@
       Consolas, 'Liberation Mono', 'Courier New', monospace !important;
   }
 
-  /* Custom scrollbar styling for better UX */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-
-  /* Dark mode scrollbar */
-  .dark ::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-
   /*
   Story tree styling
   - sidebar menu items
   */
 
-  [data-nodetype='story'] {
-    font-weight: 400;
-    line-height: 1.4;
-    animation: fadeIn 0.2s ease-out;
-  }
-
-  [data-nodetype='story'] svg {
-    /* red-500 */
-    color: #ef4444;
-  }
-
-  [data-nodetype='document'] svg {
-    /* amber-500 */
-    color: #f59e0b;
-  }
-
+  [data-nodetype='story'],
   .dark [data-nodetype='story'] {
     font-weight: 400;
     line-height: 1.4;
@@ -106,19 +62,15 @@
   }
 
   /* story and doc icons */
-  .dark [data-nodetype='story'] svg {
-    /* red-800 */
-    color: oklch(44.4% 0.177 26.899);
-    fill: oklch(44.4% 0.177 26.899);
+  [data-nodetype='story'] svg,
+  [data-nodetype='document'] svg {
+    color: #ffcd00;
   }
 
+  .dark [data-nodetype='story'] svg,
   .dark [data-nodetype='document'] svg {
-    /* amber-600 */
-    color: oklch(66.6% 0.179 58.318);
-    fill: oklch(66.6% 0.179 58.318);
-  }
-
-  .sidebar-item:hover {
+    color: #ffcd00;
+    fill: #ffcd00;
   }
 
   /* Active story styling */
@@ -135,7 +87,7 @@
   name="description"
   content="Feathers Component Library - A comprehensive React component library built with TypeScript, Tailwind CSS, and Radix UI."
 />
-<meta name="author" content="Future House" />
+<meta name="author" content="Edison Scientific" />
 
 <!-- Open Graph / Social Media -->
 <meta property="og:type" content="website" />

@@ -6,7 +6,7 @@ var _excluded = ["className"],
   _excluded2 = ["className", "children", "showCloseButton"],
   _excluded3 = ["className"],
   _excluded4 = ["className"],
-  _excluded5 = ["className"],
+  _excluded5 = ["className", "variant", "color"],
   _excluded6 = ["className"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -14,6 +14,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Close as XIcon } from "../../icons";
+import { cva } from 'class-variance-authority';
 import { cn } from "../../lib/utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function Dialog(t0) {
@@ -306,41 +307,80 @@ function DialogFooter(t0) {
   }
   return t2;
 }
+var dialogTitleVariants = cva('text-lg leading-none font-semibold', {
+  variants: {
+    variant: {
+      default: 'text-lg leading-none font-semibold',
+      decorated: 'border-l-4 pl-3'
+    },
+    color: {
+      default: 'text-lg leading-none font-semibold',
+      error: 'border-l-4 pl-3'
+    }
+  },
+  compoundVariants: [{
+    variant: 'decorated',
+    color: 'default',
+    className: ''
+  }, {
+    variant: 'decorated',
+    color: 'error',
+    className: 'border-error'
+  }],
+  defaultVariants: {
+    variant: 'default',
+    color: 'default'
+  }
+});
 function DialogTitle(t0) {
-  var $ = _c(8);
+  var $ = _c(12);
   var className;
+  var color;
   var props;
+  var variant;
   if ($[0] !== t0) {
     var _t9 = t0;
     className = _t9.className;
+    variant = _t9.variant;
+    color = _t9.color;
     props = _objectWithoutProperties(_t9, _excluded5);
     _t9;
     $[0] = t0;
     $[1] = className;
-    $[2] = props;
+    $[2] = color;
+    $[3] = props;
+    $[4] = variant;
   } else {
     className = $[1];
-    props = $[2];
+    color = $[2];
+    props = $[3];
+    variant = $[4];
   }
   var t1;
-  if ($[3] !== className) {
-    t1 = cn("text-lg leading-none font-semibold", className);
-    $[3] = className;
-    $[4] = t1;
+  if ($[5] !== className || $[6] !== color || $[7] !== variant) {
+    t1 = cn(dialogTitleVariants({
+      variant: variant,
+      color: color,
+      className: className
+    }));
+    $[5] = className;
+    $[6] = color;
+    $[7] = variant;
+    $[8] = t1;
   } else {
-    t1 = $[4];
+    t1 = $[8];
   }
   var t2;
-  if ($[5] !== props || $[6] !== t1) {
+  if ($[9] !== props || $[10] !== t1) {
     t2 = /*#__PURE__*/_jsx(DialogPrimitive.Title, _objectSpread({
       "data-slot": "dialog-title",
       className: t1
     }, props));
-    $[5] = props;
-    $[6] = t1;
-    $[7] = t2;
+    $[9] = props;
+    $[10] = t1;
+    $[11] = t2;
   } else {
-    t2 = $[7];
+    t2 = $[11];
   }
   return t2;
 }

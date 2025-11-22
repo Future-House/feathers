@@ -4,7 +4,6 @@ import { Typography } from '../src/components/typography';
 
 import themeLight from './themes/theme-light.js';
 import themeDark from './themes/theme-dark.js';
-// import themeLightDocs from "./themes/theme-lightDocs.js";
 
 // preview style for inner html
 import '../src/lib/styles/index.css'; // feathers/tailwind css
