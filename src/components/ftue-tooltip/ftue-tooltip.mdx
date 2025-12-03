@@ -1,0 +1,183 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {
+  DocLayout,
+  Canvas,
+  PropsTable,
+  SubcomponentPropTable,
+} from '../../../.storybook/components';
+import * as FtueTooltipStories from './ftue-tooltip.stories';
+
+<Meta of={FtueTooltipStories} />
+
+<DocLayout meta={FtueTooltipStories.default} hideRadixUiUrl>
+
+## Default Example
+
+<Canvas of={FtueTooltipStories.Default} />
+
+## Component API
+
+### FtueTooltip
+
+<PropsTable argTypes={FtueTooltipStories.default.argTypes} />
+
+<SubcomponentPropTable subcomponents={FtueTooltipStories.default.subcomponents} />
+
+## Examples
+
+### With Headline
+
+Display a tooltip with a headline, perfect for step-by-step guides.
+
+<Canvas of={FtueTooltipStories.WithTitle} />
+
+### Last Tooltip
+
+The last tooltip in a series. The arrow button is hidden and clicking anywhere won't progress.
+
+<Canvas of={FtueTooltipStories.LastTooltip} />
+
+### Without Next Button
+
+A tooltip without an onNext handler, so it's not clickable and has no arrow button.
+
+<Canvas of={FtueTooltipStories.WithoutNextButton} />
+
+### Positioned Below Element
+
+Position the tooltip directly below a target element.
+
+<Canvas of={FtueTooltipStories.PositionedBelowElement} />
+
+### Custom Positioning
+
+Customize the tooltip position using Tailwind classes for different alignment needs.
+
+<Canvas of={FtueTooltipStories.CustomPositioning} />
+
+### With Left Button
+
+Display a small outline button on the left side of the button row, alongside the next arrow.
+
+<Canvas of={FtueTooltipStories.WithLeftButton} />
+
+## Usage
+
+The FTUE Tooltip component is designed for first-time user experience flows. It provides:
+
+- **Fixed width**: 284px wide for consistent sizing
+- **Triangle pointer**: Points upward to indicate the element it's explaining
+- **Clickable content**: The entire tooltip content area is clickable to progress to the next tooltip
+- **Optional navigation**: Next arrow button in a new row below the text
+- **Optional left button**: Small outline button on the left side of the button row
+- **Series support**: Use `isLast` prop to hide the arrow on the final tooltip
+- **Absolute positioning**: Can be positioned anywhere relative to parent elements
+
+### Basic Usage
+
+```tsx
+import { FtueTooltip } from '@/components/ftue-tooltip';
+
+function MyComponent() {
+  return (
+    <div className="relative">
+      <button>Target Element</button>
+      <FtueTooltip
+        className="top-full left-1/2 -translate-x-1/2 mt-2"
+        headline="Getting Started (1/3)"
+        onNext={() => console.log('Next')}
+      >
+        <p>This explains the button above</p>
+      </FtueTooltip>
+    </div>
+  );
+}
+```
+
+### With Headline
+
+The headline prop automatically styles the text with dark bold text:
+
+```tsx
+<FtueTooltip
+  headline="Getting Started (1/3)"
+  onNext={handleNext}
+>
+  <p className="text-sm">
+    Describe your query here in 2000 characters or less.
+  </p>
+</FtueTooltip>
+```
+
+### Tooltip Series
+
+Tooltips can be used in a series where clicking anywhere inside the tooltip (or the arrow button) progresses to the next tooltip. On the last tooltip, set `isLast={true}` to hide the arrow:
+
+```tsx
+// First tooltip
+<FtueTooltip
+  headline="Getting Started (1/3)"
+  onNext={() => setStep(2)}
+>
+  <p>First step content</p>
+</FtueTooltip>
+
+// Last tooltip
+<FtueTooltip
+  headline="Getting Started (3/3)"
+  onNext={() => setStep(3)}
+  isLast={true}
+>
+  <p>Final step content</p>
+</FtueTooltip>
+```
+
+### With Left Button
+
+Add an optional small outline button on the left side of the button row:
+
+```tsx
+import { Button } from '@/components/button';
+
+<FtueTooltip
+  headline="Getting Started (1/3)"
+  onNext={handleNext}
+  leftButton={
+    <Button
+      variant="outline"
+      size="sm"
+      className="text-black border-black dark:text-black dark:border-black"
+      onClick={(e) => {
+        e.stopPropagation();
+        handleSkip();
+      }}
+    >
+      Skip
+    </Button>
+  }
+>
+  <p>Tooltip content</p>
+</FtueTooltip>
+```
+
+## Accessibility
+
+The `FtueTooltip` component:
+
+- Uses semantic HTML structure
+- Provides proper ARIA labels for the next button
+- Maintains keyboard accessibility for interactive elements
+- Supports screen readers with meaningful content
+- Uses appropriate z-index for proper layering
+
+## Best Practices
+
+- Position tooltips close to the elements they explain
+- Keep content concise and actionable
+- Use the next button for multi-step flows
+- Ensure tooltips don't obstruct important UI elements
+- Test positioning across different screen sizes
+- Consider using step indicators (e.g., "1/3") for multi-step flows
+- Provide clear, actionable guidance in tooltip content
+
+</DocLayout>

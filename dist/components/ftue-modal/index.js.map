@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["FtueModal"],"sources":["../../../src/components/ftue-modal/index.ts"],"sourcesContent":["export { FtueModal } from './ftue-modal';\nexport type { FtueModalProps, PreferenceItem } from './ftue-modal';\n"],"mappings":"AAAA,SAASA,SAAS","ignoreList":[]}
