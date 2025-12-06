@@ -17,8 +17,10 @@
  *   list             - List current MCP configurations
  *
  * Options:
- *   --url <url>      - Custom MCP server URL (default: http://localhost:6006/mcp)
- *   --name <name>    - Custom MCP server name (default: storybook-feathers)
+ *   --url <url>          - Custom MCP server URL (default: http://localhost:6006/mcp)
+ *   --name <name>        - Custom MCP server name (default: storybook-feathers)
+ *   --toolsets <list>    - Comma-separated list of toolsets to enable (default: dev,docs)
+ *                          Available: dev, docs
  */
 
 import { execSync, spawnSync } from 'child_process';
@@ -29,6 +31,7 @@ import { homedir } from 'os';
 // Configuration
 const DEFAULT_MCP_URL = 'http://localhost:6006/mcp';
 const DEFAULT_MCP_NAME = 'storybook-feathers';
+const DEFAULT_TOOLSETS = 'dev,docs';
 
 const CURSOR_MCP_JSON = join(homedir(), '.cursor', 'mcp.json');
 const VSCODE_MCP_JSON = join(homedir(), '.vscode', 'mcp.json');
@@ -41,6 +44,7 @@ function parseArgs() {
     tool: null,
     url: DEFAULT_MCP_URL,
     name: DEFAULT_MCP_NAME,
+    toolsets: DEFAULT_TOOLSETS,
   };
 
   for (let i = 1; i < args.length; i++) {
@@ -48,6 +52,8 @@ function parseArgs() {
       result.url = args[++i];
     } else if (args[i] === '--name' && args[i + 1]) {
       result.name = args[++i];
+    } else if (args[i] === '--toolsets' && args[i + 1]) {
+      result.toolsets = args[++i];
     } else if (!args[i].startsWith('--')) {
       result.tool = args[i];
     }
@@ -103,7 +109,7 @@ function writeJsonFile(filePath, data) {
 }
 
 // Claude Code MCP functions
-function setupClaude(name, url) {
+function setupClaude(name, url, toolsets) {
   console.log('Configuring Claude Code MCP server...');
 
   if (!commandExists('claude')) {
@@ -120,18 +126,29 @@ function setupClaude(name, url) {
     });
     if (listResult.stdout && listResult.stdout.includes(name)) {
       console.log(`  ${name} already configured in Claude Code`);
+      console.log(
+        `  To update, run: npm run mcp:remove:claude && npm run mcp:setup:claude`
+      );
       return true;
     }
 
+    // Build the command args
+    const cmdArgs = ['mcp', 'add', '--transport', 'http', name, url];
+
+    // Add header for toolsets if specified
+    if (toolsets) {
+      cmdArgs.push('--header', `X-MCP-Toolsets: ${toolsets}`);
+    }
+
     // Add the MCP server
-    const addResult = spawnSync(
-      'claude',
-      ['mcp', 'add', '--transport', 'http', name, url],
-      { encoding: 'utf-8', stdio: 'inherit' }
-    );
+    const addResult = spawnSync('claude', cmdArgs, {
+      encoding: 'utf-8',
+      stdio: 'inherit',
+    });
 
     if (addResult.status === 0) {
       console.log(`  Added ${name} to Claude Code`);
+      console.log(`  Toolsets: ${toolsets}`);
       return true;
     } else {
       console.error('  Failed to add MCP server to Claude Code');
@@ -185,7 +202,7 @@ function listClaude() {
 }
 
 // Cursor MCP functions
-function setupCursor(name, url) {
+function setupCursor(name, url, toolsets) {
   console.log('Configuring Cursor MCP server...');
 
   let config = readJsonFile(CURSOR_MCP_JSON) || { mcpServers: {} };
@@ -196,13 +213,29 @@ function setupCursor(name, url) {
 
   if (config.mcpServers[name]) {
     console.log(`  ${name} already configured in Cursor`);
+    console.log(
+      `  To update, run: npm run mcp:remove:cursor && npm run mcp:setup:cursor`
+    );
     return true;
   }
 
-  config.mcpServers[name] = { url };
+  const serverConfig = {
+    url,
+    type: 'http',
+  };
+
+  // Add headers for toolsets if specified
+  if (toolsets) {
+    serverConfig.headers = {
+      'X-MCP-Toolsets': toolsets,
+    };
+  }
+
+  config.mcpServers[name] = serverConfig;
 
   if (writeJsonFile(CURSOR_MCP_JSON, config)) {
     console.log(`  Added ${name} to Cursor`);
+    console.log(`  Toolsets: ${toolsets}`);
     return true;
   }
   return false;
@@ -237,7 +270,7 @@ function listCursor() {
 }
 
 // VS Code MCP functions
-function setupVscode(name, url) {
+function setupVscode(name, url, toolsets) {
   console.log('Configuring VS Code MCP server...');
 
   let config = readJsonFile(VSCODE_MCP_JSON) || { servers: {} };
@@ -248,13 +281,26 @@ function setupVscode(name, url) {
 
   if (config.servers[name]) {
     console.log(`  ${name} already configured in VS Code`);
+    console.log(
+      `  To update, run: npm run mcp:remove:vscode && npm run mcp:setup:vscode`
+    );
     return true;
   }
 
-  config.servers[name] = { type: 'http', url };
+  const serverConfig = { type: 'http', url };
+
+  // Add headers for toolsets if specified
+  if (toolsets) {
+    serverConfig.headers = {
+      'X-MCP-Toolsets': toolsets,
+    };
+  }
+
+  config.servers[name] = serverConfig;
 
   if (writeJsonFile(VSCODE_MCP_JSON, config)) {
     console.log(`  Added ${name} to VS Code`);
+    console.log(`  Toolsets: ${toolsets}`);
     console.log(
       '  Note: You may need to restart VS Code and enable Agent mode (⌘B or I)'
     );
@@ -292,22 +338,23 @@ function listVscode() {
 }
 
 // Main command handlers
-function setup(tool, name, url) {
+function setup(tool, name, url, toolsets) {
   console.log(`\nSetting up MCP server: ${name}`);
-  console.log(`URL: ${url}\n`);
+  console.log(`URL: ${url}`);
+  console.log(`Toolsets: ${toolsets}\n`);
 
   const tools = tool ? [tool] : ['claude', 'cursor', 'vscode'];
 
   for (const t of tools) {
     switch (t) {
       case 'claude':
-        setupClaude(name, url);
+        setupClaude(name, url, toolsets);
         break;
       case 'cursor':
-        setupCursor(name, url);
+        setupCursor(name, url, toolsets);
         break;
       case 'vscode':
-        setupVscode(name, url);
+        setupVscode(name, url, toolsets);
         break;
       default:
         console.error(`Unknown tool: ${t}`);
@@ -368,13 +415,21 @@ Usage:
   npm run mcp:list               List current MCP configurations
 
 Options (via -- --option):
-  --url <url>    Custom MCP server URL (default: ${DEFAULT_MCP_URL})
-  --name <name>  Custom MCP server name (default: ${DEFAULT_MCP_NAME})
+  --url <url>          Custom MCP server URL (default: ${DEFAULT_MCP_URL})
+  --name <name>        Custom MCP server name (default: ${DEFAULT_MCP_NAME})
+  --toolsets <list>    Comma-separated list of toolsets (default: ${DEFAULT_TOOLSETS})
+                       Available toolsets:
+                         dev  - get-story-urls, get-ui-building-instructions
+                         docs - list-all-components, get-component-documentation
+                              (requires experimentalComponentsManifest feature flag)
 
 Examples:
   npm run mcp:setup
   npm run mcp:setup -- --url http://localhost:3000/mcp
   npm run mcp:setup:claude -- --name my-storybook
+  npm run mcp:setup -- --toolsets dev           # Only dev tools
+  npm run mcp:setup -- --toolsets docs          # Only docs tools
+  npm run mcp:setup -- --toolsets dev,docs      # Both toolsets (default)
   npm run mcp:remove:cursor
 
 Prerequisites:
@@ -390,11 +445,11 @@ Then your AI tool can connect to the MCP server at:
 }
 
 // Main
-const { command, tool, url, name } = parseArgs();
+const { command, tool, url, name, toolsets } = parseArgs();
 
 switch (command) {
   case 'setup':
-    setup(tool, name, url);
+    setup(tool, name, url, toolsets);
     break;
   case 'remove':
     remove(tool, name);

@@ -1,4 +1,9 @@
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 import type { StorybookConfig } from '@storybook/react-vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
   stories: [
@@ -11,7 +16,15 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-docs',
     '@vueless/storybook-dark-mode',
-    '@storybook/addon-mcp',
+    {
+      name: '@storybook/addon-mcp',
+      options: {
+        toolsets: {
+          dev: true,
+          docs: true,
+        },
+      },
+    },
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -21,7 +34,6 @@ const config: StorybookConfig = {
     defaultName: 'Documentation',
   },
   viteFinal: async config => {
-    const path = await import('path');
     return {
       ...config,
       minify: false, // Don't minify in Storybook
@@ -29,11 +41,11 @@ const config: StorybookConfig = {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
-          '@/components': path.resolve(__dirname, '../src/components'),
-          '@/icons': path.resolve(__dirname, '../src/icons'),
-          '@/lib': path.resolve(__dirname, '../src/lib'),
-          '@/hooks': path.resolve(__dirname, '../src/hooks'),
-          '@': path.resolve(__dirname, '../src'),
+          '@/components': resolve(__dirname, '../src/components'),
+          '@/icons': resolve(__dirname, '../src/icons'),
+          '@/lib': resolve(__dirname, '../src/lib'),
+          '@/hooks': resolve(__dirname, '../src/hooks'),
+          '@': resolve(__dirname, '../src'),
         },
       },
     };
@@ -49,6 +61,9 @@ const config: StorybookConfig = {
   staticDirs: ['./public'], // This serves files from .storybook/static/
   core: {
     disableTelemetry: true,
+  },
+  features: {
+    experimentalComponentsManifest: true,
   },
 };
 

@@ -2,6 +2,8 @@
 
 This repository contains the Feathers component library - a React component library built with TypeScript, Tailwind CSS, and Radix UI primitives.
 
+IMPORTANT: Before doing any UI, frontend or React development, ALWAYS call the storybook MCP server to get further instructions.
+
 ## Project Structure
 
 - **Components**: Located in `src/components/` with each component in its own directory
