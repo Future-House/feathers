@@ -8,8 +8,9 @@ import {
 
 import { cn } from '@/lib/utils';
 
-interface SelectProps
-  extends React.ComponentProps<typeof SelectPrimitive.Root> {
+interface SelectProps extends React.ComponentProps<
+  typeof SelectPrimitive.Root
+> {
   error?: boolean;
 }
 
@@ -31,8 +32,9 @@ function SelectValue({
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
-interface SelectTriggerProps
-  extends React.ComponentProps<typeof SelectPrimitive.Trigger> {
+interface SelectTriggerProps extends React.ComponentProps<
+  typeof SelectPrimitive.Trigger
+> {
   error?: boolean;
 }
 

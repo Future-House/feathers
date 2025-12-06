@@ -27,8 +27,9 @@ export interface PreferenceItem {
   id: string;
 }
 
-export interface FtueModalProps
-  extends React.ComponentProps<typeof DialogPrimitive.Root> {
+export interface FtueModalProps extends React.ComponentProps<
+  typeof DialogPrimitive.Root
+> {
   /**
    * Optional logo to display at the top of the modal
    */

@@ -16,8 +16,9 @@ const TimelineAccordion = React.forwardRef<
 ));
 TimelineAccordion.displayName = 'TimelineAccordion';
 
-interface TimelineItemProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {
+interface TimelineItemProps extends React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Item
+> {
   number?: string | number;
 }
 
@@ -43,11 +44,10 @@ const TimelineItem = React.forwardRef<
 ));
 TimelineItem.displayName = 'TimelineItem';
 
-interface TimelineTriggerProps
-  extends Omit<
-    React.ComponentProps<typeof AccordionPrimitive.Trigger>,
-    'title'
-  > {
+interface TimelineTriggerProps extends Omit<
+  React.ComponentProps<typeof AccordionPrimitive.Trigger>,
+  'title'
+> {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
 }

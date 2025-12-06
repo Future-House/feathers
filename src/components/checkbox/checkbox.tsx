@@ -4,8 +4,9 @@ import { Checkmark as Check, Subtract as Minus } from '@/icons';
 
 import { cn } from '@/lib/utils';
 
-interface CheckboxProps
-  extends React.ComponentProps<typeof CheckboxPrimitive.Root> {
+interface CheckboxProps extends React.ComponentProps<
+  typeof CheckboxPrimitive.Root
+> {
   error?: boolean;
 }
 

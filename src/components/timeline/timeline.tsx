@@ -98,8 +98,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
 );
 TimelineItem.displayName = 'TimelineItem';
 
-interface TimelineHeadingProps
-  extends React.HTMLAttributes<HTMLHeadingElement> {
+interface TimelineHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 

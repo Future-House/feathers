@@ -3,8 +3,9 @@ import * as SwitchPrimitive from '@radix-ui/react-switch';
 
 import { cn } from '@/lib/utils';
 
-interface SwitchProps
-  extends React.ComponentProps<typeof SwitchPrimitive.Root> {
+interface SwitchProps extends React.ComponentProps<
+  typeof SwitchPrimitive.Root
+> {
   error?: boolean;
 }
 

@@ -4,13 +4,15 @@ import { RadioButton as CircleIcon } from '@/icons';
 
 import { cn } from '@/lib/utils';
 
-interface RadioGroupProps
-  extends React.ComponentProps<typeof RadioGroupPrimitive.Root> {
+interface RadioGroupProps extends React.ComponentProps<
+  typeof RadioGroupPrimitive.Root
+> {
   error?: boolean;
 }
 
-interface RadioGroupItemProps
-  extends React.ComponentProps<typeof RadioGroupPrimitive.Item> {
+interface RadioGroupItemProps extends React.ComponentProps<
+  typeof RadioGroupPrimitive.Item
+> {
   error?: boolean;
 }
 
