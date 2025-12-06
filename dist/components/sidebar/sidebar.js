@@ -30,7 +30,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
-import { SidePanelClose as PanelLeftCloseIcon } from "../../icons";
+import { SidePanelOpen as PanelLeftOpenIcon, SidePanelClose as PanelLeftCloseIcon } from "../../icons";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { cn } from "../../lib/utils";
 import { Button } from "../button";
@@ -390,7 +390,7 @@ function Sidebar(t0) {
   return t14;
 }
 function SidebarTrigger(t0) {
-  var $ = _c(15);
+  var $ = _c(17);
   var className;
   var onClick;
   var props;
@@ -412,9 +412,6 @@ function SidebarTrigger(t0) {
   var _useSidebar2 = useSidebar(),
     toggleSidebar = _useSidebar2.toggleSidebar,
     state = _useSidebar2.state;
-  if (state === "collapsed") {
-    return null;
-  }
   var t1;
   if ($[4] !== className) {
     t1 = cn("size-7", className);
@@ -437,21 +434,25 @@ function SidebarTrigger(t0) {
     t2 = $[8];
   }
   var t3;
+  if ($[9] !== state) {
+    t3 = state === "expanded" ? /*#__PURE__*/_jsx(PanelLeftCloseIcon, {}) : /*#__PURE__*/_jsx(PanelLeftOpenIcon, {});
+    $[9] = state;
+    $[10] = t3;
+  } else {
+    t3 = $[10];
+  }
   var t4;
-  if ($[9] === Symbol.for("react.memo_cache_sentinel")) {
-    t3 = /*#__PURE__*/_jsx(PanelLeftCloseIcon, {});
+  if ($[11] === Symbol.for("react.memo_cache_sentinel")) {
     t4 = /*#__PURE__*/_jsx("span", {
       className: "sr-only",
       children: "Toggle Sidebar"
     });
-    $[9] = t3;
-    $[10] = t4;
+    $[11] = t4;
   } else {
-    t3 = $[9];
-    t4 = $[10];
+    t4 = $[11];
   }
   var t5;
-  if ($[11] !== props || $[12] !== t1 || $[13] !== t2) {
+  if ($[12] !== props || $[13] !== t1 || $[14] !== t2 || $[15] !== t3) {
     t5 = /*#__PURE__*/_jsxs(Button, _objectSpread(_objectSpread({
       "data-sidebar": "trigger",
       "data-slot": "sidebar-trigger",
@@ -462,12 +463,13 @@ function SidebarTrigger(t0) {
     }, props), {}, {
       children: [t3, t4]
     }));
-    $[11] = props;
-    $[12] = t1;
-    $[13] = t2;
-    $[14] = t5;
+    $[12] = props;
+    $[13] = t1;
+    $[14] = t2;
+    $[15] = t3;
+    $[16] = t5;
   } else {
-    t5 = $[14];
+    t5 = $[16];
   }
   return t5;
 }
