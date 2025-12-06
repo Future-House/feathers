@@ -61,7 +61,17 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "mcp:setup": "node scripts/mcp.js setup",
+    "mcp:setup:claude": "node scripts/mcp.js setup claude",
+    "mcp:setup:cursor": "node scripts/mcp.js setup cursor",
+    "mcp:setup:vscode": "node scripts/mcp.js setup vscode",
+    "mcp:remove": "node scripts/mcp.js remove",
+    "mcp:remove:claude": "node scripts/mcp.js remove claude",
+    "mcp:remove:cursor": "node scripts/mcp.js remove cursor",
+    "mcp:remove:vscode": "node scripts/mcp.js remove vscode",
+    "mcp:list": "node scripts/mcp.js list",
+    "mcp:help": "node scripts/mcp.js help"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,mdx}": [
@@ -143,6 +153,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@storybook/addon-docs": "^9.0.13",
     "@storybook/addon-links": "^9.0.13",
+    "@storybook/addon-mcp": "^0.1.5",
     "@storybook/addon-themes": "^9.0.13",
     "@storybook/react": "^9.0.13",
     "@storybook/react-vite": "^9.0.13",
