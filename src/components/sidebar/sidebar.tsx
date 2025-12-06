@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, VariantProps } from 'class-variance-authority';
-import { SidePanelClose as PanelLeftCloseIcon } from '@/icons';
+import {
+  SidePanelOpen as PanelLeftOpenIcon,
+  SidePanelClose as PanelLeftCloseIcon,
+} from '@/icons';
 
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
@@ -288,11 +291,6 @@ function SidebarTrigger({
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, state } = useSidebar();
 
-  // Only show trigger when expanded (hide expand button when collapsed)
-  if (state === 'collapsed') {
-    return null;
-  }
-
   return (
     <Button
       data-sidebar="trigger"
@@ -306,7 +304,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <PanelLeftCloseIcon />
+      {state === 'expanded' ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
